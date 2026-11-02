@@ -1,0 +1,13 @@
+[Unit]
+Description=Verified private snapshot of site-maker
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/site-maker/current
+EnvironmentFile=%h/site-maker/shared/production.env
+ExecStart=%h/site-maker/runtime/node/bin/node scripts/backup.mjs --to %h/site-maker/shared/backups
+UMask=0077
+NoNewPrivileges=yes
+Nice=10
+MemoryMax=384M
+CPUQuota=50%

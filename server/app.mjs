@@ -16,6 +16,10 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 export function createApp() {
   const app = express();
   app.disable('x-powered-by');
+  if (process.env.TRUST_PROXY) {
+    if (process.env.TRUST_PROXY !== 'loopback') throw new Error('TRUST_PROXY accepte uniquement loopback.');
+    app.set('trust proxy', 'loopback');
+  }
   app.use(helmet({
     contentSecurityPolicy: process.env.NODE_ENV === 'production' ? {
       directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'"], styleSrc: ["'self'", "'unsafe-inline'"], imgSrc: ["'self'", 'data:', 'blob:'], fontSrc: ["'self'"], connectSrc: ["'self'"], frameSrc: ['https:'], objectSrc: ["'none'"], baseUri: ["'self'"], formAction: ["'self'"], frameAncestors: ["'none'"] },

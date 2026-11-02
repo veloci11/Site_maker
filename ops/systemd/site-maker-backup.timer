@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily private backup of site-maker
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=20m
+Persistent=true
+Unit=site-maker-backup.service
+
+[Install]
+WantedBy=timers.target

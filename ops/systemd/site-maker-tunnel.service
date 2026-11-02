@@ -1,0 +1,22 @@
+[Unit]
+Description=Cloudflare tunnel dedicated to site-maker
+After=network-online.target site-maker.service
+Wants=site-maker.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=%h/site-maker
+ExecStart=%h/site-maker/runtime/cloudflared --no-autoupdate tunnel --metrics 127.0.0.1:20242 run --token-file %h/site-maker/shared/cloudflared.token
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+UMask=0077
+NoNewPrivileges=yes
+MemoryMax=256M
+CPUQuota=50%
+TasksMax=64
+
+[Install]
+WantedBy=default.target
