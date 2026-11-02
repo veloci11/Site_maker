@@ -46,6 +46,8 @@ L'administration gère les tarifs, les demandes et les projets, et peut répondr
 
 ## Production
 
+Le site est déployé sur **https://gilmathis.com/** dans son propre répertoire Ubuntu, avec stockage, services et tunnel Cloudflare dédiés. Organisation et contrôles : [ops/README.md](ops/README.md) et [ops/DEPLOYMENT_STATUS.md](ops/DEPLOYMENT_STATUS.md).
+
 Le fonctionnement complet nécessite **un processus Node persistant, HTTPS et un volume privé persistant** pour SQLite et les fichiers. Servir uniquement `dist/client` ou utiliser `vite preview` ne fournit pas les comptes et les API. Le worker Sites conservé dans ce dépôt sert uniquement le client statique ; il ne remplace pas le serveur Express.
 
 Les instructions d'exploitation, de sauvegarde et de restauration sont dans [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Le dépôt fournit le code ; il ne prouve pas une mise en production.

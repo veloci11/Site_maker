@@ -34,6 +34,8 @@ Respecter les contrats et les périmètres attribués aux spécialistes. Le pare
 
 ## Vérification et livraison
 
+Instance publique : `https://gilmathis.com/`, application Ubuntu dans `/home/mathis/site-maker/` ; chaque projet doit garder ses propres chemins, données, runtimes et services. Pour cette instance, se référer à `ops/README.md` et `ops/DEPLOYMENT_STATUS.md`. Cloudflare est administré via le MCP demandé par Mathis. Ne pas modifier les tunnels/services GP Park, Encar ou trading pour déployer studio. Le localhost a été arrêté à sa demande ; ne pas le laisser tourner après livraison.
+
 Démarrer le serveur local et ouvrir la prévisualisation soi-même. Vérifier les interactions dans le navigateur, les formats desktop/mobile et les erreurs. Le rapport visuel final est `design-qa.md`. Exécuter `npm run check` après les modifications fonctionnelles nécessaires ; ne pas confondre validation locale et production.
 
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`. The static worker does not supply the persistent Express API.

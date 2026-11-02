@@ -33,7 +33,7 @@ Contrôles effectués sur l’URL publique avec validation TLS :
 
 `http://gilmathis.com/forfaits/vitrine?lang=fr` renvoie 301 vers `https://gilmathis.com/forfaits/vitrine?lang=fr`. Le DNS autoritatif et le résolveur public 1.1.1.1 répondent. Ubuntu ouvre l’URL publique avec son DNS normal et reçoit 200 ; la santé publique renvoie `{"ok":true}`.
 
-Au moment du contrôle, le Mac et son navigateur conservaient encore une réponse DNS négative antérieure. La vérification locale a donc joint l’edge Cloudflare en fixant l’adresse résolue, tout en gardant le domaine et la validation TLS normale. Le rendu visuel public dans ce navigateur reste à recontrôler après expiration de ce cache ; le rendu du même build avait été vérifié localement dans `design-qa.md`.
+Les premières requêtes du Mac rencontraient un cache DNS négatif. Le cache a ensuite expiré : le domaine se résout normalement sur le Mac et le site public a été ouvert dans le navigateur. L’accueil et le configurateur Immersif 3D sont vérifiés sur le domaine HTTPS ; captures dans `docs/qa/deployment-gilmathis/`. Les contrôles initiaux ont également joint l’edge Cloudflare en fixant l’adresse résolue, tout en gardant le domaine et la validation TLS normale.
 
 GP Park répondait 200 avant et après. `gp-park.service`, `encar-dashboard.service` et `cloudflared-dashboard.service` sont restés actifs ; aucun de ces services n’a été redémarré par cette livraison. La séparation décrite est opérationnelle, sous le même compte Unix, comme précisé dans `ops/README.md`.
 

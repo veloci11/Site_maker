@@ -1,5 +1,7 @@
 # Exploitation du serveur studio
 
+Instance actuelle : **https://gilmathis.com/**, sur Ubuntu, sous `~/site-maker/`, avec services et tunnel dédiés. Voir `ops/README.md` pour son organisation et `ops/DEPLOYMENT_STATUS.md` pour les contrôles réels du 2 novembre 2026. Les sections suivantes décrivent le fonctionnement général et les limites commerciales restantes.
+
 ## Architecture à héberger
 
 Le serveur `server/index.mjs` sert les API et, après le build, les fichiers de `dist/client`. React utilise les API de la même origine. SQLite et les dépôts clients sont conservés dans `DATA_DIR`. Cette version vise **une instance Node 24 avec disque local persistant**. Un hébergement statique, un disque éphémère ou plusieurs instances écrivant sur un volume réseau n'ont pas été validés.
