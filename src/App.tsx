@@ -3,8 +3,6 @@ import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useParams } 
 import { PublicLayout, PortalLayout } from './components/layout'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
-import { examples } from '../shared/catalog'
-import { ConfiguratorPage as Configurator, ForfaitConfiguratorPage as ForfaitConfigurator } from './pages/configurator/index'
 
 function page<T, K extends keyof T>(load: () => Promise<T>, name: K) {
   return lazy<ComponentType>(async () => ({ default: (await load())[name] as ComponentType }))
@@ -14,7 +12,9 @@ const authModule = () => import('./pages/auth/index')
 const portalModule = () => import('./pages/portal/index')
 const collaborationModule = () => import('./pages/collaboration/index')
 const ordersModule = () => import('./pages/orders/index')
-const Home = page(publicModule, 'HomePage'), Offers = page(publicModule, 'OffersPage'), Examples = page(publicModule, 'ExamplesPage'), Example = page(publicModule, 'ExampleDetailPage'), Method = page(publicModule, 'MethodPage'), Faq = page(publicModule, 'FaqPage'), Contact = page(publicModule, 'ContactPage'), Options = page(publicModule, 'OptionsPage')
+const configuratorModule = () => import('./pages/configurator/index')
+const Configurator = page(configuratorModule, 'ConfiguratorPage'), ForfaitConfigurator = page(configuratorModule, 'ForfaitConfiguratorPage')
+const Home = page(publicModule, 'HomePage'), Offers = page(publicModule, 'OffersPage'), Examples = page(publicModule, 'ExamplesPage'), Example = page(publicModule, 'ExampleDetailPage'), Faq = page(publicModule, 'FaqPage'), Contact = page(publicModule, 'ContactPage'), Options = page(publicModule, 'OptionsPage')
 const Register = page(authModule, 'RegisterPage'), Login = page(authModule, 'LoginPage'), Forgot = page(authModule, 'ForgotPasswordPage'), Reset = page(authModule, 'ResetPasswordPage')
 const CustomProject = page(publicModule, 'CustomProjectPage')
 const Dashboard = page(portalModule, 'DashboardPage'), Contents = page(portalModule, 'ContentsPage'), Account = page(portalModule, 'AccountPage'), Messages = page(collaborationModule, 'MessagesPage'), Previews = page(collaborationModule, 'PreviewsPage')
@@ -30,7 +30,13 @@ function RequireAuth({ children, admin = false }: { children: ReactNode; admin?:
   if (admin && user.role !== 'admin') return <Navigate to="/espace" replace />
   return children
 }
-function ScrollTop() { const { pathname } = useLocation(); useLayoutEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]); return null }
+function ScrollTop() {
+  const { pathname, hash, key } = useLocation()
+  useLayoutEffect(() => {
+    if (!hash) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname, hash, key])
+  return null
+}
 class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
   static getDerivedStateFromError() { return { failed: true } }
@@ -38,9 +44,9 @@ class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }
 }
 export function App() {
   return <AppBoundary><BrowserRouter><AuthProvider><ProjectProvider><ScrollTop /><Suspense fallback={<div className="loading-state loading-state--page" role="status">Chargement…</div>}><Routes>
-    <Route element={<PublicLayout examples={examples.slice(0, 3).map(example => ({ title: example.title, description: example.category, href: `/exemples/${example.id}`, image: example.image }))} />}>
+    <Route element={<PublicLayout />}>
       <Route index element={<Home />} /><Route path="forfaits" element={<Offers />} /><Route path="forfaits/sur-mesure" element={<CustomProject />} /><Route path="forfaits/:slug" element={<ForfaitConfigurator />} /><Route path="formules" element={<Navigate to="/forfaits" replace />} /><Route path="formules/:slug" element={<LegacyOffer />} /><Route path="options" element={<Options />} />
-      <Route path="exemples" element={<Examples />} /><Route path="exemples/:slug" element={<Example />} /><Route path="methode" element={<Method />} /><Route path="faq" element={<Faq />} /><Route path="contact" element={<Contact />} />
+      <Route path="exemples" element={<Examples />} /><Route path="exemples/:slug" element={<Example />} /><Route path="methode" element={<Navigate to="/#fonctionnement" replace />} /><Route path="faq" element={<Faq />} /><Route path="contact" element={<Contact />} />
       <Route path="configurateur" element={<Configurator />} /><Route path="inscription" element={<Register />} /><Route path="connexion" element={<Login />} /><Route path="mot-de-passe-oublie" element={<Forgot />} /><Route path="reinitialiser-mot-de-passe" element={<Reset />} />
       <Route path="commande/:projectId" element={<RequireAuth><Checkout /></RequireAuth>} />
       <Route path="confidentialite" element={<LegalPage privacy />} /><Route path="mentions-legales" element={<LegalPage />} /><Route path="conditions" element={<LegalPage />} /><Route path="*" element={<NotFound />} />

@@ -1,4 +1,4 @@
-export { PublicLayout, PublicHeader, PublicFooter, type NavigationExample } from "./PublicLayout";
+export { PublicLayout, PublicHeader, PublicFooter } from "./PublicLayout";
 export { PortalLayout } from "./PortalLayout";
 export { PricingCard, type PricingCardProps } from "./PricingCard";
 export { Reveal, PageTransition, type RevealProps } from "./motion";

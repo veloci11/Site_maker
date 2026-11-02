@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const TILE_SIZE = 128;
-const GRAIN_HEIGHT = 1100;
+const GRAIN_HEIGHT = 1180;
 const PAINT_MEASURE = "studio:ambient-grain-paint";
 
 /** A tiny deterministic noise source, generated once and repeated at one pixel per CSS pixel. */
@@ -21,7 +21,8 @@ function createNoiseTile() {
     pixels.data[index] = gray;
     pixels.data[index + 1] = gray;
     pixels.data[index + 2] = gray;
-    pixels.data[index + 3] = 112 + ((seed >>> 8) & 63);
+    // Soft-light treats middle gray as neutral, preserving the pastel saturation.
+    pixels.data[index + 3] = 160;
   }
   context.putImageData(pixels, 0, 0);
   return tile;

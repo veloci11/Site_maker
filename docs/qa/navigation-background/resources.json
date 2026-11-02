@@ -1,0 +1,52 @@
+{
+  "scripts": [
+    {
+      "name": "/assets/index-DmVfv3Lk.js",
+      "bytes": 335851
+    },
+    {
+      "name": "/assets/index-BZ4C5R7r.js",
+      "bytes": 21950
+    },
+    {
+      "name": "/assets/index-BFT1viBm.js",
+      "bytes": 10813
+    },
+    {
+      "name": "/assets/catalog-C6OfS8Fq.js",
+      "bytes": 8263
+    },
+    {
+      "name": "/assets/input-BiXtIx0o.js",
+      "bytes": 205
+    },
+    {
+      "name": "/assets/label-Brd3eusN.js",
+      "bytes": 509
+    },
+    {
+      "name": "/assets/textarea-pa7JuPSm.js",
+      "bytes": 199
+    },
+    {
+      "name": "/assets/checkbox-DDnoxgZf.js",
+      "bytes": 4644
+    },
+    {
+      "name": "/assets/dialog-DhLYIJ1Q.js",
+      "bytes": 1730
+    },
+    {
+      "name": "/assets/plus-sjJsIHYM.js",
+      "bytes": 679
+    },
+    {
+      "name": "/assets/accordion-9feTtR-k.js",
+      "bytes": 6943
+    }
+  ],
+  "grainPaintMs": [
+    0.4000000059604645
+  ],
+  "initialJsBytes": 391786
+}

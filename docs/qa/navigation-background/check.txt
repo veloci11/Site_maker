@@ -1,0 +1,162 @@
+
+> studio-site-maker@0.0.0 check
+> npm run typecheck && npm run build && npm test
+
+
+> studio-site-maker@0.0.0 typecheck
+> tsc --noEmit
+
+
+> studio-site-maker@0.0.0 build
+> vite build && node scripts/prepare-sites-build.mjs
+
+vite v6.4.5 building for production...
+transforming...
+✓ 2187 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/index.html                                              0.78 kB │ gzip:   0.45 kB
+dist/client/assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2    7.42 kB
+dist/client/assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2      8.00 kB
+dist/client/assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2       15.08 kB
+dist/client/assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2      16.51 kB
+dist/client/assets/geist-latin-wght-normal-BgDaEnEv.woff2          29.40 kB
+dist/client/assets/index-CDRAuKij.css                               6.25 kB │ gzip:   1.49 kB
+dist/client/assets/index-DMPlDh_J.css                               8.48 kB │ gzip:   2.02 kB
+dist/client/assets/index-CzRZcDmU.css                               9.71 kB │ gzip:   2.35 kB
+dist/client/assets/index-BX8I7Wd4.css                              11.67 kB │ gzip:   2.60 kB
+dist/client/assets/index-Dk7b4fj1.css                              18.49 kB │ gzip:   3.64 kB
+dist/client/assets/index-BcyzCH0-.css                              18.86 kB │ gzip:   3.78 kB
+dist/client/assets/index-Cr_YMk1a.css                              30.27 kB │ gzip:   7.18 kB
+dist/client/assets/textarea-pa7JuPSm.js                             0.20 kB │ gzip:   0.17 kB
+dist/client/assets/input-BiXtIx0o.js                                0.21 kB │ gzip:   0.18 kB
+dist/client/assets/label-Brd3eusN.js                                0.51 kB │ gzip:   0.36 kB
+dist/client/assets/plus-sjJsIHYM.js                                 0.68 kB │ gzip:   0.34 kB
+dist/client/assets/refresh-cw-fUwy-4Lh.js                           0.92 kB │ gzip:   0.45 kB
+dist/client/assets/dialog-DhLYIJ1Q.js                               1.73 kB │ gzip:   0.82 kB
+dist/client/assets/tabs-B5mEcSME.js                                 3.82 kB │ gzip:   1.65 kB
+dist/client/assets/index-DUTPJX01.js                                4.23 kB │ gzip:   1.90 kB
+dist/client/assets/checkbox-DDnoxgZf.js                             4.64 kB │ gzip:   1.99 kB
+dist/client/assets/accordion-9feTtR-k.js                            6.94 kB │ gzip:   2.46 kB
+dist/client/assets/catalog-C6OfS8Fq.js                              8.26 kB │ gzip:   3.16 kB
+dist/client/assets/index-BFT1viBm.js                               10.81 kB │ gzip:   4.06 kB
+dist/client/assets/index-Cn8BqQ_5.js                               11.19 kB │ gzip:   3.12 kB
+dist/client/assets/index-BZ4C5R7r.js                               21.95 kB │ gzip:   6.64 kB
+dist/client/assets/index-CBEAnkvX.js                               27.05 kB │ gzip:   8.78 kB
+dist/client/assets/index-yFxDDAR3.js                               27.17 kB │ gzip:  10.66 kB
+dist/client/assets/index-C-GifX2c.js                               29.75 kB │ gzip:   8.83 kB
+dist/client/assets/index-CrEcFvcF.js                               42.97 kB │ gzip:  13.82 kB
+dist/client/assets/index-BCq5Koha.js                               44.14 kB │ gzip:  13.45 kB
+dist/client/assets/index-DmVfv3Lk.js                              335.85 kB │ gzip: 107.06 kB
+✓ built in 1.50s
+Prepared Sites build: dist/server/index.js and dist/.openai/hosting.json
+
+> studio-site-maker@0.0.0 test
+> node --test tests/*.test.mjs
+
+(node:25523) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ inscription : rôle client imposé, hash de mot de passe et session opaque, cookie protégé (255.412834ms)
+✔ validation des données et absence de création de session sur mot de passe faible (2.81375ms)
+✔ connexion : erreurs génériques et rotation du jeton courant (995.392166ms)
+✔ expiration côté serveur, déconnexion et cookie malformé (556.023084ms)
+✔ les mutations provenant d’un autre site sont refusées (201.519458ms)
+✔ récupération : réponse générique sans token, outbox privée, lien à usage unique et sessions révoquées (888.08475ms)
+✔ un lien de récupération expiré est refusé (193.708791ms)
+✔ le changement de mot de passe exige le mot de passe courant et révoque les autres sessions (932.492625ms)
+✔ une modification d’e-mail requiert le mot de passe actuel ; aucun rôle administrateur ne peut être injecté (189.891292ms)
+✔ la connexion est limitée et les cookies sont Secure en production (379.426167ms)
+✔ la création opérateur d’un administrateur est explicite et ne remplace pas un compte existant (378.953708ms)
+✔ une connexion en cours ne recrée pas de session après une réinitialisation concurrente (749.010333ms)
+✔ une connexion avec une ancienne adresse ne crée pas de session après son changement concurrent (374.935458ms)
+✔ une modification d’identité en cours ne survit pas à la révocation de sa session (933.99825ms)
+✔ un changement de mot de passe ne remplace pas un mot de passe réinitialisé pendant la vérification (742.730041ms)
+(node:25524) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ backup restores committed WAL rows and immutable files, including the recoverable bin (61.948875ms)
+✔ backup refuses a symlink upload and removes its incomplete output (13.719542ms)
+✔ backup refuses public destinations, source nesting, and inconsistent file sizes (15.916ms)
+✔ included capabilities are normalized and are not charged twice (0.906667ms)
+✔ unpriced and custom configurations never enable checkout (0.114084ms)
+✔ unknown offers and wrongly typed options are rejected (0.178208ms)
+✔ deployment is a single creation fee and maintenance is a separate optional monthly amount (0.153542ms)
+✔ unknown maintenance price blocks checkout without hiding the known creation amount (0.474208ms)
+✔ older configuration inputs keep both new services unselected by default (0.108125ms)
+(node:25526) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all collaboration routes enforce session, project ownership and explicit admin access (86.246375ms)
+✔ real messages retain authenticated authors, protected attachments and studio replies (27.42025ms)
+✔ attachment selection is atomic, same-project and active; deleted attachments become unavailable (38.271833ms)
+✔ only the studio publishes and versions are server assigned; unsafe URLs never enter the library (19.509792ms)
+✔ published files must belong to the project and a removed source cannot be approved (14.236083ms)
+✔ feedback remains tied to its version and does not imply approval (11.928125ms)
+✔ approval requires explicit confirmation, is idempotent, and always checks the latest version (15.451041ms)
+(node:25527) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ saved projects survive reconnecting to the durable database (5.697292ms)
+✔ the owner predicate never returns another client’s project (2.931416ms)
+✔ project ownership middleware hides both absent and unauthorized resources (0.547458ms)
+✔ partial writes are rolled back, including nested committed work (1.915083ms)
+✔ foreign keys and JSON checks reject orphaned and corrupt records (0.467208ms)
+✔ the real development server refuses private storage through both static URL forms (231.05575ms)
+✔ configuration draft survives sign-in and deduplicates concurrent save attempts (16.782917ms)
+(node:25530) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ files require a session and ownership before any upload processing (36.126459ms)
+✔ verified files are stored privately and can be downloaded and previewed (23.957042ms)
+✔ a second client cannot list, read, delete, restore, or cross-reference another file (30.322167ms)
+✔ trash is reversible and a stored file survives a database reconnect (22.987875ms)
+✔ SVG is an attachment and never an executable inline preview (5.811083ms)
+✔ invalid file batches are rejected atomically and temporary files are cleaned (21.6765ms)
+✔ oversized files are rejected without retaining partial uploads (65.41025ms)
+✔ upload directories cannot escape the private data directory through a symlink (3.409458ms)
+(node:25531) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ public catalogue, quote and inquiry stay accessible before protected routers; origin checks apply (72.956916ms)
+✔ real register/login sessions retain server-owned roles and admin access is explicit (791.025708ms)
+✔ projects, contents and private uploads cross all mounted routers with owner isolation and reversible trash (24.093ms)
+✔ private conversation, publication, feedback and approval bind authenticated actors and latest versions (15.312875ms)
+✔ saved order snapshots survive price/config changes and no readiness state can become a paid order (17.471167ms)
+✔ deployment and maintenance choices are validated, owner scoped and durable through actual project routes (12.514ms)
+✔ integrated quote and order keep one-time deployment separate from recurring maintenance, including price changes (14.314292ms)
+✔ legacy settings and dossier snapshots remain readable and current without rewriting stored bytes (10.244875ms)
+(node:25532) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ initial prices are unknown and a saved dossier cannot masquerade as an order or payment (62.8845ms)
+✔ customer cannot read another dossier or invoke any administration endpoint (20.598167ms)
+✔ billing validation rejects forged prices, status, ownership and malformed fields (11.446292ms)
+✔ admin pricing is validated, persisted and priced by the server with included capabilities (11.221375ms)
+✔ configuration and price snapshots stay immutable while subsequent edits create a new draft (16.9415ms)
+✔ configured prices still cannot trigger payment without a real enabled adapter (8.072958ms)
+✔ administration exposes private content deliberately and records contact review without claiming email (9.124583ms)
+✔ cross-origin changes are rejected before billing or pricing mutation (3.041417ms)
+✔ operator CLI creates an explicit administrator without exposing or accepting a password argument (431.774541ms)
+✔ legacy persisted prices gain unknown new services without rewriting the saved pricing document (2.14025ms)
+✔ legacy snapshots remain byte-identical on read and a billing-only save (5.990083ms)
+✔ saved dossier separates monthly maintenance from creation and preserves both historical amounts (5.781208ms)
+(node:25533) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ database refuses public paths before creating sensitive files (1.150792ms)
+✔ a symlink cannot turn a private storage path into a public one (1.160458ms)
+(node:25534) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ projects require authentication and central normalization preserves included features (46.503416ms)
+✔ a second account cannot list, read, alter or write content in another project (16.104667ms)
+✔ project updates cannot transfer ownership, forge status or smuggle prices (14.919666ms)
+✔ activity and page text persist and remain scoped to their project (16.232875ms)
+✔ malformed records are rejected without replacing saved content (10.355292ms)
+✔ a stale editor cannot overwrite another tab and receives the saved page for comparison (5.960292ms)
+✔ content version tokens advance even for writes within the same millisecond (7.895042ms)
+✔ conditional creation detects duplicate page names and rejects invalid concurrency tokens (11.097459ms)
+✔ serves existing static assets without a fallback (16.839625ms)
+✔ falls back to index.html for an unknown app route (0.744333ms)
+✔ does not turn missing API or write requests into the app shell (0.298792ms)
+✔ emits the files required by Sites packaging (3.285166ms)
+ℹ tests 80
+ℹ suites 0
+ℹ pass 80
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7938.52575

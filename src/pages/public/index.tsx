@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronRight, Maximize2, Search, X } from 'lucide-react'
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronRight, Maximize2 } from 'lucide-react'
 import { offers, getOffer, examples, faqs, optionDefinitions, defaultPricing, formatMoney, type OfferId, type Pricing } from '../../../shared/catalog'
 import { PricingCard } from '../../components/layout/PricingCard'
 import { Button } from '../../components/ui/button'
@@ -39,7 +39,6 @@ function startingPrice(offerId: OfferId, pricing: Pricing) {
 }
 
 const configureHref = (offerId: OfferId) => `/forfaits/${getOffer(offerId)!.slug}`
-const prepareConfigurator = () => import('../configurator/index')
 
 function Intro({ title, description, eyebrow, action }: { title: string; description?: string; eyebrow?: string; action?: ReactNode }) {
   return <section className={`container page-intro public-intro${action ? ' public-intro--split' : ''}`}>
@@ -59,23 +58,27 @@ function FaqList({ items, prefix = 'faq' }: { items: readonly { question: string
 export function HomePage() {
   usePageTitle('Création de sites internet clé en main')
   const pricing = usePricing()
+  const { hash } = useLocation()
+  useEffect(() => {
+    if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' })
+  }, [hash])
   const homeFaqs = [faqs[0], faqs[1], faqs[4]]
   return <>
     <section className="container home-hero" aria-labelledby="home-title">
-      <Reveal className="home-hero__copy"><h1 id="home-title">Votre site internet.<br />Clé en main.</h1><p className="home-hero__description">Choisissez votre forfait et vos options. Nous créons votre site.</p><div className="home-hero__actions"><Button asChild size="lg"><a href="#forfaits">Choisir mon forfait <ArrowRight size={18} aria-hidden="true" /></a></Button><Link className="text-link" to="/methode">Comment ça se passe <ArrowUpRight size={16} aria-hidden="true" /></Link></div></Reveal>
+      <Reveal className="home-hero__copy"><h1 id="home-title">Votre site internet.<br />Clé en main.</h1><p className="home-hero__description">Choisissez votre forfait et vos options. Nous créons votre site.</p><div className="home-hero__actions"><Button asChild size="lg"><a href="#forfaits">Choisir mon forfait <ArrowRight size={18} aria-hidden="true" /></a></Button><a className="text-link" href="#fonctionnement">Comment ça se passe <ArrowUpRight size={16} aria-hidden="true" /></a></div></Reveal>
     </section>
     <section className="container home-offers" id="forfaits" aria-labelledby="home-offers-title">
-      <Reveal className="home-section-heading"><h2 id="home-offers-title">Choisissez votre forfait.</h2><Link className="text-link" to="/forfaits">Comparer les forfaits <ArrowRight size={17} aria-hidden="true" /></Link></Reveal>
-      <div className="pricing-grid">{offers.map((offer, index) => <Reveal key={offer.id} delay={index * 65}><PricingCard slug={offer.slug} title={offer.title} price={startingPrice(offer.id, pricing)} features={offer.features} href={configureHref(offer.id)} variant={offer.variant} cta={offer.id === 'sur-mesure' ? 'Parlons de votre projet' : `Configurer ${offer.title}`} prepare={offer.id === 'sur-mesure' ? undefined : prepareConfigurator} /></Reveal>)}</div>
+      <Reveal className="home-section-heading"><h2 id="home-offers-title">Choisissez votre forfait.</h2><a className="text-link" href="#comparer">Comparer les forfaits <ArrowRight size={17} aria-hidden="true" /></a></Reveal>
+      <div className="pricing-grid">{offers.map((offer, index) => <Reveal key={offer.id} delay={index * 65}><PricingCard slug={offer.slug} title={offer.title} price={startingPrice(offer.id, pricing)} features={offer.features} href={configureHref(offer.id)} variant={offer.variant} cta={offer.id === 'sur-mesure' ? 'Parlons de votre projet' : `Configurer ${offer.title}`} /></Reveal>)}</div>
     </section>
-    <section className="container home-method" aria-label="Les étapes de votre projet">
+    <section className="container home-method" id="fonctionnement" aria-label="Les étapes de votre projet">
       {[
         ['Choisissez votre forfait', 'Ajoutez les options dont vous avez besoin.'],
         ['Ajoutez vos contenus', 'Déposez vos textes, photos et logo dans votre espace.'],
         ['Validez votre site', 'Consultez la maquette et demandez vos ajustements.'],
       ].map(([title, text], index) => <Reveal className="home-method__step" key={title} delay={index * 80}><span className="home-method__number">0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></Reveal>)}
     </section>
-    <section className="container home-comparison" aria-labelledby="home-comparison-title"><Reveal className="section-heading"><h2 id="home-comparison-title">Comparer les forfaits</h2></Reveal><Reveal><OfferComparison pricing={pricing} id="home-comparison" /></Reveal></section>
+    <section className="container home-comparison" id="comparer" aria-labelledby="home-comparison-title"><Reveal className="section-heading"><h2 id="home-comparison-title">Comparer les forfaits</h2></Reveal><Reveal><OfferComparison pricing={pricing} id="home-comparison" /></Reveal></section>
     <section className="container home-faq" aria-labelledby="home-faq-title"><Reveal><div className="section-heading"><h2 id="home-faq-title">Questions fréquentes</h2></div><FaqList items={homeFaqs} prefix="home" /><Link className="text-link home-faq__all" to="/faq">Toutes les questions <ArrowRight size={17} aria-hidden="true" /></Link></Reveal></section>
   </>
 }
@@ -168,10 +171,7 @@ export function OptionsPage() {
 
 export function ExamplesPage() {
   usePageTitle('Les exemples de sites')
-  const [filter, setFilter] = useState('all')
-  const filters = [{ id: 'all', label: 'Tous' }, { id: 'vitrine', label: 'Vitrine' }, { id: 'connecte', label: 'Contenus' }, { id: 'immersif', label: '3D' }, { id: 'sur-mesure', label: 'Sur mesure' }]
-  const filtered = examples.filter(example => filter === 'all' || example.offerId === filter)
-  return <><Intro title="Exemples de sites" description="Des références externes pour découvrir les formats proposés." /><section className="container public-examples-page"><div className="public-filters" aria-label="Filtrer les exemples">{filters.map(item => <button type="button" key={item.id} aria-pressed={filter === item.id} className={filter === item.id ? 'is-active' : ''} onClick={() => setFilter(item.id)}>{item.label}</button>)}</div><div className="public-examples-grid">{filtered.map(example => <Link className="public-example-tile" key={example.id} to={`/exemples/${example.id}`}><div className="public-example-tile__image"><img src={example.image} alt={`Aperçu du site ${example.title}`} width="1672" height="940" loading="lazy" /></div><div className="public-example-tile__title"><h2>{example.title}</h2><ArrowRight size={22} aria-hidden="true" /></div><p>{example.category}{example.id === 'tiny-heaven' || example.id === 'addiction-agency' ? ' · Raphaël Ferreira' : ''}</p></Link>)}</div></section></>
+  return <><Intro title="Exemples de sites" description="Des références externes pour découvrir les formats proposés." /><section className="container public-examples-page"><div className="public-examples-grid">{examples.map(example => <Link className="public-example-tile" key={example.id} to={`/exemples/${example.id}`}><div className="public-example-tile__image"><img src={example.image} alt={`Aperçu du site ${example.title}`} width="1672" height="940" loading="lazy" /></div><div className="public-example-tile__title"><h2>{example.title}</h2><ArrowRight size={22} aria-hidden="true" /></div><p>{example.category}{example.id === 'tiny-heaven' || example.id === 'addiction-agency' ? ' · Raphaël Ferreira' : ''}</p></Link>)}</div></section></>
 }
 
 export function ExampleDetailPage() {
@@ -183,26 +183,9 @@ export function ExampleDetailPage() {
   return <section className="container public-example-detail"><Link className="text-link public-back-link" to="/exemples"><ArrowLeft size={18} aria-hidden="true" />Tous les exemples</Link><div className="public-example-detail__heading"><div><h1>{example.title}</h1><p>{example.description}</p></div><Button asChild><a href={example.url} target="_blank" rel="noreferrer">Ouvrir le site <ArrowUpRight size={18} aria-hidden="true" /></a></Button></div><ExamplePreview example={example} heading="Aperçu du site" /><div className="public-example-detail__footer"><Link className="text-link" to={`/forfaits/${offer.slug}`}>Configurer {offer.title} <ArrowRight size={18} aria-hidden="true" /></Link></div></section>
 }
 
-const methodSteps = [
-  { title: 'Choisissez votre forfait.', description: 'Ajoutez vos options et enregistrez le projet dans votre espace.', image: '/assets/examples/methode-configurateur.png', alt: 'Exemple de configurateur avec aperçu et choix des options', href: '/forfaits' },
-  { title: 'Ajoutez vos contenus.', description: 'Déposez votre logo, vos textes et vos photos. Retrouvez nos échanges dans les messages.', image: '/assets/examples/methode-contenus.png', alt: 'Exemple d’espace client pour les textes, les photos et le logo', href: '/espace/contenus' },
-  { title: 'Validez votre site.', description: 'Consultez la maquette, demandez les ajustements et validez la version à mettre en ligne.', image: '/assets/examples/methode-validation.png', alt: 'Exemple d’aperçu du site avec les actions de retour et de validation', href: '/espace/maquettes' },
-]
-
-export function MethodPage() {
-  usePageTitle('Comment se déroule votre projet')
-  return <><Intro title="Comment se déroule votre projet ?" /><section className="container public-method-page"><ol className="public-method-list">{methodSteps.map((step, index) => <li key={step.title}><div className="public-method-copy"><span className="public-method-number">0{index + 1}</span><h2>{step.title}</h2><p>{step.description}</p></div><Link className="public-method-preview" to={step.href} aria-label={step.title}><img src={step.image} alt={step.alt} width="1440" height="1100" loading="lazy" /></Link></li>)}</ol><div className="public-method-action"><Button asChild size="lg"><Link to="/forfaits">Choisir mon forfait <ArrowRight size={18} aria-hidden="true" /></Link></Button></div></section></>
-}
-
-const normalize = (value: string) => value.toLocaleLowerCase('fr').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-
 export function FaqPage() {
   usePageTitle('Questions fréquentes')
-  const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('Tout')
-  const categories = ['Tout', 'Choisir son site', 'Options et prix', 'Préparer son contenu']
-  const filtered = useMemo(() => faqs.filter(item => (category === 'Tout' || item.category === category) && normalize(`${item.question} ${item.answer}`).includes(normalize(query.trim()))), [category, query])
-  return <><Intro title="Questions fréquentes" /><section className="container public-faq-page"><div className="public-search"><Search size={21} aria-hidden="true" /><Input aria-label="Rechercher une question" placeholder="Rechercher une question…" value={query} onChange={event => setQuery(event.target.value)} type="search" />{query ? <Button variant="ghost" size="icon" aria-label="Effacer la recherche" onClick={() => setQuery('')}><X size={18} aria-hidden="true" /></Button> : null}</div><div className="public-filters public-filters--center" aria-label="Catégories de questions">{categories.map(item => <button type="button" key={item} aria-pressed={category === item} className={category === item ? 'is-active' : ''} onClick={() => setCategory(item)}>{item}</button>)}</div><div aria-live="polite">{filtered.length ? <FaqList items={filtered} prefix="search" /> : <div className="empty-state"><h2>Aucune question trouvée.</h2><p>Essayez un autre mot ou consultez toutes les questions.</p><Button variant="outline" onClick={() => { setQuery(''); setCategory('Tout') }}>Voir toutes les questions</Button></div>}</div><div className="public-faq-contact"><p>Vous avez une autre question ?</p><Button asChild variant="outline"><Link to="/contact">Nous contacter <ArrowRight size={17} aria-hidden="true" /></Link></Button></div></section></>
+  return <><Intro title="Questions fréquentes" /><section className="container public-faq-page"><FaqList items={faqs} prefix="faq" /><div className="public-faq-contact"><p>Vous avez une autre question ?</p><Button asChild variant="outline"><Link to="/contact">Nous contacter <ArrowRight size={17} aria-hidden="true" /></Link></Button></div></section></>
 }
 
 function InquiryForm({ custom = false }: { custom?: boolean }) {

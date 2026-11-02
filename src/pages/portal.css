@@ -4,7 +4,7 @@
 .portal-section-title { margin: 0 0 22px; font-size: 28px; line-height: 1.2; font-weight: 500; letter-spacing: -.035em; }
 .portal-project-select { display: grid; flex: 0 0 220px; gap: 8px; font-size: 13px; color: var(--muted-foreground); }
 .portal-project-select .input { font-size: 14px; }
-.portal-next-action { display: grid; grid-template-columns: minmax(0, 1fr) 235px; align-items: center; gap: 32px; padding: 34px 40px; border-radius: 12px; background: var(--lavender) url('/assets/hero-atmosphere.png') center/cover; margin-bottom: 40px; }
+.portal-next-action { display: grid; grid-template-columns: minmax(0, 1fr) 235px; align-items: center; gap: 32px; padding: 34px 40px; border-radius: 12px; background: linear-gradient(110deg, #f0ecfc, #fff3e4); margin-bottom: 40px; }
 .portal-next-action .eyebrow { margin-bottom: 14px; font-size: 12px; letter-spacing: .12em; }
 .portal-next-action h2 { margin: 0 0 10px; font-size: 32px; line-height: 1.15; letter-spacing: -.04em; font-weight: 500; }
 .portal-next-action p:not(.eyebrow) { margin: 0 0 24px; font-size: 16px; line-height: 1.55; color: var(--muted-foreground); max-width: 600px; }
