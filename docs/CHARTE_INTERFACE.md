@@ -16,7 +16,7 @@ Largeur publique maximale 1280 px ; marges mobiles 20 px. Échelle d’espacemen
 
 Fond blanc, texte #111111, secondaire #686872, surface grège #F5F3F0, bordure #E8E6E3. Le fond public utilise des plages CSS lavande, pêche, ciel et crème, statiques et progressivement transparentes. Le texte secondaire public est #575360 pour rester lisible sur les pastels. Il ne charge aucune image d’ambiance et ne s’anime pas. Le grain est généré une fois dans le code sur une tuile 128×128 répétée par canvas à DPR 1, en lumière douce, sans voile gris, avec repaint uniquement au redimensionnement.
 
-Les en-têtes des cartes utilisent la texture originale grain-plasma-card.webp, 768×512 et environ 163 Ko. Recadrages, retournements et teintes statiques différencient les quatre forfaits. La texture se révèle au survol ou au focus, uniquement dans le haut ; le texte y devient blanc. Les trois inclusions restent sombres, le bouton noir. Toute la carte est un seul lien. Aucune phrase sous son nom, aucune vignette ni ligne Selon les options choisies.
+Les en-têtes des petites cartes utilisent la texture originale grain-plasma-card.webp, 768×512 et environ 163 Ko. La grande carte du configurateur utilise un cadrage proportionnel et une sélection 1x/2x, avec la source 1536×1024 grain-plasma-detail.webp sur les écrans haute densité. Le zoom anisotrope de la miniature y est supprimé pour garder un grain net. Recadrages, retournements et teintes statiques différencient les quatre forfaits. La texture se révèle au survol ou au focus, uniquement dans le haut ; le texte y devient blanc. Les trois inclusions restent sombres, le bouton noir. Toute la carte est un seul lien. Aucune phrase sous son nom, aucune vignette ni ligne Selon les options choisies.
 
 ## Mouvement et performance
 

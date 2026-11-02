@@ -72,3 +72,5 @@ La source studio originale de 1536 × 1024 est maintenant utilisée en 2x avec `
 final result: passed
 
 L’adresse de réception Resend est reportée à la demande explicite de Mathis ; aucune modification ni envoi d’e-mail pendant cette correction.
+
+Vérification de première visite publique : la source 2x a mis environ 985 ms à charger sur cette connexion. La version légère préchargée est conservée sous la couche 2x pour éviter un aplat vide pendant ce chargement. Aucun délai n’est ajouté aux options ni aux boutons. Les captures publiques finales sont prises après la fin de chargement de la source 2x.

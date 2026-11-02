@@ -8,7 +8,7 @@
 .selected-plan::before {
   content:""; position:absolute; inset:0; z-index:-2;
   background:url('/assets/textures/grain-plasma-detail.webp') var(--plasma-position) / cover no-repeat;
-  background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-detail.webp') 2x);
+  background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-detail.webp') 2x),url('/assets/textures/grain-plasma-card.webp');
   filter:hue-rotate(var(--card-hue)) saturate(.93) brightness(.78);
   transform:scale(var(--card-scale-x),var(--card-scale-y));
 }

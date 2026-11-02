@@ -32,6 +32,6 @@ Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparé
 
 La grande carte utilise `public/assets/textures/grain-plasma-detail.webp` (1536 × 1024, 879 898 octets), copie binaire de la source originale `docs/asset-sources/textures/grain-plasma-v2.webp`. La matière et les couleurs sont celles de la texture studio déjà approuvée ; aucune nouvelle image générée.
 
-Le fond respecte le ratio de l’image (`cover`) et `image-set` choisit la définition 1x ou 2x selon la densité. La miniature 768 × 512 ne subit plus le zoom anisotrope 155 % / 145 % dans la grande carte. Elle reste inchangée sur les cartes de l’accueil, avec leur effet de survol approuvé.
+Le fond respecte le ratio de l’image (`cover`) et `image-set` choisit la définition 1x ou 2x selon la densité. La version légère reste aussi sous la couche 2x pendant son chargement, pour éviter un aplat sans texture. La miniature 768 × 512 ne subit plus le zoom anisotrope 155 % / 145 % dans la grande carte. Elle reste inchangée sur les cartes de l’accueil, avec leur effet de survol approuvé.
 
 Contrôle IAB : l’écran DPR 2 charge la source 2x, l’écran DPR 1 conserve la ressource légère. Les captures du grain à résolution native sont dans `docs/qa/card-definition/`.
