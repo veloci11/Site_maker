@@ -47,3 +47,7 @@ La source fournie sert de référence de structure pour la grande carte colorée
 - Captures publiques après déploiement et révision déployée consignées dans `ops/DEPLOYMENT_STATUS.md`.
 
 Aucun P0/P1/P2 ouvert à l’issue de la comparaison. Aucun écart de marque d’ElevenLabs n’est traité comme une erreur : le rendu studio approuvé reste la référence de couleur et de police.
+
+## Contrôle public après livraison
+
+Révision `f60622a6376652e0bb5d4997203073c26d70052d` active sur https://gilmathis.com/. Empreinte HTTP du client final contrôlée. Dans IAB public : mobile sélectionné, passage aux coordonnées sans inscription, réouverture de Vitrine avec option conservée ; aucune erreur de console. Capture : `docs/qa/deployment-gilmathis/configurator-anonymous-public.jpg`. Aucun envoi réel soumis ; l’adresse destinataire Resend reste attendue. Le localhost a été arrêté après les essais.
