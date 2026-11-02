@@ -1,6 +1,6 @@
 # studio — charte d’interface interne
 
-Révision du 1 novembre 2026, après essais et corrections de Mathis. Document interne, sans route publique.
+Révision du 2 novembre 2026, après essais et corrections de Mathis. Document interne, sans route publique.
 
 ## Identité
 
@@ -26,7 +26,7 @@ La préférence de réduction des animations supprime les mouvements. Un état s
 
 ## Parcours
 
-Accueil concis sans exemple en ouverture → forfait → configuration → compte pour enregistrer → dossier → espace client. La découverte reste sans compte. Les choix sont visibles à droite d’un grand aperçu fixe sur ordinateur ; le mobile utilise un ordre de lecture naturel. Les détails se déplient au même endroit, sans onglets redondants.
+Accueil concis sans exemple en ouverture → forfait → configuration → coordonnées → demande → recontact humain. Aucun compte à créer. Les choix sont à droite d’une grande carte texturée du forfait avec le total sur ordinateur ; le mobile empile carte/options et dispose d’une barre de total fixe. Les détails se déplient au même endroit, sans onglets redondants.
 
 Les coûts de création incluent les options ponctuelles choisies. La maintenance choisie reste un montant mensuel séparé. Les services déjà compris ne sont pas facturés une deuxième fois. Prix inconnus : À partir de…, + … €, … € ; Sur mesure : Sur devis.
 
@@ -34,4 +34,6 @@ Les coûts de création incluent les options ponctuelles choisies. La maintenanc
 
 Primitives shadcn/Radix : Button, Input, Textarea, Label, RadioGroup, Checkbox, Dialog, Sheet, Accordion, Tabs et DropdownMenu. Lucide est la seule famille d’icônes. Les comptes, fichiers privés, messages, versions et validations s’appuient sur l’API réelle.
 
-Les références DOMTEKNIKA, Lactel, Tiny Heaven et Addiction sont des inspirations externes créditées, pas des clients revendiqués. Atelier est un exemple fictif. Le dossier de maquettes initial demeure une archive de conception et ne remplace pas les corrections ci-dessus.
+Les références DOMTEKNIKA, Lactel, Tiny Heaven et Addiction sont des inspirations externes créditées, pas des clients revendiqués. Julie Thiam est également présentée. L’ancien exemple fictif Atelier / Artisanat est retiré ; ses originaux sont archivés hors du build. Le dossier de maquettes initial demeure une archive de conception et ne remplace pas les corrections ci-dessus.
+
+Le header propose les quatre forfaits, la galerie avec tags, Accueil et Nous contacter. La texture de la grande carte est visible dès l’ouverture ; les cartes de l’accueil conservent leur effet de survol approuvé. Le fond public couvre le bord supérieur ; overscroll-behavior-y:none neutralise le rebond blanc.

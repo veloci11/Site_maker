@@ -246,6 +246,7 @@ export function createAuthRouter({ resetTransport, limits = {} } = {}) {
   router.get('/me', (req, res) => res.json({ user: req.user }));
 
   router.post('/register', registerLimit, wrap(async (req, res) => {
+    if (process.env.NODE_ENV === 'production') return apiError(res, 403, 'La demande de site se fait sans compte depuis le configurateur.', 'REGISTRATION_CLOSED');
     const email = emailValue(req.body?.email);
     const name = typeof req.body?.name === 'string' ? req.body.name.trim().replace(/\s+/g, ' ') : '';
     const password = req.body?.password;

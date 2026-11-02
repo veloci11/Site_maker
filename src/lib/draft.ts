@@ -10,7 +10,7 @@ function storage(): Storage | null {
 }
 export function configurationKey(configuration: Configuration) {
   const config = normalizeConfiguration(configuration)
-  return JSON.stringify([config.offerId, config.language, config.managedContent, config.scene3d, config.deployment, config.maintenance])
+  return JSON.stringify([config.offerId, config.language, config.mobile, config.managedContent, config.scene3d, config.deployment, config.maintenance, config.extras])
 }
 export function readDraft(): ProjectDraft | null {
   try {

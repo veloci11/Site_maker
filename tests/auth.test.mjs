@@ -174,13 +174,31 @@ test('la connexion est limitée et les cookies sont Secure en production', async
   const limited = await call('/limited/login', { method: 'POST', body: { email: 'unknown@example.test', password } });
   assert.equal(limited.status, 429);
   assert.ok(limited.response.headers.get('retry-after'));
+  const account = await register();
   process.env.NODE_ENV = 'production';
   try {
-    const account = await register();
-    assert.ok(/; Secure/i.test(account.setCookie));
+    const login = await call('/api/auth/login', { method: 'POST', body: { email: account.email, password } });
+    assert.equal(login.status, 200);
+    assert.ok(/; Secure/i.test(login.setCookie));
     const reset = await call('/api/auth/forgot-password', { method: 'POST', body: { email: account.email } });
     assert.equal(reset.body.delivery, 'not-configured');
     assert.match(reset.body.message, /pas encore activé/);
+  } finally { process.env.NODE_ENV = 'test'; }
+});
+
+test('les inscriptions publiques sont fermées en production sans supprimer les comptes historiques', async () => {
+  const account = await register();
+  const usersBefore = getDb().prepare('SELECT COUNT(*) AS count FROM users').get().count;
+  const sessionsBefore = getDb().prepare('SELECT COUNT(*) AS count FROM sessions').get().count;
+  process.env.NODE_ENV = 'production';
+  try {
+    const refused = await call('/api/auth/register', { method: 'POST', body: { name: 'Visiteur public', email: 'production-closed@example.test', password, role: 'admin' } });
+    assert.equal(refused.status, 403);
+    assert.equal(refused.body.code, 'REGISTRATION_CLOSED');
+    assert.equal(refused.setCookie, null);
+    assert.equal(getDb().prepare('SELECT COUNT(*) AS count FROM users').get().count, usersBefore);
+    assert.equal(getDb().prepare('SELECT COUNT(*) AS count FROM sessions').get().count, sessionsBefore);
+    assert.equal((await call('/private', { cookie: account.cookie })).body.id, account.body.user.id);
   } finally { process.env.NODE_ENV = 'test'; }
 });
 

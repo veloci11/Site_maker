@@ -39,7 +39,7 @@ function stringRecord(value) {
 }
 
 function configuration(input, existing) {
-  onlyKeys(input, ['offerId', 'language', 'managedContent', 'scene3d', 'deployment', 'maintenance']);
+  onlyKeys(input, ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras']);
   const candidate = { ...existing, ...input };
   if (!OFFER_IDS.includes(candidate.offerId)
     || (candidate.language !== undefined && !['fr', 'fr-en'].includes(candidate.language))
@@ -49,7 +49,8 @@ function configuration(input, existing) {
     || (candidate.maintenance !== undefined && typeof candidate.maintenance !== 'boolean')) {
     throw new ValidationError('Choisissez une forfait et des options valides.');
   }
-  return normalizeConfiguration(candidate);
+  try { return normalizeConfiguration(candidate); }
+  catch { throw new ValidationError('Choisissez un forfait et des options valides.'); }
 }
 
 function pageKey(req, res, next) {

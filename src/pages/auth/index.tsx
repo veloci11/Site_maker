@@ -1,14 +1,11 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react'
-import { getOffer } from '../../../shared/catalog'
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { api, errorMessage, safeReturnPath } from '../../lib/api'
 import { useAuth } from '../../lib/auth'
-import { readDraft } from '../../lib/draft'
-import { AtelierPreview, ProjectSteps } from '../configurator'
 import '../auth.css'
 
 function returnPath(params: URLSearchParams) {
@@ -23,39 +20,7 @@ function PasswordInput({ id, name = 'password', value, onChange, autoComplete = 
   return <div className="password-input"><Input id={id} name={name} type={visible ? 'text' : 'password'} value={value} onChange={event => onChange(event.target.value)} autoComplete={autoComplete} required minLength={minLength} maxLength={128} placeholder={placeholder} disabled={disabled} /><button type="button" disabled={disabled} onClick={() => setVisible(current => !current)} aria-pressed={visible} aria-label={`${visible ? 'Masquer' : 'Afficher'} le mot de passe`}>{visible ? 'Masquer' : 'Afficher'}</button></div>
 }
 
-export function RegisterPage() {
-  const [params] = useSearchParams()
-  const navigate = useNavigate()
-  const { user, loading, register } = useAuth()
-  const target = returnPath(params)
-  const [draft] = useState(readDraft)
-  const hasSelection = target.startsWith('/configurateur') && draft !== null
-  const selected = hasSelection ? getOffer(draft.configuration.offerId) : undefined
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [pending, setPending] = useState(false)
-  const [error, setError] = useState('')
-  const submitting = useRef(false)
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (submitting.current) return
-    submitting.current = true; setPending(true); setError('')
-    try { await register(name.trim(), email.trim(), password); navigate(target, { replace: true }) }
-    catch (e) { setError(errorMessage(e)) }
-    finally { submitting.current = false; setPending(false) }
-  }
-  if (loading) return <div className="loading-state auth-loading" role="status"><Loader2 className="spin" size={24} aria-hidden="true" /><span>Ouverture de votre espace…</span></div>
-  if (user) return <Navigate to={target} replace />
-
-  return <section className="auth-register-page container">
-    {hasSelection ? <ProjectSteps current={2} /> : null}
-    <div className="auth-register-grid"><div className="auth-register-intro"><h1 className="page-heading">Votre projet<br />vous attend.</h1><p className="page-subtitle">{hasSelection ? 'Enregistrez vos choix pour les retrouver, déposer vos contenus et suivre la création de votre site.' : 'Préparez votre site, ajoutez vos contenus et retrouvez nos échanges dans votre espace.'}</p><AtelierPreview compact />{selected && draft ? <div className="auth-selection"><div><strong>{selected.title}{draft.configuration.language === 'fr-en' ? ' · Français + anglais' : ''}</strong>{draft.configuration.managedContent ? <span>Textes et images modifiables</span> : null}</div><Link className="text-link" to="/configurateur">Modifier mes choix</Link></div> : <p className="auth-preview-note">Exemple de rendu fictif</p>}</div>
-      <div className="auth-register-form"><h2>Créer mon espace</h2><p>Retrouvez votre projet quand vous le souhaitez.</p><form onSubmit={submit} aria-busy={pending}><div className="field"><Label htmlFor="register-name">Votre nom</Label><Input id="register-name" name="name" value={name} onChange={event => setName(event.target.value)} autoComplete="name" required minLength={2} maxLength={120} placeholder="Votre nom complet" disabled={pending} /></div><div className="field"><Label htmlFor="register-email">Votre e-mail</Label><Input id="register-email" name="email" type="email" value={email} onChange={event => setEmail(event.target.value)} autoComplete="email" required maxLength={254} placeholder="votre@email.com" disabled={pending} /></div><div className="field"><Label htmlFor="register-password">Votre mot de passe</Label><PasswordInput id="register-password" value={password} onChange={setPassword} autoComplete="new-password" minLength={12} placeholder="12 caractères minimum" disabled={pending} /></div>{error ? <p className="field-error" role="alert">{error}</p> : null}<Button type="submit" size="lg" className="auth-full-button" disabled={pending}>{pending ? <Loader2 className="spin" size={18} aria-hidden="true" /> : null}Créer mon espace<ArrowRight size={18} aria-hidden="true" /></Button></form><p className="auth-other-action">Déjà un compte ? <Link to={authHref('/connexion', target)}>Se connecter</Link></p><p className="auth-privacy-note">Vous pourrez ajouter vos textes, vos photos et votre logo quand ils sont prêts.</p></div>
-    </div><Link className="text-link auth-back" to={hasSelection ? '/configurateur' : '/'}><ArrowLeft size={16} aria-hidden="true" />{hasSelection ? 'Revenir à mes choix' : 'Revenir au site'}</Link>
-  </section>
-}
+export function RegisterPage() { return <Navigate to="/configurateur" replace /> }
 
 export function LoginPage() {
   const [params] = useSearchParams()
@@ -77,7 +42,7 @@ export function LoginPage() {
   }
   if (loading) return <div className="loading-state auth-loading" role="status"><Loader2 className="spin" size={24} aria-hidden="true" /><span>Ouverture de votre espace…</span></div>
   if (user) return <Navigate to={target} replace />
-  return <section className="auth-centered-page container"><div className="auth-centered-form"><h1>Retrouvez votre projet.</h1><p className="auth-intro">Connectez-vous à votre espace client.</p><form onSubmit={submit} aria-busy={pending}><div className="field"><Label htmlFor="login-email">Votre e-mail</Label><Input id="login-email" name="email" type="email" value={email} onChange={event => setEmail(event.target.value)} autoComplete="email" required maxLength={254} placeholder="votre@email.com" disabled={pending} /></div><div className="field"><Label htmlFor="login-password">Votre mot de passe</Label><PasswordInput id="login-password" value={password} onChange={setPassword} disabled={pending} /></div><Link className="auth-forgot-link" to="/mot-de-passe-oublie">Mot de passe oublié ?</Link>{error ? <p className="field-error" role="alert">{error}</p> : null}<Button size="lg" type="submit" className="auth-full-button" disabled={pending}>{pending ? <Loader2 size={18} className="spin" aria-hidden="true" /> : null}Se connecter<ArrowRight size={18} aria-hidden="true" /></Button></form><div className="auth-create-account"><p>Vous n’avez pas encore de compte ?</p><Button asChild variant="outline" className="auth-full-button"><Link to={authHref('/inscription', target)}>Créer mon espace</Link></Button></div><p className="auth-contact">Une question ? <Link to="/contact">Nous contacter</Link></p></div></section>
+  return <section className="auth-centered-page container"><div className="auth-centered-form"><h1>Accès privé.</h1><p className="auth-intro">Connexion à l’administration du studio.</p><form onSubmit={submit} aria-busy={pending}><div className="field"><Label htmlFor="login-email">Votre e-mail</Label><Input id="login-email" name="email" type="email" value={email} onChange={event => setEmail(event.target.value)} autoComplete="email" required maxLength={254} placeholder="votre@email.com" disabled={pending} /></div><div className="field"><Label htmlFor="login-password">Votre mot de passe</Label><PasswordInput id="login-password" value={password} onChange={setPassword} disabled={pending} /></div><Link className="auth-forgot-link" to="/mot-de-passe-oublie">Mot de passe oublié ?</Link>{error ? <p className="field-error" role="alert">{error}</p> : null}<Button size="lg" type="submit" className="auth-full-button" disabled={pending}>{pending ? <Loader2 size={18} className="spin" aria-hidden="true" /> : null}Se connecter<ArrowRight size={18} aria-hidden="true" /></Button></form><p className="auth-contact">Une question ? <Link to="/contact">Nous contacter</Link></p></div></section>
 }
 
 export function ForgotPasswordPage() {

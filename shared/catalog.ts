@@ -1,17 +1,18 @@
 export const OFFER_IDS = ['vitrine', 'connecte', 'immersif', 'sur-mesure'] as const
 export type OfferId = typeof OFFER_IDS[number]
-export type Configuration = { offerId: OfferId; language: 'fr' | 'fr-en'; managedContent: boolean; scene3d: boolean; deployment: boolean; maintenance: boolean }
-export type OptionId = 'language-en' | 'managed-content' | 'scene-3d' | 'deployment' | 'maintenance-monthly'
+export const EXTRA_OPTION_IDS = ['user-accounts', 'member-roles', 'booking', 'product-catalog', 'online-payment', 'online-store', 'blog', 'portfolio-gallery', 'advanced-forms', 'newsletter', 'crm-integration', 'analytics', 'local-seo', 'copywriting', 'content-import', 'extra-pages', 'additional-language', 'custom-3d', 'hosting-monthly', 'backups-monthly'] as const
+export type ExtraOptionId = typeof EXTRA_OPTION_IDS[number]
+export type Configuration = { offerId: OfferId; language: 'fr' | 'fr-en'; mobile: boolean; managedContent: boolean; scene3d: boolean; deployment: boolean; maintenance: boolean; extras: ExtraOptionId[] }
+export type OptionId = 'language-en' | 'mobile' | 'managed-content' | 'scene-3d' | 'deployment' | 'maintenance-monthly' | ExtraOptionId
 export type Pricing = { version: string; currency: string; base: Record<OfferId, number | null>; options: Record<OptionId, number | null> }
 export type Quote = { currency: string; version: string; lines: { key: string; label: string; amountCents: number | null; included: boolean; billing: 'once' | 'monthly' }[]; totalCents: number | null; monthlyTotalCents: number | null; checkoutReady: boolean; requiresQuote: boolean }
 
 export const offers = [
-  { id: 'vitrine', slug: 'vitrine', title: 'Vitrine', headline: 'Présentez votre activité avec soin.', description: 'Un site clair pour expliquer ce que vous faites et donner envie de vous contacter.', features: ['Design adapté à votre activité', 'Version mobile', 'Formulaire de contact'], exampleId: 'domteknika', variant: 'vitrine' },
-  { id: 'connecte', slug: 'connecte', title: 'Connecté', headline: 'Votre site évolue avec vous.', description: 'Ajoutez des contenus et modifiez vos textes et vos images depuis un espace simple.', features: ['Textes et images modifiables', 'Espace de gestion simple', 'Version mobile'], exampleId: 'lactel', variant: 'connecte' },
-  { id: 'immersif', slug: 'immersif-3d', title: 'Immersif 3D', headline: 'Une autre dimension pour votre site.', description: 'Un élément 3D et des interactions pour faire découvrir votre univers.', features: ['Élément 3D interactif', 'Interactions soignées', 'Version mobile'], exampleId: 'tiny-heaven', variant: 'immersif' },
-  { id: 'sur-mesure', slug: 'sur-mesure', title: 'Sur mesure', headline: 'Un projet particulier ? Parlons-en.', description: 'Une expérience originale ou des fonctions spécifiques : décrivez-nous votre besoin.', features: ['Fonctions dédiées', 'Intégrations spécifiques', 'Périmètre personnalisé'], exampleId: 'addiction-agency', variant: 'custom' },
+  { id: 'vitrine', slug: 'vitrine', title: 'Vitrine', headline: 'Votre activité, en ligne.', description: 'Présentez vos services, vos réalisations et vos coordonnées sur un site à votre image.', features: ['Design adapté à votre activité', 'Version ordinateur', 'Formulaire de contact'], exampleId: 'domteknika', variant: 'vitrine' },
+  { id: 'connecte', slug: 'connecte', title: 'Connecté', headline: 'Un site avec des utilisateurs.', description: 'Proposez des comptes à vos visiteurs et gérez vos contenus. Ajoutez les fonctions utiles à votre activité.', features: ['Comptes utilisateurs', 'Contenus modifiables', 'Ordinateur et mobile'], exampleId: 'lactel', variant: 'connecte' },
+  { id: 'immersif', slug: 'immersif-3d', title: 'Immersif 3D', headline: 'Votre univers prend vie.', description: 'Présentez votre activité avec un élément 3D interactif intégré à votre site.', features: ['Élément 3D interactif', 'Interactions soignées', 'Ordinateur et mobile'], exampleId: 'julie-thiam', variant: 'immersif' },
+  { id: 'sur-mesure', slug: 'sur-mesure', title: 'Sur mesure', headline: 'Un site conçu pour votre besoin.', description: 'Sélectionnez les fonctions souhaitées et décrivez votre projet. Nous en précisons ensemble le périmètre.', features: ['Fonctions dédiées', 'Intégrations spécifiques', 'Périmètre personnalisé'], exampleId: 'addiction-agency', variant: 'custom' },
 ] as const
-
 export function getOffer(idOrSlug: unknown) { return offers.find(offer => offer.id === idOrSlug || offer.slug === idOrSlug) }
 
 export const examples = [
@@ -23,27 +24,57 @@ export const examples = [
 ] as const
 
 export const faqs = [
-  { question: 'Je n’y connais rien. Puis-je quand même commander ?', answer: 'Oui. Choisissez un forfait et laissez-vous guider. Vous pourrez ajouter vos textes, vos photos et votre logo depuis votre espace client.', category: 'Choisir son site' },
-  { question: 'Que signifie « À partir de » ?', answer: 'Chaque forfait a un prix de départ. Les options ponctuelles s’ajoutent au prix de création. La maintenance, si vous la choisissez, est présentée séparément par mois.', category: 'Options et prix' },
-  { question: 'Puis-je combiner plusieurs options ?', answer: 'Oui. Vous pouvez par exemple associer plusieurs langues, la gestion de vos contenus et un élément 3D. Les fonctions déjà incluses dans votre forfait ne sont pas ajoutées une deuxième fois.', category: 'Options et prix' },
-  { question: 'Que dois-je préparer pour mon site ?', answer: 'Une présentation de votre activité, vos coordonnées, votre logo et vos photos si vous en avez. Vous pourrez les ajouter en plusieurs fois dans votre espace.', category: 'Préparer son contenu' },
-  { question: 'Quelle est la différence entre mon espace client et la gestion du site ?', answer: 'L’espace client sert à préparer et suivre votre projet. La gestion du site permet ensuite de modifier les textes et les images du site en ligne ; elle dépend du forfait et des options choisies.', category: 'Choisir son site' },
-  { question: 'Et si mon projet ne rentre dans aucun forfait ?', answer: 'Choisissez Sur mesure et décrivez votre besoin. Le périmètre et le devis seront précisés avant tout engagement.', category: 'Choisir son site' },
-  { question: 'Puis-je faire évoluer mon site plus tard ?', answer: 'Oui. Une nouvelle fonction peut être étudiée selon votre besoin et les possibilités de votre site.', category: 'Options et prix' },
+  { question: 'Je n’y connais rien. Comment commencer ?', answer: 'Choisissez le forfait qui correspond à votre besoin, ajoutez vos options et laissez vos coordonnées. Nous vous recontactons pour préparer votre site. Aucun compte à créer.', category: 'Choisir son site' },
+  { question: 'Que signifie « À partir de » ?', answer: 'Il s’agit du prix de départ du forfait. Votre sélection fait évoluer le total de création ; les services mensuels apparaissent séparément. Nous validons le périmètre avec vous avant de commencer.', category: 'Options et prix' },
+  { question: 'Puis-je combiner plusieurs options ?', answer: 'Oui. Plusieurs langues, réservation, boutique ou contenu modifiable : sélectionnez ce qui vous sert. Une fonction déjà comprise dans le forfait n’est pas facturée une deuxième fois.', category: 'Options et prix' },
+  { question: 'Que dois-je préparer pour mon site ?', answer: 'Une présentation de votre activité, vos coordonnées, votre logo et vos photos si vous en avez. Après votre demande, nous vous indiquons comment nous transmettre vos contenus.', category: 'Préparer son contenu' },
+  { question: 'À quoi sert le forfait Connecté ?', answer: 'Il permet à vos visiteurs de créer un compte et de se connecter sur votre futur site. Vous disposez aussi d’une gestion des contenus. Réservation, paiement et autres fonctions se choisissent dans le configurateur.', category: 'Choisir son site' },
+  { question: 'Mon site sera-t-il adapté au mobile ?', answer: 'L’adaptation mobile est comprise dans Connecté et Immersif 3D. Pour Vitrine, le forfait de base est prévu pour ordinateur ; vous pouvez ajouter l’adaptation mobile dans le configurateur.', category: 'Choisir son site' },
+  { question: 'Est-ce que ma demande m’engage ?', answer: 'La configuration nous permet de comprendre votre besoin. Nous vous recontactons pour confirmer le périmètre et les conditions avant tout engagement. Aucun paiement n’est demandé lors de l’envoi.', category: 'Options et prix' },
+  { question: 'Et si mon projet ne rentre dans aucun forfait ?', answer: 'Choisissez Sur mesure, sélectionnez les fonctions utiles et décrivez votre besoin. Nous définissons le projet avec vous avant de proposer un devis.', category: 'Choisir son site' },
 ]
 
-export const optionDefinitions = [
-  { id: 'language-en', title: 'Français + anglais', description: 'Présentez votre activité dans les deux langues.', billing: 'once' },
-  { id: 'managed-content', title: 'Modifier mes textes et images', description: 'Après la mise en ligne, gardez la main.', billing: 'once' },
-  { id: 'scene-3d', title: 'Un élément 3D interactif', description: 'Faites découvrir un produit ou un univers en trois dimensions.', billing: 'once' },
-  { id: 'deployment', title: 'Mise en ligne de votre site', description: 'Confiez-nous la mise en ligne de votre site.', billing: 'once' },
-  { id: 'maintenance-monthly', title: 'Maintenance du site', description: 'Un suivi mensuel après la mise en ligne.', billing: 'monthly' },
+export const optionGroups = [
+  { id: 'essentials', title: 'Votre site' },
+  { id: 'features', title: 'Vos fonctionnalités' },
+  { id: 'content', title: 'Vos contenus' },
+  { id: 'visibility', title: 'Visibilité et outils' },
+  { id: 'launch', title: 'Mise en ligne et suivi' },
 ] as const
+export type OptionGroupId = typeof optionGroups[number]['id']
+export const optionDefinitions = [
+  { id: 'mobile', title: 'Adaptation mobile et tablette', description: 'Une mise en page adaptée aux petits écrans.', billing: 'once', group: 'essentials' },
+  { id: 'language-en', title: 'Français + anglais', description: 'Une version du site dans chaque langue. Textes fournis par vos soins.', billing: 'once', group: 'essentials' },
+  { id: 'managed-content', title: 'Gestion des textes et images', description: 'Modifiez vos contenus après la livraison depuis une interface dédiée.', billing: 'once', group: 'essentials' },
+  { id: 'scene-3d', title: 'Élément 3D interactif', description: 'Intégration d’un modèle 3D fourni, avec des interactions adaptées.', billing: 'once', group: 'essentials' },
+  { id: 'user-accounts', title: 'Comptes utilisateurs', description: 'Inscription, connexion et espace personnel sur votre futur site.', billing: 'once', group: 'features' },
+  { id: 'member-roles', title: 'Accès et rôles personnalisés', description: 'Différents droits pour vos membres et votre équipe. Comptes utilisateurs nécessaires.', billing: 'once', group: 'features' },
+  { id: 'booking', title: 'Prise de rendez-vous', description: 'Vos clients choisissent un créneau dans un calendrier en ligne.', billing: 'once', group: 'features' },
+  { id: 'product-catalog', title: 'Catalogue de produits', description: 'Fiches produits et catégories, pour présenter votre offre sans panier.', billing: 'once', group: 'features' },
+  { id: 'online-payment', title: 'Paiement en ligne', description: 'Un paiement sécurisé via un prestataire. Frais du prestataire à prévoir séparément.', billing: 'once', group: 'features' },
+  { id: 'online-store', title: 'Boutique en ligne', description: 'Catalogue, panier et paiement réunis. Produits et livraison à préciser ensemble.', billing: 'once', group: 'features' },
+  { id: 'advanced-forms', title: 'Formulaire personnalisé', description: 'Plusieurs étapes, choix de services ou demande de devis structurée.', billing: 'once', group: 'features' },
+  { id: 'blog', title: 'Blog et actualités', description: 'Publiez vos articles dans une rubrique dédiée.', billing: 'once', group: 'content' },
+  { id: 'portfolio-gallery', title: 'Galerie de réalisations', description: 'Présentez vos photos et vos projets avec des filtres.', billing: 'once', group: 'content' },
+  { id: 'extra-pages', title: 'Pages supplémentaires', description: 'Développez vos services ou vos rubriques. Nombre à préciser ensemble.', billing: 'once', group: 'content' },
+  { id: 'additional-language', title: 'Une autre langue', description: 'Ajoutez une version dans la langue de votre choix.', billing: 'once', group: 'content' },
+  { id: 'copywriting', title: 'Aide à la rédaction', description: 'Des textes préparés à partir des informations de votre activité.', billing: 'once', group: 'content' },
+  { id: 'content-import', title: 'Reprise de contenus existants', description: 'Transférez les textes et médias de votre ancien site. Volume à définir.', billing: 'once', group: 'content' },
+  { id: 'custom-3d', title: 'Création d’un modèle 3D', description: 'Un modèle réalisé pour votre projet. Complexité à préciser ensemble.', billing: 'once', group: 'content' },
+  { id: 'local-seo', title: 'Référencement local', description: 'Pages et informations locales structurées pour votre zone d’activité.', billing: 'once', group: 'visibility' },
+  { id: 'analytics', title: 'Statistiques de visites', description: 'Un outil pour comprendre les visites et les actions sur votre site.', billing: 'once', group: 'visibility' },
+  { id: 'newsletter', title: 'Inscription à la newsletter', description: 'Reliez un formulaire à votre outil d’envoi d’e-mails.', billing: 'once', group: 'visibility' },
+  { id: 'crm-integration', title: 'Connexion à vos outils', description: 'Reliez votre site à un CRM ou un service externe. Intégration à préciser.', billing: 'once', group: 'visibility' },
+  { id: 'deployment', title: 'Mise en ligne du site', description: 'Configuration du domaine et installation sur un hébergement compatible.', billing: 'once', group: 'launch' },
+  { id: 'maintenance-monthly', title: 'Maintenance du site', description: 'Suivi technique et mises à jour. Périmètre précisé avant activation.', billing: 'monthly', group: 'launch' },
+  { id: 'hosting-monthly', title: 'Hébergement géré', description: 'Hébergement du site et suivi de sa disponibilité. Ressources à définir.', billing: 'monthly', group: 'launch' },
+  { id: 'backups-monthly', title: 'Sauvegardes suivies', description: 'Copies régulières et restauration accompagnée selon le périmètre retenu.', billing: 'monthly', group: 'launch' },
+] as const satisfies readonly { id: OptionId; title: string; description: string; billing: 'once' | 'monthly'; group: OptionGroupId }[]
 
 export const defaultPricing: Pricing = {
-  version: 'draft-v1', currency: 'EUR',
+  version: 'draft-v2', currency: 'EUR',
   base: { vitrine: null, connecte: null, immersif: null, 'sur-mesure': null },
-  options: { 'language-en': null, 'managed-content': null, 'scene-3d': null, deployment: null, 'maintenance-monthly': null },
+  options: Object.fromEntries(optionDefinitions.map(option => [option.id, null])) as Pricing['options'],
 }
 
 export function normalizeConfiguration(input: unknown): Configuration {
@@ -52,31 +83,66 @@ export function normalizeConfiguration(input: unknown): Configuration {
   if (!offer) throw new Error('Choisissez un forfait valide.')
   const language = value.language ?? 'fr'
   if (language !== 'fr' && language !== 'fr-en') throw new Error('Choisissez une langue valide.')
-  for (const key of ['managedContent', 'scene3d', 'deployment', 'maintenance']) {
+  for (const key of ['mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance']) {
     if (value[key] !== undefined && typeof value[key] !== 'boolean') throw new Error('Vérifiez les options de votre site.')
   }
-  return { offerId: offer.id, language, managedContent: offer.id === 'connecte' || value.managedContent === true, scene3d: offer.id === 'immersif' || value.scene3d === true, deployment: value.deployment === true, maintenance: value.maintenance === true }
+  if (value.extras !== undefined && (!Array.isArray(value.extras) || value.extras.length > EXTRA_OPTION_IDS.length || value.extras.some(id => typeof id !== 'string' || !(EXTRA_OPTION_IDS as readonly string[]).includes(id)))) throw new Error('Vérifiez les fonctionnalités choisies.')
+  const extras = new Set((value.extras ?? []) as ExtraOptionId[])
+  if (offer.id === 'connecte') extras.add('user-accounts')
+  if (extras.has('member-roles')) extras.add('user-accounts')
+  // A shop already covers the standalone catalogue and checkout; never charge both.
+  if (extras.has('online-store')) { extras.delete('product-catalog'); extras.delete('online-payment') }
+  return { offerId: offer.id, language, mobile: (offer.id === 'connecte' || offer.id === 'immersif') || value.mobile === true, managedContent: offer.id === 'connecte' || value.managedContent === true, scene3d: offer.id === 'immersif' || value.scene3d === true, deployment: value.deployment === true, maintenance: value.maintenance === true, extras: EXTRA_OPTION_IDS.filter(id => extras.has(id)) }
 }
 
+export function isOptionIncluded(configuration: Configuration, id: OptionId): boolean {
+  return (id === 'mobile' && (configuration.offerId === 'connecte' || configuration.offerId === 'immersif'))
+    || ((id === 'managed-content' || id === 'user-accounts') && configuration.offerId === 'connecte')
+    || (id === 'scene-3d' && configuration.offerId === 'immersif')
+    || ((id === 'product-catalog' || id === 'online-payment') && configuration.extras.includes('online-store'))
+}
+export function isOptionSelected(configuration: Configuration, id: OptionId): boolean {
+  switch (id) {
+    case 'language-en': return configuration.language === 'fr-en'
+    case 'mobile': return configuration.mobile
+    case 'managed-content': return configuration.managedContent
+    case 'scene-3d': return configuration.scene3d
+    case 'deployment': return configuration.deployment
+    case 'maintenance-monthly': return configuration.maintenance
+    default: return configuration.extras.includes(id) || isOptionIncluded(configuration, id)
+  }
+}
+export function withOption(configuration: Configuration, id: OptionId, selected: boolean): Configuration {
+  const value = { ...configuration }
+  switch (id) {
+    case 'language-en': value.language = selected ? 'fr-en' : 'fr'; break
+    case 'mobile': value.mobile = selected; break
+    case 'managed-content': value.managedContent = selected; break
+    case 'scene-3d': value.scene3d = selected; break
+    case 'deployment': value.deployment = selected; break
+    case 'maintenance-monthly': value.maintenance = selected; break
+    default:
+      value.extras = selected ? [...new Set([...value.extras, id])] : value.extras.filter(key => key !== id)
+      if (id === 'user-accounts' && !selected) value.extras = value.extras.filter(key => key !== 'member-roles')
+  }
+  return normalizeConfiguration(value)
+}
 export function quoteConfiguration(input: Configuration, pricing: Pricing = defaultPricing): Quote {
   const config = normalizeConfiguration(input)
   const offer = getOffer(config.offerId)!
   const amount = (value: unknown) => typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= 1_000_000_000 ? value : null
   const lines: Quote['lines'] = [{ key: 'base', label: offer.title, amountCents: amount(pricing.base?.[config.offerId]), included: false, billing: 'once' }]
-  if (config.language === 'fr-en') lines.push({ key: 'language-en', label: 'Français + anglais', amountCents: amount(pricing.options?.['language-en']), included: false, billing: 'once' })
-  if (config.managedContent) lines.push({ key: 'managed-content', label: 'Modification des textes et images', amountCents: config.offerId === 'connecte' ? 0 : amount(pricing.options?.['managed-content']), included: config.offerId === 'connecte', billing: 'once' })
-  if (config.scene3d) lines.push({ key: 'scene-3d', label: 'Élément 3D interactif', amountCents: config.offerId === 'immersif' ? 0 : amount(pricing.options?.['scene-3d']), included: config.offerId === 'immersif', billing: 'once' })
-  if (config.deployment) lines.push({ key: 'deployment', label: 'Mise en ligne de votre site', amountCents: amount(pricing.options?.deployment), included: false, billing: 'once' })
-  if (config.maintenance) lines.push({ key: 'maintenance-monthly', label: 'Maintenance du site', amountCents: amount(pricing.options?.['maintenance-monthly']), included: false, billing: 'monthly' })
+  for (const option of optionDefinitions) {
+    if (!isOptionSelected(config, option.id)) continue
+    const included = isOptionIncluded(config, option.id)
+    lines.push({ key: option.id, label: option.title, amountCents: included ? 0 : amount(pricing.options?.[option.id]), included, billing: option.billing })
+  }
   const requiresQuote = config.offerId === 'sur-mesure'
-  const once = lines.filter(line => line.billing === 'once')
-  const monthly = lines.filter(line => line.billing === 'monthly')
   const sum = (items: Quote['lines']) => items.some(line => line.amountCents === null) ? null : items.reduce((total, line) => total + (line.amountCents ?? 0), 0)
-  const totalCents = requiresQuote ? null : sum(once)
-  const monthlyTotalCents = sum(monthly)
-  return { currency: pricing.currency || 'EUR', version: pricing.version || 'draft-v1', lines, totalCents, monthlyTotalCents, checkoutReady: !requiresQuote && totalCents !== null && monthlyTotalCents !== null, requiresQuote }
+  const totalCents = requiresQuote ? null : sum(lines.filter(line => line.billing === 'once'))
+  const monthlyTotalCents = sum(lines.filter(line => line.billing === 'monthly'))
+  return { currency: pricing.currency || 'EUR', version: pricing.version || 'draft-v2', lines, totalCents, monthlyTotalCents, checkoutReady: !requiresQuote && totalCents !== null && monthlyTotalCents !== null, requiresQuote }
 }
-
 export function formatMoney(amountCents: number | null | undefined, currency = 'EUR'): string {
   if (amountCents == null) return currency === 'EUR' ? '… €' : `… ${currency}`
   return new Intl.NumberFormat('fr-FR', { style: 'currency', currency, maximumFractionDigits: amountCents % 100 ? 2 : 0 }).format(amountCents / 100)

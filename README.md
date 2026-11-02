@@ -1,8 +1,8 @@
 # studio
 
-Application de création de sites avec quatre offres : Vitrine, Connecté, Immersif 3D et Sur mesure. Le parcours comprend les fiches d'offre, un configurateur, des comptes, le dépôt privé des contenus, les messages, les maquettes et leur validation, le dossier de commande et une administration.
+Création de sites avec quatre forfaits : Vitrine, Connecté, Immersif 3D et Sur mesure. Parcours public sans compte : grande carte du forfait choisi, options, coordonnées puis demande au studio. Les exemples externes sont réunis dans une galerie filtrable.
 
-La base et les fichiers sont réels et conservés sur le serveur. Les prix initiaux restent à définir. Aucun prestataire de paiement n'est activé et un dossier enregistré n'est jamais présenté comme une commande payée. L'envoi d'e-mails de récupération n'est pas raccordé en production.
+Les demandes et leur configuration sont conservées dans une base privée. Une file durable prépare la notification Resend, avec reprise et idempotence. Configuration de l’envoi : [docs/EMAIL_REQUESTS.md](docs/EMAIL_REQUESTS.md). Les prix initiaux restent à définir ; aucun paiement n’est demandé à l’envoi. L’ancien espace privé et ses données sont conservés, sans inscription publique en production.
 
 ## Développement
 
@@ -52,7 +52,7 @@ Le fonctionnement complet nécessite **un processus Node persistant, HTTPS et un
 
 Les instructions d'exploitation, de sauvegarde et de restauration sont dans [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Le dépôt fournit le code ; il ne prouve pas une mise en production.
 
-Avant d'ouvrir les commandes commerciales, il reste à arrêter les prix et leur régime fiscal, le périmètre de chaque offre, les frais récurrents, l'identité de l'éditeur et les conditions applicables, puis à raccorder et vérifier les services d'e-mail et de paiement choisis. Aucun de ces éléments n'est inventé dans la version livrée.
+Avant une commande commerciale, les prix, leur régime fiscal, le périmètre des forfaits et options, les frais récurrents et les documents de l’éditeur restent à confirmer. L’état de l’envoi Resend est suivi dans le rapport de déploiement. Aucun de ces éléments n'est inventé dans la version livrée.
 
 ## Organisation du code
 
@@ -66,4 +66,4 @@ Avant d'ouvrir les commandes commerciales, il reste à arrêter les prix et leur
 | `docs/` | Contrats techniques, direction graphique et vérifications |
 | `.data/` | Données privées locales, jamais versionnées ni servies comme fichiers publics |
 
-L'interface utilise Geist Sans et les icônes Lucide. Les références externes présentées dans les fiches servent d'inspiration ; elles ne sont pas annoncées comme des clients ou réalisations du studio. La charte d'interface reste un document interne.
+L'interface utilise Geist Sans et les icônes Lucide. Les références externes de la galerie servent d'inspiration ; elles ne sont pas annoncées comme des clients ou réalisations du studio. La charte d'interface reste un document interne.

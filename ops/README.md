@@ -33,4 +33,4 @@ curl http://127.0.0.1:3020/api/health
 
 La sauvegarde quotidienne vérifie SQLite et les fichiers référencés. Aucun effacement automatique d’anciennes sauvegardes n’est configuré ; surveiller leur volume et décider d’une rétention adaptée. Une bascule de version utilise le lien `current` ; elle ne remplace jamais `shared/data`. Voir `docs/DEPLOYMENT.md` pour restaurer un instantané dans un nouveau dossier.
 
-Paiement, envoi des e-mails et documents commerciaux conservent leurs limites actuelles. Aucun compte ni mot de passe d’administration par défaut n’est créé.
+Parcours public sans compte et sans paiement. Les demandes sont conservées avec leur sélection et une file de notification Resend durable. Configuration de l’envoi, adresse destinataire et preuve de réception : voir `docs/EMAIL_REQUESTS.md` et `DEPLOYMENT_STATUS.md`. Les documents commerciaux restent à compléter. Aucun compte ni mot de passe d’administration par défaut n’est créé.

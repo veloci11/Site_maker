@@ -1,62 +1,48 @@
-# Vérification visuelle — fond et navigation, 2 novembre 2026
+# Vérification visuelle — configurateur sans compte, 2 novembre 2026
 
-**final result: passed**
+final result: passed
 
-Le fond et la simplification sont implémentés et les parcours locaux ci-dessous fonctionnent. Ce résultat décrit la vérification technique et visuelle de cette révision ; le nouveau fond reste soumis au retour esthétique de Mathis. Il ne constitue pas une validation commerciale ou de production.
+La source fournie sert de référence de structure pour la grande carte colorée. Les décisions explicites de Mathis priment : carte à gauche, options à droite façon Apple, texture studio déjà approuvée, Geist unique, aucun exemple de site dans le configurateur. Il ne s’agit pas de copier les couleurs, les fonctions audio ou les promotions d’ElevenLabs.
 
-## Source et comparaison
+## Sources et comparaison normalisée
 
-- Vérité visuelle pour les **cartes approuvées** : `docs/reference-cartes-validee.png` et les arbitrages utilisateur suivants (couleur en haut uniquement, aucune description ni image dans les cartes). Le composant PricingCard est inchangé, ainsi que les 30 règles CSS contenant `.pricing-card` comparées au commit précédent.
-- Nouvelle direction demandée : fond mieux rendu et plus visible, sans image d’ambiance ni animation ; navigation réduite aux accès utiles. Interprétation mise en œuvre : plages lavande/pêche/ciel/crème, grain fin en lumière douce sans voile gris, menu Accueil + quatre forfaits et connexion.
-- Avant : `docs/qa/navigation-background/before.jpg` et `docs/qa/final-mobile.jpg`. Ils représentent l’état rejeté du fond/menu et non une cible à recopier.
-- Implémentation réellement ouverte : http://127.0.0.1:4173/ ; build servi par Express.
+- Vérité visuelle : `docs/qa/anonymous-configurator/source-structure.png`, copie de la pièce jointe sélectionnée, 3000 × 1610 px. Son viewport CSS et sa densité ne sont pas connus.
+- Implémentation : `vitrine-desktop.jpg`, IAB sur `http://127.0.0.1:4173/forfaits/vitrine?nouveau=1`, Vitrine avec adaptation mobile sélectionnée, sans compte.
+- Viewport CSS ordinateur observé : 1280 × 720, DPR 2 ; capture de contenu renvoyée par IAB : 1265 × 712 px. Viewport mobile : 390 × 844, DPR 1, capture 375 × 812 px. Les captures sont conservées à leur taille reçue, sans inventer la taille CSS de la source.
+- Comparaison plein cadre : `comparison-full.jpg`, source et capture réunies dans la même image à 1280 px de largeur. Les différences de navigation et l’inversion des colonnes sont intentionnelles.
+- Comparaison ciblée : `comparison-card.jpg`, carte source recadrée et carte studio complète, normalisées à 560 px de large. La carte studio contient davantage de texte utile ; son prix est placé sous les inclusions comme dans la carte studio approuvée.
+- Les deux planches combinées ont été ouvertes et évaluées, puis le recadrage de détail ajusté pour conserver les coins de la carte entière. Aucun asset source n’a été remplacé par du dessin HTML.
 
-### Preuves composées et inspectées ensemble
+## Itérations et corrections
 
-| Preuve | Contenu et normalisation |
-| --- | --- |
-| `docs/qa/navigation-background/comparison-mobile-full.jpg` | Page entière avant à gauche et après à droite, chacune normalisée à 375 px de large. Ancienne capture 375 × 3850 ; nouvelle 318 × 3215, normalisée proportionnellement. Le retrait de la phrase de footer et les retours à la ligne expliquent la différence de hauteur. |
-| `docs/qa/navigation-background/comparison-navigation.jpg` | Focus sur le header, ancien en haut, nouveau en bas. L’ancien affichait huit entrées dont Exemples avec sous-menu ; le nouveau conserve cinq liens et la connexion. Les régions sont normalisées à 878 px de large. |
-| `docs/qa/navigation-background/desktop-preview.jpg` | Vue desktop à quatre colonnes, ouverture complète dans le navigateur adaptatif : header, titre, CTA et début des quatre cartes. Capture du contenu uniquement, 708 × 444 px. |
-| `docs/qa/navigation-background/final-opening.jpg` | Dernière capture native mobile, 383 × 723 px, état anonyme en haut de page, menu fermé. |
-| `docs/qa/navigation-background/final-full.jpg` | Dernière page mobile entière, 318 × 3215 px ; cartes au repos, comparatif et FAQ fermés. |
-| `docs/qa/navigation-background/menu-mobile.jpg` | Menu ouvert : Accueil, quatre forfaits, connexion et fermeture. |
+1. P2 constaté au changement d’étape : le focus automatique faisait passer le titre des coordonnées sous le header fixe. Correction : focus sans scroll automatique, retour en haut sur ordinateur et alignement explicite sous le header sur mobile. Preuves après correction : `contact-desktop.jpg` et `contact-mobile.jpg` ; titre entièrement visible.
+2. P2 ergonomique mobile : première colonne du comparatif trop large, ne laissant qu’une partie du premier forfait visible. Correction : colonne de 156 px, tableau de 764 px, libellés figés et indication de défilement sur mobile. Preuves : `comparison-mobile.jpg` / `comparison-desktop.jpg`. Mesures réelles : première colonne 156 px et aucun débordement global.
+3. Retour aux options mobile rendu visible à côté de l’étape 02 ; clic testé, adaptation mobile toujours sélectionnée. La barre de total mobile disparaît pendant la saisie des coordonnées.
 
-Viewport desktop contrôlé dans le DOM : **1280 × 800 CSS px**, quatre colonnes, aucune largeur de page excédant le viewport. Le navigateur adaptatif affichait 1536 × 960 à un zoom de 120 % ; sa vue visible était réduite dans le panneau de l’application. La capture desktop retenue est le contenu de cette vue, sans le reste de l’application. Les essais de capture d’émulation recadrés incorrectement ont été exclus des preuves et conservés hors Git.
+## Cinq surfaces de fidélité
 
-Viewport mobile final : **395 × 745 CSS px**, DPR signalé 2,4 à ce zoom. Le navigateur restitue des captures natives/pleine page de densités différentes ; la comparaison entière normalise leur largeur au lieu de traiter ces différences comme des changements de typographie. L’ancienne comparaison mobile avait un viewport de 390 × 844. Cette petite différence de largeur est signalée ; aucune fidélité au pixel près n’est revendiquée.
+- **Typographie** : Geist Variable unique pour studio, graisses 400–600, hiérarchie nom du forfait/titre de configuration/options respectée. Libellés lisibles et retours à la ligne contrôlés sur mobile. Les petits prix restent secondaires. Les marques externes conservent leur identité dans la galerie.
+- **Espacement et composition** : carte importante à gauche, choix à droite, bouton de carte large, marges communes. Carte fixe quand la colonne d’options défile. Empilement mobile, formulaire une colonne au petit format et total accessible en bas. Aucun onglet redondant.
+- **Couleurs et états** : texture grained studio conservée ; recadrages/teintes différenciés par forfait. Texte blanc contrasté, choix sélectionné avec coche et bordure sombre, focus visible. Fond pastel CSS progressif, racine pastel et overscroll `none`, aucune animation d’ambiance.
+- **Images et matière** : grain-plasma-card.webp déjà approuvé, sans nouveau fond bitmap. Aucun aperçu ou image fictive dans les quatre configurateurs (0 image DOM vérifiée). DOMTEKNIKA et Julie Thiam présents dans la galerie. Ancien Atelier retiré et archivé hors du build.
+- **Contenus** : offre de création de sites explicite, termes « forfait » et « options », comptes utilisateurs du site livré distingués du parcours sans compte. Aucun faux nombre de clients, avis ou pourcentage. Vitrine ordinateur à la base ; adaptation mobile facultative. Prix non approuvés laissés en attente.
 
-## Résultats par surface
+## Interactions et comportement vérifiés dans IAB
 
-| Surface | Résultat |
-| --- | --- |
-| Fonts/typographie | Geist unique, titres et contrôles lisibles, aucun changement de police ni d’échelle des cartes. Hiérarchie et retours à la ligne conservés. Le secondaire public est foncé à #575360 pour rester lisible sur les pastels. La normalisation des images ne remplace pas ce contrôle CSS/DOM. |
-| Espacement/layout | Menu allégé, quatre forfaits sur desktop et une colonne mobile ; aucun débordement de page observé. Les cartes gardent exactement leur anatomie. Le tableau comparatif reste défilable dans son cadre, sans faire déborder la page. Header de hauteur stable, sans animation au scroll. |
-| Couleurs/tokens | Le bleu/vert/corail mélangé et le voile gris sont remplacés par des plages pastel plus distinctes. Grain généré une fois et mélangé en lumière douce ; fondu continu vers le blanc. Pas de bitmap d’ambiance ni animation de fond. |
-| Images et icônes | Texture approuvée des cartes inchangée. DTK/Julie et les autres exports WebP actifs restent disponibles. Originaux et essais retirés du build, conservés dans `docs/asset-sources`. Lucide et logos existants conservés ; aucune approximation graphique ajoutée. |
-| Copy/contenus | Retrait des entrées de menu et contrôles redondants, de la recherche/catégories des sept FAQ et des filtres de la petite galerie. Les étapes restent sur l’accueil et la comparaison se rejoint dans la page. Aucun texte commercial supplémentaire ni prix inventé. |
+- Cartes d’accueil et effet de survol conservés : `cards-hover-desktop.jpg` ; carte entière ouvre le forfait.
+- Quatre forfaits : Vitrine, Connecté, Immersif 3D et Sur mesure ouvrent le configurateur, sans aperçu de site. Captures `vitrine-desktop.jpg`, `immersif-desktop.jpg`, `custom-desktop.jpg`.
+- Sélection/désélection d’options, sections dépliables, modification de forfait, capacités comprises non refacturées.
+- Contrôle local de calcul avec tarifs strictement temporaires : base 800 €, mobile 150 €, bilingue 150 € → 1 100 € ; maintenance +49 €/mois séparément. Preuve `price-test-only.jpg`. Ces montants sont des données de test, pas des prix commerciaux. L’ancien catalogue local a été restauré ; aucune donnée locale ne part en production.
+- Coordonnées sans compte, retour aux options, succès d’un envoi local à données fictives. Réponse `unavailable` présentée comme « enregistrée », sans prétendre à l’envoi d’un mail.
+- Menu mobile sans connexion, filtres de galerie : 3D affiche Julie Thiam et Tiny Heaven ; `gallery-mobile.jpg`.
+- Comparatif base/détails, coches/tirets, aucun « En option » répétitif ni note supprimée par Mathis.
+- Journal navigateur : aucune erreur ni avertissement applicatif observé. Aucune animation permanente au repos. Mesure locale de peinture du grain : environ 0,1 ms sur cette machine, pas une garantie universelle de performance.
+- `npm run check` : TypeScript, build et 113 tests passants. `git diff --check` propre.
 
-## Historique des écarts et corrections
+## Limites factuelles
 
-1. **P1 — fond encore rejeté et navigation trop chargée.** Source : retour utilisateur après la précédente livraison et capture avant. Correction : nouvelle palette, grain sans voile gris, cinq liens principaux, suppression du méga-menu, aide en pied de page. Recomparaison : images composées entière et header ci-dessus ; aucun élément nécessaire au choix d’un forfait n’est masqué.
-2. **P2 — contrôles de navigation disproportionnés.** La FAQ avait recherche et quatre catégories pour sept questions ; la galerie répétait cinq filtres pour une petite liste. Correction : listes directement accessibles, accordéons FAQ conservés. Le clic FAQ et l’ouverture d’une réponse ont été testés dans le navigateur.
-3. **P2 — retour Accueil après ancre/défilement.** Le chemin seul ne changeait pas et le retour pouvait conserver la position. Correction : gestion du hash et de la clé de navigation dans ScrollTop. Après rechargement du build final, les deux essais donnent `scrollY: 0` : retour depuis une ancre puis retour après défilement sur le même chemin.
-4. **Recomparaison finale.** Pas d’écart P0/P1/P2 restant dans les surfaces contrôlées. Les anciennes vérifications et leurs limites restent archivées dans `docs/qa/design-qa-previous.md` ; le retour utilisateur annule leur acceptation du fond/menu.
+- Le contrôle visuel est passé. L’adresse destinataire demandée à Mathis manque encore ; le domaine Resend est vérifié et la clé d’envoi est installée, mais aucun envoi réel ni réception n’est affirmé.
+- Prix, identité commerciale et conditions définitives restent à arrêter. Aucun paiement n’est demandé dans ce parcours.
+- Captures publiques après déploiement et révision déployée consignées dans `ops/DEPLOYMENT_STATUS.md`.
 
-## Interactions et vérifications finales
-
-- Menu mobile ouvert, entrées vérifiées ; choix Immersif 3D ferme le menu et ouvre le vrai configurateur avec Julie Thiam.
-- FAQ accessible depuis le pied de page, sept questions sans catégories, réponse dépliée correctement.
-- Lien Comment ça se passe vers `#fonctionnement`, placé sous le header ; lien de comparaison vers `#comparer` sur la même page.
-- Ancienne route `/methode` redirigée vers les étapes ; position observée autour de 84–88 px sous le header sur viewport stabilisé.
-- Retour Accueil vérifié depuis une ancre et après défilement sur le même chemin : position zéro dans les deux cas.
-- Layout desktop à quatre colonnes et mobile sans débordement ; cartes préservées par comparaison du composant et des règles CSS.
-- Journaux navigateur finaux : aucun avertissement ni erreur recueilli.
-- `npm run check` après la correction de navigation : TypeScript, build et **80 tests réussis**, sans avertissement CSS. Journal : `docs/qa/navigation-background/check.txt`.
-- Mesures de ressources : `docs/qa/navigation-background/resources.json` et `docs/OPTIMISATION_INTERFACE.md`. Environ 9 % de JS initial en moins ; assets publics ramenés de 25,2 à 1,03 Mo. Le volume public n’est pas assimilé à un téléchargement intégral à chaque visite. Aucun gain FPS/INP n’est inventé.
-
-## Checklist et limites
-
-Cartes inchangées ; fond statique en code ; navigation réduite ; liens et ancres testés ; aperçu conservé ; sources archivées ; build et tests passants. Aucun nouveau blocage P0/P1/P2 constaté sur ces parcours locaux.
-
-Pas de test sur appareil physique, de charge représentative ou de déploiement public. Prix/périmètres, documents commerciaux et services de production restent dans l’état décrit dans `docs/READINESS_REVIEW.md`. Le goût visuel du nouveau fond reste une décision utilisateur, distincte du résultat technique de QA.
+Aucun P0/P1/P2 ouvert à l’issue de la comparaison. Aucun écart de marque d’ElevenLabs n’est traité comme une erreur : le rendu studio approuvé reste la référence de couleur et de police.

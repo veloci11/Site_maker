@@ -6,6 +6,7 @@ import { requireAuth as signedIn, requireAdmin } from './auth.mjs';
 import { fileDto } from './files.mjs';
 
 const optionKeys = optionDefinitions.map(option => option.id);
+const legacyOptionKeys = ['language-en', 'managed-content', 'scene-3d', 'deployment', 'maintenance-monthly'];
 class InputError extends Error {}
 function record(value) { return value !== null && typeof value === 'object' && !Array.isArray(value); }
 function keys(value, allowed) {
@@ -42,13 +43,15 @@ export function getPaymentAvailability() {
 function validatePricing(input) {
   keys(input, ['currency', 'base', 'options']);
   if (!['EUR', 'CHF'].includes(input.currency)) throw new InputError('Choisissez EUR ou CHF.');
-  for (const [value, allowed] of [[input.base, OFFER_IDS], [input.options, optionKeys]]) {
+  for (const [value, allowed, required] of [[input.base, OFFER_IDS, OFFER_IDS], [input.options, optionKeys, legacyOptionKeys]]) {
     keys(value, allowed);
-    if (allowed.some(key => !(key in value))) throw new InputError('Renseignez chaque tarif, ou laissez-le en attente.');
+    if (required.some(key => !Object.hasOwn(value, key))) throw new InputError('Renseignez chaque tarif, ou laissez-le en attente.');
     for (const amount of Object.values(value)) if (amount !== null && (!Number.isSafeInteger(amount) || amount < 0 || amount > 1_000_000_000)) throw new InputError('Un tarif doit être un montant positif en centimes, ou null.');
   }
   if (input.base['sur-mesure'] !== null) throw new InputError('Le forfait Sur mesure reste sur devis.');
-  return { version: newId(), currency: input.currency, base: { ...input.base }, options: { ...input.options } };
+  // Older admin clients still submit the original five keys. A new service that
+  // they do not know about remains unpriced, rather than becoming a free option.
+  return { version: newId(), currency: input.currency, base: { ...input.base }, options: Object.fromEntries(optionKeys.map(key => [key, Object.hasOwn(input.options, key) ? input.options[key] : null])) };
 }
 
 function validateBilling(input) {
@@ -84,13 +87,30 @@ function snapshotIsCurrent(serialized, current) {
   const saved = parseJson(serialized);
   if (!saved.configuration || !Array.isArray(saved.quote?.lines)) return false;
   try {
-    const quote = saved.quote;
-    return isDeepStrictEqual({ projectName: saved.projectName, configuration: normalizeConfiguration(saved.configuration), quote: {
-      currency: quote.currency, version: quote.version,
-      lines: quote.lines.map(line => ({ ...line, billing: line.billing ?? 'once' })),
-      totalCents: quote.totalCents, monthlyTotalCents: quote.monthlyTotalCents === undefined ? 0 : quote.monthlyTotalCents,
-      checkoutReady: quote.checkoutReady, requiresQuote: quote.requiresQuote,
-    } }, current);
+    const commercialLines = (lines, includedAdditions = []) => {
+      const values = new Map();
+      for (const line of lines) {
+        const billing = line?.billing ?? 'once';
+        if (!record(line) || typeof line.key !== 'string' || !line.key || values.has(line.key)
+          || (line.amountCents !== null && (!Number.isSafeInteger(line.amountCents) || line.amountCents < 0))
+          || typeof line.included !== 'boolean' || !['once', 'monthly'].includes(billing)) throw new Error('Invalid snapshot line');
+        values.set(line.key, { key: line.key, amountCents: line.amountCents, billing, included: line.included });
+      }
+      for (const line of includedAdditions) {
+        if (line.included && line.amountCents === 0 && !values.has(line.key)) values.set(line.key, line);
+      }
+      return [...values.values()].sort((a, b) => a.key.localeCompare(b.key));
+    };
+    const currentLines = commercialLines(current.quote.lines);
+    const comparable = (snapshot, lines) => ({ projectName: snapshot.projectName, configuration: normalizeConfiguration(snapshot.configuration), quote: {
+      currency: snapshot.quote.currency, lines,
+      totalCents: snapshot.quote.totalCents, monthlyTotalCents: snapshot.quote.monthlyTotalCents === undefined ? 0 : snapshot.quote.monthlyTotalCents,
+      checkoutReady: snapshot.quote.checkoutReady, requiresQuote: snapshot.quote.requiresQuote,
+    } });
+    // Labels, display order and catalogue-version metadata do not change a
+    // commercial selection. New free package inclusions also preserve a legacy
+    // snapshot; actual prices, billing frequencies and chosen features must match.
+    return isDeepStrictEqual(comparable(saved, commercialLines(saved.quote.lines, currentLines)), comparable(current, currentLines));
   } catch { return false; }
 }
 function latestOrder(projectId, db = getDb()) { return db.prepare('SELECT * FROM orders WHERE project_id = ? ORDER BY created_at DESC, rowid DESC LIMIT 1').get(projectId); }

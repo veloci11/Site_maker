@@ -36,6 +36,9 @@
 
 * { box-sizing: border-box; }
 html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 100px; }
+/* Keep the browser's overscroll surface in the same atmosphere as the page. */
+html:has(.public-shell) { background: #e8def4; overscroll-behavior-y: none; }
+body:has(.public-shell) { background: #e8def4; }
 body { margin: 0; min-width: 320px; min-height: 100vh; font-size: 16px; line-height: 1.55; background: var(--background); color: var(--foreground); }
 body, button, input, textarea, select { font-family: "Geist Variable", "Geist", sans-serif; }
 button, input, textarea, select { font-size: inherit; }
