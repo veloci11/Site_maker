@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, Loader2, Mail } from 'lucide-react'
 import { defaultPricing, formatMoney, getOffer, isOptionIncluded, isOptionSelected, normalizeConfiguration, offers, optionDefinitions, optionGroups, quoteConfiguration, withOption, type Configuration, type OfferId, type OptionId, type Pricing } from '../../../shared/catalog'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/ui/accordion'
@@ -42,7 +42,10 @@ function revealSection(element: HTMLElement | null) {
   else element?.scrollIntoView({ block: 'start', behavior: 'instant' })
 }
 
-export function ForfaitConfiguratorPage() { return <ConfiguratorPage /> }
+export function ForfaitConfiguratorPage() {
+  const location = useLocation()
+  return <ConfiguratorPage key={location.key} />
+}
 export function ConfiguratorPage() {
   const { slug } = useParams<{ slug: string }>()
   const [params] = useSearchParams()

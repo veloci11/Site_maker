@@ -17,7 +17,8 @@ La source fournie sert de référence de structure pour la grande carte colorée
 
 1. P2 constaté au changement d’étape : le focus automatique faisait passer le titre des coordonnées sous le header fixe. Correction : focus sans scroll automatique, retour en haut sur ordinateur et alignement explicite sous le header sur mobile. Preuves après correction : `contact-desktop.jpg` et `contact-mobile.jpg` ; titre entièrement visible.
 2. P2 ergonomique mobile : première colonne du comparatif trop large, ne laissant qu’une partie du premier forfait visible. Correction : colonne de 156 px, tableau de 764 px, libellés figés et indication de défilement sur mobile. Preuves : `comparison-mobile.jpg` / `comparison-desktop.jpg`. Mesures réelles : première colonne 156 px et aucun débordement global.
-3. Retour aux options mobile rendu visible à côté de l’étape 02 ; clic testé, adaptation mobile toujours sélectionnée. La barre de total mobile disparaît pendant la saisie des coordonnées.
+3. Revenir au même forfait depuis le menu après une confirmation ouvrait encore l’état de confirmation. Correction : clé de navigation du configurateur, brouillon conservé et état de formulaire renouvelé. Essai local complet : demande enregistrée, clic Vitrine, titre « Configurez votre site » de nouveau visible.
+4. Retour aux options mobile rendu visible à côté de l’étape 02 ; clic testé, adaptation mobile toujours sélectionnée. La barre de total mobile disparaît pendant la saisie des coordonnées.
 
 ## Cinq surfaces de fidélité
 
