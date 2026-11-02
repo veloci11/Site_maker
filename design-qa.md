@@ -74,3 +74,7 @@ final result: passed
 L’adresse de réception Resend est reportée à la demande explicite de Mathis ; aucune modification ni envoi d’e-mail pendant cette correction.
 
 Vérification de première visite publique : la source 2x a mis environ 985 ms à charger sur cette connexion. La version légère préchargée est conservée sous la couche 2x pour éviter un aplat vide pendant ce chargement. Aucun délai n’est ajouté aux options ni aux boutons. Les captures publiques finales sont prises après la fin de chargement de la source 2x.
+
+Contrôle public final de cette correction : révision `e2d7d435e98f48c1268d818263a1d4af410fecf0` sur gilmathis.com, ressource HD HTTP 200 et digest identique au fichier prévu. Le navigateur à DPR 2 charge bien la version HD et conserve la couche légère de repli. Preuves après chargement : `docs/qa/card-definition/after-public.jpg` et `after-public-card@2x.png`. Aucune erreur de console ; localhost fermé.
+
+Capture de contexte finale sans compression destructive : `docs/qa/card-definition/after-public-retina.png`, 2560 × 1440 pixels pour le viewport 1280 × 720 CSS à DPR 2. Elle évite que la capture JPEG 1x du navigateur masque la finesse du rendu réel.
