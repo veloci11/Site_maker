@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-11-01",
+  "method": "OpenAI built-in imagegen",
+  "assets": [
+    {
+      "file": "grain-plasma-v2.png",
+      "purpose": "Original grainy organic texture for animated pricing-card headers",
+      "prompt": "Original full-bleed cobalt, indigo, burnt-orange and vermilion organic pigment fields with dense fine photographic film grain. No text, UI, logo or watermark. The ElevenLabs pricing screenshot was used only as a material/style reference; no existing brand image is embedded in the asset."
+    },
+    {
+      "file": "atmosphere-grain-v2.png",
+      "purpose": "Original softly animated site atmosphere, faded into the page",
+      "prompt": "Original wide glacier-blue, celadon-mint, cream and pale-coral flowing pigment clouds, airy ivory negative space, delicate fine film grain, no hard boundaries, text, UI, objects, spheres or logos."
+    }
+  ]
+}

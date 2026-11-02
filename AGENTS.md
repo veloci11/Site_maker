@@ -1,0 +1,38 @@
+# studio — décisions et consignes actuelles
+
+Les dernières corrections de Mathis remplacent les maquettes et demandes antérieures contradictoires. Références internes : `docs/DIRECTION_RETENUE.md`, `docs/CHARTE_INTERFACE.md`, `docs/CONTRACTS.md`. Dépôt prévu : https://github.com/veloci11/Site_maker.
+
+## Produit et textes
+
+- Création de sites internet clé en main : Vitrine, Connecté, Immersif 3D, Sur mesure.
+- Employer « forfait(s) ». Quatre liens directs dans le menu, lien Accueil explicite sur ordinateur et mobile ; aucun bouton public « Mon projet ».
+- Aucun aperçu de site à l’arrivée sur l’accueil. Titres directs et textes utiles ; supprimer les phrases décoratives comme « À chaque projet, son point de départ ».
+- Une fiche standard est le configurateur : grand aperçu fixe à gauche, options qui défilent à droite. Aucun onglet Présentation/Exemple redondant.
+- Vitrine commence par une capture authentique de DOMTEKNIKA ; Immersif 3D par Julie Thiam. Crédits et liens externes, aucune revendication de relation client. Pas de scène 3D externe automatiquement chargée.
+- Déploiement ponctuel et maintenance mensuelle sont facultatifs, avec totaux distincts. Comparatif des quatre forfaits avec coches et détails facultatifs.
+- L’espace client de préparation est inclus. La gestion des textes/images du site livré est une capacité différente.
+- Prix non arrêtés : « À partir de… », aucun montant ou rabais inventé. Paiement et e-mail transactionnel de production restent non raccordés. Un dossier enregistré n’est jamais présenté comme payé.
+
+## Design et performance — approuvés après essai
+
+- **Ne pas modifier l’aspect ni l’effet des cartes : Mathis les a validés.** Toute la carte est un lien, texture originale à grain dans le bloc supérieur uniquement, inclusions neutres, bouton noir. Aucun texte sous le nom, aucun « Selon les options choisies », aucun aperçu dans les cartes.
+- Fond pastel visible en CSS, avec grain procédural statique sur canvas. **Pas d’image d’ambiance ni d’animation de fond.** Cette décision remplace la demande initiale de couleurs mobiles.
+- Fondu de carte de 120 ms avec texture WebP légère. Pas de suivi de pointeur, filtre animé, transition circulaire, attente de préchargement ou contenu masqué avant observation.
+- Navigation immédiate. Entrées discrètes de 160–180 ms, désactivées avec la préférence de réduction des animations.
+- Geist Sans unique dans l’interface, Lucide, primitives shadcn/Radix. Les marques des aperçus gardent leur typographie. La charte reste interne, sans route publique.
+
+## Construction et données
+
+Mathis a autorisé une équipe de dix spécialistes par vagues, puis des revues critiques en parallèle. React 19, Vite, TypeScript, React Router ; API Express 5 / Node 24, SQLite persistant. Comptes, contenus et fichiers privés réels, jamais simulés par localStorage. Données privées et sauvegardes hors de `public/`, `dist/` et Git. Aucun message ou e-mail de test à un tiers.
+
+Les anciennes routes `/formules` redirigent vers `/forfaits`. Les modifications de contenu utilisent `expectedUpdatedAt` et gardent le brouillon local en cas de conflit. Les calculs de prix appartiennent au serveur et au catalogue partagé.
+
+Respecter les contrats et les périmètres attribués aux spécialistes. Le parent coordonne les fichiers communs ; aucun commit par les sous-agents. Ne pas écraser les modifications d’un autre spécialiste.
+
+## Vérification et livraison
+
+Démarrer le serveur local et ouvrir la prévisualisation soi-même. Vérifier les interactions dans le navigateur, les formats desktop/mobile et les erreurs. Le rapport visuel final est `design-qa.md`. Exécuter `npm run check` après les modifications fonctionnelles nécessaires ; ne pas confondre validation locale et production.
+
+Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`. The static worker does not supply the persistent Express API.
+
+Before substantial visual changes, use the Product Design plugin’s get-context skill if the source is unclear or no longer matches the goal. Record durable user feedback here. When implementing a selected mock, follow its layout and anatomy except where the explicit later decisions above supersede it.
