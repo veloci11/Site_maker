@@ -5,7 +5,13 @@
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
 .configurator-card-column { position:sticky; top:112px; min-width:0; }
 .selected-plan { position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; background:#302149; }
-.selected-plan::before { content:""; position:absolute; inset:0; z-index:-2; background:url('/assets/textures/grain-plasma-card.webp') var(--plasma-position) / 155% 145%; filter:hue-rotate(var(--card-hue)) saturate(.93) brightness(.78); transform:scale(var(--card-scale-x),var(--card-scale-y)); }
+.selected-plan::before {
+  content:""; position:absolute; inset:0; z-index:-2;
+  background:url('/assets/textures/grain-plasma-detail.webp') var(--plasma-position) / cover no-repeat;
+  background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-detail.webp') 2x);
+  filter:hue-rotate(var(--card-hue)) saturate(.93) brightness(.78);
+  transform:scale(var(--card-scale-x),var(--card-scale-y));
+}
 .selected-plan::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .12),rgb(12 9 28 / .08) 35%,rgb(12 9 28 / .5)); }
 .selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px; }
 .selected-plan__eyebrow { font-size:13px; letter-spacing:.015em; opacity:.9; }

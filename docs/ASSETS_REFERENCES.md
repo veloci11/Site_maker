@@ -26,4 +26,12 @@ Les JPEG sources sont conservés dans `docs/qa/`. La seule transformation est l�
 
 ## Chargement et crédits
 
-Julie Thiam est la première référence du forfait Immersif 3D ; Tiny Heaven reste secondaire. DOMTEKNIKA est le premier aperçu Vitrine. Les galeries utilisent une image statique : le lien « Explorer le site » ouvre la source externe sur action de l’utilisateur. Aucune scène 3D ni iframe Julie Thiam n’est chargée automatiquement. Les créateurs sont crédités dans le catalogue et la galerie.
+Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparée ; les configurateurs ne contiennent aucun aperçu de site. Les galeries utilisent une image statique : le lien « Explorer le site » ouvre la source externe sur action de l’utilisateur. Aucune scène 3D ni iframe Julie Thiam n’est chargée automatiquement. Les créateurs sont crédités dans le catalogue et la galerie.
+
+## Texture des grandes cartes de forfait
+
+La grande carte utilise `public/assets/textures/grain-plasma-detail.webp` (1536 × 1024, 879 898 octets), copie binaire de la source originale `docs/asset-sources/textures/grain-plasma-v2.webp`. La matière et les couleurs sont celles de la texture studio déjà approuvée ; aucune nouvelle image générée.
+
+Le fond respecte le ratio de l’image (`cover`) et `image-set` choisit la définition 1x ou 2x selon la densité. La miniature 768 × 512 ne subit plus le zoom anisotrope 155 % / 145 % dans la grande carte. Elle reste inchangée sur les cartes de l’accueil, avec leur effet de survol approuvé.
+
+Contrôle IAB : l’écran DPR 2 charge la source 2x, l’écran DPR 1 conserve la ressource légère. Les captures du grain à résolution native sont dans `docs/qa/card-definition/`.

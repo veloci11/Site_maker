@@ -51,3 +51,24 @@ Aucun P0/P1/P2 ouvert à l’issue de la comparaison. Aucun écart de marque d�
 ## Contrôle public après livraison
 
 Révision `f60622a6376652e0bb5d4997203073c26d70052d` active sur https://gilmathis.com/. Empreinte HTTP du client final contrôlée. Dans IAB public : mobile sélectionné, passage aux coordonnées sans inscription, réouverture de Vitrine avec option conservée ; aucune erreur de console. Capture : `docs/qa/deployment-gilmathis/configurator-anonymous-public.jpg`. Aucun envoi réel soumis ; l’adresse destinataire Resend reste attendue. Le localhost a été arrêté après les essais.
+
+## Correction après le retour de Mathis — définition des grandes cartes
+
+Le retour utilisateur rouvre une erreur de fidélité que la précédente revue avait manquée : le grain de la grande carte Vitrine était trop grossi et flou. **P1 corrigé** : la texture de 768 × 512 était affichée à 155 % / 145 %, soit environ 1762 × 1537 pixels physiques sur une carte de 568 × 530 CSS à DPR 2. L’agrandissement était aussi différent sur chaque axe.
+
+La source studio originale de 1536 × 1024 est maintenant utilisée en 2x avec `image-set` et un cadrage `cover` qui conserve le ratio. À DPR 1, la ressource légère reste suffisante sans le zoom excessif. Aucun changement des mini-cartes d’accueil, de leurs fichiers ou de leur effet. Aucune nouvelle animation, aucun changement du fond de page.
+
+- Source visuelle et matière : `docs/asset-sources/textures/grain-plasma-v2.png`, original 1536 × 1024 ; copie WebP 2x identique au fichier source archivé.
+- Avant public : `docs/qa/card-definition/before-public.jpg` ; après local : `after-desktop.jpg`.
+- Même état : Vitrine, adaptation mobile choisie, étape options, viewport 1280 × 720 CSS, DPR 2. Deux captures de contenu 1265 × 712. Géométrie de la carte conservée.
+- Comparaison plein cadre réunie : `comparison-full.jpg` ; comparaison ciblée du grain réunie : `comparison-grain.png`.
+- Les détails du grain sont capturés dans le navigateur à résolution réelle, PNG 1137 × 1060 pour chaque carte (`before-card@2x.png`, `after-card@2x.png`), sans interpolation ni redimensionnement dans la planche ciblée. Les deux planches combinées ont été ouvertes et évaluées.
+- Typographie, espacement et contenu : mêmes positions, tailles, textes, boutons et choix. La carte reste à gauche, les options à droite.
+- Couleurs : même source, mêmes teintes par forfait ; le cadrage montre davantage de la composition originale, conséquence voulue de la suppression du zoom.
+- Qualité : grain fin et distinct, sans les gros amas interpolés de l’avant. Source 2x effectivement chargée à DPR 2, confirmée par les ressources réseau du navigateur.
+- Connecté, Immersif 3D et Sur mesure inspectés. Mobile 390 × 844 CSS / DPR 1 vérifié après stabilisation : source légère seule, aucun débordement, barre de total visible. Capture valide : `after-mobile.jpg`.
+- Aucune erreur de console observée, aucune animation permanente au repos. Le viewport temporaire a été réinitialisé.
+
+final result: passed
+
+L’adresse de réception Resend est reportée à la demande explicite de Mathis ; aucune modification ni envoi d’e-mail pendant cette correction.

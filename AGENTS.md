@@ -18,6 +18,8 @@ Les dernières corrections de Mathis remplacent les maquettes et demandes antér
 ## Design et performance — approuvés après essai
 
 - **Ne pas modifier l’aspect ni l’effet des cartes : Mathis les a validés.** Toute la carte est un lien, texture originale à grain dans le bloc supérieur uniquement, inclusions neutres, bouton noir. Aucun texte sous le nom, aucun « Selon les options choisies », aucun aperçu dans les cartes.
+- La grande carte du configurateur utilise la source 1536×1024 `grain-plasma-detail.webp` avec des proportions conservées (`cover`), sans le zoom 155%/145% de la miniature. La version 768×512 reste réservée aux cartes d’accueil : son grain agrandi a été rejeté. Aucune nouvelle animation ajoutée.
+- Mathis fournira plus tard l’adresse de réception Resend : ne pas la redemander pendant les corrections visuelles.
 - Fond pastel visible en CSS : plages lavande, pêche, ciel et crème, grain procédural fin en lumière douce sans voile gris. **Pas d’image d’ambiance ni d’animation de fond.** Le fond doit continuer jusqu’au bord supérieur, y compris au rebond du scroll, et s’estomper sans coupure. Cette décision remplace la demande initiale de couleurs mobiles.
 - Fondu de carte de 120 ms avec texture WebP légère. Pas de suivi de pointeur, filtre animé, transition circulaire, attente de préchargement ou contenu masqué avant observation.
 - Navigation immédiate. Entrées discrètes de 160–180 ms, désactivées avec la préférence de réduction des animations.
