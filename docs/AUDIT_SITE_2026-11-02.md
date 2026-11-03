@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : filtres blancs au repos avec couleur au survol/sélection, menu mobile noir, Changer en menu ancré à six choix et focus Forfaits sans contour violet publiés ; dernière révision `db50490`, contrôlée en HTTPS et IAB desktop/mobile. Accordéon exclusif, résumés, badge unique et ouverture des exemples en nouvel onglet conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : carte commune aux six offres, fiches Évolution/Refonte avec carte à gauche, menu Changer translucide sans contour supplémentaire et retrait du bouton Continuer en doublon publiés dans `8187d38`. Contrôles HTTPS et IAB desktop/mobile passés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

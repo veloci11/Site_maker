@@ -1,0 +1,50 @@
+{
+  "action": {
+    "buttonVisible": true,
+    "desktopActionVisible": false,
+    "cardButtons": 0,
+    "languageRetained": "true"
+  },
+  "menu": {
+    "client": 208,
+    "opacity": "rgba(22, 20, 26, 0.64)",
+    "rect": {
+      "bottom": 470.596923828125,
+      "height": 263,
+      "left": 136,
+      "right": 346,
+      "top": 207.596923828125,
+      "width": 210,
+      "x": 136,
+      "y": 207.596923828125
+    },
+    "scroll": 208
+  },
+  "refonte": {
+    "card": {
+      "bottom": 543.21875,
+      "height": 393.21875,
+      "left": 20,
+      "right": 370,
+      "top": 150,
+      "width": 350,
+      "x": 20,
+      "y": 150
+    },
+    "client": 390,
+    "form": {
+      "bottom": 1298.90625,
+      "height": 603.3515625,
+      "left": 20,
+      "right": 370,
+      "top": 695.5546875,
+      "width": 350,
+      "x": 20,
+      "y": 695.5546875
+    },
+    "h1": 1,
+    "messageLabel": "Ce que vous souhaitez repenser",
+    "subjectSelect": 0,
+    "width": 390
+  }
+}

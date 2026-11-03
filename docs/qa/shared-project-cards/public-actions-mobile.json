@@ -1,0 +1,30 @@
+{
+  "actions": {
+    "cardButtons": 0,
+    "continueButtons": 0,
+    "nextLabel": "Ajouter mes coordonnées",
+    "contactStepReached": true,
+    "mobileAction": true
+  },
+  "mobile": {
+    "cardTop": 150.03811645507812,
+    "cardWidth": 350,
+    "client": 390,
+    "formTop": 695.5927734375,
+    "price": "Sur devis",
+    "subjectSelect": 0,
+    "width": 390,
+    "menu": {
+      "client": 208,
+      "left": 136,
+      "right": 346,
+      "scroll": 208,
+      "width": 210
+    },
+    "focus": {
+      "decoration": "underline",
+      "focused": true,
+      "outline": "none"
+    }
+  }
+}

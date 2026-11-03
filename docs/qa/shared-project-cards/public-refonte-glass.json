@@ -1,0 +1,31 @@
+{
+  "card": {
+    "card": {
+      "bottom": 710.6772918701172,
+      "height": 530,
+      "left": 40,
+      "right": 608.3046875,
+      "top": 180.6772918701172,
+      "width": 568.3046875,
+      "x": 40,
+      "y": 180.6772918701172
+    },
+    "cardButtons": 0,
+    "h1Count": 1,
+    "messageLabel": "Ce que vous souhaitez repenser",
+    "price": "Sur devis",
+    "subjectSelectors": 0,
+    "title": "Refonte"
+  },
+  "menu": {
+    "background": "rgba(22, 20, 26, 0.64)",
+    "blur": "blur(12px)",
+    "client": 208,
+    "current": "Refonte",
+    "items": 6,
+    "outline": "none",
+    "scroll": 208,
+    "triggerOutline": "none"
+  },
+  "hoverOpacity": "1"
+}

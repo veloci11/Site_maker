@@ -1,0 +1,11 @@
+{
+  "overflow": {
+    "client": 208,
+    "scroll": 208,
+    "width": 210
+  },
+  "hover": {
+    "color": "rgb(255, 255, 255)",
+    "textureOpacity": "1"
+  }
+}

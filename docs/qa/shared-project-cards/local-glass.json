@@ -1,0 +1,8 @@
+{
+  "blur": "blur(12px)",
+  "current": "Refonte",
+  "items": 6,
+  "menuBackground": "rgba(22, 20, 26, 0.64)",
+  "menuOutline": "none",
+  "triggerOutline": "none"
+}

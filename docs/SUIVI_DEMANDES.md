@@ -1,16 +1,16 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `db50490` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `8187d38` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Cartes Évolution/Refonte et menu translucide — vérifiés localement, publication en cours
+## Cartes Évolution/Refonte et menu translucide — terminé et vérifié en ligne
 
 Contour supplémentaire autour de Changer retiré ; focus clavier souligné. Menu compact sombre translucide avec flou statique, six choix et textures au survol/clavier. Une même carte et un même menu servent aux quatre créations ainsi qu’à Évolution et Refonte ; styles partagés dans `src/components/layout/project.css`. Les deux prestations gardent leurs demandes sur devis et leur formulaire propre à droite ; le sélecteur de sujet redondant disparaît uniquement sur ces fiches.
 
 Continuer servait à passer aux coordonnées et était affiché en double sur ordinateur. Le doublon de la carte est retiré ; une action explicite reste après les options, avec variante mobile dans la barre fixe. Retour aux options et sauvegarde des dossiers privés conservés.
 
-Contrôles locaux IAB : six destinations, carte de même géométrie, menu sans débordement, hover coloré, un seul H1 par fiche, retour des coordonnées avec choix conservés, services sur mobile et contact général inchangé. Un débordement de 2 px du séparateur a été trouvé puis corrigé ; le menu est désormais à 208/208 px client/contenu. TypeScript, build et 113 tests passent. Aucun formulaire soumis. Preuves : `qa/shared-project-cards/`.
+Contrôles locaux IAB : six destinations, carte de même géométrie, menu sans débordement, hover coloré, un seul H1 par fiche, retour des coordonnées avec choix conservés, services sur mobile et contact général inchangé. Un débordement de 2 px du séparateur a été trouvé puis corrigé ; le menu est désormais à 208/208 px client/contenu. TypeScript, build et 113 tests passent. Aucun formulaire soumis. Preuves : `qa/shared-project-cards/`. Publication `8187d38`, release `20261103T173638Z-8187d38f889b`, client `index-ddtJu-_H.js` vérifiés : cartes Refonte/Évolution de mêmes dimensions que les créations, Sur devis et formulaires adaptés ; menu translucide de 210 px, six choix et hover coloré, zéro contour supplémentaire, aucun débordement. Action explicite vers les coordonnées testée sur ordinateur/mobile. Aucun formulaire envoyé. Santé et empreinte HTTPS conformes au build, autres projets Ubuntu inchangés, localhost fermé et onglet public conservé.
 
 ## Menu Changer et focus Forfaits — terminé et vérifié en ligne
 
