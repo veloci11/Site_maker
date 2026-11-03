@@ -1,0 +1,10 @@
+{
+  "galleryUrl": "https://gilmathis.com/exemples",
+  "externalUrl": "https://domteknika.ch/fr",
+  "opener": {
+    "result": {
+      "type": "boolean",
+      "value": true
+    }
+  }
+}

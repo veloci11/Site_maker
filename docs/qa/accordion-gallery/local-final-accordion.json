@@ -1,0 +1,29 @@
+{
+  "groups": [
+    {
+      "state": "closed",
+      "summary": "Adaptation mobile et tablette (inclus) · Français + anglais · Gestion des textes et images (inclus)",
+      "title": "01Votre site3"
+    },
+    {
+      "state": "open",
+      "summary": "Comptes utilisateurs (inclus) · Prise de rendez-vous",
+      "title": "02Vos fonctionnalités2"
+    },
+    {
+      "state": "closed",
+      "summary": "Blog et actualités",
+      "title": "03Vos contenus1"
+    },
+    {
+      "state": "closed",
+      "title": "04Visibilité et outils"
+    },
+    {
+      "state": "closed",
+      "summary": "Maintenance du site",
+      "title": "05Mise en ligne et suivi1"
+    }
+  ],
+  "opened": 1
+}

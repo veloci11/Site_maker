@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : images conservées à l’identique, reflet retiré et grain indépendant à mouvement initial bref publiés dans `34aa797`, contrôlés en HTTPS et IAB desktop/mobile. Le fondu couleur est de 300 ms ; le grain s’arrête après son entrée de 360 ms. Dix FAQ, neuf références et autres décisions précédentes conservées. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : accordéon exclusif avec résumés des choix fermés, galerie en nouvel onglet et badges colorés publiés dans `3e740d6`, contrôlés en HTTPS et IAB desktop/mobile. Images et effets approuvés conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

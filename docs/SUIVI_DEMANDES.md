@@ -1,14 +1,14 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `34aa797` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `3e740d6` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Accordéon et galerie — vérifiés localement, publication en cours
+## Accordéon et galerie — terminé et vérifié en ligne
 
 Demande limitée aux interactions et badges : une seule rubrique d’options ouverte à la fois, refermable au clavier ; les rubriques fermées montrent les choix actifs, dont les inclusions identifiées. Le résumé est dérivé de la configuration existante, sans changement de prix ou de persistance. Une option retirée disparaît du résumé, les choix restent cochés à la réouverture.
 
-La galerie conserve ses neuf références, images, filtres et crédits. Image, titre et action ouvrent un nouvel onglet (`target="_blank"`, `rel="noopener noreferrer"`), remplaçant explicitement la précédente consigne. Badges pastel distincts pour les quatre catégories, Contenus et Projet archivé. Contrôles IAB locaux : ouverture d’un onglet DOMTEKNIKA distinct, conservation de la galerie, résumés, inclusions, clavier et mobile. TypeScript, build et 113 tests passent. Preuves : `qa/accordion-gallery/`.
+La galerie conserve ses neuf références, images, filtres et crédits. Image, titre et action ouvrent un nouvel onglet (`target="_blank"`, `rel="noopener noreferrer"`), remplaçant explicitement la précédente consigne. Badges pastel distincts pour les quatre catégories, Contenus et Projet archivé. Contrôles IAB locaux : ouverture d’un onglet DOMTEKNIKA distinct, conservation de la galerie, résumés, inclusions, clavier et mobile. TypeScript, build et 113 tests passent. Preuves : `qa/accordion-gallery/`. Publication vérifiée : `3e740d6`, release `20261103T163209Z-3e740d63a275`, client `index-DpDJqyK1.js`. Contrôles HTTPS et IAB publics passés : accordéon exclusif, résumés, clavier, mobile sans débordement à 390 px CSS, 36 liens externes avec target/rel et ouverture DOMTEKNIKA dans un onglet distinct. Ancien brouillon public rétabli après les sélections de contrôle ; aucune soumission. Localhost arrêté, ports 4173/4174 libres et autres projets Ubuntu inchangés.
 
 ## Images conservées, reflet retiré et entrée du grain — terminé et vérifié en ligne
 

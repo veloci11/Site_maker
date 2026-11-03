@@ -1,0 +1,30 @@
+[
+  {
+    "state": "closed",
+    "summary": "Adaptation mobile et tablette · Français + anglais",
+    "summaryVisible": true,
+    "title": "01Votre site2"
+  },
+  {
+    "state": "closed",
+    "summary": "Prise de rendez-vous",
+    "summaryVisible": true,
+    "title": "02Vos fonctionnalités1"
+  },
+  {
+    "state": "closed",
+    "summary": "Blog et actualités",
+    "summaryVisible": true,
+    "title": "03Vos contenus1"
+  },
+  {
+    "state": "closed",
+    "summaryVisible": false,
+    "title": "04Visibilité et outils"
+  },
+  {
+    "state": "closed",
+    "summaryVisible": false,
+    "title": "05Mise en ligne et suivi"
+  }
+]

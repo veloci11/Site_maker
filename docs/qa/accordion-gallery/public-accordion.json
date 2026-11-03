@@ -1,0 +1,29 @@
+{
+  "client": 1267,
+  "groups": [
+    {
+      "state": "closed",
+      "summary": "Adaptation mobile et tablette · Français + anglais",
+      "summaryVisible": true
+    },
+    {
+      "state": "closed",
+      "summary": "Prise de rendez-vous",
+      "summaryVisible": true
+    },
+    {
+      "state": "open",
+      "summaryVisible": false
+    },
+    {
+      "state": "closed",
+      "summaryVisible": false
+    },
+    {
+      "state": "closed",
+      "summaryVisible": false
+    }
+  ],
+  "opened": 1,
+  "width": 1267
+}

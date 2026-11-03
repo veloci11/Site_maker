@@ -1,0 +1,5 @@
+{
+  "galleryUrl": "http://127.0.0.1:4173/exemples",
+  "externalUrl": "https://domteknika.ch/fr",
+  "note": "La lecture Playwright du window.opener n est pas disponible dans le scope DOM. Verification CDP fiable dans public-new-tab.json."
+}

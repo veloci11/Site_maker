@@ -1,0 +1,66 @@
+{
+  "badges": [
+    {
+      "background": "rgb(229, 237, 255)",
+      "color": "rgb(41, 74, 136)",
+      "label": "Vitrine"
+    },
+    {
+      "background": "rgb(222, 244, 235)",
+      "color": "rgb(34, 91, 73)",
+      "label": "Connecté"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(255, 229, 213)",
+      "color": "rgb(137, 62, 35)",
+      "label": "Sur mesure"
+    },
+    {
+      "background": "rgb(255, 229, 213)",
+      "color": "rgb(137, 62, 35)",
+      "label": "Sur mesure"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(229, 237, 255)",
+      "color": "rgb(41, 74, 136)",
+      "label": "Vitrine"
+    },
+    {
+      "background": "rgb(223, 242, 247)",
+      "color": "rgb(40, 92, 108)",
+      "label": "Contenus"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(255, 240, 206)",
+      "color": "rgb(120, 87, 25)",
+      "label": "Projet archivé"
+    }
+  ],
+  "cards": 9,
+  "newTabLinks": 36
+}

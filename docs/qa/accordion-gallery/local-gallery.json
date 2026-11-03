@@ -1,0 +1,294 @@
+{
+  "badges": [
+    {
+      "background": "rgb(229, 237, 255)",
+      "category": "vitrine",
+      "color": "rgb(41, 74, 136)",
+      "label": "Vitrine"
+    },
+    {
+      "background": "rgb(222, 244, 235)",
+      "category": "connecte",
+      "color": "rgb(34, 91, 73)",
+      "label": "Connecté"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "category": "immersif",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "category": "immersif",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(255, 229, 213)",
+      "category": "sur-mesure",
+      "color": "rgb(137, 62, 35)",
+      "label": "Sur mesure"
+    },
+    {
+      "background": "rgb(255, 229, 213)",
+      "category": "sur-mesure",
+      "color": "rgb(137, 62, 35)",
+      "label": "Sur mesure"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "category": "immersif",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(229, 237, 255)",
+      "category": "vitrine",
+      "color": "rgb(41, 74, 136)",
+      "label": "Vitrine"
+    },
+    {
+      "background": "rgb(223, 242, 247)",
+      "category": "content",
+      "color": "rgb(40, 92, 108)",
+      "label": "Contenus"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "category": "immersif",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(237, 227, 255)",
+      "category": "immersif",
+      "color": "rgb(101, 64, 139)",
+      "label": "3D"
+    },
+    {
+      "background": "rgb(255, 240, 206)",
+      "category": "archived",
+      "color": "rgb(120, 87, 25)",
+      "label": "Projet archivé"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://domteknika.ch/fr",
+      "label": "Ouvrir le site DOMTEKNIKA (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://domteknika.ch/fr",
+      "label": "DOMTEKNIKA",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://domteknika.ch/fr",
+      "label": "Source : DOMTEKNIKA",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://domteknika.ch/fr",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.lactel.fr/",
+      "label": "Ouvrir le site Lactel (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.lactel.fr/",
+      "label": "Lactel",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira · Wonderstudios",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.lactel.fr/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://juliethiam.art/",
+      "label": "Ouvrir le site Julie Thiam (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://juliethiam.art/",
+      "label": "Julie Thiam",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://juliethiam.art/",
+      "label": "Source : Julie Thiam",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://juliethiam.art/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://tiny.raphael-ferreira.com/",
+      "label": "Ouvrir le site Tiny Heaven (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://tiny.raphael-ferreira.com/",
+      "label": "Tiny Heaven",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://tiny.raphael-ferreira.com/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://addiction-agency.com/agence",
+      "label": "Ouvrir le site Addiction Agency (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://addiction-agency.com/agence",
+      "label": "Addiction Agency",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://addiction-agency.com/",
+      "label": "Source : Addiction Agency",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://addiction-agency.com/agence",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://geoboss.onrender.com/",
+      "label": "Ouvrir le site GeoBoss (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://geoboss.onrender.com/",
+      "label": "GeoBoss",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://geoboss.onrender.com/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.aemagroupe.fr/",
+      "label": "Ouvrir le site Aéma Groupe (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.aemagroupe.fr/",
+      "label": "Aéma Groupe",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira · Wonderstudios",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://www.aemagroupe.fr/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://satellite.raphael-ferreira.com/",
+      "label": "Ouvrir le site Satellite Story (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://satellite.raphael-ferreira.com/",
+      "label": "Satellite Story",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://satellite.raphael-ferreira.com/",
+      "label": "Voir le site",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://github.com/rqphy/Atlante3d#readme",
+      "label": "Voir la présentation de Atlante 3D, projet archivé (nouvel onglet)",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://github.com/rqphy/Atlante3d#readme",
+      "label": "Atlante 3D",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://raphael-ferreira.com/",
+      "label": "Source : Raphaël Ferreira — projet Atlante",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    },
+    {
+      "href": "https://github.com/rqphy/Atlante3d#readme",
+      "label": "Voir la présentation",
+      "rel": "noopener noreferrer",
+      "target": "_blank"
+    }
+  ]
+}

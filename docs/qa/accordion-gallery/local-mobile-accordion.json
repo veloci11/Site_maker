@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "group": 1,
+      "opened": 1
+    },
+    {
+      "group": 2,
+      "opened": 1
+    },
+    {
+      "group": 3,
+      "opened": 1
+    },
+    {
+      "group": 4,
+      "opened": 1
+    }
+  ],
+  "result": {
+    "opened": 0,
+    "summaries": [
+      {
+        "text": "Adaptation mobile et tablette (inclus) · Français + anglais · Gestion des textes et images (inclus)",
+        "visible": true
+      },
+      {
+        "text": "Comptes utilisateurs (inclus) · Prise de rendez-vous",
+        "visible": true
+      },
+      {
+        "text": "Blog et actualités",
+        "visible": true
+      },
+      {
+        "text": "Maintenance du site",
+        "visible": true
+      }
+    ],
+    "viewport": 312,
+    "width": 320
+  }
+}
