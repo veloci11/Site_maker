@@ -268,7 +268,7 @@ ul, ol { padding-left: 1.25rem; }
 .public-offers-menu .dropdown-item[aria-current="page"] { background: var(--muted); }
 .header-login:hover > svg { transform: translateX(2px); }
 .mobile-menu-button { display: none; }
-.public-main { min-height: 60vh; }
+.public-main { min-height: calc(100svh - 96px); }
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 64px; padding-block: 28px; border-top: 1px solid var(--border); }
 .site-footer p { color: var(--muted-foreground); font-size: 12px; }
 .site-footer nav { display: flex; align-items: center; gap: 28px; font-size: 13px; }

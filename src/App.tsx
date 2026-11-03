@@ -1,8 +1,9 @@
 import { Component, Suspense, lazy, type ComponentType, type ReactNode, useLayoutEffect } from 'react'
-import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Link, Navigate, Outlet, Route, RouterProvider, useLocation, useParams } from 'react-router-dom'
 import { PublicLayout, PortalLayout } from './components/layout'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
+import { RouteMetadata } from './components/layout/RouteMetadata'
 
 function page<T, K extends keyof T>(load: () => Promise<T>, name: K) {
   return lazy<ComponentType>(async () => ({ default: (await load())[name] as ComponentType }))
@@ -30,10 +31,10 @@ function RequireAuth({ children, admin = false }: { children: ReactNode; admin?:
   return children
 }
 function ScrollTop() {
-  const { pathname, hash, key } = useLocation()
+  const { pathname, hash } = useLocation()
   useLayoutEffect(() => {
     if (!hash) window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname, hash, key])
+  }, [pathname, hash])
   return null
 }
 class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
@@ -41,15 +42,59 @@ class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }
   static getDerivedStateFromError() { return { failed: true } }
   render() { return this.state.failed ? <main className="container page-section"><h1 className="page-heading">La page n’a pas pu s’ouvrir.</h1><p className="page-subtitle">Vous pouvez recharger la page pour reprendre votre visite.</p><button className="button" onClick={() => window.location.reload()}>Recharger la page</button></main> : this.props.children }
 }
-export function App() {
-  return <AppBoundary><BrowserRouter><AuthProvider><ProjectProvider><ScrollTop /><Suspense fallback={<div className="loading-state loading-state--page" role="status">Chargement…</div>}><Routes>
+function ApplicationShell() {
+  return (
+    <AppBoundary>
+      <AuthProvider>
+        <ProjectProvider>
+          <ScrollTop />
+          <RouteMetadata />
+          <Suspense fallback={<div className="loading-state loading-state--page" role="status">Chargement…</div>}>
+            <Outlet />
+          </Suspense>
+        </ProjectProvider>
+      </AuthProvider>
+    </AppBoundary>
+  )
+}
+
+const router = createBrowserRouter(createRoutesFromElements(
+  <Route element={<ApplicationShell />}>
     <Route element={<PublicLayout />}>
-      <Route index element={<Home />} /><Route path="forfaits" element={<Offers />} /><Route path="forfaits/:slug" element={<ForfaitConfigurator />} /><Route path="formules" element={<Navigate to="/forfaits" replace />} /><Route path="formules/:slug" element={<LegacyOffer />} /><Route path="options" element={<Options />} />
-      <Route path="exemples" element={<Examples />} /><Route path="exemples/:slug" element={<Example />} /><Route path="methode" element={<Navigate to="/#fonctionnement" replace />} /><Route path="faq" element={<Faq />} /><Route path="contact" element={<Contact />} />
-      <Route path="configurateur" element={<Configurator />} /><Route path="inscription" element={<Register />} /><Route path="connexion" element={<Login />} /><Route path="mot-de-passe-oublie" element={<Forgot />} /><Route path="reinitialiser-mot-de-passe" element={<Reset />} />
+      <Route index element={<Home />} />
+      <Route path="forfaits" element={<Offers />} />
+      <Route path="forfaits/:slug" element={<ForfaitConfigurator />} />
+      <Route path="formules" element={<Navigate to="/forfaits" replace />} />
+      <Route path="formules/:slug" element={<LegacyOffer />} />
+      <Route path="options" element={<Options />} />
+      <Route path="exemples" element={<Examples />} />
+      <Route path="exemples/:slug" element={<Example />} />
+      <Route path="methode" element={<Navigate to="/#fonctionnement" replace />} />
+      <Route path="faq" element={<Faq />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="configurateur" element={<Configurator />} />
+      <Route path="inscription" element={<Register />} />
+      <Route path="connexion" element={<Login />} />
+      <Route path="mot-de-passe-oublie" element={<Forgot />} />
+      <Route path="reinitialiser-mot-de-passe" element={<Reset />} />
       <Route path="commande/:projectId" element={<RequireAuth><Checkout /></RequireAuth>} />
-      <Route path="confidentialite" element={<LegalPage privacy />} /><Route path="mentions-legales" element={<LegalPage />} /><Route path="conditions" element={<LegalPage />} /><Route path="*" element={<NotFound />} />
+      <Route path="confidentialite" element={<LegalPage privacy />} />
+      <Route path="mentions-legales" element={<LegalPage />} />
+      <Route path="conditions" element={<LegalPage />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
-    <Route element={<PortalLayout />}><Route path="espace" element={<Dashboard />} /><Route path="espace/contenus" element={<Contents />} /><Route path="espace/messages" element={<Messages />} /><Route path="espace/maquettes" element={<Previews />} /><Route path="espace/commande" element={<Order />} /><Route path="espace/compte" element={<Account />} /><Route path="admin" element={<RequireAuth admin><Admin /></RequireAuth>} /></Route>
-  </Routes></Suspense></ProjectProvider></AuthProvider></BrowserRouter></AppBoundary>
+    <Route element={<PortalLayout />}>
+      <Route path="espace" element={<Dashboard />} />
+      <Route path="espace/contenus" element={<Contents />} />
+      <Route path="espace/messages" element={<Messages />} />
+      <Route path="espace/maquettes" element={<Previews />} />
+      <Route path="espace/commande" element={<Order />} />
+      <Route path="espace/compte" element={<Account />} />
+      <Route path="admin" element={<RequireAuth admin><Admin /></RequireAuth>} />
+    </Route>
+  </Route>,
+))
+
+export function App() {
+  return <RouterProvider router={router} />
 }

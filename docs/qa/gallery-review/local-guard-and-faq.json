@@ -1,0 +1,28 @@
+{
+  "environment": "IAB local, disposable DATA_DIR; no form submitted and no email sent",
+  "date": "2026-11-03",
+  "contact": {
+    "linkNavigationCancelledKeepsText": true,
+    "browserBackCancelledKeepsText": true,
+    "confirmedExitNavigatesToExamples": true,
+    "privacyOpensNewTabAndKeepsText": true
+  },
+  "vitrine": {
+    "cancelExitKeepsActivity": true,
+    "cancelChangingOfferKeepsUrlAndActivity": true,
+    "returnToOptionsAndBackKeepsActivity": true,
+    "confirmedExitNavigatesToExamples": true,
+    "shortViewportBackActionReachable": true
+  },
+  "seoClient": {
+    "privacyTitle": "Confidentialité · studio",
+    "privacyRobots": "noindex, nofollow",
+    "privacyCanonicalAbsent": true,
+    "faqTitle": "Questions fréquentes · studio",
+    "faqCanonical": "https://gilmathis.com/faq",
+    "closedAnswersInDom": 10,
+    "closedAnswerHeight": 0,
+    "closedAnswerVisibility": "hidden"
+  },
+  "beforeUnload": "Hook reviewed; actual tab close/reload not exercised"
+}

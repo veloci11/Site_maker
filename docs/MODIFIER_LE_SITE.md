@@ -10,9 +10,11 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | Nom et explication d’une option | `shared/catalog.ts` | `optionDefinitions` : `title`, `description` |
 | Options proposées dans chaque forfait public | `shared/offer-options.ts` | `PUBLIC_OPTIONS_BY_OFFER` ; le catalogue historique reste complet |
 | Questions fréquentes | `shared/catalog.ts` | `faqs` : dix entrées `question`, `answer` |
-| Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : neuf entrées, `image`, `url`, `sourceUrl`, `creator`, `tags`, `archived` |
+| Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : dix entrées, `image`, `url`, `sourceUrl`, `creator`, `tags`, `archived` |
 | Explication des inclusions avant les options | `src/content/configurator-copy.ts` | `includedGuidance`, une entrée par forfait |
 | Textes, trois points, boutons et sujets Évolution/Refonte | `src/content/existing-site.ts` | `existingSiteOffers` : `title`, `features`, `cta`, sujets et textes du formulaire |
+| Titres, descriptions, canoniques et indexation | `shared/seo.ts` | `getRouteSeo`, `publicPagePaths` ; head servi par Express et synchronisé après navigation |
+| Protection du brief non envoyé | `src/components/inquiries/BriefNavigationGuard.tsx` | Dialogue de sortie et protection du rechargement, sans stockage personnel |
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
 | Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
@@ -49,7 +51,7 @@ Dans `InquiryForm`, `website` est un champ antispam masqué. L’URL fournie par
 
 Placer les exports actifs dans `public/assets/examples/`, puis modifier le chemin dans `examples`. Garder le lien réel et le crédit du site présenté. Les originaux et anciens essais restent dans `docs/asset-sources/` ou `docs/qa/`, hors du build public. La provenance des captures est documentée dans `docs/ASSETS_REFERENCES.md`.
 
-Les neuf références sont DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven, Addiction Agency, GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D. Pour qu’un exemple classé autrement apparaisse aussi dans le filtre 3D, utiliser `tags: ['3D']` comme GeoBoss. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
+Les dix références sont DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven, Addiction Agency, GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D. Pour qu’un exemple classé autrement apparaisse aussi dans le filtre 3D, utiliser `tags: ['3D']` comme GeoBoss. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
 
 Les images, titres et actions des exemples sont des liens directs dans un nouvel onglet. Les crédits conservent leur propre lien source. `ExampleDetailPage` maintient la compatibilité de `/exemples/:slug` : il redirige par effet vers `example.url` avec `window.location.replace` et laisse un lien de repli. Le composant `ExamplePreview` est retiré ; ne pas réintroduire de fenêtre intermédiaire ou de scène embarquée.
 

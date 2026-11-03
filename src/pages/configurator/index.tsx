@@ -178,12 +178,14 @@ export function ConfiguratorPage() {
   }
   function changeOffer(offerId: OfferId) {
     if (offerId === configuration.offerId) return
-    const next = forOffer(configuration, offerId)
-    setConfiguration(editingId ? next : prunePublicConfiguration(next))
+    if (!editingId) {
+      navigate(`/forfaits/${getOffer(offerId)!.slug}`, { preventScrollReset: true })
+      return
+    }
+    setConfiguration(forOffer(configuration, offerId))
     setStage('options')
     setError('')
     setResult(null)
-    if (!editingId) navigate(`/forfaits/${getOffer(offerId)!.slug}`, { preventScrollReset: true })
   }
   function goContact() {
     setStage('contact')

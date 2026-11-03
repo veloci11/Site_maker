@@ -10,6 +10,7 @@ import { createCollaborationRouter } from './collaboration.mjs';
 import { createOrdersRouter, getPricing, getPaymentAvailability } from './orders.mjs';
 import { createInquiriesRouter } from './inquiries.mjs';
 import { createInquiryAdminRouter } from './inquiry-admin.mjs';
+import { createSeoHandlers } from './seo.mjs';
 import { offers, optionDefinitions, normalizeConfiguration, quoteConfiguration } from '../shared/catalog.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -29,7 +30,7 @@ export function createApp() {
   app.use('/api/inquiries', express.json({ limit: '64kb' }));
   app.use(express.json({ limit: '1mb' }));
   app.use(optionalAuth);
-  app.use('/api', (req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
+  app.use('/api', (req, res, next) => { res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' }); next(); });
   app.use('/api', csrfProtection);
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
   app.get('/api/catalogue', (_req, res) => res.json({ offers, options: optionDefinitions, pricing: getPricing(), paymentAvailable: getPaymentAvailability().enabled }));
@@ -48,8 +49,12 @@ export function createApp() {
   app.use('/api', (_req, res) => res.status(404).json({ error: 'Cette ressource est introuvable.' }));
   const client = path.join(root, 'dist/client');
   if (existsSync(path.join(client, 'index.html'))) {
+    const seo = createSeoHandlers({ clientDirectory: client });
+    app.get('/robots.txt', seo.robots);
+    app.get('/sitemap.xml', seo.sitemap);
+    app.get('/index.html', (_req, res) => res.redirect(301, '/'));
     app.use(express.static(client, { index: false, maxAge: process.env.NODE_ENV === 'production' ? '1h' : 0 }));
-    app.get('/{*path}', (_req, res) => res.sendFile(path.join(client, 'index.html')));
+    app.get('/{*path}', seo.page);
   }
   app.use((error, _req, res, _next) => {
     if (res.headersSent) return _next(error);

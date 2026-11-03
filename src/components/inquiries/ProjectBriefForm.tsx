@@ -28,6 +28,7 @@ import {
   type BriefImage,
 } from './brief-form-files'
 import './brief-form.css'
+import { BriefNavigationGuard } from './BriefNavigationGuard'
 
 export type InquiryResult = {
   ok: boolean
@@ -393,6 +394,8 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
   const globalErrors = Object.entries(fields).filter(([key]) => !knownFields.has(key) && !key.startsWith('files.'))
   const imageErrors = Object.entries(fields).filter(([key]) => key === 'files' || key.startsWith('files.'))
   const contactSummary = [contact.firstName.trim(), contact.lastName.trim()].filter(Boolean).join(' ')
+  const unfinished = sending || images.length > 0 || Object.values(contact).some(value => value.trim()) ||
+    Object.values(answers).some(value => Array.isArray(value) ? value.length > 0 : value.trim())
 
   function heading(title: string, index: number, summary: string) {
     return (
@@ -519,7 +522,8 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
       <Button className="project-brief-form__submit" type="submit" disabled={sending}>
         {sending ? <><LoaderCircle className="spin" size={17} aria-hidden="true" />Enregistrement…</> : 'Envoyer ma demande'}
       </Button>
-      <p className="project-brief-form__privacy">Vos coordonnées servent à traiter votre demande. <Link to="/confidentialite">Confidentialité</Link></p>
+      <p className="project-brief-form__privacy">Vos coordonnées servent à traiter votre demande. <Link to="/confidentialite" target="_blank" rel="noopener noreferrer" aria-label="Confidentialité (nouvel onglet)">Confidentialité</Link></p>
+      <BriefNavigationGuard active={Boolean(unfinished)} pending={sending} />
     </form>
   )
 }

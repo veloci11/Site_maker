@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight } from 'lucide-react'
 import {
@@ -19,7 +19,6 @@ import { getPublicOptions } from '../../../shared/offer-options'
 import { PricingCard } from '../../components/layout/PricingCard'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
 import { Button } from '../../components/ui/button'
-import { ProjectBriefForm } from '../../components/inquiries/ProjectBriefForm'
 import { Reveal } from '../../components/layout/motion'
 import {
   Accordion,
@@ -30,6 +29,8 @@ import {
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import { api } from '../../lib/api'
 import '../public.css'
+
+const ProjectBriefForm = lazy(() => import('../../components/inquiries/ProjectBriefForm').then(module => ({ default: module.ProjectBriefForm })))
 
 function usePageTitle(title: string) {
   useEffect(() => {
@@ -127,7 +128,7 @@ function FaqList({
       {items.map((item, index) => (
         <AccordionItem key={item.question} value={`${prefix}-${index}`}>
           <AccordionTrigger>{item.question}</AccordionTrigger>
-          <AccordionContent>{item.answer}</AccordionContent>
+          <AccordionContent forceMount>{item.answer}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
@@ -573,12 +574,7 @@ export function ExamplesPage() {
   usePageTitle('Exemples de sites')
   const [search, setSearch] = useSearchParams()
   const filter = exampleFilters.find((item) => item.id === search.get('type'))?.id ?? 'all'
-  const filtered = examples.filter(
-    (example) =>
-      filter === 'all' ||
-      example.offerId === filter ||
-      (filter === 'immersif' && example.tags?.includes('3D')),
-  )
+  const filtered = examples.filter((example) => filter === 'all' || example.offerId === filter)
   function changeFilter(id: string) {
     setSearch(
       (previous) => {
@@ -592,11 +588,8 @@ export function ExamplesPage() {
   }
   return (
     <>
-      <Intro
-        title="Exemples de sites"
-        description="Découvrez des styles et des usages pour préciser ce que vous souhaitez créer. Ces références externes illustrent les types de sites proposés."
-      />
       <section className="container public-examples-page">
+        <h1 className="public-sr-only">Exemples de sites</h1>
         <div className="public-gallery-toolbar">
           <div
             className="public-gallery-filters"
@@ -609,9 +602,7 @@ export function ExamplesPage() {
                 <button
                   type="button"
                   key={item.id}
-                  className={
-                    offer ? `public-gallery-filter pricing-card--${offer.variant}` : undefined
-                  }
+                  className={offer ? `public-gallery-filter pricing-card--${offer.variant}` : undefined}
                   aria-pressed={filter === item.id}
                   onClick={() => changeFilter(item.id)}
                 >
@@ -621,11 +612,11 @@ export function ExamplesPage() {
             })}
           </div>
           <span className="public-gallery-count" role="status">
-            {filtered.length} référence{filtered.length > 1 ? 's' : ''}
+            {filtered.length} référence{filtered.length > 1 ? 's' : ''} externe{filtered.length > 1 ? 's' : ''}
           </span>
         </div>
         <div className="public-examples-grid">
-          {filtered.map((example) => (
+          {filtered.map((example, index) => (
             <article className="public-example-tile" key={example.id}>
               <a
                 className="public-example-tile__image"
@@ -643,7 +634,7 @@ export function ExamplesPage() {
                   alt={`Aperçu du site ${example.title}`}
                   width="1672"
                   height="940"
-                  loading="lazy"
+                  loading={index < 2 ? 'eager' : 'lazy'}
                 />
               </a>
               <div className="public-example-tile__body">
@@ -750,12 +741,14 @@ type InquiryFormProps = {
 function InquiryForm({ custom = false, service, onBusyChange }: InquiryFormProps) {
   const requestType = service?.id ?? (custom ? 'sur-mesure' : 'contact')
   return (
-    <ProjectBriefForm
-      key={requestType}
-      requestType={requestType}
-      configuration={custom ? normalizeConfiguration({ offerId: 'sur-mesure' }) : null}
-      onBusyChange={onBusyChange}
-    />
+    <Suspense fallback={<p role="status">Chargement du formulaire…</p>}>
+      <ProjectBriefForm
+        key={requestType}
+        requestType={requestType}
+        configuration={custom ? normalizeConfiguration({ offerId: 'sur-mesure' }) : null}
+        onBusyChange={onBusyChange}
+      />
+    </Suspense>
   )
 }
 

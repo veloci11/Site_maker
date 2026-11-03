@@ -1,0 +1,59 @@
+[
+  {
+    "filter": "3D",
+    "before": 18,
+    "after": 18,
+    "badgeCount": 3,
+    "filterTop": 106,
+    "titles": [
+      "Tiny Heaven",
+      "Satellite Story",
+      "Atlante 3D"
+    ],
+    "visibleIntro": false
+  },
+  {
+    "filter": "Sur mesure",
+    "before": 18,
+    "after": 18,
+    "badgeCount": 2,
+    "filterTop": 106,
+    "titles": [
+      "Julie Thiam",
+      "Addiction Agency"
+    ],
+    "visibleIntro": false
+  },
+  {
+    "filter": "Connecté",
+    "before": 18,
+    "after": 18,
+    "badgeCount": 2,
+    "filterTop": 106,
+    "titles": [
+      "Cal.com",
+      "GeoBoss"
+    ],
+    "visibleIntro": false
+  },
+  {
+    "filter": "Tous",
+    "before": 18,
+    "after": 18,
+    "badgeCount": 10,
+    "filterTop": 106,
+    "titles": [
+      "DOMTEKNIKA",
+      "Lactel",
+      "Julie Thiam",
+      "Cal.com",
+      "Tiny Heaven",
+      "Addiction Agency",
+      "GeoBoss",
+      "Aéma Groupe",
+      "Satellite Story",
+      "Atlante 3D"
+    ],
+    "visibleIntro": false
+  }
+]
