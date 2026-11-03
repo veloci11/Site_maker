@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison : 2 novembre 2026 à 18:07, heure de Mexico (UTC−06), contrôlée en ligne.
+Dernière livraison : 2 novembre 2026 à 19:40, heure de Mexico (UTC−06), contrôlée en ligne.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision de l’application : `f768c46c96e56ec34e2a50aa27b935ab321681b9`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T000640Z-f768c46c96e5` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-D48NNVRJ.js`, identique au build de cette révision.
-- Archive runtime vérifiée avant extraction : SHA-256 `19eb57fc7a3bde877f33a34e087ac9a420c452c9b582ef18beab95b2c3491432`.
-- Révision précédente disponible : `20261102T234735Z-e2d7d435e98f` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
+- Révision de l’application : `e4d247a473821d2c5c16952fc34752dc34044789`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T013839Z-e4d247a47382` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-DOYv62n_.js`, identique au build de cette révision.
+- Archive runtime vérifiée avant extraction : SHA-256 `2b3f3c17baf82118f9fa6e57ac461e2f2f06c00813575a51c5228423669a1123`.
+- Révision précédente disponible : `20261103T000640Z-f768c46c96e5` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
 
 Le dépôt peut contenir des comptes rendus plus récents ; la révision ci-dessus est celle du code applicatif effectivement déployé.
 
@@ -24,7 +24,7 @@ Galerie distincte avec tags et filtres, références externes créditées, aucun
 - Origine Ubuntu : santé et catalogue valides, quatre forfaits, **26 options**, paiements désactivés.
 - HTTPS public via curl : 200, empreinte du client final identique, catalogue et calcul serveur vérifiés. Administration anonyme : 401 ; inscription en production : 403 REGISTRATION_CLOSED.
 - IAB public : sélection de l’adaptation mobile, accès direct aux coordonnées sans inscription, retour sur Vitrine avec sélection conservée et formulaire réinitialisé. Aucun message réel soumis en production ; aucune erreur ou alerte applicative observée dans la console.
-- Rapport visuel : `design-qa.md` ; capture publique Retina actuelle : `docs/qa/card-grain-native/after-public-retina.png` ; comparaison du grain : `docs/qa/card-grain-native/comparison-grain.png`.
+- Rapport visuel : `design-qa.md` ; capture publique Retina actuelle : `docs/qa/card-texture-fidelity/after-public-retina.png` ; comparaison du grain : `docs/qa/card-texture-fidelity/comparison-grain-reference.png`.
 - Prévisualisation locale arrêtée : aucun processus à l’écoute sur 4173 ou 4174 après vérification.
 
 ## Isolement et sauvegarde
@@ -45,8 +45,8 @@ Une sauvegarde privée a précédé chaque bascule. Les sauvegardes restent cons
 
 ## Qualité des grandes cartes
 
-Les couleurs et la matière de la grande carte sont désormais séparées. La texture légère studio est lissée statiquement ; un canvas dessine un grain fin à la densité réelle de l’écran, avec un budget borné. Le texte et les contrôles ne subissent pas le filtre. L’image HD agrandie de l’essai précédent ne se télécharge plus. Les petites cartes et leur effet approuvé, ainsi que le fond pastel global, restent inchangés.
+Mathis a rejeté le lissage et le remplacement du grain : la grande carte reprend la matière originale, sans flou ni canvas ajouté. La nouvelle source haute densité `grain-plasma-master.webp` est un export WebP sans perte du PNG original 1536 × 1024. Le contrôle des pixels RGB confirme une différence nulle avec le PNG. Aucun changement d’effet, de source ou de CSS des petites cartes approuvées. ElevenLabs a été inspecté comme référence de matière ; aucun de ses assets n’est intégré au site.
 
-Contrôle public à DPR 2 : carte 568,3 × 530 CSS, canvas 1137 × 1060 ; seule la ressource de 162 744 octets est observée, contre la couche HD de 879 898 octets auparavant. Initialisation mesurée à environ 1,1 ms sur cette machine, aucune animation active au repos ni erreur/avertissement applicatif. Ce constat local n’est pas une garantie universelle de performance. Capture PNG réelle 2560 × 1440 : `docs/qa/card-grain-native/after-public-retina.png`.
+Contrôle public à DPR 2 : source sans perte effectivement chargée, 2 636 656 octets, empreinte SHA-256 `f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76` identique au fichier prévu. Elle est plus lourde que l’ancien export compressé ; la source légère préchargée reste dessous pendant le chargement, et reste seule à DPR 1. La première visite publique observée a chargé le master en environ 1,1 seconde sur cette connexion, sans garantie universelle. Les options et liens ne bloquent pas sur ce chargement. Aucun flou ni canvas de grain dans la grande carte ; aucune erreur ou alerte dans la console publique.
 
-Les quatre variantes et le format mobile ont été vérifiés localement ; TypeScript, build et 113 tests passent. La santé et l’empreinte du client public sont confirmées après bascule. Sauvegarde privée avant déploiement, services des autres projets avec les mêmes états et PID avant/après ; GP Park 200. Prévisualisation locale fermée après vérification des ports.
+Capture publique PNG réelle 2560 × 1440 : `docs/qa/card-texture-fidelity/after-public-retina.png`, prise après fin du téléchargement et de la transition. Quatre variantes, focus des petites cartes et version mobile vérifiés localement. TypeScript, build et 113 tests passent. Sauvegarde privée avant bascule ; santé et empreinte du client public contrôlées ; mêmes états et PID pour les services des autres projets, GP Park 200. Localhost 4173 / 4174 fermé après validation.

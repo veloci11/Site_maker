@@ -133,3 +133,5 @@ La source conserve sa résolution réelle de 1536 × 1024 : ce n’est pas une i
 P1 de dérive de matière corrigé ; aucun autre écart P0/P1/P2 constaté dans ce périmètre. Vérification publique consignée après déploiement.
 
 final result: passed
+
+Contrôle public final de la correction de fidélité : révision `e4d247a473821d2c5c16952fc34752dc34044789`, release `20261103T013839Z-e4d247a47382`, client `index-DOYv62n_.js`. Santé publique et digest du master sans perte identiques au build prévu. Le navigateur DPR 2 charge bien 2 636 656 octets pour le master et conserve la couche légère. Temps observé du master : environ 1 094 ms sur cette visite ; aucune attente ajoutée aux contrôles. Pas de flou ni de canvas de remplacement, aucune erreur/alerte de console. Capture finale native `docs/qa/card-texture-fidelity/after-public-retina.png` ouverte et inspectée après fin du téléchargement. Sauvegarde faite, autres projets inchangés, localhost fermé.
