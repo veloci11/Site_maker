@@ -1,0 +1,56 @@
+[
+  {
+    "badgeCounts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "cards": 9,
+    "filter": "Tous",
+    "outline": "none"
+  },
+  {
+    "badgeCounts": [
+      1,
+      1
+    ],
+    "cards": 2,
+    "filter": "Vitrine",
+    "outline": "solid"
+  },
+  {
+    "badgeCounts": [
+      1
+    ],
+    "cards": 1,
+    "filter": "Connecté",
+    "outline": "solid"
+  },
+  {
+    "badgeCounts": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "cards": 5,
+    "filter": "3D",
+    "outline": "solid"
+  },
+  {
+    "badgeCounts": [
+      1,
+      1
+    ],
+    "cards": 2,
+    "filter": "Sur mesure",
+    "outline": "solid"
+  }
+]

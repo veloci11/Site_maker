@@ -1,0 +1,35 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "badges": 9,
+      "cards": 9,
+      "client": 377,
+      "filters": [
+        {
+          "color": "rgb(255, 255, 255)",
+          "hue": "-6deg",
+          "name": "Vitrine"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "hue": "-57deg",
+          "name": "Connecté"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "hue": "-24deg",
+          "name": "3D"
+        },
+        {
+          "color": "rgb(255, 255, 255)",
+          "hue": "12deg",
+          "name": "Sur mesure"
+        }
+      ],
+      "innerHeight": 844,
+      "innerWidth": 390,
+      "width": 377
+    }
+  }
+}

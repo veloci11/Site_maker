@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 10:32, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative : 03/11/2026 à 10:41, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `3e740d63a275fe237a148c99fec26c2b094718f6`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T163209Z-3e740d63a275` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DpDJqyK1.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `e6d4380d3ab59040f0ad91e21322c1d8b6fe1b830a7abe034badf549c1b7f428`.
-- Version précédente disponible : `releases/20261103T071117Z-34aa797bcb9a`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `0aeb90d5a7a81d2b447fdf37ccd3f5d196b7b28d`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T164107Z-0aeb90d5a7a8` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-Bdlv6znL.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `b4516ec892836535438192cc7863a1f6fa7c70891b12fef2604e678c560f9e95`.
+- Version précédente disponible : `releases/20261103T163209Z-3e740d63a275`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -22,12 +22,20 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 - Dernière clarification de Mathis : nos images restent exactement les mêmes. Reflet, liseré et halo retirés. Les couleurs apparaissent en 300 ms et le texte en 150 ms ; un grain indépendant précalculé (WebP 256 × 256, 107 058 octets, overlay 0,32) se déplace de quelques pixels pendant 360 ms à l’entrée du survol/focus, une seule fois, puis s’immobilise. Carte et image fixes, pas de filtre animé ni de bruit calculé à l’interaction. CTA et menu conservent 120 ms.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
 - Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon simple refermable : une rubrique ouverte à la fois, résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
-- Galerie : neuf références avec filtres et crédits. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte le badge « Projet archivé », avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
+- Galerie : neuf références avec filtres et crédits. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie reprennent cette matière et le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte le badge « Projet archivé », avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
 - FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; aucune nouvelle dépendance de production. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Vérifications du lot accordéon et galerie
+## Vérifications du lot couleurs de la galerie
+
+- TypeScript, build et 113 tests passent ; diff sans erreurs d’espacement.
+- IAB public : neuf sites et neuf badges, variantes et texture des cartes partagées avec les badges et filtres. Les cinq filtres donnent 9/2/1/5/2 références ; aucun double badge, contour de sélection visible. Archive signalée dans le texte, 36 liens externes conservés.
+- Formats desktop et mobile vérifiés. À 390 × 844 CSS, document/client 377/377 : pas de débordement. Aucune alerte applicative observée, viewport temporaire réinitialisé, onglet public conservé.
+- HTTPS : santé et empreinte du client conformes au build. Origine Ubuntu : sauvegarde avant bascule, quatre forfaits, 26 options et prix inchangés, autres services/PID inchangés, GP Park HTTP 200.
+- Preuves : `docs/qa/gallery-plan-colors/public-gallery.json`, `public-filters.json`, `public-mobile.json`, `public-https.json` et `public-final.png`. Aucun formulaire envoyé. Localhost fermé : ports 4173/4174 libres.
+
+## Vérifications du lot précédent — accordéon et galerie
 
 - TypeScript, build et 113 tests passent ; `git diff --check` propre.
 - Accordéon exclusif, fermeture au clavier, réouverture avec choix conservés, retrait d’un choix et inclusions contrôlés dans l’IAB.

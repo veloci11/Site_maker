@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : accordéon exclusif avec résumés des choix fermés, galerie en nouvel onglet et badges colorés publiés dans `3e740d6`, contrôlés en HTTPS et IAB desktop/mobile. Images et effets approuvés conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : badge unique par référence, matière des forfaits reprise dans les badges et filtres, publiés dans `0aeb90d` et contrôlés en HTTPS et IAB desktop/mobile. Accordéon exclusif, résumés et ouverture des exemples dans un nouvel onglet conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

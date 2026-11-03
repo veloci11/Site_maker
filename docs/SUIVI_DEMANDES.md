@@ -1,12 +1,12 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `3e740d6` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `0aeb90d` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Couleurs des forfaits dans la galerie — en cours
+## Couleurs des forfaits dans la galerie — terminé et vérifié en ligne
 
-Un seul badge de catégorie par site. Badges et filtres réutilisent notre texture et les variables de couleur/cadrage de la carte forfait correspondante ; aucun nouveau visuel. « Tous » reste neutre et le filtre actif a un contour. Les tags secondaires restent disponibles pour le classement interne sans être affichés ; Projet archivé est conservé comme texte dans la description.
+Un seul badge de catégorie par site. Badges et filtres réutilisent notre texture et les variables de couleur/cadrage de la carte forfait correspondante ; aucun nouveau visuel. « Tous » reste neutre et le filtre actif a un contour. Les tags secondaires restent disponibles pour le classement interne sans être affichés ; Projet archivé est conservé comme texte dans la description. Publié dans `0aeb90d`, release `20261103T164107Z-0aeb90d5a7a8`. Neuf sites et neuf badges, filtres Tous/Vitrine/Connecté/3D/Sur mesure contrôlés : 9/2/1/5/2 résultats, un seul badge par résultat. Contour actif visible ; variables de variantes identiques à celles des cartes. Les 36 liens externes gardent target/rel. HTTPS et client identiques au build, contrôles IAB desktop/mobile passés, 113 tests passants. Aucun formulaire soumis, aucune alerte applicative observée ; localhost fermé, autres projets Ubuntu inchangés. Preuves : `qa/gallery-plan-colors/`.
 
 ## Accordéon et galerie — terminé et vérifié en ligne
 

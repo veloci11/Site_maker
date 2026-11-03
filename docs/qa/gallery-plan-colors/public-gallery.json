@@ -1,0 +1,71 @@
+{
+  "archiveText": "Projet archivé · Une présentation interactive de station de recharge en 3D.",
+  "cards": [
+    {
+      "badges": 1,
+      "hue": "-6deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "DOMTEKNIKA",
+      "variant": "public-example-tag pricing-card--vitrine"
+    },
+    {
+      "badges": 1,
+      "hue": "-57deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Lactel",
+      "variant": "public-example-tag pricing-card--connecte"
+    },
+    {
+      "badges": 1,
+      "hue": "-24deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Julie Thiam",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "hue": "-24deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Tiny Heaven",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "hue": "12deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Addiction Agency",
+      "variant": "public-example-tag pricing-card--custom"
+    },
+    {
+      "badges": 1,
+      "hue": "12deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "GeoBoss",
+      "variant": "public-example-tag pricing-card--custom"
+    },
+    {
+      "badges": 1,
+      "hue": "-6deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Aéma Groupe",
+      "variant": "public-example-tag pricing-card--vitrine"
+    },
+    {
+      "badges": 1,
+      "hue": "-24deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Satellite Story",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "hue": "-24deg",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+      "title": "Atlante 3D",
+      "variant": "public-example-tag pricing-card--immersif"
+    }
+  ],
+  "client": 1267,
+  "newTabLinks": 36,
+  "width": 1267
+}

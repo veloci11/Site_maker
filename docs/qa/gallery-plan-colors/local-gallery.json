@@ -1,0 +1,82 @@
+{
+  "archiveText": "Projet archivé · Une présentation interactive de station de recharge en 3D.",
+  "cards": [
+    {
+      "badges": 1,
+      "title": "DOMTEKNIKA",
+      "variant": "public-example-tag pricing-card--vitrine"
+    },
+    {
+      "badges": 1,
+      "title": "Lactel",
+      "variant": "public-example-tag pricing-card--connecte"
+    },
+    {
+      "badges": 1,
+      "title": "Julie Thiam",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "title": "Tiny Heaven",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "title": "Addiction Agency",
+      "variant": "public-example-tag pricing-card--custom"
+    },
+    {
+      "badges": 1,
+      "title": "GeoBoss",
+      "variant": "public-example-tag pricing-card--custom"
+    },
+    {
+      "badges": 1,
+      "title": "Aéma Groupe",
+      "variant": "public-example-tag pricing-card--vitrine"
+    },
+    {
+      "badges": 1,
+      "title": "Satellite Story",
+      "variant": "public-example-tag pricing-card--immersif"
+    },
+    {
+      "badges": 1,
+      "title": "Atlante 3D",
+      "variant": "public-example-tag pricing-card--immersif"
+    }
+  ],
+  "filters": [
+    {
+      "hue": "",
+      "text": "Tous",
+      "texture": "none",
+      "variant": ""
+    },
+    {
+      "hue": "-6deg",
+      "text": "Vitrine",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\")",
+      "variant": "public-gallery-filter pricing-card--vitrine"
+    },
+    {
+      "hue": "-57deg",
+      "text": "Connecté",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\")",
+      "variant": "public-gallery-filter pricing-card--connecte"
+    },
+    {
+      "hue": "-24deg",
+      "text": "3D",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\")",
+      "variant": "public-gallery-filter pricing-card--immersif"
+    },
+    {
+      "hue": "12deg",
+      "text": "Sur mesure",
+      "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\")",
+      "variant": "public-gallery-filter pricing-card--custom"
+    }
+  ]
+}

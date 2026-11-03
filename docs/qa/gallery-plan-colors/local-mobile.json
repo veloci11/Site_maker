@@ -1,0 +1,15 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "badges": [
+        1,
+        1
+      ],
+      "client": 377,
+      "innerHeight": 844,
+      "innerWidth": 390,
+      "width": 377
+    }
+  }
+}
