@@ -78,3 +78,24 @@ Vérification de première visite publique : la source 2x a mis environ 985 ms �
 Contrôle public final de cette correction : révision `e2d7d435e98f48c1268d818263a1d4af410fecf0` sur gilmathis.com, ressource HD HTTP 200 et digest identique au fichier prévu. Le navigateur à DPR 2 charge bien la version HD et conserve la couche légère de repli. Preuves après chargement : `docs/qa/card-definition/after-public.jpg` et `after-public-card@2x.png`. Aucune erreur de console ; localhost fermé.
 
 Capture de contexte finale sans compression destructive : `docs/qa/card-definition/after-public-retina.png`, 2560 × 1440 pixels pour le viewport 1280 × 720 CSS à DPR 2. Elle évite que la capture JPEG 1x du navigateur masque la finesse du rendu réel.
+
+## Nouvelle amélioration demandée — grain indépendant de l’agrandissement
+
+Le retour « on peut encore améliorer la qualité » prolonge la correction précédente. La résolution de la source HD ne suffisait pas à rendre sa matière assez fine dans une grande carte. Les couleurs et le grain sont maintenant deux couches indépendantes : composition studio légère lissée, puis grain procédural à la densité réelle de l’écran. Aucun changement de layout, de texte ou de mini-carte.
+
+- Source de comparaison : état public déployé `e2d7d435e98f`, Vitrine avec adaptation mobile choisie. Avant et après local capturés au même viewport 1280 × 720 CSS, DPR 2, carte 568,3 × 530 CSS, étape options.
+- Dossier : `docs/qa/card-grain-native/`. Cartes PNG natives 1137 × 1060 : `before-card@2x.png` et `after-card@2x.png`. Elles sont réunies, sans interpolation, dans `comparison-full.png` ; les extraits de grain à l’échelle 1:1 sont réunis dans `comparison-grain.png`. Les deux planches ont été ouvertes et évaluées ensemble.
+- Contexte complet avant/après réuni et évalué dans `comparison-context.jpg`, à partir de deux captures Retina 2560 × 1440 normalisées à 1280 × 720 chacune : composition de page et contrôles identiques.
+- **Typographie** : textes et contrôles toujours nets, hors du filtre et du grain ; aucune modification de police, taille, graisse ni alignement.
+- **Composition et espacement** : mêmes dimensions, marges, rayons, position gauche/options droite, et empilement mobile. Aucun changement de contenu ni de navigation.
+- **Couleurs et états** : palette, compositions et variantes préservées. Masses colorées plus douces ; pas d’aplat gris ni de voile sur le texte. Bouton, focus, sélection et boîte de changement de forfait fonctionnels.
+- **Matière** : les amas de grain agrandi disparaissent ; le nouveau grain est fin et homogène à résolution native. Source légère 162 744 octets seule observée dans le réseau à DPR 2 ; la ressource HD de 879 898 octets n’est plus téléchargée par le configurateur.
+- **Contenus** : offre, inclusions, prix en attente et options strictement conservés ; aucun aperçu de site ajouté au configurateur.
+- Quatre variantes inspectées : `variants-desktop.jpg` et captures individuelles. Changement Sur mesure → Vitrine testé via la boîte de choix.
+- Mobile 390 × 844 CSS, DPR 1 : `vitrine-mobile.png`, carte entière lisible, total fixe en bas, aucun débordement global. Canvas 335 × 420 pour une carte 335 × 419,3 CSS ; sélection mobile testée. Viewport réinitialisé après l’essai.
+- Une seule peinture à l’ouverture puis au changement de taille/densité ; aucun écouteur de scroll, de pointeur ou boucle d’animation. Initialisation observée à environ 0,3 ms sur cette machine, sans garantie universelle. Aucune animation active au repos ni erreur/avertissement applicatif observé.
+- `npm run check` : TypeScript, build et 113 tests passants ; `git diff --check` propre. La livraison publique sera contrôlée séparément.
+
+final result: passed
+
+Cette itération conserve les sources et captures de l’essai HD précédent. Aucun e-mail ni changement de catalogue pendant cette correction.

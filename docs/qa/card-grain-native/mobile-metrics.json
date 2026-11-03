@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"viewport\":{\"width\":390,\"height\":844,\"dpr\":1},\"pageWidth\":375,\"canvas\":[{\"width\":335,\"height\":420,\"css\":{\"x\":20,\"y\":150,\"width\":335,\"height\":419.265625,\"top\":150,\"right\":355,\"bottom\":569.265625,\"left\":20}}],\"runningAnimations\":0}"
+  }
+}

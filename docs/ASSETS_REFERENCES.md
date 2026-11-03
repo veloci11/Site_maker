@@ -30,8 +30,8 @@ Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparé
 
 ## Texture des grandes cartes de forfait
 
-La grande carte utilise `public/assets/textures/grain-plasma-detail.webp` (1536 × 1024, 879 898 octets), copie binaire de la source originale `docs/asset-sources/textures/grain-plasma-v2.webp`. La matière et les couleurs sont celles de la texture studio déjà approuvée ; aucune nouvelle image générée.
+La grande carte conserve les couleurs de la texture studio approuvée. La source `public/assets/textures/grain-plasma-card.webp` (768 × 512, 162 744 octets) sert de composition colorée, en `cover` avec un lissage statique ; son grain bitmap n’est plus la matière finale de la grande carte. Un canvas indépendant ajoute un grain fin, procédural et déterministe à la densité réelle de l’écran, sans boucle d’animation. Aucun nouvel asset généré, aucun changement d’octets de la texture approuvée sur les petites cartes.
 
-Le fond respecte le ratio de l’image (`cover`) et `image-set` choisit la définition 1x ou 2x selon la densité. La version légère reste aussi sous la couche 2x pendant son chargement, pour éviter un aplat sans texture. La miniature 768 × 512 ne subit plus le zoom anisotrope 155 % / 145 % dans la grande carte. Elle reste inchangée sur les cartes de l’accueil, avec leur effet de survol approuvé.
+L’essai précédent avec `grain-plasma-detail.webp` (1536 × 1024, 879 898 octets, copie binaire de l’original archivé) améliorait la résolution de l’image mais son grain restait lié à son agrandissement. Il est remplacé par les deux couches séparées ci-dessus. Le fichier HD reste disponible pour les anciennes pages mises en cache, mais le nouveau configurateur ne le demande plus : une seule texture de 162 744 octets, déjà préchargée pour l’accueil.
 
-Contrôle IAB : l’écran DPR 2 charge la source 2x, l’écran DPR 1 conserve la ressource légère. Les captures du grain à résolution native sont dans `docs/qa/card-definition/`.
+Contrôle IAB : canvas 1137 × 1060 pour une carte 568,3 × 530 CSS à DPR 2 ; canvas 335 × 420 pour une carte 335 × 419,3 CSS à DPR 1. Les captures PNG natives avant/après et les planches de comparaison sont dans `docs/qa/card-grain-native/`. L’essai HD antérieur reste documenté dans `docs/qa/card-definition/`.
