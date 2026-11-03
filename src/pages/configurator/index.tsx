@@ -8,7 +8,6 @@ import {
   isOptionIncluded,
   isOptionSelected,
   normalizeConfiguration,
-  offers,
   optionDefinitions,
   optionGroups,
   quoteConfiguration,
@@ -26,13 +25,7 @@ import {
 } from '../../components/ui/accordion'
 import { Button } from '../../components/ui/button'
 import { Checkbox } from '../../components/ui/checkbox'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '../../components/ui/dropdown-menu'
+import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Textarea } from '../../components/ui/textarea'
@@ -41,8 +34,6 @@ import { api, errorMessage } from '../../lib/api'
 import { useProject } from '../../lib/project'
 import { clearDraft, readDraft, writeDraft } from '../../lib/draft'
 import { includedGuidance } from '../../content/configurator-copy'
-import { existingSiteOffers } from '../../content/existing-site'
-import '../configurator.css'
 
 function forOffer(current: Configuration, offerId: OfferId): Configuration {
   if (current.offerId === offerId) return current
@@ -318,101 +309,52 @@ export function ConfiguratorPage() {
       </div>
       <div className="configurator-grid">
         <aside className="configurator-card-column" aria-label="Votre forfait et son prix">
-          <div className={`selected-plan pricing-card--${offer.variant}`}>
-            <div className="selected-plan__heading">
-              <span className="selected-plan__eyebrow">Votre forfait</span>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    type="button"
-                    className="selected-plan__change"
-                    disabled={sending || stage === 'success'}
-                  >
-                    Changer <ChevronDown size={14} aria-hidden="true" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="public-offers-menu"
-                  aria-label="Changer de forfait"
-                >
-                  {offers.map((item) => (
-                    <DropdownMenuItem
-                      key={item.id}
-                      className={`public-offer-link pricing-card--${item.variant}`}
-                      aria-current={item.id === offer.id ? 'page' : undefined}
-                      onSelect={() => changeOffer(item.id)}
-                    >
-                      {item.title}
-                      {item.id === offer.id ? <Check size={16} aria-hidden="true" /> : null}
-                    </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator />
-                  {existingSiteOffers.map((item) => (
-                    <DropdownMenuItem
-                      key={item.id}
-                      asChild
-                      className={`public-offer-link pricing-card--${item.id}`}
-                    >
-                      <Link to={item.href}>{item.title}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+          <SelectedPlanCard
+            plan={offer}
+            disabled={sending || stage === 'success'}
+            onOfferChange={changeOffer}
+          >
+            <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
+              <span>{custom ? 'Votre projet' : 'Création du site'}</span>
+              <strong>{totalLabel}</strong>
+              {monthly ? (
+                <p>
+                  + {formatMoney(quote.monthlyTotalCents, quote.currency)} <span>/ mois</span>
+                </p>
+              ) : null}
+              <small>
+                {selected.length === 0
+                  ? 'Forfait de base'
+                  : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
+              </small>
             </div>
-            <h1>{offer.title}</h1>
-            <p className="selected-plan__description">{offer.description}</p>
-            <ul className="selected-plan__features">
-              {offer.features.map((feature) => (
-                <li key={feature}>
-                  <Check size={19} strokeWidth={1.6} aria-hidden="true" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <div className="selected-plan__bottom">
-              <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
-                <span>{custom ? 'Votre projet' : 'Création du site'}</span>
-                <strong>{totalLabel}</strong>
-                {monthly ? (
-                  <p>
-                    + {formatMoney(quote.monthlyTotalCents, quote.currency)} <span>/ mois</span>
-                  </p>
-                ) : null}
-                <small>
-                  {selected.length === 0
-                    ? 'Forfait de base'
-                    : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
-                </small>
+            {stage === 'success' ? (
+              <div className="selected-plan__confirmation">
+                <Check size={18} aria-hidden="true" />
+                Demande enregistrée
               </div>
-              {stage === 'success' ? (
-                <div className="selected-plan__confirmation">
-                  <Check size={18} aria-hidden="true" />
-                  Demande enregistrée
-                </div>
-              ) : stage === 'contact' ? (
-                <button
-                  type="button"
-                  className="selected-plan__button"
-                  onClick={goOptions}
-                  disabled={sending}
-                >
-                  <ArrowLeft size={17} aria-hidden="true" />
-                  Modifier mes options
-                </button>
-              ) : (
-                <button
-                  className="selected-plan__button"
-                  type="button"
-                  onClick={editingId ? saveExisting : goContact}
-                  disabled={sending}
-                >
-                  {sending ? 'Enregistrement…' : editingId ? 'Enregistrer mes choix' : 'Continuer'}
-                  <ArrowRight size={18} aria-hidden="true" />
-                </button>
-              )}
-            </div>
-          </div>
+            ) : stage === 'contact' ? (
+              <button
+                type="button"
+                className="selected-plan__button"
+                onClick={goOptions}
+                disabled={sending}
+              >
+                <ArrowLeft size={17} aria-hidden="true" />
+                Modifier mes options
+              </button>
+            ) : editingId ? (
+              <button
+                className="selected-plan__button"
+                type="button"
+                onClick={saveExisting}
+                disabled={sending}
+              >
+                {sending ? 'Enregistrement…' : 'Enregistrer mes choix'}
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            ) : null}
+          </SelectedPlanCard>
           {selected.length ? (
             <details className="configurator-selection">
               <summary>
@@ -530,7 +472,7 @@ export function ConfiguratorPage() {
               ) : null}
               <div className="configurator-next">
                 <Button size="lg" onClick={editingId ? saveExisting : goContact} disabled={sending}>
-                  {editingId ? 'Enregistrer mes choix' : 'Continuer'}
+                  {editingId ? 'Enregistrer mes choix' : 'Ajouter mes coordonnées'}
                   <ArrowRight size={17} aria-hidden="true" />
                 </Button>
               </div>
@@ -724,7 +666,7 @@ export function ConfiguratorPage() {
             ) : null}
           </div>
           <Button onClick={editingId ? saveExisting : goContact} disabled={sending}>
-            {editingId ? 'Enregistrer' : 'Continuer'}
+            {editingId ? 'Enregistrer' : 'Mes coordonnées'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
         </div>

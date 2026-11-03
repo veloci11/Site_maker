@@ -18,7 +18,7 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | Aspect commun des six cartes | `src/components/layout/PricingCard.tsx` | Même rendu pour créations et services ; CTA `.plan-cta`, images inchangées, couche `.pricing-card__grain` à entrée brève, aucun reflet/halo |
 | Couleurs, navigation et cartes partagées | `src/styles.css` | Variantes `.pricing-card--*`, liens `.public-offer-link` ; déclencheur Forfaits neutre |
 | Comparatif, galerie et placement des services | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.pricing-grid--existing` |
-| Mise en page du configurateur | `src/pages/configurator.css` | `.configurator-*` |
+| Mise en page du configurateur | `src/components/layout/project.css` | `.configurator-*` |
 
 Exemple : pour modifier les trois éléments de Vitrine, chercher `id: 'vitrine'` dans `offers`, puis changer les chaînes de `features`. Les cartes de l’accueil et du configurateur utilisent ces mêmes données.
 
@@ -78,3 +78,5 @@ Arrêter la prévisualisation avec Ctrl+C. Un résultat local ne modifie ni GitH
 Les rubriques d’options dans `src/pages/configurator/index.tsx` utilisent `Accordion type="single" collapsible`. Le résumé de chaque rubrique fermée est calculé depuis `isOptionSelected` et `isOptionIncluded` ; ne pas conserver une seconde liste de choix dans un état React. La galerie affiche un seul badge par référence. Badges et filtres récupèrent la classe `pricing-card--${offer.variant}` du catalogue et partagent un pseudo-élément texturé dans `src/pages/public.css` ; les variables de couleur et de cadrage viennent de `src/styles.css`, comme pour les cartes. Les tags secondaires servent uniquement au classement interne ; « Projet archivé » est écrit dans la description.
 
 Le choix de forfait dans `src/pages/configurator/index.tsx` réutilise `DropdownMenu` et le style `.public-offers-menu` du header. Les quatre créations viennent du catalogue ; Évolution/Refonte viennent de `existingSiteOffers`, sans copie des URL ou sujets. Le dialogue central et ses styles ont été retirés. Le focus de `.nav-offers-trigger` se voit par son trait noir de 2 px ; ne pas supprimer la règle globale de focus pour tous les autres contrôles.
+
+La grande carte des six offres est partagée dans `src/components/layout/SelectedPlanCard.tsx`. Les créations transmettent leur fonction `changeOffer` pour préserver leurs options ; les fiches Évolution/Refonte utilisent les destinations du catalogue. La matière, le menu translucide et les dimensions se règlent dans `src/components/layout/project.css`. Les formulaires de service passent `service` à `InquiryForm` dans `src/pages/public/index.tsx` : cela fixe le sujet et adapte les champs sans dupliquer la logique d’envoi. Le seul passage public aux coordonnées est après les options, avec sa version mobile ; ne pas remettre Continuer dans la carte.

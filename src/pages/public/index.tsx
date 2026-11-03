@@ -16,6 +16,7 @@ import {
   type Pricing,
 } from '../../../shared/catalog'
 import { PricingCard } from '../../components/layout/PricingCard'
+import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
@@ -734,7 +735,7 @@ export function FaqPage() {
 }
 
 type InquiryResult = { ok: true; id: string; notification: 'queued' | 'accepted' | 'unavailable' }
-type InquiryFormProps = { custom?: boolean; initialSubject?: string }
+type InquiryFormProps = { custom?: boolean; service?: (typeof existingSiteOffers)[number] }
 
 const customSubject = 'Projet sur mesure'
 const inquirySubjects = [
@@ -756,10 +757,10 @@ const inquiryMessageCopy = {
   },
 } as const
 
-function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) {
+function InquiryForm({ custom = false, service }: InquiryFormProps) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState(custom ? customSubject : initialSubject)
+  const [subject, setSubject] = useState(custom ? customSubject : service?.subject ?? '')
   const [currentSite, setCurrentSite] = useState('')
   const [message, setMessage] = useState('')
   const [inspiration, setInspiration] = useState('')
@@ -771,7 +772,7 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
   const inFlight = useRef(false)
   const idPrefix = custom ? 'custom' : 'contact'
   const existingSiteService = !custom
-    ? existingSiteOffers.find((service) => service.subject === subject)
+    ? service ?? existingSiteOffers.find((item) => item.subject === subject)
     : undefined
   const messageCopy = existingSiteService
     ? {
@@ -913,7 +914,7 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
             />
           </div>
         </div>
-        {!custom ? (
+        {!custom && !service ? (
           <div className="field">
             <Label htmlFor="contact-subject">Votre demande</Label>
             <select
@@ -1021,31 +1022,55 @@ export function ContactPage() {
   const [search] = useSearchParams()
   const service = getExistingSiteOffer(search.get('besoin'))
   usePageTitle(service ? `${service.title} de site` : 'Contacter le studio')
+  if (service) {
+    return (
+      <section className="configurator-page container existing-site-page">
+        <div className="configurator-topline">
+          <Link to="/forfaits">
+            <ArrowLeft size={15} aria-hidden="true" />
+            Tous les forfaits
+          </Link>
+          <Link to="/exemples">
+            Exemples de sites <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="configurator-grid">
+          <aside className="configurator-card-column" aria-label="Votre forfait et son prix">
+            <SelectedPlanCard plan={service}>
+              <div className="selected-plan__total">
+                <span>Votre projet</span>
+                <strong>Sur devis</strong>
+              </div>
+            </SelectedPlanCard>
+          </aside>
+          <div className="configurator-options">
+            <header className="configurator-section-heading">
+              <h2>{service.contactTitle}</h2>
+              <p>{service.contactDescription}</p>
+            </header>
+            <InquiryForm key={service.id} service={service} />
+          </div>
+        </div>
+      </section>
+    )
+  }
   return (
     <>
       <Intro
-        title={service ? `${service.title}.` : 'Contacter le studio'}
-        description={
-          service
-            ? service.contactDescription
-            : 'Décrivez votre projet ou posez votre question. Nous vous recontactons par e-mail pour préciser votre besoin.'
-        }
+        title="Contacter le studio"
+        description="Décrivez votre projet ou posez votre question. Nous vous recontactons par e-mail pour préciser votre besoin."
       />
       <section className="container public-contact-page">
         <div className="public-contact-copy">
           <div>
-            <h2>{service ? service.contactTitle : 'Choisir un forfait'}</h2>
-            <p>
-              {service
-                ? service.description
-                : 'Comparez les fonctions et les options avant de nous écrire.'}
-            </p>
+            <h2>Choisir un forfait</h2>
+            <p>Comparez les fonctions et les options avant de nous écrire.</p>
             <Link className="text-link" to="/forfaits">
               Comparer les forfaits <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>
-        <InquiryForm key={service?.id ?? 'contact'} initialSubject={service?.subject ?? ''} />
+        <InquiryForm key="contact" />
       </section>
     </>
   )
