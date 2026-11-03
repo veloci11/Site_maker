@@ -26,6 +26,8 @@ Réactivité prioritaire. Fondu de survol 120 ms ; entrées de page 180 ms ; ape
 
 La préférence de réduction des animations supprime les mouvements. Un état sélectionné et un focus restent visibles sans couleur seule. Les accordéons gardent une réponse courte et les contrôles restent utilisables pendant les transitions.
 
+Le comparatif possède un bouton Afficher les détails sous le tableau. Il ouvre et referme les lignes complémentaires avec un chevron et un dépliage CSS de 280 ms, sans case à cocher ni mesure de hauteur JavaScript. Le tableau reste unique, ses en-têtes conservent leur sémantique et les lignes repliées sont masquées aux lecteurs d’écran. Le bouton reste accessible au clavier ; la réduction des animations supprime la transition.
+
 ## Parcours
 
 Accueil concis sans exemple en ouverture → forfait → configuration → coordonnées → demande → recontact humain. Aucun compte à créer. Les choix sont à droite d’une grande carte texturée du forfait avec le total sur ordinateur ; le mobile empile carte/options et dispose d’une barre de total fixe. Les détails se déplient au même endroit, sans onglets redondants.

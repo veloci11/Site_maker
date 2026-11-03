@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ChevronRight, Maximize2 } from 'lucide-react'
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  Maximize2,
+} from 'lucide-react'
 import {
   offers,
   getOffer,
@@ -20,7 +28,6 @@ import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Textarea } from '../../components/ui/textarea'
-import { Checkbox } from '../../components/ui/checkbox'
 import { Reveal } from '../../components/layout/motion'
 import {
   Accordion,
@@ -311,22 +318,18 @@ function ComparisonCell({ status }: { status: ComparisonStatus }) {
   return <span className="comparison-status">Selon besoin</span>
 }
 
+function ComparisonReveal({ children, collapsed }: { children: ReactNode; collapsed?: boolean }) {
+  return (
+    <div className="comparison-detail-reveal" aria-hidden={collapsed}>
+      <div className="comparison-detail-reveal__inner">{children}</div>
+    </div>
+  )
+}
+
 function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
-  const rows = details ? [...comparisonRows, ...comparisonDetails] : comparisonRows
   return (
-    <div className="offer-comparison">
-      <div className="comparison-controls">
-        <div className="comparison-details-toggle">
-          <Checkbox
-            id={`${id}-details`}
-            checked={details}
-            onCheckedChange={(value) => setDetails(value === true)}
-            aria-controls={`${id}-table`}
-          />
-          <Label htmlFor={`${id}-details`}>Afficher les détails</Label>
-        </div>
-      </div>
+    <div className="offer-comparison" data-details-open={details}>
       <div
         className="table-scroll comparison-scroll"
         tabIndex={0}
@@ -365,12 +368,14 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {comparisonRows.map((row) => (
               <tr key={row.title}>
                 <th scope="row">
                   {row.title}
-                  {details && row.hint ? (
-                    <span className="comparison-row-hint">{row.hint}</span>
+                  {row.hint ? (
+                    <ComparisonReveal collapsed={!details}>
+                      <span className="comparison-row-hint">{row.hint}</span>
+                    </ComparisonReveal>
                   ) : null}
                 </th>
                 {row.values.map((value, index) => (
@@ -381,11 +386,44 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
               </tr>
             ))}
           </tbody>
+          <tbody id={`${id}-details`} className="comparison-detail-rows" aria-hidden={!details}>
+            {comparisonDetails.map((row) => (
+              <tr key={row.title}>
+                <th scope="row">
+                  <ComparisonReveal>
+                    <div className="comparison-detail-cell">
+                      {row.title}
+                      {row.hint ? <span className="comparison-row-hint">{row.hint}</span> : null}
+                    </div>
+                  </ComparisonReveal>
+                </th>
+                {row.values.map((value, index) => (
+                  <td key={offers[index].id}>
+                    <ComparisonReveal>
+                      <div className="comparison-detail-cell">
+                        <ComparisonCell status={value} />
+                      </div>
+                    </ComparisonReveal>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
       <p className="comparison-mobile-hint">
         Faites défiler pour comparer les forfaits <ArrowRight size={14} aria-hidden="true" />
       </p>
+      <button
+        type="button"
+        className="comparison-details-toggle"
+        aria-expanded={details}
+        aria-controls={`${id}-details`}
+        onClick={() => setDetails((open) => !open)}
+      >
+        {details ? 'Masquer les détails' : 'Afficher les détails'}
+        <ChevronDown size={18} aria-hidden="true" />
+      </button>
     </div>
   )
 }

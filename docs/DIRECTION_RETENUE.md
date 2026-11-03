@@ -12,7 +12,7 @@ Les dernières corrections de Mathis priment sur les premières maquettes.
 - Pas d’animation de taille ni de barre de progression du header ; aucun traitement de scroll de navigation. Configurateur chargé à l’ouverture du forfait, limite de chargement à l’intérieur du layout pour garder la navigation affichée.
 - Fiche de forfait = configurateur : grande carte texturée du forfait et total à gauche, choix façon Apple à droite. Aucun aperçu de site ni onglet redondant. Sur mobile, carte au-dessus puis options et barre de total fixe.
 - Déploiement ponctuel et maintenance mensuelle facultatifs, deux totaux séparés.
-- Comparatif des quatre forfaits avec coches et case Afficher les détails.
+- Comparatif des quatre forfaits avec coches et bouton Afficher les détails sous le tableau, chevron et dépliage fluide ; aucune case à cocher pour ce contrôle.
 - Boutons Configurer noirs au repos, texture colorée du forfait au survol et au focus. Les cartes principales conservent leur effet approuvé.
 - Refonte & évolution sous les offres, sur devis, avec contact contextualisé et URL facultative du site actuel. Les quatre forfaits de création restent distincts. Les inclusions sont expliquées avant les options du configurateur.
 - Geist unique, composants shadcn/Radix et icônes Lucide.

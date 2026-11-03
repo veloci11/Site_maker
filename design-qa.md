@@ -181,3 +181,12 @@ Statut de ce compte rendu : vérifications locales ; preuve de publication ajout
 
 
 Publication du lot menu/inclusions/refonte : révision `6adfae1ad67f19dee184120fa9eaf87889c36534`, release `20261103T032149Z-6adfae1ad67f`, client `index-D7l4zL1X.js`. Santé HTTPS et empreinte publique confirmées. Dans le navigateur public : contact noir (RGB 17/17/17, texte blanc), cinq entrées du menu, sujet Refonte prérempli, URL facultative, capture Addiction chargée en 2560 × 1440. Mobile 390 × 844 CSS : cinq sous-liens, contact noir, fermeture après choix Vitrine, largeur 375/375 px. Captures `after-public-menu-retina.png`, `after-public-mobile-menu.jpg`, `after-public-agency.jpg`. Aucun formulaire soumis en production. Le lot précédent est terminé et vérifié ; la nouvelle demande de dépliage reste séparée jusqu’à sa validation.
+
+
+## Dépliage sous le comparatif — lot suivant
+
+La case à cocher du haut est remplacée par un bouton pleine largeur sous le tableau, avec chevron. Le tableau reste natif et unique ; les lignes complémentaires et les aides se déplient en CSS (grille 0fr/1fr, 280 ms), sans mesure JavaScript. La préférence de réduction des animations supprime la transition.
+
+Contrôle local : aucun checkbox dans le comparatif ; 6 lignes accessibles replié, hauteur du tbody détaillé 0 ; ouverture à 420,5 px, aria-hidden=false ; fermeture avec Entrée, retour à 0 et focus conservé. Des transitions de 280 ms ont été observées pendant l’ouverture ; avec réduction du mouvement, aucune animation active. Viewport mobile 390 × 844 CSS : largeur client/document 375/375, bouton 335 × 52, fermeture complète sans lignes vides. Captures locales `details-collapsed-local.jpg` et `details-expanded-local.jpg`.
+
+TypeScript, build et 113 tests passent après ce lot. Les cartes, boutons Configurer, menu et offres précédemment livrés sont conservés. Publication et contrôle public suivis séparément.

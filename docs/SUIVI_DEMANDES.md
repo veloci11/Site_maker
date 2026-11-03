@@ -19,9 +19,16 @@ Révision applicative `6adfae1`, release `20261103T032149Z-6adfae1ad67f`, sur `h
 
 Preuves : `qa/offers-menu-buttons/`, `../design-qa.md`. Aucun message réel soumis sur le site public, aucun e-mail de test émis.
 
-## Demande suivante — en cours de contrôle local
+## Lot suivant — contrôle local terminé, publication en cours
 
-« Afficher les détails » sous le comparatif : bouton dépliant avec chevron et animation douce, à la place de la case à cocher. Le changement est codé localement ; il sera compté comme livré après contrôle et publication.
+« Afficher les détails » sous le comparatif : bouton dépliant avec chevron et animation douce, à la place de la case à cocher. Contrôles locaux : ouverture/fermeture, clavier, lignes repliées de hauteur nulle, tableau unique, réduction du mouvement et largeur mobile. TypeScript, build et 113 tests passent. Il sera compté comme livré après publication et contrôle public.
+
+## File suivante — pas encore commencée
+
+1. Retirer les flèches des boutons Configurer.
+2. Donner aux boutons des cartes de l’accueil le style et le survol des boutons du comparatif.
+3. Ajouter un survol coloré à Forfaits dans la barre de navigation.
+4. Séparer Évolution et Refonte en deux offres avec leurs propres cartes et motifs, au lieu d’un bloc commun.
 
 ## Décisions antérieures conservées et revues dans le code
 
