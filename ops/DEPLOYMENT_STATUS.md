@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 02/11/2026 à 22:55, heure de Mexico (UTC−06), contrôlée ensuite dans le navigateur public sur ordinateur et mobile.
+Dernière livraison applicative : 02/11/2026 à 23:53, heure de Mexico (UTC−06), contrôlée ensuite dans le navigateur public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `6133f1e47ab998d59b4b1ecd3682e45fc9ce8020`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T045550Z-6133f1e47ab9` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-uoRXqwKE.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `e5c136e394d00e02fe9780c2d87ec37fca19b7802470d00563d79ba6f2e33348`.
-- Version précédente disponible : `releases/20261103T040155Z-7c5550c67402`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `8c497b4c5019f55f8c89b29adc256e0f5da437ee`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T055310Z-8c497b4c5019` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-D32bwwWH.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `42d1fcc31632a3e83b0a4e82ca3d726442a57e9740784bd74909e040fcfae3e7`.
+- Version précédente disponible : `releases/20261103T045550Z-6133f1e47ab9`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -19,28 +19,26 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 - Navigation : menu Forfaits avec six entrées, FAQ à droite avant le contact noir. Le déclencheur Forfaits reste neutre ; la texture apparaît sur chaque offre du sous-menu au survol ou au focus. Liste dépliable sur mobile, fermeture après navigation.
 - Cartes : matière et effets approuvés des quatre créations conservés ; deux nouvelles variantes pour les services. Boutons noirs au repos, texture au survol/focus partagée avec le comparatif ; Configurer sans flèche. Flèches diagonales retirées du public.
-- Halo préexistant : opacité de 180 ms et petit déplacement de 550 ms à l’interaction, sans boucle ni suivi de souris. Recherche ElevenLabs documentée dans `docs/EFFET_CARTES_ELEVENLABS.md` ; aucune de leurs textures copiée, aucun changement du fondu de 120 ms de studio.
+- Halo renforcé à la demande de Mathis : lueur colorée visible autour des six cartes, opacité de 220 ms et expansion de 420 ms ; lumière intérieure à opacité 0,55 et déplacement de 620 ms. Ombres et teinte fixes, aucune boucle ni suivi du pointeur. Texture et fondu de 120 ms conservés. Le terme « grainy gradient » / dégradé granuleux est sourcé dans `docs/EFFET_CARTES_ELEVENLABS.md`.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
 - Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
 - Galerie : neuf références avec filtres et crédits. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte le badge « Projet archivé », avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans le même onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
-- FAQ : huit questions concrètes sur frais récurrents, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement. Corpus qualitatif de dix discussions Reddit, liens et limites documentés. Aucune statistique de marché déduite de ces fils. Aucun prix, avis client, rabais ou délai chiffré inventé.
+- FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; aucune nouvelle dépendance de production. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
 ## Vérifications de cette livraison
 
-- `npm run check` final : TypeScript, build et **113 tests passants** après la dernière correction Atlante. `git diff --check` propre. Revue indépendante sans blocage.
-- Origine Ubuntu : santé valide, quatre créations, **26 options**, bases de prix nulles, paiements désactivés.
-- HTTPS public : santé et empreinte client exactes ; les quatre nouveaux WebP ont un SHA-256 identique à leur export local prévu.
-- Navigateur public desktop : six cartes de 285,75 × 407,25 CSS ; Évolution et Refonte centrées aux mêmes colonnes que Connecté et Immersif. Matière de Refonte observée au survol et capture Retina native enregistrée.
-- Sous-menu public : six liens, texture révélée sur Connecté, texte blanc, déclencheur neutre sans pseudo-image. Clavier, touche Fin, Échap et focus vérifiés localement. Contact noir et FAQ à droite conservés.
-- Galerie publique : neuf références ; filtre 3D affichant cinq projets, dont GeoBoss ; badge et lien d’archive Atlante exacts. Filtre Vitrine avec deux exemples vérifié localement. Ancienne route Atlante arrivée directement sur le README dans le même onglet lors de l’essai local.
-- FAQ publique : huit questions, première réponse ouverte et inspectée. À 390 × 844 CSS, largeur client/document 375/375 px, sans débordement.
-- Menu public mobile : six offres et FAQ ; comparatif public mobile : `aria-expanded=true`, bouton Masquer les détails et zéro case à cocher. Les essais locaux couvrent aussi les contacts Évolution/Refonte, le centrage à 1024 px, le mobile et la réduction du mouvement.
-- Aucune erreur ou alerte applicative observée dans la dernière visite publique. Viewport et émulation de mouvement temporaires réinitialisés.
-- Rapport : `design-qa.md`. Captures : `docs/qa/card-alignment-faq-portfolio/services-public-retina.png`, `menu-public-retina.png`, `cards-public.jpg`, `faq-public.jpg`, `faq-mobile-public.jpg`, `menu-mobile-public.jpg`, `details-mobile-public.jpg`.
-- Aucun formulaire soumis ni e-mail réel de test envoyé pendant ce lot.
-- Localhost arrêté : aucun processus à l’écoute sur **4173 ou 4174** après contrôle. Onglet temporaire fermé ; seul l’onglet public est conservé dans l’IAB.
+- `npm run check` final : TypeScript, build et **113 tests passants** après les deux FAQ et le CSS définitifs. `git diff --check` propre. Revue indépendante CSS puis texte sans blocage.
+- Origine Ubuntu : santé valide, quatre créations, **26 options**, bases de prix nulles et paiements désactivés. Sauvegarde privée avant la bascule.
+- HTTPS public : santé et empreinte client conformes au build ; code applicatif ci-dessus effectivement en ligne, distinct du commit documentaire ultérieur.
+- Halo public Connecté : opacité extérieure 1 et intérieure 0,55 ; transitions calculées 220/420/620 ms conformes. Ombres colorées visibles dans la capture native PNG et zéro animation active après stabilisation. Les six cartes utilisent les mêmes règles.
+- Contrôles locaux : dix échantillons de mouvement sur 629 ms ; retrait du pointeur = halo masqué, focus clavier = halo visible et contour 3 px, réduction des animations effective. Aucun suivi de souris, filtre animé ou animation permanente introduit.
+- Mobile local : six cartes de 335 × 407,25 CSS, client/document 375/375 à viewport 390 × 844. Clic Vitrine arrivé au configurateur réel, inclusions et options visibles.
+- FAQ publique : dix questions, les deux nouvelles réponses ouvertes et lues. Mobile public 390 × 844 CSS : client/document 375/375, réponse « mauvais forfait » lisible sans débordement. Les trois questions de l’accueil sont préservées.
+- Aucune erreur ni alerte applicative observée dans la dernière visite publique. Viewport et émulation de mouvement temporaires réinitialisés. Aucune soumission de formulaire ni envoi réel d’e-mail.
+- Preuves : `design-qa.md`, `docs/qa/visible-halo/after-public-retina.png`, `public-halo.json`, `faq-choice-public.jpg`, `faq-correction-mobile-public.jpg`. Les sources de texture et les neuf exemples sont inchangés ; les vérifications détaillées du lot précédent restent dans `docs/qa/card-alignment-faq-portfolio/` et l’historique de `design-qa.md`.
+- Localhost arrêté : aucun processus à l’écoute sur **4173 ou 4174** après contrôle. Seul l’onglet public est conservé dans l’IAB.
 
 ## Isolement et sauvegardes
 

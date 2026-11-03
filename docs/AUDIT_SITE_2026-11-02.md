@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour : les six cartes harmonisées et centrées, les couleurs sur chaque offre du sous-menu, « Afficher plus de détails », les huit FAQ issues d’une recherche Reddit qualitative et les neuf références de galerie sont publiés dans `6133f1e` et contrôlés en ligne sur ordinateur/mobile. Le corps ci-dessous conserve la revue de l’itération précédente. Le suivi actuel et les reports explicites sont dans [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour : le halo coloré désormais visible et les deux FAQ d’aide au choix du forfait sont publiés dans `8c497b4`, puis contrôlés dans l’IAB public sur ordinateur/mobile. La page FAQ contient dix questions ; les trois de l’accueil restent inchangées. Les six cartes harmonisées, le sous-menu, les neuf références et les autres décisions précédentes sont conservés. Le corps ci-dessous reste la revue historique d’une itération antérieure. Suivi actuel et reports : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

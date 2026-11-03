@@ -1,0 +1,7 @@
+{
+  "boxShadow": "rgba(130, 83, 255, 0.42) -8px -4px 24px 3px, rgba(255, 139, 101, 0.32) 9px 6px 26px 4px",
+  "innerOpacity": "0.55",
+  "innerTransition": "opacity 0.22s ease-out, transform 0.62s cubic-bezier(0.22, 1, 0.36, 1)",
+  "outerOpacity": "1",
+  "outerTransition": "opacity 0.22s ease-out, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1)"
+}
