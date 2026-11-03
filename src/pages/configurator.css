@@ -49,8 +49,11 @@
 .configurator-section-heading p { font-size:15px; color:#625a6c; }
 .configurator-groups { border-top:1px solid #dbd4e0; }
 .configurator-group { border-bottom:1px solid #dbd4e0; }
-.configurator-group > .accordion-trigger { padding:22px 0; gap:12px; font-size:17px; font-weight:500; text-align:left; letter-spacing:-.02em; }
+.configurator-group > .accordion-heading > .accordion-trigger { padding:22px 0; gap:12px; font-size:17px; font-weight:500; text-align:left; letter-spacing:-.02em; }
+.configurator-group__copy { display:grid; gap:8px; min-width:0; }
 .configurator-group__heading { display:flex; align-items:center; gap:12px; }
+.configurator-group__summary { color:#6b6273; font-size:12px; font-weight:400; line-height:1.6; letter-spacing:0; overflow-wrap:anywhere; }
+.configurator-group .accordion-trigger[data-state="open"] .configurator-group__summary { display:none; }
 .configurator-group__number { font-size:11px; color:#81758c; font-weight:400; letter-spacing:0; }
 .configurator-group__count { display:inline-flex; align-items:center; justify-content:center; min-width:21px; height:21px; padding:0 6px; border-radius:999px; background:#e6dff0; font-size:11px; font-weight:500; color:#42334f; }
 .configurator-choice-list { display:grid; gap:10px; padding-bottom:8px; }
@@ -129,7 +132,7 @@
  .configurator-choice { grid-template-columns:18px minmax(0,1fr) auto; gap:12px; }
  .configurator-choice__price { grid-column:auto; }
  .configurator-choice__copy > strong { font-size:14px; }
- .configurator-group > .accordion-trigger { padding-block:22px; }
+ .configurator-group > .accordion-heading > .accordion-trigger { padding-block:22px; }
  .configurator-mobile-bar { position:fixed; z-index:25; bottom:0; left:0; right:0; display:flex; justify-content:space-between; align-items:center; gap:16px; min-height:78px; padding:12px 20px calc(12px + env(safe-area-inset-bottom)); border-top:1px solid #e4dce9; background:#fff; box-shadow:0 -4px 20px rgb(54 34 68 / .04); }
  .configurator-mobile-bar > div { display:grid; gap:2px; }
  .configurator-mobile-bar span { font-size:11px; color:#6d6077; }

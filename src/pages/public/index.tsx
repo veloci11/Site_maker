@@ -616,10 +616,12 @@ export function ExamplesPage() {
               <a
                 className="public-example-tile__image"
                 href={example.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={
                   example.archived
-                    ? `Voir la présentation de ${example.title}, projet archivé`
-                    : `Ouvrir le site ${example.title}`
+                    ? `Voir la présentation de ${example.title}, projet archivé (nouvel onglet)`
+                    : `Ouvrir le site ${example.title} (nouvel onglet)`
                 }
               >
                 <img
@@ -632,20 +634,33 @@ export function ExamplesPage() {
               </a>
               <div className="public-example-tile__body">
                 <div className="public-example-tags">
-                  <span className="public-example-tag">
+                  <span className="public-example-tag" data-category={example.offerId}>
                     {exampleFilters.find((item) => item.id === example.offerId)?.label ??
                       example.category}
                   </span>
                   {example.tags?.map((tag) => (
-                    <span className="public-example-tag" key={tag}>
+                    <span
+                      className="public-example-tag"
+                      data-category={
+                        tag === '3D' ? 'immersif' : tag === 'Contenus' ? 'content' : undefined
+                      }
+                      key={tag}
+                    >
                       {tag}
                     </span>
                   ))}
                   {example.archived ? (
-                    <span className="public-example-tag">Projet archivé</span>
+                    <span className="public-example-tag" data-category="archived">
+                      Projet archivé
+                    </span>
                   ) : null}
                 </div>
-                <a className="public-example-tile__title" href={example.url}>
+                <a
+                  className="public-example-tile__title"
+                  href={example.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <h2>{example.title}</h2>
                   <ArrowRight size={21} aria-hidden="true" />
                 </a>
@@ -655,11 +670,16 @@ export function ExamplesPage() {
                     className="public-example-credit"
                     href={example.sourceUrl}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
                     Source : {example.creator}
                   </a>
-                  <a className="text-link" href={example.url}>
+                  <a
+                    className="text-link"
+                    href={example.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {example.archived ? 'Voir la présentation' : 'Voir le site'}
                   </a>
                 </div>

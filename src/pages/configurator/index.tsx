@@ -453,27 +453,41 @@ export function ConfiguratorPage() {
                 <p>{includedGuidance[offer.id]}</p>
               </header>
               <Accordion
-                type="multiple"
-                defaultValue={['essentials']}
+                type="single"
+                collapsible
+                defaultValue="essentials"
                 className="configurator-groups"
               >
                 {optionGroups.map((group, index) => {
                   const options = optionDefinitions.filter((option) => option.group === group.id)
-                  const chosen = options.filter(
-                    (option) =>
-                      isOptionSelected(configuration, option.id) &&
-                      !isOptionIncluded(configuration, option.id),
-                  ).length
+                  const selectedOptions = options.filter((option) =>
+                    isOptionSelected(configuration, option.id),
+                  )
                   return (
                     <AccordionItem value={group.id} key={group.id} className="configurator-group">
                       <AccordionTrigger>
-                        <span className="configurator-group__heading">
-                          <span className="configurator-group__number">
-                            {String(index + 1).padStart(2, '0')}
+                        <span className="configurator-group__copy">
+                          <span className="configurator-group__heading">
+                            <span className="configurator-group__number">
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
+                            <span>{group.title}</span>
+                            {selectedOptions.length > 0 ? (
+                              <span className="configurator-group__count">
+                                {selectedOptions.length}
+                              </span>
+                            ) : null}
                           </span>
-                          <span>{group.title}</span>
-                          {chosen > 0 ? (
-                            <span className="configurator-group__count">{chosen}</span>
+                          {selectedOptions.length > 0 ? (
+                            <span className="configurator-group__summary">
+                              {selectedOptions
+                                .map((option) =>
+                                  isOptionIncluded(configuration, option.id)
+                                    ? `${option.title} (inclus)`
+                                    : option.title,
+                                )
+                                .join(' · ')}
+                            </span>
                           ) : null}
                         </span>
                       </AccordionTrigger>

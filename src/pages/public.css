@@ -279,6 +279,12 @@
 .public-example-tile img { aspect-ratio: 16/9; }
 .public-example-tile__body { padding-top: 18px; }
 .public-example-tag { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 10px; border-radius: 999px; background: var(--muted); font-size: 10px; line-height: 1.4; }
+.public-example-tag[data-category="vitrine"] { background:#e5edff; color:#294a88; }
+.public-example-tag[data-category="connecte"] { background:#def4eb; color:#225b49; }
+.public-example-tag[data-category="immersif"] { background:#ede3ff; color:#65408b; }
+.public-example-tag[data-category="sur-mesure"] { background:#ffe5d5; color:#893e23; }
+.public-example-tag[data-category="content"] { background:#dff2f7; color:#285c6c; }
+.public-example-tag[data-category="archived"] { background:#fff0ce; color:#785719; }
 .public-example-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .public-example-tile__body .public-example-tile__title { padding-top: 12px; }
 .public-example-tile__description { margin-top: 8px; color: var(--muted-foreground); font-size: 14px; }

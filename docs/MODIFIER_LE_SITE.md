@@ -46,7 +46,7 @@ Placer les exports actifs dans `public/assets/examples/`, puis modifier le chemi
 
 Les neuf références sont DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven, Addiction Agency, GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D. Pour qu’un exemple classé autrement apparaisse aussi dans le filtre 3D, utiliser `tags: ['3D']` comme GeoBoss. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
 
-Les images, titres et actions des exemples sont des liens directs dans le même onglet. Les crédits conservent leur propre lien source. `ExampleDetailPage` maintient la compatibilité de `/exemples/:slug` : il redirige par effet vers `example.url` avec `window.location.replace` et laisse un lien de repli. Le composant `ExamplePreview` est retiré ; ne pas réintroduire de fenêtre intermédiaire ou de scène embarquée.
+Les images, titres et actions des exemples sont des liens directs dans un nouvel onglet. Les crédits conservent leur propre lien source. `ExampleDetailPage` maintient la compatibilité de `/exemples/:slug` : il redirige par effet vers `example.url` avec `window.location.replace` et laisse un lien de repli. Le composant `ExamplePreview` est retiré ; ne pas réintroduire de fenêtre intermédiaire ou de scène embarquée.
 
 L’interface utilise Geist Sans, Lucide et les composants de `src/components/ui/`. Réutiliser ces éléments pour garder les tailles, focus et interactions cohérents. Les cartes et leur matière ont été validées : leurs textures, recadrages et transitions sont décrits dans `docs/CHARTE_INTERFACE.md`.
 
@@ -74,3 +74,5 @@ git diff --check
 La préférence de Mathis concerne aussi les recherches de références : utiliser exclusivement le navigateur intégré, pas Google Chrome. Ne pas modifier la fenêtre ou les formulaires de son navigateur personnel pour contrôler le site.
 
 Arrêter la prévisualisation avec Ctrl+C. Un résultat local ne modifie ni GitHub ni le site public. La mise en ligne isolée sur Ubuntu est décrite dans `ops/README.md` ; son état vérifié est suivi dans `ops/DEPLOYMENT_STATUS.md`.
+
+Les rubriques d’options dans `src/pages/configurator/index.tsx` utilisent `Accordion type="single" collapsible`. Le résumé de chaque rubrique fermée est calculé depuis `isOptionSelected` et `isOptionIncluded` ; ne pas conserver une seconde liste de choix dans un état React. Les couleurs des badges de galerie sont les sélecteurs `data-category` de `src/pages/public.css`, sans modifier les images ou les filtres.

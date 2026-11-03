@@ -4,6 +4,12 @@ Version actuelle vérifiée : `34aa797` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
+## Accordéon et galerie — vérifiés localement, publication en cours
+
+Demande limitée aux interactions et badges : une seule rubrique d’options ouverte à la fois, refermable au clavier ; les rubriques fermées montrent les choix actifs, dont les inclusions identifiées. Le résumé est dérivé de la configuration existante, sans changement de prix ou de persistance. Une option retirée disparaît du résumé, les choix restent cochés à la réouverture.
+
+La galerie conserve ses neuf références, images, filtres et crédits. Image, titre et action ouvrent un nouvel onglet (`target="_blank"`, `rel="noopener noreferrer"`), remplaçant explicitement la précédente consigne. Badges pastel distincts pour les quatre catégories, Contenus et Projet archivé. Contrôles IAB locaux : ouverture d’un onglet DOMTEKNIKA distinct, conservation de la galerie, résumés, inclusions, clavier et mobile. TypeScript, build et 113 tests passent. Preuves : `qa/accordion-gallery/`.
+
 ## Images conservées, reflet retiré et entrée du grain — terminé et vérifié en ligne
 
 Mathis rejette le reflet et demande de se rapprocher d’ElevenLabs avec un grain qui bouge brièvement au début. Sa clarification « nos images sont bien » impose de conserver exactement les images actuelles. Les trois fichiers colorés ont été comparés à la version précédente : identiques octet pour octet.
