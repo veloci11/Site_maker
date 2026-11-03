@@ -11,13 +11,13 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | Questions fréquentes | `shared/catalog.ts` | `faqs` : `question`, `answer` |
 | Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : `image`, `url`, `sourceUrl`, `creator` |
 | Explication des inclusions avant les options | `src/content/configurator-copy.ts` | `includedGuidance`, une entrée par forfait |
-| Texte et bouton Refonte & évolution | `src/content/existing-site.ts` | `existingSiteOffer` |
+| Textes, boutons et sujets Évolution/Refonte | `src/content/existing-site.ts` | `existingSiteOffers`, une entrée par prestation |
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
 | Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
-| Aspect d’une carte sur l’accueil | `src/components/layout/PricingCard.tsx` | Rendu de carte ; les textes viennent du catalogue |
+| Aspect d’une carte sur l’accueil | `src/components/layout/PricingCard.tsx` | Rendu de carte ; textes dans le catalogue, CTA partagé `.plan-cta`, halo `.pricing-card__glow` |
 | Couleurs, navigation et cartes partagées | `src/styles.css` | Variables en tête de fichier et sélecteurs correspondants |
-| Comparatif, galerie et bloc Refonte | `src/pages/public.css` | `.comparison-cta`, `.public-gallery-*`, `.existing-site-offer` |
+| Comparatif, galerie et cartes de sites existants | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.existing-site-card` |
 | Mise en page du configurateur | `src/pages/configurator.css` | `.configurator-*` |
 
 Exemple : pour modifier les trois éléments de Vitrine, chercher `id: 'vitrine'` dans `offers`, puis changer les chaînes de `features`. Les cartes de l’accueil et du configurateur utilisent ces mêmes données.
@@ -32,7 +32,7 @@ Les identifiants `id`, les slugs et les clés des options relient l’interface 
 
 ## Refonte et formulaires
 
-Refonte & évolution est une prestation sur devis, distincte des quatre forfaits de création. Son lien est `/contact?besoin=refonte` : le formulaire préremplit le sujet et propose l’URL facultative du site actuel. Cette URL est jointe au message enregistré. Le paramètre `projet` sert aux dossiers privés ; ne pas l’utiliser pour une prestation publique.
+Évolution et Refonte sont deux prestations sur devis, distinctes des quatre forfaits de création. Leurs liens sont `/contact?besoin=evolution` et `/contact?besoin=refonte` : le formulaire préremplit le sujet et propose l’URL facultative du site actuel. Cette URL est jointe au message enregistré. `existingSiteOffers` alimente les deux cartes, le menu et les textes du formulaire ; `getExistingSiteOffer` retrouve une prestation à partir de son identifiant. Le paramètre `projet` sert aux dossiers privés ; ne pas l’utiliser pour une prestation publique.
 
 Dans `InquiryForm`, `website` est un champ antispam masqué. L’URL fournie par le visiteur va dans `currentSite`. Conserver cette séparation, la limite de longueur, le blocage du double envoi et l’identifiant de nouvelle tentative.
 
@@ -41,6 +41,8 @@ Dans `InquiryForm`, `website` est un champ antispam masqué. L’URL fournie par
 Placer les exports actifs dans `public/assets/examples/`, puis modifier le chemin dans `examples`. Garder le lien réel et le crédit du site présenté. Les originaux et anciens essais restent dans `docs/asset-sources/` ou `docs/qa/`, hors du build public. La provenance des captures est documentée dans `docs/ASSETS_REFERENCES.md`.
 
 L’interface utilise Geist Sans, Lucide et les composants de `src/components/ui/`. Réutiliser ces éléments pour garder les tailles, focus et interactions cohérents. Les cartes et leur matière ont été validées : leurs textures, recadrages et transitions sont décrits dans `docs/CHARTE_INTERFACE.md`.
+
+Les boutons noirs des cartes et du comparatif partagent `.plan-cta` dans `src/styles.css`. Le dépliage du comparatif reste un tableau unique : un bouton après le tableau pilote les lignes complémentaires, animées en CSS par `.comparison-detail-reveal`. Le léger halo des cartes de création n’utilise que l’opacité et le déplacement d’un élément décoratif, sans boucle ni écouteur de souris.
 
 Le JSX des pages modifiées est indenté, avec des noms explicites. Garder les textes partagés dans le catalogue ou `src/content/`, les actions dans des fonctions nommées et les styles dans les fichiers CSS correspondants. Les commentaires expliquent les règles moins évidentes, comme la déduplication d’une demande.
 

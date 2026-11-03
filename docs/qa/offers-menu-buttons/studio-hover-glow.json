@@ -1,0 +1,30 @@
+{
+  "animationsAtRest": 0,
+  "samples": [
+    {
+      "elapsed": 9,
+      "opacity": "0.0371024",
+      "transform": "matrix(0.971065, 0, 0, 0.971065, -24.9084, 6.78677)"
+    },
+    {
+      "elapsed": 157,
+      "opacity": "0.237906",
+      "transform": "matrix(1.02695, 0, 0, 1.02695, 11.5673, -3.48291)"
+    },
+    {
+      "elapsed": 299,
+      "opacity": "0.24",
+      "transform": "matrix(1.03816, 0, 0, 1.03816, 18.879, -5.54151)"
+    },
+    {
+      "elapsed": 440,
+      "opacity": "0.24",
+      "transform": "matrix(1.03992, 0, 0, 1.03992, 20.026, -5.86443)"
+    },
+    {
+      "elapsed": 581,
+      "opacity": "0.24",
+      "transform": "matrix(1.04, 0, 0, 1.04, 20.0812, -5.88)"
+    }
+  ]
+}

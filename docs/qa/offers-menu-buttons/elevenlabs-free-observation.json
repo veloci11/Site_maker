@@ -1,0 +1,232 @@
+{
+  "samples": [
+    {
+      "activeAnimations": [
+        {
+          "duration": 300,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0,
+              "opacity": "0"
+            },
+            {
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1,
+              "opacity": "1"
+            }
+          ],
+          "property": "opacity",
+          "type": "CSSTransition"
+        },
+        {
+          "duration": 150,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "color": "rgb(0, 0, 0)",
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0
+            },
+            {
+              "color": "rgb(255, 255, 255)",
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1
+            }
+          ],
+          "property": "color",
+          "type": "CSSTransition"
+        },
+        {
+          "duration": 150,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "color": "rgb(0, 0, 0)",
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0
+            },
+            {
+              "color": "rgb(255, 255, 255)",
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1
+            }
+          ],
+          "property": "color",
+          "type": "CSSTransition"
+        }
+      ],
+      "filter": "none",
+      "grainOpacity": "1",
+      "grainPosition": "0% 0%",
+      "grainTransform": "none",
+      "imagePosition": "50% 50%",
+      "imageTransform": "none",
+      "layerTransform": "none",
+      "ms": 0,
+      "opacity": "0",
+      "src": "https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "titleColor": "rgb(0, 0, 0)"
+    },
+    {
+      "activeAnimations": [
+        {
+          "duration": 300,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0,
+              "opacity": "0"
+            },
+            {
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1,
+              "opacity": "1"
+            }
+          ],
+          "property": "opacity",
+          "type": "CSSTransition"
+        },
+        {
+          "duration": 150,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "color": "rgb(0, 0, 0)",
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0
+            },
+            {
+              "color": "rgb(255, 255, 255)",
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1
+            }
+          ],
+          "property": "color",
+          "type": "CSSTransition"
+        },
+        {
+          "duration": 150,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "color": "rgb(0, 0, 0)",
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0
+            },
+            {
+              "color": "rgb(255, 255, 255)",
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1
+            }
+          ],
+          "property": "color",
+          "type": "CSSTransition"
+        }
+      ],
+      "filter": "none",
+      "grainOpacity": "1",
+      "grainPosition": "0% 0%",
+      "grainTransform": "none",
+      "imagePosition": "50% 50%",
+      "imageTransform": "none",
+      "layerTransform": "none",
+      "ms": 104,
+      "opacity": "0.457523",
+      "src": "https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "titleColor": "rgb(235, 235, 235)"
+    },
+    {
+      "activeAnimations": [
+        {
+          "duration": 300,
+          "easing": "linear",
+          "keyframes": [
+            {
+              "composite": "auto",
+              "computedOffset": 0,
+              "easing": "linear",
+              "offset": 0,
+              "opacity": "0"
+            },
+            {
+              "composite": "auto",
+              "computedOffset": 1,
+              "easing": "linear",
+              "offset": 1,
+              "opacity": "1"
+            }
+          ],
+          "property": "opacity",
+          "type": "CSSTransition"
+        }
+      ],
+      "filter": "none",
+      "grainOpacity": "1",
+      "grainPosition": "0% 0%",
+      "grainTransform": "none",
+      "imagePosition": "50% 50%",
+      "imageTransform": "none",
+      "layerTransform": "none",
+      "ms": 250,
+      "opacity": "0.983404",
+      "src": "https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "titleColor": "rgb(255, 255, 255)"
+    },
+    {
+      "activeAnimations": [],
+      "filter": "none",
+      "grainOpacity": "1",
+      "grainPosition": "0% 0%",
+      "grainTransform": "none",
+      "imagePosition": "50% 50%",
+      "imageTransform": "none",
+      "layerTransform": "none",
+      "ms": 509,
+      "opacity": "1",
+      "src": "https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "titleColor": "rgb(255, 255, 255)"
+    },
+    {
+      "activeAnimations": [],
+      "filter": "none",
+      "grainOpacity": "1",
+      "grainPosition": "0% 0%",
+      "grainTransform": "none",
+      "imagePosition": "50% 50%",
+      "imageTransform": "none",
+      "layerTransform": "none",
+      "ms": 1074,
+      "opacity": "1",
+      "src": "https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "titleColor": "rgb(255, 255, 255)"
+    }
+  ],
+  "url": "https://elevenlabs.io/pricing/agents"
+}

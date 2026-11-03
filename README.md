@@ -1,6 +1,6 @@
 # studio
 
-Création de sites avec quatre forfaits : Vitrine, Connecté, Immersif 3D et Sur mesure. Parcours public sans compte : grande carte du forfait choisi, options, coordonnées puis demande au studio. Les exemples externes sont réunis dans une galerie filtrable.
+Création de sites avec quatre forfaits : Vitrine, Connecté, Immersif 3D et Sur mesure. Deux prestations distinctes, Évolution et Refonte, accompagnent les sites existants sur devis. Parcours public : grande carte du forfait choisi, options, coordonnées puis demande au studio. Les exemples externes sont réunis dans une galerie filtrable et ouvrent directement les sites présentés.
 
 Les demandes et leur configuration sont conservées dans une base privée. Une file durable prépare la notification Resend, avec reprise et idempotence. Configuration de l’envoi : [docs/EMAIL_REQUESTS.md](docs/EMAIL_REQUESTS.md). Les prix initiaux restent à définir ; aucun paiement n’est demandé à l’envoi. L’ancien espace privé et ses données sont conservés, sans inscription publique en production.
 

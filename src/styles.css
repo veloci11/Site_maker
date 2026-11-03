@@ -233,6 +233,30 @@ ul, ol { padding-left: 1.25rem; }
 .header-login > svg { transition: transform 220ms ease; }
 .header-login:hover { color: #fff; background: #2c2c2c; border-color: #2c2c2c; }
 .header-login:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+.nav-offers-trigger {
+  isolation: isolate;
+  overflow: hidden;
+}
+.nav-offers-trigger::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/textures/grain-plasma-card.webp") 30% 35% / cover;
+  filter: hue-rotate(-18deg) brightness(.76);
+  opacity: 0;
+  transition: opacity 120ms linear;
+  pointer-events: none;
+}
+.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"]) {
+  color: #fff;
+}
+.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"])::before {
+  opacity: 1;
+}
+.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"])::after {
+  opacity: 0;
+}
 .nav-offers-trigger > svg { transition: transform 120ms ease; }
 .nav-offers-trigger[data-state="open"] > svg { transform: rotate(180deg); }
 .nav-offers-trigger[data-state="open"]::after { transform: scaleX(1); }
@@ -268,7 +292,7 @@ ul, ol { padding-left: 1.25rem; }
 .rotate-180 { transform: rotate(180deg); }
 
 .pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-/* Latest user revision: the whole card is a link; only its title/price block gains colour. */
+/* Whole-card navigation; approved title texture and shared plan CTA. */
 .pricing-card { --card-texture: url("/assets/textures/grain-plasma-card.webp"); --card-hue: 0deg; --card-scale-x: 1; --card-scale-y: 1; --plasma-position: 20% 20%; position: relative; display: flex; flex-direction: column; min-width: 0; padding: 8px; border: 1px solid #e9e6eb; border-radius: 16px; background: #fff; color: #111; text-decoration: none; transition: border-color 120ms ease; }
 .pricing-card:hover { border-color: #d4cedb; }
 .pricing-card:focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
@@ -276,16 +300,82 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card--connecte { --card-hue: -57deg; --card-scale-x: -1; --plasma-position: 42% 75%; }
 .pricing-card--immersif { --card-hue: -24deg; --card-scale-y: -1; --plasma-position: 74% 8%; }
 .pricing-card--custom { --card-hue: 12deg; --card-scale-x: -1; --card-scale-y: -1; --plasma-position: 92% 74%; }
+/* Shared by the homepage cards and comparison table. */
+.plan-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.plan-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/textures/grain-plasma-card.webp") var(--plasma-position, 20% 20%) / cover no-repeat;
+  filter: hue-rotate(var(--card-hue, 0deg)) saturate(.93) brightness(.76);
+  transform: scale(var(--card-scale-x, 1), var(--card-scale-y, 1));
+  opacity: 0;
+  transition: opacity 120ms linear;
+  pointer-events: none;
+}
+.plan-cta:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+}
+.plan-cta:focus-visible::before,
+.plan-cta:active::before,
+.pricing-card:focus-visible .plan-cta::before,
+.pricing-card:active .plan-cta::before {
+  opacity: 1;
+}
+@media (hover: hover) {
+  .plan-cta:hover::before { opacity: 1; }
+}
 .pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; background: #f2efec; color: #111; transition: color 120ms ease; }
 .pricing-card__top::before, .pricing-card__top::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 120ms linear; }
 .pricing-card__top::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(.93) brightness(.86); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
 .pricing-card__top::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
+/* A brief light movement over the existing texture, only during interaction. */
+.pricing-card__glow {
+  position: absolute;
+  inset: -25%;
+  z-index: -1;
+  background: radial-gradient(ellipse at 45% 40%, rgb(255 255 255 / .65), transparent 64%);
+  opacity: 0;
+  transform: translate3d(-8%, 3%, 0) scale(.96);
+  transition: opacity 180ms ease-out, transform 550ms cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.pricing-card:focus-visible .pricing-card__glow {
+  opacity: .24;
+  transform: translate3d(5%, -2%, 0) scale(1.04);
+}
+@media (hover: hover) {
+  .pricing-card:hover .pricing-card__glow {
+    opacity: .24;
+    transform: translate3d(5%, -2%, 0) scale(1.04);
+  }
+}
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top { color: #fff; }
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top::before, .pricing-card:is(:hover, :focus-visible) .pricing-card__top::after { opacity: 1; }
 .pricing-card__top h3 { color: inherit; font-size: 28px; font-weight: 500; letter-spacing: -.045em; line-height: 1.2; }
 .pricing-card__price { color: inherit; font-size: 22px; font-weight: 500; letter-spacing: -.035em; line-height: 1.3; }
-.pricing-card__cta { width: 100%; min-height: 46px; margin-top: 10px; padding-inline: 10px; color: #fff; background: #111; font-size: 15px; }
-.pricing-card:hover .pricing-card__cta { background: #272727; }
+.pricing-card__cta { min-height: 46px; margin-top: 10px; padding-inline: 10px; }
 .pricing-card__features { display: grid; align-content: start; gap: 15px; margin: 0; padding: 24px 10px 18px; list-style: none; color: #434149; font-size: 15px; line-height: 1.45; }
 .pricing-card__features li { display: flex; align-items: flex-start; gap: 10px; }
 .pricing-card__features svg { color: #111; margin-top: 2px; }
@@ -344,6 +434,7 @@ ul, ol { padding-left: 1.25rem; }
 }
 @media (max-width: 960px) {
   .desktop-nav { display: none; }
+  .header-faq { display: none; }
   .mobile-menu-button { display: inline-flex; }
   .site-header { padding-left: 20px; gap: 16px; }
   .header-actions { gap: 10px; }
@@ -377,7 +468,7 @@ ul, ol { padding-left: 1.25rem; }
   .pricing-card__top h3 { font-size: 28px; }
   .pricing-card__price { font-size: 22px; }
   .pricing-card__features { font-size: 15px; gap: 15px; padding: 24px 20px; }
-  .pricing-card__cta { min-height: 48px; font-size: 15px; }
+  .pricing-card__cta { min-height: 48px; }
   .tabs-list { gap: 12px; }
   .tabs-trigger { min-height: 52px; padding-inline: 4px; font-size: 14px; }
   .tabs-content { padding-top: 24px; }

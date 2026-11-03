@@ -190,3 +190,22 @@ La case à cocher du haut est remplacée par un bouton pleine largeur sous le ta
 Contrôle local : aucun checkbox dans le comparatif ; 6 lignes accessibles replié, hauteur du tbody détaillé 0 ; ouverture à 420,5 px, aria-hidden=false ; fermeture avec Entrée, retour à 0 et focus conservé. Des transitions de 280 ms ont été observées pendant l’ouverture ; avec réduction du mouvement, aucune animation active. Viewport mobile 390 × 844 CSS : largeur client/document 375/375, bouton 335 × 52, fermeture complète sans lignes vides. Captures locales `details-collapsed-local.jpg` et `details-expanded-local.jpg`.
 
 TypeScript, build et 113 tests passent après ce lot. Les cartes, boutons Configurer, menu et offres précédemment livrés sont conservés. Publication et contrôle public suivis séparément.
+
+
+Publication du dépliage : révision `7d40317f149868db1606e956a4fcded6d1c0b930`, release `20261103T033748Z-7d40317f1498`, rechargée et contrôlée dans le navigateur public. Zéro case à cocher, bouton sous le tableau, aria-expanded=true et hauteur 420,5 px à l’ouverture, aucune erreur/alerte de console. Capture native `after-public-disclosure-retina.png`. Une session déjà ouverte affichait encore l’ancien client ; le rechargement a bien chargé le nouveau bouton. Aucun formulaire soumis.
+
+## Six cartes, liens directs et léger halo — lots suivants contrôlés dans l’ordre
+
+Navigation/cartes/galerie terminées et vérifiées localement avant l’ajout du halo :
+
+- Quatre créations conservées ; Évolution et Refonte sont deux cartes distinctes et entièrement cliquables, avec motifs CSS propres, sujets et textes de contact différents. Aucune base de prix ni inclusion commerciale ajoutée. Les quatre OfferId restent stables.
+- CTA partagés `.plan-cta` sur cartes/comparatif, sans flèche dans Configurer. Vrai survol observé sur le CTA Vitrine : opacité de matière 1, même filtre hue/saturation/luminosité que le comparatif. Aucun ArrowUpRight dans le public.
+- Menu Forfaits coloré à l’interaction, six entrées. FAQ à droite avant Nous contacter ; FAQ aussi dans le panneau mobile. Contacts Évolution puis Refonte contrôlés : bons sujets, textes différents, URL facultative, formulaire renouvelé en changeant de service.
+- Galerie : dix liens image/nom pointent directement vers leurs cinq sites réels, sans target ; clic effectif DOMTEKNIKA arrivé sur https://domteknika.ch/fr dans le même onglet, puis retour à la galerie. Crédits conservés.
+- Mobile 390 × 844 CSS : client/document 375/375 px, menu six entrées et FAQ ; navigation Refonte ferme le panneau. Cartes largeur utile 333 px, aucune largeur excédentaire ; CTA mesurés 175 et 154 px sans texte dépassant. Captures `six-offers-mobile-local.jpg`, `two-services-mobile-local.jpg` et `two-services-local.jpg`.
+
+Comparaison ElevenLabs supplémentaire par l’agent dédié : https://elevenlabs.io/pricing/agents, carte Free réellement observée. Image colorée et grain statiques, révélation 300 ms, texte 150 ms ; aucun déplacement de matière, canvas ou filtre animé constaté, aucune animation vers 500 et 1 000 ms. Mesures `elevenlabs-free-observation.json`. Aucun asset de cette référence n’est copié.
+
+Le halo original studio est ensuite ajouté dans le haut des cartes de création : élément décoratif aria-hidden, opacité 0 vers 0,24 et petit déplacement de 550 ms, texture et recadrage conservés. Échantillons réels `studio-hover-glow.json` : variation de transform pendant le survol, état stabilisé vers 581 ms et zéro animation au repos. Capture `glow-local.jpg`. Pas de boucle, de filtre animé, de suivi de souris ni de nouvelle image.
+
+Revue indépendante : aucun blocage du formulaire, de l’API, du tableau, du focus ou des liens détecté. JSX et catalogue lisibles, textes partagés dans src/content/, guide manuel mis à jour. Vérification intégrée finale : TypeScript, build et 113 tests passants, diff whitespace propre. La préférence de réduction des animations et le fond statique restent en place. Publication finale et contrôle public consignés ci-après après bascule.

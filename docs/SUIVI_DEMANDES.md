@@ -19,16 +19,25 @@ Révision applicative `6adfae1`, release `20261103T032149Z-6adfae1ad67f`, sur `h
 
 Preuves : `qa/offers-menu-buttons/`, `../design-qa.md`. Aucun message réel soumis sur le site public, aucun e-mail de test émis.
 
-## Lot suivant — contrôle local terminé, publication en cours
+## Dépliage — terminé et vérifié en ligne
 
-« Afficher les détails » sous le comparatif : bouton dépliant avec chevron et animation douce, à la place de la case à cocher. Contrôles locaux : ouverture/fermeture, clavier, lignes repliées de hauteur nulle, tableau unique, réduction du mouvement et largeur mobile. TypeScript, build et 113 tests passent. Il sera compté comme livré après publication et contrôle public.
+« Afficher les détails » sous le comparatif : bouton dépliant avec chevron et animation douce, à la place de la case à cocher. Révision `7d40317`, release `20261103T033748Z-7d40317f1498`, rechargée et contrôlée en ligne : zéro case à cocher, aria-expanded correct, lignes repliées de hauteur nulle puis ouverture à 420,5 px, aucune erreur de console. Contrôles locaux supplémentaires : fermeture au clavier, tableau unique, réduction du mouvement et largeur mobile. TypeScript, build et 113 tests passent.
 
-## File suivante — pas encore commencée
+## Navigation, cartes et galerie — contrôlés localement, prêts à publier
 
 1. Retirer les flèches des boutons Configurer.
 2. Donner aux boutons des cartes de l’accueil le style et le survol des boutons du comparatif.
 3. Ajouter un survol coloré à Forfaits dans la barre de navigation.
 4. Séparer Évolution et Refonte en deux offres avec leurs propres cartes et motifs, au lieu d’un bloc commun.
+5. Galerie : ouvrir directement le vrai site depuis l’image ou le nom, dans le même onglet.
+6. FAQ à droite dans la navigation, avant Nous contacter ; aussi dans le panneau mobile.
+7. Retirer les flèches diagonales des pages publiques, y compris Comment ça se passe.
+
+Les sept demandes ont été traitées puis vérifiées ensemble sur ordinateur et mobile : six liens dans Forfaits, FAQ à droite, deux contacts distincts, CTA partagés, zéro flèche diagonale et clic DOMTEKNIKA arrivé directement sur le vrai site dans le même onglet. TypeScript, build et 113 tests passent. Revue indépendante sans blocage.
+
+## Halo — traité après validation du lot précédent
+
+Référence Free étudiée en parallèle ; léger effet lumineux original ajouté ensuite au haut des cartes, avec la matière approuvée conservée. Opacité et petit déplacement de 550 ms, sans boucle ni suivi de souris. Mouvement réel mesuré, zéro animation au repos ; au clavier avec réduction du mouvement : halo visible et zéro animation. TypeScript, build et 113 tests de la version finale passent. Publication et contrôle public finaux à consigner après la bascule.
 
 ## Décisions antérieures conservées et revues dans le code
 
@@ -44,3 +53,5 @@ Preuves : `qa/offers-menu-buttons/`, `../design-qa.md`. Aucun message réel soum
 ## Éléments volontairement ouverts
 
 Les prix et périmètres commerciaux restent à arrêter ; aucun montant, délai ou chiffre client inventé. Le destinataire Resend sera fourni plus tard par Mathis : les demandes sont conservées, mais une réception e-mail réelle reste à vérifier après configuration. L’identité et les documents commerciaux définitifs restent à compléter. Ces éléments ne sont pas présentés comme terminés par la livraison de l’interface.
+
+L’étude de marché antérieure est disponible dans le dossier de travail `recherche-marche/` à côté du dépôt : rapport complet, synthèse, benchmark et journal des sources datés du 1er novembre 2026. Sa présence a été vérifiée ; ses relevés n’ont pas été actualisés pendant cette correction d’interface et les décisions utilisateur ultérieures priment sur ses recommandations.

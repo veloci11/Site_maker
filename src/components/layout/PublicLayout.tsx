@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { offers } from '../../../shared/catalog'
-import { existingSiteOffer } from '../../content/existing-site'
+import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import {
   Sheet,
   SheetContent,
@@ -32,6 +32,7 @@ function navigationClassName(baseClass: string) {
 }
 
 const desktopNavClassName = navigationClassName('nav-link')
+const headerFaqClassName = navigationClassName('header-faq nav-link')
 const mobileNavClassName = navigationClassName('mobile-nav-heading')
 const mobileOfferClassName = navigationClassName('mobile-offer-link')
 
@@ -39,10 +40,11 @@ export function PublicHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [offersOpen, setOffersOpen] = useState(false)
-  const refitActive =
-    location.pathname === '/contact' &&
-    new URLSearchParams(location.search).get('besoin') === 'refonte'
-  const offerActive = location.pathname.startsWith('/forfaits') || refitActive
+  const activeExistingSiteOffer =
+    location.pathname === '/contact'
+      ? getExistingSiteOffer(new URLSearchParams(location.search).get('besoin'))
+      : undefined
+  const offerActive = location.pathname.startsWith('/forfaits') || !!activeExistingSiteOffer
 
   useEffect(() => {
     setMobileOpen(false)
@@ -87,12 +89,17 @@ export function PublicHeader() {
                 </DropdownMenuItem>
               ))}
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link to={existingSiteOffer.href} aria-current={refitActive ? 'page' : undefined}>
-                  {existingSiteOffer.title}
-                  <ArrowRight size={14} aria-hidden="true" />
-                </Link>
-              </DropdownMenuItem>
+              {existingSiteOffers.map((offer) => (
+                <DropdownMenuItem key={offer.id} asChild>
+                  <Link
+                    to={offer.href}
+                    aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
+                  >
+                    {offer.title}
+                    <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
           <NavLink to="/exemples" className={desktopNavClassName}>
@@ -100,6 +107,9 @@ export function PublicHeader() {
           </NavLink>
         </nav>
         <div className="header-actions">
+          <NavLink to="/faq" className={headerFaqClassName}>
+            FAQ
+          </NavLink>
           <Link className="header-login" to="/contact">
             Nous contacter
             <ArrowRight size={15} aria-hidden="true" />
@@ -136,21 +146,31 @@ export function PublicHeader() {
                         <ArrowRight size={16} aria-hidden="true" />
                       </NavLink>
                     ))}
-                    <Link
-                      to={existingSiteOffer.href}
-                      className={cn(
-                        'mobile-offer-link mobile-offer-link--refit',
-                        refitActive && 'is-active',
-                      )}
-                      aria-current={refitActive ? 'page' : undefined}
-                    >
-                      {existingSiteOffer.title}
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </Link>
+                    {existingSiteOffers.map((offer, index) => (
+                      <Link
+                        key={offer.id}
+                        to={offer.href}
+                        className={cn(
+                          'mobile-offer-link',
+                          index === 0 && 'mobile-offer-link--refit',
+                          activeExistingSiteOffer?.id === offer.id && 'is-active',
+                        )}
+                        aria-current={
+                          activeExistingSiteOffer?.id === offer.id ? 'page' : undefined
+                        }
+                      >
+                        {offer.title}
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </Link>
+                    ))}
                   </div>
                 </details>
                 <NavLink to="/exemples" className={mobileNavClassName}>
                   Exemples de sites
+                  <ArrowRight size={20} aria-hidden="true" />
+                </NavLink>
+                <NavLink to="/faq" className={mobileNavClassName}>
+                  FAQ
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
                 <Link to="/contact" className="mobile-nav-heading mobile-nav-contact">

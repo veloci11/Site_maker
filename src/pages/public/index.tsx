@@ -3,7 +3,6 @@ import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-r
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   Check,
   ChevronDown,
   ChevronRight,
@@ -42,7 +41,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '../../components/ui/dialog'
-import { existingSiteOffer } from '../../content/existing-site'
+import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import { api, errorMessage } from '../../lib/api'
 import '../public.css'
 
@@ -78,23 +77,32 @@ function startingPrice(offerId: OfferId, pricing: Pricing) {
 
 const configureHref = (offerId: OfferId) => `/forfaits/${getOffer(offerId)!.slug}`
 
-function ExistingSiteOffer() {
+function ExistingSiteServices() {
   return (
-    <section className="container existing-site-offer" aria-labelledby="existing-site-title">
-      <div>
-        <p className="eyebrow">{existingSiteOffer.eyebrow}</p>
-        <h2 id="existing-site-title">{existingSiteOffer.title}.</h2>
-        <p>{existingSiteOffer.description}</p>
-      </div>
-      <div className="existing-site-offer__action">
-        <span>Sur devis</span>
-        <Button asChild>
-          <Link to={existingSiteOffer.href}>
-            {existingSiteOffer.cta}
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
-        </Button>
-      </div>
+    <section className="container existing-site-offers" aria-label="Pour votre site actuel">
+      {existingSiteOffers.map((service) => (
+        <Link
+          className={`existing-site-card existing-site-card--${service.id}`}
+          to={service.href}
+          key={service.id}
+        >
+          <div className="existing-site-card__copy">
+            <h2>{service.title}</h2>
+            <p>{service.description}</p>
+          </div>
+          <div className="existing-site-card__art" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="existing-site-card__footer">
+            <span>Sur devis</span>
+            <span className="plan-cta existing-site-card__cta">
+              {service.cta}<ArrowRight size={16} aria-hidden="true" />
+            </span>
+          </div>
+        </Link>
+      ))}
     </section>
   )
 }
@@ -182,7 +190,7 @@ export function HomePage() {
               </a>
             </Button>
             <a className="text-link" href="#fonctionnement">
-              Comment ça se passe <ArrowUpRight size={16} aria-hidden="true" />
+              Comment ça se passe
             </a>
           </div>
         </Reveal>
@@ -214,7 +222,7 @@ export function HomePage() {
           ))}
         </div>
       </section>
-      <ExistingSiteOffer />
+      <ExistingSiteServices />
       <section
         className="container home-method"
         id="fonctionnement"
@@ -351,7 +359,7 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
                     <h3>{offer.title}</h3>
                     <p>{startingPrice(offer.id, pricing)}</p>
                     <Link
-                      className={`comparison-cta pricing-card--${offer.variant}`}
+                      className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
                       to={configureHref(offer.id)}
                       aria-label={
                         offer.id === 'sur-mesure'
@@ -360,7 +368,6 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
                       }
                     >
                       {offer.id === 'sur-mesure' ? 'Parlons-en' : 'Configurer'}
-                      <ArrowUpRight size={15} aria-hidden="true" />
                     </Link>
                   </div>
                 </th>
@@ -440,7 +447,7 @@ export function OffersPage() {
       <section className="container public-comparison" aria-label="Comparaison des forfaits">
         <OfferComparison pricing={pricing} id="forfaits-comparison" />
       </section>
-      <ExistingSiteOffer />
+      <ExistingSiteServices />
     </>
   )
 }
@@ -511,7 +518,7 @@ function ExamplePreview({
       <div className="public-example-heading">
         <h2>{heading}</h2>
         <a className="text-link" href={example.url} target="_blank" rel="noreferrer">
-          Ouvrir le site <ArrowUpRight size={17} aria-hidden="true" />
+          Ouvrir le site
         </a>
       </div>
       <div className="preview-frame public-example-frame">
@@ -558,7 +565,7 @@ function ExamplePreview({
             height="940"
           />
           <a className="text-link" href={example.url} target="_blank" rel="noreferrer">
-            Ouvrir le site <ArrowUpRight size={17} aria-hidden="true" />
+            Ouvrir le site
           </a>
         </DialogContent>
       </Dialog>
@@ -697,10 +704,10 @@ export function ExamplesPage() {
         <div className="public-examples-grid">
           {filtered.map((example) => (
             <article className="public-example-tile" key={example.id}>
-              <Link
+              <a
                 className="public-example-tile__image"
-                to={`/exemples/${example.id}`}
-                aria-label={`Découvrir la référence ${example.title}`}
+                href={example.url}
+                aria-label={`Ouvrir le site ${example.title}`}
               >
                 <img
                   src={example.image}
@@ -709,16 +716,16 @@ export function ExamplesPage() {
                   height="940"
                   loading="lazy"
                 />
-              </Link>
+              </a>
               <div className="public-example-tile__body">
                 <span className="public-example-tag">
                   {exampleFilters.find((item) => item.id === example.offerId)?.label ??
                     example.category}
                 </span>
-                <Link className="public-example-tile__title" to={`/exemples/${example.id}`}>
+                <a className="public-example-tile__title" href={example.url}>
                   <h2>{example.title}</h2>
                   <ArrowRight size={21} aria-hidden="true" />
-                </Link>
+                </a>
                 <p className="public-example-tile__description">{example.description}</p>
                 <div className="public-example-tile__links">
                   <a
@@ -728,11 +735,9 @@ export function ExamplesPage() {
                     rel="noreferrer"
                   >
                     Source : {example.creator}
-                    <ArrowUpRight size={12} aria-hidden="true" />
                   </a>
-                  <a className="text-link" href={example.url} target="_blank" rel="noreferrer">
+                  <a className="text-link" href={example.url}>
                     Voir le site
-                    <ArrowUpRight size={14} aria-hidden="true" />
                   </a>
                 </div>
               </div>
@@ -771,7 +776,7 @@ export function ExampleDetailPage() {
         </div>
         <Button asChild>
           <a href={example.url} target="_blank" rel="noreferrer">
-            Ouvrir le site <ArrowUpRight size={18} aria-hidden="true" />
+            Ouvrir le site
           </a>
         </Button>
       </div>
@@ -814,18 +819,13 @@ const inquirySubjects = [
   'Une question sur Connecté',
   'Une question sur la 3D',
   customSubject,
-  existingSiteOffer.subject,
+  ...existingSiteOffers.map((service) => service.subject),
   'Une autre question',
 ]
 const inquiryMessageCopy = {
   custom: {
     label: 'Ce que vous souhaitez créer',
     placeholder: 'Votre activité, les fonctions souhaitées, les personnes qui utiliseront le site…',
-  },
-  refit: {
-    label: 'Ce que vous souhaitez améliorer',
-    placeholder:
-      'Nouveau design, pages à ajouter, réservation, boutique… Décrivez les changements souhaités.',
   },
   contact: {
     label: 'Votre message',
@@ -847,15 +847,19 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
   const attempt = useRef<{ requestId: string; fingerprint: string } | null>(null)
   const inFlight = useRef(false)
   const idPrefix = custom ? 'custom' : 'contact'
-  const refit = !custom && subject === existingSiteOffer.subject
-  const messageCopy = inquiryMessageCopy[custom ? 'custom' : refit ? 'refit' : 'contact']
+  const existingSiteService = !custom
+    ? existingSiteOffers.find((service) => service.subject === subject)
+    : undefined
+  const messageCopy = existingSiteService
+    ? { label: existingSiteService.messageLabel, placeholder: existingSiteService.messagePlaceholder }
+    : inquiryMessageCopy[custom ? 'custom' : 'contact']
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (inFlight.current) return
 
     const currentSiteDetails =
-      refit && currentSite.trim() ? `Site actuel : ${currentSite.trim()}\n\n` : ''
+      existingSiteService && currentSite.trim() ? `Site actuel : ${currentSite.trim()}\n\n` : ''
     const inspirationDetails = inspiration.trim()
       ? `\n\nLien d’inspiration : ${inspiration.trim()}`
       : ''
@@ -1003,7 +1007,7 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
             </select>
           </div>
         ) : null}
-        {refit ? (
+        {existingSiteService ? (
           <div className="field">
             <Label htmlFor="contact-current-site">
               Votre site actuel <span className="text-muted">(facultatif)</span>
@@ -1071,7 +1075,7 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
           <Button type="submit" disabled={status === 'loading'}>
             {status === 'loading'
               ? 'Enregistrement…'
-              : custom || refit
+              : custom || existingSiteService
                 ? 'Envoyer ma demande'
                 : 'Envoyer mon message'}
             {status !== 'loading' ? <ArrowRight size={18} aria-hidden="true" /> : null}
@@ -1089,25 +1093,25 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
 
 export function ContactPage() {
   const [search] = useSearchParams()
-  const refit = search.get('besoin') === 'refonte'
-  usePageTitle(refit ? 'Refonte et évolution de site' : 'Contacter le studio')
+  const service = getExistingSiteOffer(search.get('besoin'))
+  usePageTitle(service ? `${service.title} de site` : 'Contacter le studio')
   return (
     <>
       <Intro
-        title={refit ? `${existingSiteOffer.title}.` : 'Contacter le studio'}
+        title={service ? `${service.title}.` : 'Contacter le studio'}
         description={
-          refit
-            ? 'Présentez-nous votre site actuel et les changements souhaités.'
+          service
+            ? service.contactDescription
             : 'Décrivez votre projet ou posez votre question. Nous vous recontactons par e-mail pour préciser votre besoin.'
         }
       />
       <section className="container public-contact-page">
         <div className="public-contact-copy">
           <div>
-            <h2>{refit ? 'Faites évoluer votre site.' : 'Choisir un forfait'}</h2>
+            <h2>{service ? service.contactTitle : 'Choisir un forfait'}</h2>
             <p>
-              {refit
-                ? 'Refonte visuelle, nouvelles pages ou fonctionnalités : nous étudions ce qui peut être repris et ce qui doit évoluer avant de définir la prestation.'
+              {service
+                ? service.description
                 : 'Comparez les fonctions et les options avant de nous écrire.'}
             </p>
             <Link className="text-link" to="/forfaits">
@@ -1116,8 +1120,8 @@ export function ContactPage() {
           </div>
         </div>
         <InquiryForm
-          key={refit ? 'refit' : 'contact'}
-          initialSubject={refit ? existingSiteOffer.subject : ''}
+          key={service?.id ?? 'contact'}
+          initialSubject={service?.subject ?? ''}
         />
       </section>
     </>
