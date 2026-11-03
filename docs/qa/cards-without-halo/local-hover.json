@@ -1,0 +1,8 @@
+{
+  "cardTransform": "none",
+  "glowElements": 0,
+  "halo": "none",
+  "reflection": "linear-gradient(125deg, rgba(0, 0, 0, 0) 32%, rgba(255, 255, 255, 0.08) 43%, rgba(255, 255, 255, 0.24) 49%, rgba(255, 255, 255, 0.04) 56%, rgba(0, 0, 0, 0) 65%), linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.2))",
+  "shadow": "none",
+  "textureOpacity": "1"
+}

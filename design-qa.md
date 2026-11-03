@@ -266,3 +266,12 @@ Retour de Mathis : le halo précédent n’était pas suffisamment visible. Le n
 Résultat final : passé. Révision applicative `8c497b4c5019f55f8c89b29adc256e0f5da437ee`, release `20261103T055310Z-8c497b4c5019` et client HTTPS `index-D32bwwWH.js` conformes au build. Santé publique valide. Dans l’IAB public, halo Connecté à opacités 1/0,55 avec transitions 220/420/620 ms et zéro animation après stabilisation. Capture native PNG 2560 × 1440 `after-public-retina.png` ouverte et inspectée ; métriques dans `public-halo.json`.
 
 Dix FAQ publiques observées ; les deux réponses demandées ont été ouvertes et lues. Captures `faq-choice-public.jpg` et `faq-correction-mobile-public.jpg`. À 390 × 844 CSS, document/client 375/375 sans débordement. Aucune erreur ni alerte applicative observée. Viewport et émulation temporaires réinitialisés ; localhost arrêté, ports 4173/4174 libres. Seul l’onglet public est conservé dans l’IAB. Sauvegarde privée préalable, autres services Ubuntu/PID inchangés et GP Park HTTP 200. Aucun formulaire soumis ni e-mail réel envoyé.
+
+
+## Dernier correctif — retrait du halo, reflet fixe dans le dégradé
+
+Les essais de halo documentés ci-dessus sont rejetés par Mathis. Le pseudo-élément extérieur et le span `.pricing-card__glow` sont supprimés avec leurs styles. Les six cartes gardent leur géométrie et leur source, le survol de couleur et le focus. Le brillant demandé ensuite est un reflet diagonal fixe dans `.pricing-card__top::after`, avec un fin liseré intérieur ; saturation 1,04 et luminosité 0,94. Aucun déplacement de carte ni de lumière, aucun halo extérieur.
+
+IAB local : `local-hover.json` confirme `halo:none`, `shadow:none`, zéro élément de glow, `cardTransform:none` et texture visible à opacité 1. Capture native 2560 × 1440 `local-retina.png`, inspectée. Au clavier : focus-visible et contour 3 px conservés. Mobile 390 × 844 CSS : document/client 375/375, six cartes et zéro glow ; `mobile-local.jpg`. Dix questions de FAQ restent présentes. Aucune erreur ni alerte applicative observée. Viewport temporaire réinitialisé.
+
+Preuves dans `docs/qa/cards-without-halo/`. Publication et contrôle public à compléter après la bascule réelle ; aucun formulaire soumis ni e-mail réel envoyé.
