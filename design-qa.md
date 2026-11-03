@@ -279,3 +279,14 @@ Preuves dans `docs/qa/cards-without-halo/`. Résultat final : passé. `npm run c
 Contrôle public IAB : mêmes valeurs sans halo dans `public-hover.json` ; capture native PNG 2560 × 1440 `public-retina.png` ouverte et inspectée. Mobile public : document/client 375/375, six cartes et zéro glow ; `mobile-public.jpg`. Aucune erreur ni alerte applicative. Viewport réinitialisé et onglet de recherche temporaire fermé. Localhost arrêté, ports 4173/4174 libres. Sauvegarde privée et isolement des autres projets contrôlés par le déploiement. Aucun formulaire soumis ni e-mail réel envoyé.
 
 Après ce correctif, nouvelle inspection ElevenLabs `/pricing` : `elevenlabs-recheck.json` consigne le PNG de couleur, l’image de bruit séparée en overlay et le fondu de 300 ms. Le fichier source Free a été ouvert directement, avec titre confirmant 786 × 600 ; `elevenlabs-source-image.jpg`. Le reflet diagonal STUDIO est notre traitement fixe, distinct de ce mécanisme observé.
+
+
+## Dernier lot — images inchangées, reflet retiré, bref mouvement du grain
+
+Clarification prioritaire : « nos images sont bien ». Les trois textures colorées sont comparées octet pour octet à Git et conservées, avec sources/cadrages/filtres inchangés. `original-images.json` garde les empreintes. Le reflet diagonal et son liseré sont retirés ; aucun halo extérieur. Le grain ajouté est une couche indépendante, limitée au bloc supérieur et précalculée en WebP pour éviter un filtre SVG à l’interaction.
+
+IAB local : `local-timeline.json` montre dix échantillons réels de 0 à 443 ms. Couleur de 0 à 1 en 300 ms ; grain de 0 à 0,32, quelques changements de translation jusqu’à 350 ms puis transform:none. Matrices de carte et d’image constantes ; aucune animation active après stabilisation. Le fondu s’appuie sur la durée mesurée sur ElevenLabs ; le mouvement du grain est notre implémentation de la demande utilisateur, pas une reproduction revendiquée de leur code.
+
+`interaction-checks.json` confirme l’absence de redémarrage en passant du haut au CTA, la disparition à la sortie et une nouvelle entrée après sortie réelle. Avec mouvement réduit : durée 0,00001 s, grain visible mais immobile et contour de focus 3 px. Mobile 390 × 844 : six cartes de 335 × 407,25, document/client 375/375 sans débordement, grain au repos invisible ; clic Vitrine arrivé au configurateur réel. Dix FAQ conservées. Aucune erreur ni alerte applicative observée. Viewport et émulation réinitialisés.
+
+Capture native PNG 2560 × 1440 `local-retina.png` et mobile `mobile-local.jpg` dans `docs/qa/grain-entry/`. Revue indépendante par lecture sans blocage. `npm run check` final : TypeScript, build et 113 tests passent. `git diff --check` propre. Publication à vérifier après bascule réelle. Aucun formulaire soumis ni e-mail réel envoyé.

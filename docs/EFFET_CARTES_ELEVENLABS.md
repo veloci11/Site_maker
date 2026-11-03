@@ -128,3 +128,10 @@ Après publication du retrait du halo et de la lumière mobile de STUDIO, la pag
 Une autre couche utilise `noise@20aq.289c1f1d.avif` avec repli `noise.24b8225d.png`, en `mix-blend-mode:overlay`. Son arrière-plan est répété à 128 px CSS dans le contexte haute densité observé. Ce bruit ajouté est séparé de l’image de couleurs. Le conteneur de couleur passe à opacité 1 avec `opacity 0.3s cubic-bezier(0.4,0,0.2,1)` ; transformation et filtre de l’image `none`, zéro animation après stabilisation. Aucun canvas dans le bloc supérieur inspecté. Ces constats concernent cette carte et cette page, pas toutes les surfaces ElevenLabs.
 
 Preuves enregistrées : `docs/qa/cards-without-halo/elevenlabs-recheck.json`, `elevenlabs-free-recheck.jpg`, `elevenlabs-source-image.jpg`. Les sources d’ElevenLabs ne sont pas intégrées au produit. Côté STUDIO, le halo extérieur et le span animé sont retirés ; le brillant demandé est un reflet diagonal fixe limité à la surface texturée. La matière d’origine et le fondu de 120 ms restent présents.
+
+
+## Nouvelle demande : garder nos images et animer brièvement le grain
+
+La demande suivante rejette le reflet ajouté et précise explicitement que nos images sont bonnes. Les trois fichiers colorés STUDIO restent identiques. Le fondu de couleur passe à 300 ms, comme la durée observée sur ElevenLabs. Une couche indépendante de grain précalculé propre au projet est ajoutée, à opacité 0,32, avec quelques déplacements de pixels pendant 360 ms au début du survol/focus, une seule fois. Carte et image immobiles, aucun reflet, liseré ni halo.
+
+Le déplacement initial du grain est la demande de Mathis pour STUDIO : il ne faut pas présenter ce mouvement comme une mesure extraite du site ElevenLabs. La référence mesurée confirme l’image de couleurs, le grain séparé et le fondu d’opacité. Les contrôles de ce nouveau comportement sont dans `docs/qa/grain-entry/` et `../design-qa.md` ; le maintien de la dernière carte survolée d’ElevenLabs n’est toujours pas repris.

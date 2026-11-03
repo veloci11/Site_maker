@@ -348,16 +348,39 @@ ul, ol { padding-left: 1.25rem; }
 @media (hover: hover) {
   .plan-cta:hover::before { opacity: 1; }
 }
-.pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; background: #f2efec; color: #111; transition: color 120ms ease; }
-.pricing-card__top::before, .pricing-card__top::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 120ms linear; }
+.pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; background: #f2efec; color: #111; transition: color 150ms ease; }
+.pricing-card__top::before, .pricing-card__top::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 300ms cubic-bezier(.4, 0, .2, 1); }
 .pricing-card__top::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(1.04) brightness(.94); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
-/* A fixed reflection inside the textured surface; the card and light do not move. */
-.pricing-card__top::after {
-  inset: 0;
-  background:
-    linear-gradient(125deg, transparent 32%, rgb(255 255 255 / .08) 43%, rgb(255 255 255 / .24) 49%, rgb(255 255 255 / .04) 56%, transparent 65%),
-    linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2));
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / .4), inset -1px 0 0 rgb(255 255 255 / .14);
+.pricing-card__top::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
+/* Keep the approved image still. Only this fine grain moves briefly on entry. */
+.pricing-card__grain {
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  background: url("/assets/textures/card-grain.webp") repeat;
+  background-size: 128px 128px;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(.4, 0, .2, 1);
+}
+.pricing-card:focus-visible .pricing-card__grain {
+  opacity: .32;
+  animation: card-grain-entry 360ms steps(1, end) 1;
+}
+@media (hover: hover) {
+  .pricing-card:hover .pricing-card__grain {
+    opacity: .32;
+    animation: card-grain-entry 360ms steps(1, end) 1;
+  }
+}
+@keyframes card-grain-entry {
+  0% { transform: translate3d(-2px, 1px, 0); }
+  20% { transform: translate3d(2px, -2px, 0); }
+  40% { transform: translate3d(-1px, -3px, 0); }
+  60% { transform: translate3d(3px, 1px, 0); }
+  80% { transform: translate3d(-2px, 2px, 0); }
+  100% { transform: none; }
 }
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top { color: #fff; }
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top::before, .pricing-card:is(:hover, :focus-visible) .pricing-card__top::after { opacity: 1; }

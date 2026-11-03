@@ -1,0 +1,25 @@
+{
+  "dimensions": [
+    256,
+    256
+  ],
+  "rasterizedIn": "IAB",
+  "encoding": "cwebp -lossless -exact -m 6",
+  "files": [
+    {
+      "path": "docs/asset-sources/textures/card-grain.svg",
+      "bytes": 383,
+      "sha256": "4ef797f6e17e822b0e658bbf3e06d6dd09f5067e36981a8ab9e16062e2c092b4"
+    },
+    {
+      "path": "docs/asset-sources/textures/card-grain.png",
+      "bytes": 158643,
+      "sha256": "136592072663f5efbb73681dac1a8f8cda233b281075046add3d5ac83e140d43"
+    },
+    {
+      "path": "public/assets/textures/card-grain.webp",
+      "bytes": 107058,
+      "sha256": "483ad4c67ab5ead0fce1bd7da8de50c485f0bf5d79573a65a26cd5e925dd179f"
+    }
+  ]
+}

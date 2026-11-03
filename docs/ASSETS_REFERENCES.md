@@ -80,3 +80,12 @@ Contrôle IAB : source sans perte dans la grande carte 568,3 × 530 CSS à DPR 2
 
 
 Contrôle de publication du lot `6133f1e` : les quatre nouveaux exports GeoBoss, Aéma, Satellite et Atlante répondent en HTTPS sur gilmathis.com avec un SHA-256 identique au manifeste local. La galerie publique affiche neuf références ; Atlante est signalé comme projet archivé avec lien de présentation. Version et preuves publiques : `../ops/DEPLOYMENT_STATUS.md`.
+
+
+## Grain indépendant des petites cartes — clarification du 3 novembre
+
+Les trois textures colorées existantes sont conservées exactement : `docs/qa/grain-entry/original-images.json` contient leurs SHA-256 et le contrôle octet pour octet par rapport à Git. Aucune image n’a été remplacée, lissée, recadrée ou réencodée pour ce lot.
+
+Le nouveau `public/assets/textures/card-grain.webp` est un bruit monochrome propre au projet, destiné à un calque fin superposé. Source SVG déterministe : `docs/asset-sources/textures/card-grain.svg` (fractalNoise, fréquence 0,9, trois octaves, seed 19). Rasterisation du SVG dans l’IAB à 256 × 256, fond transparent, export PNG conservé dans le même dossier, puis encodage WebP sans perte `cwebp -lossless -exact -m 6`. Poids servi : 107 058 octets. Seul le WebP est servi ; aucun filtre SVG ne s’exécute pendant le survol. Provenance complète dans `docs/qa/grain-entry/grain-asset.json`.
+
+Ce calque ne remplace pas le grain déjà présent dans les images. Il permet seulement le bref mouvement d’entrée demandé par Mathis. Aucun asset ElevenLabs repris.

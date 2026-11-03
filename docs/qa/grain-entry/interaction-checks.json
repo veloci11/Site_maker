@@ -1,0 +1,23 @@
+{
+  "insideCard": {
+    "activeAnimations": 0,
+    "transform": "none"
+  },
+  "reentry": {
+    "animation": "card-grain-entry",
+    "iterations": "1",
+    "playStates": [
+      "running",
+      "running"
+    ],
+    "transform": "matrix(1, 0, 0, 1, -2, 1)"
+  },
+  "reducedMotion": {
+    "activeAnimations": 0,
+    "animationDuration": "1e-05s",
+    "focusVisible": true,
+    "grainOpacity": "0.32",
+    "grainTransform": "none",
+    "outline": "rgb(120, 99, 219) solid 3px"
+  }
+}

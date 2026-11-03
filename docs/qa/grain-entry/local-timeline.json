@@ -1,0 +1,89 @@
+{
+  "activeAnimations": 0,
+  "grainSource": "url(\"http://127.0.0.1:4173/assets/textures/card-grain.webp\")",
+  "halo": "none",
+  "reflection": "linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.2))",
+  "reflectionShadow": "none",
+  "samples": [
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.000551174",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 1)",
+      "imageOpacity": "0.00172242",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 0
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.0400157",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 1)",
+      "imageOpacity": "0.125049",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 50
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.168859",
+      "grainTransform": "matrix(1, 0, 0, 1, 2, -2)",
+      "imageOpacity": "0.527684",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 100
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.258744",
+      "grainTransform": "matrix(1, 0, 0, 1, -1, -3)",
+      "imageOpacity": "0.808575",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 150
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.299347",
+      "grainTransform": "matrix(1, 0, 0, 1, -1, -3)",
+      "imageOpacity": "0.93546",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 200
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.31633",
+      "grainTransform": "matrix(1, 0, 0, 1, 3, 1)",
+      "imageOpacity": "0.988533",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 250
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.32",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 2)",
+      "imageOpacity": "1",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 300
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.32",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 2)",
+      "imageOpacity": "1",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 350
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.32",
+      "grainTransform": "none",
+      "imageOpacity": "1",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 397
+    },
+    {
+      "cardTransform": "none",
+      "grainOpacity": "0.32",
+      "grainTransform": "none",
+      "imageOpacity": "1",
+      "imageTransform": "matrix(-1, 0, 0, 1, 0, 0)",
+      "ms": 443
+    }
+  ]
+}

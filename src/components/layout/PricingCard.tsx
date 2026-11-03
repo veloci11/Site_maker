@@ -48,6 +48,7 @@ export function PricingCard({
       aria-label={`${actionLabel}. ${priceLabel}`}
     >
       <div className="pricing-card__top">
+        <span className="pricing-card__grain" aria-hidden="true" />
         <h3>{title}</h3>
         <p className="pricing-card__price">{priceLabel}</p>
       </div>

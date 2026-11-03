@@ -4,6 +4,12 @@ Version actuelle vérifiée : `2c9ba46` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
+## Images conservées, reflet retiré et entrée du grain — vérifié localement
+
+Mathis rejette le reflet et demande de se rapprocher d’ElevenLabs avec un grain qui bouge brièvement au début. Sa clarification « nos images sont bien » impose de conserver exactement les images actuelles. Les trois fichiers colorés ont été comparés à la version précédente : identiques octet pour octet.
+
+Reflet/liseré retirés, aucun halo. Fondu couleur 300 ms, texte 150 ms et grain indépendant de faible amplitude pendant 360 ms, une seule fois puis arrêt. Texture de grain WebP précalculée, sans filtre de bruit calculé à l’interaction. Revue indépendante par lecture sans blocage ; contrôles IAB d’entrée/sortie/réentrée, déplacement entre les enfants de la carte sans redémarrage, focus, réduction du mouvement et mobile passés. Dix FAQ conservées. TypeScript, build et 113 tests passent. Preuves : `qa/grain-entry/`. Publication en cours.
+
 ## Retrait du halo et reflet intérieur — terminé et vérifié en ligne
 
 Dernier retour de Mathis : halo et animation derrière les cartes rejetés, rendu du dégradé souhaité plus brillant. Les deux couches de halo sont retirées, y compris le span et son CSS ; aucune lumière ne se déplace. Un reflet diagonal fixe et un liseré limités à la zone colorée donnent le brillant ; source et cadrage conservés, saturation 1,04 / luminosité 0,94. Le fondu de couleur de 120 ms reste présent.
