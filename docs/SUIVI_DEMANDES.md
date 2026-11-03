@@ -1,8 +1,10 @@
 # Suivi des demandes
 
+Version actuelle vérifiée : `7c5550c` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Lot terminé et vérifié en ligne
+## Historique du premier lot terminé et vérifié en ligne
 
 Révision applicative `6adfae1`, release `20261103T032149Z-6adfae1ad67f`, sur `https://gilmathis.com/`.
 
@@ -23,7 +25,7 @@ Preuves : `qa/offers-menu-buttons/`, `../design-qa.md`. Aucun message réel soum
 
 « Afficher les détails » sous le comparatif : bouton dépliant avec chevron et animation douce, à la place de la case à cocher. Révision `7d40317`, release `20261103T033748Z-7d40317f1498`, rechargée et contrôlée en ligne : zéro case à cocher, aria-expanded correct, lignes repliées de hauteur nulle puis ouverture à 420,5 px, aucune erreur de console. Contrôles locaux supplémentaires : fermeture au clavier, tableau unique, réduction du mouvement et largeur mobile. TypeScript, build et 113 tests passent.
 
-## Navigation, cartes et galerie — contrôlés localement, prêts à publier
+## Navigation, cartes et galerie — terminés et vérifiés en ligne
 
 1. Retirer les flèches des boutons Configurer.
 2. Donner aux boutons des cartes de l’accueil le style et le survol des boutons du comparatif.
@@ -37,7 +39,7 @@ Les sept demandes ont été traitées puis vérifiées ensemble sur ordinateur e
 
 ## Halo — traité après validation du lot précédent
 
-Référence Free étudiée en parallèle ; léger effet lumineux original ajouté ensuite au haut des cartes, avec la matière approuvée conservée. Opacité et petit déplacement de 550 ms, sans boucle ni suivi de souris. Mouvement réel mesuré, zéro animation au repos ; au clavier avec réduction du mouvement : halo visible et zéro animation. TypeScript, build et 113 tests de la version finale passent. Publication et contrôle public finaux à consigner après la bascule.
+Référence Free étudiée en parallèle ; léger effet lumineux original ajouté ensuite au haut des cartes, avec la matière approuvée conservée. Opacité et petit déplacement de 550 ms, sans boucle ni suivi de souris. Mouvement réel mesuré, zéro animation au repos ; au clavier avec réduction du mouvement : halo visible et zéro animation. TypeScript, build et 113 tests de la version finale passent. Publication finale contrôlée : révision `7c5550c`, release `20261103T040155Z-7c5550c67402`, client `index-DGJoTYdQ.js`. Les contrôles locaux ont été complétés par les parcours publics desktop/mobile. Aucune demande d’interface de la file ne reste ouverte ; les éléments commerciaux reportés ci-dessous restent distincts.
 
 ## Décisions antérieures conservées et revues dans le code
 

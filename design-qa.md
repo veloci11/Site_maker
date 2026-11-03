@@ -209,3 +209,18 @@ Comparaison ElevenLabs supplémentaire par l’agent dédié : https://elevenlab
 Le halo original studio est ensuite ajouté dans le haut des cartes de création : élément décoratif aria-hidden, opacité 0 vers 0,24 et petit déplacement de 550 ms, texture et recadrage conservés. Échantillons réels `studio-hover-glow.json` : variation de transform pendant le survol, état stabilisé vers 581 ms et zéro animation au repos. Capture `glow-local.jpg`. Pas de boucle, de filtre animé, de suivi de souris ni de nouvelle image.
 
 Revue indépendante : aucun blocage du formulaire, de l’API, du tableau, du focus ou des liens détecté. JSX et catalogue lisibles, textes partagés dans src/content/, guide manuel mis à jour. Vérification intégrée finale : TypeScript, build et 113 tests passants, diff whitespace propre. La préférence de réduction des animations et le fond statique restent en place. Publication finale et contrôle public consignés ci-après après bascule.
+
+
+## Publication finale vérifiée
+
+Révision applicative `7c5550c67402246a656c534a54d0954fbc2afd9a`, release `20261103T040155Z-7c5550c67402`, client public `index-DGJoTYdQ.js` et archive SHA-256 `7c49eb1894f2c035b7d96431a46d7294c305721a5bf50b55dd6f3b5f776e591d` confirmés. Sauvegarde avant bascule ; états et PID des autres projets identiques, GP Park 200.
+
+Contrôles du navigateur public après chargement complet : quatre créations et deux services distincts ; six entrées de menu avec déclencheur coloré, contact noir et FAQ à droite ; zéro flèche diagonale ou icône dans Configurer ; sujets Évolution/Refonte différents, URL facultative ; liens d’images et titres directement externes dans le même onglet ; filtre 3D montrant Julie Thiam et Tiny Heaven ; six questions pertinentes. Aucun message soumis.
+
+Comparatif ouvert puis fermé au clavier : hauteur complémentaire 420,5 px puis 0, bouton sous le tableau, sans case à cocher. Mobile : largeur client/document 375/375, bouton 335 × 52, menu six entrées avec FAQ et fermeture à la navigation. Halo réel public à opacité 0,24 et transform stable, zéro animation au repos. Aucune erreur/alerte applicative dans les journaux de la visite finale.
+
+Captures publiques réelles, après chargement complet : `final-public-menu-retina.png`, `final-public-cards-retina.png`, `final-public-services-retina.png` (PNG natives 2560 × 1440) ; `final-public-mobile-menu.jpg` et `final-public-mobile-details.jpg`. Le rendu des cartes distinctes a été ouvert et inspecté. Matière, typographie, espacements et états restent cohérents ; les modifications intentionnelles correspondent aux dernières demandes. Aucun écart bloquant constaté sur ce périmètre.
+
+Localhost et onglet local fermés, ports 4173/4174 sans écoute, onglet public conservé. Le code est sur GitHub ; les comptes rendus peuvent être plus récents que la révision applicative en ligne. Prix, destinataire Resend et documents commerciaux restent explicitement reportés. Le présent contrôle ne revendique pas une réception d’e-mail réelle.
+
+final result: passed
