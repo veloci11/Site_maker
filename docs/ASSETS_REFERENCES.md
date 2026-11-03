@@ -77,3 +77,6 @@ La grande carte utilise `public/assets/textures/grain-plasma-master.webp` (1536 
 Référence étudiée : [cartes tarifaires ElevenLabs](https://elevenlabs.io/pricing), notamment le calculateur Creator ; capture native dans `docs/qa/card-texture-fidelity/reference-elevenlabs@2x.png`. Référence de matière et de finesse seulement : aucune image ou texture ElevenLabs n’est utilisée sur le site. La texture originale de studio et les petites cartes approuvées restent la vérité de couleur et de composition.
 
 Contrôle IAB : source sans perte dans la grande carte 568,3 × 530 CSS à DPR 2 ; version légère seule sur mobile DPR 1. Aucun canvas de grain dans la grande carte. Les comparaisons de contexte et de détail sont dans `docs/qa/card-texture-fidelity/`. Les essais précédents restent documentés dans leurs dossiers QA.
+
+
+Contrôle de publication du lot `6133f1e` : les quatre nouveaux exports GeoBoss, Aéma, Satellite et Atlante répondent en HTTPS sur gilmathis.com avec un SHA-256 identique au manifeste local. La galerie publique affiche neuf références ; Atlante est signalé comme projet archivé avec lien de présentation. Version et preuves publiques : `../ops/DEPLOYMENT_STATUS.md`.

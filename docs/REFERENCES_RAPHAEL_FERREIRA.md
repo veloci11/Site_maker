@@ -4,7 +4,7 @@ Recherche initiale du 2 novembre 2026, fuseau America/Mexico_City, complétée p
 
 ## Résultat et périmètre
 
-La collection `Works` du [portfolio de Raphaël Ferreira](https://raphael-ferreira.com/) contient **sept projets web**. Les quatre références absentes lors de la recherche — **GeoBoss, Atlante 3D, AEMA et Satellite Story** — sont maintenant intégrées localement dans `shared/catalog.ts`, en complément de Lactel, Tiny Heaven et Addiction Agency. Avec DOMTEKNIKA et Julie Thiam, le catalogue local contient **neuf exemples**. Cette intégration locale n'est pas encore une confirmation de publication en production.
+La collection `Works` du [portfolio de Raphaël Ferreira](https://raphael-ferreira.com/) contient **sept projets web**. Les quatre références absentes lors de la recherche — **GeoBoss, Atlante 3D, AEMA et Satellite Story** — sont maintenant intégrées localement dans `shared/catalog.ts`, en complément de Lactel, Tiny Heaven et Addiction Agency. Avec DOMTEKNIKA et Julie Thiam, le catalogue local contient **neuf exemples**. Ce lot est désormais publié dans la révision applicative `6133f1e` ; les neuf références et le filtre 3D ont été contrôlés dans l’IAB public. Les quatre nouveaux exports servis en HTTPS ont des empreintes identiques aux fichiers prévus.
 
 L'inventaire a été recoupé avec le module public chargé par le portfolio, [index-C1b7cpez.js](https://raphael-ferreira.com/assets/index-C1b7cpez.js), et avec les README GitHub du même auteur. Les fiches du portfolio chargent elles-mêmes ces README. Les titres, slugs, liens `live`, `poster` et `poster_big` cités ci-dessous sont présents dans ces sources ; aucune adresse de site n'a été déduite du seul nom d'un projet.
 

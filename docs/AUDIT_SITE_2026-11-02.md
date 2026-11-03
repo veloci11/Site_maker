@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour : les six cartes, le sous-menu coloré, FAQ à droite, le contact noir, les CTA sans flèche, les inclusions, les deux parcours Évolution/Refonte, la galerie directe, le dépliage sans case à cocher et le léger halo sont publiés dans `7c5550c` et contrôlés en ligne. Le corps ci-dessous conserve la revue de l’itération précédente. Le suivi actuel et les reports explicites sont dans [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour : les six cartes harmonisées et centrées, les couleurs sur chaque offre du sous-menu, « Afficher plus de détails », les huit FAQ issues d’une recherche Reddit qualitative et les neuf références de galerie sont publiés dans `6133f1e` et contrôlés en ligne sur ordinateur/mobile. Le corps ci-dessous conserve la revue de l’itération précédente. Le suivi actuel et les reports explicites sont dans [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

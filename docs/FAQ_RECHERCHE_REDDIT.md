@@ -1,6 +1,6 @@
 # FAQ — recherche ciblée sur Reddit
 
-Recherche effectuée le 2 novembre 2026. Document interne de provenance éditoriale. Les huit questions et réponses ci-dessous sont désormais intégrées **localement** dans `shared/catalog.ts` ; leur publication en production n'est pas encore attestée pour ce lot.
+Recherche effectuée le 2 novembre 2026. Document interne de provenance éditoriale. Les huit questions et réponses ci-dessous sont intégrées dans `shared/catalog.ts` et publiées dans la révision applicative `6133f1e`. La page FAQ publique et sa première réponse ont été contrôlées dans l’IAB, sur ordinateur et mobile ; la provenance éditoriale ci-dessous reste qualitative.
 
 ## Méthode et limites
 

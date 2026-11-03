@@ -109,4 +109,4 @@ La transition calculée est, dans chaque échantillon, `opacity 0.3s cubic-bezie
 
 Cette confirmation complète l'étude de la page principale sans transformer STUDIO en copie de ses comportements. **Les quatre cartes principales STUDIO n'ont pas changé durant cette vague** : matière, cadrage et fondu de 120 ms sont conservés, ainsi que leur couche lumineuse préexistante. La persistance du dernier survol et le timing ElevenLabs de 300 ms n'ont pas été implémentés. Aucun asset ElevenLabs n'a été intégré au produit et aucune dépendance n'a été ajoutée pour cette inspection ; les captures ci-dessus restent des preuves internes.
 
-L'alignement des deux cartes Évolution/Refonte et les autres changements du lot sont, à ce stade documentaire, intégrés localement. Cette analyse externe et ses preuves IAB ne constituent pas une validation de publication du site STUDIO en production.
+L’alignement des deux cartes Évolution/Refonte et les autres changements du lot ont ensuite été publiés dans `6133f1e`. Les contrôles publics propres à STUDIO sont consignés dans `../design-qa.md` et `../ops/DEPLOYMENT_STATUS.md` ; les preuves de cette analyse ElevenLabs demeurent distinctes.
