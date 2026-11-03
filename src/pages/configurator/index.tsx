@@ -9,7 +9,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Textarea } from '../../components/ui/textarea'
-import { PlanGrain } from '../../components/layout/PlanGrain'
 import { useAuth } from '../../lib/auth'
 import { api, errorMessage } from '../../lib/api'
 import { useProject } from '../../lib/project'
@@ -162,7 +161,6 @@ export function ConfiguratorPage() {
     <div className="configurator-grid">
       <aside className="configurator-card-column" aria-label="Votre forfait et son prix">
         <div className={`selected-plan pricing-card--${offer.variant}`}>
-          <PlanGrain />
           <div className="selected-plan__heading"><span className="selected-plan__eyebrow">Votre forfait</span><Dialog open={chooserOpen} onOpenChange={setChooserOpen}><DialogTrigger asChild><button type="button" className="selected-plan__change" disabled={sending || stage === 'success'}>Changer <ChevronDown size={14} aria-hidden="true" /></button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Choisir un forfait</DialogTitle><DialogDescription>Vos options compatibles sont conservées.</DialogDescription></DialogHeader><div className="configurator-offer-choices">{offers.map(item => <button key={item.id} type="button" className="configurator-offer-choice" aria-pressed={item.id === offer.id} onClick={() => changeOffer(item.id)}><strong>{item.title}</strong><span>{item.id === 'sur-mesure' ? 'Sur devis' : pricing.base[item.id] === null ? 'À partir de…' : formatMoney(pricing.base[item.id], pricing.currency)}</span>{item.id === offer.id ? <Check size={18} aria-hidden="true" /> : <ArrowRight size={18} aria-hidden="true" />}</button>)}</div></DialogContent></Dialog></div>
           <h1>{offer.title}</h1><p className="selected-plan__description">{offer.description}</p>
           <ul className="selected-plan__features">{offer.features.map(feature => <li key={feature}><Check size={19} strokeWidth={1.6} aria-hidden="true" />{feature}</li>)}</ul>

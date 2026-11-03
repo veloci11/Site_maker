@@ -1,0 +1,23 @@
+{
+  "source": "docs/asset-sources/textures/grain-plasma-v2.png",
+  "export": "public/assets/textures/grain-plasma-master.webp",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 2636656,
+  "decodedRgbExtrema": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "sourceSha256": "3d07f623a599f0341b065a3da5e74558d53d69851cf897bf473d4c4a27542720",
+  "exportSha256": "f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76"
+}

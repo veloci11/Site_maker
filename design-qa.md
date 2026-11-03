@@ -101,3 +101,35 @@ final result: passed
 Cette itération conserve les sources et captures de l’essai HD précédent. Aucun e-mail ni changement de catalogue pendant cette correction.
 
 Contrôle public final de l’itération : révision `f768c46c96e56ec34e2a50aa27b935ab321681b9`, release `20261103T000640Z-f768c46c96e5`, client `index-D48NNVRJ.js` observés sur gilmathis.com. À DPR 2, le canvas est bien 1137 × 1060 ; seule la texture légère de 162 744 octets est chargée. Initialisation mesurée environ 1,1 ms en production sur cette machine ; aucune animation active au repos ni erreur/avertissement applicatif. `after-public-retina.png` est une capture PNG sans perte 2560 × 1440 du site réellement en ligne, ouverte et vérifiée. État de l’option mobile conservé au rechargement. Sauvegarde effectuée, autres projets inchangés, localhost et onglet local fermés.
+
+## Correction de fidélité après rejet du lissage — 2 novembre 2026
+
+**Constat P1 rouvert par Mathis.** La conclusion de l’itération précédente sur le lissage et le grain procédural est invalidée par son retour : « c’était mieux avant », « juste de meilleure qualité comme les petits ». La demande porte sur la qualité de la matière originale, pas sur un nouveau style. Le flou et le composant PlanGrain sont supprimés. La grande carte reprend la source originale en export sans perte ; teinte, luminosité, vignette et cadrage reviennent à ceux de l’état HD précédent.
+
+### Vérité visuelle, échelle et comparaison
+
+- Matière et couleurs : `docs/asset-sources/textures/grain-plasma-v2.png`, source studio originale 1536 × 1024 ; petite carte approuvée capturée au focus dans `docs/qa/card-texture-fidelity/reference-small-vitrine@2x.png`. La texture mini n’est pas modifiée.
+- Référence supplémentaire inspectée en direct : https://elevenlabs.io/pricing, carte Creator du calculateur. Capture native `reference-elevenlabs@2x.png`, 1007 × 1007 pixels pour une carte 503,5 × 503,5 CSS à DPR 2. La référence montre une matière présente et contrastée, sans exiger les couleurs ou la composition exactes d’ElevenLabs. Aucun asset ElevenLabs n’est utilisé dans le site.
+- Implémentation : `vitrine-desktop@2x.png`, 2560 × 1440 pour un viewport CSS 1280 × 720 / DPR 2 ; Vitrine, adaptation mobile choisie, étape options. Capture après fin de la transition, carte 568,3 × 530 CSS.
+- Contexte complet : `comparison-context.jpg`, état rejeté et état corrigé réunis à 1280 × 720 chacun. Détail : `comparison-native.png`, ancien HD compressé et export sans perte, cartes PNG à l’échelle native 1137 × 1060 chacune.
+- Grain à l’échelle physique : `comparison-grain-reference.png`, extraits de 450 × 300 pixels d’ElevenLabs, du précédent studio HD et du nouveau studio. Aucun agrandissement des détails. Ces planches ont été ouvertes et comparées dans le même résultat, puis les captures intermédiaires prises pendant une transition ont été remplacées par les captures stabilisées.
+
+### Cinq surfaces et comportement
+
+- **Typographie** : Geist, tailles, graisses, interlignages et textes identiques. Aucun flou, bruit ou image ne recouvre les glyphes ou les contrôles. Les retours à la ligne restent identiques au contexte de référence.
+- **Espacement** : même carte, rayon, marges, grille gauche/droite et empilement mobile. Aucun onglet, bouton ou section ajouté.
+- **Couleurs et états** : compositions, variantes, luminosité et vignette de l’état d’avant restaurées. Focus de la petite carte Vitrine testé ; l’effet est celui du code approuvé, sans changement des octets de sa texture.
+- **Image et matière** : `grain-plasma-master.webp`, export WebP sans perte du PNG ; contrôle RGB décodé nul sur les trois canaux, dimensions identiques, preuve `lossless-verification.json`. Grain original conservé, aucune retouche de style, aucun grain artificiel ni interpolation de fichier. L’ancien WebP HD compressé présentait un écart moyen d’environ 4,16 / 2,26 / 3,56 niveaux sur les canaux RGB par rapport au PNG.
+- **Contenus** : forfaits, inclusions, options et tarifs en attente conservés ; aucune modification fonctionnelle, aucun e-mail envoyé, aucun aperçu de site ajouté.
+- Quatre variantes inspectées : `variants-desktop.jpg`, captures individuelles Connecté/Immersif/Sur mesure. Choix d’option et navigation carte/forfait fonctionnels.
+- Mobile 390 × 844 CSS, DPR 1 : `vitrine-mobile.png`. Client et document 375 px de large, aucun débordement ; barre du total à y = 766, hauteur 78, visible jusqu’à 844. Seule la texture légère est demandée sur cette visite mobile.
+- Le canvas de la grande carte est absent. Console après rechargement final : aucune erreur/alerte ; preuve `console-final.json`. Un message Vite pendant la suppression de l’ancien composant a disparu au rechargement, et ne constitue pas une erreur du build livré. Aucune animation permanente au repos ; viewport réinitialisé.
+- `npm run check` : TypeScript, build et 113 tests passants. `git diff --check` contrôlé avant commit.
+
+### Limites et livraison
+
+La source conserve sa résolution réelle de 1536 × 1024 : ce n’est pas une image 4K ni une restauration de détails absents du PNG. L’export sans perte pèse 2 636 656 octets contre 879 898 pour l’ancien HD compressé. Ce poids supplémentaire est réservé à la grande carte à haute densité ; source légère dessous pendant son chargement, aucune attente imposée aux options ou à la navigation. Aucun fichier de texture ou effet des petites cartes ne change. La validation porte sur la fidélité retrouvée à la matière originale ; elle ne prétend pas garantir une préférence esthétique de Mathis.
+
+P1 de dérive de matière corrigé ; aucun autre écart P0/P1/P2 constaté dans ce périmètre. Vérification publique consignée après déploiement.
+
+final result: passed
