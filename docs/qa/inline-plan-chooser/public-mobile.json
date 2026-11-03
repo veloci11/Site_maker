@@ -1,0 +1,23 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "client": 390,
+      "dialogs": 0,
+      "innerHeight": 844,
+      "innerWidth": 390,
+      "items": 6,
+      "menu": {
+        "bottom": 498.00831604003906,
+        "height": 291,
+        "left": 122,
+        "right": 346,
+        "top": 207.00831604003903,
+        "width": 224,
+        "x": 122,
+        "y": 207.00831604003903
+      },
+      "width": 390
+    }
+  }
+}

@@ -1,12 +1,12 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `0aeb90d` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `db50490` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Menu Changer et focus Forfaits — vérifiés localement, publication en cours
+## Menu Changer et focus Forfaits — terminé et vérifié en ligne
 
-Demande reçue pendant la clôture du lot précédent : remplacer la fenêtre centrale par un petit menu déroulant attaché au bouton. Afficher les quatre créations et les deux prestations Évolution/Refonte, en gardant leurs destinations et leurs périmètres existants. Petit DropdownMenu ancré au bouton, six choix, création courante cochée, aucune fenêtre centrale. Six destinations contrôlées, sujets Évolution/Refonte corrects et options compatibles conservées. Menu mobile de 224 px sans débordement, Échap ferme et rend le focus au bouton. Ensuite, contour violet Forfaits retiré : le clavier conserve un soulignement noir de 2 px. Preuves : `qa/inline-plan-chooser/`.
+Demande reçue pendant la clôture du lot précédent : remplacer la fenêtre centrale par un petit menu déroulant attaché au bouton. Afficher les quatre créations et les deux prestations Évolution/Refonte, en gardant leurs destinations et leurs périmètres existants. Petit DropdownMenu ancré au bouton, six choix, création courante cochée, aucune fenêtre centrale. Six destinations contrôlées, sujets Évolution/Refonte corrects et options compatibles conservées. Menu mobile de 224 px sans débordement, Échap ferme et rend le focus au bouton. Ensuite, contour violet Forfaits retiré : le clavier conserve un soulignement noir de 2 px. Preuves : `qa/inline-plan-chooser/`. Publication `db50490`, release `20261103T170055Z-db504905a1d5`, client `index-CPw93N-F.js` : menu de six entrées, zéro dialogue et position sous le bouton confirmés en ligne ; destinations Évolution/Refonte et sujets corrects, focus Forfaits sans contour violet. Contrôle mobile 390 × 844 CSS sans débordement. TypeScript, build et 113 tests passent. Les filtres blancs et le menu mobile du lot précédent restent en place. Aucun formulaire soumis. Localhost fermé, onglet public conservé, autres projets Ubuntu inchangés.
 
 ## Filtres au survol et menu mobile — terminé et vérifié en ligne
 

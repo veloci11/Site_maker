@@ -1,0 +1,29 @@
+[
+  {
+    "offer": "Connecté",
+    "url": "http://127.0.0.1:4173/forfaits/connecte",
+    "languageRetained": "true"
+  },
+  {
+    "offer": "Refonte",
+    "url": "http://127.0.0.1:4173/contact?besoin=refonte",
+    "subject": "Refonte d’un site existant"
+  },
+  {
+    "offer": "Évolution",
+    "url": "http://127.0.0.1:4173/contact?besoin=evolution",
+    "subject": "Évolution d’un site existant"
+  },
+  {
+    "offer": "Immersif 3D",
+    "url": "http://127.0.0.1:4173/forfaits/immersif-3d"
+  },
+  {
+    "offer": "Sur mesure",
+    "url": "http://127.0.0.1:4173/forfaits/sur-mesure"
+  },
+  {
+    "offer": "Vitrine",
+    "url": "http://127.0.0.1:4173/forfaits/vitrine"
+  }
+]

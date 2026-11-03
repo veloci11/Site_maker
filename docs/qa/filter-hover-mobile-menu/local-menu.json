@@ -1,0 +1,32 @@
+[
+  {
+    "active": null,
+    "color": "rgb(17, 17, 17)",
+    "decoration": "none",
+    "label": "Accueil"
+  },
+  {
+    "active": null,
+    "color": "rgb(17, 17, 17)",
+    "decoration": "none",
+    "label": "Forfaits"
+  },
+  {
+    "active": "page",
+    "color": "rgb(17, 17, 17)",
+    "decoration": "underline",
+    "label": "Exemples de sites"
+  },
+  {
+    "active": null,
+    "color": "rgb(17, 17, 17)",
+    "decoration": "none",
+    "label": "FAQ"
+  },
+  {
+    "active": null,
+    "color": "rgb(255, 255, 255)",
+    "decoration": "none",
+    "label": "Nous contacter"
+  }
+]

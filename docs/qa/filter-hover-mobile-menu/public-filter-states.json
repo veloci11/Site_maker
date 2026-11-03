@@ -1,0 +1,29 @@
+{
+  "idle": [
+    {
+      "background": "rgb(255, 255, 255)",
+      "label": "Vitrine",
+      "opacity": "0"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "label": "Connecté",
+      "opacity": "0"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "label": "3D",
+      "opacity": "0"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "label": "Sur mesure",
+      "opacity": "0"
+    }
+  ],
+  "hover": "1",
+  "selected": {
+    "opacity": "1",
+    "selected": "true"
+  }
+}

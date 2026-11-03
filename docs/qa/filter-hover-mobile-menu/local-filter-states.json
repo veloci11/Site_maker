@@ -1,0 +1,42 @@
+{
+  "idle": [
+    {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(87, 83, 96)",
+      "label": "Vitrine",
+      "opacity": "0",
+      "selected": "false"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(87, 83, 96)",
+      "label": "Connecté",
+      "opacity": "0",
+      "selected": "false"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(87, 83, 96)",
+      "label": "3D",
+      "opacity": "0",
+      "selected": "false"
+    },
+    {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(87, 83, 96)",
+      "label": "Sur mesure",
+      "opacity": "0",
+      "selected": "false"
+    }
+  ],
+  "hover": {
+    "color": "rgb(255, 255, 255)",
+    "opacity": "1",
+    "selected": "false"
+  },
+  "selected": {
+    "color": "rgb(255, 255, 255)",
+    "opacity": "1",
+    "selected": "true"
+  }
+}

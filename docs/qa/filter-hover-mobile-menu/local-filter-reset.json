@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Vitrine",
+    "opacity": "0",
+    "selected": "false"
+  },
+  {
+    "label": "Connecté",
+    "opacity": "0",
+    "selected": "false"
+  },
+  {
+    "label": "3D",
+    "opacity": "0",
+    "selected": "false"
+  },
+  {
+    "label": "Sur mesure",
+    "opacity": "0",
+    "selected": "false"
+  }
+]

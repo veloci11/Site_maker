@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 10:41, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative : 03/11/2026 à 11:00, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `0aeb90d5a7a81d2b447fdf37ccd3f5d196b7b28d`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T164107Z-0aeb90d5a7a8` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-Bdlv6znL.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `b4516ec892836535438192cc7863a1f6fa7c70891b12fef2604e678c560f9e95`.
-- Version précédente disponible : `releases/20261103T163209Z-3e740d63a275`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `db504905a1d56fa8c130f5971e83fba79418b655`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T170055Z-db504905a1d5` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-CPw93N-F.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `3d91df8a7b0e2faa0cf4d04e50bb7eb60c820f45f57c2059082c8a73f28f8dbd`.
+- Version précédente disponible : `releases/20261103T164953Z-99f4eafe49de`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -17,17 +17,28 @@ Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus e
 
 Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. Évolution et Refonte concernent un site existant et conduisent à deux demandes contextualisées sur devis. Ces deux cartes utilisent maintenant le même composant `PricingCard`, les mêmes dimensions, la même matière, trois points et le même CTA que les quatre créations. Elles sont centrées en colonnes 2 et 3 sur grand écran, puis partagent les règles tablette/mobile. Les quatre identifiants techniques de création restent inchangés.
 
-- Navigation : menu Forfaits avec six entrées, FAQ à droite avant le contact noir. Le déclencheur Forfaits reste neutre ; la texture apparaît sur chaque offre du sous-menu au survol ou au focus. Liste dépliable sur mobile, fermeture après navigation.
+- Navigation : menu Forfaits avec six entrées, FAQ à droite avant le contact noir. Le déclencheur Forfaits reste neutre ; la texture apparaît sur chaque offre du sous-menu au survol ou au focus. Liste dépliable sur mobile, fermeture après navigation. Liens actifs noirs et soulignés dans le burger ; Forfaits utilise un soulignement noir renforcé au focus clavier, sans contour violet.
 - Cartes : matière et effets approuvés des quatre créations conservés ; deux nouvelles variantes pour les services. Boutons noirs au repos, texture au survol/focus partagée avec le comparatif ; Configurer sans flèche. Flèches diagonales retirées du public.
 - Dernière clarification de Mathis : nos images restent exactement les mêmes. Reflet, liseré et halo retirés. Les couleurs apparaissent en 300 ms et le texte en 150 ms ; un grain indépendant précalculé (WebP 256 × 256, 107 058 octets, overlay 0,32) se déplace de quelques pixels pendant 360 ms à l’entrée du survol/focus, une seule fois, puis s’immobilise. Carte et image fixes, pas de filtre animé ni de bruit calculé à l’interaction. CTA et menu conservent 120 ms.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
-- Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon simple refermable : une rubrique ouverte à la fois, résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
-- Galerie : neuf références avec filtres et crédits. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie reprennent cette matière et le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte le badge « Projet archivé », avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
+- Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon simple refermable : une rubrique ouverte à la fois, résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. « Changer » est un menu ancré au bouton, avec les quatre créations puis Évolution/Refonte et coche sur la création courante ; aucun dialogue centré. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
+- Galerie : neuf références avec filtres et crédits. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie restent blancs au repos et révèlent la matière au survol réel, au focus clavier ou à la sélection, avec fondu de 300 ms. Le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte la mention « Projet archivé » dans sa description, avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
 - FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; aucune nouvelle dépendance de production. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Vérifications du lot couleurs de la galerie
+## Vérifications des derniers lots — filtres, navigation et menu Changer
+
+- TypeScript, build et 113 tests passent après les dernières modifications ; diff sans erreur d’espacement.
+- Filtres : blancs au repos, texture révélée au survol/focus et maintenue sur la sélection ; retour au blanc après désélection. Un seul badge texturé par site conservé.
+- Menu mobile : tous les liens ordinaires noirs, page courante soulignée ; contact noir à texte blanc. Accordéon du configurateur recontrôlé : une seule rubrique ouverte et choix visibles dans les rubriques fermées.
+- Changer : six choix, coche sur la création courante, séparateur avant Évolution/Refonte. Menu de 224 px, positionné 6 px sous le bouton sur ordinateur ; zéro dialogue central. Les six destinations et la conservation des options compatibles passent localement ; Refonte et Évolution sont également vérifiées en production avec leur sujet correspondant. Aucun formulaire envoyé.
+- Focus Forfaits : aucun contour violet après sélection ; soulignement noir de 2 px au clavier, ouverture par flèche bas et fermeture par Échap conservées. Les autres contrôles gardent leur règle de focus.
+- Mobile public 390 × 844 CSS : six entrées dans le menu Changer, document/client 390/390, aucun débordement, zéro dialogue. Émulation temporaire retirée ; aucune alerte applicative observée.
+- Santé HTTPS et client identiques au build par SHA-256. Origine Ubuntu : sauvegarde avant bascule, quatre forfaits de création, 26 options et prix inchangés, autres projets/PID inchangés, GP Park HTTP 200.
+- Preuves : `docs/qa/filter-hover-mobile-menu/` et `docs/qa/inline-plan-chooser/`, notamment `public-menu.png`, `public-menu.json`, `public-refonte.json`, `public-evolution.json`, `public-header-focus.json`, `public-mobile.json` et `public-https.json`. Localhost arrêté, ports 4173/4174 libres ; seul l’onglet public est conservé.
+
+## Vérifications du lot précédent — couleurs de la galerie
 
 - TypeScript, build et 113 tests passent ; diff sans erreurs d’espacement.
 - IAB public : neuf sites et neuf badges, variantes et texture des cartes partagées avec les badges et filtres. Les cinq filtres donnent 9/2/1/5/2 références ; aucun double badge, contour de sélection visible. Archive signalée dans le texte, 36 liens externes conservés.

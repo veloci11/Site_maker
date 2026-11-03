@@ -1,0 +1,55 @@
+{
+  "dialogCount": 0,
+  "items": [
+    {
+      "current": "page",
+      "href": null,
+      "text": "Vitrine"
+    },
+    {
+      "current": null,
+      "href": null,
+      "text": "Connecté"
+    },
+    {
+      "current": null,
+      "href": null,
+      "text": "Immersif 3D"
+    },
+    {
+      "current": null,
+      "href": null,
+      "text": "Sur mesure"
+    },
+    {
+      "current": null,
+      "href": "/contact?besoin=evolution",
+      "text": "Évolution"
+    },
+    {
+      "current": null,
+      "href": "/contact?besoin=refonte",
+      "text": "Refonte"
+    }
+  ],
+  "menu": {
+    "bottom": 531.4648284912109,
+    "height": 290.6315002441406,
+    "left": 359.1666564941406,
+    "right": 583.1640472412109,
+    "top": 240.8333282470703,
+    "width": 223.9973907470703,
+    "x": 359.1666564941406,
+    "y": 240.8333282470703
+  },
+  "trigger": {
+    "bottom": 235.0585823059082,
+    "height": 29.075519561767575,
+    "left": 494.8046875,
+    "right": 583.33984375,
+    "top": 205.98306274414065,
+    "width": 88.53515625,
+    "x": 494.8046875,
+    "y": 205.98306274414065
+  }
+}

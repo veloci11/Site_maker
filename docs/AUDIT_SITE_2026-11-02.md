@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : badge unique par référence, matière des forfaits reprise dans les badges et filtres, publiés dans `0aeb90d` et contrôlés en HTTPS et IAB desktop/mobile. Accordéon exclusif, résumés et ouverture des exemples dans un nouvel onglet conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : filtres blancs au repos avec couleur au survol/sélection, menu mobile noir, Changer en menu ancré à six choix et focus Forfaits sans contour violet publiés ; dernière révision `db50490`, contrôlée en HTTPS et IAB desktop/mobile. Accordéon exclusif, résumés, badge unique et ouverture des exemples en nouvel onglet conservés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

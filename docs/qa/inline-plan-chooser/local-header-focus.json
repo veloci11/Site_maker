@@ -1,0 +1,15 @@
+{
+  "afterNavigation": {
+    "focusVisible": true,
+    "outline": "none",
+    "underlineHeight": "2px",
+    "underlineTransform": "matrix(1, 0, 0, 1, 0, 0)"
+  },
+  "keyboard": {
+    "focusVisible": true,
+    "focused": true,
+    "outline": "none",
+    "underlineHeight": "2px"
+  },
+  "keyboardMenuItems": 6
+}
