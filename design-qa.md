@@ -157,3 +157,24 @@ Les changements intentionnels ci-dessus remplacent les anciens choix de navigati
 final result: passed
 
 Vérification publique finale de la navigation et de la FAQ : révision `d892e663fcb744d485f0e1621efaa560cf4dc738`, release `20261103T021319Z-d892e663fcb7`, empreinte client `index-DNlyX7rP.js`. Navigation observée Accueil / Forfaits / Exemples de sites, mentions retirées absentes de l’accueil et de la FAQ, six nouvelles questions, première réponse ouverte avec aria-expanded=true. Aucun message réel soumis ni erreur/alerte de console. Captures PNG natives publiques 2560 × 1440 ouvertes et inspectées : `docs/qa/navigation-content-review/after-public-home-retina.png` et `after-public-faq-retina.png`. Onglet public conservé ; prévisualisation et ports 4173/4174 fermés. Les points commerciaux ouverts du rapport d’audit restent explicitement hors de cette validation d’interface.
+
+
+## Menu Forfaits, boutons et refonte — 2 novembre 2026
+
+Périmètre demandé : petit sous-menu Forfaits, contact noir, boutons Configurer avec survol coloré, inclusions expliquées, prestation de refonte séparée et nouvel aperçu Addiction Agency. Les trois agents ont traité navigation, lisibilité des pages et revue indépendante. Le catalogue et les JSX concernés sont indentés ; les textes réutilisés sont dans `shared/catalog.ts` et `src/content/`. Le guide `docs/MODIFIER_LE_SITE.md` indique précisément quoi modifier.
+
+Référence d’effet : `https://elevenlabs.io/pricing`, observée dans le navigateur. La couleur se révèle par opacité (0,3 s), le texte change en 0,15 s et le grain reste statique en overlay. Preuves : `docs/qa/offers-menu-buttons/elevenlabs-effect.json` et `reference-elevenlabs-hover.jpg`. Studio conserve sa matière originale et son fondu de 120 ms approuvé ; aucun asset ElevenLabs ni suivi du pointeur ajouté.
+
+Comparaison au même viewport : `before-public-comparison.jpg` est l’ancienne version publique ; `comparison-buttons-hover.jpg` est la nouvelle version locale. Vue juxtaposée `comparison-context.jpg`, détails `comparison-detail-before.png` et `comparison-detail-after.png`, dans `docs/qa/offers-menu-buttons/`.
+
+- Composition : une seule entrée Forfaits, quatre offres et une entrée Refonte séparée ; contact noir. Les quatre cartes principales et le fond restent identiques. Refonte figure sous les cartes sur l’accueil et après le comparatif.
+- Typographie : Geist et tailles conservées, pas de nouvelle police. Les inclusions sont expliquées avant les options, sans panneau supplémentaire.
+- Espacements : sous-menu compact ; boutons du comparatif de 44 px minimum. Mobile 390 × 844 CSS : aucun débordement de page ; bouton observé 119 × 44 px, largeur de contenu identique. Tableau défilant conservé.
+- Couleurs et états : Configurer noir au repos, texture de son forfait au survol/focus, durée observée 0,12 s. Focus visible, Échap ferme le menu et rend le focus au déclencheur ; navigation ferme menu et panneau mobile. Réduction des animations conservée.
+- Images : véritable capture Addiction Agency 2560 × 1440 exportée en WebP ; provenance et crédit consignés dans `docs/ASSETS_REFERENCES.md`. L’ancien aperçu est archivé hors du public. Textures des cartes approuvées inchangées.
+
+Parcours Refonte local : sujet prérempli, URL facultative distincte du honeypot, message trop long refusé ; une demande fictive enregistrée une seule fois avec son URL dans SQLite. Envoi explicitement désactivé, aucun e-mail émis. Preuve synthétique `refit-verification.json`. Les quatre forfaits et 26 options restent inchangés ; aucun nouveau prix ni inclusion commerciale arbitraire.
+
+Vérification intégrée : `npm run check` passe (TypeScript, build, 113 tests), `git diff --check` passe. Revue indépendante : aucun blocage sur ce périmètre ; noms accessibles spécifiques ajoutés aux boutons. Contrôle navigateur après mise en forme du code : menu, boutons, explication Vitrine et contact Refonte conformes, aucune erreur/alerte applicative observée.
+
+Statut de ce compte rendu : vérifications locales ; preuve de publication ajoutée après bascule de la release.

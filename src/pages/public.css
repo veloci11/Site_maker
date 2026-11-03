@@ -288,10 +288,142 @@
 }
 @media (prefers-reduced-motion: reduce) { .public-gallery-filters > button { transition: none; } }
 
-.comparison-mobile-hint { display:none; }
-@media(max-width:760px) {
- .comparison-table { width:764px; min-width:764px; table-layout:fixed; }
- .comparison-table thead th { width:152px; }
- .comparison-table thead th:first-child { width:156px; min-width:156px; }
- .comparison-mobile-hint { display:flex; align-items:center; justify-content:flex-end; gap:7px; margin-top:12px; color:#756b7f; font-size:11px; }
+.comparison-mobile-hint {
+  display: none;
+}
+.comparison-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.comparison-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/textures/grain-plasma-card.webp")
+    var(--plasma-position) / cover no-repeat;
+  filter: hue-rotate(var(--card-hue)) saturate(0.93) brightness(0.76);
+  transform: scale(var(--card-scale-x, 1), var(--card-scale-y, 1));
+  opacity: 0;
+  transition: opacity 120ms linear;
+  pointer-events: none;
+}
+.comparison-cta:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 4px;
+}
+.comparison-cta:focus-visible::before,
+.comparison-cta:active::before {
+  opacity: 1;
+}
+@media (hover: hover) {
+  .comparison-cta:hover::before {
+    opacity: 1;
+  }
+}
+.existing-site-offer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 28px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgb(249 247 250 / 0.9);
+}
+.existing-site-offer .eyebrow {
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+.existing-site-offer h2 {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+.existing-site-offer h2 + p {
+  max-width: 600px;
+  margin-top: 10px;
+  color: var(--muted-foreground);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.existing-site-offer__action {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.existing-site-offer__action > span {
+  color: var(--muted-foreground);
+  font-size: 13px;
+}
+@media (max-width: 760px) {
+  .comparison-table {
+    width: 764px;
+    min-width: 764px;
+    table-layout: fixed;
+  }
+  .comparison-table thead th {
+    width: 152px;
+  }
+  .comparison-table thead th:first-child {
+    width: 156px;
+    min-width: 156px;
+  }
+  .comparison-mobile-hint {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    margin-top: 12px;
+    color: #756b7f;
+    font-size: 11px;
+  }
+  .comparison-cta {
+    gap: 6px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .comparison-cta > svg {
+    width: 13px;
+    height: 13px;
+    flex: none;
+  }
+  .existing-site-offer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px;
+    gap: 22px;
+  }
+  .existing-site-offer h2 {
+    font-size: 27px;
+  }
+  .existing-site-offer__action {
+    justify-items: start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .comparison-cta::before {
+    transition: none;
+  }
 }

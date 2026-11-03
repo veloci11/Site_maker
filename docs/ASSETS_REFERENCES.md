@@ -1,8 +1,8 @@
 # Provenance des aperçus de référence
 
-Ces deux fichiers sont des captures authentiques des sites externes ouverts dans le navigateur par l’agent principal. Ils ne sont pas générés par IA. Ils illustrent des formats de sites, sans revendiquer une réalisation ou une relation client du studio.
+Les captures ci-dessous proviennent des sites externes ouverts dans le navigateur par l’agent principal. Elles ne sont pas générées par IA. Elles illustrent des formats de sites, sans revendiquer une réalisation ou une relation client du studio.
 
-Les JPEG sources sont conservés dans `docs/qa/`. La seule transformation est l’encodage WebP avec `cwebp -q 93 -m 6` ; aucun recadrage, redimensionnement, ajout ou remplacement de contenu. Les exports ont été inspectés visuellement.
+Les sources sont conservées dans `docs/qa/`. Julie Thiam et DOMTEKNIKA ont été encodés en WebP avec `cwebp -q 93 -m 6` ; aucun recadrage, redimensionnement, ajout ou remplacement de contenu. Les exports ont été inspectés visuellement. La capture Retina d’Addiction Agency est décrite séparément ci-dessous.
 
 ## Julie Thiam
 
@@ -27,6 +27,18 @@ Les JPEG sources sont conservés dans `docs/qa/`. La seule transformation est l�
 ## Chargement et crédits
 
 Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparée ; les configurateurs ne contiennent aucun aperçu de site. Les galeries utilisent une image statique : le lien « Explorer le site » ouvre la source externe sur action de l’utilisateur. Aucune scène 3D ni iframe Julie Thiam n’est chargée automatiquement. Les créateurs sont crédités dans le catalogue et la galerie.
+
+## Addiction Agency — remplacement de l’aperçu
+
+- Source réelle : [page Agence](https://addiction-agency.com/agence), crédit [Addiction Agency](https://addiction-agency.com/).
+- Capture native du navigateur : 2026-11-03T02:28:06Z (2 novembre, 20:28 UTC−06), 2560 × 1440 pixels, viewport 1280 × 720 CSS à DPR 2.
+- Vue : identité de l’agence, titre Agence et cubes 3D verts/bleus. Aucun ajout, recadrage ou agrandissement de la capture.
+- Source conservée : `docs/qa/offers-menu-buttons/source-addiction-agency.png`, 872 001 octets ; SHA-256 `16b9780004f2c1a925cbe8f50ee198b90027b76594abd3615995e5555d704caa`.
+- Export actif : `public/assets/examples/addiction-agency.webp`, 2560 × 1440, 180 580 octets ; commande `cwebp -q 94 -m 6 -sharp_yuv`.
+- SHA-256 WebP : `24bb91e0625f67176bd360565e472e09ddc5d656da97697044a4927a653691bd`.
+- Ancienne vignette inadaptée conservée dans `docs/asset-sources/examples/addiction-previous.jpg`, hors du build public. Le catalogue pointe désormais sur le site réel de l’agence, avec son crédit ; aucune attribution de réalisation au studio.
+
+Le lien externe s’ouvre uniquement sur action du visiteur. Le site studio ne charge pas la vidéo ou la scène animée de l’agence.
 
 ## Texture des grandes cartes de forfait
 

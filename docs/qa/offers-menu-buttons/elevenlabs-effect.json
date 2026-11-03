@@ -1,0 +1,7 @@
+{
+  "grainBlend": "overlay",
+  "opacity": "1",
+  "revealDuration": "0.3s",
+  "source": "https://elevenlabs.io/pricing",
+  "textDuration": "0.15s"
+}

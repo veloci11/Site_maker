@@ -56,6 +56,8 @@ Avant une commande commerciale, les prix, leur régime fiscal, le périmètre de
 
 ## Organisation du code
 
+Guide de retouche manuelle : [docs/MODIFIER_LE_SITE.md](docs/MODIFIER_LE_SITE.md), avec les fichiers à modifier pour les forfaits, textes, exemples, menus et styles.
+
 | Dossier | Rôle |
 | --- | --- |
 | `src/` | Interface React 19, TypeScript, React Router et composants shadcn/Radix |

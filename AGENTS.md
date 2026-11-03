@@ -5,7 +5,8 @@ Les dernières corrections de Mathis remplacent les maquettes et demandes antér
 ## Produit et textes
 
 - Création de sites internet clé en main : Vitrine, Connecté, Immersif 3D, Sur mesure.
-- Employer « forfait(s) ». Menu simplifié : Accueil, un seul lien Forfaits, Exemples de sites et « Nous contacter » à droite. Aucun lien de navigation séparé pour Vitrine/Connecté/3D/Sur mesure, sur ordinateur comme sur mobile ; le choix se fait dans les cartes ou le comparatif.
+- Employer « forfait(s) ». Menu : Accueil, déclencheur Forfaits avec un petit sous-menu, Exemples de sites et bouton noir « Nous contacter » à droite. Les quatre forfaits sont dans ce sous-menu, pas dans quatre onglets de la barre. Même organisation sur mobile, dans une liste dépliable.
+- Refonte & évolution est une prestation séparée sur devis, sous les quatre cartes de création et après le comparatif. Une entrée séparée dans le sous-menu conduit à `/contact?besoin=refonte`, avec sujet prérempli et URL facultative du site actuel. Ne pas ajouter un cinquième OfferId ; `projet` reste réservé aux dossiers privés.
 - Ne pas afficher « Sans compte » / « Aucun compte à créer » dans le parcours public. Les phrases « Un interlocuteur direct » et « Un périmètre validé ensemble » sont retirées ; ne pas remplacer ces badges par d’autres promesses génériques.
 - FAQ entièrement revue : contenus à fournir, délai, modifications après livraison, adaptation mobile, domaine/hébergement et maintenance. Pas de questions évidentes sur « À partir de » ou le cumul d’options, ni de formulation « Je n’y connais rien ». Ne pas inventer de délai chiffré, de nombre de pages, de retouches, de transfert de droits ou d’inclusion non validés.
 - Aucun aperçu de site à l’arrivée sur l’accueil. Titres directs et textes utiles ; supprimer les phrases décoratives comme « À chaque projet, son point de départ ».
@@ -24,6 +25,7 @@ Les dernières corrections de Mathis remplacent les maquettes et demandes antér
 - Mathis fournira plus tard l’adresse de réception Resend : ne pas la redemander pendant les corrections visuelles.
 - Fond pastel visible en CSS : plages lavande, pêche, ciel et crème, grain procédural fin en lumière douce sans voile gris. **Pas d’image d’ambiance ni d’animation de fond.** Le fond doit continuer jusqu’au bord supérieur, y compris au rebond du scroll, et s’estomper sans coupure. Cette décision remplace la demande initiale de couleurs mobiles.
 - Fondu de carte de 120 ms avec texture WebP légère. Pas de suivi de pointeur, filtre animé, transition circulaire, attente de préchargement ou contenu masqué avant observation.
+- Les boutons du comparatif sont noirs au repos et révèlent la matière colorée de leur forfait au survol ou au focus. Conserver les cartes principales approuvées. Le configurateur explique clairement les inclusions avant les options ; les textes sont dans `src/content/configurator-copy.ts`.
 - Navigation immédiate. Entrées discrètes de 160–180 ms, désactivées avec la préférence de réduction des animations.
 - Pas de barre de progression décorative ni d’écouteur de scroll dans le header. Le configurateur est chargé à l’ouverture du forfait ; le menu reste présent pendant ce chargement. Pas de filtres de FAQ ; filtres de galerie rétablis à la demande de Mathis. Les étapes sont sur l’accueil, `/methode` redirige vers `/#fonctionnement`.
 - Geist Sans unique dans l’interface, Lucide, primitives shadcn/Radix. Les marques des aperçus gardent leur typographie. La charte reste interne, sans route publique.
@@ -35,6 +37,8 @@ Mathis a autorisé une équipe de dix spécialistes par vagues, puis des revues 
 Les anciennes routes `/formules` redirigent vers `/forfaits`. Les modifications de contenu utilisent `expectedUpdatedAt` et gardent le brouillon local en cas de conflit. Les calculs de prix appartiennent au serveur et au catalogue partagé.
 
 Les originaux d’images et essais inutilisés sont conservés dans `docs/asset-sources`, hors des fichiers copiés dans le build public. Ne servir que les exports actifs et garder la texture validée `grain-plasma-card.webp`.
+
+Pour les retouches manuelles, suivre `docs/MODIFIER_LE_SITE.md`. Garder les textes et paramètres partagés dans `shared/catalog.ts` et `src/content/`, les composants en JSX indenté, et les règles métier dans le catalogue/serveur. Ne pas dupliquer les liens des forfaits dans le header ni ajouter une abstraction pour un simple texte.
 
 Respecter les contrats et les périmètres attribués aux spécialistes. Le parent coordonne les fichiers communs ; aucun commit par les sous-agents. Ne pas écraser les modifications d’un autre spécialiste.
 
