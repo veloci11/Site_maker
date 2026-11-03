@@ -155,3 +155,5 @@ Périmètre de cette validation : navigation, textes et FAQ. Les points commerci
 Les changements intentionnels ci-dessus remplacent les anciens choix de navigation et de FAQ ; aucun écart P0/P1/P2 sur ce périmètre d’interface après comparaison. Les points de lancement du rapport d’audit ne sont pas présentés comme résolus.
 
 final result: passed
+
+Vérification publique finale de la navigation et de la FAQ : révision `d892e663fcb744d485f0e1621efaa560cf4dc738`, release `20261103T021319Z-d892e663fcb7`, empreinte client `index-DNlyX7rP.js`. Navigation observée Accueil / Forfaits / Exemples de sites, mentions retirées absentes de l’accueil et de la FAQ, six nouvelles questions, première réponse ouverte avec aria-expanded=true. Aucun message réel soumis ni erreur/alerte de console. Captures PNG natives publiques 2560 × 1440 ouvertes et inspectées : `docs/qa/navigation-content-review/after-public-home-retina.png` et `after-public-faq-retina.png`. Onglet public conservé ; prévisualisation et ports 4173/4174 fermés. Les points commerciaux ouverts du rapport d’audit restent explicitement hors de cette validation d’interface.

@@ -62,3 +62,7 @@ Un essai image_gen depuis la source originale a été demandé en 3072 × 2048. 
 4. Ajouter ensuite des preuves de travail propres au studio.
 
 Cette revue couvre l’affichage et les interactions décrites, pas un audit de sécurité, une certification d’accessibilité, une étude juridique ou un envoi réel. Les captures transitoires ou avec des images encore en cours de chargement ont été remplacées par les états stabilisés. TypeScript, build et 113 tests passent ; aucune erreur/alerte applicative observée dans la console locale finale.
+
+## Vérification de publication
+
+Corrections d’interface publiées et vérifiées sur gilmathis.com, révision `d892e663fcb744d485f0e1621efaa560cf4dc738`. La navigation observée correspond au menu simplifié ; la FAQ affiche les six nouvelles questions et aucune des formulations retirées. Capture de l’accueil : `qa/navigation-content-review/after-public-home-retina.png` ; FAQ : `qa/navigation-content-review/after-public-faq-retina.png`. Les éléments à compléter dans les étapes 2, 3 et 4 restent ouverts : cette publication ne valide pas encore les tarifs, l’offre commerciale ou une réception e-mail.

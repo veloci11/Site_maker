@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison : 2 novembre 2026 à 19:40, heure de Mexico (UTC−06), contrôlée en ligne.
+Dernière livraison : 2 novembre 2026 à 20:16, heure de Mexico (UTC−06), contrôlée en ligne.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision de l’application : `e4d247a473821d2c5c16952fc34752dc34044789`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T013839Z-e4d247a47382` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DOYv62n_.js`, identique au build de cette révision.
-- Archive runtime vérifiée avant extraction : SHA-256 `2b3f3c17baf82118f9fa6e57ac461e2f2f06c00813575a51c5228423669a1123`.
-- Révision précédente disponible : `20261103T000640Z-f768c46c96e5` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
+- Révision de l’application : `d892e663fcb744d485f0e1621efaa560cf4dc738`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T021319Z-d892e663fcb7` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-DNlyX7rP.js`, identique au build de cette révision.
+- Archive runtime vérifiée avant extraction : SHA-256 `2f395937b26172de684353f6912e58ad55325f8cbf0bb8b360612f82c90cad03`.
+- Révision précédente disponible : `20261103T013839Z-e4d247a47382` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
 
 Le dépôt peut contenir des comptes rendus plus récents ; la révision ci-dessus est celle du code applicatif effectivement déployé.
 
@@ -24,7 +24,7 @@ Galerie distincte avec tags et filtres, références externes créditées, aucun
 - Origine Ubuntu : santé et catalogue valides, quatre forfaits, **26 options**, paiements désactivés.
 - HTTPS public via curl : 200, empreinte du client final identique, catalogue et calcul serveur vérifiés. Administration anonyme : 401 ; inscription en production : 403 REGISTRATION_CLOSED.
 - IAB public : sélection de l’adaptation mobile, accès direct aux coordonnées sans inscription, retour sur Vitrine avec sélection conservée et formulaire réinitialisé. Aucun message réel soumis en production ; aucune erreur ou alerte applicative observée dans la console.
-- Rapport visuel : `design-qa.md` ; capture publique Retina actuelle : `docs/qa/card-texture-fidelity/after-public-retina.png` ; comparaison du grain : `docs/qa/card-texture-fidelity/comparison-grain-reference.png`.
+- Rapport visuel : `design-qa.md` ; captures publiques Retina actuelles : `docs/qa/navigation-content-review/after-public-home-retina.png` et `after-public-faq-retina.png`. La revue du site et ses points de lancement ouverts figurent dans `docs/AUDIT_SITE_2026-11-02.md`.
 - Prévisualisation locale arrêtée : aucun processus à l’écoute sur 4173 ou 4174 après vérification.
 
 ## Isolement et sauvegarde
@@ -50,3 +50,13 @@ Mathis a rejeté le lissage et le remplacement du grain : la grande carte repren
 Contrôle public à DPR 2 : source sans perte effectivement chargée, 2 636 656 octets, empreinte SHA-256 `f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76` identique au fichier prévu. Elle est plus lourde que l’ancien export compressé ; la source légère préchargée reste dessous pendant le chargement, et reste seule à DPR 1. La première visite publique observée a chargé le master en environ 1,1 seconde sur cette connexion, sans garantie universelle. Les options et liens ne bloquent pas sur ce chargement. Aucun flou ni canvas de grain dans la grande carte ; aucune erreur ou alerte dans la console publique.
 
 Capture publique PNG réelle 2560 × 1440 : `docs/qa/card-texture-fidelity/after-public-retina.png`, prise après fin du téléchargement et de la transition. Quatre variantes, focus des petites cartes et version mobile vérifiés localement. TypeScript, build et 113 tests passent. Sauvegarde privée avant bascule ; santé et empreinte du client public contrôlées ; mêmes états et PID pour les services des autres projets, GP Park 200. Localhost 4173 / 4174 fermé après validation.
+
+## Navigation et FAQ — dernière correction livrée
+
+Menu public et mobile : Accueil, Forfaits, Exemples de sites, Nous contacter. Plus de lien séparé par forfait dans la barre. Les cartes et le comparatif gardent l’accès aux quatre configurateurs. Les badges génériques et les mentions sur l’absence de compte ont été retirés des textes publics.
+
+Six nouvelles questions : contenus, délai, modifications, mobile, domaine/hébergement, maintenance. Les trois premières sont aussi sur l’accueil. Contrôle public : six questions exactes, première réponse ouverte, aucune des formulations rejetées, pas d’erreur ou d’alerte dans la console. Le lien Forfaits, son état actif, le menu mobile et le passage aux coordonnées ont été vérifiés localement. Aucun message ni e-mail réel envoyé.
+
+La révision livrée passe TypeScript, build et 113 tests ; les dernières retouches de rédaction sont incluses dans la vérification finale TypeScript/build. Santé et empreinte du client public confirmées après déploiement. Sauvegarde avant bascule ; autres projets avec états et PID inchangés, GP Park 200. Localhost fermé après validation.
+
+L’essai d’image en définition supérieure n’a produit que 1536 × 1024 avec une dérive de grain : il est archivé hors du public et n’est pas livré comme texture. Le master sans perte reste actif. Les prix, le périmètre commercial précis, les pages d’informations définitives et le destinataire e-mail restent à compléter ; la simplification d’interface ne les fait pas passer pour terminés.
