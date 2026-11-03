@@ -293,9 +293,33 @@ ul, ol { padding-left: 1.25rem; }
 
 .pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
 /* Whole-card navigation; approved title texture and shared plan CTA. */
-.pricing-card { --card-texture: url("/assets/textures/grain-plasma-card.webp"); --card-hue: 0deg; --card-scale-x: 1; --card-scale-y: 1; --plasma-position: 20% 20%; position: relative; display: flex; flex-direction: column; min-width: 0; padding: 8px; border: 1px solid #e9e6eb; border-radius: 16px; background: #fff; color: #111; text-decoration: none; transition: border-color 120ms ease; }
+.pricing-card { --card-texture: url("/assets/textures/grain-plasma-card.webp"); --card-hue: 0deg; --card-scale-x: 1; --card-scale-y: 1; --plasma-position: 20% 20%; position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0; padding: 8px; border: 1px solid #e9e6eb; border-radius: 16px; background: #fff; color: #111; text-decoration: none; transition: border-color 120ms ease; }
 .pricing-card:hover { border-color: #d4cedb; }
 .pricing-card:focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
+/* The colored shadow is static; only its reveal and scale animate. */
+.pricing-card::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: -8px -4px 24px 3px rgb(130 83 255 / .42), 9px 6px 26px 4px rgb(255 139 101 / .32);
+  filter: hue-rotate(var(--card-hue));
+  opacity: 0;
+  transform: scale(.97);
+  transition: opacity 220ms ease-out, transform 420ms cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+}
+.pricing-card:focus-visible::before {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (hover: hover) {
+  .pricing-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .pricing-card--vitrine { --card-hue: -6deg; --plasma-position: 4% 10%; }
 .pricing-card--connecte { --card-hue: -57deg; --card-scale-x: -1; --plasma-position: 42% 75%; }
 .pricing-card--immersif { --card-hue: -24deg; --card-scale-y: -1; --plasma-position: 74% 8%; }
@@ -352,25 +376,25 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card__top::before, .pricing-card__top::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 120ms linear; }
 .pricing-card__top::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(.93) brightness(.86); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
 .pricing-card__top::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
-/* A brief light movement over the existing texture, only during interaction. */
+/* A more visible light movement over the existing texture, only during interaction. */
 .pricing-card__glow {
   position: absolute;
   inset: -25%;
   z-index: -1;
-  background: radial-gradient(ellipse at 45% 40%, rgb(255 255 255 / .65), transparent 64%);
+  background: radial-gradient(ellipse at 65% 45%, rgb(255 255 255 / .75), transparent 60%);
   opacity: 0;
-  transform: translate3d(-8%, 3%, 0) scale(.96);
-  transition: opacity 180ms ease-out, transform 550ms cubic-bezier(.22, 1, .36, 1);
+  transform: translate3d(-16%, 8%, 0) scale(.94);
+  transition: opacity 220ms ease-out, transform 620ms cubic-bezier(.22, 1, .36, 1);
   pointer-events: none;
 }
 .pricing-card:focus-visible .pricing-card__glow {
-  opacity: .24;
-  transform: translate3d(5%, -2%, 0) scale(1.04);
+  opacity: .55;
+  transform: translate3d(9%, -7%, 0) scale(1.08);
 }
 @media (hover: hover) {
   .pricing-card:hover .pricing-card__glow {
-    opacity: .24;
-    transform: translate3d(5%, -2%, 0) scale(1.04);
+    opacity: .55;
+    transform: translate3d(9%, -7%, 0) scale(1.08);
   }
 }
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top { color: #fff; }

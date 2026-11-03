@@ -290,6 +290,18 @@ export const faqs = [
       'Une option Référencement local est disponible dans le configurateur. Elle prévoit des pages et des informations structurées pour votre zone d’activité. Les actions à réaliser sont précisées avec le projet ; aucune position sur Google ni aucun nombre de ventes n’est promis.',
     category: 'Visibilité',
   },
+  {
+    question: 'Comment savoir quel forfait choisir ?',
+    answer:
+      'Choisissez celui qui vous semble le plus proche de votre projet et décrivez votre besoin dans votre demande. Nos développeurs vous guideront pour confirmer le forfait et les options adaptés.',
+    category: 'Choix du forfait',
+  },
+  {
+    question: 'Et si je choisis le mauvais forfait ?',
+    answer:
+      'Notre équipe étudie votre demande avant de démarrer. Si un autre forfait correspond mieux à votre besoin, nous vous réorientons et ajustons la configuration avec vous.',
+    category: 'Choix du forfait',
+  },
 ]
 
 export const optionGroups = [

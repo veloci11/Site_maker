@@ -1,0 +1,8 @@
+{
+  "focusVisible": true,
+  "innerOpacity": "0.55",
+  "outerOpacity": "1",
+  "outline": "rgb(120, 99, 219) solid 3px",
+  "reduce": true,
+  "transition": "1e-05s"
+}

@@ -1,0 +1,65 @@
+{
+  "restingAnimations": 0,
+  "samples": [
+    {
+      "innerOpacity": "0.0714116",
+      "ms": 4,
+      "outerOpacity": "0.129839",
+      "transform": "matrix(0.957566, 0, 0, 0.957566, -51.6622, 17.9868)"
+    },
+    {
+      "innerOpacity": "0.302892",
+      "ms": 70,
+      "outerOpacity": "0.550713",
+      "transform": "matrix(1.01205, 0, 0, 1.01205, -12.5855, 0.823769)"
+    },
+    {
+      "innerOpacity": "0.47274",
+      "ms": 137,
+      "outerOpacity": "0.859528",
+      "transform": "matrix(1.04562, 0, 0, 1.04562, 11.4864, -9.74901)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 211,
+      "outerOpacity": "1",
+      "transform": "matrix(1.06485, 0, 0, 1.06485, 25.2835, -15.8089)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 279,
+      "outerOpacity": "1",
+      "transform": "matrix(1.07325, 0, 0, 1.07325, 31.3073, -18.4547)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 345,
+      "outerOpacity": "1",
+      "transform": "matrix(1.07724, 0, 0, 1.07724, 34.1676, -19.711)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 412,
+      "outerOpacity": "1",
+      "transform": "matrix(1.07905, 0, 0, 1.07905, 35.4662, -20.2813)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 487,
+      "outerOpacity": "1",
+      "transform": "matrix(1.07982, 0, 0, 1.07982, 36.0144, -20.5221)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 555,
+      "outerOpacity": "1",
+      "transform": "matrix(1.07999, 0, 0, 1.07999, 36.1368, -20.5758)"
+    },
+    {
+      "innerOpacity": "0.55",
+      "ms": 629,
+      "outerOpacity": "1",
+      "transform": "matrix(1.08, 0, 0, 1.08, 36.1463, -20.58)"
+    }
+  ]
+}

@@ -99,3 +99,10 @@ Fondement : confusion entre création, visibilité et acquisition dans [S1](http
 - Les questions déjà rejetées sur « À partir de », le cumul des options, l’absence de compte et le fait de ne rien connaître au web ne sont pas réintroduites.
 
 Le parent a intégré les huit réponses dans le catalogue local. La présente mise à jour documentaire rapproche leur contenu des sources S1 à S10 et du code ; elle ne constitue ni une validation de production, ni une étude quantitative du marché. Aucun message Reddit, formulaire ou e-mail n’a été envoyé dans le cadre de cette recherche.
+
+
+## Ajout demandé directement par Mathis — aide au choix
+
+Après la publication des huit questions documentées ci-dessus, Mathis a demandé deux questions supplémentaires : « Comment savoir quel forfait choisir ? » et « Et si je choisis le mauvais forfait ? ». Elles sont ajoutées à la fin de `faqs`, portant la page FAQ à dix entrées et préservant les trois questions existantes de l’accueil.
+
+Ces deux ajouts ne sont pas attribués au corpus Reddit. Les réponses invitent à choisir le forfait qui semble convenir, puis précisent que nos développeurs vérifient le besoin avant démarrage et réorientent vers le forfait adapté avec le client. Aucun tarif garanti, remboursement ou délai n’est ajouté. Vérification locale des deux panneaux sur ordinateur et mobile : passée ; publication à confirmer dans `../ops/DEPLOYMENT_STATUS.md`.

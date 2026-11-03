@@ -8,14 +8,14 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | --- | --- | --- |
 | Nom, description et trois points d’un forfait | `shared/catalog.ts` | `offers` : `title`, `description`, `features` |
 | Nom et explication d’une option | `shared/catalog.ts` | `optionDefinitions` : `title`, `description` |
-| Questions fréquentes | `shared/catalog.ts` | `faqs` : huit entrées `question`, `answer` |
+| Questions fréquentes | `shared/catalog.ts` | `faqs` : dix entrées `question`, `answer` |
 | Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : neuf entrées, `image`, `url`, `sourceUrl`, `creator`, `tags`, `archived` |
 | Explication des inclusions avant les options | `src/content/configurator-copy.ts` | `includedGuidance`, une entrée par forfait |
 | Textes, trois points, boutons et sujets Évolution/Refonte | `src/content/existing-site.ts` | `existingSiteOffers` : `title`, `features`, `cta`, sujets et textes du formulaire |
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
 | Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
-| Aspect commun des six cartes | `src/components/layout/PricingCard.tsx` | Même rendu pour créations et services ; CTA `.plan-cta`, halo `.pricing-card__glow` |
+| Aspect commun des six cartes | `src/components/layout/PricingCard.tsx` | Même rendu pour créations et services ; CTA `.plan-cta`, halo extérieur `.pricing-card::before` et lumière intérieure `.pricing-card__glow` |
 | Couleurs, navigation et cartes partagées | `src/styles.css` | Variantes `.pricing-card--*`, liens `.public-offer-link` ; déclencheur Forfaits neutre |
 | Comparatif, galerie et placement des services | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.pricing-grid--existing` |
 | Mise en page du configurateur | `src/pages/configurator.css` | `.configurator-*` |
@@ -50,7 +50,7 @@ Les images, titres et actions des exemples sont des liens directs dans le même 
 
 L’interface utilise Geist Sans, Lucide et les composants de `src/components/ui/`. Réutiliser ces éléments pour garder les tailles, focus et interactions cohérents. Les cartes et leur matière ont été validées : leurs textures, recadrages et transitions sont décrits dans `docs/CHARTE_INTERFACE.md`.
 
-Les boutons noirs des cartes et du comparatif partagent `.plan-cta` dans `src/styles.css`. Le menu utilise les six liens `.public-offer-link` avec `.pricing-card--${variant}` pour révéler leur texture au survol/focus et à la sélection clavier Radix ; le déclencheur Forfaits reste neutre. Le dépliage du comparatif reste un tableau unique : « Afficher plus de détails » devient « Masquer les détails » et pilote les lignes complémentaires via `.comparison-detail-reveal`. Le léger halo commun aux six cartes ne change que l’opacité (180 ms) et le déplacement (550 ms) d’un élément décoratif, sans boucle ni écouteur de souris.
+Les boutons noirs des cartes et du comparatif partagent `.plan-cta` dans `src/styles.css`. Le menu utilise les six liens `.public-offer-link` avec `.pricing-card--${variant}` pour révéler leur texture au survol/focus et à la sélection clavier Radix ; le déclencheur Forfaits reste neutre. Le dépliage du comparatif reste un tableau unique : « Afficher plus de détails » devient « Masquer les détails » et pilote les lignes complémentaires via `.comparison-detail-reveal`. Le halo commun aux six cartes utilise `.pricing-card::before` : ombres colorées fixes, teinte héritée du forfait, opacité 0→1 en 220 ms et expansion en 420 ms. La lumière intérieure `.pricing-card__glow` passe à 0,55 et se déplace en 620 ms. Pour régler sa présence, modifier ces opacités et ombres ; garder les filtres fixes, les transitions limitées à opacity/transform et le focus-visible. Aucune boucle ni écouteur de souris. Les deux FAQ ajoutées à la fin de `faqs` viennent de la demande utilisateur ; les trois entrées de l’accueil restent inchangées.
 
 Le JSX des pages modifiées est indenté, avec des noms explicites. Garder les textes partagés dans le catalogue ou `src/content/`, les actions dans des fonctions nommées et les styles dans les fichiers CSS correspondants. Les commentaires expliquent les règles moins évidentes, comme la déduplication d’une demande.
 
