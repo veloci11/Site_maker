@@ -1,0 +1,64 @@
+{
+  "activeAnimations": 0,
+  "afterBackground": "linear-gradient(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.2))",
+  "afterShadow": "none",
+  "grainOpacity": "0.32",
+  "grainSource": "url(\"https://gilmathis.com/assets/textures/card-grain.webp\")",
+  "halo": "none",
+  "samples": [
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 1)",
+      "imageOpacity": "0.00168628",
+      "ms": 1
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 1)",
+      "imageOpacity": "0.174734",
+      "ms": 59
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, 2, -2)",
+      "imageOpacity": "0.646259",
+      "ms": 118
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, -1, -3)",
+      "imageOpacity": "0.883391",
+      "ms": 176
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, 3, 1)",
+      "imageOpacity": "0.976778",
+      "ms": 234
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 2)",
+      "imageOpacity": "1",
+      "ms": 293
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "matrix(1, 0, 0, 1, -2, 2)",
+      "imageOpacity": "1",
+      "ms": 352
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "none",
+      "imageOpacity": "1",
+      "ms": 404
+    },
+    {
+      "cardTransform": "none",
+      "grainTransform": "none",
+      "imageOpacity": "1",
+      "ms": 457
+    }
+  ]
+}

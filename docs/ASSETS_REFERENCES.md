@@ -89,3 +89,5 @@ Les trois textures colorées existantes sont conservées exactement : `docs/qa/g
 Le nouveau `public/assets/textures/card-grain.webp` est un bruit monochrome propre au projet, destiné à un calque fin superposé. Source SVG déterministe : `docs/asset-sources/textures/card-grain.svg` (fractalNoise, fréquence 0,9, trois octaves, seed 19). Rasterisation du SVG dans l’IAB à 256 × 256, fond transparent, export PNG conservé dans le même dossier, puis encodage WebP sans perte `cwebp -lossless -exact -m 6`. Poids servi : 107 058 octets. Seul le WebP est servi ; aucun filtre SVG ne s’exécute pendant le survol. Provenance complète dans `docs/qa/grain-entry/grain-asset.json`.
 
 Ce calque ne remplace pas le grain déjà présent dans les images. Il permet seulement le bref mouvement d’entrée demandé par Mathis. Aucun asset ElevenLabs repris.
+
+Contrôle public du lot `34aa797` : SHA-256 des trois textures colorées et de `card-grain.webp` conformes en HTTPS. Les trois images d’origine sont inchangées par rapport à Git. Publication et vérifications : `../ops/DEPLOYMENT_STATUS.md`.

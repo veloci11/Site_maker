@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 00:43, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative : 03/11/2026 à 01:11, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `2c9ba4612055e752926c4a7320dc9d3bef37bd17`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T064320Z-2c9ba4612055` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DHpQH5oY.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `90cb19bbe5b858765fa7fb73527430599520437fe94a10ccec69ff523ebf5c8e`.
-- Version précédente disponible : `releases/20261103T055310Z-8c497b4c5019`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `34aa797bcb9a41004c598808049b675b4c2c789a`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T071117Z-34aa797bcb9a` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-68FeVs8c.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `ae1da7ad8b9e62774e47a8f53b4d00bf7321466072197bbf8bd3afec0b5befbe`.
+- Version précédente disponible : `releases/20261103T064320Z-2c9ba4612055`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -19,7 +19,7 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 - Navigation : menu Forfaits avec six entrées, FAQ à droite avant le contact noir. Le déclencheur Forfaits reste neutre ; la texture apparaît sur chaque offre du sous-menu au survol ou au focus. Liste dépliable sur mobile, fermeture après navigation.
 - Cartes : matière et effets approuvés des quatre créations conservés ; deux nouvelles variantes pour les services. Boutons noirs au repos, texture au survol/focus partagée avec le comparatif ; Configurer sans flèche. Flèches diagonales retirées du public.
-- Dernière correction des cartes : halo extérieur et lumière mobile supprimés, y compris le span et leurs styles. Source et cadrage conservés ; reflet diagonal fixe et liseré intérieur pour le brillant, saturation 1,04 / luminosité 0,94. Carte sans transformation, simple fondu de couleur de 120 ms. Aucun effet lumineux derrière les cartes.
+- Dernière clarification de Mathis : nos images restent exactement les mêmes. Reflet, liseré et halo retirés. Les couleurs apparaissent en 300 ms et le texte en 150 ms ; un grain indépendant précalculé (WebP 256 × 256, 107 058 octets, overlay 0,32) se déplace de quelques pixels pendant 360 ms à l’entrée du survol/focus, une seule fois, puis s’immobilise. Carte et image fixes, pas de filtre animé ni de bruit calculé à l’interaction. CTA et menu conservent 120 ms.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
 - Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
 - Galerie : neuf références avec filtres et crédits. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte le badge « Projet archivé », avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans le même onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
@@ -29,15 +29,14 @@ Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/c
 
 ## Vérifications de cette livraison
 
-- `npm run check` final après le CSS et le JSX définitifs : TypeScript, build et **113 tests passants**. `git diff --check` propre.
-- Santé Ubuntu valide, quatre créations, **26 options**, bases de prix nulles et paiements désactivés. Sauvegarde privée avant bascule, autres projets inchangés.
-- HTTPS public : santé et empreinte client identiques au build attendu.
-- IAB public au survol Connecté : pseudo-élément extérieur absent (`content:none`), aucune ombre extérieure, zéro span de glow, transformation de carte `none`, texture visible à opacité 1. Reflet fixe inspecté sur la capture native PNG `public-retina.png`.
-- Mobile public 390 × 844 CSS : document/client 375/375, six cartes et zéro glow. Focus clavier 3 px vérifié localement ; dix FAQ conservées, dont les deux réponses d’aide au choix. Aucune FAQ ni référence modifiée dans ce lot.
-- Aucune erreur ni alerte applicative observée. Viewport temporaire réinitialisé, onglet de recherche fermé. Aucun formulaire soumis ni e-mail réel envoyé.
-- Nouveau contrôle ElevenLabs après le correctif : couleurs Free dans un PNG 786 × 600 ouvert directement ; texture de bruit séparée AVIF/PNG superposée en overlay, fond de grain 128 px CSS dans ce contexte ; fondu d’opacité de 300 ms, aucune transformation. Source et relevé dans `docs/EFFET_CARTES_ELEVENLABS.md` et `docs/qa/cards-without-halo/elevenlabs-recheck.json`.
-- Rapport et captures : `design-qa.md`, `docs/qa/cards-without-halo/public-retina.png`, `public-hover.json`, `mobile-public.jpg`. Les rapports de halo antérieurs sont historiques et leur effet est explicitement rejeté.
-- Localhost arrêté : aucun processus à l’écoute sur **4173 ou 4174** après contrôle. Seul l’onglet public est conservé dans l’IAB.
+- `npm run check` final : TypeScript, build et **113 tests passants**. `git diff --check` propre. Revue indépendante par lecture sans blocage.
+- Origine Ubuntu : santé valide, quatre créations, **26 options**, bases de prix nulles et paiements désactivés. Sauvegarde privée avant bascule, autres projets/PID inchangés et GP Park HTTP 200.
+- HTTPS : santé et empreinte client conformes. SHA-256 des trois textures colorées et du nouveau grain identiques aux fichiers locaux. Les trois textures colorées ont aussi été comparées octet pour octet à Git : aucune image d’origine changée.
+- IAB public : neuf échantillons d’entrée, de 1 à 457 ms ; le grain change brièvement de position puis revient à transform:none, image révélée à opacité 1 en environ 300 ms. Carte toujours transform:none, zéro animation après stabilisation. Aucune ombre/lueur extérieure ni reflet diagonal.
+- Contrôles locaux : pas de redémarrage entre les enfants de la carte ; sortie masquant le grain, réentrée rejouant une seule fois ; focus 3 px et réduction du mouvement (grain visible, immobile) respectés. Clic mobile vers le configurateur réel, dix FAQ conservées.
+- Mobile public 390 × 844 CSS : document/client 375/375, six cartes et grain à opacité 0 au repos. Aucune erreur ni alerte applicative observée. Viewport et émulation temporaires réinitialisés.
+- Preuves : `design-qa.md`, `docs/qa/grain-entry/public-timeline.json`, `public-retina.png`, `mobile-public.json`, `mobile-public.jpg`, `original-images.json` et `grain-asset.json`.
+- Aucun formulaire soumis ni e-mail réel envoyé. Localhost arrêté : ports **4173/4174** libres ; seul l’onglet public conservé dans l’IAB.
 
 ## Isolement et sauvegardes
 

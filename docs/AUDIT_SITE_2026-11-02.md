@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : halo et lumière mobile retirés dans `2c9ba46`, puis contrôlés dans l’IAB public desktop/mobile. Reflet intérieur fixe pour le brillant, simple fondu de couleur conservé. Les dix FAQ, neuf références et autres décisions précédentes restent présentes. Nouveau contrôle ElevenLabs consigné dans `EFFET_CARTES_ELEVENLABS.md`. Le corps ci-dessous est la revue historique d’une itération antérieure. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : images conservées à l’identique, reflet retiré et grain indépendant à mouvement initial bref publiés dans `34aa797`, contrôlés en HTTPS et IAB desktop/mobile. Le fondu couleur est de 300 ms ; le grain s’arrête après son entrée de 360 ms. Dix FAQ, neuf références et autres décisions précédentes conservées. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 
