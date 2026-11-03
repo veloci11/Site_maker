@@ -274,4 +274,8 @@ Les essais de halo documentés ci-dessus sont rejetés par Mathis. Le pseudo-él
 
 IAB local : `local-hover.json` confirme `halo:none`, `shadow:none`, zéro élément de glow, `cardTransform:none` et texture visible à opacité 1. Capture native 2560 × 1440 `local-retina.png`, inspectée. Au clavier : focus-visible et contour 3 px conservés. Mobile 390 × 844 CSS : document/client 375/375, six cartes et zéro glow ; `mobile-local.jpg`. Dix questions de FAQ restent présentes. Aucune erreur ni alerte applicative observée. Viewport temporaire réinitialisé.
 
-Preuves dans `docs/qa/cards-without-halo/`. Publication et contrôle public à compléter après la bascule réelle ; aucun formulaire soumis ni e-mail réel envoyé.
+Preuves dans `docs/qa/cards-without-halo/`. Résultat final : passé. `npm run check` après la version finale : TypeScript, build et 113 tests passent ; `git diff --check` propre. Révision `2c9ba4612055e752926c4a7320dc9d3bef37bd17`, release `20261103T064320Z-2c9ba4612055`, client `index-DHpQH5oY.js`, santé HTTPS conformes.
+
+Contrôle public IAB : mêmes valeurs sans halo dans `public-hover.json` ; capture native PNG 2560 × 1440 `public-retina.png` ouverte et inspectée. Mobile public : document/client 375/375, six cartes et zéro glow ; `mobile-public.jpg`. Aucune erreur ni alerte applicative. Viewport réinitialisé et onglet de recherche temporaire fermé. Localhost arrêté, ports 4173/4174 libres. Sauvegarde privée et isolement des autres projets contrôlés par le déploiement. Aucun formulaire soumis ni e-mail réel envoyé.
+
+Après ce correctif, nouvelle inspection ElevenLabs `/pricing` : `elevenlabs-recheck.json` consigne le PNG de couleur, l’image de bruit séparée en overlay et le fondu de 300 ms. Le fichier source Free a été ouvert directement, avec titre confirmant 786 × 600 ; `elevenlabs-source-image.jpg`. Le reflet diagonal STUDIO est notre traitement fixe, distinct de ce mécanisme observé.

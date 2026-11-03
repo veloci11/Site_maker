@@ -1,14 +1,14 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `8c497b4` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `2c9ba46` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Retrait du halo et reflet intérieur — vérifié localement
+## Retrait du halo et reflet intérieur — terminé et vérifié en ligne
 
 Dernier retour de Mathis : halo et animation derrière les cartes rejetés, rendu du dégradé souhaité plus brillant. Les deux couches de halo sont retirées, y compris le span et son CSS ; aucune lumière ne se déplace. Un reflet diagonal fixe et un liseré limités à la zone colorée donnent le brillant ; source et cadrage conservés, saturation 1,04 / luminosité 0,94. Le fondu de couleur de 120 ms reste présent.
 
-Contrôles locaux IAB : absence de halo/pseudo-élément extérieur et de `.pricing-card__glow`, texture au survol, carte sans transformation, focus 3 px conservé, six cartes et aucune largeur débordante sur mobile. Dix FAQ conservées, dont les deux réponses d’aide au choix. Preuves : `qa/cards-without-halo/`. Publication et nouvelle vérification ElevenLabs à consigner après contrôle réel. Ce retour remplace les consignes des essais historiques ci-dessous.
+Contrôles locaux IAB : absence de halo/pseudo-élément extérieur et de `.pricing-card__glow`, texture au survol, carte sans transformation, focus 3 px conservé, six cartes et aucune largeur débordante sur mobile. Dix FAQ conservées, dont les deux réponses d’aide au choix. Preuves : `qa/cards-without-halo/`. TypeScript, build et 113 tests passent. Publication `2c9ba46`, release `20261103T064320Z-2c9ba4612055`, client `index-DHpQH5oY.js` vérifiés en HTTPS et IAB public, desktop/mobile. Zéro glow et aucune ombre extérieure observés ; localhost fermé. Après le correctif, ElevenLabs a été réinspecté : image PNG couleur, grain séparé et fondu CSS 300 ms confirmés, voir `EFFET_CARTES_ELEVENLABS.md`. Ce retour remplace les consignes des essais historiques ci-dessous.
 
 ## Halo visible, puis aide au choix du forfait — terminé et vérifié en ligne
 

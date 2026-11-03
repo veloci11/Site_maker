@@ -1,0 +1,120 @@
+{
+  "canvases": 0,
+  "card": "Free",
+  "images": [
+    {
+      "filter": "none",
+      "src": "/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90",
+      "srcset": "/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=640&q=90 640w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=750&q=90 750w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=828&q=90 828w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=1080&q=90 1080w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=1200&q=90 1200w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=1920&q=90 1920w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=2048&q=90 2048w, /_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90 3840w",
+      "transform": "none"
+    }
+  ],
+  "layers": [
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-absolute tw-inset-0 tw-w-full tw-h-full tw-bg-cream",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-absolute tw-inset-0 tw-w-full tw-h-full tw-overflow-hidden tw-transition-opacity tw-duration-300 tw-opacity-0",
+      "opacity": "0",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "backgroundImage": "image-set(url(\"https://eleven-public-cdn.elevenlabs.io/marketing_website/_next/static/media/noise@20aq.289c1f1d.avif\") 1dppx type(\"image/avif\"), url(\"https://eleven-public-cdn.elevenlabs.io/marketing_website/_next/static/media/noise.24b8225d.png\") 1dppx type(\"image/png\"))",
+      "backgroundSize": "128px auto",
+      "blend": "overlay",
+      "classes": "tw-absolute tw-mix-blend-overlay tw-inset-0 tw-bg-[image:var(--noise-png)] tw-bg-[length:calc(256px*var(--noise-scale))] [@media(min-resolution:2x)]:tw-bg-[length:calc(128px*var(--noise-scale))] tw-rounded-card",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-relative tw-p-inset tw-flex tw-flex-col tw-justify-between tw-min-h-[12.5rem] tw-z-10",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-transition-colors ",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "color 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), fill 0.15s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-flex tw-flex-col sm:tw-flex-row sm:tw-items-end sm:tw-justify-between tw-gap-2",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-flex tw-flex-wrap tw-items-end tw-gap-x-1.5 tw-gap-y-2",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-flex tw-items-end tw-gap-1",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    },
+    {
+      "backgroundImage": "none",
+      "backgroundSize": "auto",
+      "blend": "normal",
+      "classes": "tw-absolute tw-pointer-events-none tw-inset-0 tw-ring-0.5 tw-ring-inset tw-z-30 tw-ring-black/7.5 tw-rounded-card",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "all"
+    }
+  ],
+  "page": "https://elevenlabs.io/pricing",
+  "hover": {
+    "activeAnimations": 0,
+    "opacity": "1",
+    "transform": "none",
+    "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+  }
+}

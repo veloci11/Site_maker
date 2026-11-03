@@ -112,10 +112,19 @@ Cette confirmation complète l'étude de la page principale sans transformer STU
 L’alignement des deux cartes Évolution/Refonte et les autres changements du lot ont ensuite été publiés dans `6133f1e`. Les contrôles publics propres à STUDIO sont consignés dans `../design-qa.md` et `../ops/DEPLOYMENT_STATUS.md` ; les preuves de cette analyse ElevenLabs demeurent distinctes.
 
 
-## Demande suivante — halo réellement visible
+## Essai de halo ensuite rejeté
 
 Mathis a ensuite demandé un halo plus présent avec une petite animation. Le halo discret précédemment documenté est renforcé dans STUDIO : lueur colorée extérieure (ombres et teinte fixes, opacité 220 ms / expansion 420 ms) et lumière intérieure à opacité 0,55 / déplacement 620 ms. Seules opacity/transform transitent, sans boucle ni suivi de pointeur. Le fondu de texture de 120 ms et la source d’origine restent conservés. Le maintien de la dernière carte survolée propre à ElevenLabs n’est toujours pas implémenté. Vérifications et publication de ce nouveau lot : `../design-qa.md` et `../ops/DEPLOYMENT_STATUS.md`.
 
 ## Nom du style de couleurs
 
 Le terme descriptif retenu est **grainy gradient**, en français **dégradé granuleux** : un dégradé coloré enrichi de grain. L’article primaire [Grainy Gradients, Jimmy Chion, CSS-Tricks](https://css-tricks.com/grainy-gradients/) a été ouvert et lu dans le navigateur intégré. Il présente cette famille de rendu et une technique CSS/SVG ; notre matière reste l’image studio déjà approuvée, sans adoption de cette recette ni copie d’asset.
+
+
+## Nouveau contrôle IAB — 3 novembre 2026
+
+Après publication du retrait du halo et de la lumière mobile de STUDIO, la page [ElevenLabs Pricing](https://elevenlabs.io/pricing) a été réinspectée directement. Sur Free, le conteneur contient bien un élément `img` dont la source est [Free.489beebc.png](https://eleven-public-cdn.elevenlabs.io/marketing_website/_next/static/media/Free.489beebc.png), servie dans la page via l’optimiseur Next. Le PNG a ensuite été ouvert directement dans le navigateur : 786 × 600, nappes de couleurs lisses observées.
+
+Une autre couche utilise `noise@20aq.289c1f1d.avif` avec repli `noise.24b8225d.png`, en `mix-blend-mode:overlay`. Son arrière-plan est répété à 128 px CSS dans le contexte haute densité observé. Ce bruit ajouté est séparé de l’image de couleurs. Le conteneur de couleur passe à opacité 1 avec `opacity 0.3s cubic-bezier(0.4,0,0.2,1)` ; transformation et filtre de l’image `none`, zéro animation après stabilisation. Aucun canvas dans le bloc supérieur inspecté. Ces constats concernent cette carte et cette page, pas toutes les surfaces ElevenLabs.
+
+Preuves enregistrées : `docs/qa/cards-without-halo/elevenlabs-recheck.json`, `elevenlabs-free-recheck.jpg`, `elevenlabs-source-image.jpg`. Les sources d’ElevenLabs ne sont pas intégrées au produit. Côté STUDIO, le halo extérieur et le span animé sont retirés ; le brillant demandé est un reflet diagonal fixe limité à la surface texturée. La matière d’origine et le fondu de 120 ms restent présents.

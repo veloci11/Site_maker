@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour : le halo coloré désormais visible et les deux FAQ d’aide au choix du forfait sont publiés dans `8c497b4`, puis contrôlés dans l’IAB public sur ordinateur/mobile. La page FAQ contient dix questions ; les trois de l’accueil restent inchangées. Les six cartes harmonisées, le sous-menu, les neuf références et les autres décisions précédentes sont conservés. Le corps ci-dessous reste la revue historique d’une itération antérieure. Suivi actuel et reports : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : halo et lumière mobile retirés dans `2c9ba46`, puis contrôlés dans l’IAB public desktop/mobile. Reflet intérieur fixe pour le brillant, simple fondu de couleur conservé. Les dix FAQ, neuf références et autres décisions précédentes restent présentes. Nouveau contrôle ElevenLabs consigné dans `EFFET_CARTES_ELEVENLABS.md`. Le corps ci-dessous est la revue historique d’une itération antérieure. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 
