@@ -2,6 +2,8 @@
 
 Les dernières corrections de Mathis remplacent les maquettes et demandes antérieures contradictoires. Références internes : `docs/DIRECTION_RETENUE.md`, `docs/CHARTE_INTERFACE.md`, `docs/CONTRACTS.md`. Dépôt prévu : https://github.com/veloci11/Site_maker.
 
+Les nouvelles demandes rejoignent une file : finir et vérifier le lot en cours avant de publier le suivant. Tenir `docs/SUIVI_DEMANDES.md` à jour, distinguer codé localement, poussé et vérifié en ligne. Une nouvelle correction ne doit pas laisser la précédente à moitié terminée. Garder un code simple, lisible et modifiable à la main.
+
 ## Produit et textes
 
 - Création de sites internet clé en main : Vitrine, Connecté, Immersif 3D, Sur mesure.

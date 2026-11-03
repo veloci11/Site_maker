@@ -178,3 +178,6 @@ Parcours Refonte local : sujet prérempli, URL facultative distincte du honeypot
 Vérification intégrée : `npm run check` passe (TypeScript, build, 113 tests), `git diff --check` passe. Revue indépendante : aucun blocage sur ce périmètre ; noms accessibles spécifiques ajoutés aux boutons. Contrôle navigateur après mise en forme du code : menu, boutons, explication Vitrine et contact Refonte conformes, aucune erreur/alerte applicative observée.
 
 Statut de ce compte rendu : vérifications locales ; preuve de publication ajoutée après bascule de la release.
+
+
+Publication du lot menu/inclusions/refonte : révision `6adfae1ad67f19dee184120fa9eaf87889c36534`, release `20261103T032149Z-6adfae1ad67f`, client `index-D7l4zL1X.js`. Santé HTTPS et empreinte publique confirmées. Dans le navigateur public : contact noir (RGB 17/17/17, texte blanc), cinq entrées du menu, sujet Refonte prérempli, URL facultative, capture Addiction chargée en 2560 × 1440. Mobile 390 × 844 CSS : cinq sous-liens, contact noir, fermeture après choix Vitrine, largeur 375/375 px. Captures `after-public-menu-retina.png`, `after-public-mobile-menu.jpg`, `after-public-agency.jpg`. Aucun formulaire soumis en production. Le lot précédent est terminé et vérifié ; la nouvelle demande de dépliage reste séparée jusqu’à sa validation.

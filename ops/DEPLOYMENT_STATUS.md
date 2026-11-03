@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison : 2 novembre 2026 à 20:16, heure de Mexico (UTC−06), contrôlée en ligne.
+Dernière livraison : 2 novembre 2026 à 21:21, heure de Mexico (UTC−06), contrôlée en ligne.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision de l’application : `d892e663fcb744d485f0e1621efaa560cf4dc738`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T021319Z-d892e663fcb7` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DNlyX7rP.js`, identique au build de cette révision.
-- Archive runtime vérifiée avant extraction : SHA-256 `2f395937b26172de684353f6912e58ad55325f8cbf0bb8b360612f82c90cad03`.
-- Révision précédente disponible : `20261103T013839Z-e4d247a47382` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
+- Révision de l’application : `6adfae1ad67f19dee184120fa9eaf87889c36534`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T032149Z-6adfae1ad67f` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-D7l4zL1X.js`, identique au build de cette révision.
+- Archive runtime vérifiée avant extraction : SHA-256 `07e9cc85ee3250b78f6c993dcccc5c89789d5e93e625e99eff7c21ef446274bc`.
+- Révision précédente disponible : `20261103T021319Z-d892e663fcb7` ; première version publique conservée : `20261102T160947Z-d391f4d05a8f`.
 
 Le dépôt peut contenir des comptes rendus plus récents ; la révision ci-dessus est celle du code applicatif effectivement déployé.
 
@@ -60,3 +60,12 @@ Six nouvelles questions : contenus, délai, modifications, mobile, domaine/hébe
 La révision livrée passe TypeScript, build et 113 tests ; les dernières retouches de rédaction sont incluses dans la vérification finale TypeScript/build. Santé et empreinte du client public confirmées après déploiement. Sauvegarde avant bascule ; autres projets avec états et PID inchangés, GP Park 200. Localhost fermé après validation.
 
 L’essai d’image en définition supérieure n’a produit que 1536 × 1024 avec une dérive de grain : il est archivé hors du public et n’est pas livré comme texture. Le master sans perte reste actif. Les prix, le périmètre commercial précis, les pages d’informations définitives et le destinataire e-mail restent à compléter ; la simplification d’interface ne les fait pas passer pour terminés.
+
+
+## Sous-menu, inclusions et refonte — contrôle public
+
+Forfaits ouvre désormais un petit sous-menu avec les quatre offres et une entrée Refonte & évolution séparée. Nous contacter est noir sur ordinateur et mobile. Vérification publique : cinq entrées, navigation vers Vitrine fermant le panneau, largeur document/client 375/375 px à viewport 390 × 844 CSS. Les boutons Configurer révèlent la texture du forfait au survol et au focus. Les inclusions sont expliquées avant les options.
+
+Refonte reste une prestation sur devis : sujet prérempli et URL facultative du site actuel observés publiquement, sans soumission. La capture Addiction Agency 2560 × 1440 est chargée dans la galerie ; son SHA-256 public est identique à l’export prévu. TypeScript, build et 113 tests passent ; santé et empreinte du client public confirmées. Sauvegarde avant bascule, autres projets avec états et PID inchangés, GP Park 200.
+
+Le code du catalogue et des pages concernées a été mis en forme pour être lisible ; les textes partagés sont dans src/content/. Guide : docs/MODIFIER_LE_SITE.md. Suivi par lot : docs/SUIVI_DEMANDES.md. La nouvelle demande de dépliage animé reste locale à ce stade, distincte de cette version publiée.

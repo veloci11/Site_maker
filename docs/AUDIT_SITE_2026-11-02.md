@@ -1,5 +1,7 @@
 # Revue du site studio — 2 novembre 2026
 
+Mise à jour : le sous-menu Forfaits, le contact noir, les boutons texturés, les explications d’inclusion, Refonte & évolution et la nouvelle capture Addiction Agency sont désormais publiés dans `6adfae1` et contrôlés en ligne. Le corps ci-dessous conserve la revue de l’itération précédente. Le suivi actuel et les reports explicites sont dans [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 
 ## 1. Accueil — navigation et textes allégés
