@@ -1,6 +1,6 @@
 # Revue du site studio — 2 novembre 2026
 
-Mise à jour du 3 novembre : carte commune aux six offres, fiches Évolution/Refonte avec carte à gauche, menu Changer translucide sans contour supplémentaire et retrait du bouton Continuer en doublon publiés dans `8187d38`. Contrôles HTTPS et IAB desktop/mobile passés. Le corps ci-dessous est historique. Suivi actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md).
+Mise à jour du 3 novembre : galerie compacte et scroll stable, dix références classées sans doublon, garde de sortie des briefs et fondations SEO publiés dans `099c1a1`. Revue de trois spécialistes, contrôles HTTPS et IAB desktop/mobile terminés ; 202 tests réussis. Le corps ci-dessous est historique. État actuel : [SUIVI_DEMANDES.md](SUIVI_DEMANDES.md) et [revue finale](qa/gallery-review/final-review.md).
 
 Revue du parcours public sur gilmathis.com, puis vérification locale des corrections demandées. Captures réalisées pendant cette revue, sur ordinateur et mobile. Aucun formulaire n’a été envoyé et aucun e-mail de test n’a été émis.
 

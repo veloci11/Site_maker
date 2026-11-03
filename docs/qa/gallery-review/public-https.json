@@ -1,0 +1,93 @@
+{
+  "commit": "099c1a131eef6129e67a979587871eda501a1b1f",
+  "release": "20261103T225415Z-099c1a131eef",
+  "entryScript": "index-DZiCU2sY.js",
+  "entrySha256": "e5935505beb738db90db2506195c7329874126f630278abeaf724807833fd20a",
+  "archiveSha256": "ee0d149314a5301e6b6d81a9ea2b0ec05f6bfa63b7a28c3cf3a2900d1e6121b2",
+  "sitemapUrls": [
+    "https://gilmathis.com/",
+    "https://gilmathis.com/forfaits",
+    "https://gilmathis.com/forfaits/vitrine",
+    "https://gilmathis.com/forfaits/connecte",
+    "https://gilmathis.com/forfaits/immersif-3d",
+    "https://gilmathis.com/forfaits/sur-mesure",
+    "https://gilmathis.com/options",
+    "https://gilmathis.com/exemples",
+    "https://gilmathis.com/faq",
+    "https://gilmathis.com/contact",
+    "https://gilmathis.com/contact?besoin=evolution",
+    "https://gilmathis.com/contact?besoin=refonte"
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robots": null,
+      "location": null
+    },
+    {
+      "route": "/api/health",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8",
+      "robots": "noindex, nofollow",
+      "location": null
+    },
+    {
+      "route": "/exemples?type=connecte",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robots": null,
+      "location": null
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robots": null,
+      "location": null
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "robots": null,
+      "location": null
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml; charset=utf-8",
+      "robots": null,
+      "location": null
+    },
+    {
+      "route": "/connexion",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "robots": "noindex, nofollow",
+      "location": null
+    },
+    {
+      "route": "/forfaits/inconnu-qa",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8",
+      "robots": "noindex, nofollow",
+      "location": null
+    },
+    {
+      "route": "/assets/absent-gallery-qa.js",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "robots": "noindex, nofollow",
+      "location": null
+    },
+    {
+      "route": "/formules",
+      "status": 301,
+      "contentType": "text/plain; charset=utf-8",
+      "robots": null,
+      "location": "/forfaits"
+    }
+  ]
+}

@@ -64,3 +64,8 @@ Les mentions légales restant incomplètes doivent être renseignées avec les i
 ## Contrôle parent après intégration
 
 `RouteMetadata` est monté dans le routeur de données, qui conserve les mêmes routes et permet le garde du brief. Dans l’IAB local : Confidentialité a son titre propre, noindex, sans canonical ; FAQ a son titre et son canonical. Les dix réponses FAQ sont désormais dans le DOM avant clic, fermées avec hauteur zéro et visibility:hidden. Le contrôle serveur réel et le contrôle complet sont verts : 202 tests. La réponse initiale reste un shell React pour le corps ; aucune indexation, position ou métrique Search Console n’est inventée.
+
+
+## État après publication — parent
+
+Application `099c1a1` publiée puis vérifiée dans l’IAB public. Les contrôles, mesures après correction et limites encore ouvertes sont consolidés dans [final-review.md](final-review.md). Les observations initiales ci-dessus sont conservées comme historique, sans les confondre avec l’état corrigé.

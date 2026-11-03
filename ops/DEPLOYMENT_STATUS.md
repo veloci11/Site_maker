@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 15:39, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative : 03/11/2026 à 16:54, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `770a271379ef995037dd9d56700f0c4f37a3e94c`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T213957Z-770a271379ef` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-CYUgPAPx.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `34db131649e00139bb9e9096064618ede6ff0ef71e66a1ac31215eac721e254e`.
-- Version précédente disponible : `releases/20261103T173638Z-8187d38f889b`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `099c1a131eef6129e67a979587871eda501a1b1f`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T225415Z-099c1a131eef` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-DZiCU2sY.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `ee0d149314a5301e6b6d81a9ea2b0ec05f6bfa63b7a28c3cf3a2900d1e6121b2`.
+- Version précédente disponible : `releases/20261103T213957Z-770a271379ef`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -22,12 +22,20 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 - Dernière clarification de Mathis : nos images restent exactement les mêmes. Reflet, liseré et halo retirés. Les couleurs apparaissent en 300 ms et le texte en 150 ms ; un grain indépendant précalculé (WebP 256 × 256, 107 058 octets, overlay 0,32) se déplace de quelques pixels pendant 360 ms à l’entrée du survol/focus, une seule fois, puis s’immobilise. Carte et image fixes, pas de filtre animé ni de bruit calculé à l’interaction. CTA et menu conservent 120 ms.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
 - Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon simple refermable : une rubrique ouverte à la fois, résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. Les six offres partagent la grande carte `SelectedPlanCard` et leurs styles dans `src/components/layout/project.css`. « Changer » est un menu translucide de 210 px attaché au bouton, avec six choix et coche sur le choix courant ; couleurs au survol/clavier, aucun dialogue ni contour de focus extérieur. Le doublon Continuer est retiré de la carte ; une action explicite reste après les options. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
-- Galerie : neuf références avec filtres et crédits. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie restent blancs au repos et révèlent la matière au survol réel, au focus clavier ou à la sélection, avec fondu de 300 ms. Le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte la mention « Projet archivé » dans sa description, avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
+- Galerie : dix références externes avec filtres et crédits. Le bloc d’introduction est retiré, le H1 accessible conservé. Filtrage strict par offre sans saut de scroll : Lactel en Vitrine, GeoBoss en Connecté, Julie Thiam en Sur mesure ; Cal.com ajouté comme exemple avec connexion vérifiée. La remarque de l’ami sur les aplats est annulée. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie restent blancs au repos et révèlent la matière au survol réel, au focus clavier ou à la sélection, avec fondu de 300 ms. Le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte la mention « Projet archivé » dans sa description, avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
 - FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — briefs V2 et images privées
+## Dernier lot — galerie, parcours et SEO
+
+Application `099c1a1` : cinq filtres testés en public avec scroll conservé, dix sites, un badge chacun et quarante liens externes target blank. Mobile 390 × 844 CSS sans débordement. Garde de sortie Contact réellement vérifié en production avec saisie fictive, conservée par Rester puis abandonnée explicitement ; aucun envoi. Contrôles locaux plus larges sur Vitrine, Retour, Changer et écran bas. Primitives, images et effet approuvés inchangés.
+
+TypeScript, build et 202 tests passent. Après publication, robots texte, sitemap XML de douze URL, head FAQ/canonical, noindex privé, 301 et 404 vérifiés par HTTPS. Empreinte client SHA-256 `e5935505beb738db90db2506195c7329874126f630278abeaf724807833fd20a`, identique au build. Observations IAB initiales : CLS environ 0,00007 cache navigateur ignoré, 0 cache actif sur accueil/galerie/Vitrine ; LCP respectivement 616/608/820 ms sans cache et 592/568/584 ms avec cache. Un échantillon par condition, pas de mesure terrain ni d’INP. Formulaire absent du chargement accueil/galerie. Corps React toujours côté client.
+
+Sauvegarde, décodeur PNG Sharp et santé vérifiés avant/après bascule ; autres projets/services/PID inchangés, GP Park HTTP 200. Informations légales et destinataire Resend restent à renseigner ultérieurement. Preuves et revue finale : `docs/qa/gallery-review/final-review.md`, avec captures natives ordinateur/mobile. Localhost arrêté (4173/4174 libres), onglets temporaires fermés, galerie publique conservée.
+
+## Lot précédent — briefs V2 et images privées
 
 - Recherche préalable et quinze spécialistes : `docs/BRIEF_RECHERCHE.md` et `docs/qa/brief-v2/team-review.md`. Questions, coordonnées et compatibilité des options centralisées dans trois modules partagés, formulaire unique et guide manuel mis à jour.
 - Quatre coordonnées obligatoires, sept contextes comprenant le contact général. Six parcours locaux revus ; questions conditionnelles, résumés et retour aux options sans perdre le brief ni les images.

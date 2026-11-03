@@ -1,8 +1,16 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `770a271` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `099c1a1` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
+
+## Galerie et revue critique — terminé et vérifié en ligne
+
+Remarque de l’ami annulée : badges et textures approuvés conservés, filtres blancs au repos puis colorés au survol/sélection. Grand bloc d’introduction retiré. Filtrage strict par offre : Julie Thiam en Sur mesure, GeoBoss en Connecté, Lactel en Vitrine ; GeoBoss ne remonte plus en 3D. Cal.com ajouté comme référence avec une vraie page de connexion vérifiée, aperçu natif et source créditée. Dix sites, un seul badge chacun ; tous les liens externes ouvrent un nouvel onglet. Cinq filtres contrôlés en production avec scroll à 18 px inchangé.
+
+Trois spécialistes ont ensuite revu interface, performance et SEO. Perte du brief à la navigation corrigée par un garde de sortie ; Confidentialité ouvre un autre onglet. Annulation, Retour, refus de changer de forfait, reprise des options et écran bas testés localement ; garde Contact aussi testé en ligne sans envoi. Pied de page stabilisé, formulaire chargé à la demande et premières images de galerie immédiates. Métadonnées partagées serveur/SPA, sitemap XML de douze URL, robots texte et vraies 404 publiés ; dix réponses FAQ présentes dans le DOM.
+
+Publication `099c1a1`, release `20261103T225415Z-099c1a131eef`, client `index-DZiCU2sY.js` : TypeScript, build, 202 tests, santé et empreinte HTTPS conformes au build, décodeur natif Ubuntu vérifié avant bascule et autres projets inchangés. Mesures initiales IAB à 1280 × 720 : CLS environ 0,00007 sans cache navigateur et 0 avec cache sur accueil/galerie/Vitrine ; aucun résultat terrain ou classement Google promis. Mobile 390 × 844 sans débordement. Textures inchangées, aucune demande envoyée. Informations légales réelles et destination Resend toujours à fournir ; corps des pages rendu côté client. Localhost fermé, onglet public conservé. Détails et preuves : `qa/gallery-review/final-review.md`.
 
 ## Briefs publics par forfait — terminé et vérifié en ligne
 

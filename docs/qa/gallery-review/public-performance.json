@@ -1,0 +1,498 @@
+{
+  "date": "2026-11-03",
+  "revision": "099c1a131eef6129e67a979587871eda501a1b1f",
+  "method": {
+    "browser": "Codex IAB only",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 2
+    },
+    "cold": "Browser cache disabled; CDN, DNS and TLS not reset",
+    "warm": "Following reload with browser cache enabled",
+    "samplesPerRouteAndCache": 1,
+    "networkThrottling": false,
+    "cpuThrottling": false,
+    "observers": "Buffered initial-render entries, disconnected after 100 ms",
+    "fieldData": false,
+    "lighthouse": false,
+    "inp": null,
+    "limits": "One initial-render sample per condition. Deferred images may finish after the snapshot; transfer totals are not route-complete budgets."
+  },
+  "runs": [
+    {
+      "label": "home-cold",
+      "cls": 0.00007167973259185774,
+      "fcp": 300,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156501,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 156801
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 3829
+        },
+        {
+          "decodedBodySize": 20681,
+          "encodedBodySize": 6648,
+          "file": "index-DJZYEIfa.js",
+          "transferSize": 6948
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 576
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 1008
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 590
+        },
+        {
+          "decodedBodySize": 335,
+          "encodedBodySize": 269,
+          "file": "chevron-right-CTTptyvh.js",
+          "transferSize": 569
+        }
+      ],
+      "lcp": 616,
+      "lcpElement": "H1",
+      "lcpUrl": "",
+      "longTaskCount": 0,
+      "resourceCount": 15,
+      "shifts": [
+        {
+          "at": 331.0999999642372,
+          "hadRecentInput": false,
+          "sources": [
+            "NAV.desktop-nav",
+            "A.header-login"
+          ],
+          "value": 0.00007167973259185774
+        }
+      ],
+      "timestamp": "2026-11-03T22:56:50.372Z",
+      "transferSize": 489701,
+      "ttfb": 176.89999997615814,
+      "url": "https://gilmathis.com/",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "label": "home-warm",
+      "cls": 0,
+      "fcp": 276,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156501,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 20681,
+          "encodedBodySize": 6648,
+          "file": "index-DJZYEIfa.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 335,
+          "encodedBodySize": 269,
+          "file": "chevron-right-CTTptyvh.js",
+          "transferSize": 0
+        }
+      ],
+      "lcp": 592,
+      "lcpElement": "H1",
+      "lcpUrl": "",
+      "longTaskCount": 0,
+      "resourceCount": 15,
+      "shifts": [],
+      "timestamp": "2026-11-03T22:56:51.063Z",
+      "transferSize": 1278,
+      "ttfb": 203.39999997615817,
+      "url": "https://gilmathis.com/",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "label": "gallery-cold",
+      "cls": 0.00007167973259185774,
+      "fcp": 292,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156662,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 156962
+        },
+        {
+          "decodedBodySize": 20681,
+          "encodedBodySize": 6648,
+          "file": "index-DJZYEIfa.js",
+          "transferSize": 6948
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 576
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 3829
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 1008
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 590
+        },
+        {
+          "decodedBodySize": 335,
+          "encodedBodySize": 269,
+          "file": "chevron-right-CTTptyvh.js",
+          "transferSize": 569
+        }
+      ],
+      "lcp": 608,
+      "lcpElement": "P",
+      "lcpUrl": "",
+      "longTaskCount": 0,
+      "resourceCount": 15,
+      "shifts": [
+        {
+          "at": 312.10000002384186,
+          "hadRecentInput": false,
+          "sources": [
+            "NAV.desktop-nav",
+            "A.header-login"
+          ],
+          "value": 0.00007167973259185774
+        }
+      ],
+      "timestamp": "2026-11-03T22:56:51.778Z",
+      "transferSize": 520262,
+      "ttfb": 174.20000004768372,
+      "url": "https://gilmathis.com/exemples",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "label": "gallery-warm",
+      "cls": 0,
+      "fcp": 228,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156662,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 20681,
+          "encodedBodySize": 6648,
+          "file": "index-DJZYEIfa.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 335,
+          "encodedBodySize": 269,
+          "file": "chevron-right-CTTptyvh.js",
+          "transferSize": 0
+        }
+      ],
+      "lcp": 568,
+      "lcpElement": "IMG",
+      "lcpUrl": "https://gilmathis.com/assets/examples/domteknika.webp",
+      "longTaskCount": 0,
+      "resourceCount": 21,
+      "shifts": [],
+      "timestamp": "2026-11-03T22:56:52.447Z",
+      "transferSize": 644417,
+      "ttfb": 172.80000001192093,
+      "url": "https://gilmathis.com/exemples",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "label": "vitrine-cold",
+      "cls": 0.00007167973259185774,
+      "fcp": 292,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156360,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 156660
+        },
+        {
+          "decodedBodySize": 13346,
+          "encodedBodySize": 5414,
+          "file": "index-CsZseDdg.js",
+          "transferSize": 5714
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 3829
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 576
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 1008
+        },
+        {
+          "decodedBodySize": 205,
+          "encodedBodySize": 166,
+          "file": "input-CNkZEhfp.js",
+          "transferSize": 466
+        },
+        {
+          "decodedBodySize": 4580,
+          "encodedBodySize": 2058,
+          "file": "checkbox-iUNVORGB.js",
+          "transferSize": 2358
+        },
+        {
+          "decodedBodySize": 34654,
+          "encodedBodySize": 12765,
+          "file": "ProjectBriefForm-y-7BWG8N.js",
+          "transferSize": 13065
+        },
+        {
+          "decodedBodySize": 199,
+          "encodedBodySize": 161,
+          "file": "textarea-BDdMPrm8.js",
+          "transferSize": 461
+        },
+        {
+          "decodedBodySize": 509,
+          "encodedBodySize": 363,
+          "file": "label-4tiliQ1r.js",
+          "transferSize": 663
+        },
+        {
+          "decodedBodySize": 1077,
+          "encodedBodySize": 481,
+          "file": "dialog-CUt9d461.js",
+          "transferSize": 781
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 590
+        }
+      ],
+      "lcp": 820,
+      "lcpElement": "DIV",
+      "lcpUrl": "https://gilmathis.com/assets/textures/grain-plasma-card.webp",
+      "longTaskCount": 0,
+      "resourceCount": 20,
+      "shifts": [
+        {
+          "at": 314.10000002384186,
+          "hadRecentInput": false,
+          "sources": [
+            "NAV.desktop-nav",
+            "A.header-login"
+          ],
+          "value": 0.00007167973259185774
+        }
+      ],
+      "timestamp": "2026-11-03T22:57:15.848Z",
+      "transferSize": 3031546,
+      "ttfb": 174.5,
+      "url": "https://gilmathis.com/forfaits/vitrine",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "label": "vitrine-warm",
+      "cls": 0,
+      "fcp": 232,
+      "js": [
+        {
+          "decodedBodySize": 472135,
+          "encodedBodySize": 156360,
+          "file": "index-DZiCU2sY.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 13346,
+          "encodedBodySize": 5414,
+          "file": "index-CsZseDdg.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 9722,
+          "encodedBodySize": 3529,
+          "file": "accordion-CgikbnLh.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 358,
+          "encodedBodySize": 276,
+          "file": "plus-C6TjQ0HZ.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 1374,
+          "encodedBodySize": 708,
+          "file": "button-BoQ73mF6.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 4580,
+          "encodedBodySize": 2058,
+          "file": "checkbox-iUNVORGB.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 34654,
+          "encodedBodySize": 12765,
+          "file": "ProjectBriefForm-y-7BWG8N.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 205,
+          "encodedBodySize": 166,
+          "file": "input-CNkZEhfp.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 509,
+          "encodedBodySize": 363,
+          "file": "label-4tiliQ1r.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 199,
+          "encodedBodySize": 161,
+          "file": "textarea-BDdMPrm8.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 1077,
+          "encodedBodySize": 481,
+          "file": "dialog-CUt9d461.js",
+          "transferSize": 0
+        },
+        {
+          "decodedBodySize": 370,
+          "encodedBodySize": 290,
+          "file": "arrow-left-B8rdfX2Y.js",
+          "transferSize": 0
+        }
+      ],
+      "lcp": 584,
+      "lcpElement": "DIV",
+      "lcpUrl": "https://gilmathis.com/assets/textures/grain-plasma-card.webp",
+      "longTaskCount": 0,
+      "resourceCount": 20,
+      "shifts": [],
+      "timestamp": "2026-11-03T22:57:16.534Z",
+      "transferSize": 1241,
+      "ttfb": 169.39999997615814,
+      "url": "https://gilmathis.com/forfaits/vitrine",
+      "viewport": {
+        "dpr": 2,
+        "height": 720,
+        "width": 1280
+      }
+    }
+  ]
+}

@@ -80,3 +80,8 @@ Le fond `AmbientGrain` utilise un canvas 2D, une tuile de 128 px et un rendu à 
 Le parent peut corriger les trois points ciblés, puis mesurer le build réellement servi et, après publication, la production. Conserver les textures octet pour octet ; vérifier le premier rang, les filtres et le retour en arrière ; refaire un démarrage froid/avec cache sur les trois routes avec la même taille de viewport. Le réseau doit montrer les formulaires absents de l’accueil et de la galerie si leur séparation a été faite. Les pages contact et brief doivent toujours charger le formulaire et conserver leurs données.
 
 Preuves : [performance-evidence.json](./performance-evidence.json). Les six buffers CDP ont été lus sans troncature. La console à la fin du contrôle ne contient ni erreur ni avertissement. Aucun e-mail ni formulaire n’a été envoyé.
+
+
+## État après publication — parent
+
+Application `099c1a1` publiée puis vérifiée dans l’IAB public. Les contrôles, mesures après correction et limites encore ouvertes sont consolidés dans [final-review.md](final-review.md). Les observations initiales ci-dessus sont conservées comme historique, sans les confondre avec l’état corrigé.

@@ -1,0 +1,506 @@
+{
+  "date": "2026-11-03",
+  "revision": "099c1a131eef6129e67a979587871eda501a1b1f",
+  "browser": "IAB only",
+  "all": {
+    "canonical": "https://gilmathis.com/exemples",
+    "filterStyles": [
+      {
+        "background": "rgb(245, 243, 240)",
+        "label": "Tous",
+        "selected": "true",
+        "texture": "none",
+        "textureOpacity": "1"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "label": "Vitrine",
+        "selected": "false",
+        "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+        "textureOpacity": "0"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "label": "Connecté",
+        "selected": "false",
+        "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+        "textureOpacity": "0"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "label": "3D",
+        "selected": "false",
+        "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+        "textureOpacity": "0"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "label": "Sur mesure",
+        "selected": "false",
+        "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")",
+        "textureOpacity": "0"
+      }
+    ],
+    "h1s": 1,
+    "introBlocks": 0,
+    "links": [
+      {
+        "href": "https://domteknika.ch/fr",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://domteknika.ch/fr",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://domteknika.ch/fr",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://domteknika.ch/fr",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.lactel.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.lactel.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.lactel.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://juliethiam.art/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://juliethiam.art/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://juliethiam.art/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://juliethiam.art/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://cal.com/fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://cal.com/fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://cal.com/fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://cal.com/fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://tiny.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://tiny.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://tiny.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://addiction-agency.com/agence",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://addiction-agency.com/agence",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://addiction-agency.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://addiction-agency.com/agence",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://geoboss.onrender.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://geoboss.onrender.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://geoboss.onrender.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.aemagroupe.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.aemagroupe.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://www.aemagroupe.fr/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://satellite.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://satellite.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://satellite.raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://github.com/rqphy/Atlante3d#readme",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://github.com/rqphy/Atlante3d#readme",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://raphael-ferreira.com/",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      },
+      {
+        "href": "https://github.com/rqphy/Atlante3d#readme",
+        "rel": "noopener noreferrer",
+        "target": "_blank"
+      }
+    ],
+    "scroll": 0,
+    "tiles": [
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--vitrine",
+            "text": "Vitrine",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "DOMTEKNIKA"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--vitrine",
+            "text": "Vitrine",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Lactel"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--custom",
+            "text": "Sur mesure",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Julie Thiam"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--connecte",
+            "text": "Connecté",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Cal.com"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--immersif",
+            "text": "3D",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Tiny Heaven"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--custom",
+            "text": "Sur mesure",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Addiction Agency"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--connecte",
+            "text": "Connecté",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "GeoBoss"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--vitrine",
+            "text": "Vitrine",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Aéma Groupe"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--immersif",
+            "text": "3D",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Satellite Story"
+      },
+      {
+        "badges": [
+          {
+            "className": "public-example-tag pricing-card--immersif",
+            "text": "3D",
+            "texture": "linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)), url(\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\")"
+          }
+        ],
+        "title": "Atlante 3D"
+      }
+    ],
+    "url": "https://gilmathis.com/exemples",
+    "viewport": {
+      "dpr": 2,
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "filters": [
+    {
+      "label": "3D",
+      "before": 18,
+      "count": "3 références externes",
+      "scroll": 18,
+      "url": "https://gilmathis.com/exemples?type=immersif",
+      "titles": [
+        "Tiny Heaven",
+        "Satellite Story",
+        "Atlante 3D"
+      ]
+    },
+    {
+      "label": "Sur mesure",
+      "before": 18,
+      "count": "2 références externes",
+      "scroll": 18,
+      "url": "https://gilmathis.com/exemples?type=sur-mesure",
+      "titles": [
+        "Julie Thiam",
+        "Addiction Agency"
+      ]
+    },
+    {
+      "label": "Connecté",
+      "before": 18,
+      "count": "2 références externes",
+      "scroll": 18,
+      "url": "https://gilmathis.com/exemples?type=connecte",
+      "titles": [
+        "Cal.com",
+        "GeoBoss"
+      ]
+    },
+    {
+      "label": "Vitrine",
+      "before": 18,
+      "count": "3 références externes",
+      "scroll": 18,
+      "url": "https://gilmathis.com/exemples?type=vitrine",
+      "titles": [
+        "DOMTEKNIKA",
+        "Lactel",
+        "Aéma Groupe"
+      ]
+    },
+    {
+      "label": "Tous",
+      "before": 18,
+      "count": "10 références externes",
+      "scroll": 18,
+      "url": "https://gilmathis.com/exemples",
+      "titles": [
+        "DOMTEKNIKA",
+        "Lactel",
+        "Julie Thiam",
+        "Cal.com",
+        "Tiny Heaven",
+        "Addiction Agency",
+        "GeoBoss",
+        "Aéma Groupe",
+        "Satellite Story",
+        "Atlante 3D"
+      ]
+    }
+  ],
+  "connected": {
+    "count": "2 références externes",
+    "filters": [
+      {
+        "label": "Tous",
+        "selected": "false",
+        "textureOpacity": "1"
+      },
+      {
+        "label": "Vitrine",
+        "selected": "false",
+        "textureOpacity": "0"
+      },
+      {
+        "label": "Connecté",
+        "selected": "true",
+        "textureOpacity": "0.995691"
+      },
+      {
+        "label": "3D",
+        "selected": "false",
+        "textureOpacity": "0"
+      },
+      {
+        "label": "Sur mesure",
+        "selected": "false",
+        "textureOpacity": "0"
+      }
+    ],
+    "tiles": [
+      {
+        "tag": "Connecté",
+        "title": "Cal.com"
+      },
+      {
+        "tag": "Connecté",
+        "title": "GeoBoss"
+      }
+    ],
+    "url": "https://gilmathis.com/exemples?type=connecte"
+  },
+  "mobile": {
+    "clientWidth": 390,
+    "documentWidth": 390,
+    "filters": [
+      {
+        "label": "Tous",
+        "selected": "false"
+      },
+      {
+        "label": "Vitrine",
+        "selected": "false"
+      },
+      {
+        "label": "Connecté",
+        "selected": "true"
+      },
+      {
+        "label": "3D",
+        "selected": "false"
+      },
+      {
+        "label": "Sur mesure",
+        "selected": "false"
+      }
+    ],
+    "tiles": 2,
+    "title": "Exemples de sites · studio",
+    "viewport": {
+      "dpr": 1,
+      "height": 844,
+      "width": 390
+    }
+  },
+  "briefGuard": {
+    "cancelNavigationRetainsText": true,
+    "confirmedDiscardReturnsToGallery": true,
+    "productionSubmission": false,
+    "emailSent": false
+  },
+  "errors": []
+}

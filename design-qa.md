@@ -1,8 +1,16 @@
-# Vérification visuelle — briefs publics, 3 novembre 2026
+# Vérification visuelle — galerie et parcours publics, 3 novembre 2026
 
 final result: passed
 
-## Lot actuel : briefs V2
+## Lot actuel : galerie et revue critique
+
+Version applicative `099c1a1`, publiée et vérifiée sur gilmathis.com. Remarque de l’ami écartée : badges, filtres et images approuvés conservés. Galerie compacte, dix références, classement corrigé, Cal.com ajouté et scroll stable sur les cinq filtres. Trois spécialistes ont ensuite revu les parcours, les performances et le SEO. Leur revue et les corrections effectivement vérifiées sont rassemblées dans `docs/qa/gallery-review/final-review.md`.
+
+202 tests réussis, santé et empreinte HTTPS conformes au build. Les trois textures colorées restent identiques octet pour octet. Galerie contrôlée en production sur ordinateur et mobile ; Contact protège la saisie avant navigation, sans soumission. Titres/canoniques, robots, sitemap et vraies 404 vérifiés ; corps des pages toujours rendu côté client. Le CLS initial mesuré ne reproduit plus le déplacement du footer : environ 0,00007 cache ignoré et 0 avec cache sur les trois routes. Ces échantillons ne sont pas des données terrain.
+
+Captures natives publiques : `docs/qa/gallery-review/public-gallery-desktop.png`, 2560 × 1440 pour viewport 1280 × 720 CSS/DPR 2 ; `public-gallery-mobile.png`, 390 × 844 CSS/pixels, DPR 1. Largeur mobile document/client 390/390, zéro débordement. Aucune erreur applicative observée. Aucun formulaire ni image envoyés en production. Localhost fermé ; diagnostic cache/émulation rétabli, galerie publique conservée. Les informations légales réelles et l’adresse de réception restent à fournir, sans promesse de conformité ou de réception.
+
+## Lot précédent : briefs V2
 
 Version applicative `770a271`, publiée et vérifiée sur gilmathis.com. Quinze spécialistes ont contribué, sans modifier les images et effets approuvés. Six parcours revus localement ; Vitrine et Refonte également contrôlés en production, sur ordinateur et mobile. Questions conditionnelles, coordonnées distinctes obligatoires, options ciblées et pièces jointes intégrées à la même composition carte à gauche / formulaire à droite.
 

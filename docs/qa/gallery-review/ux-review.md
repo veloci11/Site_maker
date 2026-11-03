@@ -38,3 +38,8 @@ Grille utilisée : [Web Interface Guidelines, version distante récupérée pend
 ## Contrôle final du parent dans l’IAB local
 
 Le parent a pu garder l’IAB actif et a testé réellement les deux formulaires. Sur Contact : annuler la sortie vers Exemples et annuler Retour conservent le texte ; confirmer Quitter mène à la galerie. Confidentialité ouvre un nouvel onglet, le texte reste dans le formulaire, et le nouveau titre est bien « Confidentialité · studio » avec noindex et sans canonical. Sur Vitrine : Rester conserve l’activité, refuser un changement vers Connecté garde l’URL Vitrine et la saisie ; options → brief conserve aussi cette saisie. Un écran bas a révélé un bouton de carte partiellement sous le viewport ; le sticky est désactivé sous 681 px de hauteur et l’action a été retestée avec succès. Aucun formulaire soumis. `local-guard-and-faq.json` consigne les résultats, sans revendiquer un test réel de fermeture d’onglet. Le seul P2 éditorial restant concerne les informations légales réelles.
+
+
+## État après publication — parent
+
+Application `099c1a1` publiée puis vérifiée dans l’IAB public. Les contrôles, mesures après correction et limites encore ouvertes sont consolidés dans [final-review.md](final-review.md). Les observations initiales ci-dessus sont conservées comme historique, sans les confondre avec l’état corrigé.
