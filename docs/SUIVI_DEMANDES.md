@@ -4,6 +4,10 @@ Version actuelle vérifiée : `3e740d6` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
+## Couleurs des forfaits dans la galerie — en cours
+
+Un seul badge de catégorie par site. Badges et filtres réutilisent notre texture et les variables de couleur/cadrage de la carte forfait correspondante ; aucun nouveau visuel. « Tous » reste neutre et le filtre actif a un contour. Les tags secondaires restent disponibles pour le classement interne sans être affichés ; Projet archivé est conservé comme texte dans la description.
+
 ## Accordéon et galerie — terminé et vérifié en ligne
 
 Demande limitée aux interactions et badges : une seule rubrique d’options ouverte à la fois, refermable au clavier ; les rubriques fermées montrent les choix actifs, dont les inclusions identifiées. Le résumé est dérivé de la configuration existante, sans changement de prix ou de persistance. Une option retirée disparaît du résumé, les choix restent cochés à la réouverture.

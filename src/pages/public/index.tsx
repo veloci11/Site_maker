@@ -595,16 +595,22 @@ export function ExamplesPage() {
             role="group"
             aria-label="Filtrer les exemples par type de site"
           >
-            {exampleFilters.map((item) => (
-              <button
-                type="button"
-                key={item.id}
-                aria-pressed={filter === item.id}
-                onClick={() => changeFilter(item.id)}
-              >
-                {item.label}
-              </button>
-            ))}
+            {exampleFilters.map((item) => {
+              const offer = getOffer(item.id)
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={
+                    offer ? `public-gallery-filter pricing-card--${offer.variant}` : undefined
+                  }
+                  aria-pressed={filter === item.id}
+                  onClick={() => changeFilter(item.id)}
+                >
+                  {item.label}
+                </button>
+              )
+            })}
           </div>
           <span className="public-gallery-count" role="status">
             {filtered.length} référence{filtered.length > 1 ? 's' : ''}
@@ -633,28 +639,12 @@ export function ExamplesPage() {
                 />
               </a>
               <div className="public-example-tile__body">
-                <div className="public-example-tags">
-                  <span className="public-example-tag" data-category={example.offerId}>
-                    {exampleFilters.find((item) => item.id === example.offerId)?.label ??
-                      example.category}
-                  </span>
-                  {example.tags?.map((tag) => (
-                    <span
-                      className="public-example-tag"
-                      data-category={
-                        tag === '3D' ? 'immersif' : tag === 'Contenus' ? 'content' : undefined
-                      }
-                      key={tag}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                  {example.archived ? (
-                    <span className="public-example-tag" data-category="archived">
-                      Projet archivé
-                    </span>
-                  ) : null}
-                </div>
+                <span
+                  className={`public-example-tag pricing-card--${getOffer(example.offerId)!.variant}`}
+                >
+                  {exampleFilters.find((item) => item.id === example.offerId)?.label ??
+                    example.category}
+                </span>
                 <a
                   className="public-example-tile__title"
                   href={example.url}
@@ -664,7 +654,10 @@ export function ExamplesPage() {
                   <h2>{example.title}</h2>
                   <ArrowRight size={21} aria-hidden="true" />
                 </a>
-                <p className="public-example-tile__description">{example.description}</p>
+                <p className="public-example-tile__description">
+                  {example.archived ? 'Projet archivé · ' : ''}
+                  {example.description}
+                </p>
                 <div className="public-example-tile__links">
                   <a
                     className="public-example-credit"

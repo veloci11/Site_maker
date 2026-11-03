@@ -27,3 +27,5 @@ La galerie contient neuf références créditées : DOMTEKNIKA, Lactel, Julie Th
 Aucun chiffre client ou gain de 50 % inventé. Les badges « Un interlocuteur direct » et « Un périmètre validé ensemble » et les mentions publiques sur l’absence de compte ont été retirés à la demande de Mathis. Le fond continue jusqu’au bord supérieur et le rebond blanc du navigateur est neutralisé.
 
 Recherches et vérifications visuelles : navigateur intégré uniquement, pas Google Chrome. Le suivi de publication reste distinct de l’état du code local.
+
+Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type reprennent cette matière, « Tous » reste neutre, sélection indiquée par un contour. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.

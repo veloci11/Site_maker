@@ -51,3 +51,5 @@ Le haut des six cartes conserve exactement ses images, son recadrage et ses filt
 La texture de la grande carte est visible dès l’ouverture ; les cartes de l’accueil conservent leur effet de survol approuvé. Le fond public couvre le bord supérieur ; overscroll-behavior-y:none neutralise le rebond blanc.
 
 Les vérifications et recherches visuelles utilisent exclusivement le navigateur intégré, jamais Google Chrome, conformément à la préférence explicite de Mathis.
+
+Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type reprennent cette matière, « Tous » reste neutre, sélection indiquée par un contour. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.

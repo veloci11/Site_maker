@@ -272,20 +272,29 @@
 .public-gallery-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 24px; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
 .public-gallery-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .public-gallery-filters > button { min-height: 44px; padding: 10px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--background); color: var(--muted-foreground); font-size: 13px; transition: color 140ms, background-color 140ms, border-color 140ms; }
-.public-gallery-filters > button:hover { background: var(--muted); color: var(--foreground); }
+.public-gallery-filters > button:not(.public-gallery-filter):hover { background: var(--muted); color: var(--foreground); }
 .public-gallery-filters > button[aria-pressed="true"] { border-color: var(--foreground); background: var(--foreground); color: var(--background); }
+.public-gallery-filters > .public-gallery-filter[aria-pressed="true"] { outline:2px solid var(--foreground); outline-offset:3px; }
 .public-gallery-count { flex-shrink: 0; font-size: 12px; color: var(--muted-foreground); }
 .public-example-tile__image { display: block; }
 .public-example-tile img { aspect-ratio: 16/9; }
 .public-example-tile__body { padding-top: 18px; }
 .public-example-tag { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 10px; border-radius: 999px; background: var(--muted); font-size: 10px; line-height: 1.4; }
-.public-example-tag[data-category="vitrine"] { background:#e5edff; color:#294a88; }
-.public-example-tag[data-category="connecte"] { background:#def4eb; color:#225b49; }
-.public-example-tag[data-category="immersif"] { background:#ede3ff; color:#65408b; }
-.public-example-tag[data-category="sur-mesure"] { background:#ffe5d5; color:#893e23; }
-.public-example-tag[data-category="content"] { background:#dff2f7; color:#285c6c; }
-.public-example-tag[data-category="archived"] { background:#fff0ce; color:#785719; }
-.public-example-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.public-example-tag,
+.public-gallery-filters > .public-gallery-filter { position:relative; isolation:isolate; overflow:hidden; background:#111; color:#fff; }
+.public-example-tag::before,
+.public-gallery-filter::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(rgb(0 0 0 / .18),rgb(0 0 0 / .18)),url("/assets/textures/grain-plasma-card.webp");
+  background-size:155% 145%;
+  background-position:var(--plasma-position,20% 20%);
+  filter:hue-rotate(var(--card-hue,0deg)) saturate(.93) brightness(.76);
+  transform:scale(var(--card-scale-x,1),var(--card-scale-y,1));
+}
 .public-example-tile__body .public-example-tile__title { padding-top: 12px; }
 .public-example-tile__description { margin-top: 8px; color: var(--muted-foreground); font-size: 14px; }
 .public-example-tile__links { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 20px; }
