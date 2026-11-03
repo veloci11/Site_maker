@@ -4,9 +4,13 @@ Version actuelle vérifiée : `0aeb90d` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Filtres au survol et menu mobile — vérifiés localement, publication en cours
+## Menu Changer et focus Forfaits — vérifiés localement, publication en cours
 
-Ordre suivi : filtres blancs au repos, matière au survol/focus ou à la sélection vérifiée localement ; puis correction de l’ancien violet de la page active dans le menu mobile. La page courante garde un soulignement noir. L’accordéon exclusif et ses résumés, déjà publiés, sont recontrôlés à la demande de Mathis. Un seul badge texturé par site conservé. Retour au blanc après désélection, survol et sélection persistante validés dans l’IAB. Menu noir avec soulignement actif et accordéon recontrôlés. TypeScript, build et 113 tests passent. Preuves : `qa/filter-hover-mobile-menu/`.
+Demande reçue pendant la clôture du lot précédent : remplacer la fenêtre centrale par un petit menu déroulant attaché au bouton. Afficher les quatre créations et les deux prestations Évolution/Refonte, en gardant leurs destinations et leurs périmètres existants. Petit DropdownMenu ancré au bouton, six choix, création courante cochée, aucune fenêtre centrale. Six destinations contrôlées, sujets Évolution/Refonte corrects et options compatibles conservées. Menu mobile de 224 px sans débordement, Échap ferme et rend le focus au bouton. Ensuite, contour violet Forfaits retiré : le clavier conserve un soulignement noir de 2 px. Preuves : `qa/inline-plan-chooser/`.
+
+## Filtres au survol et menu mobile — terminé et vérifié en ligne
+
+Ordre suivi : filtres blancs au repos, matière au survol/focus ou à la sélection vérifiée localement ; puis correction de l’ancien violet de la page active dans le menu mobile. La page courante garde un soulignement noir. L’accordéon exclusif et ses résumés, déjà publiés, sont recontrôlés à la demande de Mathis. Un seul badge texturé par site conservé. Retour au blanc après désélection, survol et sélection persistante validés dans l’IAB. Menu noir avec soulignement actif et accordéon recontrôlés. TypeScript, build et 113 tests passent. Preuves : `qa/filter-hover-mobile-menu/`. Publication `99f4eaf`, release `20261103T164953Z-99f4eafe49de` : filtres blancs au repos et colorés au survol/sélection, menu mobile noir avec page courante soulignée, accordéon exclusif et résumés confirmés en ligne. Client HTTPS identique au build, autre projets Ubuntu inchangés. Les choix temporaires de contrôle publics ont été retirés. Ce lot est clos avant de remplacer Changer.
 
 ## Couleurs des forfaits dans la galerie — terminé et vérifié en ligne
 

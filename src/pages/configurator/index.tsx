@@ -27,13 +27,12 @@ import {
 import { Button } from '../../components/ui/button'
 import { Checkbox } from '../../components/ui/checkbox'
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '../../components/ui/dialog'
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../../components/ui/dropdown-menu'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
 import { Textarea } from '../../components/ui/textarea'
@@ -42,6 +41,7 @@ import { api, errorMessage } from '../../lib/api'
 import { useProject } from '../../lib/project'
 import { clearDraft, readDraft, writeDraft } from '../../lib/draft'
 import { includedGuidance } from '../../content/configurator-copy'
+import { existingSiteOffers } from '../../content/existing-site'
 import '../configurator.css'
 
 function forOffer(current: Configuration, offerId: OfferId): Configuration {
@@ -108,7 +108,6 @@ export function ConfiguratorPage() {
   const [pricing, setPricing] = useState<Pricing>(defaultPricing)
   const [pricingError, setPricingError] = useState(false)
   const [stage, setStage] = useState<'options' | 'contact' | 'success'>('options')
-  const [chooserOpen, setChooserOpen] = useState(false)
   const [contact, setContact] = useState<Contact>(emptyContact)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -203,7 +202,6 @@ export function ConfiguratorPage() {
   }
   function changeOffer(offerId: OfferId) {
     setConfiguration(forOffer(configuration, offerId))
-    setChooserOpen(false)
     setStage('options')
     setError('')
     if (!editingId) navigate(`/forfaits/${getOffer(offerId)!.slug}`, { preventScrollReset: true })
@@ -323,8 +321,8 @@ export function ConfiguratorPage() {
           <div className={`selected-plan pricing-card--${offer.variant}`}>
             <div className="selected-plan__heading">
               <span className="selected-plan__eyebrow">Votre forfait</span>
-              <Dialog open={chooserOpen} onOpenChange={setChooserOpen}>
-                <DialogTrigger asChild>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
                   <button
                     type="button"
                     className="selected-plan__change"
@@ -332,39 +330,35 @@ export function ConfiguratorPage() {
                   >
                     Changer <ChevronDown size={14} aria-hidden="true" />
                   </button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Choisir un forfait</DialogTitle>
-                    <DialogDescription>Vos options compatibles sont conservées.</DialogDescription>
-                  </DialogHeader>
-                  <div className="configurator-offer-choices">
-                    {offers.map((item) => (
-                      <button
-                        key={item.id}
-                        type="button"
-                        className="configurator-offer-choice"
-                        aria-pressed={item.id === offer.id}
-                        onClick={() => changeOffer(item.id)}
-                      >
-                        <strong>{item.title}</strong>
-                        <span>
-                          {item.id === 'sur-mesure'
-                            ? 'Sur devis'
-                            : pricing.base[item.id] === null
-                              ? 'À partir de…'
-                              : formatMoney(pricing.base[item.id], pricing.currency)}
-                        </span>
-                        {item.id === offer.id ? (
-                          <Check size={18} aria-hidden="true" />
-                        ) : (
-                          <ArrowRight size={18} aria-hidden="true" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </DialogContent>
-              </Dialog>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="end"
+                  className="public-offers-menu"
+                  aria-label="Changer de forfait"
+                >
+                  {offers.map((item) => (
+                    <DropdownMenuItem
+                      key={item.id}
+                      className={`public-offer-link pricing-card--${item.variant}`}
+                      aria-current={item.id === offer.id ? 'page' : undefined}
+                      onSelect={() => changeOffer(item.id)}
+                    >
+                      {item.title}
+                      {item.id === offer.id ? <Check size={16} aria-hidden="true" /> : null}
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  {existingSiteOffers.map((item) => (
+                    <DropdownMenuItem
+                      key={item.id}
+                      asChild
+                      className={`public-offer-link pricing-card--${item.id}`}
+                    >
+                      <Link to={item.href}>{item.title}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
             <h1>{offer.title}</h1>
             <p className="selected-plan__description">{offer.description}</p>
