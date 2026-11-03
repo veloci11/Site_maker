@@ -52,4 +52,4 @@ La texture de la grande carte est visible dès l’ouverture ; les cartes de l�
 
 Les vérifications et recherches visuelles utilisent exclusivement le navigateur intégré, jamais Google Chrome, conformément à la préférence explicite de Mathis.
 
-Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type reprennent cette matière, « Tous » reste neutre, sélection indiquée par un contour. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.
+Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type restent blancs au repos ; la matière apparaît par un fondu de 300 ms au survol réel, au focus clavier ou à la sélection. « Tous » reste neutre et la sélection garde un contour. Les badges de site restent texturés. Le menu mobile indique la page courante par un soulignement noir, sans violet. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.

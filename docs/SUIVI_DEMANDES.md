@@ -4,6 +4,10 @@ Version actuelle vérifiée : `0aeb90d` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
+## Filtres au survol et menu mobile — vérifiés localement, publication en cours
+
+Ordre suivi : filtres blancs au repos, matière au survol/focus ou à la sélection vérifiée localement ; puis correction de l’ancien violet de la page active dans le menu mobile. La page courante garde un soulignement noir. L’accordéon exclusif et ses résumés, déjà publiés, sont recontrôlés à la demande de Mathis. Un seul badge texturé par site conservé. Retour au blanc après désélection, survol et sélection persistante validés dans l’IAB. Menu noir avec soulignement actif et accordéon recontrôlés. TypeScript, build et 113 tests passent. Preuves : `qa/filter-hover-mobile-menu/`.
+
 ## Couleurs des forfaits dans la galerie — terminé et vérifié en ligne
 
 Un seul badge de catégorie par site. Badges et filtres réutilisent notre texture et les variables de couleur/cadrage de la carte forfait correspondante ; aucun nouveau visuel. « Tous » reste neutre et le filtre actif a un contour. Les tags secondaires restent disponibles pour le classement interne sans être affichés ; Projet archivé est conservé comme texte dans la description. Publié dans `0aeb90d`, release `20261103T164107Z-0aeb90d5a7a8`. Neuf sites et neuf badges, filtres Tous/Vitrine/Connecté/3D/Sur mesure contrôlés : 9/2/1/5/2 résultats, un seul badge par résultat. Contour actif visible ; variables de variantes identiques à celles des cartes. Les 36 liens externes gardent target/rel. HTTPS et client identiques au build, contrôles IAB desktop/mobile passés, 113 tests passants. Aucun formulaire soumis, aucune alerte applicative observée ; localhost fermé, autres projets Ubuntu inchangés. Preuves : `qa/gallery-plan-colors/`.

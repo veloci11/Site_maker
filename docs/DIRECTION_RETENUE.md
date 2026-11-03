@@ -28,4 +28,4 @@ Aucun chiffre client ou gain de 50 % inventé. Les badges « Un interlocuteur di
 
 Recherches et vérifications visuelles : navigateur intégré uniquement, pas Google Chrome. Le suivi de publication reste distinct de l’état du code local.
 
-Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type reprennent cette matière, « Tous » reste neutre, sélection indiquée par un contour. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.
+Galerie : un seul badge par référence, utilisant la texture originale et les variables de variante de `PricingCard`. Les quatre filtres de type restent blancs au repos ; la matière apparaît par un fondu de 300 ms au survol réel, au focus clavier ou à la sélection. « Tous » reste neutre et la sélection garde un contour. Les badges de site restent texturés. Le menu mobile indique la page courante par un soulignement noir, sans violet. La mention « Projet archivé » reste dans la description, sans second badge. Cette correction remplace les teintes pastel séparées.
