@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, Loader2, Mail } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, Mail } from 'lucide-react'
 import {
   defaultPricing,
   formatMoney,
@@ -17,6 +17,7 @@ import {
   type OptionId,
   type Pricing,
 } from '../../../shared/catalog'
+import { getPublicOptions, prunePublicConfiguration } from '../../../shared/offer-options'
 import {
   Accordion,
   AccordionContent,
@@ -26,13 +27,20 @@ import {
 import { Button } from '../../components/ui/button'
 import { Checkbox } from '../../components/ui/checkbox'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
-import { Textarea } from '../../components/ui/textarea'
+import {
+  ProjectBriefForm,
+  type InquiryResult,
+} from '../../components/inquiries/ProjectBriefForm'
 import { useAuth } from '../../lib/auth'
 import { api, errorMessage } from '../../lib/api'
 import { useProject } from '../../lib/project'
-import { clearDraft, readDraft, writeDraft } from '../../lib/draft'
+import {
+  clearDraft,
+  configurationKey,
+  readDraft,
+  writeDraft,
+  type ProjectDraft,
+} from '../../lib/draft'
 import { includedGuidance } from '../../content/configurator-copy'
 
 function forOffer(current: Configuration, offerId: OfferId): Configuration {
@@ -48,36 +56,16 @@ function forOffer(current: Configuration, offerId: OfferId): Configuration {
 }
 function initialConfiguration(params: URLSearchParams, slug?: string): Configuration {
   if (params.get('nouveau') === '1') clearDraft()
+  const editing = Boolean(params.get('projet') || params.get('projectId'))
   const requested = getOffer(slug) ?? getOffer(params.get('forfait') ?? params.get('formule'))
   const previous = readDraft()?.configuration ?? normalizeConfiguration({ offerId: requested?.id })
   const selected = requested ? forOffer(previous, requested.id) : previous
-  const option = optionDefinitions.find((item) => item.id === params.get('option'))
-  return option ? withOption(selected, option.id, true) : selected
+  const options = editing ? optionDefinitions : getPublicOptions(selected.offerId)
+  const option = options.find((item) => item.id === params.get('option'))
+  const configuration = option ? withOption(selected, option.id, true) : selected
+  return editing ? configuration : prunePublicConfiguration(configuration)
 }
 
-type Contact = {
-  name: string
-  email: string
-  phone: string
-  company: string
-  message: string
-  inspiration: string
-  website: string
-}
-const emptyContact: Contact = {
-  name: '',
-  email: '',
-  phone: '',
-  company: '',
-  message: '',
-  inspiration: '',
-  website: '',
-}
-type InquiryResult = {
-  ok: boolean
-  id: string
-  notification: 'queued' | 'accepted' | 'unavailable'
-}
 function revealSection(element: HTMLElement | null) {
   element?.focus({ preventScroll: true })
   if (window.matchMedia('(min-width: 761px)').matches)
@@ -99,14 +87,11 @@ export function ConfiguratorPage() {
   const [pricing, setPricing] = useState<Pricing>(defaultPricing)
   const [pricingError, setPricingError] = useState(false)
   const [stage, setStage] = useState<'options' | 'contact' | 'success'>('options')
-  const [contact, setContact] = useState<Contact>(emptyContact)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState<InquiryResult | null>(null)
   const pending = useRef(false)
-  const mounted = useRef(true)
-  const requestContext = useRef(0)
-  const attempt = useRef<{ body: string; id: string } | null>(null)
+  const submittedDraft = useRef<ProjectDraft | null>(null)
   const contactHeading = useRef<HTMLHeadingElement>(null)
   const optionsHeading = useRef<HTMLHeadingElement>(null)
   const successHeading = useRef<HTMLHeadingElement>(null)
@@ -116,7 +101,9 @@ export function ConfiguratorPage() {
   const [loadAttempt, setLoadAttempt] = useState(0)
   const routeOffer = getOffer(slug)
   const configuration =
-    routeOffer && !editingId ? forOffer(storedConfiguration, routeOffer.id) : storedConfiguration
+    routeOffer && !editingId && routeOffer.id !== storedConfiguration.offerId
+      ? prunePublicConfiguration(forOffer(storedConfiguration, routeOffer.id))
+      : storedConfiguration
   const offer = getOffer(configuration.offerId)!
   const quote = quoteConfiguration(configuration, pricing)
   const selected = quote.lines.filter((line) => line.key !== 'base' && !line.included)
@@ -129,20 +116,17 @@ export function ConfiguratorPage() {
       ? 'À partir de…'
       : formatMoney(quote.totalCents, quote.currency)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
+  const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
+  const visibleGroups = optionGroups.filter((group) =>
+    availableOptions.some((option) => option.group === group.id),
+  )
 
   useEffect(() => {
     document.title = `${title} · studio`
   }, [title])
   useEffect(() => {
-    mounted.current = true
-    return () => {
-      mounted.current = false
-    }
-  }, [])
-  useEffect(() => {
     if (!routeOffer || editingId) return
-    requestContext.current++
-    setConfiguration((current) => forOffer(current, routeOffer.id))
+    setConfiguration((current) => prunePublicConfiguration(forOffer(current, routeOffer.id)))
     setStage('options')
     setError('')
     setResult(null)
@@ -188,13 +172,17 @@ export function ConfiguratorPage() {
   }, [editingId, user?.id, authLoading, navigate, loadAttempt])
 
   function changeOption(id: OptionId, checked: boolean) {
-    setConfiguration(withOption(configuration, id, checked))
+    const next = withOption(configuration, id, checked)
+    setConfiguration(editingId ? next : prunePublicConfiguration(next))
     setError('')
   }
   function changeOffer(offerId: OfferId) {
-    setConfiguration(forOffer(configuration, offerId))
+    if (offerId === configuration.offerId) return
+    const next = forOffer(configuration, offerId)
+    setConfiguration(editingId ? next : prunePublicConfiguration(next))
     setStage('options')
     setError('')
+    setResult(null)
     if (!editingId) navigate(`/forfaits/${getOffer(offerId)!.slug}`, { preventScrollReset: true })
   }
   function goContact() {
@@ -227,40 +215,22 @@ export function ConfiguratorPage() {
       setSending(false)
     }
   }
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (pending.current) return
-    pending.current = true
-    setSending(true)
-    setError('')
-    const submittedDraft = writeDraft(configuration)
-    const context = requestContext.current
-    const body = {
-      ...contact,
-      name: contact.name.trim(),
-      email: contact.email.trim(),
-      configuration,
-    }
-    const signature = JSON.stringify(body)
-    if (!attempt.current || attempt.current.body !== signature)
-      attempt.current = { body: signature, id: crypto.randomUUID() }
-    try {
-      const response = await api<InquiryResult>('/api/inquiries', {
-        method: 'POST',
-        body: { ...body, requestId: attempt.current.id },
-      })
-      if (readDraft()?.id === submittedDraft.id) clearDraft()
-      if (!mounted.current || context !== requestContext.current) return
-      setResult(response)
-      setStage('success')
-      requestAnimationFrame(() => revealSection(successHeading.current))
-    } catch (error) {
-      if (mounted.current && context === requestContext.current)
-        setError(errorMessage(error, 'Votre demande n’a pas pu être enregistrée. Réessayez.'))
-    } finally {
-      pending.current = false
-      if (mounted.current) setSending(false)
-    }
+  function briefBusyChange(busy: boolean) {
+    if (busy) submittedDraft.current = writeDraft(configuration)
+    setSending(busy)
+  }
+  function briefSuccess(response: InquiryResult) {
+    const submitted = submittedDraft.current
+    const current = readDraft()
+    if (
+      submitted &&
+      current?.id === submitted.id &&
+      configurationKey(current.configuration) === configurationKey(submitted.configuration)
+    )
+      clearDraft()
+    setResult(response)
+    setStage('success')
+    requestAnimationFrame(() => revealSection(successHeading.current))
   }
   const optionPrice = (id: OptionId) => {
     if (isOptionIncluded(configuration, id))
@@ -394,8 +364,8 @@ export function ConfiguratorPage() {
                 defaultValue="essentials"
                 className="configurator-groups"
               >
-                {optionGroups.map((group, index) => {
-                  const options = optionDefinitions.filter((option) => option.group === group.id)
+                {visibleGroups.map((group, index) => {
+                  const options = availableOptions.filter((option) => option.group === group.id)
                   const selectedOptions = options.filter((option) =>
                     isOptionSelected(configuration, option.id),
                   )
@@ -472,13 +442,17 @@ export function ConfiguratorPage() {
               ) : null}
               <div className="configurator-next">
                 <Button size="lg" onClick={editingId ? saveExisting : goContact} disabled={sending}>
-                  {editingId ? 'Enregistrer mes choix' : 'Ajouter mes coordonnées'}
+                  {editingId ? 'Enregistrer mes choix' : 'Décrire mon projet'}
                   <ArrowRight size={17} aria-hidden="true" />
                 </Button>
               </div>
             </>
-          ) : stage === 'contact' ? (
-            <>
+          ) : null}
+          {!editingId && stage !== 'success' ? (
+            <div
+              hidden={stage !== 'contact'}
+              className={stage === 'contact' ? 'configurator-contact' : undefined}
+            >
               <header className="configurator-section-heading">
                 <div className="configurator-step-line">
                   <span className="configurator-step">02 / 02</span>
@@ -493,138 +467,20 @@ export function ConfiguratorPage() {
                   </button>
                 </div>
                 <h2 ref={contactHeading} tabIndex={-1}>
-                  Parlons de votre site.
+                  Décrivez votre projet.
                 </h2>
-                <p>Laissez vos coordonnées, nous vous recontactons.</p>
+                <p>Précisez vos besoins et laissez vos coordonnées pour préparer votre site.</p>
               </header>
-              <form className="configurator-contact" onSubmit={submit} aria-busy={sending}>
-                <fieldset disabled={sending}>
-                  <div className="field">
-                    <Label htmlFor="request-name">Votre nom</Label>
-                    <Input
-                      id="request-name"
-                      name="name"
-                      autoComplete="name"
-                      required
-                      minLength={2}
-                      maxLength={120}
-                      value={contact.name}
-                      onChange={(event) => setContact({ ...contact, name: event.target.value })}
-                    />
-                  </div>
-                  <div className="field">
-                    <Label htmlFor="request-email">Votre e-mail</Label>
-                    <Input
-                      id="request-email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      maxLength={254}
-                      value={contact.email}
-                      onChange={(event) => setContact({ ...contact, email: event.target.value })}
-                    />
-                  </div>
-                  <div className="configurator-contact__row">
-                    <div className="field">
-                      <Label htmlFor="request-phone">
-                        Téléphone <span>Facultatif</span>
-                      </Label>
-                      <Input
-                        id="request-phone"
-                        name="phone"
-                        type="tel"
-                        autoComplete="tel"
-                        maxLength={40}
-                        value={contact.phone}
-                        onChange={(event) => setContact({ ...contact, phone: event.target.value })}
-                      />
-                    </div>
-                    <div className="field">
-                      <Label htmlFor="request-company">
-                        Entreprise <span>Facultatif</span>
-                      </Label>
-                      <Input
-                        id="request-company"
-                        name="company"
-                        autoComplete="organization"
-                        maxLength={160}
-                        value={contact.company}
-                        onChange={(event) =>
-                          setContact({ ...contact, company: event.target.value })
-                        }
-                      />
-                    </div>
-                  </div>
-                  <div className="field">
-                    <Label htmlFor="request-message">
-                      Votre projet {custom ? null : <span>Facultatif</span>}
-                    </Label>
-                    <Textarea
-                      id="request-message"
-                      name="message"
-                      rows={4}
-                      maxLength={4000}
-                      required={custom}
-                      minLength={custom ? 10 : undefined}
-                      placeholder="Votre activité, vos attentes, une précision sur vos options…"
-                      value={contact.message}
-                      onChange={(event) => setContact({ ...contact, message: event.target.value })}
-                    />
-                  </div>
-                  <div className="field">
-                    <Label htmlFor="request-inspiration">
-                      Un site qui vous inspire <span>Facultatif</span>
-                    </Label>
-                    <Input
-                      id="request-inspiration"
-                      name="inspiration"
-                      type="url"
-                      maxLength={500}
-                      placeholder="https://"
-                      value={contact.inspiration}
-                      onChange={(event) =>
-                        setContact({ ...contact, inspiration: event.target.value })
-                      }
-                    />
-                  </div>
-                  <div className="configurator-honeypot" aria-hidden="true">
-                    <label htmlFor="request-website">Votre site actuel</label>
-                    <input
-                      id="request-website"
-                      name="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={contact.website}
-                      onChange={(event) => setContact({ ...contact, website: event.target.value })}
-                    />
-                  </div>
-                  {error ? (
-                    <p className="field-error" role="alert">
-                      {error}
-                    </p>
-                  ) : null}
-                  <Button type="submit" size="lg" className="configurator-send" disabled={sending}>
-                    {sending ? (
-                      <>
-                        <Loader2 className="spin" size={18} aria-hidden="true" />
-                        Envoi en cours…
-                      </>
-                    ) : (
-                      <>
-                        Envoyer ma demande
-                        <ArrowRight size={18} aria-hidden="true" />
-                      </>
-                    )}
-                  </Button>
-                  <p className="configurator-privacy">
-                    Vos coordonnées servent à vous répondre.{' '}
-                    <Link to="/confidentialite">Confidentialité</Link>
-                  </p>
-                </fieldset>
-              </form>
-            </>
-          ) : (
+              <ProjectBriefForm
+                key={offer.id}
+                requestType={offer.id}
+                configuration={configuration}
+                onSuccess={briefSuccess}
+                onBusyChange={briefBusyChange}
+              />
+            </div>
+          ) : null}
+          {stage === 'success' ? (
             <div className="configurator-success" role="status">
               <span className="configurator-success__icon">
                 <Mail size={28} strokeWidth={1.5} aria-hidden="true" />
@@ -633,9 +489,11 @@ export function ConfiguratorPage() {
                 Votre demande est enregistrée.
               </h2>
               <p>
-                {result?.notification === 'unavailable'
-                  ? 'Votre sélection est conservée. La notification par e-mail est momentanément indisponible.'
-                  : 'Nous vous recontactons par e-mail pour préparer la suite.'}
+                {result?.notification === 'accepted'
+                  ? 'La notification au studio a été acceptée par le service d’e-mail. Sa livraison n’est pas encore confirmée.'
+                  : result?.notification === 'queued'
+                    ? 'La notification au studio est en attente d’envoi. Votre demande et vos images jointes sont conservées.'
+                    : 'La notification par e-mail est momentanément indisponible. Votre demande et vos images jointes restent enregistrées.'}
               </p>
               <div className="configurator-success__actions">
                 <Button asChild variant="outline">
@@ -648,7 +506,7 @@ export function ConfiguratorPage() {
                 </Link>
               </div>
             </div>
-          )}
+          ) : null}
           {stage === 'options' && error ? (
             <p className="field-error" role="alert">
               {error}
@@ -666,7 +524,7 @@ export function ConfiguratorPage() {
             ) : null}
           </div>
           <Button onClick={editingId ? saveExisting : goContact} disabled={sending}>
-            {editingId ? 'Enregistrer' : 'Mes coordonnées'}
+            {editingId ? 'Enregistrer' : 'Décrire mon projet'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
         </div>

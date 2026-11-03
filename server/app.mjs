@@ -9,6 +9,7 @@ import { createFilesRouter } from './files.mjs';
 import { createCollaborationRouter } from './collaboration.mjs';
 import { createOrdersRouter, getPricing, getPaymentAvailability } from './orders.mjs';
 import { createInquiriesRouter } from './inquiries.mjs';
+import { createInquiryAdminRouter } from './inquiry-admin.mjs';
 import { offers, optionDefinitions, normalizeConfiguration, quoteConfiguration } from '../shared/catalog.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -25,6 +26,7 @@ export function createApp() {
     } : false,
     crossOriginEmbedderPolicy: false,
   }));
+  app.use('/api/inquiries', express.json({ limit: '64kb' }));
   app.use(express.json({ limit: '1mb' }));
   app.use(optionalAuth);
   app.use('/api', (req, res, next) => { res.set('Cache-Control', 'no-store'); next(); });
@@ -40,6 +42,7 @@ export function createApp() {
   app.use('/api/projects', createFilesRouter({ requireAuth }));
   app.use('/api/projects', createCollaborationRouter({ requireAuth }));
   app.use('/api/inquiries', createInquiriesRouter());
+  app.use('/api', createInquiryAdminRouter());
 
   app.use('/api', createOrdersRouter({ requireAuth }));
   app.use('/api', (_req, res) => res.status(404).json({ error: 'Cette ressource est introuvable.' }));

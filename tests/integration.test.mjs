@@ -6,6 +6,7 @@ import path from 'node:path';
 import { createApp } from '../server/app.mjs';
 import { createAdminUser } from '../server/auth.mjs';
 import { closeDb, getDb } from '../server/db.mjs';
+import { validInquiry } from './helpers/inquiry-fixture.mjs';
 
 // Exercise the actual middleware/router composition, real session cookies and a
 // private disposable database. No identity injection, external mail or payments.
@@ -58,7 +59,7 @@ test('public catalogue, quote and inquiry stay accessible before protected route
   const configuration = { offerId: 'vitrine', language: 'fr', managedContent: false, scene3d: false };
   const quote = await request('/api/quote', { method: 'POST', body: { configuration } });
   assert.equal(quote.status, 200); assert.equal(quote.body.quote.checkoutReady, false); assert.equal(quote.body.quote.totalCents, null);
-  const inquiry = { name: 'Client test', email: 'inquiry@example.test', subject: 'Projet test', message: 'Un projet de site pour vérifier le formulaire.' };
+  const inquiry = validInquiry('contact', { email: 'inquiry@example.test', brief: { message: 'Un projet de site pour vérifier le formulaire.' } });
   const rejected = await request('/api/inquiries', { method: 'POST', origin: 'https://foreign.example', body: inquiry });
   assert.equal(rejected.status, 403); assert.equal(rejected.body.code, 'INVALID_ORIGIN');
   const accepted = await request('/api/inquiries', { method: 'POST', body: inquiry });

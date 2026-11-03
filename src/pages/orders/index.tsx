@@ -1,6 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check, ChevronRight, Download, FileText, FolderOpen, LoaderCircle, MessageSquare, Plus, RefreshCw, Save, Send, Settings2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight, ChevronUp, Download, FileText, FolderOpen, LoaderCircle, MessageSquare, Plus, RefreshCw, Save, Send, Settings2 } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { Input } from '../../components/ui/input'
 import { Label } from '../../components/ui/label'
@@ -21,6 +21,20 @@ type StudioPreview = { id: string; title: string; version: number; status: strin
 type AdminProject = Project & { customer: { name: string; email: string } }
 type ProjectDetail = OrderState & { project: Project; customer: { name: string; email: string }; contents: { pageKey: string; title: string; data: Record<string, string> }[]; files: StudioFile[]; orders: Order[] }
 type Inquiry = { id: string; name: string; email: string; subject: string; message: string; createdAt: string; status: 'new' | 'reviewed' }
+type InquiryDetail = Omit<Inquiry, 'status'> & {
+  schemaVersion: 2 | null
+  requestType: string | null
+  firstName: string | null
+  lastName: string | null
+  phone: string | null
+  company: string | null
+  brief: Record<string, string | string[]> | null
+  sections: { title: string; items: { label: string; value: string }[] }[]
+  configuration: Configuration | null
+  quote: Quote | null
+  files: { id: string; originalName: string; mime: string; size: number; width: number; height: number; previewUrl: string; downloadUrl: string }[]
+  notification: { status: string; attempts: number; updatedAt: string } | null
+}
 
 const blankBilling: Billing = { fullName: '', company: '', email: '', address: '', postalCode: '', city: '', country: 'FR', vatNumber: '' }
 const countryNames: Record<string, string> = { FR: 'France', CH: 'Suisse', BE: 'Belgique', LU: 'Luxembourg', DE: 'Allemagne', AT: 'Autriche', ES: 'Espagne', IT: 'Italie', PT: 'Portugal', NL: 'Pays-Bas', IE: 'Irlande', GB: 'Royaume-Uni', CA: 'Canada', US: 'États-Unis', MX: 'Mexique', MA: 'Maroc', TN: 'Tunisie', DZ: 'Algérie', SN: 'Sénégal', CI: 'Côte d’Ivoire', RE: 'La Réunion' }
@@ -187,18 +201,97 @@ function AdminPricing() {
   return <form className="admin-pricing panel stack" onSubmit={save}><div><h2>Tarifs des forfaits</h2><p className="order-small">Ces montants alimentent le site et le configurateur. Un champ vide reste « À préciser ». Les anciens dossiers conservent leurs montants enregistrés.</p></div><div className="order-notice"><Settings2 size={18} /><p>Les paiements restent désactivés. La devise, la fiscalité et les conditions commerciales devront être validées avant l’ouverture des commandes.</p></div>{!pricing && !error ? <p role="status">Chargement des tarifs…</p> : <><div className="field admin-currency"><Label htmlFor="pricing-currency">Devise</Label><select id="pricing-currency" className="input" value={currency} onChange={e => { setCurrency(e.target.value); setSaved(false) }}><option value="EUR">Euro (EUR)</option><option value="CHF">Franc suisse (CHF)</option></select></div><div className="admin-price-fields">{[...offers.filter(offer => offer.id !== 'sur-mesure').map(offer => ({ id: offer.id, title: offer.title, billing: 'once' as const })), ...optionDefinitions].map(item => <div className="field" key={item.id}><Label htmlFor={`price-${item.id}`}>{item.title}{item.billing === 'monthly' ? ' — par mois' : ''}</Label><div className={item.billing === 'monthly' ? 'admin-money-field admin-money-field--monthly' : 'admin-money-field'}><Input id={`price-${item.id}`} inputMode="decimal" value={amounts[item.id] ?? ''} onChange={e => { setAmounts(values => ({ ...values, [item.id]: e.target.value })); setSaved(false) }} placeholder="À préciser" /><span>{currency === 'EUR' ? '€' : 'CHF'}{item.billing === 'monthly' ? ' / mois' : ''}</span></div></div>)}</div><p className="order-small">Sur mesure : toujours sur devis. Les capacités incluses dans un forfait ne sont jamais ajoutées deux fois. La mise en ligne est ponctuelle ; la maintenance est mensuelle.</p><div><Button type="submit" disabled={busy || !pricing}><Save size={17} />{busy ? 'Enregistrement…' : 'Enregistrer les tarifs'}</Button></div></>}{error && <p role="alert" className="field-error">{error}</p>}{saved && <p role="status" className="field-success">Les tarifs sont enregistrés.</p>}</form>
 }
 
+function InquiryDetails({ id, showHeading = false }: { id: string; showHeading?: boolean }) {
+  const [inquiry, setInquiry] = useState<InquiryDetail | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [attempt, setAttempt] = useState(0)
+  useEffect(() => {
+    const controller = new AbortController()
+    setLoading(true); setError(''); setInquiry(null)
+    api<{ inquiry: InquiryDetail }>(`/api/admin/inquiries/${encodeURIComponent(id)}`, { signal: controller.signal })
+      .then(result => { if (!controller.signal.aborted) setInquiry(result.inquiry) })
+      .catch(error => { if (!controller.signal.aborted) setError(errorMessage(error)) })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false) })
+    return () => controller.abort()
+  }, [id, attempt])
+  if (loading) return <div className="admin-inquiry-details" role="status"><p className="admin-inquiry-loading"><LoaderCircle size={18} className="spin" aria-hidden="true" />Chargement du dossier…</p></div>
+  if (!inquiry) return <div className="admin-inquiry-details"><p role="alert" className="field-error">{error || 'Le dossier n’a pas pu être chargé.'}</p><Button variant="outline" size="sm" onClick={() => setAttempt(value => value + 1)}><RefreshCw size={15} aria-hidden="true" />Réessayer</Button></div>
+  const notificationLabel = inquiry.notification ? ({
+    pending: 'En attente d’envoi', processing: 'En cours d’envoi', retry: 'Nouvelle tentative prévue',
+    accepted: 'Acceptée par le service d’e-mail', unavailable: 'Envoi indisponible',
+    failed: 'Échec d’envoi', expired: 'Délai de nouvelle tentative écoulé',
+  }[inquiry.notification.status] ?? inquiry.notification.status) : null
+  return <div className="admin-inquiry-details">
+    {showHeading && <header><h2>{inquiry.subject}</h2><p className="order-small">{inquiry.name} · {date(inquiry.createdAt)}</p></header>}
+    <section className="admin-inquiry-section" aria-label="Coordonnées">
+      <h3>Coordonnées</h3>
+      <dl className="admin-record">
+        {inquiry.schemaVersion === 2 && inquiry.firstName && inquiry.lastName ? <><div><dt>Prénom</dt><dd>{inquiry.firstName}</dd></div><div><dt>Nom</dt><dd>{inquiry.lastName}</dd></div></> : <div><dt>Nom complet</dt><dd>{inquiry.name}</dd></div>}
+        <div><dt>E-mail</dt><dd><a href={`mailto:${inquiry.email}`}>{inquiry.email}</a></dd></div>
+        {inquiry.phone && <div><dt>Téléphone</dt><dd><a href={`tel:${inquiry.phone}`}>{inquiry.phone}</a></dd></div>}
+        {inquiry.company && <div><dt>Entreprise</dt><dd>{inquiry.company}</dd></div>}
+      </dl>
+    </section>
+    {inquiry.schemaVersion === 2 && inquiry.sections.length ? inquiry.sections.map((section, index) => <section className="admin-inquiry-section" key={`${section.title}-${index}`}><h3>{section.title}</h3><dl className="admin-inquiry-answers">{section.items.map((item, itemIndex) => <div key={`${item.label}-${itemIndex}`}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></section>) : <section className="admin-inquiry-section"><h3>Message reçu</h3><p className="admin-inquiry-original">{inquiry.message}</p></section>}
+    {(inquiry.configuration || inquiry.quote) && <section className="admin-inquiry-section" aria-label="Sélection enregistrée">
+      <h3>Sélection enregistrée</h3>
+      {inquiry.configuration && <dl className="admin-record"><div><dt>Forfait</dt><dd>{getOffer(inquiry.configuration.offerId)?.title ?? inquiry.configuration.offerId}</dd></div><div><dt>Langues</dt><dd>{inquiry.configuration.language === 'fr-en' ? 'Français et anglais' : 'Français'}</dd></div></dl>}
+      {inquiry.quote && <QuoteSummary quote={inquiry.quote} title="Récapitulatif reçu" />}
+      <p className="order-small">Configuration et montants enregistrés à la réception de la demande.</p>
+    </section>}
+    {inquiry.files.length > 0 && <section className="admin-inquiry-section" aria-label="Images jointes">
+      <h3>Images jointes <span className="order-small">({inquiry.files.length})</span></h3>
+      <ul className="admin-inquiry-images">{inquiry.files.map(file => <li key={file.id}>
+        <a className="admin-inquiry-thumbnail" href={file.previewUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ouvrir l’image ${file.originalName} dans un nouvel onglet`}><img src={file.previewUrl} alt="" width={file.width} height={file.height} loading="lazy" decoding="async" /></a>
+        <div className="admin-inquiry-image-info"><strong>{file.originalName}</strong><span>{file.width} × {file.height} px · {new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(file.size / 1024)} Kio</span><Button variant="outline" size="sm" asChild><a href={file.downloadUrl} aria-label={`Télécharger ${file.originalName}`}><Download size={15} aria-hidden="true" />Télécharger</a></Button></div>
+      </li>)}</ul>
+    </section>}
+    {inquiry.notification && <p className="order-small admin-inquiry-notification">Notification au studio : {notificationLabel}.<br />{inquiry.notification.attempts} tentative{inquiry.notification.attempts > 1 ? 's' : ''} · Mise à jour le {date(inquiry.notification.updatedAt)}</p>}
+  </div>
+}
+
 function AdminInquiries() {
+  const [params, setParams] = useSearchParams()
   const [inquiries, setInquiries] = useState<Inquiry[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState<string | null>(null)
+  const expandedId = params.get('demande')
+  const hasExpandedInquiry = inquiries.some(inquiry => inquiry.id === expandedId)
   useEffect(() => { let active = true; api<{ inquiries: Inquiry[] }>('/api/admin/inquiries').then(result => { if (active) setInquiries(result.inquiries) }).catch(e => { if (active) setError(errorMessage(e)) }).finally(() => { if (active) setLoading(false) }); return () => { active = false } }, [])
+  useEffect(() => {
+    if (!loading && expandedId && hasExpandedInquiry) document.getElementById(`inquiry-${expandedId}`)?.scrollIntoView({ block: 'start' })
+  }, [loading, expandedId, hasExpandedInquiry])
+  function toggle(id: string) {
+    const next = new URLSearchParams(params)
+    if (id === expandedId) next.delete('demande')
+    else { next.set('onglet', 'demandes'); next.set('demande', id) }
+    setParams(next)
+  }
   async function change(inquiry: Inquiry) {
     const status = inquiry.status === 'reviewed' ? 'new' : 'reviewed'; setBusy(inquiry.id); setError('')
     try { await api(`/api/admin/inquiries/${inquiry.id}`, { method: 'PATCH', body: { status } }); setInquiries(list => list.map(item => item.id === inquiry.id ? { ...item, status } : item)) }
     catch (e) { setError(errorMessage(e)) } finally { setBusy(null) }
   }
-  return <div className="stack">{error && <p role="alert" className="field-error">{error}</p>}{loading ? <p role="status">Chargement des demandes…</p> : inquiries.length ? inquiries.map(inquiry => <article className="admin-inquiry panel" key={inquiry.id}><header><div><span className="eyebrow">{inquiry.name} · {date(inquiry.createdAt)}</span><h2>{inquiry.subject}</h2></div><span className="badge badge--outline">{inquiry.status === 'reviewed' ? 'Traitée' : 'Nouvelle'}</span></header><p>{inquiry.message}</p><div className="cluster"><a href={`mailto:${inquiry.email}`} className="button button--outline button--sm">Ouvrir mon e-mail <ArrowRight size={15} /></a><Button variant="ghost" size="sm" disabled={busy === inquiry.id} onClick={() => void change(inquiry)}>{inquiry.status === 'reviewed' ? 'Remettre à traiter' : 'Marquer comme traitée'}</Button></div><p className="order-small">{inquiry.email}</p></article>) : <div className="empty-state"><MessageSquare size={28} /><h2>Aucune demande pour le moment.</h2><p>Les messages du formulaire de contact apparaîtront ici.</p></div>}</div>
+  return <div className="stack">
+    {error && <p role="alert" className="field-error">{error}</p>}
+    {!loading && !error && expandedId && !hasExpandedInquiry && <article className="admin-inquiry panel"><Button variant="outline" size="sm" onClick={() => toggle(expandedId)}>Revenir à la liste</Button><InquiryDetails key={expandedId} id={expandedId} showHeading /></article>}
+    {loading ? <p role="status">Chargement des demandes…</p> : inquiries.length ? inquiries.map(inquiry => {
+      const expanded = expandedId === inquiry.id
+      return <article className="admin-inquiry panel" id={`inquiry-${inquiry.id}`} key={inquiry.id}>
+        <header><div><span className="eyebrow">{inquiry.name} · {date(inquiry.createdAt)}</span><h2>{inquiry.subject}</h2></div><span className="badge badge--outline">{inquiry.status === 'reviewed' ? 'Traitée' : 'Nouvelle'}</span></header>
+        {!expanded && <p className="admin-inquiry-message">{inquiry.message}</p>}
+        <div className="cluster admin-inquiry-actions">
+          <Button variant="outline" size="sm" aria-expanded={expanded} aria-controls={`inquiry-details-${inquiry.id}`} onClick={() => toggle(inquiry.id)}>{expanded ? 'Réduire le dossier' : 'Voir le dossier'}{expanded ? <ChevronUp size={15} aria-hidden="true" /> : <ChevronDown size={15} aria-hidden="true" />}</Button>
+          <a href={`mailto:${inquiry.email}`} className="button button--outline button--sm">Ouvrir mon e-mail <ArrowRight size={15} /></a>
+          <Button variant="ghost" size="sm" disabled={busy === inquiry.id} onClick={() => void change(inquiry)}>{inquiry.status === 'reviewed' ? 'Remettre à traiter' : 'Marquer comme traitée'}</Button>
+        </div>
+        <p className="order-small">{inquiry.email}</p>
+        {expanded && <div id={`inquiry-details-${inquiry.id}`}><InquiryDetails id={inquiry.id} /></div>}
+      </article>
+    }) : <div className="empty-state"><MessageSquare size={28} /><h2>Aucune demande pour le moment.</h2><p>Les messages du formulaire de contact apparaîtront ici.</p></div>}
+  </div>
 }
 
 export function AdminPage() {

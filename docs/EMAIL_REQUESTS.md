@@ -4,29 +4,11 @@ Le parcours public n’exige aucun compte. La demande est enregistrée en SQLite
 
 ## Contrat HTTP
 
-`POST /api/inquiries` accepte le formulaire historique :
+`POST /api/inquiries` exige désormais le [contrat V2](BRIEF_CONTRACT.md) : prénom, nom, e-mail et téléphone obligatoires, type de demande, brief structuré, UUID stable et configuration correspondante. Les lectures historiques sont conservées, sans autoriser de nouvelles écritures V1. Le sujet et le nom complet sont construits par le serveur.
 
-```json
-{"name":"Nom du contact","email":"contact@example.com","subject":"Projet de site","message":"Description du projet, au moins dix caractères."}
-```
+Sans image, le transport est JSON. Avec images, le multipart contient un seul champ `payload` JSON et des champs `files` répétés. JPEG/PNG/WebP uniquement, six fichiers, 5 Mio chacun et 20 Mio cumulés. Les images sont vérifiées puis enregistrées en BLOB privé, dans la même transaction que la demande. Leurs octets entrent dans l’empreinte de dédoublonnage ; ils restent dans la sauvegarde SQLite. Les données et miniatures sont consultables uniquement par l’administrateur.
 
-Ou une demande configurée :
-
-```json
-{
-  "name":"Nom du contact",
-  "email":"contact@example.com",
-  "phone":"",
-  "company":"",
-  "message":"",
-  "inspiration":"",
-  "configuration":{"offerId":"vitrine","mobile":true,"extras":[]},
-  "requestId":"a7e9cf2e-5f62-4dc2-ae10-d98e9a25c9da",
-  "website":""
-}
-```
-
-Le client génère un UUID stable pour une soumission et le conserve pendant ses retries. Une nouvelle demande ou une modification volontaire du formulaire utilise un nouvel UUID. Le `requestId` est obligatoire avec `configuration`, facultatif pour les anciens contacts. Les champs facultatifs vides sont normalisés ; les coordonnées sont validées et les champs inconnus refusés. Le prix, le devis, le destinataire et les informations d’expéditeur ne peuvent pas être fournis par le navigateur.
+Le client conserve son UUID et ses fichiers pour une nouvelle tentative identique. Une modification volontaire change la référence. Les champs inconnus, destinataires et montants fournis par le navigateur sont refusés. Les réponses du brief ne modifient jamais les options facturées.
 
 La configuration accepte les clés `offerId`, `language`, `mobile`, `managedContent`, `scene3d`, `deployment`, `maintenance` et `extras`. Le catalogue partagé valide les options, impose les capacités comprises dans le forfait et évite leur double facturation. Les tarifs viennent de `getPricing()` côté serveur. Configuration et devis sont enregistrés en instantanés, sans être recalculés lors d’un retry identique.
 
@@ -67,9 +49,11 @@ Sans configuration valide, le dossier reste enregistré avec une notification `u
 Le module `server/inquiries.mjs` crée de façon idempotente :
 
 - `inquiry_details`, rattachée à `inquiries`, avec UUID unique, empreinte du contenu et instantanés JSON ;
-- `inquiry_outbox`, avec état, tentatives, échéances, bail temporaire, corps Resend figé et identifiant du prestataire.
+- `inquiry_outbox`, avec état, tentatives, échéances, bail temporaire, corps Resend figé et identifiant du prestataire ;
+- `inquiry_briefs`, avec type, version, prénom, nom et réponses structurées ;
+- `inquiry_attachments`, avec les images privées liées à la demande.
 
-La demande, ses détails et la tâche d’envoi sont écrits dans une même transaction. La liste administrative historique lit toujours `inquiries`. Son message inclut un récapitulatif des choix ; les instantanés structurés restent privés dans `inquiry_details`. Les nouvelles tables sont incluses dans les sauvegardes SQLite habituelles ; aucun fichier d’outbox public n’est créé.
+La demande, ses détails et la tâche d’envoi sont écrits dans une même transaction. La liste administrative historique lit toujours `inquiries`. Son message inclut un récapitulatif des choix et des réponses. La notification contient la liste des images et un lien vers le dossier dans l’administration authentifiée ; les octets des images ne sont pas envoyés à Resend. Les nouvelles tables sont incluses dans les sauvegardes SQLite habituelles ; aucun fichier d’outbox public n’est créé.
 
 **Seul `server/index.mjs` démarre le worker.** Importer `createApp()` ou poster une demande ne déclenche aucun appel réseau. Le worker consulte la file au démarrage puis toutes les cinq secondes après la fin du lot précédent, avec des timers `unref`. Un lot traite au maximum quatre tâches successivement. Un bail et un jeton de prise en charge empêchent deux workers de finaliser simultanément la même tâche ; un bail expiré après un arrêt brutal peut être repris.
 

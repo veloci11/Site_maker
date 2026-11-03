@@ -251,7 +251,7 @@ export const faqs = [
   {
     question: 'Qui prépare les textes et les photos ?',
     answer:
-      'Préparez vos coordonnées, les textes de vos pages et les images que vous souhaitez utiliser, ainsi que votre logo si vous en avez un. Une aide à la rédaction et la reprise de contenus d’un ancien site sont proposées dans les options.',
+      'Préparez vos coordonnées, les textes de vos pages et les images que vous souhaitez utiliser, ainsi que votre logo si vous en avez un. Une aide à la rédaction est proposée dans le configurateur. La reprise des contenus d’un ancien site est précisée avec le projet.',
     category: 'Contenus',
   },
   {

@@ -15,6 +15,10 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
 | Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
+| Questions de création, Évolution et Refonte | `shared/brief.ts` | `sectionsByRequest` : rubriques, questions, choix, champs requis et conditions |
+| Coordonnées requises et leur validation | `shared/inquiry-contact.ts` | `validateInquiryContact` utilisé par le navigateur et le serveur |
+| Rendu du brief et images jointes | `src/components/inquiries/ProjectBriefForm.tsx` | Formulaire commun aux créations, services et contact |
+| Contrat et limites des images | `docs/BRIEF_CONTRACT.md`, `server/inquiry-images.mjs` | Payload V2, transports, types et limites |
 | Aspect commun des six cartes | `src/components/layout/PricingCard.tsx` | Même rendu pour créations et services ; CTA `.plan-cta`, images inchangées, couche `.pricing-card__grain` à entrée brève, aucun reflet/halo |
 | Couleurs, navigation et cartes partagées | `src/styles.css` | Variantes `.pricing-card--*`, liens `.public-offer-link` ; déclencheur Forfaits neutre |
 | Comparatif, galerie et placement des services | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.pricing-grid--existing` |

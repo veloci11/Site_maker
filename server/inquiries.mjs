@@ -5,23 +5,28 @@ import { getDb, newId, now, transaction } from './db.mjs';
 import { csrfProtection } from './auth.mjs';
 import { getPricing } from './orders.mjs';
 import { getOffer, normalizeConfiguration, quoteConfiguration, formatMoney } from '../shared/catalog.ts';
+import { validateInquiryContact } from '../shared/inquiry-contact.ts';
+import { isRequestType, requestTypeLabels, summarizeBrief, validateBrief } from '../shared/brief.ts';
+import { getUnavailableOptions } from '../shared/offer-options.ts';
+import { InquiryImageError, parseInquiryTransport, validateInquiryImages } from './inquiry-images.mjs';
 
 const RETRY_WINDOW_MS = 23 * 60 * 60 * 1000;
 const MAX_ATTEMPTS = 8;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const oneLineControls = /[\u0000-\u001f\u007f]/;
-const messageControls = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/;
+const DEFAULT_STORAGE_LIMIT_BYTES = 512 * 1024 * 1024;
+const creationTypes = ['vitrine', 'connecte', 'immersif', 'sur-mesure'];
+const payloadKeys = ['schemaVersion', 'requestId', 'requestType', 'firstName', 'lastName', 'email', 'phone', 'company', 'configuration', 'brief', 'website'];
+const configurationKeys = ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras'];
 
-class InputError extends Error {}
-function record(value) { return value !== null && typeof value === 'object' && !Array.isArray(value); }
-function keys(value, allowed) { if (!record(value) || Object.keys(value).some(key => !allowed.includes(key))) throw new InputError('Vérifiez les informations de votre demande.'); }
-function text(value, maximum, required = false, multiline = false) {
-  if (value === undefined && !required) return '';
-  if (typeof value !== 'string' || value.length > maximum || (multiline ? messageControls : oneLineControls).test(value)) throw new InputError('Un champ de votre demande n’est pas valide.');
-  const result = value.replace(/\r\n/g, '\n').trim();
-  if (required && !result) throw new InputError('Indiquez votre nom et une adresse e-mail valide.');
-  return result;
+class InputError extends Error {
+  constructor(fields) {
+    super('Vérifiez les informations de votre demande.');
+    this.fields = fields;
+  }
 }
+function record(value) { return value !== null && typeof value === 'object' && !Array.isArray(value) && [Object.prototype, null].includes(Object.getPrototypeOf(value)); }
+function hasOnlyKeys(value, allowed) { return record(value) && Reflect.ownKeys(value).every(key => allowed.includes(key)); }
 function email(value) { return typeof value === 'string' && value.length <= 254 && !oneLineControls.test(value) && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value); }
 
 /** Tables extend, rather than replace, the historical administration inbox. */
@@ -33,6 +38,28 @@ export function initializeInquiries(db = getDb()) {
       phone TEXT NOT NULL, company TEXT NOT NULL, inspiration TEXT NOT NULL,
       configuration_snapshot TEXT NOT NULL CHECK(json_valid(configuration_snapshot)),
       quote_snapshot TEXT NOT NULL CHECK(json_valid(quote_snapshot))
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS inquiry_briefs (
+      inquiry_id TEXT PRIMARY KEY REFERENCES inquiries(id) ON DELETE CASCADE,
+      schema_version INTEGER NOT NULL CHECK(schema_version = 2),
+      request_type TEXT NOT NULL CHECK(request_type IN ('vitrine','connecte','immersif','sur-mesure','evolution','refonte','contact')),
+      first_name TEXT NOT NULL CHECK(length(trim(first_name)) BETWEEN 1 AND 80),
+      last_name TEXT NOT NULL CHECK(length(trim(last_name)) BETWEEN 1 AND 80),
+      brief_snapshot TEXT NOT NULL CHECK(json_valid(brief_snapshot) AND json_type(brief_snapshot) = 'object')
+    ) STRICT;
+    CREATE TABLE IF NOT EXISTS inquiry_attachments (
+      id TEXT PRIMARY KEY,
+      inquiry_id TEXT NOT NULL REFERENCES inquiries(id) ON DELETE CASCADE,
+      position INTEGER NOT NULL CHECK(position BETWEEN 0 AND 5),
+      original_name TEXT NOT NULL CHECK(length(original_name) BETWEEN 1 AND 120),
+      mime TEXT NOT NULL CHECK(mime IN ('image/jpeg','image/png','image/webp')),
+      size INTEGER NOT NULL CHECK(size BETWEEN 1 AND 5242880),
+      sha256 TEXT NOT NULL CHECK(length(sha256) = 64 AND sha256 NOT GLOB '*[^0-9a-f]*'),
+      width INTEGER NOT NULL CHECK(width > 0),
+      height INTEGER NOT NULL CHECK(height > 0 AND width * height <= 16000000),
+      bytes BLOB NOT NULL CHECK(length(bytes) = size),
+      created_at TEXT NOT NULL,
+      UNIQUE(inquiry_id, position)
     ) STRICT;
     CREATE TABLE IF NOT EXISTS inquiry_outbox (
       inquiry_id TEXT PRIMARY KEY REFERENCES inquiries(id) ON DELETE CASCADE,
@@ -58,25 +85,32 @@ function deliveryConfiguration(env) {
 }
 
 function validate(input) {
-  keys(input, ['name', 'email', 'subject', 'message', 'phone', 'company', 'inspiration', 'configuration', 'requestId', 'website']);
-  const name = text(input.name, 120, true);
-  const address = text(input.email, 254, true).toLowerCase();
-  if (!email(address)) throw new InputError('Indiquez une adresse e-mail valide.');
-  const configured = Object.hasOwn(input, 'configuration');
-  const requestId = input.requestId === undefined ? null : text(input.requestId, 36, true).toLowerCase();
-  if ((requestId !== null && !UUID.test(requestId)) || (configured && !requestId)) throw new InputError('La référence de votre demande n’est pas valide. Rechargez le formulaire.');
+  if (!hasOnlyKeys(input, payloadKeys)) throw new InputError({ form: 'Les informations de cette demande ne correspondent pas au formulaire.' });
+  const fields = {};
+  if (input.schemaVersion !== 2) fields.form = 'Rechargez le formulaire avant d’envoyer votre demande.';
+  const requestId = typeof input.requestId === 'string' ? input.requestId.trim().toLowerCase() : '';
+  if (!UUID.test(requestId)) fields.requestId = 'La référence de votre demande n’est pas valide. Rechargez le formulaire.';
+  if (!isRequestType(input.requestType)) fields.requestType = 'Choisissez un type de demande valide.';
+  if (input.website !== undefined && (typeof input.website !== 'string' || input.website.length > 400 || oneLineControls.test(input.website))) fields.form = 'Les informations de cette demande ne sont pas valides.';
+  const contactResult = validateInquiryContact(Object.fromEntries(['firstName', 'lastName', 'email', 'phone', 'company'].filter(key => Object.hasOwn(input, key)).map(key => [key, input[key]])));
+  Object.assign(fields, contactResult.fields);
   let configuration = null;
-  if (configured) {
-    keys(input.configuration, ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras']);
-    if (typeof input.configuration.offerId !== 'string') throw new InputError('Choisissez un forfait valide.');
-    try { configuration = normalizeConfiguration(input.configuration); } catch { throw new InputError('Vérifiez le forfait et les options choisies.'); }
+  if (creationTypes.includes(input.requestType)) {
+    if (!hasOnlyKeys(input.configuration, configurationKeys) || input.configuration.offerId !== input.requestType) fields.configuration = 'Choisissez la configuration correspondant à votre forfait.';
+    else {
+      try {
+        configuration = normalizeConfiguration(input.configuration);
+        if (getUnavailableOptions(configuration).length) fields.configuration = 'Certaines options ne correspondent pas à ce forfait. Vérifiez votre configuration.';
+      } catch { fields.configuration = 'Vérifiez le forfait et les options choisies.'; }
+    }
+  } else if (input.configuration !== null) {
+    fields.configuration = 'Cette demande doit être envoyée sans configuration de forfait.';
   }
-  const message = text(input.message, 10_000, !configured, true);
-  if (!configured && message.length < 10) throw new InputError('Décrivez votre projet en 10 caractères minimum.');
-  const requestedSubject = text(input.subject ?? undefined, 160);
-  return { requestId, name, email: address, phone: text(input.phone, 40), company: text(input.company, 160),
-    subject: configured ? `Projet ${getOffer(configuration.offerId).title}` : requestedSubject || 'Projet',
-    message, inspiration: text(input.inspiration, 2048), configuration };
+  const briefResult = validateBrief(input.requestType, input.brief);
+  const briefFields = Object.fromEntries(Object.entries(briefResult.fields).map(([key, value]) => [key === '_form' ? 'form' : key, value]));
+  const errors = { ...fields, ...briefFields };
+  if (Object.keys(errors).length) throw new InputError(errors);
+  return { schemaVersion: 2, requestId, requestType: input.requestType, ...contactResult.contact, configuration, brief: briefResult.answers };
 }
 
 function summary(configuration, quote) {
@@ -87,6 +121,36 @@ function summary(configuration, quote) {
     'Estimation de préparation ; aucun paiement ni engagement commercial enregistré.'].join('\n');
 }
 
+function storageLimit(env) {
+  const configured = env.INQUIRY_UPLOAD_STORAGE_LIMIT_BYTES;
+  if (typeof configured !== 'string' || !/^[0-9]+$/.test(configured)) return DEFAULT_STORAGE_LIMIT_BYTES;
+  const bytes = Number(configured);
+  return Number.isSafeInteger(bytes) && bytes > 0 ? bytes : DEFAULT_STORAGE_LIMIT_BYTES;
+}
+
+function adminUrl(env, id) {
+  let origin = 'https://gilmathis.com';
+  if (typeof env.APP_ORIGIN === 'string' && /^https?:\/\//i.test(env.APP_ORIGIN) && !/[\s\\]/u.test(env.APP_ORIGIN)) {
+    try {
+      const url = new URL(env.APP_ORIGIN);
+      if (['http:', 'https:'].includes(url.protocol) && url.hostname && !url.username && !url.password && !env.APP_ORIGIN.match(/^https?:\/\/([^/?#]*)/i)?.[1]?.includes('@')) origin = url.origin;
+    } catch { /* Keep the known public origin when configuration is invalid. */ }
+  }
+  return `${origin}/admin?onglet=demandes&demande=${encodeURIComponent(id)}`;
+}
+
+function humanMessage(value, quote, images, env, id) {
+  const sections = summarizeBrief(value.requestType, value.brief).map(section => [section.title, ...section.items.map(item => `${item.label}\n${item.value}`)].join('\n\n'));
+  return [
+    `Demande : ${requestTypeLabels[value.requestType]}`,
+    [`Prénom : ${value.firstName}`, `Nom : ${value.lastName}`, `E-mail : ${value.email}`, `Téléphone : ${value.phone}`, value.company && `Entreprise : ${value.company}`].filter(Boolean).join('\n'),
+    ...sections,
+    summary(value.configuration, quote),
+    images.length ? ['Images jointes :', ...images.map((image, index) => `${index + 1}. ${image.originalName} — ${image.mime}, ${image.size} octets (${image.width} × ${image.height})`)].join('\n') : 'Images jointes : aucune.',
+    `Consulter la demande dans l’administration : ${adminUrl(env, id)}`,
+  ].filter(Boolean).join('\n\n');
+}
+
 function notification(status, configured) {
   return status === 'accepted' ? 'accepted' : configured && ['pending', 'retry', 'processing', 'unavailable'].includes(status) ? 'queued' : 'unavailable';
 }
@@ -95,33 +159,44 @@ function notification(status, configured) {
 export function createInquiriesRouter({ env = process.env, limit = 8, windowMs = 15 * 60 * 1000 } = {}) {
   const router = Router();
   router.use(csrfProtection);
-  router.post('/', rateLimit({ windowMs, limit, standardHeaders: 'draft-8', legacyHeaders: false, message: { error: 'Plusieurs demandes ont déjà été enregistrées. Réessayez un peu plus tard.', code: 'RATE_LIMITED' } }), (req, res, next) => {
+  router.post('/', rateLimit({ windowMs, limit, standardHeaders: 'draft-8', legacyHeaders: false, message: { error: 'Plusieurs demandes ont déjà été enregistrées. Réessayez un peu plus tard.', code: 'RATE_LIMITED' } }), parseInquiryTransport, async (req, res, next) => {
     try {
       // A filled trap receives a neutral response but never creates mail or data.
       if (record(req.body) && typeof req.body.website === 'string' && req.body.website.trim()) return res.status(200).json({ ok: true, id: newId(), notification: 'unavailable' });
-      if (req.body?.website !== undefined) text(req.body.website, 400);
       const value = validate(req.body);
-      const fingerprint = createHash('sha256').update(JSON.stringify(value)).digest('hex');
+      const images = await validateInquiryImages(req.files);
+      const fingerprint = createHash('sha256').update(JSON.stringify({ ...value, images: images.map((image, position) => ({ position, originalName: image.originalName, mime: image.mime, size: image.size, sha256: image.sha256 })) })).digest('hex');
       const configured = !!deliveryConfiguration(env);
       const result = transaction(db => {
         initializeInquiries(db);
-        if (value.requestId) {
-          const existing = db.prepare('SELECT d.inquiry_id,d.payload_hash,o.status FROM inquiry_details d JOIN inquiry_outbox o ON o.inquiry_id=d.inquiry_id WHERE d.request_id = ?').get(value.requestId);
-          if (existing) return existing.payload_hash === fingerprint ? { id: existing.inquiry_id, status: existing.status, duplicate: true } : { conflict: true };
+        const existing = db.prepare('SELECT d.inquiry_id,d.payload_hash,o.status FROM inquiry_details d LEFT JOIN inquiry_outbox o ON o.inquiry_id=d.inquiry_id WHERE d.request_id = ?').get(value.requestId);
+        if (existing) return existing.payload_hash === fingerprint ? { id: existing.inquiry_id, status: existing.status || 'unavailable', duplicate: true } : { conflict: true };
+        if (images.length) {
+          const occupied = db.prepare('SELECT COALESCE(SUM(size),0) AS bytes FROM inquiry_attachments').get().bytes;
+          if (occupied + images.reduce((total, image) => total + image.size, 0) > storageLimit(env)) return { storageLimit: true };
         }
         const quote = value.configuration ? quoteConfiguration(value.configuration, getPricing()) : null;
         const id = newId(), timestamp = now();
-        const message = [value.message, value.phone && `Téléphone : ${value.phone}`, value.company && `Entreprise : ${value.company}`, value.inspiration && `Inspiration : ${value.inspiration}`, summary(value.configuration, quote)].filter(Boolean).join('\n\n');
-        db.prepare('INSERT INTO inquiries(id,name,email,subject,message,created_at) VALUES(?,?,?,?,?,?)').run(id, value.name, value.email, value.subject, message, timestamp);
-        db.prepare('INSERT INTO inquiry_details(inquiry_id,request_id,payload_hash,phone,company,inspiration,configuration_snapshot,quote_snapshot) VALUES(?,?,?,?,?,?,?,?)').run(id, value.requestId, fingerprint, value.phone, value.company, value.inspiration, JSON.stringify(value.configuration), JSON.stringify(quote));
+        const message = humanMessage(value, quote, images, env, id);
+        const subject = value.configuration ? `Projet ${requestTypeLabels[value.requestType]}` : requestTypeLabels[value.requestType];
+        db.prepare('INSERT INTO inquiries(id,name,email,subject,message,created_at) VALUES(?,?,?,?,?,?)').run(id, `${value.firstName} ${value.lastName}`, value.email, subject, message, timestamp);
+        db.prepare('INSERT INTO inquiry_details(inquiry_id,request_id,payload_hash,phone,company,inspiration,configuration_snapshot,quote_snapshot) VALUES(?,?,?,?,?,?,?,?)').run(id, value.requestId, fingerprint, value.phone, value.company, '', JSON.stringify(value.configuration), JSON.stringify(quote));
+        db.prepare('INSERT INTO inquiry_briefs(inquiry_id,schema_version,request_type,first_name,last_name,brief_snapshot) VALUES(?,?,?,?,?,?)').run(id, 2, value.requestType, value.firstName, value.lastName, JSON.stringify(value.brief));
+        const insertImage = db.prepare('INSERT INTO inquiry_attachments(id,inquiry_id,position,original_name,mime,size,sha256,width,height,bytes,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?)');
+        images.forEach((image, position) => insertImage.run(newId(), id, position, image.originalName, image.mime, image.size, image.sha256, image.width, image.height, image.bytes, timestamp));
         const status = configured ? 'pending' : 'unavailable';
         db.prepare('INSERT INTO inquiry_outbox(inquiry_id,status,next_attempt_at,last_error_code,updated_at) VALUES(?,?,?,?,?)').run(id, status, timestamp, configured ? null : 'CONFIG_MISSING', timestamp);
         return { id, status, duplicate: false };
       });
       if (result.conflict) return res.status(409).json({ error: 'Cette référence correspond déjà à une autre demande. Utilisez une nouvelle référence après avoir modifié le formulaire.', code: 'REQUEST_CONFLICT' });
+      if (result.storageLimit) return res.status(503).json({ error: 'Le stockage des images est temporairement plein. Vous pouvez envoyer votre demande sans image.', code: 'STORAGE_LIMIT' });
       return res.status(result.duplicate ? 200 : 201).json({ ok: true, id: result.id, notification: notification(result.status, configured) });
     } catch (error) {
-      if (error instanceof InputError) return res.status(400).json({ error: error.message, code: 'INVALID_INPUT' });
+      if (error instanceof InputError) return res.status(400).json({ error: error.message, code: 'INVALID_INPUT', fields: error.fields });
+      if (error instanceof InquiryImageError) {
+        if (error.status === 429) res.set('Retry-After', '5');
+        return res.status(error.status).json({ error: error.message, code: error.code });
+      }
       return next(error);
     }
   });

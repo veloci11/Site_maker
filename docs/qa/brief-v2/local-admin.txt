@@ -1,0 +1,114 @@
+Browser tab: 22, Title: "studio — création de sites internet", URL: "http://127.0.0.1:4173/admin?onglet=demandes&demande=b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7".
+1 AXWebArea studio — création de sites internet, URL: 127.0.0.1:4173/admin?onglet=demandes&demande=b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7
+	2 container root
+		3 link Description: Aller au contenu, Value: 127.0.0.1:4173/admin?onglet=demandes&demande=b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7#portal-main
+		4 container
+			5 link Description: studio — accueil, Value: 127.0.0.1:4173/
+			22 text Mon projet
+			6 link Description: Retour au site, Value: 127.0.0.1:4173/
+			7 button (collapsed) Description: Ouvrir le menu du compte, Secondary Actions: Expand
+		8 container
+			23 container Espace client
+				24 link Description: Vue d’ensemble, Value: 127.0.0.1:4173/espace
+				25 link Description: Mes contenus, Value: 127.0.0.1:4173/espace/contenus
+				26 link Description: Messages, Value: 127.0.0.1:4173/espace/messages
+				27 link Description: Maquettes, Value: 127.0.0.1:4173/espace/maquettes
+				28 link Description: Commande, Value: 127.0.0.1:4173/espace/commande
+			14 link Description: Mon compte, Value: 127.0.0.1:4173/espace/compte
+		15 container
+			29 text STUDIO · ADMINISTRATION
+			16 heading Les projets, simplement., Value: 1
+				30 text Les projets, simplement.
+			31 text Retrouvez les demandes, les contenus et les échanges.
+			17 link Description: Mon espace, Value: 127.0.0.1:4173/espace
+			18 tab group Administration
+				19 tab (selectable, settable, boolean) Projets, Value: 0, ID: radix-_r_5_-trigger-projets
+				20 tab (selected, settable, boolean) Demandes, Value: 1, ID: radix-_r_5_-trigger-demandes
+				21 tab (selectable, settable, boolean) Tarifs, Value: 0, ID: radix-_r_5_-trigger-tarifs
+			32 container Description: Demandes, ID: radix-_r_5_-content-demandes
+				33 container inquiry-b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7
+					34 container
+						35 text CLIENT DÉMONSTRATION  ·  3 NOV. 2026, 15:29
+						36 heading Refonte, Value: 2
+							37 text Refonte
+						38 text Nouvelle
+					40 button (expanded) Réduire le dossier, Secondary Actions: Collapse
+					41 link Description: Ouvrir mon e-mail, Value: mailto:demo@example.test
+					42 button Marquer comme traitée
+					43 text demo@example.test
+					44 container inquiry-details-b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7
+						45 container Coordonnées
+							46 heading Coordonnées, Value: 3
+								47 text Coordonnées
+							48 definition list
+								49 container Prénom
+									50 text Prénom
+								51 text Client
+								52 container Nom
+									53 text Nom
+								54 text Démonstration
+								55 container E-mail
+									56 text E-mail
+								57 link Description: demo@example.test, Value: mailto:demo@example.test
+								58 container Téléphone
+									59 text Téléphone
+								60 link Description: +33 6 12 34 56 78, Value: tel:+33%206%2012%2034%2056%2078
+						61 container
+							62 heading Votre activité et votre site actuel, Value: 3
+								63 text Votre activité et votre site actuel
+							64 definition list
+								65 container Quelle est votre activité ?
+									66 text Quelle est votre activité ?
+								67 text Cabinet de conseil — essai local
+								68 container Que doit faire le visiteur en priorité ?
+									69 text Que doit faire le visiteur en priorité ?
+								70 text Demander un rendez-vous
+						71 container
+							72 heading Ce qui doit changer et rester, Value: 3
+								73 text Ce qui doit changer et rester
+							74 definition list
+								75 container Quels problèmes motivent la refonte ?
+									76 text Quels problèmes motivent la refonte ?
+								77 text La navigation mobile complique la prise de rendez-vous.
+								78 container Qu’est-ce qui fonctionne et doit être conservé ?
+									79 text Qu’est-ce qui fonctionne et doit être conservé ?
+								80 text Le logo, les articles et les URL des services.
+						81 container
+							82 heading La reprise du site et du référencement, Value: 3
+								83 text La reprise du site et du référencement
+							84 definition list
+								85 container Avec quel outil le site actuel a-t-il été construit ?
+									86 text Avec quel outil le site actuel a-t-il été construit ?
+								87 text WordPress
+								88 container Quels accès pourrez-vous mettre à disposition ?
+									89 text Quels accès pourrez-vous mettre à disposition ?
+								90 text Administration du site
+								91 container Disposez-vous d’informations sur le trafic ou le référencement actuel ?
+									92 text Disposez-vous d’informations sur le trafic ou le référencement actuel ?
+								93 text Oui, des outils ou rapports sont disponibles
+								94 container Quels outils ou résultats faut-il prendre en compte ?
+									95 text Quels outils ou résultats faut-il prendre en compte ?
+								96 text Search Console et pages de services
+						97 container
+							98 heading Les données et la continuité, Value: 3
+								99 text Les données et la continuité
+							100 definition list
+								101 container Le site contient-il des comptes, des données ou des outils connectés à reprendre ?
+									102 text Le site contient-il des comptes, des données ou des outils connectés à reprendre ?
+								103 text Non
+								104 container Quelles fonctions doivent rester disponibles pendant la transition ?
+									105 text Quelles fonctions doivent rester disponibles pendant la transition ?
+								106 text Le formulaire de prise de rendez-vous.
+						107 container Images jointes
+							108 heading Images jointes (1), Value: 3
+								109 text Images jointes  ( 1 )
+							110 content list
+								111 container
+									112 link Description: Ouvrir l’image reference.png dans un nouvel onglet, Value: 127.0.0.1:4173/api/admin/inquiries/b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7/files/46eea105-f76a-44ae-be62-fc4b2eb27cef/preview
+									113 text reference.png 640  ×  360  px ·  4,2  Kio
+									114 link Description: Télécharger reference.png, Value: 127.0.0.1:4173/api/admin/inquiries/b7c6a4a2-9bc8-4dc1-b3f2-3da6cff29bd7/files/46eea105-f76a-44ae-be62-fc4b2eb27cef/download
+						115 container
+							116 text Notification au studio :  Envoi indisponible .
+							117 text 0  tentative  · Mise à jour le  3 nov. 2026, 15:29
+
+The focused UI element is 40 button (expanded) Réduire le dossier, Secondary Actions: Collapse

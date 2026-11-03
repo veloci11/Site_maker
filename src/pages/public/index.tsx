@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight } from 'lucide-react'
 import {
@@ -15,12 +15,11 @@ import {
   type OfferId,
   type Pricing,
 } from '../../../shared/catalog'
+import { getPublicOptions } from '../../../shared/offer-options'
 import { PricingCard } from '../../components/layout/PricingCard'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
 import { Button } from '../../components/ui/button'
-import { Input } from '../../components/ui/input'
-import { Label } from '../../components/ui/label'
-import { Textarea } from '../../components/ui/textarea'
+import { ProjectBriefForm } from '../../components/inquiries/ProjectBriefForm'
 import { Reveal } from '../../components/layout/motion'
 import {
   Accordion,
@@ -29,7 +28,7 @@ import {
   AccordionTrigger,
 } from '../../components/ui/accordion'
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
-import { api, errorMessage } from '../../lib/api'
+import { api } from '../../lib/api'
 import '../public.css'
 
 function usePageTitle(title: string) {
@@ -440,7 +439,7 @@ function OptionRows({ offerId = 'vitrine' }: { offerId?: OfferId }) {
           aria-labelledby={`options-${group.id}`}
         >
           <h2 id={`options-${group.id}`}>{group.title}</h2>
-          {optionDefinitions
+          {getPublicOptions(offerId)
             .filter((option) => option.group === group.id)
             .map((option) => {
               const included = isOptionIncluded(configuration, option.id)
@@ -534,12 +533,20 @@ export function OfferDetailPage() {
 }
 
 export function OptionsPage() {
+  const [search, setSearch] = useSearchParams()
+  const offer = getOffer(search.get('forfait')) ?? offers[0]
   usePageTitle('Les options de votre site')
   return (
     <>
       <Intro title="Options du site" description="À ajouter à votre forfait selon vos besoins." />
       <section className="container public-options-page">
-        <OptionRows />
+        <div className="field">
+          <label htmlFor="options-offer">Votre forfait</label>
+          <select id="options-offer" className="input" value={offer.id} onChange={event => setSearch({ forfait: event.target.value })}>
+            {offers.map(item => <option value={item.id} key={item.id}>{item.title}</option>)}
+          </select>
+        </div>
+        <OptionRows offerId={offer.id} />
         <p className="public-reference-note">
           Certaines fonctions sont déjà incluses selon le forfait. La mise en ligne est ponctuelle ;
           la maintenance est mensuelle.
@@ -734,292 +741,27 @@ export function FaqPage() {
   )
 }
 
-type InquiryResult = { ok: true; id: string; notification: 'queued' | 'accepted' | 'unavailable' }
-type InquiryFormProps = { custom?: boolean; service?: (typeof existingSiteOffers)[number] }
+type InquiryFormProps = {
+  custom?: boolean
+  service?: (typeof existingSiteOffers)[number]
+  onBusyChange?: (busy: boolean) => void
+}
 
-const customSubject = 'Projet sur mesure'
-const inquirySubjects = [
-  'Une question sur Vitrine',
-  'Une question sur Connecté',
-  'Une question sur la 3D',
-  customSubject,
-  ...existingSiteOffers.map((service) => service.subject),
-  'Une autre question',
-]
-const inquiryMessageCopy = {
-  custom: {
-    label: 'Ce que vous souhaitez créer',
-    placeholder: 'Votre activité, les fonctions souhaitées, les personnes qui utiliseront le site…',
-  },
-  contact: {
-    label: 'Votre message',
-    placeholder: 'Votre projet ou votre question…',
-  },
-} as const
-
-function InquiryForm({ custom = false, service }: InquiryFormProps) {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState(custom ? customSubject : service?.subject ?? '')
-  const [currentSite, setCurrentSite] = useState('')
-  const [message, setMessage] = useState('')
-  const [inspiration, setInspiration] = useState('')
-  const [website, setWebsite] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [notification, setNotification] = useState<InquiryResult['notification']>('unavailable')
-  const [failure, setFailure] = useState('')
-  const attempt = useRef<{ requestId: string; fingerprint: string } | null>(null)
-  const inFlight = useRef(false)
-  const idPrefix = custom ? 'custom' : 'contact'
-  const existingSiteService = !custom
-    ? service ?? existingSiteOffers.find((item) => item.subject === subject)
-    : undefined
-  const messageCopy = existingSiteService
-    ? {
-        label: existingSiteService.messageLabel,
-        placeholder: existingSiteService.messagePlaceholder,
-      }
-    : inquiryMessageCopy[custom ? 'custom' : 'contact']
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (inFlight.current) return
-
-    const currentSiteDetails =
-      existingSiteService && currentSite.trim() ? `Site actuel : ${currentSite.trim()}\n\n` : ''
-    const inspirationDetails = inspiration.trim()
-      ? `\n\nLien d’inspiration : ${inspiration.trim()}`
-      : ''
-    const body = {
-      name: name.trim(),
-      email: email.trim(),
-      subject: custom ? customSubject : subject,
-      message: `${currentSiteDetails}${message.trim()}${inspirationDetails}`,
-      website,
-    }
-    if (body.message.length > 4000) {
-      setStatus('error')
-      setFailure(
-        'Votre message et vos liens doivent tenir en 4 000 caractères. Raccourcissez-les pour continuer.',
-      )
-      return
-    }
-
-    const fingerprint = JSON.stringify(body)
-    // Retrying the same message keeps the same ID so it cannot be recorded twice.
-    if (!attempt.current || attempt.current.fingerprint !== fingerprint) {
-      attempt.current = { requestId: crypto.randomUUID(), fingerprint }
-    }
-    inFlight.current = true
-    setStatus('loading')
-    setFailure('')
-    try {
-      const result = await api<InquiryResult>('/api/inquiries', {
-        method: 'POST',
-        body: { ...body, requestId: attempt.current.requestId },
-      })
-      if (!result?.ok || typeof result.id !== 'string') {
-        throw new Error(
-          'La confirmation de votre demande n’a pas abouti. Réessayez dans un instant.',
-        )
-      }
-      setNotification(
-        result.notification === 'accepted' || result.notification === 'queued'
-          ? result.notification
-          : 'unavailable',
-      )
-      setStatus('success')
-    } catch (error) {
-      setStatus('error')
-      setFailure(errorMessage(error, 'Votre demande n’a pas pu être enregistrée. Réessayez.'))
-    } finally {
-      inFlight.current = false
-    }
-  }
-
-  function newMessage() {
-    attempt.current = null
-    setStatus('idle')
-    setFailure('')
-    setMessage('')
-    setInspiration('')
-    setCurrentSite('')
-    setWebsite('')
-  }
-
-  if (status === 'success') {
-    return (
-      <div className="public-inquiry-success" role="status">
-        <span className="public-success-icon">
-          <Check size={25} aria-hidden="true" />
-        </span>
-        <h3>Votre demande est enregistrée.</h3>
-        {notification === 'unavailable' ? (
-          <>
-            <p>
-              La notification au studio est actuellement indisponible. Votre message est conservé,
-              mais son envoi par e-mail n’a pas pu être déclenché.
-            </p>
-            <Button variant="outline" onClick={() => setStatus('idle')}>
-              Revenir à mon message
-            </Button>
-          </>
-        ) : (
-          <>
-            <p>
-              Nous vous recontactons par e-mail pour préciser votre besoin et la suite du projet.
-            </p>
-            <Button variant="outline" onClick={newMessage}>
-              Écrire un autre message
-            </Button>
-          </>
-        )}
-      </div>
-    )
-  }
-
+function InquiryForm({ custom = false, service, onBusyChange }: InquiryFormProps) {
+  const requestType = service?.id ?? (custom ? 'sur-mesure' : 'contact')
   return (
-    <form className="public-inquiry-form" onSubmit={submit} aria-busy={status === 'loading'}>
-      <fieldset className="public-inquiry-fields" disabled={status === 'loading'}>
-        <legend className="public-sr-only">
-          {custom ? 'Décrire votre projet sur mesure' : 'Contacter le studio'}
-        </legend>
-        <div className="form-grid">
-          <div className="field">
-            <Label htmlFor={`${idPrefix}-name`}>Votre nom</Label>
-            <Input
-              id={`${idPrefix}-name`}
-              name="name"
-              autoComplete="name"
-              required
-              minLength={2}
-              maxLength={120}
-              placeholder="Votre nom"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
-          </div>
-          <div className="field">
-            <Label htmlFor={`${idPrefix}-email`}>Votre e-mail</Label>
-            <Input
-              id={`${idPrefix}-email`}
-              name="email"
-              autoComplete="email"
-              type="email"
-              required
-              maxLength={254}
-              placeholder="votre@email.com"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </div>
-        </div>
-        {!custom && !service ? (
-          <div className="field">
-            <Label htmlFor="contact-subject">Votre demande</Label>
-            <select
-              id="contact-subject"
-              name="subject"
-              className="input public-native-select"
-              required
-              value={subject}
-              onChange={(event) => setSubject(event.target.value)}
-            >
-              <option value="" disabled>
-                Choisir un sujet
-              </option>
-              {inquirySubjects.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </div>
-        ) : null}
-        {existingSiteService ? (
-          <div className="field">
-            <Label htmlFor="contact-current-site">
-              Votre site actuel <span className="text-muted">(facultatif)</span>
-            </Label>
-            <Input
-              id="contact-current-site"
-              name="currentSite"
-              type="url"
-              maxLength={500}
-              placeholder="https://votre-site.fr"
-              value={currentSite}
-              onChange={(event) => setCurrentSite(event.target.value)}
-            />
-          </div>
-        ) : null}
-        <div className="field">
-          <Label htmlFor={`${idPrefix}-message`}>{messageCopy.label}</Label>
-          <Textarea
-            id={`${idPrefix}-message`}
-            name="message"
-            required
-            minLength={10}
-            maxLength={4000}
-            rows={6}
-            placeholder={messageCopy.placeholder}
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-          />
-        </div>
-        {custom ? (
-          <div className="field">
-            <Label htmlFor="custom-inspiration">
-              Lien d’inspiration <span className="text-muted">(facultatif)</span>
-            </Label>
-            <Input
-              id="custom-inspiration"
-              name="inspiration"
-              type="url"
-              maxLength={500}
-              placeholder="https://"
-              value={inspiration}
-              onChange={(event) => setInspiration(event.target.value)}
-            />
-          </div>
-        ) : null}
-        {/* Spam trap: keep separate from the optional currentSite URL above. */}
-        <div className="public-inquiry-honeypot" aria-hidden="true">
-          <label htmlFor={`${idPrefix}-website`}>Votre site web</label>
-          <input
-            id={`${idPrefix}-website`}
-            name="website"
-            type="text"
-            tabIndex={-1}
-            autoComplete="off"
-            value={website}
-            onChange={(event) => setWebsite(event.target.value)}
-          />
-        </div>
-        {status === 'error' ? (
-          <p className="field-error" role="alert">
-            {failure}
-          </p>
-        ) : null}
-        <div className="public-inquiry-actions">
-          <Button type="submit" disabled={status === 'loading'}>
-            {status === 'loading'
-              ? 'Enregistrement…'
-              : custom || existingSiteService
-                ? 'Envoyer ma demande'
-                : 'Envoyer mon message'}
-            {status !== 'loading' ? <ArrowRight size={18} aria-hidden="true" /> : null}
-          </Button>
-          <p>
-            {custom
-              ? 'Nous validons le périmètre avec vous avant tout engagement.'
-              : 'Vos coordonnées servent à vous répondre.'}
-          </p>
-        </div>
-      </fieldset>
-    </form>
+    <ProjectBriefForm
+      key={requestType}
+      requestType={requestType}
+      configuration={custom ? normalizeConfiguration({ offerId: 'sur-mesure' }) : null}
+      onBusyChange={onBusyChange}
+    />
   )
 }
 
 export function ContactPage() {
   const [search] = useSearchParams()
+  const [sending, setSending] = useState(false)
   const service = getExistingSiteOffer(search.get('besoin'))
   usePageTitle(service ? `${service.title} de site` : 'Contacter le studio')
   if (service) {
@@ -1036,7 +778,7 @@ export function ContactPage() {
         </div>
         <div className="configurator-grid">
           <aside className="configurator-card-column" aria-label="Votre forfait et son prix">
-            <SelectedPlanCard plan={service}>
+            <SelectedPlanCard plan={service} disabled={sending}>
               <div className="selected-plan__total">
                 <span>Votre projet</span>
                 <strong>Sur devis</strong>
@@ -1048,7 +790,7 @@ export function ContactPage() {
               <h2>{service.contactTitle}</h2>
               <p>{service.contactDescription}</p>
             </header>
-            <InquiryForm key={service.id} service={service} />
+            <InquiryForm key={service.id} service={service} onBusyChange={setSending} />
           </div>
         </div>
       </section>
