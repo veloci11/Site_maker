@@ -6,13 +6,6 @@ import { cn } from "../../lib/utils";
 import { PageTransition } from "./motion";
 import { AmbientGrain } from "./AmbientGrain";
 
-const offers = [
-  { title: "Vitrine", href: "/forfaits/vitrine" },
-  { title: "Connecté", href: "/forfaits/connecte" },
-  { title: "Immersif 3D", href: "/forfaits/immersif-3d" },
-  { title: "Sur mesure", href: "/forfaits/sur-mesure" },
-];
-
 export function PublicHeader() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,7 +18,7 @@ export function PublicHeader() {
         <Link className="wordmark" to="/" aria-label="studio — accueil">studio</Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           <NavLink to="/" end className={({ isActive }) => cn("nav-link", isActive && "is-active")}>Accueil</NavLink>
-          <div className="nav-forfaits" role="group" aria-label="Forfaits">{offers.map((offer) => <NavLink key={offer.href} to={offer.href} className={({ isActive }) => cn("nav-link", isActive && "is-active")}>{offer.title}</NavLink>)}</div>
+          <NavLink to="/forfaits" className={({ isActive }) => cn("nav-link", isActive && "is-active")}>Forfaits</NavLink>
           <NavLink to="/exemples" className={({ isActive }) => cn("nav-link", isActive && "is-active")}>Exemples de sites</NavLink>
         </nav>
         <div className="header-actions">
@@ -35,10 +28,10 @@ export function PublicHeader() {
             <SheetContent className="mobile-navigation" side="right">
               <SheetHeader><SheetTitle className="wordmark">studio</SheetTitle><SheetDescription className="sr-only">Navigation du site</SheetDescription></SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
-                <NavLink to="/" end className={({ isActive }) => cn("mobile-nav-heading mobile-nav-home", isActive && "is-active")}>Accueil<ArrowRight size={20} aria-hidden="true" /></NavLink>
-                <p className="mobile-nav-label">Forfaits</p>
-                <div className="mobile-offers">{offers.map((offer) => <NavLink to={offer.href} key={offer.href} className={({ isActive }) => cn("mobile-nav-heading", isActive && "is-active")}>{offer.title}<ArrowRight size={20} aria-hidden="true" /></NavLink>)}</div>
-                <div className="mobile-nav-secondary"><NavLink to="/exemples" className={({ isActive }) => cn("mobile-nav-heading", isActive && "is-active")}>Exemples de sites<ArrowRight size={20} aria-hidden="true" /></NavLink><Link to="/contact" className="mobile-nav-heading">Nous contacter<ArrowRight size={20} aria-hidden="true" /></Link></div>
+                <NavLink to="/" end className={({ isActive }) => cn("mobile-nav-heading", isActive && "is-active")}>Accueil<ArrowRight size={20} aria-hidden="true" /></NavLink>
+                <NavLink to="/forfaits" className={({ isActive }) => cn("mobile-nav-heading", isActive && "is-active")}>Forfaits<ArrowRight size={20} aria-hidden="true" /></NavLink>
+                <NavLink to="/exemples" className={({ isActive }) => cn("mobile-nav-heading", isActive && "is-active")}>Exemples de sites<ArrowRight size={20} aria-hidden="true" /></NavLink>
+                <Link to="/contact" className="mobile-nav-heading">Nous contacter<ArrowRight size={20} aria-hidden="true" /></Link>
               </nav>
             </SheetContent>
           </Sheet>

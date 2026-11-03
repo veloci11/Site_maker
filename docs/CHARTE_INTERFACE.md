@@ -38,4 +38,6 @@ Primitives shadcn/Radix : Button, Input, Textarea, Label, RadioGroup, Checkbox, 
 
 Les références DOMTEKNIKA, Lactel, Tiny Heaven et Addiction sont des inspirations externes créditées, pas des clients revendiqués. Julie Thiam est également présentée. L’ancien exemple fictif Atelier / Artisanat est retiré ; ses originaux sont archivés hors du build. Le dossier de maquettes initial demeure une archive de conception et ne remplace pas les corrections ci-dessus.
 
-Le header propose les quatre forfaits, la galerie avec tags, Accueil et Nous contacter. La texture de la grande carte est visible dès l’ouverture ; les cartes de l’accueil conservent leur effet de survol approuvé. Le fond public couvre le bord supérieur ; overscroll-behavior-y:none neutralise le rebond blanc.
+Le header propose Accueil, un lien Forfaits et Exemples de sites, puis Nous contacter à droite. Le menu mobile reprend ces quatre destinations à taille homogène, sans sous-menu des quatre forfaits. Le lien Forfaits reste actif sur leurs fiches ; les cartes et le comparatif permettent de choisir un forfait. Aucune mention « Sans compte » dans les textes publics et aucun badge de promesse générique sous le hero. La FAQ traite les contenus, le délai, les modifications, le mobile, la mise en ligne et la maintenance.
+
+La texture de la grande carte est visible dès l’ouverture ; les cartes de l’accueil conservent leur effet de survol approuvé. Le fond public couvre le bord supérieur ; overscroll-behavior-y:none neutralise le rebond blanc.

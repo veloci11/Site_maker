@@ -135,3 +135,23 @@ P1 de dérive de matière corrigé ; aucun autre écart P0/P1/P2 constaté dans 
 final result: passed
 
 Contrôle public final de la correction de fidélité : révision `e4d247a473821d2c5c16952fc34752dc34044789`, release `20261103T013839Z-e4d247a47382`, client `index-DOYv62n_.js`. Santé publique et digest du master sans perte identiques au build prévu. Le navigateur DPR 2 charge bien 2 636 656 octets pour le master et conserve la couche légère. Temps observé du master : environ 1 094 ms sur cette visite ; aucune attente ajoutée aux contrôles. Pas de flou ni de canvas de remplacement, aucune erreur/alerte de console. Capture finale native `docs/qa/card-texture-fidelity/after-public-retina.png` ouverte et inspectée après fin du téléchargement. Sauvegarde faite, autres projets inchangés, localhost fermé.
+
+## Navigation et contenu — simplification après les corrections de Mathis
+
+Périmètre de cette validation : navigation, textes et FAQ. Les points commerciaux et la réception e-mail déjà différés restent ouverts dans `docs/AUDIT_SITE_2026-11-02.md` ; cette validation visuelle ne déclare pas l’offre prête à être commercialisée.
+
+- Vérité visuelle : site public au début de cette revue, `docs/qa/navigation-content-review/01-home-before.jpg` et `05-faq-before.jpg`, avec les modifications explicites de Mathis comme cible. Implémentation : `07-home-after.jpg`, `08-faq-after.jpg` et les captures mobiles 10 à 12.
+- Même viewport ordinateur 1280 × 720 CSS / DPR 2 ; captures du navigateur 1265 × 712 reçues, sans présenter ces fichiers JPEG comme des captures Retina natives. Avant et après réunis sans changement d’échelle dans `comparison-home.jpg` et `comparison-faq.jpg`, ouverts et comparés.
+- État FAQ : première question ouverte. Les captures prises pendant un chargement de route ou d’aperçu ont été rejetées et remplacées après stabilisation et contrôle du H1 de la route.
+- **Typographie :** Geist, graisses, tailles, interlignages et styles de liens/accordéons conservés. Questions mobiles longues sur deux lignes, sans troncature. Les quatre destinations du menu mobile ont désormais une présentation homogène.
+- **Espacement :** la suppression des badges réduit naturellement la hauteur de l’introduction ; aucune marge vide ajoutée à leur place. Navigation centrée, capsule et bouton de contact conservés. Grilles, cartes et formulaire restent aux mêmes dimensions.
+- **Couleurs et états :** mêmes pastels, bordures, texte et matière. Le lien Forfaits reste actif sur un configurateur. Les liens mobiles ferment le panneau après navigation ; focus visible et états des accordéons conservés.
+- **Images :** aucun changement d’asset public. Un essai de texture plus définie a été comparé par le spécialiste, inspecté par le parent et rejeté : sortie 1536 × 1024 malgré une demande 3072 × 2048, sans gain réel et avec dérive de grain. Original sans perte conservé.
+- **Contenu :** suppression des trois badges, de toutes les mentions « Sans compte » et « Aucun compte à créer » dans les sources publiques, et des questions rejetées. FAQ entière remplacée par six questions concrètes ; trois reprises sur l’accueil. Pas de prix, délai, nombre de pages ou témoignage inventé.
+- Interactions vérifiées : navigation vers Forfaits, choix Immersif 3D depuis son comparatif, passage aux coordonnées sans envoi ; FAQ ouverte/fermée ; menu mobile quatre destinations, fermeture après clic Accueil ; ancre Choisir mon forfait avec titre visible sous le header. Galerie publique filtre 3D : deux références chargées.
+- Mobile 390 × 844 CSS / DPR 1 : zone client et document 375 px, aucun débordement. Captures `10-mobile-menu.jpg`, `11-mobile-home.jpg`, `12-mobile-faq.jpg`. Viewport réinitialisé.
+- `npm run check` : TypeScript, build et 113 tests passent ; une dernière vérification TypeScript/build inclut les ultimes retouches de rédaction. Aucune erreur/alerte de console locale finale. `git diff --check` contrôlé avant commit.
+
+Les changements intentionnels ci-dessus remplacent les anciens choix de navigation et de FAQ ; aucun écart P0/P1/P2 sur ce périmètre d’interface après comparaison. Les points de lancement du rapport d’audit ne sont pas présentés comme résolus.
+
+final result: passed

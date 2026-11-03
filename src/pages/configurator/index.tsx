@@ -182,7 +182,7 @@ export function ConfiguratorPage() {
             })}</div></AccordionContent></AccordionItem>
           })}</Accordion>
           {pricingError ? <p className="configurator-notice" role="status">Les tarifs sont temporairement indisponibles. Vous pouvez nous transmettre vos choix.</p> : null}
-          <div className="configurator-next"><Button size="lg" onClick={editingId ? saveExisting : goContact} disabled={sending}>{editingId ? 'Enregistrer mes choix' : 'Continuer'}<ArrowRight size={17} aria-hidden="true" /></Button>{!editingId ? <span>Sans compte. Sans paiement à cette étape.</span> : null}</div>
+          <div className="configurator-next"><Button size="lg" onClick={editingId ? saveExisting : goContact} disabled={sending}>{editingId ? 'Enregistrer mes choix' : 'Continuer'}<ArrowRight size={17} aria-hidden="true" /></Button></div>
         </> : stage === 'contact' ? <>
           <header className="configurator-section-heading"><div className="configurator-step-line"><span className="configurator-step">02 / 02</span><button type="button" className="configurator-back-options" onClick={goOptions} disabled={sending}><ArrowLeft size={13} aria-hidden="true" />Mes options</button></div><h2 ref={contactHeading} tabIndex={-1}>Parlons de votre site.</h2><p>Laissez vos coordonnées, nous vous recontactons.</p></header>
           <form className="configurator-contact" onSubmit={submit} aria-busy={sending}><fieldset disabled={sending}>

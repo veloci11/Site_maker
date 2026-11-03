@@ -1,0 +1,21 @@
+{
+  "mode": "built-in image_gen edit",
+  "source": "docs/asset-sources/textures/grain-plasma-v2.png",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "requestedDimensions": [
+    3072,
+    2048
+  ],
+  "actualDimensions": [
+    1536,
+    1024
+  ],
+  "nativeResolutionIncreased": false,
+  "candidate": "grain-plasma-detail-trial.png",
+  "decision": "Do not publish",
+  "reason": "No native-resolution gain. Visual comparison shows more cellular/line-like microtexture and slight macro-boundary drift; original lossless master is more faithful.",
+  "finalPrompt": "Use case: precise-object-edit. Asset type: original textured abstract website pricing-card background. Input image is the edit target, not an inspiration. Produce a higher native resolution 3072 × 2048 version of this EXACT image. Preserve the exact 3:2 frame, every large color-field shape, boundary, position, curvature, relative area and flow, as well as the exact cobalt-blue upper-left field, near-black navy upper-right, red and vermilion lower fields and orange diagonal ribbon. Do not redesign or reinterpret the composition. Change only microscopic material definition: add crisp fine natural film-like granular detail suitable for a large Retina card while preserving the existing visible grain character, not smoothing it. The detail must be real high-resolution fine granularity, not enlarged pixels or large dots. No blur, no softening, no new blobs, no new palette, no cellular/worm-like texture, no scratches, no extra objects, no text, no logo, no border, no typography, no lighting change. Preserve saturated colors and original contrast. Output requested dimensions: 3072 pixels wide by 2048 pixels high. Background must be opaque."
+}

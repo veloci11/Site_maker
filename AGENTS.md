@@ -5,7 +5,9 @@ Les dernières corrections de Mathis remplacent les maquettes et demandes antér
 ## Produit et textes
 
 - Création de sites internet clé en main : Vitrine, Connecté, Immersif 3D, Sur mesure.
-- Employer « forfait(s) ». Menu : Accueil, les quatre forfaits, Exemples de sites et « Nous contacter » à droite. Aucune connexion ni bouton « Mon projet » dans le parcours public.
+- Employer « forfait(s) ». Menu simplifié : Accueil, un seul lien Forfaits, Exemples de sites et « Nous contacter » à droite. Aucun lien de navigation séparé pour Vitrine/Connecté/3D/Sur mesure, sur ordinateur comme sur mobile ; le choix se fait dans les cartes ou le comparatif.
+- Ne pas afficher « Sans compte » / « Aucun compte à créer » dans le parcours public. Les phrases « Un interlocuteur direct » et « Un périmètre validé ensemble » sont retirées ; ne pas remplacer ces badges par d’autres promesses génériques.
+- FAQ entièrement revue : contenus à fournir, délai, modifications après livraison, adaptation mobile, domaine/hébergement et maintenance. Pas de questions évidentes sur « À partir de » ou le cumul d’options, ni de formulation « Je n’y connais rien ». Ne pas inventer de délai chiffré, de nombre de pages, de retouches, de transfert de droits ou d’inclusion non validés.
 - Aucun aperçu de site à l’arrivée sur l’accueil. Titres directs et textes utiles ; supprimer les phrases décoratives comme « À chaque projet, son point de départ ».
 - Une fiche standard est le configurateur : grande carte texturée du forfait choisi à gauche avec le total, options façon Apple à droite. Aucun aperçu de site ni onglet Présentation/Exemple dans ce parcours.
 - Les références externes sont regroupées dans une galerie « Exemples de sites », avec filtres et tags (Vitrine, 3D, etc.). Crédits et liens externes, aucune revendication de relation client. Aucun site fictif Atelier / Artisanat. Pas de scène 3D externe automatiquement chargée.

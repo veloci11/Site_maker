@@ -288,13 +288,10 @@
 }
 @media (prefers-reduced-motion: reduce) { .public-gallery-filters > button { transition: none; } }
 
-.home-trust { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 24px; margin:24px 0 0; padding:0; list-style:none; color:#665c70; font-size:12px; }
-.home-trust li { display:flex; align-items:center; gap:7px; }
 .comparison-mobile-hint { display:none; }
 @media(max-width:760px) {
  .comparison-table { width:764px; min-width:764px; table-layout:fixed; }
  .comparison-table thead th { width:152px; }
  .comparison-table thead th:first-child { width:156px; min-width:156px; }
  .comparison-mobile-hint { display:flex; align-items:center; justify-content:flex-end; gap:7px; margin-top:12px; color:#756b7f; font-size:11px; }
- .home-trust { gap:10px 16px; max-width:300px; margin-inline:auto; font-size:11px; }
 }

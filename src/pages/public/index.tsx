@@ -65,7 +65,7 @@ export function HomePage() {
   const homeFaqs = faqs.slice(0, 3)
   return <>
     <section className="container home-hero" aria-labelledby="home-title">
-      <Reveal className="home-hero__copy"><h1 id="home-title">Votre site internet.<br />Clé en main.</h1><p className="home-hero__description">Un site réalisé pour vous : présenter votre activité, proposer un espace utilisateur ou faire découvrir votre univers en 3D.</p><div className="home-hero__actions"><Button asChild size="lg"><a href="#forfaits">Choisir mon forfait <ArrowRight size={18} aria-hidden="true" /></a></Button><a className="text-link" href="#fonctionnement">Comment ça se passe <ArrowUpRight size={16} aria-hidden="true" /></a></div><ul className="home-trust"><li><Check size={14} aria-hidden="true" />Un interlocuteur direct</li><li><Check size={14} aria-hidden="true" />Un périmètre validé ensemble</li><li><Check size={14} aria-hidden="true" />Sans compte à créer</li></ul></Reveal>
+      <Reveal className="home-hero__copy"><h1 id="home-title">Votre site internet.<br />Clé en main.</h1><p className="home-hero__description">Un site réalisé pour vous : présenter votre activité, proposer un espace utilisateur ou faire découvrir votre univers en 3D.</p><div className="home-hero__actions"><Button asChild size="lg"><a href="#forfaits">Choisir mon forfait <ArrowRight size={18} aria-hidden="true" /></a></Button><a className="text-link" href="#fonctionnement">Comment ça se passe <ArrowUpRight size={16} aria-hidden="true" /></a></div></Reveal>
     </section>
     <section className="container home-offers" id="forfaits" aria-labelledby="home-offers-title">
       <Reveal className="home-section-heading"><h2 id="home-offers-title">Choisissez votre forfait.</h2><a className="text-link" href="#comparer">Comparer les forfaits <ArrowRight size={17} aria-hidden="true" /></a></Reveal>
@@ -239,7 +239,7 @@ function InquiryForm({ custom = false }: { custom?: boolean }) {
       {custom ? <div className="field"><Label htmlFor="custom-inspiration">Lien d’inspiration <span className="text-muted">(facultatif)</span></Label><Input id="custom-inspiration" name="inspiration" type="url" maxLength={500} placeholder="https://" value={inspiration} onChange={event => setInspiration(event.target.value)} /></div> : null}
       <div className="public-inquiry-honeypot" aria-hidden="true"><label htmlFor={`${idPrefix}-website`}>Votre site web</label><input id={`${idPrefix}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} /></div>
       {status === 'error' ? <p className="field-error" role="alert">{failure}</p> : null}
-      <div className="public-inquiry-actions"><Button type="submit" disabled={status === 'loading'}>{status === 'loading' ? 'Enregistrement…' : custom ? 'Envoyer ma demande' : 'Envoyer mon message'}{status !== 'loading' ? <ArrowRight size={18} aria-hidden="true" /> : null}</Button><p>{custom ? 'Nous validons le périmètre avec vous avant tout engagement.' : 'Vos coordonnées servent à vous répondre. Aucun compte à créer.'}</p></div>
+      <div className="public-inquiry-actions"><Button type="submit" disabled={status === 'loading'}>{status === 'loading' ? 'Enregistrement…' : custom ? 'Envoyer ma demande' : 'Envoyer mon message'}{status !== 'loading' ? <ArrowRight size={18} aria-hidden="true" /> : null}</Button><p>{custom ? 'Nous validons le périmètre avec vous avant tout engagement.' : 'Vos coordonnées servent à vous répondre.'}</p></div>
     </fieldset>
   </form>
 }
