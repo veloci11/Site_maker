@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"viewport\":{\"width\":1280,\"height\":720,\"dpr\":2},\"canvas\":[{\"width\":1137,\"height\":1060,\"css\":{\"x\":40,\"y\":180,\"width\":568.3046875,\"height\":530,\"top\":180,\"right\":608.3046875,\"bottom\":710,\"left\":40}}],\"grainInitMs\":[1.0999999940395355],\"textures\":[{\"url\":\"https://gilmathis.com/assets/textures/grain-plasma-card.webp\",\"bytes\":162744}],\"runningAnimations\":0}"
+  }
+}

@@ -99,3 +99,5 @@ Le retour « on peut encore améliorer la qualité » prolonge la correction pr�
 final result: passed
 
 Cette itération conserve les sources et captures de l’essai HD précédent. Aucun e-mail ni changement de catalogue pendant cette correction.
+
+Contrôle public final de l’itération : révision `f768c46c96e56ec34e2a50aa27b935ab321681b9`, release `20261103T000640Z-f768c46c96e5`, client `index-D48NNVRJ.js` observés sur gilmathis.com. À DPR 2, le canvas est bien 1137 × 1060 ; seule la texture légère de 162 744 octets est chargée. Initialisation mesurée environ 1,1 ms en production sur cette machine ; aucune animation active au repos ni erreur/avertissement applicatif. `after-public-retina.png` est une capture PNG sans perte 2560 × 1440 du site réellement en ligne, ouverte et vérifiée. État de l’option mobile conservé au rechargement. Sauvegarde effectuée, autres projets inchangés, localhost et onglet local fermés.
