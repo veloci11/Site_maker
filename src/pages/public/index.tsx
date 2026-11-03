@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  ChevronDown,
-  ChevronRight,
-  Maximize2,
-} from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight } from 'lucide-react'
 import {
   offers,
   getOffer,
@@ -34,18 +27,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../../components/ui/accordion'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '../../components/ui/dialog'
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import { api, errorMessage } from '../../lib/api'
 import '../public.css'
-
-type Example = (typeof examples)[number]
 
 function usePageTitle(title: string) {
   useEffect(() => {
@@ -80,29 +64,20 @@ const configureHref = (offerId: OfferId) => `/forfaits/${getOffer(offerId)!.slug
 function ExistingSiteServices() {
   return (
     <section className="container existing-site-offers" aria-label="Pour votre site actuel">
-      {existingSiteOffers.map((service) => (
-        <Link
-          className={`existing-site-card existing-site-card--${service.id}`}
-          to={service.href}
-          key={service.id}
-        >
-          <div className="existing-site-card__copy">
-            <h2>{service.title}</h2>
-            <p>{service.description}</p>
-          </div>
-          <div className="existing-site-card__art" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-          <div className="existing-site-card__footer">
-            <span>Sur devis</span>
-            <span className="plan-cta existing-site-card__cta">
-              {service.cta}<ArrowRight size={16} aria-hidden="true" />
-            </span>
-          </div>
-        </Link>
-      ))}
+      <div className="pricing-grid pricing-grid--existing">
+        {existingSiteOffers.map((service) => (
+          <PricingCard
+            key={service.id}
+            slug={service.id}
+            title={service.title}
+            price="Sur devis"
+            features={service.features}
+            href={service.href}
+            variant={service.id}
+            cta={service.cta}
+          />
+        ))}
+      </div>
     </section>
   )
 }
@@ -428,7 +403,7 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
         aria-controls={`${id}-details`}
         onClick={() => setDetails((open) => !open)}
       >
-        {details ? 'Masquer les détails' : 'Afficher les détails'}
+        {details ? 'Masquer les détails' : 'Afficher plus de détails'}
         <ChevronDown size={18} aria-hidden="true" />
       </button>
     </div>
@@ -499,77 +474,6 @@ function OptionRows({ offerId = 'vitrine' }: { offerId?: OfferId }) {
         </section>
       ))}
     </div>
-  )
-}
-
-function ExamplePreview({
-  example,
-  heading = 'Un exemple pour vous projeter.',
-}: {
-  example: Example
-  heading?: string
-}) {
-  const [expanded, setExpanded] = useState(false)
-  useEffect(() => {
-    setExpanded(false)
-  }, [example.id])
-  return (
-    <figure className="public-example-block">
-      <div className="public-example-heading">
-        <h2>{heading}</h2>
-        <a className="text-link" href={example.url} target="_blank" rel="noreferrer">
-          Ouvrir le site
-        </a>
-      </div>
-      <div className="preview-frame public-example-frame">
-        <button
-          type="button"
-          className="public-example-image-button"
-          onClick={() => setExpanded(true)}
-          aria-label={`Agrandir l’aperçu ${example.title}`}
-        >
-          <img
-            src={example.image}
-            alt={`Aperçu de référence du site ${example.title}`}
-            className="public-example-image"
-            width="1672"
-            height="940"
-            loading="lazy"
-          />
-        </button>
-      </div>
-      <figcaption className="public-example-caption">
-        <span>
-          Référence externe ·{' '}
-          <a href={example.sourceUrl} target="_blank" rel="noreferrer">
-            {example.creator}
-          </a>
-        </span>
-        <Button variant="ghost" size="sm" onClick={() => setExpanded(true)}>
-          <Maximize2 size={16} aria-hidden="true" />
-          Agrandir
-        </Button>
-      </figcaption>
-      <Dialog open={expanded} onOpenChange={setExpanded}>
-        <DialogContent className="dialog-content--wide public-preview-dialog">
-          <DialogHeader>
-            <DialogTitle>{example.title}</DialogTitle>
-            <DialogDescription>
-              Une référence externe pour illustrer ce format de site.
-            </DialogDescription>
-          </DialogHeader>
-          <img
-            src={example.image}
-            alt={`Aperçu agrandi du site ${example.title}`}
-            width="1672"
-            height="940"
-          />
-          <a className="text-link" href={example.url} target="_blank" rel="noreferrer">
-            Ouvrir le site
-          </a>
-        </DialogContent>
-      </Dialog>
-    </figure>
   )
 }
 
@@ -661,7 +565,12 @@ export function ExamplesPage() {
   usePageTitle('Exemples de sites')
   const [search, setSearch] = useSearchParams()
   const filter = exampleFilters.find((item) => item.id === search.get('type'))?.id ?? 'all'
-  const filtered = examples.filter((example) => filter === 'all' || example.offerId === filter)
+  const filtered = examples.filter(
+    (example) =>
+      filter === 'all' ||
+      example.offerId === filter ||
+      (filter === 'immersif' && example.tags?.includes('3D')),
+  )
   function changeFilter(id: string) {
     setSearch(
       (previous) => {
@@ -707,7 +616,11 @@ export function ExamplesPage() {
               <a
                 className="public-example-tile__image"
                 href={example.url}
-                aria-label={`Ouvrir le site ${example.title}`}
+                aria-label={
+                  example.archived
+                    ? `Voir la présentation de ${example.title}, projet archivé`
+                    : `Ouvrir le site ${example.title}`
+                }
               >
                 <img
                   src={example.image}
@@ -718,10 +631,20 @@ export function ExamplesPage() {
                 />
               </a>
               <div className="public-example-tile__body">
-                <span className="public-example-tag">
-                  {exampleFilters.find((item) => item.id === example.offerId)?.label ??
-                    example.category}
-                </span>
+                <div className="public-example-tags">
+                  <span className="public-example-tag">
+                    {exampleFilters.find((item) => item.id === example.offerId)?.label ??
+                      example.category}
+                  </span>
+                  {example.tags?.map((tag) => (
+                    <span className="public-example-tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                  {example.archived ? (
+                    <span className="public-example-tag">Projet archivé</span>
+                  ) : null}
+                </div>
                 <a className="public-example-tile__title" href={example.url}>
                   <h2>{example.title}</h2>
                   <ArrowRight size={21} aria-hidden="true" />
@@ -737,7 +660,7 @@ export function ExamplesPage() {
                     Source : {example.creator}
                   </a>
                   <a className="text-link" href={example.url}>
-                    Voir le site
+                    {example.archived ? 'Voir la présentation' : 'Voir le site'}
                   </a>
                 </div>
               </div>
@@ -761,31 +684,18 @@ export function ExampleDetailPage() {
   const { slug } = useParams()
   const example = examples.find((item) => item.id === slug)
   usePageTitle(example?.title ?? 'Exemple')
+  useEffect(() => {
+    if (example) window.location.replace(example.url)
+  }, [example])
+
   if (!example) return <MissingPage title="Cet exemple n’est pas disponible." />
-  const offer = getOffer(example.offerId)!
   return (
-    <section className="container public-example-detail">
-      <Link className="text-link public-back-link" to="/exemples">
-        <ArrowLeft size={18} aria-hidden="true" />
-        Tous les exemples
-      </Link>
-      <div className="public-example-detail__heading">
-        <div>
-          <h1>{example.title}</h1>
-          <p>{example.description}</p>
-        </div>
-        <Button asChild>
-          <a href={example.url} target="_blank" rel="noreferrer">
-            Ouvrir le site
-          </a>
-        </Button>
-      </div>
-      <ExamplePreview example={example} heading="Aperçu du site" />
-      <div className="public-example-detail__footer">
-        <Link className="text-link" to={`/forfaits/${offer.slug}`}>
-          Configurer {offer.title} <ArrowRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
+    <section className="container page-section public-missing">
+      <h1>{example.title}</h1>
+      {example.archived && <p>Projet archivé</p>}
+      <Button asChild>
+        <a href={example.url}>{example.archived ? 'Voir la présentation' : 'Voir le site'}</a>
+      </Button>
     </section>
   )
 }
@@ -851,7 +761,10 @@ function InquiryForm({ custom = false, initialSubject = '' }: InquiryFormProps) 
     ? existingSiteOffers.find((service) => service.subject === subject)
     : undefined
   const messageCopy = existingSiteService
-    ? { label: existingSiteService.messageLabel, placeholder: existingSiteService.messagePlaceholder }
+    ? {
+        label: existingSiteService.messageLabel,
+        placeholder: existingSiteService.messagePlaceholder,
+      }
     : inquiryMessageCopy[custom ? 'custom' : 'contact']
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -1119,10 +1032,7 @@ export function ContactPage() {
             </Link>
           </div>
         </div>
-        <InquiryForm
-          key={service?.id ?? 'contact'}
-          initialSubject={service?.subject ?? ''}
-        />
+        <InquiryForm key={service?.id ?? 'contact'} initialSubject={service?.subject ?? ''} />
       </section>
     </>
   )

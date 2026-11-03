@@ -233,29 +233,28 @@ ul, ol { padding-left: 1.25rem; }
 .header-login > svg { transition: transform 220ms ease; }
 .header-login:hover { color: #fff; background: #2c2c2c; border-color: #2c2c2c; }
 .header-login:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
-.nav-offers-trigger {
+.public-offers-menu .public-offer-link {
+  position: relative;
   isolation: isolate;
   overflow: hidden;
 }
-.nav-offers-trigger::before {
+.public-offers-menu .public-offer-link::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: url("/assets/textures/grain-plasma-card.webp") 30% 35% / cover;
-  filter: hue-rotate(-18deg) brightness(.76);
+  background: url("/assets/textures/grain-plasma-card.webp") var(--plasma-position, 20% 20%) / cover;
+  filter: hue-rotate(var(--card-hue, 0deg)) saturate(.93) brightness(.76);
+  transform: scale(var(--card-scale-x, 1), var(--card-scale-y, 1));
   opacity: 0;
   transition: opacity 120ms linear;
   pointer-events: none;
 }
-.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"]) {
+.public-offers-menu .public-offer-link:is(:hover, :focus-visible, [data-highlighted]) {
   color: #fff;
 }
-.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"])::before {
+.public-offers-menu .public-offer-link:is(:hover, :focus-visible, [data-highlighted])::before {
   opacity: 1;
-}
-.nav-offers-trigger:is(:hover, :focus-visible, [data-state="open"])::after {
-  opacity: 0;
 }
 .nav-offers-trigger > svg { transition: transform 120ms ease; }
 .nav-offers-trigger[data-state="open"] > svg { transform: rotate(180deg); }
@@ -263,6 +262,7 @@ ul, ol { padding-left: 1.25rem; }
 .public-offers-menu { min-width: 224px; padding: 6px; }
 .public-offers-menu .dropdown-item { justify-content: space-between; gap: 28px; padding: 12px 14px; cursor: pointer; }
 .public-offers-menu .dropdown-item > svg { color: #77717d; }
+.public-offers-menu .public-offer-link:is(:hover, :focus-visible, [data-highlighted]) > svg { color: inherit; }
 .public-offers-menu .dropdown-item[aria-current="page"] { background: var(--muted); }
 .header-login:hover > svg { transform: translateX(2px); }
 .mobile-menu-button { display: none; }
@@ -300,6 +300,8 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card--connecte { --card-hue: -57deg; --card-scale-x: -1; --plasma-position: 42% 75%; }
 .pricing-card--immersif { --card-hue: -24deg; --card-scale-y: -1; --plasma-position: 74% 8%; }
 .pricing-card--custom { --card-hue: 12deg; --card-scale-x: -1; --card-scale-y: -1; --plasma-position: 92% 74%; }
+.pricing-card--evolution { --card-hue: -112deg; --card-scale-x: -1; --plasma-position: 28% 42%; }
+.pricing-card--refonte { --card-hue: 55deg; --card-scale-y: -1; --plasma-position: 90% 70%; }
 /* Shared by the homepage cards and comparison table. */
 .plan-cta {
   position: relative;

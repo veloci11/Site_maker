@@ -11,7 +11,7 @@ export interface PricingCardProps {
   features: readonly string[]
   href?: string
   cta?: string
-  variant?: 'vitrine' | 'connecte' | 'immersif' | 'custom'
+  variant?: 'vitrine' | 'connecte' | 'immersif' | 'custom' | 'evolution' | 'refonte'
   className?: string
   /** Accepted for existing callers. Navigation never waits for preparation. */
   prepare?: () => Promise<unknown>

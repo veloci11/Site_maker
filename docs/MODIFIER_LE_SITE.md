@@ -8,19 +8,21 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | --- | --- | --- |
 | Nom, description et trois points d’un forfait | `shared/catalog.ts` | `offers` : `title`, `description`, `features` |
 | Nom et explication d’une option | `shared/catalog.ts` | `optionDefinitions` : `title`, `description` |
-| Questions fréquentes | `shared/catalog.ts` | `faqs` : `question`, `answer` |
-| Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : `image`, `url`, `sourceUrl`, `creator` |
+| Questions fréquentes | `shared/catalog.ts` | `faqs` : huit entrées `question`, `answer` |
+| Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : neuf entrées, `image`, `url`, `sourceUrl`, `creator`, `tags`, `archived` |
 | Explication des inclusions avant les options | `src/content/configurator-copy.ts` | `includedGuidance`, une entrée par forfait |
-| Textes, boutons et sujets Évolution/Refonte | `src/content/existing-site.ts` | `existingSiteOffers`, une entrée par prestation |
+| Textes, trois points, boutons et sujets Évolution/Refonte | `src/content/existing-site.ts` | `existingSiteOffers` : `title`, `features`, `cta`, sujets et textes du formulaire |
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
 | Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
-| Aspect d’une carte sur l’accueil | `src/components/layout/PricingCard.tsx` | Rendu de carte ; textes dans le catalogue, CTA partagé `.plan-cta`, halo `.pricing-card__glow` |
-| Couleurs, navigation et cartes partagées | `src/styles.css` | Variables en tête de fichier et sélecteurs correspondants |
-| Comparatif, galerie et cartes de sites existants | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.existing-site-card` |
+| Aspect commun des six cartes | `src/components/layout/PricingCard.tsx` | Même rendu pour créations et services ; CTA `.plan-cta`, halo `.pricing-card__glow` |
+| Couleurs, navigation et cartes partagées | `src/styles.css` | Variantes `.pricing-card--*`, liens `.public-offer-link` ; déclencheur Forfaits neutre |
+| Comparatif, galerie et placement des services | `src/pages/public.css` | `.comparison-details-toggle`, `.comparison-detail-reveal`, `.public-gallery-*`, `.pricing-grid--existing` |
 | Mise en page du configurateur | `src/pages/configurator.css` | `.configurator-*` |
 
 Exemple : pour modifier les trois éléments de Vitrine, chercher `id: 'vitrine'` dans `offers`, puis changer les chaînes de `features`. Les cartes de l’accueil et du configurateur utilisent ces mêmes données.
+
+La FAQ actuelle répond aux frais après création, aux contenus, aux modifications, au domaine/hébergement, au mobile/tablette, au site existant, au calendrier et au référencement. `docs/FAQ_RECHERCHE_REDDIT.md` conserve la recherche qualitative qui a éclairé les thèmes ; ce n’est pas une étude statistique. Les réponses publiées doivent toujours suivre les inclusions réelles, sans inventer de montant, de délai ou de position Google.
 
 ## Prix et inclusions
 
@@ -34,15 +36,21 @@ Les identifiants `id`, les slugs et les clés des options relient l’interface 
 
 Évolution et Refonte sont deux prestations sur devis, distinctes des quatre forfaits de création. Leurs liens sont `/contact?besoin=evolution` et `/contact?besoin=refonte` : le formulaire préremplit le sujet et propose l’URL facultative du site actuel. Cette URL est jointe au message enregistré. `existingSiteOffers` alimente les deux cartes, le menu et les textes du formulaire ; `getExistingSiteOffer` retrouve une prestation à partir de son identifiant. Le paramètre `projet` sert aux dossiers privés ; ne pas l’utiliser pour une prestation publique.
 
+`ExistingSiteServices` rend chaque prestation avec `PricingCard`, `features={service.features}` et `variant={service.id}`. Ne pas créer de carte de service parallèle : dimensions, structure et interactions restent communes aux six cartes. Les variantes `evolution` et `refonte` sont dans `src/styles.css` et réutilisent la texture approuvée, sans motifs spécifiques. `.pricing-grid--existing` dans `src/pages/public.css` place les deux cartes en colonnes 2 et 3 à partir de 1 121 px ; les grilles plus étroites suivent les règles partagées.
+
 Dans `InquiryForm`, `website` est un champ antispam masqué. L’URL fournie par le visiteur va dans `currentSite`. Conserver cette séparation, la limite de longueur, le blocage du double envoi et l’identifiant de nouvelle tentative.
 
 ## Images et styles
 
 Placer les exports actifs dans `public/assets/examples/`, puis modifier le chemin dans `examples`. Garder le lien réel et le crédit du site présenté. Les originaux et anciens essais restent dans `docs/asset-sources/` ou `docs/qa/`, hors du build public. La provenance des captures est documentée dans `docs/ASSETS_REFERENCES.md`.
 
+Les neuf références sont DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven, Addiction Agency, GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D. Pour qu’un exemple classé autrement apparaisse aussi dans le filtre 3D, utiliser `tags: ['3D']` comme GeoBoss. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
+
+Les images, titres et actions des exemples sont des liens directs dans le même onglet. Les crédits conservent leur propre lien source. `ExampleDetailPage` maintient la compatibilité de `/exemples/:slug` : il redirige par effet vers `example.url` avec `window.location.replace` et laisse un lien de repli. Le composant `ExamplePreview` est retiré ; ne pas réintroduire de fenêtre intermédiaire ou de scène embarquée.
+
 L’interface utilise Geist Sans, Lucide et les composants de `src/components/ui/`. Réutiliser ces éléments pour garder les tailles, focus et interactions cohérents. Les cartes et leur matière ont été validées : leurs textures, recadrages et transitions sont décrits dans `docs/CHARTE_INTERFACE.md`.
 
-Les boutons noirs des cartes et du comparatif partagent `.plan-cta` dans `src/styles.css`. Le dépliage du comparatif reste un tableau unique : un bouton après le tableau pilote les lignes complémentaires, animées en CSS par `.comparison-detail-reveal`. Le léger halo des cartes de création n’utilise que l’opacité et le déplacement d’un élément décoratif, sans boucle ni écouteur de souris.
+Les boutons noirs des cartes et du comparatif partagent `.plan-cta` dans `src/styles.css`. Le menu utilise les six liens `.public-offer-link` avec `.pricing-card--${variant}` pour révéler leur texture au survol/focus et à la sélection clavier Radix ; le déclencheur Forfaits reste neutre. Le dépliage du comparatif reste un tableau unique : « Afficher plus de détails » devient « Masquer les détails » et pilote les lignes complémentaires via `.comparison-detail-reveal`. Le léger halo commun aux six cartes ne change que l’opacité (180 ms) et le déplacement (550 ms) d’un élément décoratif, sans boucle ni écouteur de souris.
 
 Le JSX des pages modifiées est indenté, avec des noms explicites. Garder les textes partagés dans le catalogue ou `src/content/`, les actions dans des fonctions nommées et les styles dans les fichiers CSS correspondants. Les commentaires expliquent les règles moins évidentes, comme la déduplication d’une demande.
 
@@ -54,7 +62,7 @@ Depuis la racine du projet, avec Node 24 :
 npm run dev
 ```
 
-Ouvrir `http://127.0.0.1:4173`, vérifier le parcours concerné au clavier et sur mobile, puis lancer :
+Ouvrir `http://127.0.0.1:4173` **dans le navigateur intégré uniquement**, vérifier le parcours concerné au clavier et sur mobile, puis lancer :
 
 ```sh
 npm run check
@@ -62,5 +70,7 @@ git diff --check
 ```
 
 `check` vérifie les types, construit le site et exécute les tests. Pour un essai de formulaire purement local, désactiver explicitement l’envoi : `INQUIRY_TO= RESEND_API_KEY= npm run dev`. Ne pas soumettre de demande de test en production.
+
+La préférence de Mathis concerne aussi les recherches de références : utiliser exclusivement le navigateur intégré, pas Google Chrome. Ne pas modifier la fenêtre ou les formulaires de son navigateur personnel pour contrôler le site.
 
 Arrêter la prévisualisation avec Ctrl+C. Un résultat local ne modifie ni GitHub ni le site public. La mise en ligne isolée sur Ubuntu est décrite dans `ops/README.md` ; son état vérifié est suivi dans `ops/DEPLOYMENT_STATUS.md`.

@@ -1,0 +1,47 @@
+{
+  "animations": 0,
+  "samples": [
+    {
+      "elapsed": 4,
+      "filter": "none",
+      "opacity": "0.00174276",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "elapsed": 97,
+      "filter": "none",
+      "opacity": "0.465408",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "elapsed": 189,
+      "filter": "none",
+      "opacity": "0.905929",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "elapsed": 280,
+      "filter": "none",
+      "opacity": "0.998501",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "elapsed": 372,
+      "filter": "none",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    {
+      "elapsed": 464,
+      "filter": "none",
+      "opacity": "1",
+      "transform": "none",
+      "transition": "opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Provenance des aperçus de référence
 
-Les captures ci-dessous proviennent des sites externes ouverts dans le navigateur par l’agent principal. Elles ne sont pas générées par IA. Elles illustrent des formats de sites, sans revendiquer une réalisation ou une relation client du studio.
+Les aperçus ci-dessous proviennent de captures des sites externes ouverts dans le navigateur ou, pour Atlante 3D hors ligne, d'un export original du portfolio. Ils ne sont pas générés par IA. Ils illustrent des formats de sites, sans revendiquer une réalisation ou une relation client du studio.
 
-Les sources sont conservées dans `docs/qa/`. Julie Thiam et DOMTEKNIKA ont été encodés en WebP avec `cwebp -q 93 -m 6` ; aucun recadrage, redimensionnement, ajout ou remplacement de contenu. Les exports ont été inspectés visuellement. La capture Retina d’Addiction Agency est décrite séparément ci-dessous.
+Les captures sources sont conservées dans `docs/qa/`, et les affiches originales de Raphaël dans `docs/asset-sources/examples/raphael/`. Julie Thiam et DOMTEKNIKA ont été encodés en WebP avec `cwebp -q 93 -m 6` ; aucun recadrage, redimensionnement, ajout ou remplacement de contenu. Les exports ont été inspectés visuellement. Les traitements d’Addiction Agency et des quatre références ajoutées sont décrits séparément ci-dessous.
 
 ## Julie Thiam
 
@@ -26,7 +26,7 @@ Les sources sont conservées dans `docs/qa/`. Julie Thiam et DOMTEKNIKA ont ét�
 
 ## Chargement et crédits
 
-Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparée ; les configurateurs ne contiennent aucun aperçu de site. Les galeries utilisent une image statique : le lien « Explorer le site » ouvre la source externe sur action de l’utilisateur. Aucune scène 3D ni iframe Julie Thiam n’est chargée automatiquement. Les créateurs sont crédités dans le catalogue et la galerie.
+Le catalogue local contient neuf références dans la galerie séparée ; les configurateurs ne contiennent aucun aperçu de site. La galerie utilise des images statiques : un clic sur l'image, le nom ou « Voir le site » ouvre directement la destination externe dans le même onglet. Atlante 3D porte le badge « Projet archivé » et mène à sa présentation. Aucune scène 3D ni iframe externe n’est chargée automatiquement. Les créateurs sont crédités dans le catalogue et la galerie. Cette mise à jour décrit les fichiers locaux ; elle n'atteste pas encore leur publication en production.
 
 ## Addiction Agency — remplacement de l’aperçu
 
@@ -39,6 +39,34 @@ Julie Thiam, Tiny Heaven et DOMTEKNIKA sont présentés dans la galerie séparé
 - Ancienne vignette inadaptée conservée dans `docs/asset-sources/examples/addiction-previous.jpg`, hors du build public. Le catalogue pointe désormais sur le site réel de l’agence, avec son crédit ; aucune attribution de réalisation au studio.
 
 Le lien externe s’ouvre uniquement sur action du visiteur. Le site studio ne charge pas la vidéo ou la scène animée de l’agence.
+
+## Portfolio de Raphaël — quatre ajouts locaux
+
+Les sources primaires et leurs limites sont détaillées dans [REFERENCES_RAPHAEL_FERREIRA.md](REFERENCES_RAPHAEL_FERREIRA.md). Les sept projets Works sont maintenant couverts par le catalogue local, avec DOMTEKNIKA et Julie Thiam en complément : neuf exemples au total.
+
+Quatre affiches originales sont conservées hors du build, en 1600 × 1000 pixels :
+
+| Projet | URL originale déclarée par le portfolio | Copie conservée et format réel |
+| --- | --- | --- |
+| GeoBoss | [geoboss-big.jpg](https://raphael-ferreira.com/posters/geoboss-big.jpg) | `docs/asset-sources/examples/raphael/geoboss.jpg`, JPEG |
+| Aéma Groupe | [aema-big.jpg](https://raphael-ferreira.com/posters/aema-big.jpg) | `docs/asset-sources/examples/raphael/aema.jpg`, JPEG |
+| Satellite Story | [satellite-big.jpg](https://raphael-ferreira.com/posters/satellite-big.jpg) | `docs/asset-sources/examples/raphael/satellite.webp`, WebP |
+| Atlante 3D | [atlante-big.jpg](https://raphael-ferreira.com/posters/atlante-big.jpg) | `docs/asset-sources/examples/raphael/atlante.webp`, WebP |
+
+Le format constaté est celui du fichier reçu, indépendamment de l'extension `.jpg` de l'URL. Les affiches de GeoBoss, Aéma et Satellite restent des sources d'archive ; leurs images actives sont des captures réelles plus récentes.
+
+Les trois sites vivants ont été ouverts par le parent dans le navigateur intégré. Leurs captures natives de 2560 × 1440 pixels sont réduites à **1600 × 900**, puis exportées en **WebP qualité 94, sans recadrage**. Il n'y a ni génération d'image, ni reconstruction, ni agrandissement. Atlante utilise directement son original WebP, à l'identique.
+
+| Projet et destination vérifiée | Source locale conservée | Export actif | Taille export |
+| --- | --- | --- | ---: |
+| [GeoBoss](https://geoboss.onrender.com/) | `docs/qa/card-alignment-faq-portfolio/source-geoboss-retina.png` | `public/assets/examples/geoboss.webp`, 1600 × 900 | 709 578 octets |
+| [Aéma Groupe](https://www.aemagroupe.fr/) | `docs/qa/card-alignment-faq-portfolio/source-aema-retina.png` | `public/assets/examples/aema.webp`, 1600 × 900 | 123 860 octets |
+| [Satellite Story](https://satellite.raphael-ferreira.com/) | `docs/qa/card-alignment-faq-portfolio/source-satellite-retina.png` | `public/assets/examples/satellite.webp`, 1600 × 900 | 40 660 octets |
+| [Atlante 3D — présentation archivée](https://github.com/rqphy/Atlante3d#readme) | `docs/asset-sources/examples/raphael/atlante.webp` | `public/assets/examples/atlante.webp`, 1600 × 1000 | 53 866 octets |
+
+Le manifeste [portfolio-assets.json](qa/card-alignment-faq-portfolio/portfolio-assets.json) conserve dimensions, tailles, traitements et empreintes SHA-256 des sources et exports. Pour Atlante, source et export ont la même empreinte `0d1278a665a497958199d9eaf02c26ad97ba5a685133ef5bbb6502e2b69001ef` : aucune recompression ni modification des octets.
+
+Les crédits du catalogue local distinguent Raphaël Ferreira, sa collaboration avec Wonderstudios pour Aéma/Lactel et le projet Atlante. GeoBoss porte le tag **3D**, tout en restant rattaché à **Sur mesure** : ses fonctions multijoueurs et ses données ne sont pas celles d'une simple vitrine 3D. Atlante porte `archived: true` et mène au README, avec une action de présentation ; aucun site vivant de remplacement n'est inventé.
 
 ## Texture des grandes cartes de forfait
 

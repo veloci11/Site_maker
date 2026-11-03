@@ -25,6 +25,7 @@ import { AmbientGrain } from './AmbientGrain'
 const offerLinks = offers.map((offer) => ({
   title: offer.title,
   href: `/forfaits/${offer.slug}`,
+  variant: offer.variant,
 }))
 
 function navigationClassName(baseClass: string) {
@@ -81,6 +82,7 @@ export function PublicHeader() {
                 <DropdownMenuItem key={offer.href} asChild>
                   <Link
                     to={offer.href}
+                    className={`public-offer-link pricing-card--${offer.variant}`}
                     aria-current={location.pathname === offer.href ? 'page' : undefined}
                   >
                     {offer.title}
@@ -93,6 +95,7 @@ export function PublicHeader() {
                 <DropdownMenuItem key={offer.id} asChild>
                   <Link
                     to={offer.href}
+                    className={`public-offer-link pricing-card--${offer.id}`}
                     aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
                   >
                     {offer.title}
@@ -155,9 +158,7 @@ export function PublicHeader() {
                           index === 0 && 'mobile-offer-link--refit',
                           activeExistingSiteOffer?.id === offer.id && 'is-active',
                         )}
-                        aria-current={
-                          activeExistingSiteOffer?.id === offer.id ? 'page' : undefined
-                        }
+                        aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
                       >
                         {offer.title}
                         <ArrowRight size={16} aria-hidden="true" />

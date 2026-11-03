@@ -112,7 +112,22 @@ export function getOffer(idOrSlug: unknown) {
   return offers.find((offer) => offer.id === idOrSlug || offer.slug === idOrSlug)
 }
 
-export const examples = [
+export type SiteExample = {
+  id: string
+  title: string
+  category: string
+  offerId: OfferId
+  image: string
+  url: string
+  sourceUrl: string
+  creator: string
+  description: string
+  embeddable: boolean
+  tags?: readonly string[]
+  archived?: boolean
+}
+
+export const examples: readonly SiteExample[] = [
   {
     id: 'domteknika',
     title: 'DOMTEKNIKA',
@@ -132,8 +147,8 @@ export const examples = [
     offerId: 'connecte',
     image: '/assets/examples/lactel.webp',
     url: 'https://www.lactel.fr/',
-    sourceUrl: 'https://raphael-ferreira.com/work/Lactel',
-    creator: 'Référence du portfolio de Raphaël Ferreira',
+    sourceUrl: 'https://raphael-ferreira.com/',
+    creator: 'Raphaël Ferreira · Wonderstudios',
     description: 'Organiser des produits, des articles et des recettes.',
     embeddable: false,
   },
@@ -155,8 +170,8 @@ export const examples = [
     category: '3D',
     offerId: 'immersif',
     image: '/assets/examples/tiny-heaven.webp',
-    url: 'https://tiny-heaven.netlify.app/',
-    sourceUrl: 'https://raphael-ferreira.com/work/TinyHeaven',
+    url: 'https://tiny.raphael-ferreira.com/',
+    sourceUrl: 'https://raphael-ferreira.com/',
     creator: 'Raphaël Ferreira',
     description: 'Explorer un univers en trois dimensions.',
     embeddable: true,
@@ -173,44 +188,107 @@ export const examples = [
     description: 'Présenter une agence créative et son univers.',
     embeddable: false,
   },
+  {
+    id: 'geoboss',
+    title: 'GeoBoss',
+    category: 'Jeu en ligne',
+    offerId: 'sur-mesure',
+    image: '/assets/examples/geoboss.webp',
+    url: 'https://geoboss.onrender.com/',
+    sourceUrl: 'https://raphael-ferreira.com/',
+    creator: 'Raphaël Ferreira',
+    description: 'Un jeu de géographie multijoueur avec globe 3D et classement.',
+    tags: ['3D'],
+    embeddable: false,
+  },
+  {
+    id: 'aema',
+    title: 'Aéma Groupe',
+    category: 'Vitrine',
+    offerId: 'vitrine',
+    image: '/assets/examples/aema.webp',
+    url: 'https://www.aemagroupe.fr/',
+    sourceUrl: 'https://raphael-ferreira.com/',
+    creator: 'Raphaël Ferreira · Wonderstudios',
+    description: 'Un site institutionnel avec actualités et contenus éditoriaux.',
+    tags: ['Contenus'],
+    embeddable: false,
+  },
+  {
+    id: 'satellite-story',
+    title: 'Satellite Story',
+    category: '3D',
+    offerId: 'immersif',
+    image: '/assets/examples/satellite.webp',
+    url: 'https://satellite.raphael-ferreira.com/',
+    sourceUrl: 'https://raphael-ferreira.com/',
+    creator: 'Raphaël Ferreira',
+    description: 'Une histoire de Spoutnik, animée en 3D au défilement.',
+    embeddable: false,
+  },
+  {
+    id: 'atlante-3d',
+    title: 'Atlante 3D',
+    category: '3D',
+    offerId: 'immersif',
+    image: '/assets/examples/atlante.webp',
+    url: 'https://github.com/rqphy/Atlante3d#readme',
+    sourceUrl: 'https://raphael-ferreira.com/',
+    creator: 'Raphaël Ferreira — projet Atlante',
+    description: 'Une présentation interactive de station de recharge en 3D.',
+    archived: true,
+    embeddable: false,
+  },
 ] as const
 
 export const faqs = [
   {
-    question: 'Quels contenus dois-je vous fournir ?',
+    question: 'Quels frais dois-je prévoir après la création du site ?',
     answer:
-      'Les textes de vos pages et vos coordonnées, ainsi que votre logo et vos photos si vous en avez. Vous pouvez aussi joindre des liens d’inspiration. Une aide à la rédaction est proposée dans les options.',
+      'Le configurateur distingue la création et les options ponctuelles des services mensuels que vous choisissez : hébergement géré, maintenance et sauvegardes suivies. La mise en ligne est une prestation ponctuelle. Le domaine et les éventuels abonnements à des outils externes sont précisés avant le démarrage.',
+    category: 'Budget et suivi',
+  },
+  {
+    question: 'Qui prépare les textes et les photos ?',
+    answer:
+      'Préparez vos coordonnées, les textes de vos pages et les images que vous souhaitez utiliser, ainsi que votre logo si vous en avez un. Une aide à la rédaction et la reprise de contenus d’un ancien site sont proposées dans les options.',
     category: 'Contenus',
   },
   {
-    question: 'Quel est le délai de création ?',
+    question: 'Pourrai-je modifier mes textes et mes photos après la livraison ?',
     answer:
-      'Le calendrier dépend des fonctions choisies et des contenus disponibles. Nous vous confirmons une date de livraison après avoir étudié votre demande, avant de commencer le projet.',
-    category: 'Création et livraison',
+      'Connecté comprend une interface pour modifier vos textes et vos images. Cette gestion peut être ajoutée aux autres forfaits. Pour ajouter de nouvelles pages ou fonctionnalités, nous définissons une intervention selon votre besoin.',
+    category: 'Après la livraison',
   },
   {
-    question: 'Pourrai-je modifier mon site après la livraison ?',
+    question: 'Puis-je garder mon nom de domaine et mon hébergement ?',
     answer:
-      'La gestion des textes et images est comprise dans Connecté et peut être ajoutée aux autres forfaits. Elle permet de modifier vos contenus depuis une interface dédiée. Pour ajouter des pages ou des fonctionnalités, nous définissons une intervention selon votre besoin.',
-    category: 'Après la livraison',
+      'Indiquez votre domaine et votre hébergement dans votre demande. Nous vérifions ce qui peut être conservé, la compatibilité avec le projet et les changements nécessaires avant la mise en ligne.',
+    category: 'Mise en ligne',
   },
   {
     question: 'Le site sera-t-il adapté aux téléphones et tablettes ?',
     answer:
-      'Connecté et Immersif 3D comprennent une adaptation mobile et tablette. Vitrine est prévu pour ordinateur à la base : ajoutez cette adaptation dans le configurateur si vous la souhaitez. Pour Sur mesure, les formats sont définis avec votre projet.',
+      'L’adaptation mobile et tablette est comprise dans Connecté et Immersif 3D. Vitrine est prévu pour ordinateur à la base ; cette adaptation se choisit dans le configurateur. Pour Sur mesure, les formats sont définis avec le projet.',
     category: 'Fonctionnement du site',
   },
   {
-    question: 'Le nom de domaine et l’hébergement sont-ils compris ?',
+    question: 'J’ai déjà un site : faut-il tout refaire ?',
     answer:
-      'L’hébergement et la mise en ligne se choisissent dans les options. Le domaine et les éventuels abonnements sont précisés avec vous avant le démarrage. Si vous avez déjà un domaine ou un hébergement, indiquez-le dans votre demande.',
-    category: 'Mise en ligne',
+      'Évolution permet d’ajouter des pages ou des fonctionnalités. Refonte sert à repenser le design et la structure du site. Ces deux prestations sont sur devis, après examen de l’existant et des éléments qui peuvent être conservés.',
+    category: 'Site existant',
   },
   {
-    question: 'Qui s’occupe des mises à jour et de la maintenance ?',
+    question: 'Quand mon site pourra-t-il être mis en ligne ?',
     answer:
-      'Une maintenance mensuelle peut être ajoutée pour le suivi technique et les mises à jour. Les interventions couvertes sont précisées avant son activation. L’hébergement et les sauvegardes suivies sont des services distincts dans le configurateur.',
-    category: 'Après la livraison',
+      'Le calendrier dépend des fonctionnalités choisies et des contenus disponibles. Nous confirmons une date de livraison après avoir étudié votre demande, avant de commencer le projet.',
+    category: 'Création et livraison',
+  },
+  {
+    question: 'Le référencement Google est-il compris ?',
+    answer:
+      'Une option Référencement local est disponible dans le configurateur. Elle prévoit des pages et des informations structurées pour votre zone d’activité. Les actions à réaliser sont précisées avec le projet ; aucune position sur Google ni aucun nombre de ventes n’est promis.',
+    category: 'Visibilité',
   },
 ]
 

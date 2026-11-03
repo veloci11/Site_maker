@@ -1,0 +1,77 @@
+[
+  {
+    "id": "geoboss",
+    "source": "docs/qa/card-alignment-faq-portfolio/source-geoboss-retina.png",
+    "sourceFormat": "PNG",
+    "dimensions": [
+      1600,
+      900
+    ],
+    "image": "public/assets/examples/geoboss.webp",
+    "sourceSha256": "652ae310ec6937775b4d26a2b5c2441398c006be01fb258b223813aa9bce880b",
+    "imageSha256": "0fc4ca7c0ba43f910656eb9415f9c826f5ebc0f1af9687f45a82d9430cfdcf94",
+    "sourceBytes": 1293999,
+    "imageBytes": 709578,
+    "treatment": "native IAB capture, resize 1600x900, WebP q94, no crop",
+    "sourceUrl": "https://geoboss.onrender.com/",
+    "sourceDimensions": [
+      2560,
+      1440
+    ]
+  },
+  {
+    "id": "aema",
+    "source": "docs/qa/card-alignment-faq-portfolio/source-aema-retina.png",
+    "sourceFormat": "PNG",
+    "dimensions": [
+      1600,
+      900
+    ],
+    "image": "public/assets/examples/aema.webp",
+    "sourceSha256": "2c5afb67aba4f0666ceaadb7c4157cecea5e096befb4c96695019b715b7ab8e6",
+    "imageSha256": "1f526f02bda2f9ca524cf1b289e56648014eb8ea38dc1d9e5b21d0edccc30f65",
+    "sourceBytes": 692729,
+    "imageBytes": 123860,
+    "treatment": "native IAB capture, resize 1600x900, WebP q94, no crop",
+    "sourceUrl": "https://www.aemagroupe.fr/",
+    "sourceDimensions": [
+      2560,
+      1440
+    ]
+  },
+  {
+    "id": "atlante",
+    "source": "docs/asset-sources/examples/raphael/atlante.webp",
+    "sourceFormat": "WEBP",
+    "dimensions": [
+      1600,
+      1000
+    ],
+    "image": "public/assets/examples/atlante.webp",
+    "sourceSha256": "0d1278a665a497958199d9eaf02c26ad97ba5a685133ef5bbb6502e2b69001ef",
+    "imageSha256": "0d1278a665a497958199d9eaf02c26ad97ba5a685133ef5bbb6502e2b69001ef",
+    "sourceBytes": 53866,
+    "imageBytes": 53866,
+    "treatment": "none"
+  },
+  {
+    "id": "satellite",
+    "source": "docs/qa/card-alignment-faq-portfolio/source-satellite-retina.png",
+    "sourceFormat": "PNG",
+    "dimensions": [
+      1600,
+      900
+    ],
+    "image": "public/assets/examples/satellite.webp",
+    "sourceSha256": "99486c3af7923dfd5e7a63c809b6583491223240a3933d1984685fbd8b3cb7e3",
+    "imageSha256": "e3bda34b340b3d1ad7ad0823b3507a9edccefbfdfead3d28697e063b099ec19c",
+    "sourceBytes": 111924,
+    "imageBytes": 40660,
+    "treatment": "native IAB capture, resize 1600x900, WebP q94, no crop",
+    "sourceUrl": "https://satellite.raphael-ferreira.com/",
+    "sourceDimensions": [
+      2560,
+      1440
+    ]
+  }
+]
