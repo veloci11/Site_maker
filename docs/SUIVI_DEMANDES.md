@@ -1,8 +1,16 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `8187d38` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `770a271` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
+
+## Briefs publics par forfait — terminé et vérifié en ligne
+
+Recherche préalable Reddit et sources professionnelles documentée dans `BRIEF_RECHERCHE.md`, puis quinze spécialistes coordonnés par périmètres. Prénom, nom, e-mail et téléphone obligatoires côté navigateur et serveur. Questions propres aux quatre créations et à Évolution/Refonte ; Refonte couvre aussi identité/références, plateforme, accès disponibles, contenus, URL/redirections, référencement, données et continuité. Réponses conditionnelles et incertitude possibles. Les choix n’ajoutent aucune option silencieusement.
+
+Options publiques ramenées à 12/12/12/10 selon le forfait, sans refacturer les inclusions ; Vitrine garde le mobile facultatif. Le retour aux options conserve le brief et les images. Le catalogue historique de 26 options reste lisible pour les dossiers privés. Les images JPEG/PNG/WebP sont bornées, décodées, enregistrées avec le dossier dans une transaction et consultables seulement par l’administration. Sauvegarde/restauration réelle, idempotence, erreurs et accès privés testés. Anciennes demandes conservées.
+
+TypeScript, build et 192 tests réussis ; dernière reconstruction après un ajustement de texte. Parcours complet Refonte soumis uniquement à une base locale isolée, avec image de test puis lecture admin. Publication `770a271`, release `20261103T213957Z-770a271379ef`, client `index-CYUgPAPx.js` : santé et SHA-256 HTTPS conformes au build, décodeur Sharp vérifié sur Ubuntu avant bascule. Contrôles IAB publics Refonte/Vitrine et mobile 390 × 844 sans débordement, quatre coordonnées requises, branches techniques et références constatées ; aucune demande ni image envoyée en production. Les six parcours ont été revus localement. Autres projets Ubuntu inchangés, localhost fermé. L’adresse Resend reste à fournir plus tard par Mathis. Preuves et revues : `qa/brief-v2/`.
 
 ## Cartes Évolution/Refonte et menu translucide — terminé et vérifié en ligne
 

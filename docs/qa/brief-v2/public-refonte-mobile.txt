@@ -1,0 +1,82 @@
+Browser tab: 23, Title: "Refonte de site · studio", URL: "https://gilmathis.com/contact?besoin=refonte".
+0 AXWebArea Refonte de site · studio, URL: gilmathis.com/contact?besoin=refonte
+	1 container
+		2 link Description: Aller au contenu, Value: gilmathis.com/contact?besoin=refonte#main-content
+		3 container
+			4 link Description: studio — accueil, Value: gilmathis.com/
+			10 link Description: Nous contacter, Value: gilmathis.com/contact
+			101 pop up button (collapsed) Description: Ouvrir le menu, Secondary Actions: Expand
+		18 container
+			19 link Description: Tous les forfaits, Value: gilmathis.com/forfaits
+			20 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			21 container Votre forfait et son prix
+				22 container
+					23 text Votre forfait
+					24 pop up button (collapsed) Changer, ID: radix-_r_k_, Secondary Actions: Expand
+					25 heading Refonte, Value: 1
+						26 text Refonte
+					27 text Repensez le design et la structure de votre site actuel.
+					28 content list
+						29 text Design et identité
+						30 text Structure des pages
+						31 text Navigation repensée
+					32 text Votre projet Sur devis
+			33 heading Repensez votre site., Value: 2
+				34 text Repensez votre site.
+			35 text Présentez-nous votre site actuel et ce que vous souhaitez transformer.
+			36 text Les champs marqués d’un * sont obligatoires.
+			37 container Votre projet et vos coordonnées
+				38 text Votre projet et vos coordonnées
+				39 heading 01 Votre activité et votre site actuel, Value: 3
+					40 button (collapsed) 01 Votre activité et votre site actuel, ID: radix-_r_n_, Secondary Actions: Expand
+						41 text 01
+						42 text Votre activité et votre site actuel
+				60 heading 02 Ce qui doit changer et rester, Value: 3
+					61 button (collapsed) 02 Ce qui doit changer et rester, ID: radix-_r_p_, Secondary Actions: Expand
+						62 text 02
+						63 text Ce qui doit changer et rester
+				64 heading Value: 3, 03 La reprise du site et du référencement Un autre outil · Oui, des outils ou rapports sont disponibles
+					65 button (collapsed) ID: radix-_r_r_, Secondary Actions: Expand, 03 La reprise du site et du référencement Un autre outil · Oui, des outils ou rapports sont disponibles
+						66 text 03
+						67 text La reprise du site et du référencement
+						84 text Un autre outil · Oui, des outils ou rapports sont disponibles
+				68 heading 04 Les données et la continuité, Value: 3
+					69 button (collapsed) 04 Les données et la continuité, ID: radix-_r_t_, Secondary Actions: Expand
+						70 text 04
+						71 text Les données et la continuité
+				72 heading 05 Vos coordonnées, Value: 3
+					73 button (expanded) 05 Vos coordonnées, ID: radix-_r_v_, Secondary Actions: Collapse
+						74 text 05
+						75 text Vos coordonnées
+				85 container 05 Vos coordonnées, ID: radix-_r_10_
+					86 container
+						87 text Prénom  *
+					88 text field (settable) Prénom *, ID: project-brief-_r_m_-firstName
+					89 container
+						90 text Nom  *
+					91 text field (settable) Nom *, ID: project-brief-_r_m_-lastName
+					92 container
+						93 text E-mail  *
+					94 text field (settable) E-mail *
+					95 container
+						96 text Téléphone  *
+					97 text field (settable) Téléphone *
+					98 container
+						99 text Entreprise Facultatif
+					100 text field (settable) EntrepriseFacultatif, ID: project-brief-_r_m_-company
+				76 heading 06 Vos images · facultatif, Value: 3
+					77 button (collapsed) 06 Vos images · facultatif, ID: radix-_r_11_, Secondary Actions: Expand
+						78 text 06
+						79 text Vos images · facultatif
+			80 button Envoyer ma demande
+			81 container
+				82 text Vos coordonnées servent à traiter votre demande. 
+				83 link Description: Confidentialité, Value: gilmathis.com/confidentialite
+		12 link Description: studio — accueil, Value: gilmathis.com/
+		13 container Liens de pied de page
+			14 link Description: Comparer les forfaits, Value: gilmathis.com/forfaits
+			15 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			16 link Description: FAQ, Value: gilmathis.com/faq
+			17 link Description: Nous contacter, Value: gilmathis.com/contact
+
+The focused UI element is 73 button (expanded) 05 Vos coordonnées, ID: radix-_r_v_, Secondary Actions: Collapse

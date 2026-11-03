@@ -8,6 +8,7 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | --- | --- | --- |
 | Nom, description et trois points d’un forfait | `shared/catalog.ts` | `offers` : `title`, `description`, `features` |
 | Nom et explication d’une option | `shared/catalog.ts` | `optionDefinitions` : `title`, `description` |
+| Options proposées dans chaque forfait public | `shared/offer-options.ts` | `PUBLIC_OPTIONS_BY_OFFER` ; le catalogue historique reste complet |
 | Questions fréquentes | `shared/catalog.ts` | `faqs` : dix entrées `question`, `answer` |
 | Image, lien et crédit d’un exemple | `shared/catalog.ts` | `examples` : neuf entrées, `image`, `url`, `sourceUrl`, `creator`, `tags`, `archived` |
 | Explication des inclusions avant les options | `src/content/configurator-copy.ts` | `includedGuidance`, une entrée par forfait |

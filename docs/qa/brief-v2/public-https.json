@@ -1,0 +1,14 @@
+{
+  "origin": "https://gilmathis.com",
+  "commit": "770a271379ef995037dd9d56700f0c4f37a3e94c",
+  "release": "20261103T213957Z-770a271379ef",
+  "health": {
+    "ok": true
+  },
+  "entryScript": "/assets/index-CYUgPAPx.js",
+  "entrySha256": "f44e4664f5e24094c1e78faec7da34a714553891c9c353dcacefa939a79c3a8e",
+  "matchesLocalBuild": true,
+  "tests": 192,
+  "realEmailSent": false,
+  "otherProjectsUnchanged": true
+}

@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 11:36, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative : 03/11/2026 à 15:39, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `8187d38f889b6c2e6731bcf34e691dc28b1a312e`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T173638Z-8187d38f889b` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-ddtJu-_H.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `c01f25611b455566a04e7168ce6e70d21738322150ebd59445ccbb1c36e1346d`.
-- Version précédente disponible : `releases/20261103T170055Z-db504905a1d5`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `770a271379ef995037dd9d56700f0c4f37a3e94c`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261103T213957Z-770a271379ef` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-CYUgPAPx.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `34db131649e00139bb9e9096064618ede6ff0ef71e66a1ac31215eac721e254e`.
+- Version précédente disponible : `releases/20261103T173638Z-8187d38f889b`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -25,9 +25,21 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 - Galerie : neuf références avec filtres et crédits. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie restent blancs au repos et révèlent la matière au survol réel, au focus clavier ou à la sélection, avec fondu de 300 ms. Le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte la mention « Projet archivé » dans sa description, avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
 - FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
-Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; aucune nouvelle dépendance de production. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
+Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Vérifications du dernier lot — cartes partagées et menu translucide
+## Dernier lot — briefs V2 et images privées
+
+- Recherche préalable et quinze spécialistes : `docs/BRIEF_RECHERCHE.md` et `docs/qa/brief-v2/team-review.md`. Questions, coordonnées et compatibilité des options centralisées dans trois modules partagés, formulaire unique et guide manuel mis à jour.
+- Quatre coordonnées obligatoires, sept contextes comprenant le contact général. Six parcours locaux revus ; questions conditionnelles, résumés et retour aux options sans perdre le brief ni les images.
+- Options publiques 12/12/12/10 ; inclusions expliquées, sans cases facturables répétées. Catalogue de 26 options et instantanés historiques conservés.
+- Images privées BLOB SQLite, six au maximum, 5 Mio chacune, 20 Mio au total. Décodage effectif, limites de pixels/concurrence et quota cumulé 512 Mio par défaut ; configuration facultative `INQUIRY_UPLOAD_STORAGE_LIMIT_BYTES`. Sauvegarde/restauration des BLOB et anciens fichiers testée.
+- TypeScript, build et 192 tests passent. Après la dernière modification de libellé, reconstruction finale sans changement de schéma. Aucun marqueur d’asset Vite non résolu dans le build produit. Matières approuvées identiques par SHA-256.
+- Ubuntu : sauvegarde avant bascule, `npm ci --omit=dev --ignore-scripts`, import Sharp et décodage PNG vérifiés avant activation. Santé, quatre offres, 26 définitions, prix inchangés et autres projets/PID inchangés ; GP Park HTTP 200.
+- HTTPS : client principal SHA-256 `f44e4664f5e24094c1e78faec7da34a714553891c9c353dcacefa939a79c3a8e`, identique au build. Refonte et Vitrine contrôlés dans l’IAB ; branches plateforme/SEO et références, quatre champs requis et une seule rubrique ouverte confirmés. Mobile 390 × 844 : largeur 390, zéro contrôle hors largeur. Aucune erreur applicative observée.
+- Aucun formulaire soumis ni image téléversée en production. Parcours complet testé uniquement dans une base locale isolée avec des coordonnées fictives ; notification indisponible et zéro tentative. `INQUIRY_TO` reste à fournir plus tard par Mathis.
+- Preuves : `docs/qa/brief-v2/`, dont `public-refonte-desktop.png`, `public-refonte-mobile.png`, `public-refonte-technical.txt`, `public-vitrine.txt` et `public-https.json`. Localhost arrêté, onglets temporaires fermés et onglet public actualisé conservé.
+
+## Vérifications du lot précédent — cartes partagées et menu translucide
 
 - TypeScript, build et 113 tests passent après les modifications finales. La carte et les styles sont réellement partagés ; aucune image source ni règle de prix modifiée.
 - Refonte et Évolution : carte à gauche, un seul H1, prix Sur devis, formulaire à droite avec URL facultative et message propres au service. Sujet fixé dans le JSON de la demande, sans sélecteur redondant ; logique d’envoi existante conservée. Contact général et son choix de sujet contrôlés localement. Aucun formulaire envoyé.

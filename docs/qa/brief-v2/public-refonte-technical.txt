@@ -1,0 +1,124 @@
+Browser tab: 23, Title: "Refonte de site · studio", URL: "https://gilmathis.com/contact?besoin=refonte".
+0 AXWebArea Refonte de site · studio, URL: gilmathis.com/contact?besoin=refonte
+	1 container
+		2 link Description: Aller au contenu, Value: gilmathis.com/contact?besoin=refonte#main-content
+		3 container
+			4 link Description: studio — accueil, Value: gilmathis.com/
+			5 container Navigation principale
+				6 link Description: Accueil, Value: gilmathis.com/
+				7 pop up button (collapsed) Forfaits, ID: radix-_r_0_, Secondary Actions: Expand
+				8 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			9 link Description: FAQ, Value: gilmathis.com/faq
+			10 link Description: Nous contacter, Value: gilmathis.com/contact
+		18 container
+			19 link Description: Tous les forfaits, Value: gilmathis.com/forfaits
+			20 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			21 container Votre forfait et son prix
+				22 container
+					23 text Votre forfait
+					24 pop up button (collapsed) Changer, ID: radix-_r_k_, Secondary Actions: Expand
+					25 heading Refonte, Value: 1
+						26 text Refonte
+					27 text Repensez le design et la structure de votre site actuel.
+					28 content list
+						29 text Design et identité
+						30 text Structure des pages
+						31 text Navigation repensée
+					32 text Votre projet Sur devis
+			33 heading Repensez votre site., Value: 2
+				34 text Repensez votre site.
+			35 text Présentez-nous votre site actuel et ce que vous souhaitez transformer.
+			36 text Les champs marqués d’un * sont obligatoires.
+			37 container Votre projet et vos coordonnées
+				38 text Votre projet et vos coordonnées
+				39 heading 01 Votre activité et votre site actuel, Value: 3
+					40 button (collapsed) 01 Votre activité et votre site actuel, ID: radix-_r_n_, Secondary Actions: Expand
+						41 text 01
+						42 text Votre activité et votre site actuel
+				60 heading 02 Ce qui doit changer et rester, Value: 3
+					61 button (collapsed) 02 Ce qui doit changer et rester, ID: radix-_r_p_, Secondary Actions: Expand
+						62 text 02
+						63 text Ce qui doit changer et rester
+				64 heading 03 La reprise du site et du référencement, Value: 3
+					65 button (expanded) 03 La reprise du site et du référencement, ID: radix-_r_r_, Secondary Actions: Collapse
+						66 text 03
+						67 text La reprise du site et du référencement
+				84 container 03 La reprise du site et du référencement, ID: radix-_r_s_
+					85 container
+						86 text Avec quel outil le site actuel a-t-il été construit ? Facultatif
+					87 pop up button (collapsed, settable) Avec quel outil le site actuel a-t-il été construit ?Facultatif, Value: Un autre outil, ID: project-brief-_r_m_-platform, Secondary Actions: Expand
+						88 menu
+							89 Choisir une réponse
+							90 WordPress
+							91 Wix
+							92 Shopify
+							93 Webflow
+							94 Développement spécifique
+							95 (selected) Un autre outil
+							96 Je ne sais pas
+					131 container
+						132 text Quel est le nom de cet outil ? Facultatif
+					133 text field (settable) Quel est le nom de cet outil ?Facultatif, ID: project-brief-_r_m_-platformDetails
+					134 text Le nom de la plateforme et sa version, si vous les connaissez.
+					97 container Quels accès pourrez-vous mettre à disposition ?Facultatif
+						98 container
+							99 text Quels accès pourrez-vous mettre à disposition ? Facultatif
+						100 text Indiquez uniquement les accès disponibles. N’envoyez aucun mot de passe, code de connexion ou clé secrète.
+						101 container
+							102 checkbox Description: Administration du site, Value: 0, ID: project-brief-_r_m_-availableAccess-admin
+							103 text Administration du site
+						104 container
+							105 checkbox Description: Hébergement, Value: 0, ID: project-brief-_r_m_-availableAccess-hosting
+							106 text Hébergement
+						107 container
+							108 checkbox Description: Nom de domaine, Value: 0, ID: project-brief-_r_m_-availableAccess-domain
+							109 text Nom de domaine
+						110 container
+							111 checkbox Description: Code source ou dépôt, Value: 0, ID: project-brief-_r_m_-availableAccess-repository
+							112 text Code source ou dépôt
+						113 container
+							114 checkbox Description: Les accès sont à récupérer, Value: 0, ID: project-brief-_r_m_-availableAccess-not-yet
+							115 text Les accès sont à récupérer
+						116 container
+							117 checkbox Description: Je ne sais pas, Value: 0, ID: project-brief-_r_m_-availableAccess-unknown
+							118 text Je ne sais pas
+					119 container
+						120 text Quelles adresses de pages sont importantes à conserver ou à rediriger ? Facultatif
+					121 text entry area (settable) Quelles adresses de pages sont importantes à conserver ou à rediriger ?Facultatif, ID: project-brief-_r_m_-existingUrls
+					122 text Ajoutez les liens ou chemins connus, notamment ceux partagés ou bien référencés. Si vous n’en avez pas la liste, indiquez-le.
+					123 container
+						124 text Disposez-vous d’informations sur le trafic ou le référencement actuel ? Facultatif
+					125 pop up button (collapsed, settable) Disposez-vous d’informations sur le trafic ou le référencement actuel ?Facultatif, Value: Oui, des outils ou rapports sont disponibles, ID: project-brief-_r_m_-seoTools, Secondary Actions: Expand
+						126 menu
+							127 Choisir une réponse
+							128 (selected) Oui, des outils ou rapports sont disponibles
+							129 Non
+							130 Je ne sais pas
+					135 container
+						136 text Quels outils ou résultats faut-il prendre en compte ?  *
+					137 text entry area (settable) Quels outils ou résultats faut-il prendre en compte ? *, ID: project-brief-_r_m_-seoDetails
+					138 text Par exemple : Search Console, outil de mesure d’audience, pages importantes ou recherches qui vous apportent des visites. Aucun identifiant ni code d’accès.
+				68 heading 04 Les données et la continuité, Value: 3
+					69 button (collapsed) 04 Les données et la continuité, ID: radix-_r_t_, Secondary Actions: Expand
+						70 text 04
+						71 text Les données et la continuité
+				72 heading 05 Vos coordonnées, Value: 3
+					73 button (collapsed) 05 Vos coordonnées, ID: radix-_r_v_, Secondary Actions: Expand
+						74 text 05
+						75 text Vos coordonnées
+				76 heading 06 Vos images · facultatif, Value: 3
+					77 button (collapsed) 06 Vos images · facultatif, ID: radix-_r_11_, Secondary Actions: Expand
+						78 text 06
+						79 text Vos images · facultatif
+			80 button Envoyer ma demande
+			81 container
+				82 text Vos coordonnées servent à traiter votre demande. 
+				83 link Description: Confidentialité, Value: gilmathis.com/confidentialite
+		12 link Description: studio — accueil, Value: gilmathis.com/
+		13 container Liens de pied de page
+			14 link Description: Comparer les forfaits, Value: gilmathis.com/forfaits
+			15 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			16 link Description: FAQ, Value: gilmathis.com/faq
+			17 link Description: Nous contacter, Value: gilmathis.com/contact
+
+The focused UI element is 65 button (expanded) 03 La reprise du site et du référencement, ID: radix-_r_r_, Secondary Actions: Collapse

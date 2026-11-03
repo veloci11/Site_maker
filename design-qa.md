@@ -1,6 +1,14 @@
-# Vérification visuelle — configurateur sans compte, 2 novembre 2026
+# Vérification visuelle — briefs publics, 3 novembre 2026
 
 final result: passed
+
+## Lot actuel : briefs V2
+
+Version applicative `770a271`, publiée et vérifiée sur gilmathis.com. Quinze spécialistes ont contribué, sans modifier les images et effets approuvés. Six parcours revus localement ; Vitrine et Refonte également contrôlés en production, sur ordinateur et mobile. Questions conditionnelles, coordonnées distinctes obligatoires, options ciblées et pièces jointes intégrées à la même composition carte à gauche / formulaire à droite.
+
+Le parent a soumis une demande Refonte avec PNG uniquement dans une base locale isolée, puis ouvert son dossier admin : réponses et miniature retrouvées. Pas d’envoi réel ni de demande de production. 192 tests réussis ; restauration des images et de l’historique incluse. Vérification du module natif sur Ubuntu avant bascule, santé et empreinte HTTPS identiques au build. Refonte mobile : 390 × 844 CSS, document 390, zéro champ hors largeur. Aucune erreur applicative observée ; localhost arrêté.
+
+Preuves actuelles : `docs/qa/brief-v2/`. Capture de coordonnées publiée : `public-refonte-desktop.png` ; viewport observé 1280 × 960 CSS, DPR 2, capture native 2560 × 1920. Capture mobile : 390 × 844 CSS/DPR 1, PNG 390 × 844. Les revues détaillent leurs limites et distinguent local/production. Les sections suivantes conservent l’historique de la direction visuelle et des itérations antérieures.
 
 La source fournie sert de référence de structure pour la grande carte colorée. Les décisions explicites de Mathis priment : carte à gauche, options à droite façon Apple, texture studio déjà approuvée, Geist unique, aucun exemple de site dans le configurateur. Il ne s’agit pas de copier les couleurs, les fonctions audio ou les promotions d’ElevenLabs.
 

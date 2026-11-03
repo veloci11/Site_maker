@@ -1,0 +1,86 @@
+Browser tab: 23, Title: "Site Vitrine · studio", URL: "https://gilmathis.com/forfaits/vitrine".
+1 AXWebArea Site Vitrine · studio, URL: gilmathis.com/forfaits/vitrine
+	2 container
+		3 link Description: Aller au contenu, Value: gilmathis.com/forfaits/vitrine#main-content
+		4 container
+			5 link Description: studio — accueil, Value: gilmathis.com/
+			6 container Navigation principale
+				7 link Description: Accueil, Value: gilmathis.com/
+				8 pop up button (collapsed) Forfaits, ID: radix-_r_0_, Secondary Actions: Expand
+				9 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			10 link Description: FAQ, Value: gilmathis.com/faq
+			11 link Description: Nous contacter, Value: gilmathis.com/contact
+		19 container
+			20 link Description: Tous les forfaits, Value: gilmathis.com/forfaits
+			21 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			22 container Votre forfait et son prix
+				23 container
+					24 text Votre forfait
+					25 pop up button (collapsed) Changer, ID: radix-_r_5_, Secondary Actions: Expand
+					26 heading Vitrine, Value: 1
+						27 text Vitrine
+					28 text Présentez vos services, vos réalisations et vos coordonnées sur un site à votre image.
+					29 content list
+						30 text Design adapté à votre activité
+						31 text Version ordinateur
+						32 text Formulaire de contact
+					33 text Création du site
+					34 text À partir de…
+					35 text Forfait de base
+					36 button Modifier mes options
+			37 text 02 / 02
+			38 heading Décrivez votre projet., Value: 2
+				39 text Décrivez votre projet.
+			40 text Précisez vos besoins et laissez vos coordonnées pour préparer votre site.
+			41 text Les champs marqués d’un * sont obligatoires.
+			42 container Votre projet et vos coordonnées
+				43 text Votre projet et vos coordonnées
+				44 heading 01 Votre activité et vos visiteurs, Value: 3
+					45 button (expanded) 01 Votre activité et vos visiteurs, ID: radix-_r_i_, Secondary Actions: Collapse
+						46 text 01
+						47 text Votre activité et vos visiteurs
+				48 container 01 Votre activité et vos visiteurs, ID: radix-_r_j_
+					49 container
+						50 text Quelle est votre activité ?  *
+					51 text field (settable) Quelle est votre activité ? *, ID: project-brief-_r_h_-activity
+					52 text Votre métier, vos services ou votre organisation en quelques mots.
+					53 container
+						54 text À qui le site doit-il s’adresser ?  *
+					55 text field (settable) À qui le site doit-il s’adresser ? *, ID: project-brief-_r_h_-audience
+					56 text Par exemple : particuliers de votre région, entreprises, adhérents ou équipe interne.
+					57 container
+						58 text Que doit faire le visiteur en priorité ?  *
+					59 text field (settable) Que doit faire le visiteur en priorité ? *, ID: project-brief-_r_h_-primaryAction
+					60 text Par exemple : vous contacter, découvrir vos services, réserver ou utiliser un espace personnel.
+				61 heading 02 Les pages et les contenus, Value: 3
+					62 button (collapsed) 02 Les pages et les contenus, ID: radix-_r_k_, Secondary Actions: Expand
+						63 text 02
+						64 text Les pages et les contenus
+				65 heading 03 La mise en place, Value: 3
+					66 button (collapsed) 03 La mise en place, ID: radix-_r_m_, Secondary Actions: Expand
+						67 text 03
+						68 text La mise en place
+				69 heading 04 Le calendrier et les contraintes, Value: 3
+					70 button (collapsed) 04 Le calendrier et les contraintes, ID: radix-_r_o_, Secondary Actions: Expand
+						71 text 04
+						72 text Le calendrier et les contraintes
+				73 heading 05 Vos coordonnées, Value: 3
+					74 button (collapsed) 05 Vos coordonnées, ID: radix-_r_q_, Secondary Actions: Expand
+						75 text 05
+						76 text Vos coordonnées
+				77 heading 06 Vos images · facultatif, Value: 3
+					78 button (collapsed) 06 Vos images · facultatif, ID: radix-_r_s_, Secondary Actions: Expand
+						79 text 06
+						80 text Vos images · facultatif
+			81 button Envoyer ma demande
+			82 container
+				83 text Vos coordonnées servent à traiter votre demande. 
+				84 link Description: Confidentialité, Value: gilmathis.com/confidentialite
+		13 link Description: studio — accueil, Value: gilmathis.com/
+		14 container Liens de pied de page
+			15 link Description: Comparer les forfaits, Value: gilmathis.com/forfaits
+			16 link Description: Exemples de sites, Value: gilmathis.com/exemples
+			17 link Description: FAQ, Value: gilmathis.com/faq
+			18 link Description: Nous contacter, Value: gilmathis.com/contact
+
+The focused UI element is 38 heading Décrivez votre projet., Value: 2
