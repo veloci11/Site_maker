@@ -28,14 +28,15 @@ export function createInquiryAdminRouter() {
     const notification = db.prepare('SELECT status,attempts,updated_at FROM inquiry_outbox WHERE inquiry_id=?').get(row.id);
     const files = db.prepare('SELECT id,inquiry_id,original_name,mime,size,width,height FROM inquiry_attachments WHERE inquiry_id=? ORDER BY position').all(row.id).map(imageDto);
     const answers = brief ? parseJson(brief.brief_snapshot) : null;
+    const configuration = details ? parseJson(details.configuration_snapshot) : null;
     res.json({ inquiry: {
       id: row.id, name: row.name, email: row.email, subject: row.subject,
       message: row.message, createdAt: row.created_at,
       schemaVersion: brief?.schema_version ?? null, requestType: brief?.request_type ?? null,
       firstName: brief?.first_name ?? null, lastName: brief?.last_name ?? null,
       phone: details?.phone ?? null, company: details?.company ?? null,
-      brief: answers, sections: brief ? summarizeBrief(brief.request_type, answers) : [],
-      configuration: details ? parseJson(details.configuration_snapshot) : null,
+      brief: answers, sections: brief ? summarizeBrief(brief.request_type, answers, { configuration, historical: true }) : [],
+      configuration,
       quote: details ? parseJson(details.quote_snapshot) : null,
       files, notification: notification ? { status: notification.status, attempts: notification.attempts, updatedAt: notification.updated_at } : null,
     } });

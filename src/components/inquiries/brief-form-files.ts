@@ -21,13 +21,13 @@ export function imageSelectionError(files: readonly File[]): string | null {
   for (const file of files) {
     const extension = imageExtensions[file.type]
     if (!extension || !extension.test(file.name)) {
-      return `« ${file.name} » : choisissez une image JPEG, PNG ou WebP avec l’extension correspondante.`
+      return `« ${file.name} » : choisissez une image JPEG, PNG ou WebP. Pour un autre format, utilisez le lien de partage.`
     }
     if (file.size === 0) return `« ${file.name} » est vide. Choisissez une autre image.`
-    if (file.size > imageSizeLimit) return `« ${file.name} » dépasse la limite de 5 Mio par image.`
+    if (file.size > imageSizeLimit) return `« ${file.name} » dépasse la limite de 5 Mio par image. Vous pouvez la partager via un lien.`
   }
   if (files.reduce((total, file) => total + file.size, 0) > totalSizeLimit) {
-    return 'Vos images dépassent la limite totale de 20 Mio. Retirez une image ou choisissez un fichier plus léger.'
+    return 'Vos images dépassent la limite totale de 20 Mio. Retirez une image ou utilisez le lien de partage dans cette rubrique.'
   }
   return null
 }

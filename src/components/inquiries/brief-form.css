@@ -12,6 +12,7 @@
 .project-brief-form__section .accordion-trigger[data-state="open"] .project-brief-form__summary { display: none; }
 .project-brief-form__section .accordion-content { padding: 0 0 26px; color: inherit; }
 .project-brief-form__questions { display: grid; gap: 24px; }
+.project-brief-form__file-links { margin-bottom: 24px; }
 .project-brief-form__description { margin: 0 0 22px; color: #6b6273; font-size: 14px; line-height: 1.6; }
 .project-brief-form__field { min-width: 0; scroll-margin-top: 110px; }
 .project-brief-form .field { margin: 0; }

@@ -106,7 +106,7 @@ function validate(input) {
   } else if (input.configuration !== null) {
     fields.configuration = 'Cette demande doit être envoyée sans configuration de forfait.';
   }
-  const briefResult = validateBrief(input.requestType, input.brief);
+  const briefResult = validateBrief(input.requestType, input.brief, configuration);
   const briefFields = Object.fromEntries(Object.entries(briefResult.fields).map(([key, value]) => [key === '_form' ? 'form' : key, value]));
   const errors = { ...fields, ...briefFields };
   if (Object.keys(errors).length) throw new InputError(errors);
@@ -140,7 +140,7 @@ function adminUrl(env, id) {
 }
 
 function humanMessage(value, quote, images, env, id) {
-  const sections = summarizeBrief(value.requestType, value.brief).map(section => [section.title, ...section.items.map(item => `${item.label}\n${item.value}`)].join('\n\n'));
+  const sections = summarizeBrief(value.requestType, value.brief, { configuration: value.configuration }).map(section => [section.title, ...section.items.map(item => `${item.label}\n${item.value}`)].join('\n\n'));
   return [
     `Demande : ${requestTypeLabels[value.requestType]}`,
     [`Prénom : ${value.firstName}`, `Nom : ${value.lastName}`, `E-mail : ${value.email}`, `Téléphone : ${value.phone}`, value.company && `Entreprise : ${value.company}`].filter(Boolean).join('\n'),

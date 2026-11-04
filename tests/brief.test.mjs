@@ -18,10 +18,11 @@ test('the seven request types share a bounded French questionnaire contract', ()
   for (const type of requestTypes) {
     assert.equal(isRequestType(type), true);
     const sections = getBriefSections(type), questions = questionsFor(type);
-    assert.equal(sections.length, type === 'contact' ? 2 : 4, type);
+    assert.equal(sections.length, type === 'contact' ? 3 : 5, type);
+    assert.equal(sections.at(-1).id, 'project-files', 'every request can share files by link');
     assert.equal(new Set(sections.map(section => section.id)).size, sections.length, type);
     assert.equal(new Set(questions.map(question => question.id)).size, questions.length, type);
-    assert.ok(questions.length <= (type === 'refonte' ? 20 : type === 'contact' ? 3 : 17), type);
+    assert.ok(questions.length <= (type === 'contact' ? 5 : 24), type);
     assert.ok(questions.filter(question => question.required).length <= 6, type);
     assert.ok(questions.every(question => question.label && question.id && ['text', 'textarea', 'select', 'multiselect', 'url'].includes(question.type)));
     const preceding = new Set();
@@ -31,6 +32,7 @@ test('the seven request types share a bounded French questionnaire contract', ()
         const parent = questions.find(item => item.id === question.showWhen.field);
         assert.ok(question.showWhen.values.every(value => parent.options.some(option => option.value === value)));
       }
+      if (question.showWhenAnswered) assert.ok(preceding.has(question.showWhenAnswered));
       if (question.options) {
         assert.equal(new Set(question.options.map(option => option.value)).size, question.options.length);
         assert.ok(question.options.every(option => option.value && option.label));
@@ -107,15 +109,23 @@ test('text types, exact character limits, multiline normalization and controls a
 
 test('aggregate text has a separate 16000 character limit', () => {
   const input = validAnswers('connecte');
-  for (const question of questionsFor('connecte')) {
+  const visible = questionsFor('connecte').filter(question => isBriefQuestionVisible(question, input));
+  for (const question of visible) {
     if (question.type === 'textarea') input[question.id] = 'x'.repeat(briefLimits.textarea);
     if (question.type === 'text') input[question.id] = 'x'.repeat(briefLimits.text);
   }
+  const size = () => Object.values(input).reduce((sum, value) => sum + (typeof value === 'string' ? value.length : 0), 0);
+  assert.ok(size() > briefLimits.total);
   assert.ok(validateBrief('connecte', input).fields._form);
-  input.workflow = 'x'.repeat(1000);
-  input.constraints = 'x'.repeat(500);
-  assert.equal(validateBrief('connecte', input).fields._form, undefined);
-  input.constraints += 'x';
+  let excess = size() - briefLimits.total;
+  for (const question of [...visible].reverse().filter(question => question.type === 'textarea')) {
+    const cut = Math.min(excess, input[question.id].length - 1);
+    input[question.id] = input[question.id].slice(0, input[question.id].length - cut);
+    excess -= cut;
+  }
+  assert.equal(size(), briefLimits.total);
+  assert.deepEqual(validateBrief('connecte', input).fields, {});
+  input.activity += 'x';
   assert.ok(validateBrief('connecte', input).fields._form);
 });
 

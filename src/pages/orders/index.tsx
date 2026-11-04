@@ -29,7 +29,7 @@ type InquiryDetail = Omit<Inquiry, 'status'> & {
   phone: string | null
   company: string | null
   brief: Record<string, string | string[]> | null
-  sections: { title: string; items: { label: string; value: string }[] }[]
+  sections: { title: string; items: { label: string; value: string; url?: string }[] }[]
   configuration: Configuration | null
   quote: Quote | null
   files: { id: string; originalName: string; mime: string; size: number; width: number; height: number; previewUrl: string; downloadUrl: string }[]
@@ -233,7 +233,23 @@ function InquiryDetails({ id, showHeading = false }: { id: string; showHeading?:
         {inquiry.company && <div><dt>Entreprise</dt><dd>{inquiry.company}</dd></div>}
       </dl>
     </section>
-    {inquiry.schemaVersion === 2 && inquiry.sections.length ? inquiry.sections.map((section, index) => <section className="admin-inquiry-section" key={`${section.title}-${index}`}><h3>{section.title}</h3><dl className="admin-inquiry-answers">{section.items.map((item, itemIndex) => <div key={`${item.label}-${itemIndex}`}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></section>) : <section className="admin-inquiry-section"><h3>Message reçu</h3><p className="admin-inquiry-original">{inquiry.message}</p></section>}
+    {inquiry.schemaVersion === 2 && inquiry.sections.length ? inquiry.sections.map((section, index) => (
+      <section className="admin-inquiry-section" key={`${section.title}-${index}`}>
+        <h3>{section.title}</h3>
+        <dl className="admin-inquiry-answers">
+          {section.items.map((item, itemIndex) => (
+            <div key={`${item.label}-${itemIndex}`}>
+              <dt>{item.label}</dt>
+              <dd>{item.url ? (
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  Ouvrir les fichiers ({new URL(item.url).hostname}, nouvel onglet)
+                </a>
+              ) : item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )) : <section className="admin-inquiry-section"><h3>Message reçu</h3><p className="admin-inquiry-original">{inquiry.message}</p></section>}
     {(inquiry.configuration || inquiry.quote) && <section className="admin-inquiry-section" aria-label="Sélection enregistrée">
       <h3>Sélection enregistrée</h3>
       {inquiry.configuration && <dl className="admin-record"><div><dt>Forfait</dt><dd>{getOffer(inquiry.configuration.offerId)?.title ?? inquiry.configuration.offerId}</dd></div><div><dt>Langues</dt><dd>{inquiry.configuration.language === 'fr-en' ? 'Français et anglais' : 'Français'}</dd></div></dl>}

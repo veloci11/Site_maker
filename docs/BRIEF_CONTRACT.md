@@ -36,3 +36,11 @@ Une deuxième table additive `inquiry_briefs` conserve version, type, prénom, n
 La liste admin reste légère. `GET /api/admin/inquiries/:inquiryId` fournit un détail compatible avec les anciennes lignes, avec coordonnées, rubriques, configuration/devis et métadonnées des images. `.../files/:fileId/preview` et `.../download` exigent le rôle administrateur, vérifient le rattachement à cette demande et portent des en-têtes privés. Aucun octet d’image dans le DTO JSON, aucun accès public.
 
 Le texte de notification contient le récapitulatif et la liste des images avec un lien vers l’administration authentifiée. La file durable et la politique de nouvelle tentative existantes sont conservées. L’adresse `INQUIRY_TO` reste à fournir plus tard par Mathis. Les tests injectent le transport e-mail ; aucun envoi réel.
+
+## Extension compatible — liens et questions ciblées
+
+Le transport et `schemaVersion: 2` restent stables. La section commune `project-files` ajoute `brief.transferUrl` (HTTPS facultatif, 2048 caractères, sans identifiants) et `brief.transferDetails` (facultatif si un lien est fourni). Le lien est conservé comme réponse, pas téléchargé ni reconnu comme un fichier stocké. Les limites des images restent identiques. Son changement entre deux essais avec le même UUID produit un conflit, comme toute modification de contenu.
+
+`validateBrief(type, answers, configuration)` et `isBriefQuestionVisible` partagent le contexte pour Réservation/Boutique. Le serveur transmet uniquement la configuration qu’il vient de valider ; il refuse les réponses hors option. Sur mesure possède une branche facultative `dataNeeds`, les détails techniques du modèle 3D et du SEO ne bloquent plus l’envoi. Les nouvelles sélections d’incertitude sont exclusives.
+
+Les messages neufs passent par la validation courante. L’administration lit les snapshots avec `summarizeBrief(type, answers, { configuration, historical: true })` : nouvelles conditions et exclusivité ne masquent pas un ancien choix. Identifiants et valeurs précédents sont conservés ; aucune migration ni réécriture des demandes existantes. Le lien admin est explicite, avec domaine visible, nouvel onglet et `noopener noreferrer` ; aucune visite automatique du lien.

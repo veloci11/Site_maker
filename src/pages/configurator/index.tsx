@@ -494,8 +494,8 @@ export function ConfiguratorPage() {
                 {result?.notification === 'accepted'
                   ? 'La notification au studio a été acceptée par le service d’e-mail. Sa livraison n’est pas encore confirmée.'
                   : result?.notification === 'queued'
-                    ? 'La notification au studio est en attente d’envoi. Votre demande et vos images jointes sont conservées.'
-                    : 'La notification par e-mail est momentanément indisponible. Votre demande et vos images jointes restent enregistrées.'}
+                    ? 'La notification au studio est en attente d’envoi. Votre demande est conservée.'
+                    : 'La notification par e-mail est momentanément indisponible. Votre demande reste enregistrée.'}
               </p>
               <div className="configurator-success__actions">
                 <Button asChild variant="outline">

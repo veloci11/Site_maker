@@ -145,7 +145,7 @@ test('brief validation rejects unknown, missing, invalid-choice and out-of-conte
     validInquiry('vitrine', { brief: { ...validInquiry().brief, hostingDetails: 'A hidden answer.' } }),
     validInquiry('evolution', { brief: { ...validInquiry('evolution').brief, currentUrl: 'https://user:secret@example.test/' } }),
     validInquiry('refonte', { brief: { ...validInquiry('refonte').brief, dataTools: 'yes' } }),
-    validInquiry('immersif', { brief: { ...validInquiry('immersif').brief, modelStatus: 'to-create' } }),
+    validInquiry('immersif', { brief: { ...validInquiry('immersif').brief, modelStatus: 'to-create', modelDetails: 'An answer for an unavailable model.' } }),
   ];
   for (const request of requests) {
     const response = await f.post(request);

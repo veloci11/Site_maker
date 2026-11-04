@@ -10,9 +10,13 @@ export type Question = {
   options?: { value: string; label: string }[]
   hint?: string
   showWhen?: { field: string; values: string[] }
+  showWhenAnswered?: string
+  showForOption?: OptionId
+  exclusiveValues?: string[]
+  httpsOnly?: boolean
 }
 export type BriefSection = { id: string; title: string; questions: Question[] }
-export type BriefSummarySection = { title: string; items: { label: string; value: string }[] }
+export type BriefSummarySection = { title: string; items: { label: string; value: string; url?: string }[] }
 
 export const requestTypeLabels: Record<RequestType, string> = {
   vitrine: 'Vitrine',
@@ -32,7 +36,7 @@ const activity: Question = {
 }
 const audience: Question = {
   id: 'audience', label: 'À qui le site doit-il s’adresser ?', type: 'text', required: true,
-  hint: 'Par exemple : particuliers de votre région, entreprises, adhérents ou équipe interne.',
+  hint: 'Par exemple : particuliers de votre région, entreprises, adhérents ou équipe interne. Précisez votre zone d’activité si elle compte.',
 }
 const primaryAction: Question = {
   id: 'primaryAction', label: 'Que doit faire le visiteur en priorité ?', type: 'text', required: true,
@@ -40,7 +44,7 @@ const primaryAction: Question = {
 }
 const pages: Question = {
   id: 'pages', label: 'Quelles pages ou rubriques souhaitez-vous ?', type: 'textarea',
-  hint: 'Une première liste suffit. Vous pouvez indiquer « À définir ensemble ».',
+  hint: 'Pour chaque page, indiquez ce qu’elle doit présenter et les services à mettre en avant. Une liste provisoire ou « À définir ensemble » suffit.',
 }
 const contentReady: Question = {
   id: 'contentReady', label: 'Où en sont vos contenus ?', type: 'select',
@@ -96,6 +100,7 @@ const platformDetails: Question = {
 }
 const availableAccess: Question = {
   id: 'availableAccess', label: 'Quels accès pourrez-vous mettre à disposition ?', type: 'multiselect',
+  exclusiveValues: ['unknown'],
   options: [
     { value: 'admin', label: 'Administration du site' },
     { value: 'hosting', label: 'Hébergement' },
@@ -107,16 +112,43 @@ const availableAccess: Question = {
   hint: 'Indiquez uniquement les accès disponibles. N’envoyez aucun mot de passe, code de connexion ou clé secrète.',
 }
 const dataFields: Question = {
-  id: 'dataFields', label: 'Quelles informations faut-il gérer ?', type: 'textarea', required: true,
-  hint: 'Listez les types de données et leurs champs : produit (nom, photo…), réservation (date, statut…). Utilisez des exemples anonymisés.',
+  id: 'dataFields', label: 'Quelles informations les utilisateurs devront-ils retrouver ou modifier ?', type: 'textarea', required: true,
+  hint: 'Par exemple : leur profil, leurs réservations, le suivi d’une demande ou des fiches produits. Décrivez un exemple fictif avec vos mots ; « À définir ensemble » convient aussi.',
 }
 const workflow: Question = {
-  id: 'workflow', label: 'Quelles étapes ou validations sont nécessaires ?', type: 'textarea',
-  hint: 'Par exemple : demande → vérification par votre équipe → confirmation → suivi. Indiquez qui intervient.',
+  id: 'workflow', label: 'Que se passe-t-il lorsqu’un utilisateur réalise l’action principale ?', type: 'textarea',
+  hint: 'Que fait-il, que reçoit-il, et qui vérifie ou traite sa demande ? Un exemple concret suffit.',
 }
 const integrations: Question = {
   id: 'integrations', label: 'Quels outils doivent échanger avec le site ?', type: 'textarea',
   hint: 'Indiquez l’outil, les informations à transmettre et l’action attendue. Par exemple : une réservation ajoute un créneau dans votre agenda. Ne transmettez aucune clé d’accès.',
+}
+
+const budget: Question = {
+  id: 'budget', label: 'Avez-vous une enveloppe à respecter ?', type: 'text',
+  hint: 'Une estimation suffit. Vous pouvez aussi en discuter avec nous avant de décider.',
+}
+const bookingDetails: Question = {
+  id: 'bookingDetails', label: 'Que doit-on pouvoir réserver et comment confirmez-vous la réservation ?', type: 'textarea',
+  showForOption: 'booking',
+  hint: 'Précisez les prestations ou créneaux, les disponibilités et ce qui confirme la réservation. Indiquez un outil existant si vous en utilisez un.',
+}
+const storeDetails: Question = {
+  id: 'storeDetails', label: 'Que souhaitez-vous vendre et comment les commandes seront-elles traitées ?', type: 'textarea',
+  showForOption: 'online-store',
+  hint: 'Indiquez les produits et leur nombre approximatif, puis la livraison, le retrait ou l’accès au contenu acheté. Aucun export de vos clients.',
+}
+const fileSection: BriefSection = {
+  id: 'project-files', title: 'Vos fichiers', questions: [
+    {
+      id: 'transferUrl', label: 'Lien de téléchargement de vos fichiers', type: 'url', httpsOnly: true,
+      hint: 'Pour vos documents, vidéos, modèles 3D ou fichiers dépassant 20 Mio, collez un lien WeTransfer, SwissTransfer ou un dossier partagé. Vérifiez qu’il est encore disponible ; aucun mot de passe ni donnée de vos clients.',
+    },
+    {
+      id: 'transferDetails', label: 'Que contient ce lien ?', type: 'textarea', showWhenAnswered: 'transferUrl',
+      hint: 'Par exemple : textes, logo ou modèle 3D. Précisez le fichier à regarder en premier et la date d’expiration si vous la connaissez.',
+    },
+  ],
 }
 
 const sectionsByRequest: Record<RequestType, BriefSection[]> = {
@@ -124,6 +156,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
     { id: 'project', title: 'Votre activité et vos visiteurs', questions: [activity, audience, primaryAction] },
     { id: 'content', title: 'Les pages et les contenus', questions: [{ ...pages, required: true }, contentReady, references] },
     { id: 'setup', title: 'La mise en place', questions: [
+      bookingDetails,
       domainHosting,
       {
         id: 'hostingDetails', label: 'Que souhaitez-vous conserver ?', type: 'text',
@@ -171,12 +204,18 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
       dataFields,
       workflow,
       {
+        id: 'expectedVolume', label: 'Combien de personnes et de contenus prévoyez-vous au lancement ?', type: 'text',
+        hint: 'Une estimation suffit : par exemple 50 membres ou 200 produits. Vous pouvez indiquer « Je ne sais pas ».',
+      },
+      {
         id: 'imports', label: 'Des informations existantes sont-elles à importer ?', type: 'textarea',
         hint: 'Indiquez leur origine, leur format et un ordre de grandeur : tableur, ancien site, logiciel… Ne joignez pas de données personnelles ici.',
       },
       integrations,
+      bookingDetails,
+      storeDetails,
     ] },
-    { id: 'delivery', title: 'Les contenus et le calendrier', questions: [pages, contentReady, domainHosting, deadline, constraints] },
+    { id: 'delivery', title: 'Les contenus et le calendrier', questions: [pages, contentReady, references, domainHosting, deadline, constraints] },
   ],
   immersif: [
     { id: 'project', title: 'Votre activité et vos visiteurs', questions: [activity, { ...audience, required: false }, primaryAction] },
@@ -199,14 +238,19 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         ],
       },
       {
-        id: 'modelDetails', label: 'Que savez-vous de ce modèle ?', type: 'textarea', required: true,
-        hint: 'Format, poids approximatif, textures, animations et possibilité de l’utiliser sur le site. Vous pouvez indiquer ce qui reste à vérifier.',
+        id: 'modelDetails', label: 'Avez-vous des précisions sur le fichier 3D ?', type: 'textarea',
+        hint: 'Si vous les connaissez : format, textures, animations et autorisation d’utilisation. Vous pouvez partager le fichier dans « Vos fichiers » pour que nous l’examinions.',
         showWhen: { field: 'modelStatus', values: ['ready', 'in-progress'] },
+      },
+      {
+        id: 'objectCount', label: 'Combien d’objets ou de scènes souhaitez-vous présenter ?', type: 'text',
+        hint: 'Une estimation suffit, ou indiquez ce qui reste à définir.',
       },
     ] },
     { id: 'experience', title: 'L’expérience souhaitée', questions: [
       {
         id: 'interactions3d', label: 'Quelles interactions souhaitez-vous explorer ?', type: 'multiselect',
+        exclusiveValues: ['unknown'],
         options: [
           { value: 'rotate', label: 'Faire tourner l’objet' },
           { value: 'zoom', label: 'Zoomer sur les détails' },
@@ -230,10 +274,10 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         ],
       },
     ] },
-    { id: 'delivery', title: 'Le site autour de la 3D', questions: [pages, contentReady, references, domainHosting, deadline, constraints] },
+    { id: 'delivery', title: 'Le site autour de la 3D', questions: [pages, contentReady, references, bookingDetails, domainHosting, deadline, constraints] },
   ],
   'sur-mesure': [
-    { id: 'project', title: 'Votre activité et votre objectif', questions: [activity, { ...audience, required: false }, primaryAction] },
+    { id: 'project', title: 'Votre activité et votre objectif', questions: [activity, { ...audience, required: false }, { ...primaryAction, required: false }] },
     { id: 'scenario', title: 'Un cas d’usage concret', questions: [
       {
         id: 'scenario', label: 'Décrivez une utilisation du début à la fin.', type: 'textarea', required: true,
@@ -249,7 +293,18 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         hint: 'Par exemple : une demande à approuver, un paiement refusé, une annulation ou une modification après validation.',
       },
     ] },
-    { id: 'data', title: 'Les données et les outils', questions: [dataFields, integrations, contentReady, domainHosting] },
+    { id: 'data', title: 'Les données et les outils', questions: [
+      {
+        id: 'dataNeeds', label: 'Le site doit-il enregistrer ou gérer des informations ?', type: 'select',
+        options: [
+          { value: 'yes', label: 'Oui' },
+          { value: 'no', label: 'Non' },
+          { value: 'unknown', label: 'À définir ensemble' },
+        ],
+      },
+      { ...dataFields, required: false, showWhen: { field: 'dataNeeds', values: ['yes'] } },
+      integrations, bookingDetails, storeDetails, contentReady, domainHosting,
+    ] },
     { id: 'priorities', title: 'Les priorités et le résultat attendu', questions: [
       {
         id: 'priorities', label: 'Qu’est-ce qui est indispensable au lancement et qu’est-ce qui peut attendre ?', type: 'textarea', required: true,
@@ -259,7 +314,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         id: 'successCriteria', label: 'À quoi verrez-vous que le projet répond à votre besoin ?', type: 'textarea',
         hint: 'Par exemple : une tâche réalisable sans tableur, un parcours plus court ou une information accessible à la bonne personne.',
       },
-      pages, references, deadline, constraints,
+      pages, references, budget, deadline, constraints,
     ] },
   ],
   evolution: [
@@ -267,7 +322,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
     { id: 'changes', title: 'Les changements souhaités', questions: [
       {
         id: 'requestedChanges', label: 'Que souhaitez-vous modifier ou ajouter précisément ?', type: 'textarea', required: true,
-        hint: 'Pour chaque changement, indiquez la page ou la fonction concernée et le résultat attendu.',
+        hint: 'Pour chaque changement : la page ou fonction concernée, ce qui se passe aujourd’hui et le résultat souhaité. Indiquez ce qui est prioritaire.',
       },
       {
         id: 'preserve', label: 'Que faut-il conserver tel quel ?', type: 'textarea', required: true,
@@ -283,7 +338,9 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
       },
       availableAccess,
     ] },
-    { id: 'delivery', title: 'Les contenus et les contraintes', questions: [contentReady, references, deadline, constraints] },
+    { id: 'delivery', title: 'Les contenus et les contraintes', questions: [contentReady, references, budget, deadline,
+      { ...constraints, hint: 'Indiquez notamment les périodes ou fonctions à ne pas interrompre : réservations, commandes, campagne en cours…' },
+    ] },
   ],
   refonte: [
     { id: 'existing', title: 'Votre activité et votre site actuel', questions: [activity, { ...audience, required: false }, primaryAction, currentUrl] },
@@ -304,6 +361,10 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         id: 'contentMigration', label: 'Quels contenus faut-il reprendre ou préparer ?', type: 'textarea',
         hint: 'Textes, photos, articles, documents, traductions… Précisez ce qui peut être repris et ce qui est à revoir.',
       },
+      {
+        id: 'migrationVolume', label: 'Quelle quantité de contenus faut-il reprendre environ ?', type: 'text',
+        hint: 'Pages, articles, produits ou documents. Une estimation ou « Je ne sais pas » suffit.',
+      },
       references,
     ] },
     { id: 'migration', title: 'La reprise du site et du référencement', questions: [
@@ -311,7 +372,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
       availableAccess,
       {
         id: 'existingUrls', label: 'Quelles adresses de pages sont importantes à conserver ou à rediriger ?', type: 'textarea',
-        hint: 'Ajoutez les liens ou chemins connus, notamment ceux partagés ou bien référencés. Si vous n’en avez pas la liste, indiquez-le.',
+        hint: 'Ajoutez les liens connus, notamment ceux partagés ou bien référencés. Si le nom de domaine doit changer, indiquez la nouvelle adresse envisagée. Vous pouvez laisser cette liste à préparer avec nous.',
       },
       {
         id: 'seoTools', label: 'Disposez-vous d’informations sur le trafic ou le référencement actuel ?', type: 'select',
@@ -322,7 +383,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         ],
       },
       {
-        id: 'seoDetails', label: 'Quels outils ou résultats faut-il prendre en compte ?', type: 'textarea', required: true,
+        id: 'seoDetails', label: 'Quels outils ou résultats faut-il prendre en compte ?', type: 'textarea',
         hint: 'Par exemple : Search Console, outil de mesure d’audience, pages importantes ou recherches qui vous apportent des visites. Aucun identifiant ni code d’accès.',
         showWhen: { field: 'seoTools', values: ['available'] },
       },
@@ -345,6 +406,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         id: 'continuity', label: 'Quelles fonctions doivent rester disponibles pendant la transition ?', type: 'textarea',
         hint: 'Par exemple : formulaires, commandes, accès membres ou messagerie liée au domaine. Précisez les périodes à éviter.',
       },
+      budget,
       deadline,
       constraints,
     ] },
@@ -366,19 +428,31 @@ export function isRequestType(value: unknown): value is RequestType {
 }
 
 export function getBriefSections(requestType: RequestType): BriefSection[] {
-  return isRequestType(requestType) ? sectionsByRequest[requestType] : []
+  return isRequestType(requestType) ? [...sectionsByRequest[requestType], fileSection] : []
 }
 
 export function emptyBrief(): BriefAnswers {
   return {}
 }
 
-export function isBriefQuestionVisible(question: Question, answers: BriefAnswers): boolean {
+export function isBriefQuestionVisible(question: Question, answers: BriefAnswers, configuration: Configuration | null = null): boolean {
+  if (question.showForOption && (!configuration || !isOptionSelected(configuration, question.showForOption))) return false
+  if (question.showWhenAnswered) {
+    const answer = Object.hasOwn(answers, question.showWhenAnswered) ? answers[question.showWhenAnswered] : undefined
+    if (!containsAnswer(answer)) return false
+  }
   if (!question.showWhen) return true
   const answer = Object.hasOwn(answers, question.showWhen.field) ? answers[question.showWhen.field] : undefined
   return typeof answer === 'string'
     ? question.showWhen.values.includes(answer)
     : Array.isArray(answer) && answer.some(value => question.showWhen!.values.includes(value))
+}
+
+/** An uncertainty choice replaces precise choices; a later precise choice replaces it. */
+export function toggleBriefChoice(question: Question, selected: readonly string[], value: string, checked: boolean): string[] {
+  if (!checked) return selected.filter(item => item !== value)
+  if (question.exclusiveValues?.includes(value)) return [value]
+  return [...selected.filter(item => item !== value && !question.exclusiveValues?.includes(item)), value]
 }
 
 // Line breaks are meaningful in long answers. Other control characters, including tabs,
@@ -402,7 +476,7 @@ function isHttpUrl(value: string): boolean {
   }
 }
 
-export function validateBrief(requestType: RequestType, input: unknown): { answers: BriefAnswers; fields: Record<string, string> } {
+export function validateBrief(requestType: RequestType, input: unknown, configuration: Configuration | null = null): { answers: BriefAnswers; fields: Record<string, string> } {
   const errors = new Map<string, string>()
   const answers: BriefAnswers = {}
   const result = () => ({ answers, fields: Object.fromEntries(errors) })
@@ -439,7 +513,8 @@ export function validateBrief(requestType: RequestType, input: unknown): { answe
   for (const question of questions) {
     const descriptor = Object.hasOwn(descriptors, question.id) ? descriptors[question.id] : undefined
     const raw: unknown = descriptor && Object.hasOwn(descriptor, 'value') ? descriptor.value : undefined
-    if (!isBriefQuestionVisible(question, answers)) {
+    if (question.showWhenAnswered && errors.has(question.showWhenAnswered)) continue
+    if (!isBriefQuestionVisible(question, answers, configuration)) {
       if (containsAnswer(raw)) errors.set(question.id, 'Cette question ne s’applique pas à vos réponses. Effacez sa réponse.')
       continue
     }
@@ -466,6 +541,10 @@ export function validateBrief(requestType: RequestType, input: unknown): { answe
       }
       if (new Set(trimmed).size !== trimmed.length) {
         errors.set(question.id, 'Sélectionnez chaque choix une seule fois.')
+        continue
+      }
+      if (trimmed.length > 1 && trimmed.some(value => question.exclusiveValues?.includes(value))) {
+        errors.set(question.id, 'Choisissez la réponse d’incertitude seule, ou les réponses précises.')
         continue
       }
       if (trimmed.length) answers[question.id] = options.filter(option => trimmed.includes(option.value)).map(option => option.value)
@@ -498,20 +577,31 @@ export function validateBrief(requestType: RequestType, input: unknown): { answe
       errors.set(question.id, 'Indiquez une adresse http:// ou https:// sans identifiant ni mot de passe.')
       continue
     }
+    if (question.httpsOnly && !/^https:\/\//i.test(value)) {
+      errors.set(question.id, 'Utilisez un lien https:// pour partager vos fichiers.')
+      continue
+    }
     answers[question.id] = value
   }
   return result()
 }
 
-export function summarizeBrief(requestType: RequestType, input: BriefAnswers): BriefSummarySection[] {
-  const { answers } = validateBrief(requestType, input)
+export function summarizeBrief(requestType: RequestType, input: BriefAnswers, { configuration = null, historical = false }: { configuration?: Configuration | null; historical?: boolean } = {}): BriefSummarySection[] {
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return []
+  // Saved answers predate today's conditions and exclusivity rules. Never revalidate
+  // those snapshots or require a newly introduced parent to display an old answer.
+  const answers = historical ? input : validateBrief(requestType, input, configuration).answers
   return getBriefSections(requestType).map(section => ({
     title: section.title,
     items: section.questions.flatMap(question => {
-      const answer = answers[question.id]
-      if (!answer || !isBriefQuestionVisible(question, answers)) return []
+      const answer = Object.getOwnPropertyDescriptor(answers, question.id)?.value
+      if (typeof answer !== 'string' && !(Array.isArray(answer) && answer.every(value => typeof value === 'string'))) return []
+      if (!containsAnswer(answer) || (!historical && !isBriefQuestionVisible(question, answers, configuration))) return []
       const labelFor = (value: string) => question.options?.find(option => option.value === value)?.label ?? value
-      return [{ label: question.label, value: Array.isArray(answer) ? answer.map(labelFor).join(', ') : labelFor(answer) }]
+      const value = Array.isArray(answer) ? answer.map(labelFor).join(', ') : labelFor(answer.trim())
+      const url = question.id === 'transferUrl' && typeof answer === 'string' && isHttpUrl(answer.trim()) && /^https:\/\//i.test(answer.trim()) ? answer.trim() : undefined
+      return [{ label: question.label, value, ...(url ? { url } : {}) }]
     }),
   })).filter(section => section.items.length > 0)
 }
+import { isOptionSelected, type Configuration, type OptionId } from './catalog.ts'

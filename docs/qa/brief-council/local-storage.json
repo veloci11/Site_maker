@@ -1,0 +1,10 @@
+{
+  "environment": "disposable local DATA_DIR only",
+  "requestType": "vitrine",
+  "transferUrlStored": true,
+  "transferDescriptionStored": true,
+  "bookingAnswerStored": true,
+  "notification": "unavailable",
+  "emailAttempts": 0,
+  "inquiries": 1
+}

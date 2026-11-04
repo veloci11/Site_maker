@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight, ShieldCheck } from 'lucide-react'
 import {
   offers,
   getOffer,
@@ -156,8 +156,8 @@ export function HomePage() {
             Clé en main.
           </h1>
           <p className="home-hero__description">
-            Un site réalisé pour vous : présenter votre activité, proposer un espace utilisateur ou
-            faire découvrir votre univers en 3D.
+            Présentez votre activité, proposez un espace client ou faites découvrir votre univers en 3D.
+            Nous vous aidons à choisir les fonctions utiles, puis réalisons votre site.
           </p>
           <div className="home-hero__actions">
             <Button asChild size="lg">
@@ -169,6 +169,9 @@ export function HomePage() {
               Comment ça se passe
             </a>
           </div>
+          <p className="home-hero__reassurance">
+            Un doute sur le forfait ? Nous vérifions votre choix avec vous avant de commencer.
+          </p>
         </Reveal>
       </section>
       <section className="container home-offers" id="forfaits" aria-labelledby="home-offers-title">
@@ -206,16 +209,16 @@ export function HomePage() {
       >
         {[
           [
-            'Configurez votre site',
-            'Choisissez votre forfait et les fonctions utiles à votre activité.',
+            'Choisissez vos fonctions',
+            'Comparez ce qui est compris et ajoutez les fonctions utiles à votre activité.',
           ],
           [
-            'Laissez vos coordonnées',
-            'Transmettez votre configuration avec votre nom et votre e-mail.',
+            'Décrivez votre projet',
+            'Partagez vos besoins, vos fichiers et vos coordonnées dans un questionnaire adapté.',
           ],
           [
-            'Précisons votre projet',
-            'Nous vous recontactons pour valider le périmètre avant de commencer.',
+            'Préparons votre site',
+            'Nous reprenons votre demande avec vous pour confirmer le forfait et les choix avant de démarrer.',
           ],
         ].map(([title, text], index) => (
           <Reveal className="home-method__step" key={title} delay={index * 80}>
@@ -226,6 +229,22 @@ export function HomePage() {
             </div>
           </Reveal>
         ))}
+      </section>
+      <section className="container home-assurance" aria-label="Sécurité et protection des données">
+        <div className="home-assurance__item">
+          <ShieldCheck size={20} aria-hidden="true" />
+          <div>
+            <h2>Une revue de sécurité avant livraison.</h2>
+            <p>Les accès, les formulaires et la protection des données sont contrôlés avant la mise en ligne.</p>
+          </div>
+        </div>
+        <div className="home-assurance__item">
+          <ShieldCheck size={20} aria-hidden="true" />
+          <div>
+            <h2>Un site conçu pour respecter le RGPD.</h2>
+            <p>Formulaires, gestion du consentement et informations sur les données personnelles sont préparés selon les outils retenus.</p>
+          </div>
+        </div>
       </section>
       <section
         className="container home-comparison"

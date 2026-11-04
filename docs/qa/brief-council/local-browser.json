@@ -1,0 +1,54 @@
+{
+  "bookingQuestionVisible": true,
+  "transferVisibleWithoutImage": true,
+  "invalidUrlFocus": true,
+  "noCascadingDetailError": true,
+  "adminLink": {
+    "href": "https://files.example.test/projet-demo",
+    "label": "Ouvrir les fichiers (files.example.test, nouvel onglet)",
+    "rel": "noopener noreferrer",
+    "target": "_blank"
+  },
+  "customDataHiddenInitially": true,
+  "customDataVisibleOptional": true,
+  "customDataHiddenForNo": true,
+  "modelDetailsOptional": true,
+  "objectCountOptional": true,
+  "preciseChoiceClearsUnknown": true,
+  "unknownClearsPrecise": true,
+  "seoDetailsOptional": true,
+  "migrationVolumeOptional": true,
+  "mobile": {
+    "clientWidth": 390,
+    "detailsVisible": true,
+    "documentWidth": 390,
+    "height": 844,
+    "openSections": 1,
+    "width": 390
+  },
+  "closedFileSummary": "06\nVos fichiers · facultatif\nLien de partage ajouté",
+  "linkSurvivesCollapse": true,
+  "detailsDisappearWhenLinkCleared": true,
+  "linkSurvivesReturnToOptions": true,
+  "originalLocalConfigurationRestored": true,
+  "home": {
+    "cardCount": 6,
+    "description": "Présentez votre activité, proposez un espace client ou faites découvrir votre univers en 3D. Nous vous aidons à choisir les fonctions utiles, puis réalisons votre site.",
+    "engineerClaimInPublicText": false,
+    "h1s": 1,
+    "reassurance": "Un doute sur le forfait ? Nous vérifions votre choix avec vous avant de commencer.",
+    "trust": [
+      "Une revue de sécurité avant livraison.",
+      "Un site conçu pour respecter le RGPD."
+    ]
+  },
+  "homeMobile": {
+    "assuranceColumns": "350px",
+    "clientWidth": 390,
+    "documentWidth": 390,
+    "height": 844,
+    "width": 390
+  },
+  "environment": "IAB local; isolated disposable DATA_DIR; one fictional inquiry submitted; no email sent",
+  "consoleErrors": []
+}

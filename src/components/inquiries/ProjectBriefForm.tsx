@@ -7,6 +7,7 @@ import {
   emptyBrief,
   getBriefSections,
   isBriefQuestionVisible,
+  toggleBriefChoice,
   validateBrief,
   type BriefAnswer,
   type BriefAnswers,
@@ -52,11 +53,11 @@ const contactFields = [
 ] as const
 
 /** Keep unfinished answers while removing every hidden question, including nested children. */
-function visibleAnswers(requestType: RequestType, source: BriefAnswers): BriefAnswers {
+function visibleAnswers(requestType: RequestType, source: BriefAnswers, configuration: Configuration | null): BriefAnswers {
   const answers: BriefAnswers = {}
   for (const section of getBriefSections(requestType)) {
     for (const question of section.questions) {
-      if (isBriefQuestionVisible(question, answers) && Object.hasOwn(source, question.id)) {
+      if (isBriefQuestionVisible(question, answers, configuration) && Object.hasOwn(source, question.id)) {
         answers[question.id] = source[question.id]
       }
     }
@@ -108,9 +109,7 @@ function QuestionField({ question, id, answer, error, onChange, register }: Ques
                 ref={index === 0 ? register : undefined}
                 aria-describedby={describedBy}
                 aria-invalid={Boolean(error)}
-                onCheckedChange={checked => onChange(checked === true
-                  ? [...selected, option.value]
-                  : selected.filter(value => value !== option.value))}
+                onCheckedChange={checked => onChange(toggleBriefChoice(question, selected, option.value, checked === true))}
               />
               <span className="project-brief-form__choice-copy">{option.label}</span>
             </label>
@@ -123,6 +122,7 @@ function QuestionField({ question, id, answer, error, onChange, register }: Ques
   const common = {
     id,
     name: `brief.${question.id}`,
+    autoComplete: 'off',
     value: typeof answer === 'string' ? answer : '',
     required: question.required,
     'aria-invalid': Boolean(error),
@@ -158,6 +158,8 @@ function QuestionField({ question, id, answer, error, onChange, register }: Ques
 export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusyChange }: ProjectBriefFormProps) {
   const prefix = `project-brief-${useId()}`
   const sections = useMemo(() => getBriefSections(requestType), [requestType])
+  const questionSections = sections.filter(section => section.id !== 'project-files')
+  const fileQuestions = sections.find(section => section.id === 'project-files')?.questions ?? []
   const [answers, setAnswers] = useState<BriefAnswers>(emptyBrief)
   const [contact, setContact] = useState<InquiryContact>(() => ({ ...emptyInquiryContact }))
   const [images, setImages] = useState<BriefImage[]>([])
@@ -214,10 +216,10 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
   }
 
   function changeAnswer(question: Question, answer: BriefAnswer) {
-    const next = visibleAnswers(requestType, { ...answers, [question.id]: answer })
+    const next = visibleAnswers(requestType, { ...answers, [question.id]: answer }, configuration)
     setAnswers(next)
     const visibleIds = new Set(sections.flatMap(section => section.questions)
-      .filter(item => isBriefQuestionVisible(item, next)).map(item => `brief.${item.id}`))
+      .filter(item => isBriefQuestionVisible(item, next, configuration)).map(item => `brief.${item.id}`))
     setFields(current => Object.fromEntries(Object.entries(current).filter(([key]) =>
       key !== `brief.${question.id}` && (!key.startsWith('brief.') || visibleIds.has(key)))))
     setFailure('')
@@ -276,7 +278,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
     setFailure(message)
     for (const section of sections) {
       const question = section.questions.find(item => errors[`brief.${item.id}`])
-      if (question && isBriefQuestionVisible(question, answers)) {
+      if (question && isBriefQuestionVisible(question, answers, configuration)) {
         setOpenSection(section.id)
         setFocusRequest({ field: `brief.${question.id}` })
         return
@@ -287,7 +289,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
       setOpenSection('contact-details')
       setFocusRequest({ field: contactError.key })
     } else if (Object.keys(errors).some(key => key === 'files' || key.startsWith('files.'))) {
-      setOpenSection('project-images')
+      setOpenSection('project-files')
       setFocusRequest({ field: 'files' })
     } else {
       setFocusRequest({ field: '_form' })
@@ -297,9 +299,9 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (inFlight.current || result) return
-    const cleanedAnswers = visibleAnswers(requestType, answers)
+    const cleanedAnswers = visibleAnswers(requestType, answers, configuration)
     setAnswers(cleanedAnswers)
-    const checkedBrief = validateBrief(requestType, cleanedAnswers)
+    const checkedBrief = validateBrief(requestType, cleanedAnswers, configuration)
     const checkedContact = validateInquiryContact(contact)
     const imageError = imageSelectionError(images.map(image => image.file))
     const errors = {
@@ -380,14 +382,14 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
         <p>{result.notification === 'accepted'
           ? 'La notification au studio a été acceptée par le service d’e-mail. Sa livraison n’est pas encore confirmée.'
           : result.notification === 'queued'
-            ? 'La notification au studio est en attente d’envoi. Votre demande et ses pièces jointes sont conservées.'
-            : 'La notification par e-mail est actuellement indisponible. Votre demande et ses pièces jointes restent enregistrées.'}</p>
+            ? 'La notification au studio est en attente d’envoi. Votre demande est conservée.'
+            : 'La notification par e-mail est actuellement indisponible. Votre demande reste enregistrée.'}</p>
       </div>
     )
   }
 
   const knownFields = new Set([
-    ...sections.flatMap(section => section.questions.filter(question => isBriefQuestionVisible(question, answers)).map(question => `brief.${question.id}`)),
+    ...sections.flatMap(section => section.questions.filter(question => isBriefQuestionVisible(question, answers, configuration)).map(question => `brief.${question.id}`)),
     ...contactFields.map(field => field.key),
     'files',
   ])
@@ -409,38 +411,42 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
     )
   }
 
+  function renderQuestion(question: Question) {
+    return (
+      <QuestionField
+        key={question.id}
+        question={question}
+        id={`${prefix}-${question.id}`}
+        answer={answers[question.id]}
+        error={fields[`brief.${question.id}`]}
+        register={node => { controls.current[`brief.${question.id}`] = node }}
+        onChange={answer => changeAnswer(question, answer)}
+      />
+    )
+  }
+
   return (
     <form className="project-brief-form" noValidate onSubmit={submit} aria-busy={sending}>
       <p className="project-brief-form__intro">Les champs marqués d’un * sont obligatoires.</p>
       <fieldset className="project-brief-form__fieldset" disabled={sending}>
         <legend className="project-brief-form__sr-only">Votre projet et vos coordonnées</legend>
         <Accordion type="single" collapsible value={openSection} onValueChange={setOpenSection} className="project-brief-form__sections">
-          {sections.map((section, index) => {
-            const questions = section.questions.filter(question => isBriefQuestionVisible(question, answers))
+          {questionSections.map((section, index) => {
+            const questions = section.questions.filter(question => isBriefQuestionVisible(question, answers, configuration))
             const summary = questions.map(question => answerSummary(question, answers[question.id])).filter(Boolean).join(' · ')
             return (
               <AccordionItem key={section.id} value={section.id} className="project-brief-form__section">
                 <AccordionTrigger>{heading(section.title, index, summary)}</AccordionTrigger>
                 <AccordionContent>
                   <div className="project-brief-form__questions">
-                    {questions.map(question => (
-                      <QuestionField
-                        key={question.id}
-                        question={question}
-                        id={`${prefix}-${question.id}`}
-                        answer={answers[question.id]}
-                        error={fields[`brief.${question.id}`]}
-                        register={node => { controls.current[`brief.${question.id}`] = node }}
-                        onChange={answer => changeAnswer(question, answer)}
-                      />
-                    ))}
+                    {questions.map(renderQuestion)}
                   </div>
                 </AccordionContent>
               </AccordionItem>
             )
           })}
           <AccordionItem value="contact-details" className="project-brief-form__section">
-            <AccordionTrigger>{heading('Vos coordonnées', sections.length, [contactSummary, contact.email.trim(), contact.phone.trim(), contact.company.trim()].filter(Boolean).join(' · '))}</AccordionTrigger>
+            <AccordionTrigger>{heading('Vos coordonnées', questionSections.length, [contactSummary, contact.email.trim(), contact.phone.trim(), contact.company.trim()].filter(Boolean).join(' · '))}</AccordionTrigger>
             <AccordionContent>
               <div className="project-brief-form__contact-grid">
                 {contactFields.map(field => {
@@ -454,6 +460,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
                         name={field.key}
                         type={'type' in field ? field.type : 'text'}
                         autoComplete={field.autoComplete}
+                        spellCheck={field.key === 'email' ? false : undefined}
                         maxLength={field.limit}
                         required={required}
                         value={contact[field.key]}
@@ -469,9 +476,12 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="project-images" className="project-brief-form__section">
-            <AccordionTrigger>{heading('Vos images · facultatif', sections.length + 1, images.map(image => image.file.name).join(' · '))}</AccordionTrigger>
+          <AccordionItem value="project-files" className="project-brief-form__section">
+            <AccordionTrigger>{heading('Vos fichiers · facultatif', questionSections.length + 1, [...images.map(image => image.file.name), ...(answers.transferUrl ? ['Lien de partage ajouté'] : [])].join(' · '))}</AccordionTrigger>
             <AccordionContent>
+              <div className="project-brief-form__questions project-brief-form__file-links">
+                {fileQuestions.filter(question => isBriefQuestionVisible(question, answers, configuration)).map(renderQuestion)}
+              </div>
               <div className="field project-brief-form__field">
                 <Label htmlFor={`${prefix}-files`}>Ajouter des images<span className="project-brief-form__optional">Facultatif</span></Label>
                 <p className="project-brief-form__hint" id={`${prefix}-files-hint`}>Un logo, des photos ou des captures utiles au projet. Jusqu’à 6 images JPEG, PNG ou WebP, 5 Mio par image et 20 Mio au total.</p>
@@ -522,7 +532,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
       <Button className="project-brief-form__submit" type="submit" disabled={sending}>
         {sending ? <><LoaderCircle className="spin" size={17} aria-hidden="true" />Enregistrement…</> : 'Envoyer ma demande'}
       </Button>
-      <p className="project-brief-form__privacy">Vos coordonnées servent à traiter votre demande. <Link to="/confidentialite" target="_blank" rel="noopener noreferrer" aria-label="Confidentialité (nouvel onglet)">Confidentialité</Link></p>
+      <p className="project-brief-form__privacy">Vos coordonnées et vos réponses servent à étudier votre demande et à vous recontacter. <Link to="/confidentialite" target="_blank" rel="noopener noreferrer" aria-label="Confidentialité (nouvel onglet)">Confidentialité</Link></p>
       <BriefNavigationGuard active={Boolean(unfinished)} pending={sending} />
     </form>
   )
