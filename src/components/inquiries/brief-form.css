@@ -26,8 +26,8 @@
 .project-brief-form__choice-field > legend { padding: 0; margin-bottom: 8px; }
 .project-brief-form__choices { display: grid; gap: 8px; }
 .project-brief-form__choice { display: flex; align-items: flex-start; min-height: 46px; gap: 12px; padding: 12px 14px; border: 1px solid #ddd7e2; border-radius: 12px; background: rgb(255 255 255 / .72); cursor: pointer; }
-.project-brief-form__choice[data-selected="true"] { border-color: #302338; background: #fff; }
-.project-brief-form__choice:focus-within { outline: 3px solid rgb(128 106 164 / .32); outline-offset: 2px; }
+.project-brief-form__choice[data-selected="true"] { border-color: #b9b1c0; background: #fff; }
+.project-brief-form__choice .checkbox:focus-visible { outline: 2px solid #211a27; outline-offset: 3px; }
 .project-brief-form__choice .checkbox { margin-top: 1px; }
 .project-brief-form__choice-copy { display: grid; min-width: 0; gap: 4px; color: #211a27; font-size: 14px; line-height: 1.5; }
 .project-brief-form__choice-copy > small { color: #6b6273; font-size: 12px; }

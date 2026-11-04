@@ -1,0 +1,104 @@
+{
+  "beforePublic": {
+    "border": "1px solid rgb(48, 35, 56)",
+    "checkboxFocusVisible": false,
+    "checkboxOutline": "rgb(255, 255, 255) none 3px",
+    "checked": "true",
+    "focused": true,
+    "outline": "rgba(128, 106, 164, 0.32) solid 3px",
+    "outlineOffset": "3px",
+    "shadow": "rgb(48, 35, 56) 0px 0px 0px 0.5px inset"
+  },
+  "publicOriginal": [
+    {
+      "checked": "false",
+      "id": "option-mobile"
+    },
+    {
+      "checked": "false",
+      "id": "option-language-en"
+    },
+    {
+      "checked": "false",
+      "id": "option-managed-content"
+    }
+  ],
+  "localOriginal": [
+    {
+      "checked": "false",
+      "id": "option-mobile"
+    },
+    {
+      "checked": "true",
+      "id": "option-language-en"
+    },
+    {
+      "checked": "false",
+      "id": "option-managed-content"
+    }
+  ],
+  "pointer": {
+    "border": "1px solid rgb(185, 177, 192)",
+    "checkboxFocusVisible": false,
+    "checkboxOutline": "rgb(255, 255, 255) none 3px",
+    "checked": "true",
+    "focused": true,
+    "outline": "rgb(87, 83, 96) none 3px",
+    "shadow": "none"
+  },
+  "keyboard": {
+    "checked": "true",
+    "containerOutline": "rgb(87, 83, 96) none 3px",
+    "focusVisible": true,
+    "id": "option-language-en",
+    "offset": "3px",
+    "outline": "rgb(33, 26, 39) solid 2px",
+    "role": "checkbox"
+  },
+  "keyboardSpaceUnchecked": "false",
+  "localRestored": [
+    {
+      "checked": "false",
+      "id": "option-mobile"
+    },
+    {
+      "checked": "true",
+      "id": "option-language-en"
+    },
+    {
+      "checked": "false",
+      "id": "option-managed-content"
+    }
+  ],
+  "briefPointer": {
+    "border": "1px solid rgb(185, 177, 192)",
+    "checkboxFocusVisible": false,
+    "checkboxOutline": "rgb(255, 255, 255) none 3px",
+    "checked": "true",
+    "focused": true,
+    "outline": "rgb(17, 17, 17) none 3px",
+    "shadow": "none"
+  },
+  "briefKeyboard": {
+    "containerOutline": "rgb(17, 17, 17) none 3px",
+    "focusVisible": true,
+    "id": "project-brief-_r_9_-availableAccess-hosting",
+    "outline": "rgb(33, 26, 39) solid 2px"
+  },
+  "briefMobile": {
+    "checked": "true",
+    "outline": "rgb(17, 17, 17) none 3px",
+    "shadow": "none",
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      375,
+      375
+    ]
+  },
+  "errors": [],
+  "noSubmission": true,
+  "briefSelectionsCleared": true
+}
