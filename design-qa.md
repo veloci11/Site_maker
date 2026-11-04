@@ -1,8 +1,16 @@
-# Vérification visuelle — galerie et parcours publics, 3 novembre 2026
+# Vérification visuelle — questionnaires et accueil, 3 novembre 2026
 
 final result: passed
 
-## Lot actuel : galerie et revue critique
+## Lot actuel : questionnaires et accueil
+
+Application `82d3e3b`, poussée, déployée et contrôlée sur gilmathis.com. Cinq analyses indépendantes puis cinq relectures anonymisées et arbitrage final. Questionnaires adaptés, lien de partage facultatif, conditions partagées client/serveur et historique admin conservé ; accompagnement et engagements sécurité/RGPD ajoutés à l’accueil, sans qualification d’ingénieur non confirmée. Images, cartes, badges, prix et effets approuvés conservés.
+
+213 tests passent avec TypeScript et build. IAB local : soumission fictive et relecture admin dans une base dédiée, zéro tentative e-mail. IAB public : nouvel accueil, six cartes, un H1, Refonte, accordéon exclusif, lien sans image, précision conditionnelle, résumé fermé et mobile. Aucune soumission ni image envoyée en production. Document/client mobile 375/375 dans un viewport 390 × 844 avec scrollbar ; aucun débordement. Aucune erreur applicative observée. Réglages temporaires réinitialisés et localhost fermé.
+
+Client HTTPS identique au build, sauvegarde et Sharp vérifiés avant bascule ; autres services inchangés. Captures natives correctes : `docs/qa/brief-council/public-trust.jpg` et `public-refonte-mobile.jpg` ; la capture mobile déformée par le mélange des modes de viewport a été écartée. Compte rendu et limites : `docs/qa/brief-council/final-review.md`. Le retour ultérieur sur le contour à la sélection rejoint le lot suivant.
+
+## Lot précédent : galerie et revue critique
 
 Version applicative `099c1a1`, publiée et vérifiée sur gilmathis.com. Remarque de l’ami écartée : badges, filtres et images approuvés conservés. Galerie compacte, dix références, classement corrigé, Cal.com ajouté et scroll stable sur les cinq filtres. Trois spécialistes ont ensuite revu les parcours, les performances et le SEO. Leur revue et les corrections effectivement vérifiées sont rassemblées dans `docs/qa/gallery-review/final-review.md`.
 

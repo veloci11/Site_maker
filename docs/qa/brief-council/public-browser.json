@@ -1,0 +1,118 @@
+{
+  "home": {
+    "assurance": "Une revue de sécurité avant livraison.\n\nLes accès, les formulaires et la protection des données sont contrôlés avant la mise en ligne.\n\nUn site conçu pour respecter le RGPD.\n\nFormulaires, gestion du consentement et informations sur les données personnelles sont préparés selon les outils retenus.",
+    "cards": 6,
+    "engineerClaim": false,
+    "entry": [
+      "/assets/index-BlgVzUM-.js"
+    ],
+    "h1": 1,
+    "url": "https://gilmathis.com/",
+    "viewport": [
+      1280,
+      720
+    ],
+    "widths": [
+      1265,
+      1265
+    ]
+  },
+  "mobileHome": {
+    "assuranceColumns": "350px",
+    "assuranceWidth": 350,
+    "url": "https://gilmathis.com/#fonctionnement",
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      390,
+      390
+    ]
+  },
+  "refonte": {
+    "openSections": 1,
+    "sectionButtons": [
+      {
+        "expanded": "false",
+        "text": "01\nVotre activité et votre site actuel"
+      },
+      {
+        "expanded": "false",
+        "text": "02\nCe qui doit changer et rester"
+      },
+      {
+        "expanded": "false",
+        "text": "03\nLa reprise du site et du référencement"
+      },
+      {
+        "expanded": "true",
+        "text": "04\nLes données et la continuité"
+      },
+      {
+        "expanded": "false",
+        "text": "05\nVos coordonnées"
+      },
+      {
+        "expanded": "false",
+        "text": "06\nVos fichiers · facultatif"
+      }
+    ],
+    "url": "https://gilmathis.com/contact?besoin=refonte",
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      390,
+      390
+    ]
+  },
+  "filesOpen": {
+    "detailsVisible": true,
+    "imagesSelected": 0,
+    "openSections": 1,
+    "url": "https://gilmathis.com/contact?besoin=refonte",
+    "urlFields": [
+      {
+        "id": "project-brief-_r_7_-transferUrl",
+        "maxLength": 2048,
+        "required": false,
+        "type": "url"
+      }
+    ],
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      390,
+      390
+    ]
+  },
+  "filesCollapsed": "06\nVos fichiers · facultatif\nLien de partage ajouté",
+  "filesCleared": {
+    "detailsVisible": false,
+    "openSections": 1,
+    "urlEmpty": true,
+    "widths": [
+      390,
+      390
+    ]
+  },
+  "mobileFinal": {
+    "openSections": 1,
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      375,
+      375
+    ]
+  },
+  "errors": [],
+  "noProductionSubmission": true,
+  "noFileUpload": true,
+  "fictitiousUrlCleared": true
+}

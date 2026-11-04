@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-04T03:32:38.663112+00:00",
+  "origin": "https://gilmathis.com",
+  "commit": "82d3e3b9dad94034d2c0f95988472732da2ae873",
+  "release": "20261104T024657Z-82d3e3b9dad9",
+  "health": {
+    "ok": true
+  },
+  "entryScript": "/assets/index-BlgVzUM-.js",
+  "entrySha256": "361cc0e2d6fe8b82e8b0b4634d444c82c5ac671bdb4916fd157d02d693b9f04f",
+  "localEntrySha256": "361cc0e2d6fe8b82e8b0b4634d444c82c5ac671bdb4916fd157d02d693b9f04f",
+  "entryMatchesBuild": true,
+  "offers": 4,
+  "options": 26,
+  "paymentAvailable": false,
+  "basePricesAllNull": true,
+  "noProductionInquirySubmitted": true,
+  "verificationTransport": "curl HTTPS, fail on non-2xx"
+}

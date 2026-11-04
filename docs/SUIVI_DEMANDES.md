@@ -1,8 +1,20 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `099c1a1` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `82d3e3b` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
+
+## Questionnaires et conseil croisé — terminé et vérifié en ligne
+
+Cinq conseillers indépendants puis cinq relectures des avis anonymisés, avec arbitrage final documenté. Questions allégées ou précisées selon le forfait, branches Réservation/Boutique liées aux options, Sur mesure créatif, incertitude exclusive et historique conservé. Lien HTTPS facultatif WeTransfer/SwissTransfer/dossier partagé, précision conditionnelle et récapitulatif privé ; limites des images inchangées, aucune récupération automatique.
+
+Accueil : accompagnement et aide au choix, étapes du vrai parcours, revue de sécurité avant livraison et conception tenant compte du RGPD. Qualification d’ingénieur préparée mais pas publiée tant que l’intervention reste seulement « je pense ». Étude France sourcée et six fourchettes proposées dans `docs/ETUDE_MARCHE_PRIX_FRANCE_2026-11-03.md` ; aucun prix ni −50 % publiés.
+
+Application `82d3e3b`, release `20261104T024657Z-82d3e3b9dad9`, client `index-BlgVzUM-.js` : TypeScript, build et 213 tests passent. Empreinte HTTPS identique, sauvegarde et décodeur avant bascule, autres projets inchangés. Accueil et Refonte vérifiés dans l’IAB public, dont lien, résumé replié et mobile ; aucune demande envoyée en production. Saisie fictive effacée, session QA locale déconnectée, réglages navigateur rétablis et localhost fermé. Preuves et limites dans `docs/qa/brief-council/final-review.md`.
+
+## File suivante — contour de sélection des options
+
+Retour reçu après publication du lot précédent : encadrement de sélection jugé trop présent. Reproduire dans les options et le brief, puis réduire l’encadrement sans perdre la coche ni l’accès au clavier. À traiter comme un lot distinct après clôture de la livraison ci-dessus.
 
 ## Galerie et revue critique — terminé et vérifié en ligne
 

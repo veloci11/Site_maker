@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative : 03/11/2026 à 16:54, heure de Mexico (UTC−06), contrôlée dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée : 03/11/2026 à 22:03, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `099c1a131eef6129e67a979587871eda501a1b1f`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261103T225415Z-099c1a131eef` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DZiCU2sY.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `ee0d149314a5301e6b6d81a9ea2b0ec05f6bfa63b7a28c3cf3a2900d1e6121b2`.
-- Version précédente disponible : `releases/20261103T213957Z-770a271379ef`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `82d3e3b9dad94034d2c0f95988472732da2ae873`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261104T024657Z-82d3e3b9dad9` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-BlgVzUM-.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `72525365cfeec24998340955794a25b75145849f0b1873160d68a2dc2e684d43`.
+- Version précédente disponible : `releases/20261103T225415Z-099c1a131eef`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -27,7 +27,15 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — galerie, parcours et SEO
+## Dernier lot — questionnaires, accompagnement et étude de prix
+
+Application `82d3e3b` : lien HTTPS facultatif de partage dans les sept briefs, description conditionnelle, réponses et références dans le dossier privé. Questions adaptées, détails techniques facultatifs, branches selon options et historique conservé. L’accueil explique le service, le choix vérifié et les engagements de livraison sécurité/RGPD. La qualification d’ingénieur reste à confirmer. Étude de prix distincte, catalogue sans montant publié.
+
+TypeScript, build et 213 tests passent. Archive retransférée après une première expiration sans activation ; checksum vérifié, sauvegarde et décodage Sharp avant bascule. Santé, quatre offres, 26 options, prix inchangés et autres projets/PID inchangés ; GP Park HTTP 200. Client public `index-BlgVzUM-.js`, SHA-256 `361cc0e2d6fe8b82e8b0b4634d444c82c5ac671bdb4916fd157d02d693b9f04f`, identique au build.
+
+IAB public : accueil et Refonte, rubrique de fichiers, précision conditionnelle et résumé fermé, ordinateur/mobile sans débordement. Une URL fictive a été saisie puis effacée ; aucun formulaire soumis ni fichier téléversé en production. Base QA locale uniquement pour la soumission complète, session déconnectée et zéro tentative e-mail. Réglages navigateur rétablis, localhost fermé. Compte rendu et preuves : `docs/qa/brief-council/final-review.md`. Le nouveau retour sur l’encadrement de sélection est dans la file suivante.
+
+## Lot précédent — galerie, parcours et SEO
 
 Application `099c1a1` : cinq filtres testés en public avec scroll conservé, dix sites, un badge chacun et quarante liens externes target blank. Mobile 390 × 844 CSS sans débordement. Garde de sortie Contact réellement vérifié en production avec saisie fictive, conservée par Rester puis abandonnée explicitement ; aucun envoi. Contrôles locaux plus larges sur Vitrine, Retour, Changer et écran bas. Primitives, images et effet approuvés inchangés.
 
