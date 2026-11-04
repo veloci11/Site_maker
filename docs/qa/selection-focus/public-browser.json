@@ -1,0 +1,64 @@
+{
+  "configurator": {
+    "border": "1px solid rgb(185, 177, 192)",
+    "checkboxFocusVisible": false,
+    "checked": "true",
+    "entry": [
+      "/assets/index-Biz5hM9-.js"
+    ],
+    "outline": "rgb(87, 83, 96) none 3px",
+    "shadow": "none",
+    "url": "https://gilmathis.com/forfaits/vitrine"
+  },
+  "keyboard": {
+    "containerOutline": "rgb(87, 83, 96) none 3px",
+    "focusVisible": true,
+    "id": "option-language-en",
+    "outline": "rgb(33, 26, 39) solid 2px"
+  },
+  "briefDesktop": {
+    "border": "1px solid rgb(185, 177, 192)",
+    "checked": "true",
+    "outline": "rgb(17, 17, 17) none 3px",
+    "shadow": "none",
+    "url": "https://gilmathis.com/contact?besoin=refonte",
+    "viewport": [
+      1280,
+      720
+    ],
+    "widths": [
+      1265,
+      1265
+    ]
+  },
+  "briefMobile": {
+    "border": "1px solid rgb(185, 177, 192)",
+    "checked": "true",
+    "outline": "rgb(17, 17, 17) none 3px",
+    "shadow": "none",
+    "viewport": [
+      390,
+      844
+    ],
+    "widths": [
+      375,
+      375
+    ]
+  },
+  "errors": [],
+  "configurationRestored": true,
+  "briefChoiceCleared": true,
+  "noProductionSubmission": true,
+  "mobileScreenshot": {
+    "file": "after-public-mobile.png",
+    "viewport": [
+      390,
+      844
+    ],
+    "deviceScaleFactor": 2,
+    "pixels": [
+      780,
+      1688
+    ]
+  }
+}

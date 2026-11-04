@@ -1,6 +1,6 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `82d3e3b` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `e8895ae` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
@@ -12,9 +12,11 @@ Accueil : accompagnement et aide au choix, étapes du vrai parcours, revue de s�
 
 Application `82d3e3b`, release `20261104T024657Z-82d3e3b9dad9`, client `index-BlgVzUM-.js` : TypeScript, build et 213 tests passent. Empreinte HTTPS identique, sauvegarde et décodeur avant bascule, autres projets inchangés. Accueil et Refonte vérifiés dans l’IAB public, dont lien, résumé replié et mobile ; aucune demande envoyée en production. Saisie fictive effacée, session QA locale déconnectée, réglages navigateur rétablis et localhost fermé. Preuves et limites dans `docs/qa/brief-council/final-review.md`.
 
-## File suivante — contour de sélection des options
+## Contour de sélection des options — terminé et vérifié en ligne
 
-Retour reçu après publication du lot précédent : encadrement de sélection jugé trop présent. Reproduire dans les options et le brief, puis réduire l’encadrement sans perdre la coche ni l’accès au clavier. À traiter comme un lot distinct après clôture de la livraison ci-dessus.
+Lot distinct, commencé après clôture des questionnaires : `:focus-within` dessinait un contour violet autour de toute la ligne au clic. Contour retiré dans configurateur et questionnaire ; coche noire, bordure neutre fine et focus clavier limité à la petite case. Ombre intérieure de sélection supprimée, cartes et grain conservés.
+
+Application `e8895ae`, release `20261104T043052Z-e8895ae19aeb`, client `index-Biz5hM9-.js` : TypeScript, build et 213 tests passent. IAB local et public : souris, clavier, choix du brief et mobile ; configuration initiale et saisies fictives rétablies, aucune soumission. Client et deux CSS identiques au build par HTTPS, sauvegarde et Sharp avant bascule, autres projets inchangés. Localhost fermé. Preuves : `docs/qa/selection-focus/review.md`.
 
 ## Galerie et revue critique — terminé et vérifié en ligne
 

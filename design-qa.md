@@ -1,14 +1,22 @@
-# Vérification visuelle — questionnaires et accueil, 3 novembre 2026
+# Vérification visuelle — questionnaires, accueil et options, 3 novembre 2026
 
 final result: passed
 
-## Lot actuel : questionnaires et accueil
+## Lot actuel : contour de sélection des options
+
+Application `e8895ae`, poussée, déployée et vérifiée. Le contour violet de `:focus-within` entourait toute la ligne au clic ; supprimé dans options et choix du brief. Sélection : coche noire, bordure fine et aucune ombre intérieure. Au clavier uniquement, un repère sombre de 2 px entoure la petite case.
+
+213 tests, TypeScript et build passent. IAB local/public : souris, Tab/Espace, compteurs, choix du questionnaire et mobile ; choix initiaux rétablis, aucune soumission. Capture mobile native 780 × 1688 pour viewport 390 × 844/DPR 2 ; document/client 375/375 avec scrollbar, aucun débordement. Aucun changement des cartes, matières ou animations approuvées. Aucune erreur applicative observée.
+
+Client et deux CSS publics identiques au build par HTTPS. Sauvegarde, décodeur et santé contrôlés ; autres services inchangés. Preuves : `docs/qa/selection-focus/review.md`, `after-public.jpg` et `after-public-mobile.png`. Réglages navigateur rétablis, accueil public conservé et localhost fermé.
+
+## Lot précédent : questionnaires et accueil
 
 Application `82d3e3b`, poussée, déployée et contrôlée sur gilmathis.com. Cinq analyses indépendantes puis cinq relectures anonymisées et arbitrage final. Questionnaires adaptés, lien de partage facultatif, conditions partagées client/serveur et historique admin conservé ; accompagnement et engagements sécurité/RGPD ajoutés à l’accueil, sans qualification d’ingénieur non confirmée. Images, cartes, badges, prix et effets approuvés conservés.
 
 213 tests passent avec TypeScript et build. IAB local : soumission fictive et relecture admin dans une base dédiée, zéro tentative e-mail. IAB public : nouvel accueil, six cartes, un H1, Refonte, accordéon exclusif, lien sans image, précision conditionnelle, résumé fermé et mobile. Aucune soumission ni image envoyée en production. Document/client mobile 375/375 dans un viewport 390 × 844 avec scrollbar ; aucun débordement. Aucune erreur applicative observée. Réglages temporaires réinitialisés et localhost fermé.
 
-Client HTTPS identique au build, sauvegarde et Sharp vérifiés avant bascule ; autres services inchangés. Captures natives correctes : `docs/qa/brief-council/public-trust.jpg` et `public-refonte-mobile.jpg` ; la capture mobile déformée par le mélange des modes de viewport a été écartée. Compte rendu et limites : `docs/qa/brief-council/final-review.md`. Le retour ultérieur sur le contour à la sélection rejoint le lot suivant.
+Client HTTPS identique au build, sauvegarde et Sharp vérifiés avant bascule ; autres services inchangés. Captures natives correctes : `docs/qa/brief-council/public-trust.jpg` et `public-refonte-mobile.jpg` ; la capture mobile déformée par le mélange des modes de viewport a été écartée. Compte rendu et limites : `docs/qa/brief-council/final-review.md`. Le retour ultérieur sur le contour à la sélection a été traité dans le lot `e8895ae` ci-dessus.
 
 ## Lot précédent : galerie et revue critique
 

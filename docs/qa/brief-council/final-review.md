@@ -33,3 +33,6 @@ Preuves : `public-https.json`, `public-browser.json`, `public-trust.jpg`, `publi
 ## Points restant à décider
 
 Prix et périmètres commerciaux précis, identité/documents légaux et destinataire Resend restent ouverts. La mention d’ingénieur demande confirmation de son intervention réelle. Les tests ne prouvent pas une conformité juridique générale ni la réception d’un e-mail. Le retour ultérieur de Mathis sur le contour des options constitue le lot suivant, sans annuler cette livraison.
+
+
+La correction suivante des contours a ensuite été publiée et vérifiée séparément dans `e8895ae` : voir `../selection-focus/review.md`.

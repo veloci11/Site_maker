@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée : 03/11/2026 à 22:03, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée : 03/11/2026 à 22:35, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `82d3e3b9dad94034d2c0f95988472732da2ae873`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261104T024657Z-82d3e3b9dad9` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-BlgVzUM-.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `72525365cfeec24998340955794a25b75145849f0b1873160d68a2dc2e684d43`.
-- Version précédente disponible : `releases/20261103T225415Z-099c1a131eef`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `e8895ae19aeb9232868392a17494fe0a81d35b23`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261104T043052Z-e8895ae19aeb` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-Biz5hM9-.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `2eb786926b495ffe34dab1ec3ebeeee6d018c5b6420cc9b0365fcbddcc4b6421`.
+- Version précédente disponible : `releases/20261104T024657Z-82d3e3b9dad9`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -27,13 +27,21 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — questionnaires, accompagnement et étude de prix
+## Dernier lot — contour de sélection des options
+
+Application `e8895ae` : contour violet autour des lignes retiré dans les options du configurateur et les choix multiples du brief. Coche noire et bordure neutre de 1 px ; au clavier, repère sombre de 2 px sur la petite case. Aucun changement fonctionnel, de prix ou de matière.
+
+TypeScript, build et 213 tests passent. Client public `index-Biz5hM9-.js`, SHA-256 `4cbcc5dca08c84101ae1b69d797d70279cdcbeab6b1024dc547e503e60c6dbdf` ; client et deux CSS modifiés identiques au build par HTTPS. Sauvegarde, décodage Sharp et santé vérifiés ; autres services/PID inchangés, GP Park HTTP 200.
+
+IAB public : souris et clavier sur Vitrine ; choix du brief Refonte sur ordinateur et mobile 390 × 844, document/client 375/375 sans débordement. Choix initiaux rétablis, aucun formulaire soumis, réglages temporaires retirés et localhost fermé. Preuves : `docs/qa/selection-focus/review.md`, `after-public.jpg`, `after-public-mobile.png`, `public-browser.json` et `public-https.json`.
+
+## Lot précédent — questionnaires, accompagnement et étude de prix
 
 Application `82d3e3b` : lien HTTPS facultatif de partage dans les sept briefs, description conditionnelle, réponses et références dans le dossier privé. Questions adaptées, détails techniques facultatifs, branches selon options et historique conservé. L’accueil explique le service, le choix vérifié et les engagements de livraison sécurité/RGPD. La qualification d’ingénieur reste à confirmer. Étude de prix distincte, catalogue sans montant publié.
 
 TypeScript, build et 213 tests passent. Archive retransférée après une première expiration sans activation ; checksum vérifié, sauvegarde et décodage Sharp avant bascule. Santé, quatre offres, 26 options, prix inchangés et autres projets/PID inchangés ; GP Park HTTP 200. Client public `index-BlgVzUM-.js`, SHA-256 `361cc0e2d6fe8b82e8b0b4634d444c82c5ac671bdb4916fd157d02d693b9f04f`, identique au build.
 
-IAB public : accueil et Refonte, rubrique de fichiers, précision conditionnelle et résumé fermé, ordinateur/mobile sans débordement. Une URL fictive a été saisie puis effacée ; aucun formulaire soumis ni fichier téléversé en production. Base QA locale uniquement pour la soumission complète, session déconnectée et zéro tentative e-mail. Réglages navigateur rétablis, localhost fermé. Compte rendu et preuves : `docs/qa/brief-council/final-review.md`. Le nouveau retour sur l’encadrement de sélection est dans la file suivante.
+IAB public : accueil et Refonte, rubrique de fichiers, précision conditionnelle et résumé fermé, ordinateur/mobile sans débordement. Une URL fictive a été saisie puis effacée ; aucun formulaire soumis ni fichier téléversé en production. Base QA locale uniquement pour la soumission complète, session déconnectée et zéro tentative e-mail. Réglages navigateur rétablis, localhost fermé. Compte rendu et preuves : `docs/qa/brief-council/final-review.md`. Le retour suivant sur l’encadrement de sélection a ensuite été traité dans le lot `e8895ae` décrit ci-dessus.
 
 ## Lot précédent — galerie, parcours et SEO
 

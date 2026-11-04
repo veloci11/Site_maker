@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-04T04:32:50.607692+00:00",
+  "origin": "https://gilmathis.com",
+  "commit": "e8895ae19aeb9232868392a17494fe0a81d35b23",
+  "release": "20261104T043052Z-e8895ae19aeb",
+  "health": {
+    "ok": true
+  },
+  "entryScript": "/assets/index-Biz5hM9-.js",
+  "entrySha256": "4cbcc5dca08c84101ae1b69d797d70279cdcbeab6b1024dc547e503e60c6dbdf",
+  "entryMatchesBuild": true,
+  "selectionStyles": [
+    {
+      "asset": "ProjectBriefForm-ExNdTMib.css",
+      "sha256": "b9a428b334b3c7de7c9b5ac9153ff22f2f12a8c956aa80828f5c486367b4ca87",
+      "matchesBuild": true
+    },
+    {
+      "asset": "accordion-pzd6lmpM.css",
+      "sha256": "28924506ad567466dcb0f0488543a63c58a618a341728d6be20ccbb91370c577",
+      "matchesBuild": true
+    }
+  ],
+  "offers": 4,
+  "options": 26,
+  "paymentAvailable": false,
+  "basePricesAllNull": true,
+  "noProductionInquirySubmitted": true,
+  "verificationTransport": "curl HTTPS, fail on non-2xx"
+}
