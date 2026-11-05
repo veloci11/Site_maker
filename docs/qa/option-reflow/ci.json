@@ -1,0 +1,33 @@
+{
+  "revision": "ab76cb29705868e4882b5835d6db0a9c0fcd98d4",
+  "checks": [
+    {
+      "name": "check",
+      "status": "completed",
+      "conclusion": "failure",
+      "detailsUrl": "https://github.com/veloci11/Site_maker/actions/runs/41983847358/job/127099882381",
+      "startedAt": "2026-11-05T06:57:14Z",
+      "completedAt": "2026-11-05T06:57:16Z",
+      "runnerId": 0,
+      "runnerName": "",
+      "steps": [],
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The job was not started because your account is locked due to a billing issue."
+        },
+        {
+          "level": "notice",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        }
+      ]
+    }
+  ],
+  "workflow": ".github/workflows/ci.yml",
+  "configuredNode": "24",
+  "checkCommand": "npm run check",
+  "localCheck": {
+    "passed": 213,
+    "failed": 0
+  }
+}

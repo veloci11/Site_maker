@@ -2,7 +2,7 @@
 
 Le placement instantané de grille est maintenant accompagné d’un vrai déplacement FLIP de 620 ms ; la copie de sortie disparaît en 420 ms et la hauteur est animée. L’alternance commence à gauche après les deux blocs de trois. La configuration et les totaux changent immédiatement.
 
-IAB local : 67 positions horizontales intermédiaires observées pour une ligne qui change de colonne ; onze niveaux d’opacité à la sortie, aucune copie résiduelle. Mobile : 31 positions verticales intermédiaires. Dernière option, clics rapides, retrait/réajout et réduction du mouvement vérifiés. Image stable, console vide, choix initiaux et viewport restaurés. Preuves : `docs/qa/option-reflow/`. Publication après le check final, puis diagnostic GitHub demandé par Mathis.
+IAB local : 67 positions horizontales intermédiaires observées pour une ligne qui change de colonne ; onze niveaux d’opacité à la sortie, aucune copie résiduelle. Mobile : 31 positions verticales intermédiaires. Dernière option, clics rapides, retrait/réajout et réduction du mouvement vérifiés. Image stable, console vide, choix initiaux et viewport restaurés. Preuves : `docs/qa/option-reflow/`. Version `ab76cb2` publiée et vérifiée dans l’IAB public : glissements réellement mesurés, fondu, zéro copie à la fin et image fixe ; recontrôle mobile complet conservé. TypeScript/build et 213 tests passent. Santé et neuf empreintes vérifiées, choix initiaux restaurés et localhost arrêté. GitHub reste empêché avant tout runner par la facturation du compte, diagnostic dans `docs/qa/option-reflow/ci-diagnosis.md`.
 
 ## Ordre des options fixé — 5 novembre 2026
 

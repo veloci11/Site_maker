@@ -5,11 +5,11 @@ Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’I
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `94865388d5c273373ce7bfd1dc5896fb46562890`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T063308Z-94865388d5c2` ; bascule atomique de `current`.
-- Client public : `/assets/index-CW6jefAj.js` ; SHA-256 `0597c99117c1637b91694c6e94c7e0f9f62939e234468cd60e3c5bff0b1ab937`.
-- Archive : SHA-256 `023fd7212e12a347e1b6ddd6568caaa7d52847e0c44fab6a4134a2e03a458b6a`, 13969169 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T061831Z-0cdbd930aa81`.
+- Révision applicative : `ab76cb29705868e4882b5835d6db0a9c0fcd98d4`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T065746Z-ab76cb297058` ; bascule atomique de `current`.
+- Client public : `/assets/index-BIgh2Va4.js` ; SHA-256 `56630dd0f76366b3e21642643150ea68c31d25b80b4bda38d232316eb01e7cf8`.
+- Archive : SHA-256 `f63889f71145178e0c5b5fba00e2c3666eab3777365d3e9aac3a0b30a7db21db`, 13970877 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T063308Z-94865388d5c2`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -19,9 +19,21 @@ Les six offres utilisent une ouverture/fermeture de 520 ms : déplacement de la 
 
 Les trois textures d’origine restent identiques octet pour octet. La partie haute garde l’original 1536 × 1024 ; une vraie continuation native prolonge le bas sans miroir visible ni agrandissement de la source rejetée de 724 px. Exports 1x et 2x, ces derniers sans perte. Le filtre sombre a été allégé. Les fichiers sources, la consigne et l’assemblage sont dans `docs/asset-sources/textures/vitrine-continuation-prompts.md` et `vitrine-continuation-assembly.json`.
 
-L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé utilise une grille à emplacements explicites quand la largeur le permet : trois choix à gauche, trois à droite, puis alternance droite/gauche. Il suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte à partir de cinq choix reste animée sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
+L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé utilise une grille à emplacements explicites quand la largeur le permet : trois choix à gauche, trois à droite, puis alternance gauche/droite. Il suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte à partir de cinq choix reste animée sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
 
-## Vérification finale de l’ordre demandé
+## Vérification finale des retraits animés
+
+Le retrait garde une copie décorative en fondu de 420 ms, hors du flux et de l’arbre accessible. Les lignes restantes glissent sur 620 ms vers leurs nouvelles cases et la hauteur du résumé est animée. Les clics rapides repartent de la position visuelle courante ; les copies et animations sont nettoyées, y compris au démontage et en réduction du mouvement. Configuration et totaux restent immédiats. Après les blocs de trois, l’alternance commence désormais à gauche.
+
+- `npm run check` : TypeScript, build et **213 tests passants**.
+- IAB local : déplacement réel mesuré (67 positions horizontales), onze niveaux d’opacité à la sortie, clics rapides/retrait-réajout, dernière option et réduction du mouvement. Mobile : 31 positions verticales. Texture fixe de 580 px / 500 px, console vide, aucun défilement interne.
+- IAB public : bon client, mouvement continu confirmé avec 48 positions horizontales intermédiaires ; sortie en fondu et zéro copie à la fin. Mobile 390 × 844 : 28 positions verticales, zéro copie à la fin et aucun débordement. Le premier enregistrement mobile s’était arrêté au premier frame de l’action ; le recontrôle observe toute l’animation et sa fin.
+- Santé origine/HTTPS valide ; neuf empreintes (client et huit CSS) identiques au build. Sauvegarde réussie avant bascule, catalogue et 25 autres PID de services inchangés.
+- Choix publics initiaux, groupes et viewport restaurés. Aucun formulaire envoyé. Serveur local arrêté ; ports 4173/4174 libres.
+- Preuves actuelles : `docs/qa/option-reflow/`, capture `public-desktop.jpg`. Diagnostic CI : `ci-diagnosis.md` ; blocage de facturation du compte GitHub à lever par le titulaire avant un nouveau run.
+
+## Contrôle précédent — ordre de la grille
+
 
 - `npm run check` : TypeScript, build et **213 tests locaux passants**. Aucun calcul, prix ou stockage modifié ; ordre de présentation en mémoire uniquement.
 - IAB local : douze choix volontairement différents du catalogue, positions validées aux douze étapes ; trois à gauche, trois à droite, puis droite/gauche. Retrait/réajout et séquence mobile vérifiés. Image fixe et zéro message de console.
@@ -51,7 +63,7 @@ Preuves : `docs/qa/full-motion/` (traces, dix interventions spécialisées, revu
 
 ## GitHub Actions
 
-Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41981126879). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/option-order/ci.json`.
+Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41983847358). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/option-reflow/ci.json` ; détail dans `ci-diagnosis.md`. Aucun runner attribué et aucune étape exécutée ; déblocage du compte requis côté facturation GitHub.
 
 ## Éléments commerciaux reportés
 

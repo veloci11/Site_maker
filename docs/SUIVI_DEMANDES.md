@@ -1,6 +1,6 @@
-## Retrait et replacement animés — en vérification locale, 5 novembre 2026
+## Retrait et replacement animés — publiés et vérifiés, 5 novembre 2026
 
-Dernière demande : corriger la disparition et le replacement instantanés, puis démarrer l’alternance à gauche après les blocs de trois. L’action garde les calculs immédiats ; une copie décorative sort en fondu pendant que les lignes réelles glissent vers leurs nouveaux emplacements. Hauteur du résumé animée et mouvements interruptibles, sans défilement interne ni changement de l’image. Contrôle de l’échec GitHub demandé après la livraison de ce correctif.
+Dernière demande : corriger la disparition et le replacement instantanés, puis démarrer l’alternance à gauche après les blocs de trois. L’action garde les calculs immédiats ; une copie décorative sort en fondu pendant que les lignes réelles glissent vers leurs nouveaux emplacements. Hauteur du résumé animée et mouvements interruptibles, sans défilement interne ni changement de l’image. Publié : révision `ab76cb2`, release `20261105T065746Z-ab76cb297058`. TypeScript/build et 213 tests passent. IAB public : glissements horizontal et vertical mesurés, fondu de sortie, zéro copie résiduelle, image fixe, absence de console/débordement ; choix initiaux restaurés et localhost arrêté. Santé et neuf empreintes HTTP vérifiées. GitHub examiné ensuite : dernier run sans runner ni étape, compte verrouillé pour facturation. Le titulaire doit lever ce blocage avant une relance ; rapport dans `qa/option-reflow/ci-diagnosis.md`.
 
 ## Ordre explicite des options — publié et vérifié, 5 novembre 2026
 

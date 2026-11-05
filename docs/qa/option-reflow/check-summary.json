@@ -1,0 +1,8 @@
+{
+  "revision": "ab76cb29705868e4882b5835d6db0a9c0fcd98d4",
+  "command": "npm run check",
+  "typeScript": "pass",
+  "build": "pass",
+  "tests": 213,
+  "failed": 0
+}
