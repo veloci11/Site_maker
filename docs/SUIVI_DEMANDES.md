@@ -1,3 +1,7 @@
+## GitHub Actions uniquement manuel — 5 novembre 2026
+
+Mathis demande l’arrêt des exécutions et notifications automatiques de `Check application`. Les déclencheurs `push` et `pull_request` sont remplacés par `workflow_dispatch` : le contrôle reste lançable manuellement depuis GitHub. Les commandes de vérification locales sont conservées. Changement limité à la configuration du dépôt, sans déploiement applicatif.
+
 ## Ouverture et fermeture des six cartes — publiées et vérifiées, 5 novembre 2026
 
 Image opaque, masque des quatre bords porté par le groupe natif, résumé et total coordonnés, titres séquencés au retour et vrai bouton Changer hors capture. Cas du comparatif sans miniature traité. Révision applicative `b261ffa`, release `20261105T205039Z-b261ffad11fb`. Les 24 trajets passent dans l’IAB local et public ; clic rapide public confirmé. TypeScript/build et 213 tests passent. Treize empreintes publiques conformes, catalogue et 24 autres services inchangés. Images originales identiques. Aucun formulaire envoyé, viewport réinitialisé et localhost arrêté. Rapport : `docs/qa/card-motion-polish/review.md`.
@@ -225,7 +229,3 @@ Référence Free étudiée en parallèle ; léger effet lumineux original ajout�
 Les prix et périmètres commerciaux restent à arrêter ; aucun montant, délai ou chiffre client inventé. Le destinataire Resend sera fourni plus tard par Mathis : les demandes sont conservées, mais une réception e-mail réelle reste à vérifier après configuration. L’identité et les documents commerciaux définitifs restent à compléter. Ces éléments ne sont pas présentés comme terminés par la livraison de l’interface.
 
 L’étude de marché antérieure est disponible dans le dossier de travail `recherche-marche/` à côté du dépôt : rapport complet, synthèse, benchmark et journal des sources datés du 1er novembre 2026. Sa présence a été vérifiée ; ses relevés n’ont pas été actualisés pendant cette correction d’interface et les décisions utilisateur ultérieures priment sur ses recommandations.
-## GitHub Actions uniquement manuel — 5 novembre 2026
-
-Mathis demande l’arrêt des exécutions et notifications automatiques de `Check application`. Les déclencheurs `push` et `pull_request` sont remplacés par `workflow_dispatch` : le contrôle reste lançable manuellement depuis GitHub. Les commandes de vérification locales sont conservées. Changement limité à la configuration du dépôt, sans déploiement applicatif.
-
