@@ -2,11 +2,11 @@
 
 final result: passed
 
-## Lot actuel : fluidité après essai public — correction locale vérifiée
+## Lot actuel : fluidité après essai public — publié et vérifié
 
 Retour utilisateur traité : texture entrante révélée sans redimensionnement, cadre et coins animés en 520 ms avec accélération progressive. Texte dans une couche distincte, à sa taille finale, dont le fondu reste visible au-dessus de la texture. Préchargement sur intention sans délai ajouté au clic. Les options se déplient et se replient en 360 ms ; premier/dernier choix, hauteur de carte, mensualité, compteurs, rubriques et passage au brief suivent le mouvement.
 
-TypeScript, build et 213 tests passent. IAB local : mesures d’ouverture et de hauteur à vitesse normale, inspection à mi-transition, six destinations, clics rapides, douze options, ordinateur/mobile sans débordement, brief/retour et réduction dynamique des animations au clavier. Les choix non actifs restent hors de l’arbre accessible. Textures d’origine inchangées ; sélection initiale et réglages rétablis, aucune soumission. Publication en cours. [Rapport et captures](docs/qa/plan-motion-refinement/review.md).
+Application `7b50265` poussée, déployée et vérifiée sur gilmathis.com. TypeScript, build et 213 tests passent. IAB local : mesures d’ouverture et de hauteur à vitesse normale, inspection à mi-transition, six destinations, clics rapides, douze options, brief/retour et réduction dynamique des animations au clavier. IAB public : transition de 520 ms, texture entrante non redimensionnée, fondu du texte réellement visible, premier ajout et retrait progressifs, dernier retrait sans hauteur résiduelle. Options dans la carte sur ordinateur et mobile, aucun débordement. Les choix non actifs restent hors de l’arbre accessible. Textures d’origine inchangées ; client et CSS publics conformes au build. Sauvegarde, Sharp et santé vérifiés, catalogue et autres services inchangés. Sélection et réglages rétablis, aucune soumission, console sans erreur/alerte observée et localhost arrêté. [Rapport et captures publiques](docs/qa/plan-motion-refinement/review.md).
 
 ## Lot précédent : ouverture des forfaits et options visibles — publié et vérifié
 

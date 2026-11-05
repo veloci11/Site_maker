@@ -1,16 +1,16 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `3e8bd12` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `7b50265` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Fluidité après essai public — 4 novembre 2026, correction locale vérifiée
+## Fluidité après essai public — 4 novembre 2026, terminé et vérifié en ligne
 
 Retour de Mathis : passage accueil → forfait trop brusque, texture étirée pendant l’agrandissement et ajout d’options insuffisamment animé. Agrandissement porté à 520 ms avec accélération progressive ; grande texture révélée à sa taille finale, texte dans une couche distincte au-dessus pour conserver son fondu. Préchargement du module au survol/focus sans attente au clic.
 
 Options dépliées/repliées en 360 ms avec fondu, hauteur de carte progressive, premier/dernier choix et clics rapides gérés. Totaux, mensuel, rubriques et brief suivent des transitions courtes. Préférence de mouvement relue au clic et cadre natif également désactivé en reduced motion.
 
-TypeScript, build et 213 tests passent. IAB local : six destinations, clics rapides, ajout/retrait mesurés, premier choix, douze options, mobile, brief/retour, clavier et changement dynamique de préférence. Sélection initiale et réglages rétablis ; aucune soumission. Code vérifié localement, publication en cours. Rapport : `qa/plan-motion-refinement/review.md`.
+Application `7b50265` poussée sur `main`, déployée sur Ubuntu et contrôlée dans l’IAB public sur ordinateur/mobile. TypeScript, build et 213 tests passent. Contrôles locaux : six destinations, clics rapides, ajout/retrait mesurés, premier choix, douze options, brief/retour, clavier et changement dynamique de préférence. Contrôles publics : texture non redimensionnée, fondu du texte pendant les 520 ms, ajout et retrait progressifs, premier/dernier choix, options dans la carte sans débordement. Client, CSS et textures publics identiques au build ; sauvegarde, Sharp et santé validés, catalogue et autres services inchangés. Sélection initiale et réglages rétablis, aucun envoi, localhost arrêté. Rapport et captures : `qa/plan-motion-refinement/review.md`.
 
 ## Lot précédent — ouverture des forfaits et options visibles, 4 novembre 2026
 

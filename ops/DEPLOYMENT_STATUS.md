@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée : 04/11/2026 à 21:29, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée : 04/11/2026 à 22:09, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `3e8bd12744085a1db59400f6168d2b8ae4089fe3`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T032011Z-3e8bd1274408` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-BmzQDKQw.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `18731f3c5cc4e2de09585179b977ddeae1c9e8f04ed77bd5dc7af7f930a6e462`.
-- Version précédente disponible : `releases/20261104T043052Z-e8895ae19aeb`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `7b502655e6312b4ed88b6781e753f16ddb0ff729`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T040603Z-7b502655e631` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-DnwITJOI.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `9b04e915ac37adc145b6663479bdfcd7b0f751b6f89959727195f8fa334cd535`.
+- Version précédente disponible : `releases/20261105T032011Z-3e8bd1274408`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -27,7 +27,15 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — ouverture des forfaits et options dans la carte
+## Dernier lot — fluidité après essai public
+
+Application `7b50265` : cadre et coins progressifs en 520 ms, grande texture révélée à sa taille finale sans étirement, texte capturé séparément et fondu au-dessus de l’image. Préchargement du configurateur au survol/focus, sans attente au clic. Ajout/retrait des options et hauteur de carte progressifs en 360 ms ; totaux, mensuel, rubriques et brief animés. Réduction du mouvement relue au clic et appliquée aussi aux coins du cadre natif.
+
+TypeScript, build et 213 tests passent. Client public SHA-256 `49277ba0c30e82141951956b70e19230af3ec3643d3c9003040d05bb7050e2b5` ; client, huit CSS et trois textures identiques au build par HTTPS. Sauvegarde réussie et Sharp vérifié avant bascule. Santé valide ; catalogue inchangé et 25 autres services gardent leur PID, tunnel compris. Aucun changement de DNS ni de configuration du tunnel.
+
+IAB public : 65 échantillons de transition, durée native de 520 ms, texture entrante `object-fit:none` et opacité du texte de 0 à 1. Ajout/retrait réellement progressifs observés ; premier choix de 580 à 620,6 px, retrait d’une ligne de 29,5 à 0 px. Deux options visibles dans la carte sur ordinateur et mobile, document/client 1425/1425 et 375/375. Dernier retrait : sélection à hauteur 0 et carte revenue à 580 px. Choix initiaux rétablis, aucun formulaire soumis, console sans erreur/alerte observée, viewport temporaire retiré et accueil public conservé. Localhost arrêté. Rapport : `docs/qa/plan-motion-refinement/review.md`.
+
+## Lot précédent — ouverture des forfaits et options dans la carte
 
 Application `3e8bd12` : transition native de 420 ms entre les surfaces de la petite et de la grande carte, contenu en fondu et contrôles laissés cliquables. Options sélectionnées directement dans la grande carte, au-dessus du total, sans volet replié. Carte extensible et sticky désactivé si sa hauteur dépasse l’espace disponible ; préférence de réduction des animations respectée.
 

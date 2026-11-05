@@ -1,6 +1,6 @@
 # Fluidité des forfaits — correction après essai public
 
-4 novembre 2026, date utilisateur. Validation locale terminée ; publication en cours. Ce lot corrige le retour de Mathis sur la version `3e8bd12` : agrandissement peu fluide, photo étirée et apparition trop brusque des options.
+4 novembre 2026 à 22:09, heure de Mexico (UTC−06). **Publié et vérifié sur gilmathis.com**, application `7b502655e6312b4ed88b6781e753f16ddb0ff729`, poussée sur `main`. Ce lot corrige le retour de Mathis sur la version `3e8bd12` : agrandissement peu fluide, photo étirée et apparition trop brusque des options.
 
 ## Corrections
 
@@ -10,6 +10,20 @@
 - Les lignes d’options gardent leur identité et passent progressivement de 0 à leur hauteur naturelle en 360 ms, avec fondu de 240 ms. Retrait et inversion en cours de mouvement utilisent la même transition CSS. Les lignes non choisies occupent zéro hauteur au repos et sont exclues de l’arbre accessible.
 - Premier/dernier choix : le bloc complet se déplie/se replie. Total, compteur, ligne mensuelle, rubriques et passage au brief suivent des transitions courtes. La carte longue continue à quitter sticky.
 - La préférence de réduction du mouvement est relue au clic, même si elle a changé depuis le rendu du lien. Elle désactive aussi l’animation des coins du cadre natif.
+
+## Vérification publique après publication
+
+Release active `20261105T040603Z-7b502655e631` ; version précédente conservée. Sauvegarde réussie avant bascule, archive contrôlée par SHA-256 et Sharp vérifié par encodage/décodage réel. Installation depuis le lockfile avec Node 24 du projet, bascule atomique et seul service applicatif redémarré. Santé valide à l’origine et par HTTPS ; catalogue et PID de 25 autres services inchangés, tunnel compris. Aucun réglage DNS ou tunnel modifié.
+
+Client `index-DnwITJOI.js`, SHA-256 `49277ba0c30e82141951956b70e19230af3ec3643d3c9003040d05bb7050e2b5`. Client, huit CSS et trois textures publics identiques au build prévu.
+
+IAB public à vitesse normale : 65 échantillons, transition native de 520 ms, texture entrante `object-fit:none` pendant tout le mouvement et opacité du texte de 0 à 1. Premier ajout : carte de 580 à 620,6 px avec hauteurs/opacités intermédiaires ; retrait d’une ligne : 29,5 à 0 px. Deux options visibles dans la carte ; ordinateur 1440 × 900 et mobile 390 × 844, document/client 1425/1425 et 375/375, sans ancien volet ni débordement. Après dernier retrait, sélection à hauteur 0 et carte de nouveau à 580 px.
+
+Sélection initiale rétablie exactement, aucun formulaire ou fichier envoyé, aucune erreur/alerte de console observée. Viewport temporaire retiré, accueil public conservé ; serveur local arrêté, ports 4173/4174 libres. Traces : `deployment-artifact.json`, `deployment-origin.json`, `public-https.json`, `public-browser.json`.
+
+![Options dans la carte — version publique sur ordinateur](public-desktop.jpg)
+
+![Options dans la carte — version publique sur mobile](public-mobile.jpg)
 
 ## Vérification locale
 
