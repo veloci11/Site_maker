@@ -24,8 +24,16 @@ Les captures exploratoires des étapes précédentes ont été écartées du dos
 
 Guide `vercel:react-best-practices` appliqué : hooks inconditionnels, lectures de géométrie regroupées avant les écritures, état transitoire borné au cycle de navigation, pas de boucle de mesure pendant l’animation, nettoyage des observateurs conservé. Aucun paquet ajouté. Le mécanisme de replacement des options, les calculs, les questions, les prix et les données privées ne sont pas modifiés.
 
-Les trois textures originales sont identiques octet pour octet (`original-images.json`). Console locale sans avertissement ni erreur à la fin des contrôles. Aucune demande ni aucun e-mail envoyés. Validation du build et des tests : voir le journal final `.data/card-motion-check.log`.
+Les trois textures originales sont identiques octet pour octet (`original-images.json`). Console locale sans avertissement ni erreur à la fin des contrôles. Aucune demande ni aucun e-mail envoyés. `npm run check` final : TypeScript, build et 213 tests passants (`check-summary.json`). `git diff --check` propre. Serveur local arrêté, ports 4173/4174 libres.
 
 ## Livraison
 
-Correction locale vérifiée, publication en cours. Le statut public sera consigné après contrôle HTTPS et IAB.
+Révision applicative `b261ffad11fb09fe49cf6d0377bf901f5a728fd4`, release `20261105T205039Z-b261ffad11fb`, publiée sur https://gilmathis.com/.
+
+Les 24 trajets sont également vérifiés dans l’IAB public, sur ordinateur et mobile (`public-*-journeys.json`, `public-summary.json`). Tous aboutissent à une page stable, sans débordement ni seconde animation. Un des deux calques reste opaque. Écart maximal relevé entre cadre et masque avant 750 ms : 0,305 px CSS. Les tailles de chaque viewport sont stabilisées avant les mesures. Le nombre de relevés varie selon l’ordonnancement du navigateur ; ces échantillons ne constituent pas une mesure de fréquence d’images.
+
+En public, le menu Changer s’ouvre alors que la phase entrante est encore active ; changement de Refonte vers Vitrine confirmé. La sélection initiale publique vide reste vide. Console IAB sans erreur ni avertissement observé. Aucun formulaire envoyé. Capture native finale inspectée : `public-final.jpg`. Viewport réinitialisé ; seule Vitrine publique est conservée dans l’IAB.
+
+Santé origine et publique valide. Treize fichiers publics correspondent exactement au build (entrée JavaScript, CSS, composant de carte et trois textures originales), contrôlés depuis l’origine courante dans l’IAB (`public-assets.json`). Le client HTTP Python indépendant reçoit un 403 de la couche de protection ; il n’a pas servi à établir les empreintes. Aucun réglage de protection modifié.
+
+Sauvegarde privée préalable réussie, bascule réversible, catalogue inchangé et 24 autres services en cours d’exécution gardant leurs PID/états. GP Park répond toujours HTTP 200. Les preuves d’archive et d’origine sont dans `deployment-artifact.json` et `deployment-origin.json`.

@@ -1,0 +1,11 @@
+{
+  "commit": "b261ffad11fb09fe49cf6d0377bf901f5a728fd4",
+  "createdAt": "2026-11-05T20:50:39.078534+00:00",
+  "origin": "https://gilmathis.com",
+  "tests": 213,
+  "applicationPort": 3020,
+  "releaseName": "20261105T205039Z-b261ffad11fb",
+  "entryScript": "index-BlW3ueHa.js",
+  "archive": "/Users/mathis/Site Business/site/.data/deployment/20261105T205039Z-b261ffad11fb.tar.gz",
+  "archiveSha256": "d6f8922b27287cfefa7929d1734c025c8cb0ebb7f895c83f8023c222f01c75d7"
+}

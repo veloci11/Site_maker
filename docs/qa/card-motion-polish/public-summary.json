@@ -1,0 +1,44 @@
+[
+  {
+    "format": "desktop",
+    "journeys": 12,
+    "samples": [
+      50,
+      31,
+      46,
+      34,
+      38,
+      37,
+      46,
+      36,
+      53,
+      33,
+      52,
+      29
+    ],
+    "maxClipError": 0.25469999999995707,
+    "opaque": true,
+    "stable": true
+  },
+  {
+    "format": "mobile",
+    "journeys": 12,
+    "samples": [
+      43,
+      36,
+      45,
+      29,
+      52,
+      64,
+      64,
+      65,
+      54,
+      34,
+      50,
+      28
+    ],
+    "maxClipError": 0.3050000000000921,
+    "opaque": true,
+    "stable": true
+  }
+]

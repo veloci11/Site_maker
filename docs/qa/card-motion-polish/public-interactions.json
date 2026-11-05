@@ -1,0 +1,10 @@
+{
+  "phaseBeforeChangeClick": "incoming",
+  "changeMenuOpened": true,
+  "switchTo": "/forfaits/vitrine",
+  "consoleWarnings": 0,
+  "consoleErrors": 0,
+  "finalSelection": [],
+  "viewportReset": true,
+  "localServerStopped": true
+}

@@ -5,11 +5,11 @@ Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’I
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `57aacc2a6ad686bab809dbe65c168935d1c91b2c`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T090925Z-57aacc2a6ad6` ; bascule atomique de `current`.
-- Client public : `/assets/index-CGr-Hiyd.js` ; SHA-256 `abb3e5a159baed258060eda2b7658dd167a896948e726efa2cd01b7c7f133583`.
-- Archive : SHA-256 `c761a8041d38d06eeba078bd6cd3a7e974fe20f21a8a165d222501b9124ff115`, 13969575 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T065746Z-ab76cb297058`.
+- Révision applicative : `b261ffad11fb09fe49cf6d0377bf901f5a728fd4`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T205039Z-b261ffad11fb` ; bascule atomique de `current`.
+- Client public : `/assets/index-BlW3ueHa.js` ; SHA-256 `0c054222afbf5ce835b5da7dcbb0287831dd8eab5183c4c3b501b6a2cf6da7db`.
+- Archive : SHA-256 `d6f8922b27287cfefa7929d1734c025c8cb0ebb7f895c83f8023c222f01c75d7`, 13985580 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T090925Z-57aacc2a6ad6`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -21,7 +21,13 @@ Les trois textures d’origine restent identiques octet pour octet. La partie ha
 
 L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Aucune hauteur maximale ni défilement interne. Grille explicite : trois choix à gauche, trois à droite, puis alternance gauche/droite. Elle suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte selon le nombre de choix est supprimée : titre et espacements ne rétrécissent plus. Gutter stable pour la largeur de page. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle ; le défilement normal permet d’accéder au bas. Plusieurs groupes d’options peuvent rester ouverts.
 
-## Vérification finale — taille et transitions
+## Dernière vérification — raccord complet des cartes
+
+Révision `b261ffa` : 24 trajets locaux et 24 publics contrôlés dans l’IAB, sur ordinateur et mobile. Un calque d’image reste opaque ; le masque extérieur suit les quatre bords du cadre. Résumé et total suivent le contenu, titres séquencés et Changer vivant hors capture, avec apparence décorative pour le raccord. Retour au comparatif sans miniature en fondu normal. Mouvement réduit et actions rapides préservés.
+
+TypeScript/build et 213 tests passent. Santé et 13 empreintes publiques conformes. Sauvegarde préalable, catalogue et 24 autres services inchangés, GP Park HTTP 200. Aucun formulaire envoyé. Sélections/viewport restaurés, localhost arrêté. Capture `docs/qa/card-motion-polish/public-final.jpg`, preuves dans le même dossier. Les contrôles ci-dessous conservent l’historique des versions précédentes.
+
+## Vérification précédente — taille et transitions
 
 - TypeScript, build et 213 tests passants ; trois textures originales identiques octet pour octet.
 - IAB local : six ouvertures et six retours sur ordinateur puis mobile, entrée stable, scroll de retour exact, douze options sans réduction, retrait et actions rapides contrôlés.

@@ -1,6 +1,6 @@
-## Ouverture et fermeture des six cartes — corrigées localement, 5 novembre 2026
+## Ouverture et fermeture des six cartes — publiées et vérifiées, 5 novembre 2026
 
-Raccord opaque de l’image, masque des quatre bords sur le groupe natif, résumé et total entraînés avec le contenu, tailles de titre séquencées et Changer réellement cliquable pendant l’arrivée. Cas sans carte correspondante prévu. Les 24 trajets finaux passent dans l’IAB desktop/mobile, ainsi que mouvement réduit, changement et retour rapide. Images originales identiques. Publication en cours ; preuves dans `docs/qa/card-motion-polish/`.
+Image opaque, masque des quatre bords porté par le groupe natif, résumé et total coordonnés, titres séquencés au retour et vrai bouton Changer hors capture. Cas du comparatif sans miniature traité. Révision applicative `b261ffa`, release `20261105T205039Z-b261ffad11fb`. Les 24 trajets passent dans l’IAB local et public ; clic rapide public confirmé. TypeScript/build et 213 tests passent. Treize empreintes publiques conformes, catalogue et 24 autres services inchangés. Images originales identiques. Aucun formulaire envoyé, viewport réinitialisé et localhost arrêté. Rapport : `docs/qa/card-motion-polish/review.md`.
 
 ## Taille stable et transitions coordonnées — publiées et vérifiées, 5 novembre 2026
 

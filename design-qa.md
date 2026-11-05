@@ -1,6 +1,6 @@
-## Dernier correctif — raccord complet des six cartes, 5 novembre 2026
+## Dernier correctif — six raccords publiés et vérifiés, 5 novembre 2026
 
-Les 24 trajets locaux sont vérifiés après correction : image opaque pendant le déplacement, masques portés par les groupes natifs, copie nette et contenu inférieur dans le cadre. Changer conserve un vrai bouton vivant, distinct de son apparence décorative capturée. Erreur de raccord mesurée inférieure à 0,3 px CSS pendant les déplacements de ces visites. Retour sans miniature, réduction du mouvement et actions rapides contrôlés. Rapport : `docs/qa/card-motion-polish/review.md`. Publication en cours.
+Version applicative `b261ffa`, release `20261105T205039Z-b261ffad11fb`, sur gilmathis.com. Chaque carte et son retour ont été vérifiés dans l’IAB local et public, sur ordinateur et mobile. Image opaque, contenu masqué par le cadre mobile, résumé/total coordonnés et Changer répondant pendant l’arrivée. Écart cadre/masque inférieur à 0,31 px CSS dans les relevés publics. 213 tests passants, 13 empreintes publiques conformes, aucune erreur/alerte IAB observée. Images et choix initiaux conservés, aucun envoi, viewport réinitialisé et localhost arrêté. Rapport et capture finale : `docs/qa/card-motion-polish/`.
 
 ## Taille stable et transitions coordonnées — publiées le 5 novembre 2026
 
