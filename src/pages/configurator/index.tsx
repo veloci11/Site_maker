@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
@@ -44,6 +44,7 @@ import {
 } from '../../lib/draft'
 import { includedGuidance } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
+import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
 function forOffer(current: Configuration, offerId: OfferId): Configuration {
   if (current.offerId === offerId) return current
@@ -120,12 +121,8 @@ export function ConfiguratorPage() {
     ...selected.filter((line) => !selectionOrder.includes(line.key)).map((line) => line.key),
   ]
   const selectionRanks = new Map(orderedSelection.map((key, index) => [key, index]))
-  const previousRanks = useRef(new Map<string, number>())
   const selectionOrderKey = orderedSelection.join('|')
-  useLayoutEffect(() => {
-    if (!selectionOrderKey) return
-    selectionOrderKey.split('|').forEach((key, index) => previousRanks.current.set(key, index))
-  }, [selectionOrderKey])
+  const optionReflow = useOptionReflow(selectionOrderKey)
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
@@ -191,6 +188,7 @@ export function ConfiguratorPage() {
   }, [editingId, user?.id, authLoading, navigate, loadAttempt])
 
   function changeOption(id: OptionId, checked: boolean) {
+    optionReflow.capture()
     const next = withOption(configuration, id, checked)
     setSelectionOrder(checked
       ? [...orderedSelection.filter((key) => key !== id), id]
@@ -319,46 +317,46 @@ export function ConfiguratorPage() {
               <div className="selected-plan__selection-clip">
                 <div className="selected-plan__selection-content">
                   <p>Options choisies</p>
-                  <ul>
-                    {/* Stable rows let CSS reverse an unfinished enter/exit on rapid clicks.
-                        Hidden rows take no space and are excluded from accessibility. */}
-                    {[...availableOptions].sort((a, b) =>
-                      (selectionRanks.get(a.id) ?? availableOptions.length)
-                      - (selectionRanks.get(b.id) ?? availableOptions.length),
-                    ).map((option, fallbackIndex) => {
-                      const active = selectionRanks.has(option.id)
-                      const index = selectionRanks.get(option.id) ?? previousRanks.current.get(option.id) ?? fallbackIndex
-                      // 1–3 left, 4–6 right; then right/left pairs below.
-                      const column = index < 3 ? 1 : index < 6 ? 2 : index % 2 === 0 ? 2 : 1
-                      const row = index < 3 ? index + 1 : index < 6 ? index - 2 : 4 + Math.floor((index - 6) / 2)
-                      const amount = pricing.options[option.id]
-                      return (
-                        <li
-                          key={option.id}
-                          data-option={option.id}
-                          data-selected={active}
-                          aria-hidden={!active}
-                          style={{
-                            '--option-column': column,
-                            '--option-row': row,
-                            '--option-sequence': index + 1,
-                          } as CSSProperties}
-                        >
-                          <div className="selected-plan__option-clip">
-                            <div className="selected-plan__option-content">
-                              <Check size={15} strokeWidth={1.6} aria-hidden="true" />
-                              <span>{option.title}</span>
-                              <strong>
-                                {custom && amount === null
-                                  ? 'À définir'
-                                  : `+ ${formatMoney(amount, quote.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`}
-                              </strong>
+                  <div className="selected-plan__options-frame" ref={optionReflow.frameRef}>
+                    <ul ref={optionReflow.listRef}>
+                      {[...availableOptions].sort((a, b) =>
+                        (selectionRanks.get(a.id) ?? availableOptions.length)
+                        - (selectionRanks.get(b.id) ?? availableOptions.length),
+                      ).map((option, fallbackIndex) => {
+                        const active = selectionRanks.has(option.id)
+                        const index = selectionRanks.get(option.id) ?? fallbackIndex
+                        // 1–3 left, 4–6 right; then left/right pairs below.
+                        const column = index < 3 ? 1 : index < 6 ? 2 : index % 2 === 0 ? 1 : 2
+                        const row = index < 3 ? index + 1 : index < 6 ? index - 2 : 4 + Math.floor((index - 6) / 2)
+                        const amount = pricing.options[option.id]
+                        return (
+                          <li
+                            key={option.id}
+                            data-option={option.id}
+                            data-selected={active}
+                            aria-hidden={!active}
+                            style={{
+                              '--option-column': column,
+                              '--option-row': row,
+                              '--option-sequence': index + 1,
+                            } as CSSProperties}
+                          >
+                            <div className="selected-plan__option-clip">
+                              <div className="selected-plan__option-content">
+                                <Check size={15} strokeWidth={1.6} aria-hidden="true" />
+                                <span>{option.title}</span>
+                                <strong>
+                                  {custom && amount === null
+                                    ? 'À définir'
+                                    : `+ ${formatMoney(amount, quote.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`}
+                                </strong>
+                              </div>
                             </div>
-                          </div>
-                        </li>
-                      )
-                    })}
-                  </ul>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </section>

@@ -1,0 +1,111 @@
+{
+  "desktop": {
+    "distinctBookingX": 67,
+    "start": {
+      "t": 0,
+      "x": 286.046875,
+      "y": 0
+    },
+    "end": {
+      "t": 1402,
+      "x": 0,
+      "y": 52
+    },
+    "exitOpacitySamples": [
+      1,
+      0.9,
+      0.8,
+      0.7,
+      0.6,
+      0.5,
+      0.4,
+      0.3,
+      0.2,
+      0.1,
+      0
+    ],
+    "finalGhosts": 0
+  },
+  "rapid": {
+    "count": 10,
+    "finalGhosts": 0
+  },
+  "last": {
+    "startHeight": 29.5,
+    "endHeight": 0,
+    "remaining": 0
+  },
+  "mobile": {
+    "distinctBookingY": 31,
+    "finalGhosts": 0
+  },
+  "leftFirstPattern": [
+    {
+      "column": "1",
+      "id": "mobile",
+      "row": "1"
+    },
+    {
+      "column": "1",
+      "id": "language-en",
+      "row": "2"
+    },
+    {
+      "column": "1",
+      "id": "managed-content",
+      "row": "3"
+    },
+    {
+      "column": "2",
+      "id": "booking",
+      "row": "1"
+    },
+    {
+      "column": "2",
+      "id": "portfolio-gallery",
+      "row": "2"
+    },
+    {
+      "column": "2",
+      "id": "extra-pages",
+      "row": "3"
+    },
+    {
+      "column": "1",
+      "id": "additional-language",
+      "row": "4"
+    },
+    {
+      "column": "2",
+      "id": "copywriting",
+      "row": "4"
+    },
+    {
+      "column": "1",
+      "id": "local-seo",
+      "row": "5"
+    },
+    {
+      "column": "2",
+      "id": "deployment",
+      "row": "5"
+    },
+    {
+      "column": "1",
+      "id": "maintenance-monthly",
+      "row": "6"
+    },
+    {
+      "column": "2",
+      "id": "hosting-monthly",
+      "row": "6"
+    }
+  ],
+  "reduced": {
+    "reduced": true,
+    "ghosts": 0,
+    "rowAnimations": []
+  },
+  "restoredSummary": "Création du siteÀ partir de…+ … € / mois3 options sélectionnées",
+  "console": []
+}

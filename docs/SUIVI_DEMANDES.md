@@ -1,3 +1,7 @@
+## Retrait et replacement animés — en vérification locale, 5 novembre 2026
+
+Dernière demande : corriger la disparition et le replacement instantanés, puis démarrer l’alternance à gauche après les blocs de trois. L’action garde les calculs immédiats ; une copie décorative sort en fondu pendant que les lignes réelles glissent vers leurs nouveaux emplacements. Hauteur du résumé animée et mouvements interruptibles, sans défilement interne ni changement de l’image. Contrôle de l’échec GitHub demandé après la livraison de ce correctif.
+
 ## Ordre explicite des options — publié et vérifié, 5 novembre 2026
 
 Le rééquilibrage automatique est remplacé par des cases explicites : trois choix à gauche, trois à droite, puis alternance droite/gauche. La séquence des clics guide la présentation courante ; les calculs et la configuration restent inchangés. Sur carte étroite, une seule colonne garde la même séquence. Les lignes restent montées pour conserver leur entrée/sortie animée. Publié : révision `9486538`, release `20261105T063308Z-94865388d5c2`. TypeScript/build et 213 tests passent. IAB public : les douze étapes de placement sont correctes, même séquence sur mobile, aucun débordement/erreur de console et choix initiaux restaurés. Santé et neuf empreintes HTTP vérifiées ; serveur local arrêté. Preuves dans `qa/option-order/`.

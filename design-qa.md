@@ -1,3 +1,9 @@
+## Retrait et replacement sans saut — 5 novembre 2026
+
+Le placement instantané de grille est maintenant accompagné d’un vrai déplacement FLIP de 620 ms ; la copie de sortie disparaît en 420 ms et la hauteur est animée. L’alternance commence à gauche après les deux blocs de trois. La configuration et les totaux changent immédiatement.
+
+IAB local : 67 positions horizontales intermédiaires observées pour une ligne qui change de colonne ; onze niveaux d’opacité à la sortie, aucune copie résiduelle. Mobile : 31 positions verticales intermédiaires. Dernière option, clics rapides, retrait/réajout et réduction du mouvement vérifiés. Image stable, console vide, choix initiaux et viewport restaurés. Preuves : `docs/qa/option-reflow/`. Publication après le check final, puis diagnostic GitHub demandé par Mathis.
+
 ## Ordre des options fixé — 5 novembre 2026
 
 Dernière précision : trois choix à gauche, trois à droite, puis droite/gauche. Grille explicite à la place du rééquilibrage CSS automatique. L’ordre de sélection est suivi dans la session, et la carte étroite utilise cette même séquence en une colonne. Les calculs, textures, défilement normal et protections du formulaire restent inchangés.
