@@ -1,0 +1,75 @@
+{
+  "url": "https://gilmathis.com/forfaits/vitrine",
+  "revision": "3e8bd12744085a1db59400f6168d2b8ae4089fe3",
+  "desktop": {
+    "path": "/forfaits/vitrine",
+    "scripts": [
+      "https://gilmathis.com/assets/index-BmzQDKQw.js"
+    ],
+    "width": 1440,
+    "height": 900,
+    "documentWidth": 1425,
+    "clientWidth": 1425,
+    "selectionInCard": true,
+    "options": [
+      "Adaptation mobile et tablette\n+ … €",
+      "Français + anglais\n+ … €"
+    ],
+    "folded": 0,
+    "rootCapture": "none"
+  },
+  "mobile": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 375,
+    "clientWidth": 375,
+    "selectionInCard": true,
+    "options": [
+      "Adaptation mobile et tablette\n+ … €",
+      "Français + anglais\n+ … €"
+    ],
+    "folded": 0
+  },
+  "animation": {
+    "path": "/forfaits/vitrine",
+    "animations": [
+      {
+        "name": "-ua-view-transition-group-anim-plan-vitrine",
+        "duration": 420
+      }
+    ],
+    "moveDuration": ".42s",
+    "rootCapture": "none"
+  },
+  "initialChecks": [
+    {
+      "checked": "false",
+      "id": "option-mobile"
+    },
+    {
+      "checked": "false",
+      "id": "option-language-en"
+    },
+    {
+      "checked": "false",
+      "id": "option-managed-content"
+    }
+  ],
+  "restoredChecks": [
+    {
+      "checked": "false",
+      "id": "option-mobile"
+    },
+    {
+      "checked": "false",
+      "id": "option-language-en"
+    },
+    {
+      "checked": "false",
+      "id": "option-managed-content"
+    }
+  ],
+  "noFormsSubmitted": true,
+  "consoleWarningsAndErrors": [],
+  "selectionRestored": true
+}

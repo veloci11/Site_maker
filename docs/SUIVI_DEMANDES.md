@@ -1,10 +1,10 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `e8895ae` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `3e8bd12` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Ouverture des forfaits et options visibles — 4 novembre 2026, implémenté localement
+## Ouverture des forfaits et options visibles — 4 novembre 2026, terminé et vérifié en ligne
 
 Demande suivante à l’audit : fluidifier le clic sur un forfait jusqu’à sa grande carte. Puis correction reçue pendant l’implémentation : afficher les options sélectionnées dans la carte, et supprimer le détail replié sous celle-ci.
 
@@ -12,7 +12,7 @@ Transition native de surface en 420 ms, apparition douce du contenu, navigation 
 
 Options choisies affichées dans la carte au-dessus du total, mises à jour à la sélection/désélection et visibles aussi au brief. Carte extensible, arrêt de sticky si sa hauteur dépasse l’espace disponible. Contrôles IAB ordinateur/mobile, douze options visibles, aucune largeur débordante, retour au brief et refus de quitter conservant la saisie. Prix, données et logique d’envoi inchangés ; aucune demande envoyée. Rapport : `qa/plan-transitions/design-qa.md`.
 
-État de livraison : modifications locales, pas de commit/push ni de déploiement Ubuntu. TypeScript, build et 213 tests passent après la dernière modification. Build Express local, six destinations, clics rapides, clavier, Cmd+clic et reduced motion vérifiés ; console finale sans erreur/alerte observée. Sélection et réglages rétablis, saisies fictives effacées, onglets et serveurs temporaires fermés. Détails et limites dans le rapport du lot.
+État de livraison : application `3e8bd12` poussée sur `main`, déployée sur Ubuntu et vérifiée sur gilmathis.com à la demande de Mathis. TypeScript, build et 213 tests passent. Build Express local : six destinations, clics rapides, clavier, Cmd+clic, reduced motion et garde du brief vérifiés. IAB public : transition mesurée à 420 ms, options dans la carte sur ordinateur/mobile sans débordement, console sans erreur/alerte observée. Client, CSS et textures publics identiques au build ; sauvegarde réussie, santé valide et autres services inchangés. Sélection et réglages rétablis, aucun envoi, localhost arrêté. Détails et captures : `qa/plan-transitions/public-review.md`.
 
 ## Audit général et transparence des prix — 4 novembre 2026, audit terminé
 

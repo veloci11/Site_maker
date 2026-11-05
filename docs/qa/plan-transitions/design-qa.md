@@ -1,6 +1,6 @@
-# Ouverture des forfaits et options visibles — validation locale
+# Ouverture des forfaits et options visibles — validation locale et publique
 
-4 novembre 2026, date utilisateur. **Implémenté et vérifié localement, sans commit, push ni déploiement sur gilmathis.com.** Aucun formulaire envoyé, aucune image téléversée, aucun e-mail déclenché.
+4 novembre 2026, date utilisateur. **Application `3e8bd12` poussée, déployée et vérifiée sur gilmathis.com.** La validation locale initiale est conservée ci-dessous ; la [revue publique](public-review.md) décrit la livraison et ses preuves. Aucun formulaire envoyé, aucune image téléversée, aucun e-mail déclenché.
 
 ## Résultat
 
@@ -72,6 +72,6 @@ Source primaire consultée : [React Router — View Transitions](https://reactro
 - `long-selection-mobile-metrics.json` : sélection de douze options au format mobile.
 - Les fichiers `native-keyframes-slow.json` et les captures comportant `slow` sont des observations de prototypes au ralenti, **pas** les timings de la version finale. Les variables d’inspection temporaires ont été retirées.
 
-Saisies fictives effacées ; sélection de départ rétablie (français/anglais, rendez-vous et maintenance). Préférences et viewport réinitialisés. Onglets temporaires fermés. Serveurs locaux arrêtés, aucun écouteur restant sur 4173/4174. L’instance Ubuntu, ses données et les autres services n’ont pas été modifiés.
+À l’issue du contrôle local : saisies fictives effacées ; sélection de départ rétablie (français/anglais, rendez-vous et maintenance). Préférences et viewport réinitialisés. Onglets temporaires fermés. Serveurs locaux arrêtés, aucun écouteur restant sur 4173/4174. Cette phase locale n’avait pas modifié l’instance Ubuntu.
 
-Le lot est prêt pour revue locale ; il n’est pas publié en production.
+La publication demandée ensuite est terminée : release `20261105T032011Z-3e8bd1274408`, santé valide, options et transition contrôlées dans l’IAB public sur ordinateur/mobile. Voir [le compte rendu de publication](public-review.md).

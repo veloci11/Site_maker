@@ -2,11 +2,11 @@
 
 final result: passed
 
-## Lot actuel : ouverture des forfaits et options visibles — local uniquement
+## Lot actuel : ouverture des forfaits et options visibles — publié et vérifié
 
 Petite surface de carte reliée à la grande carte du forfait en 420 ms, contenu en fondu ; surface décorative seule capturée pour garder les contrôles et la navigation cliquables. Six destinations et clics rapides vérifiés. Les modules sont prêts avant la capture, y compris à froid. Les options choisies sont visibles dans la carte au-dessus du total ; ancien résumé replié retiré. La carte s’allonge et cesse d’être sticky si nécessaire.
 
-TypeScript, build et 213 tests passent. IAB et vrai build Express local : ordinateur/mobile, douze options sans débordement, clavier, Cmd+clic, reduced motion et garde du brief. Images approuvées inchangées octet pour octet, prix et logique serveur inchangés. Aucun envoi. Réglages et sélection de contrôle rétablis, onglets temporaires fermés et localhost arrêté. **Aucun commit/push ni déploiement de ce lot.** Preuves, captures et limites : [rapport du lot](docs/qa/plan-transitions/design-qa.md).
+Application `3e8bd12` poussée, déployée et vérifiée sur gilmathis.com. TypeScript, build et 213 tests passent. IAB et vrai build Express local : ordinateur/mobile, douze options sans débordement, clavier, Cmd+clic, reduced motion et garde du brief. IAB public : transition native de 420 ms effectivement observée ; deux options dans la carte sur ordinateur et mobile, aucun volet replié ni débordement. Images approuvées inchangées octet pour octet ; client, CSS et textures publics identiques au build. Sauvegarde, Sharp et santé vérifiés, catalogue et autres services inchangés. Aucun envoi, console sans erreur/alerte observée. Sélection et viewport rétablis, localhost arrêté, accueil public conservé. Preuves : [revue publique et captures](docs/qa/plan-transitions/public-review.md), [validation locale détaillée](docs/qa/plan-transitions/design-qa.md).
 
 ## Lot précédent : contour de sélection des options
 

@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée : 03/11/2026 à 22:35, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée : 04/11/2026 à 21:29, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `e8895ae19aeb9232868392a17494fe0a81d35b23`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261104T043052Z-e8895ae19aeb` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-Biz5hM9-.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `2eb786926b495ffe34dab1ec3ebeeee6d018c5b6420cc9b0365fcbddcc4b6421`.
-- Version précédente disponible : `releases/20261104T024657Z-82d3e3b9dad9`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `3e8bd12744085a1db59400f6168d2b8ae4089fe3`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T032011Z-3e8bd1274408` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-BmzQDKQw.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `18731f3c5cc4e2de09585179b977ddeae1c9e8f04ed77bd5dc7af7f930a6e462`.
+- Version précédente disponible : `releases/20261104T043052Z-e8895ae19aeb`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -27,7 +27,15 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — contour de sélection des options
+## Dernier lot — ouverture des forfaits et options dans la carte
+
+Application `3e8bd12` : transition native de 420 ms entre les surfaces de la petite et de la grande carte, contenu en fondu et contrôles laissés cliquables. Options sélectionnées directement dans la grande carte, au-dessus du total, sans volet replié. Carte extensible et sticky désactivé si sa hauteur dépasse l’espace disponible ; préférence de réduction des animations respectée.
+
+TypeScript, build et 213 tests passent. Client public SHA-256 `3807c667b66b744d925a7b032e5db833b16173089af05fe77baba0a2a918726c` ; client, huit CSS et trois textures identiques au build par HTTPS. Sauvegarde réussie, Sharp et santé contrôlés avant/après bascule. Catalogue inchangé et 25 autres services conservent leur PID, tunnel compris ; seul `site-maker.service` a été redémarré.
+
+IAB public : animation native `plan-vitrine` mesurée à 420 ms ; deux options visibles dans la carte sur ordinateur 1440 × 900 et mobile 390 × 844, sans débordement ni ancien volet. Aucune erreur/alerte de console observée. Sélection initiale rétablie, viewport temporaire retiré et accueil public conservé. Aucun formulaire envoyé ; serveurs locaux arrêtés. Preuves et limites : `docs/qa/plan-transitions/public-review.md`.
+
+## Lot précédent — contour de sélection des options
 
 Application `e8895ae` : contour violet autour des lignes retiré dans les options du configurateur et les choix multiples du brief. Coche noire et bordure neutre de 1 px ; au clavier, repère sombre de 2 px sur la petite case. Aucun changement fonctionnel, de prix ou de matière.
 
