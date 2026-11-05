@@ -1,0 +1,56 @@
+{
+  "url": "https://gilmathis.com/",
+  "revision": "94865388d5c273373ce7bfd1dc5896fb46562890",
+  "health": {
+    "ok": true
+  },
+  "htmlClientMatches": true,
+  "assets": [
+    {
+      "path": "/assets/index-CW6jefAj.js",
+      "sha256": "0597c99117c1637b91694c6e94c7e0f9f62939e234468cd60e3c5bff0b1ab937",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CIYnVkQS.css",
+      "sha256": "ef50ac268c46aec05f6f7862f2aa641a8a7f0affc5e71965fd244ea1b221c1a8",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-BX8I7Wd4.css",
+      "sha256": "320c200b83fd8e075f316aca9859ca46b75a46f08bfccc256b8da7fbf8cfd061",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/ProjectBriefForm-ExNdTMib.css",
+      "sha256": "b9a428b334b3c7de7c9b5ac9153ff22f2f12a8c956aa80828f5c486367b4ca87",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CIiXzOsc.css",
+      "sha256": "b617ebaa0a36c997763e9e588fdf7cb8cbbac0e81253e2aff89ab73b45735204",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/SelectedPlanCard-D6GNRi6R.css",
+      "sha256": "bd4bea1b3e2ad7012e89537eaf92ba885a80b00e98903bc08174335b66c87d82",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CzRZcDmU.css",
+      "sha256": "1e5fd170ee87beb561810a8cfaba840c448154c99fce819760c86bb4fbace9c7",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-BkRDUtcw.css",
+      "sha256": "a05f615c00e63700645dc8ca6810afdaf9efa698b571942af7651dc1e8764b87",
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CDRAuKij.css",
+      "sha256": "eb961cefb13ad1d91617e63722ad84f5ba9ac2fcf4de424d6ddc96e42b0fae49",
+      "matchesBuild": true
+    }
+  ],
+  "checkedAtUTC": "2026-11-05T06:34:51.432459+00:00"
+}

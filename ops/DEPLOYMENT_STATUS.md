@@ -5,11 +5,11 @@ Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’I
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `0cdbd930aa8157086a53e8994e9d4ebb65106a48`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T061831Z-0cdbd930aa81` ; bascule atomique de `current`.
-- Client public : `/assets/index-DyVT6Exg.js` ; SHA-256 `f35f348ca57732a01138cf6bd8d48c08bae308f7a4c2f859fe68b60bab78ae9d`.
-- Archive : SHA-256 `1998023179c1b1b6d527c30abadca063025f606fc9afc1a1c6eb34210f3140e2`, 13970464 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T055902Z-891bfac29685`.
+- Révision applicative : `94865388d5c273373ce7bfd1dc5896fb46562890`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T063308Z-94865388d5c2` ; bascule atomique de `current`.
+- Client public : `/assets/index-CW6jefAj.js` ; SHA-256 `0597c99117c1637b91694c6e94c7e0f9f62939e234468cd60e3c5bff0b1ab937`.
+- Archive : SHA-256 `023fd7212e12a347e1b6ddd6568caaa7d52847e0c44fab6a4134a2e03a458b6a`, 13969169 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T061831Z-0cdbd930aa81`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -19,9 +19,18 @@ Les six offres utilisent une ouverture/fermeture de 520 ms : déplacement de la 
 
 Les trois textures d’origine restent identiques octet pour octet. La partie haute garde l’original 1536 × 1024 ; une vraie continuation native prolonge le bas sans miroir visible ni agrandissement de la source rejetée de 724 px. Exports 1x et 2x, ces derniers sans perte. Le filtre sombre a été allégé. Les fichiers sources, la consigne et l’assemblage sont dans `docs/asset-sources/textures/vitrine-continuation-prompts.md` et `vitrine-continuation-assembly.json`.
 
-L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé passe en deux colonnes équilibrées quand la largeur le permet, avec une présentation compacte animée à partir de cinq choix sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
+L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé utilise une grille à emplacements explicites quand la largeur le permet : trois choix à gauche, trois à droite, puis alternance droite/gauche. Il suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte à partir de cinq choix reste animée sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
 
-## Vérification finale du résumé sans barre
+## Vérification finale de l’ordre demandé
+
+- `npm run check` : TypeScript, build et **213 tests locaux passants**. Aucun calcul, prix ou stockage modifié ; ordre de présentation en mémoire uniquement.
+- IAB local : douze choix volontairement différents du catalogue, positions validées aux douze étapes ; trois à gauche, trois à droite, puis droite/gauche. Retrait/réajout et séquence mobile vérifiés. Image fixe et zéro message de console.
+- IAB public : même validation aux douze étapes, bon client, total visible et aucun défilement interne. Mobile 390 × 844 : même séquence en une colonne, image fixe de 500 px et aucun débordement. Choix initiaux et viewport restaurés ; console vide.
+- Santé origine/HTTPS valide, client et huit CSS identiques au build (neuf empreintes), sauvegarde réussie. Catalogue et 25 autres PID de services inchangés. Serveur local arrêté et ports 4173/4174 libres.
+- Preuves actuelles : `docs/qa/option-order/`, capture `public-desktop-full.jpg`.
+
+## Contrôle précédent — retrait de la barre interne
+
 
 - Build/typecheck et **213 tests locaux passants** après cette correction. Vitrine et Connecté à 12 choix, Sur mesure à 10, mobile et écran bas contrôlés dans l’IAB ; entrée compacte de 620 ms et texture inchangée.
 - IAB public : client attendu, 12 options Vitrine en deux colonnes ; contenu client/scroll 609/609, overflow visible, total dans la carte. Mobile 390 × 844 : une seule colonne, texture de 500 px, absence de débordement. Aucune erreur/alerte de console. Choix publics initiaux vides restaurés ; groupes et viewport réinitialisés.
@@ -42,7 +51,7 @@ Preuves : `docs/qa/full-motion/` (traces, dix interventions spécialisées, revu
 
 ## GitHub Actions
 
-Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41979502273). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/option-columns/ci.json`.
+Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41981126879). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/option-order/ci.json`.
 
 ## Éléments commerciaux reportés
 
