@@ -1,0 +1,37 @@
+{
+  "duration": 520,
+  "styles": {
+    "::view-transition-group(plan-vitrine)": {
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "borderRadius": "0px",
+      "opacity": "1",
+      "animationTimingFunction": "cubic-bezier(0.32, 0, 0.2, 1)",
+      "animationDuration": "0.52s"
+    },
+    "::view-transition-image-pair(plan-vitrine)": {
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "borderRadius": "21.5193px",
+      "opacity": "1",
+      "animationTimingFunction": "cubic-bezier(0.32, 0, 0.2, 1)",
+      "animationDuration": "0.52s"
+    },
+    "::view-transition-new(plan-vitrine)": {
+      "objectFit": "none",
+      "objectPosition": "0% 0%",
+      "borderRadius": "0px",
+      "opacity": "0.944682",
+      "animationTimingFunction": "ease-out",
+      "animationDuration": "0.32s"
+    },
+    "::view-transition-new(plan-vitrine-content)": {
+      "objectFit": "fill",
+      "objectPosition": "50% 50%",
+      "borderRadius": "0px",
+      "opacity": "0.461518",
+      "animationTimingFunction": "ease-out",
+      "animationDuration": "0.32s"
+    }
+  }
+}

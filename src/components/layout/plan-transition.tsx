@@ -22,10 +22,12 @@ function useMotionLinkClick(props: LinkProps | NavLinkProps) {
       || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
       || (props.target && props.target !== '_self') || props.reloadDocument
       || event.currentTarget.hasAttribute('download')
-      || !props.viewTransition || !canAnimatePlanNavigation()
+      || !props.viewTransition
       || (typeof props.to === 'string' && /^([a-z][a-z\d+.-]*:|\/\/)/i.test(props.to))) return
 
     event.preventDefault()
+    // Read the preference at click time too: it can change since Link rendered.
+    const animate = canAnimatePlanNavigation()
     // Commit through the router synchronously: a second click must supersede
     // the current animation, never replay its pending route when it finishes.
     // Modified clicks and unsupported browsers retain the original Link behavior.
@@ -34,8 +36,8 @@ function useMotionLinkClick(props: LinkProps | NavLinkProps) {
       state: props.state,
       relative: props.relative,
       preventScrollReset: props.preventScrollReset,
-      viewTransition: true,
-      flushSync: true,
+      viewTransition: animate,
+      flushSync: animate,
     })
   }
 }
@@ -50,10 +52,10 @@ export const MotionNavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(functio
   return <NavLink {...props} ref={ref} onClick={onClick} />
 })
 
-export function usePlanSurfaceTransition(variant: string, href: string): CSSProperties {
+export function usePlanTransition(variant: string, href: string, part: 'surface' | 'content' = 'surface'): CSSProperties {
   const transitioning = useViewTransitionState(href)
   return {
-    viewTransitionName: transitioning ? `plan-${variant}` : undefined,
-    viewTransitionClass: 'plan-surface',
+    viewTransitionName: transitioning ? `plan-${variant}${part === 'content' ? '-content' : ''}` : undefined,
+    viewTransitionClass: `plan-${part}`,
   }
 }

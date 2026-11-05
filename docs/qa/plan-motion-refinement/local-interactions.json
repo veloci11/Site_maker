@@ -1,0 +1,123 @@
+{
+  "longSelection": {
+    "cardHeight": 972.921875,
+    "chosen": 12,
+    "client": 1425,
+    "column": "static",
+    "doc": 1425,
+    "tall": "true"
+  },
+  "mobile": {
+    "chosen": [
+      "Français + anglais+ … €",
+      "Prise de rendez-vous+ … €",
+      "Maintenance du site+ … € / mois"
+    ],
+    "client": 375,
+    "doc": 375
+  },
+  "keyboardReducedMotion": {
+    "reduced": true,
+    "path": "/forfaits/vitrine",
+    "active": [],
+    "chosen": [
+      "Français + anglais+ … €",
+      "Prise de rendez-vous+ … €",
+      "Maintenance du site+ … € / mois"
+    ]
+  },
+  "normalRoutes": [
+    {
+      "url": "http://127.0.0.1:4173/forfaits/connecte",
+      "title": "Connecté"
+    },
+    {
+      "url": "http://127.0.0.1:4173/forfaits/immersif-3d",
+      "title": "Immersif 3D"
+    },
+    {
+      "url": "http://127.0.0.1:4173/forfaits/sur-mesure",
+      "title": "Sur mesure"
+    },
+    {
+      "url": "http://127.0.0.1:4173/contact?besoin=evolution",
+      "title": "Évolution"
+    },
+    {
+      "url": "http://127.0.0.1:4173/contact?besoin=refonte",
+      "title": "Refonte"
+    }
+  ],
+  "rapidNavigation": {
+    "url": "http://127.0.0.1:4173/forfaits/connecte",
+    "heading": "Connecté"
+  },
+  "restoredChecks": [
+    {
+      "id": "option-mobile",
+      "checked": "false"
+    },
+    {
+      "id": "option-language-en",
+      "checked": "true"
+    },
+    {
+      "id": "option-managed-content",
+      "checked": "false"
+    },
+    {
+      "id": "option-booking",
+      "checked": "true"
+    },
+    {
+      "id": "option-portfolio-gallery",
+      "checked": "false"
+    },
+    {
+      "id": "option-extra-pages",
+      "checked": "false"
+    },
+    {
+      "id": "option-additional-language",
+      "checked": "false"
+    },
+    {
+      "id": "option-copywriting",
+      "checked": "false"
+    },
+    {
+      "id": "option-portfolio-gallery",
+      "checked": "false"
+    },
+    {
+      "id": "option-extra-pages",
+      "checked": "false"
+    },
+    {
+      "id": "option-additional-language",
+      "checked": "false"
+    },
+    {
+      "id": "option-copywriting",
+      "checked": "false"
+    },
+    {
+      "id": "option-local-seo",
+      "checked": "false"
+    },
+    {
+      "id": "option-deployment",
+      "checked": "false"
+    },
+    {
+      "id": "option-maintenance-monthly",
+      "checked": "true"
+    },
+    {
+      "id": "option-hosting-monthly",
+      "checked": "false"
+    }
+  ],
+  "console": [],
+  "noFormsSubmitted": true
+}

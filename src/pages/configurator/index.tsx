@@ -291,33 +291,50 @@ export function ConfiguratorPage() {
             disabled={sending || stage === 'success'}
             onOfferChange={changeOffer}
           >
-            {selected.length ? (
-              <section className="selected-plan__selection" aria-label="Options choisies">
-                <p>Options choisies</p>
-                <ul>
-                  {selected.map((line) => (
-                    <li key={line.key}>
-                      <Check size={15} strokeWidth={1.6} aria-hidden="true" />
-                      <span>{line.label}</span>
-                      <strong>
-                        {custom && line.amountCents === null
-                          ? 'À définir'
-                          : `+ ${formatMoney(line.amountCents, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`}
-                      </strong>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ) : null}
+            <section
+              className="selected-plan__selection"
+              aria-label="Options choisies"
+              aria-hidden={selected.length === 0}
+              data-open={selected.length > 0}
+            >
+              <div className="selected-plan__selection-clip">
+                <div className="selected-plan__selection-content">
+                  <p>Options choisies</p>
+                  <ul>
+                    {/* Stable rows let CSS reverse an unfinished enter/exit on rapid clicks.
+                        Hidden rows take no space and are excluded from accessibility. */}
+                    {availableOptions.map((option) => {
+                      const active = selected.some((line) => line.key === option.id)
+                      const amount = pricing.options[option.id]
+                      return (
+                        <li key={option.id} data-selected={active} aria-hidden={!active}>
+                          <div className="selected-plan__option-clip">
+                            <div className="selected-plan__option-content">
+                              <Check size={15} strokeWidth={1.6} aria-hidden="true" />
+                              <span>{option.title}</span>
+                              <strong>
+                                {custom && amount === null
+                                  ? 'À définir'
+                                  : `+ ${formatMoney(amount, quote.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`}
+                              </strong>
+                            </div>
+                          </div>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </section>
             <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
               <span>{custom ? 'Votre projet' : 'Création du site'}</span>
-              <strong>{totalLabel}</strong>
-              {monthly ? (
-                <p>
+              <strong key={totalLabel}>{totalLabel}</strong>
+              <div className="selected-plan__monthly" data-open={monthly} aria-hidden={!monthly}>
+                <p key={quote.monthlyTotalCents}>
                   + {formatMoney(quote.monthlyTotalCents, quote.currency)} <span>/ mois</span>
                 </p>
-              ) : null}
-              <small>
+              </div>
+              <small key={selected.length}>
                 {selected.length === 0
                   ? 'Forfait de base'
                   : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}

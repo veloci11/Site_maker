@@ -2,7 +2,13 @@
 
 final result: passed
 
-## Lot actuel : ouverture des forfaits et options visibles — publié et vérifié
+## Lot actuel : fluidité après essai public — correction locale vérifiée
+
+Retour utilisateur traité : texture entrante révélée sans redimensionnement, cadre et coins animés en 520 ms avec accélération progressive. Texte dans une couche distincte, à sa taille finale, dont le fondu reste visible au-dessus de la texture. Préchargement sur intention sans délai ajouté au clic. Les options se déplient et se replient en 360 ms ; premier/dernier choix, hauteur de carte, mensualité, compteurs, rubriques et passage au brief suivent le mouvement.
+
+TypeScript, build et 213 tests passent. IAB local : mesures d’ouverture et de hauteur à vitesse normale, inspection à mi-transition, six destinations, clics rapides, douze options, ordinateur/mobile sans débordement, brief/retour et réduction dynamique des animations au clavier. Les choix non actifs restent hors de l’arbre accessible. Textures d’origine inchangées ; sélection initiale et réglages rétablis, aucune soumission. Publication en cours. [Rapport et captures](docs/qa/plan-motion-refinement/review.md).
+
+## Lot précédent : ouverture des forfaits et options visibles — publié et vérifié
 
 Petite surface de carte reliée à la grande carte du forfait en 420 ms, contenu en fondu ; surface décorative seule capturée pour garder les contrôles et la navigation cliquables. Six destinations et clics rapides vérifiés. Les modules sont prêts avant la capture, y compris à froid. Les options choisies sont visibles dans la carte au-dessus du total ; ancien résumé replié retiré. La carte s’allonge et cesse d’être sticky si nécessaire.
 

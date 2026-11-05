@@ -398,22 +398,33 @@ ul, ol { padding-left: 1.25rem; }
 .motion-reveal { opacity: 1; transform: none; }
 .motion-page { animation: page-in 180ms ease-out; }
 .motion-page--transitioning { animation:none; }
-.motion-page--transitioning .selected-plan__selection li { animation:none; }
 
 /* Native shared surface: geometry moves, while text stays sharp in the page.
    Timings, isolated navigation and reduced-motion follow the VT recipes. */
-:root { --duration-exit:150ms; --duration-enter:210ms; --duration-move:420ms; view-transition-name:none; }
-/* Capture only the decorative surface. Navigation and controls stay live while
-   it moves, so another click can immediately supersede the current opening. */
-.motion-page--transitioning .selected-plan > :not(.selected-plan__surface),
-.motion-page--transitioning .configurator-options { animation:var(--duration-enter) ease-out 80ms both plan-fade-in; }
+:root { --duration-exit:200ms; --duration-enter:320ms; --duration-move:520ms; --plan-radius:24px; view-transition-name:none; }
+/* Keep the moving surface separate from its stationary copy. The navigation
+   remains live, so another click can immediately supersede the opening. */
+.motion-page--transitioning .configurator-options,
+.motion-page--transitioning .configurator-topline { animation:var(--duration-enter) ease-out 120ms both plan-fade-in; }
 ::view-transition { pointer-events:none; }
-::view-transition-group(*) { animation-timing-function:cubic-bezier(.22,1,.36,1); }
-::view-transition-group(.plan-surface) { animation-duration:var(--duration-move); }
-::view-transition-old(.plan-surface) { animation:var(--duration-exit) ease-in both plan-fade-out; }
-::view-transition-new(.plan-surface) { animation:var(--duration-enter) ease-out 80ms both plan-fade-in; }
+::view-transition-group(*) { animation-timing-function:cubic-bezier(.32,0,.2,1); }
+::view-transition-group(.plan-surface) { animation-duration:var(--duration-move); z-index:0; }
+/* Incoming copy is a separate, unscaled layer above the moving texture.
+   Otherwise the surface covers its fade and the text pops in at the very end. */
+::view-transition-group(.plan-content) { animation:none; z-index:1; }
+::view-transition-old(.plan-content) { animation:var(--duration-exit) ease-out both plan-fade-out; }
+::view-transition-new(.plan-content) { animation:var(--duration-enter) ease-out 160ms both plan-fade-in; }
+/* Reveal the final texture at its own size through the moving card clip.
+   Only the outgoing thumbnail may scale uniformly; the incoming image never stretches. */
+::view-transition-image-pair(.plan-surface) { overflow:hidden; border-radius:var(--plan-radius); animation:plan-card-corners var(--duration-move) cubic-bezier(.32,0,.2,1) both; }
+:root:not(:has(.selected-plan))::view-transition-image-pair(.plan-surface) { animation-direction:reverse; }
+::view-transition-old(.plan-surface),::view-transition-new(.plan-surface) { width:100%; height:100%; object-fit:cover; object-position:center; mix-blend-mode:normal; }
+::view-transition-old(.plan-surface) { animation:var(--duration-exit) ease-out both plan-fade-out; }
+::view-transition-new(.plan-surface) { object-fit:none; object-position:left top; animation:var(--duration-enter) ease-out both plan-fade-in; }
 @keyframes plan-fade-in { from { opacity:0; } to { opacity:1; } }
 @keyframes plan-fade-out { from { opacity:1; } to { opacity:0; } }
+@keyframes plan-card-corners { from { border-radius:12px; } to { border-radius:var(--plan-radius); } }
+@media(max-width:760px) { :root { --plan-radius:20px; } }
 
 .portal-shell { display: grid; grid-template-columns: 224px minmax(0, 1fr); grid-template-rows: 76px 1fr; min-height: 100dvh; background: #fff; }
 .portal-header { position: sticky; z-index: 50; top: 0; grid-column: 1 / -1; display: grid; grid-template-columns: 224px minmax(0, 1fr) auto; align-items: center; min-height: 76px; border-bottom: 1px solid var(--border); background: #fff; }
@@ -537,7 +548,7 @@ ul, ol { padding-left: 1.25rem; }
   .pricing-card:hover .pricing-card__cta { background: #111; }
 }
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(*), ::view-transition-new(*), ::view-transition-group(*) { animation-duration:0s !important; animation-delay:0s !important; }
+  ::view-transition-old(*), ::view-transition-new(*), ::view-transition-group(*), ::view-transition-image-pair(*) { animation-duration:0s !important; animation-delay:0s !important; }
   html { scroll-behavior: auto; }
   .motion-reveal { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

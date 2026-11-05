@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { cn } from '../../lib/utils'
-import { MotionLink as Link, canAnimatePlanNavigation, usePlanSurfaceTransition } from './plan-transition'
+import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from './plan-transition'
 
 export interface PricingCardProps {
   slug: string
@@ -13,7 +13,7 @@ export interface PricingCardProps {
   cta?: string
   variant?: 'vitrine' | 'connecte' | 'immersif' | 'custom' | 'evolution' | 'refonte'
   className?: string
-  /** Accepted for existing callers. Navigation never waits for preparation. */
+  /** Preload on pointer/focus intent. Clicking never waits for preparation. */
   prepare?: () => Promise<unknown>
 }
 
@@ -26,6 +26,7 @@ export function PricingCard({
   cta,
   variant,
   className,
+  prepare = () => import('../../pages/configurator/index'),
 }: PricingCardProps) {
   const color =
     variant ??
@@ -39,15 +40,20 @@ export function PricingCard({
   const custom = color === 'custom'
   const publicSlug = slug === 'immersif' ? 'immersif-3d' : slug
   const destination = href ?? `/forfaits/${publicSlug}`
-  const surfaceTransition = usePlanSurfaceTransition(color, destination)
+  const surfaceTransition = usePlanTransition(color, destination)
   const priceLabel = price ?? (custom ? 'Sur devis' : 'À partir de…')
   const actionLabel = cta ?? (custom ? 'Parlons de votre projet' : `Découvrir ${title}`)
+  const prepareDestination = () => {
+    if (destination.startsWith('/forfaits/')) void prepare().catch(() => {})
+  }
   return (
     <Link
       to={destination}
       viewTransition={canAnimatePlanNavigation()}
       className={cn('pricing-card', `pricing-card--${color}`, className)}
       aria-label={`${actionLabel}. ${priceLabel}`}
+      onPointerEnter={prepareDestination}
+      onFocus={prepareDestination}
     >
       <div className="pricing-card__top">
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
