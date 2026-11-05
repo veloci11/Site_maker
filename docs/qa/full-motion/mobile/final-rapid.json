@@ -1,0 +1,37 @@
+{
+  "normalFinal": {
+    "frames": 69,
+    "pseudos": [
+      "::before",
+      "::after",
+      "::view-transition-group(plan-vitrine)",
+      "::view-transition-old(plan-page-outgoing)",
+      "::view-transition-old(plan-vitrine-thumbnail-copy)",
+      "::view-transition-image-pair(plan-vitrine)",
+      "::view-transition-new(plan-vitrine)",
+      "::view-transition-old(plan-vitrine)",
+      "::view-transition-old(plan-footer-outgoing)",
+      "::view-transition-new(plan-page-incoming)",
+      "::view-transition-new(plan-vitrine-content)",
+      "::view-transition-new(plan-footer-incoming)"
+    ],
+    "durations": [
+      120,
+      150,
+      300,
+      360,
+      6.428454019153367,
+      5.767621997095162,
+      0.5120468702197843,
+      520,
+      420,
+      380,
+      240,
+      340
+    ]
+  },
+  "rapidA": "http://127.0.0.1:4173/",
+  "rapidB": "http://127.0.0.1:4173/forfaits/connecte",
+  "rapidC": "http://127.0.0.1:4173/",
+  "rapidD": "http://127.0.0.1:4173/"
+}

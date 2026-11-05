@@ -1,0 +1,29 @@
+{
+  "comparisonOpen": {
+    "frames": 67,
+    "native": false,
+    "names": [
+      "opacity",
+      "background-color",
+      "plan-motion-fade",
+      "plan-motion-slide",
+      "plan-motion-corners",
+      "plan-motion-copy-enter"
+    ],
+    "durationMax": 520
+  },
+  "comparisonClose": {
+    "frames": 77,
+    "native": false,
+    "names": [
+      "page-in",
+      "plan-fade-in",
+      "plan-motion-fade",
+      "plan-motion-slide",
+      "plan-motion-corners",
+      "plan-motion-copy-exit"
+    ],
+    "durationMax": 520
+  },
+  "comparisonHref": "/forfaits"
+}

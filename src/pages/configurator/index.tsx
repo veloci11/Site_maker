@@ -27,7 +27,7 @@ import {
 import { Button } from '../../components/ui/button'
 import { Checkbox } from '../../components/ui/checkbox'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
-import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
+import { MotionLink as Link, canAnimatePlanNavigation, usePlanNavigate } from '../../components/layout/plan-transition'
 import {
   ProjectBriefForm,
   type InquiryResult,
@@ -43,6 +43,7 @@ import {
   type ProjectDraft,
 } from '../../lib/draft'
 import { includedGuidance } from '../../content/configurator-copy'
+import { getPlanReturnHref } from '../../lib/plan-return'
 
 function forOffer(current: Configuration, offerId: OfferId): Configuration {
   if (current.offerId === offerId) return current
@@ -82,12 +83,14 @@ export function ConfiguratorPage() {
   const { slug } = useParams<{ slug: string }>()
   const [params] = useSearchParams()
   const navigate = useNavigate()
+  const navigatePlan = usePlanNavigate()
   const { user, loading: authLoading } = useAuth()
   const { refresh, selectProject } = useProject()
   const [storedConfiguration, setConfiguration] = useState(() => initialConfiguration(params, slug))
   const [pricing, setPricing] = useState<Pricing>(defaultPricing)
   const [pricingError, setPricingError] = useState(false)
   const [stage, setStage] = useState<'options' | 'contact' | 'success'>('options')
+  const [openGroups, setOpenGroups] = useState<string[]>(['essentials'])
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState<InquiryResult | null>(null)
@@ -180,10 +183,8 @@ export function ConfiguratorPage() {
   function changeOffer(offerId: OfferId) {
     if (offerId === configuration.offerId) return
     if (!editingId) {
-      navigate(`/forfaits/${getOffer(offerId)!.slug}`, {
+      navigatePlan(`/forfaits/${getOffer(offerId)!.slug}`, {
         preventScrollReset: true,
-        viewTransition: canAnimatePlanNavigation(),
-        flushSync: canAnimatePlanNavigation(),
       })
       return
     }
@@ -276,7 +277,7 @@ export function ConfiguratorPage() {
   return (
     <section className="configurator-page container">
       <div className="configurator-topline">
-        <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
+        <Link to={getPlanReturnHref()} viewTransition={canAnimatePlanNavigation()}>
           <ArrowLeft size={15} aria-hidden="true" />
           Tous les forfaits
         </Link>
@@ -380,7 +381,8 @@ export function ConfiguratorPage() {
               </header>
               <Accordion
                 type="multiple"
-                defaultValue={['essentials']}
+                value={openGroups}
+                onValueChange={setOpenGroups}
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {
@@ -416,7 +418,7 @@ export function ConfiguratorPage() {
                           ) : null}
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent>
+                      <AccordionContent inert={!openGroups.includes(group.id)} aria-hidden={!openGroups.includes(group.id)}>
                         <div className="configurator-choice-list">
                           {options.map((option) => {
                             const included = isOptionIncluded(configuration, option.id)

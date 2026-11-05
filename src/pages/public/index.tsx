@@ -29,6 +29,7 @@ import {
 } from '../../components/ui/accordion'
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import { api } from '../../lib/api'
+import { didRestorePlanScroll, getPlanReturnHref } from '../../lib/plan-return'
 import '../public.css'
 
 const ProjectBriefForm = lazy(() => import('../../components/inquiries/ProjectBriefForm').then(module => ({ default: module.ProjectBriefForm })))
@@ -139,9 +140,10 @@ function FaqList({
 export function HomePage() {
   usePageTitle('Création de sites internet clé en main')
   const pricing = usePricing()
-  const { hash } = useLocation()
+  const location = useLocation()
+  const { hash } = location
   useEffect(() => {
-    if (hash)
+    if (hash && !didRestorePlanScroll(location))
       document
         .getElementById(hash.slice(1))
         ?.scrollIntoView({ behavior: 'instant', block: 'start' })
@@ -782,7 +784,7 @@ export function ContactPage() {
     return (
       <section className="configurator-page container existing-site-page">
         <div className="configurator-topline">
-          <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
+          <Link to={getPlanReturnHref()} viewTransition={canAnimatePlanNavigation()}>
             <ArrowLeft size={15} aria-hidden="true" />
             Tous les forfaits
           </Link>

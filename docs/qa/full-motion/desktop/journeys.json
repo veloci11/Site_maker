@@ -1,0 +1,368 @@
+[
+  {
+    "item": {
+      "slug": "vitrine",
+      "label": "Configurer Vitrine. À partir de…",
+      "href": "/forfaits/vitrine"
+    },
+    "before": {
+      "scrollY": 569,
+      "y": 139.8671875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/vitrine",
+      "textureHeight": 580,
+      "title": "Vitrine",
+      "transform": "none"
+    },
+    "open": {
+      "frames": 67,
+      "native": true,
+      "names": [
+        "card-grain-entry",
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "opacity",
+        "transform",
+        "-ua-view-transition-group-anim-plan-vitrine",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 78,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-vitrine",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 412.5,
+      "y": 299.21832275390625
+    },
+    "returnDelta": 159.35113525390625
+  },
+  {
+    "item": {
+      "slug": "connecte",
+      "label": "Configurer Connecté. À partir de…",
+      "href": "/forfaits/connecte"
+    },
+    "before": {
+      "scrollY": 571,
+      "y": 137.8671875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/connecte",
+      "textureHeight": 580,
+      "title": "Connecté",
+      "transform": "none"
+    },
+    "open": {
+      "frames": 70,
+      "native": true,
+      "names": [
+        "opacity",
+        "card-grain-entry",
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-connecte",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 78,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-connecte",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 412.5,
+      "y": 300.05963134765625
+    },
+    "returnDelta": 162.19244384765625
+  },
+  {
+    "item": {
+      "slug": "immersif",
+      "label": "Configurer Immersif 3D. À partir de…",
+      "href": "/forfaits/immersif-3d"
+    },
+    "before": {
+      "scrollY": 572.5,
+      "y": 136.3671875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/immersif-3d",
+      "textureHeight": 580,
+      "title": "Immersif 3D",
+      "transform": "none"
+    },
+    "open": {
+      "frames": 70,
+      "native": true,
+      "names": [
+        "opacity",
+        "card-grain-entry",
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-immersif",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 77,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-immersif",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 412.5,
+      "y": 298.70245361328125
+    },
+    "returnDelta": 162.33526611328125
+  },
+  {
+    "item": {
+      "slug": "custom",
+      "label": "Parlons de votre projet. Sur devis",
+      "href": "/forfaits/sur-mesure"
+    },
+    "before": {
+      "scrollY": 571,
+      "y": 137.8671875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/sur-mesure",
+      "textureHeight": 580,
+      "title": "Sur mesure",
+      "transform": "matrix(-1, 0, 0, -1, 0, 0)"
+    },
+    "open": {
+      "frames": 71,
+      "native": true,
+      "names": [
+        "opacity",
+        "card-grain-entry",
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-custom",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 77,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-custom",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 412.5,
+      "y": 300.0621337890625
+    },
+    "returnDelta": 162.1949462890625
+  },
+  {
+    "item": {
+      "slug": "evolution",
+      "label": "Faire évoluer mon site. Sur devis",
+      "href": "/contact?besoin=evolution"
+    },
+    "before": {
+      "scrollY": 1007.5,
+      "y": 136.6171875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/contact?besoin=evolution",
+      "textureHeight": 580,
+      "title": "Évolution",
+      "transform": "none"
+    },
+    "open": {
+      "frames": 68,
+      "native": true,
+      "names": [
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "opacity",
+        "card-grain-entry",
+        "transform",
+        "-ua-view-transition-group-anim-plan-evolution",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 77,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-evolution",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 847.5,
+      "y": 298.967529296875
+    },
+    "returnDelta": 162.350341796875
+  },
+  {
+    "item": {
+      "slug": "refonte",
+      "label": "Refondre mon site. Sur devis",
+      "href": "/contact?besoin=refonte"
+    },
+    "before": {
+      "scrollY": 1006,
+      "y": 138.1171875
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/contact?besoin=refonte",
+      "textureHeight": 580,
+      "title": "Refonte",
+      "transform": "none"
+    },
+    "open": {
+      "frames": 69,
+      "native": true,
+      "names": [
+        "border-bottom-color",
+        "border-left-color",
+        "border-right-color",
+        "border-top-color",
+        "color",
+        "opacity",
+        "card-grain-entry",
+        "transform",
+        "-ua-view-transition-group-anim-plan-refonte",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-copy-travel-out",
+        "plan-motion-corners",
+        "plan-motion-copy-enter"
+      ],
+      "durationMax": 520
+    },
+    "close": {
+      "frames": 77,
+      "native": true,
+      "names": [
+        "page-in",
+        "plan-fade-in",
+        "color",
+        "transform",
+        "-ua-view-transition-group-anim-plan-refonte",
+        "plan-motion-fade",
+        "plan-motion-slide",
+        "plan-motion-corners",
+        "plan-motion-copy-exit",
+        "plan-motion-copy-travel-in"
+      ],
+      "durationMax": 520
+    },
+    "after": {
+      "scrollY": 847.5,
+      "y": 299.4796142578125
+    },
+    "returnDelta": 161.3624267578125
+  }
+]

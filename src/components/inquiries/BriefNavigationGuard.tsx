@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { useBeforeUnload, useBlocker } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../ui/dialog'
+import { discardPlanNavigationIntent } from '../layout/plan-transition'
 
 /** Keep unfinished briefs in memory until the visitor chooses to leave. */
 export function BriefNavigationGuard({ active, pending }: { active: boolean; pending: boolean }) {
@@ -11,10 +12,15 @@ export function BriefNavigationGuard({ active, pending }: { active: boolean; pen
     event.preventDefault()
     event.returnValue = ''
   }, [active]))
+  const stay = () => {
+    if (blocker.state !== 'blocked') return
+    discardPlanNavigationIntent()
+    blocker.reset()
+  }
 
   return (
     <Dialog open={blocker.state === 'blocked'} onOpenChange={open => {
-      if (!open && blocker.state === 'blocked') blocker.reset()
+      if (!open) stay()
     }}>
       <DialogContent>
         <DialogHeader>
@@ -26,7 +32,7 @@ export function BriefNavigationGuard({ active, pending }: { active: boolean; pen
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline" onClick={() => { if (blocker.state === 'blocked') blocker.reset() }}>Rester sur le formulaire</Button>
+          <Button variant="outline" onClick={stay}>Rester sur le formulaire</Button>
           <Button onClick={() => { if (blocker.state === 'blocked') blocker.proceed() }}>Quitter la page</Button>
         </DialogFooter>
       </DialogContent>

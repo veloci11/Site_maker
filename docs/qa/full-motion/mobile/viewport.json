@@ -1,0 +1,12 @@
+{
+  "actual": {
+    "clientWidth": 375,
+    "dpr": 1,
+    "innerHeight": 844,
+    "innerWidth": 390
+  },
+  "requested": {
+    "height": 844,
+    "width": 390
+  }
+}

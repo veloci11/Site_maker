@@ -1,12 +1,22 @@
+## Livraison finale en préparation — animations et qualité
+
+Les six parcours accueil/forfait et leurs retours ont été revus dans l’IAB, sur ordinateur et mobile. Carte native de 520 ms, copies séparées pour garder le texte net, image fixe et prolongement organique sans miroir ; ajout/retrait des options de 620 ms. Grande carte sticky et défilement interne sur ordinateur, hauteur naturelle sur mobile, groupes multiples indépendants. Original haute définition conservé octet pour octet, continuation native 1536 px et versions 1x/2x. Les clics rapides et le clavier interrompent la capture sans perdre la navigation ; annuler un changement conserve le brouillon. TypeScript, build et 213 tests passent après la dernière correction.
+
+Les preuves et les dix interventions spécialisées sont regroupées dans `qa/full-motion/`. La révision effectivement publiée est indiquée dans `../ops/DEPLOYMENT_STATUS.md`. Les prix restent ceux du catalogue existant ; aucun chiffre commercial n’a été inventé. GitHub Actions est bloqué par le compte/la facturation avant même le démarrage d’un runner : voir `qa/full-motion/ci-provenance.md`.
+
 # Suivi des demandes
 
-Version actuelle vérifiée : `3d1c08c` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version applicative en ligne : `3d4d854` sur https://gilmathis.com/. L’essai Vitrine est publié ; sa définition a été rejetée par Mathis et une version haute définition ainsi que les transitions complètes sont en cours. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Essai Vitrine, couleurs, carte sticky et rubriques multiples — 4 novembre 2026, local vérifié
+## Texture haute définition et transitions des six fiches — en cours
 
-Mathis juge le miroir visible, puis demande de tester directement en ligne l’image générée sur la première carte, Vitrine uniquement. Il souhaite aussi retrouver les couleurs de l’image en configuration, garder la carte à gauche pendant le défilement et ouvrir plusieurs rubriques d’options ensemble. Ces points sont implémentés et contrôlés localement ; les trois originaux restent conservés. La reprise des transitions aller-retour sur les six fiches est l’étape suivante autorisée.
+Après publication de l’essai généré, Mathis confirme le fonctionnement mais refuse sa faible définition. Repartir du master haute définition et créer une vraie continuation, sans simple agrandissement du fichier généré de 724 px. Conserver les cartes et l’anatomie approuvées, avec Vitrine seule en essai. Terminer aussi les ouvertures et retours des six fiches, la carte sticky et les rubriques indépendantes. Dix interventions distinctes sont demandées ; trois sous-agents peuvent travailler simultanément selon la capacité disponible.
+
+## Essai Vitrine, couleurs, carte sticky et rubriques multiples — 4 novembre 2026, publié
+
+Mathis juge le miroir visible, puis demande de tester directement en ligne l’image générée sur la première carte, Vitrine uniquement. Il souhaite aussi retrouver les couleurs de l’image en configuration, garder la carte à gauche pendant le défilement et ouvrir plusieurs rubriques d’options ensemble. Ces points sont implémentés, publiés et contrôlés dans l’IAB public ; les trois originaux restent conservés. La reprise des transitions aller-retour sur les six fiches est l’étape suivante autorisée. Le retour suivant refuse la faible définition de cette image d’essai.
 
 TypeScript, build et 213 tests passent. Rapport : `qa/vitrine-trial/review.md`. GitHub Actions n’a pas exécuté le run signalé : le compte est bloqué pour un problème de facturation, d’après l’annotation du run ; ce blocage est distinct des vérifications locales et de la disponibilité du site.
 

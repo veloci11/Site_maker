@@ -1,0 +1,1154 @@
+[
+  {
+    "slug": "vitrine",
+    "sourceScrollAtAcceptedCapture": 412.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 412.5,
+    "returnObservedScroll": 412.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 21,
+    "returnTraceFirstIncomingTime": 102,
+    "sourcePreLocatorScroll": 569,
+    "cardYAfter": 299.21832275390625,
+    "open": {
+      "nativeFrameCount": 61,
+      "nativeFirstT": 62,
+      "nativeLastT": 588,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-vitrine",
+          "::view-transition-group(plan-vitrine)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-vitrine-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-vitrine-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-vitrine)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-vitrine)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-vitrine-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-vitrine)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-vitrine-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 64,
+      "nativeFirstT": 131,
+      "nativeLastT": 656,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-vitrine",
+          "::view-transition-group(plan-vitrine)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-vitrine-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-vitrine-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-vitrine)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-vitrine)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-vitrine-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-vitrine)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-vitrine-content)",
+          200
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 412.5,
+    "returnFirstNativeIncomingT": 131,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  },
+  {
+    "slug": "connecte",
+    "sourceScrollAtAcceptedCapture": 412.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 412.5,
+    "returnObservedScroll": 412.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 21,
+    "returnTraceFirstIncomingTime": 104,
+    "sourcePreLocatorScroll": 571,
+    "cardYAfter": 300.05963134765625,
+    "open": {
+      "nativeFrameCount": 64,
+      "nativeFirstT": 63,
+      "nativeLastT": 588,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-connecte",
+          "::view-transition-group(plan-connecte)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-connecte-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-connecte-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-connecte)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-connecte)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-connecte-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-connecte)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-connecte-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 64,
+      "nativeFirstT": 134,
+      "nativeLastT": 658,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-connecte",
+          "::view-transition-group(plan-connecte)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-connecte-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-connecte-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-connecte)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-connecte)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-connecte-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-connecte)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-connecte-content)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 412.5,
+    "returnFirstNativeIncomingT": 134,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  },
+  {
+    "slug": "immersif",
+    "sourceScrollAtAcceptedCapture": 412.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 412.5,
+    "returnObservedScroll": 412.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 26,
+    "returnTraceFirstIncomingTime": 99,
+    "sourcePreLocatorScroll": 572.5,
+    "cardYAfter": 298.70245361328125,
+    "open": {
+      "nativeFrameCount": 64,
+      "nativeFirstT": 68,
+      "nativeLastT": 592,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-immersif",
+          "::view-transition-group(plan-immersif)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-immersif-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-immersif-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-immersif)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-immersif)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-immersif-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-immersif)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-immersif-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 63,
+      "nativeFirstT": 128,
+      "nativeLastT": 644,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-immersif",
+          "::view-transition-group(plan-immersif)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-immersif-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-immersif-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-immersif)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-immersif)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-immersif-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-immersif)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-immersif-content)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 412.5,
+    "returnFirstNativeIncomingT": 128,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  },
+  {
+    "slug": "custom",
+    "sourceScrollAtAcceptedCapture": 412.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 412.5,
+    "returnObservedScroll": 412.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 25,
+    "returnTraceFirstIncomingTime": 100,
+    "sourcePreLocatorScroll": 571,
+    "cardYAfter": 300.0621337890625,
+    "open": {
+      "nativeFrameCount": 65,
+      "nativeFirstT": 60,
+      "nativeLastT": 592,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-custom",
+          "::view-transition-group(plan-custom)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-custom-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-custom-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-custom)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-custom)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-custom-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-custom)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-custom-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 63,
+      "nativeFirstT": 130,
+      "nativeLastT": 646,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-custom",
+          "::view-transition-group(plan-custom)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-custom-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-custom-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-custom)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-custom)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-custom-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-custom)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-custom-content)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 412.5,
+    "returnFirstNativeIncomingT": 130,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  },
+  {
+    "slug": "evolution",
+    "sourceScrollAtAcceptedCapture": 847.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 847.5,
+    "returnObservedScroll": 847.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 17,
+    "returnTraceFirstIncomingTime": 101,
+    "sourcePreLocatorScroll": 1007.5,
+    "cardYAfter": 298.967529296875,
+    "open": {
+      "nativeFrameCount": 62,
+      "nativeFirstT": 44,
+      "nativeLastT": 560,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-evolution",
+          "::view-transition-group(plan-evolution)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-evolution-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-evolution-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-evolution)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-evolution)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-evolution-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-evolution)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-evolution-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 63,
+      "nativeFirstT": 127,
+      "nativeLastT": 643,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-evolution",
+          "::view-transition-group(plan-evolution)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-evolution-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-evolution-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-evolution)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-evolution)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-evolution-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-evolution)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-evolution-content)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 847.5,
+    "returnFirstNativeIncomingT": 127,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  },
+  {
+    "slug": "refonte",
+    "sourceScrollAtAcceptedCapture": 847.5,
+    "returnFirstIncomingScroll": 0,
+    "returnFinalScroll": 847.5,
+    "returnObservedScroll": 847.5,
+    "deltaToSource": 0.0,
+    "sourceTraceLastTime": 10,
+    "returnTraceFirstIncomingTime": 100,
+    "sourcePreLocatorScroll": 1006,
+    "cardYAfter": 299.4796142578125,
+    "open": {
+      "nativeFrameCount": 63,
+      "nativeFirstT": 45,
+      "nativeLastT": 560,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-refonte",
+          "::view-transition-group(plan-refonte)",
+          520
+        ],
+        [
+          "plan-motion-copy-enter",
+          "::view-transition-new(plan-refonte-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-out",
+          "::view-transition-old(plan-refonte-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-refonte)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-refonte)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-refonte-content)",
+          340
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-refonte)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-refonte-thumbnail-copy)",
+          150
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "close": {
+      "nativeFrameCount": 63,
+      "nativeFirstT": 124,
+      "nativeLastT": 640,
+      "endsIdle": true,
+      "animations": [
+        [
+          "-ua-view-transition-group-anim-plan-refonte",
+          "::view-transition-group(plan-refonte)",
+          520
+        ],
+        [
+          "plan-motion-copy-exit",
+          "::view-transition-old(plan-refonte-content)",
+          520
+        ],
+        [
+          "plan-motion-copy-travel-in",
+          "::view-transition-new(plan-refonte-thumbnail-copy)",
+          520
+        ],
+        [
+          "plan-motion-corners",
+          "::view-transition-image-pair(plan-refonte)",
+          520
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-footer-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-page-incoming)",
+          360
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-refonte)",
+          380
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-new(plan-refonte-thumbnail-copy)",
+          200
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-footer-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-page-outgoing)",
+          300
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-refonte)",
+          240
+        ],
+        [
+          "plan-motion-fade",
+          "::view-transition-old(plan-refonte-content)",
+          200
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-footer-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-new(plan-page-incoming)",
+          520
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-footer-outgoing)",
+          420
+        ],
+        [
+          "plan-motion-slide",
+          "::view-transition-old(plan-page-outgoing)",
+          420
+        ]
+      ]
+    },
+    "returnFirstNativeIncomingScroll": 847.5,
+    "returnFirstNativeIncomingT": 124,
+    "returnNativeScrollDelta": 0.0,
+    "rawReturnDeltaIsPreLocatorMeasurement": true
+  }
+]

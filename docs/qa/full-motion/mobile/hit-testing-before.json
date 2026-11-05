@@ -1,0 +1,31 @@
+{
+  "path": "/forfaits/vitrine",
+  "styles": [
+    {
+      "pseudo": "::view-transition",
+      "pointer": "none"
+    },
+    {
+      "pseudo": "::view-transition-group(plan-page-incoming)",
+      "pointer": "none"
+    },
+    {
+      "pseudo": "::view-transition-new(plan-page-incoming)",
+      "pointer": "none"
+    }
+  ],
+  "bodyPointer": "auto",
+  "point": {
+    "rect": {
+      "x": 20,
+      "y": 100,
+      "width": 109.3203125,
+      "height": 32,
+      "top": 100,
+      "right": 129.3203125,
+      "bottom": 132,
+      "left": 20
+    },
+    "target": "<main id=\"main-content\" class=\"public-main\"><div class=\"motion-page motion-page--transitioning motion-page--plan-transitioning\" data-plan-motion-direction=\"open\" data-plan-motion-phase=\"incoming\" style=\"view-transition-name: plan-page-incoming; view-transition-class: plan-page;\"><section class=\"configurator-page container\"><div class=\"configurator-topline\"><a href=\"/\" data-discover=\"true\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-"
+  }
+}

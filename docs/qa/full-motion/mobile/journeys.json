@@ -1,0 +1,436 @@
+[
+  {
+    "plan": "vitrine",
+    "open": {
+      "frames": 75,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-vitrine)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-vitrine-thumbnail-copy)",
+        "::view-transition-image-pair(plan-vitrine)",
+        "::view-transition-new(plan-vitrine)",
+        "::view-transition-old(plan-vitrine)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-vitrine-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        120,
+        150,
+        300,
+        360,
+        37.70815040718896,
+        33.09456100197635,
+        5.179308768635239,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 77,
+      "pseudos": [
+        "::view-transition-group(plan-vitrine)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-vitrine)",
+        "::view-transition-new(plan-vitrine)",
+        "::view-transition-old(plan-vitrine)",
+        "::view-transition-old(plan-vitrine-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-vitrine-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        280,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/forfaits/vitrine",
+      "textureHeight": 500,
+      "title": "Vitrine"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  },
+  {
+    "plan": "connecte",
+    "open": {
+      "frames": 78,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-connecte)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-connecte-thumbnail-copy)",
+        "::view-transition-image-pair(plan-connecte)",
+        "::view-transition-new(plan-connecte)",
+        "::view-transition-old(plan-connecte)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-connecte-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        120,
+        150,
+        300,
+        360,
+        108.15247617097106,
+        120.34161579147796,
+        70.93067727229888,
+        21.34172199367137,
+        18.40196381186804,
+        2.414518692593467,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 77,
+      "pseudos": [
+        "::view-transition-group(plan-connecte)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-connecte)",
+        "::view-transition-new(plan-connecte)",
+        "::view-transition-old(plan-connecte)",
+        "::view-transition-old(plan-connecte-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-connecte-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        280,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/forfaits/connecte",
+      "textureHeight": 500,
+      "title": "Connecté"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  },
+  {
+    "plan": "immersif",
+    "open": {
+      "frames": 78,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-immersif)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-immersif-thumbnail-copy)",
+        "::view-transition-image-pair(plan-immersif)",
+        "::view-transition-new(plan-immersif)",
+        "::view-transition-old(plan-immersif)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-immersif-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        120,
+        150,
+        300,
+        180,
+        360,
+        108.2002844245039,
+        120.41911993949087,
+        71.11752372173984,
+        19.4935704668328,
+        16.821671917855582,
+        2.151047894952731,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 76,
+      "pseudos": [
+        "::view-transition-group(plan-immersif)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-immersif)",
+        "::view-transition-new(plan-immersif)",
+        "::view-transition-old(plan-immersif)",
+        "::view-transition-old(plan-immersif-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-immersif-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        280,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/forfaits/immersif-3d",
+      "textureHeight": 500.0000305175781,
+      "title": "Immersif 3D"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  },
+  {
+    "plan": "custom",
+    "open": {
+      "frames": 78,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-custom)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-custom-thumbnail-copy)",
+        "::view-transition-image-pair(plan-custom)",
+        "::view-transition-new(plan-custom)",
+        "::view-transition-old(plan-custom)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-custom-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        120,
+        150,
+        300,
+        180,
+        360,
+        84.76195122729477,
+        86.49692261770791,
+        25.61406528196575,
+        108.11807365423557,
+        120.28588057940115,
+        70.79668297121928,
+        6.36074102311257,
+        5.709588876862479,
+        0.5047579409471009,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 77,
+      "pseudos": [
+        "::view-transition-group(plan-custom)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-custom)",
+        "::view-transition-new(plan-custom)",
+        "::view-transition-old(plan-custom)",
+        "::view-transition-old(plan-custom-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-custom-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        280,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/forfaits/sur-mesure",
+      "textureHeight": 499.9999694824219,
+      "title": "Sur mesure"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  },
+  {
+    "plan": "evolution",
+    "open": {
+      "frames": 77,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-evolution)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-evolution-thumbnail-copy)",
+        "::view-transition-image-pair(plan-evolution)",
+        "::view-transition-new(plan-evolution)",
+        "::view-transition-old(plan-evolution)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-evolution-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        72.00339038695702,
+        70.22747831739439,
+        16.4828930216345,
+        120,
+        150,
+        300,
+        180,
+        360,
+        108.13282566729012,
+        120.30977647669462,
+        70.85409361811821,
+        17.958565073012544,
+        15.516577689149372,
+        1.9382216848179383,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 77,
+      "pseudos": [
+        "::view-transition-group(plan-evolution)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-evolution)",
+        "::view-transition-new(plan-evolution)",
+        "::view-transition-old(plan-evolution)",
+        "::view-transition-old(plan-evolution-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-evolution-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/contact?besoin=evolution",
+      "textureHeight": 500.0000305175781,
+      "title": "Évolution"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  },
+  {
+    "plan": "refonte",
+    "open": {
+      "frames": 76,
+      "pseudos": [
+        "::before",
+        "::after",
+        "::view-transition-group(plan-refonte)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-old(plan-refonte-thumbnail-copy)",
+        "::view-transition-image-pair(plan-refonte)",
+        "::view-transition-new(plan-refonte)",
+        "::view-transition-old(plan-refonte)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-refonte-content)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        19.62471966585774,
+        16.933469562491133,
+        120,
+        150,
+        300,
+        180,
+        360,
+        108.71069147047699,
+        121.25024450107631,
+        73.15969414300454,
+        7.543165795015243,
+        6.719621597898504,
+        0.634528879466968,
+        520,
+        420,
+        380,
+        240,
+        340
+      ]
+    },
+    "close": {
+      "frames": 76,
+      "pseudos": [
+        "::view-transition-group(plan-refonte)",
+        "::view-transition-old(plan-page-outgoing)",
+        "::view-transition-image-pair(plan-refonte)",
+        "::view-transition-new(plan-refonte)",
+        "::view-transition-old(plan-refonte)",
+        "::view-transition-old(plan-refonte-content)",
+        "::view-transition-old(plan-footer-outgoing)",
+        "::view-transition-new(plan-page-incoming)",
+        "::view-transition-new(plan-refonte-thumbnail-copy)",
+        "::view-transition-new(plan-footer-incoming)"
+      ],
+      "durations": [
+        180,
+        360,
+        520,
+        300,
+        420,
+        380,
+        240,
+        200
+      ]
+    },
+    "detail": {
+      "asidePosition": "static",
+      "overflow": false,
+      "path": "/contact?besoin=refonte",
+      "textureHeight": 500,
+      "title": "Refonte"
+    },
+    "returned": "http://127.0.0.1:4173/"
+  }
+]

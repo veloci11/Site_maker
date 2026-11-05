@@ -1,0 +1,20 @@
+{
+  "dpr": 2,
+  "width": 1440,
+  "href": "/forfaits",
+  "resources": [
+    {
+      "url": "http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp",
+      "bytes": 0
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/textures/grain-plasma-master.webp",
+      "bytes": 2636956
+    },
+    {
+      "url": "http://127.0.0.1:4173/assets/textures/grain-plasma-vitrine-continuation-top.webp",
+      "bytes": 2431416
+    }
+  ],
+  "image": "image-set(url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\") 1dppx, url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-master.webp\") 2dppx), url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-card.webp\")"
+}

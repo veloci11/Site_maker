@@ -1,0 +1,20 @@
+{
+  "revision": "3d4d854677066c9779cf7c743e068c92ece3e880",
+  "client": 1265,
+  "doc": 1265,
+  "filter": "hue-rotate(-6deg) saturate(1.04)",
+  "image": "url(\"https://gilmathis.com/assets/textures/grain-plasma-vitrine-trial.webp\")",
+  "open": [
+    "true",
+    "true",
+    "true",
+    "false",
+    "false"
+  ],
+  "scripts": [
+    "https://gilmathis.com/assets/index-BzVLONE6.js"
+  ],
+  "sticky": "sticky",
+  "console": [],
+  "noFormsSubmitted": true
+}

@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react'
 import { cn } from '../../lib/utils'
+import { preloadPlanImages } from '../../lib/plan-images'
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from './plan-transition'
 
 export interface PricingCardProps {
@@ -41,9 +42,11 @@ export function PricingCard({
   const publicSlug = slug === 'immersif' ? 'immersif-3d' : slug
   const destination = href ?? `/forfaits/${publicSlug}`
   const surfaceTransition = usePlanTransition(color, destination)
+  const thumbnailTransition = usePlanTransition(color, destination, 'thumbnail')
   const priceLabel = price ?? (custom ? 'Sur devis' : 'À partir de…')
   const actionLabel = cta ?? (custom ? 'Parlons de votre projet' : `Découvrir ${title}`)
   const prepareDestination = () => {
+    preloadPlanImages(color)
     if (destination.startsWith('/forfaits/')) void prepare().catch(() => {})
   }
   return (
@@ -55,7 +58,7 @@ export function PricingCard({
       onPointerEnter={prepareDestination}
       onFocus={prepareDestination}
     >
-      <div className="pricing-card__top">
+      <div className="pricing-card__top" style={thumbnailTransition}>
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
           <span className="pricing-card__grain" />
         </span>

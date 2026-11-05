@@ -1,0 +1,243 @@
+/* React Router owns the native transition lifecycle. Only plan/list journeys
+   opt into this choreography; no root/header screenshot or image scaling. */
+:root {
+  --plan-motion-duration: 520ms;
+  --plan-motion-ease: cubic-bezier(.32, 0, .2, 1);
+  --plan-motion-header: 96px;
+  --plan-page-enter-x: 28px;
+  --plan-page-exit-x: -22px;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="close"]) {
+  --plan-page-enter-x: -22px;
+  --plan-page-exit-x: 28px;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="switch"]) {
+  --plan-page-enter-x: 0px;
+  --plan-page-exit-x: 0px;
+}
+
+/* The pseudo tree is above normal stacking contexts. Clip the whole tree to
+   protect the live sticky header even when the old listing is far scrolled. */
+:root:has(.public-shell)::view-transition {
+  pointer-events: none;
+  clip-path: inset(var(--plan-motion-header) 0 0);
+}
+
+/* Header triggers, unlike their portal-backed menus, remain in this subtree.
+   Opening either menu exposes the current live page and its interactive menu. */
+:root:has(.public-header-wrap [data-state="open"])::view-transition {
+  visibility: hidden;
+}
+
+.motion-page.motion-page--plan-transitioning,
+.motion-page.motion-page--plan-transitioning .configurator-options,
+.motion-page.motion-page--plan-transitioning .configurator-topline,
+.motion-page.motion-page--plan-transitioning .configurator-groups,
+.motion-page.motion-page--plan-transitioning .configurator-contact,
+.motion-page.motion-page--plan-transitioning .configurator-success,
+.motion-page.motion-page--plan-transitioning .selected-plan__total > strong,
+.motion-page.motion-page--plan-transitioning .selected-plan__total > small,
+.motion-page.motion-page--plan-transitioning .selected-plan__monthly > p {
+  animation: none;
+}
+
+/* Separate names preserve each footer's viewport position too. */
+.public-shell:has(.motion-page[data-plan-motion-phase="outgoing"]) .site-footer {
+  view-transition-name: plan-footer-outgoing;
+  view-transition-class: plan-page;
+}
+
+.public-shell:has(.motion-page[data-plan-motion-phase="incoming"]) .site-footer {
+  view-transition-name: plan-footer-incoming;
+  view-transition-class: plan-page;
+}
+
+:root::view-transition-group(.plan-page) {
+  animation: none;
+  z-index: 0;
+}
+
+:root::view-transition-image-pair(.plan-page) {
+  isolation: auto;
+  overflow: visible;
+}
+
+:root::view-transition-old(.plan-page),
+:root::view-transition-new(.plan-page) {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
+  mix-blend-mode: normal;
+}
+
+:root::view-transition-old(.plan-page) {
+  --plan-slide-x: var(--plan-page-exit-x);
+  animation:
+    plan-motion-fade 300ms ease-in reverse both,
+    plan-motion-slide 420ms var(--plan-motion-ease) reverse both;
+}
+
+:root::view-transition-new(.plan-page) {
+  --plan-slide-x: var(--plan-page-enter-x);
+  animation:
+    plan-motion-fade 360ms ease-out 80ms both,
+    plan-motion-slide var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+/* Only the decorative frame changes dimensions. Each captured image keeps
+   its own pixel scale, revealed/cropped through that moving frame. */
+:root::view-transition-group(.plan-surface) {
+  animation-duration: var(--plan-motion-duration);
+  animation-timing-function: var(--plan-motion-ease);
+  z-index: 1;
+}
+
+:root::view-transition-image-pair(.plan-surface) {
+  overflow: hidden;
+  isolation: auto;
+  border-radius: var(--plan-radius);
+  animation: plan-motion-corners var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-image-pair(.plan-surface) {
+  animation-direction: reverse;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="switch"])::view-transition-image-pair(.plan-surface) {
+  animation: none;
+}
+
+:root::view-transition-old(.plan-surface),
+:root::view-transition-new(.plan-surface) {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
+  mix-blend-mode: normal;
+}
+
+:root::view-transition-old(.plan-surface) {
+  animation: plan-motion-fade 240ms ease-in reverse both;
+}
+
+:root::view-transition-new(.plan-surface) {
+  animation: plan-motion-fade 380ms ease-out 40ms both;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-new(.plan-surface) {
+  animation-delay: 100ms;
+}
+
+/* The copy follows the moving surface without scaling either heading raster. */
+:root::view-transition-group(.plan-content),
+:root::view-transition-group(.plan-thumbnail-copy) {
+  animation: none;
+  z-index: 2;
+}
+
+:root::view-transition-image-pair(.plan-content),
+:root::view-transition-image-pair(.plan-thumbnail-copy) {
+  isolation: auto;
+  overflow: visible;
+}
+
+:root::view-transition-old(.plan-content),
+:root::view-transition-new(.plan-content),
+:root::view-transition-old(.plan-thumbnail-copy),
+:root::view-transition-new(.plan-thumbnail-copy) {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+  object-position: left top;
+  mix-blend-mode: normal;
+}
+
+:root::view-transition-old(.plan-content) {
+  animation:
+    plan-motion-fade 200ms ease-in reverse both,
+    plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+:root::view-transition-new(.plan-content) {
+  animation:
+    plan-motion-fade 340ms ease-out 100ms both,
+    plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+:root::view-transition-old(.plan-thumbnail-copy) {
+  animation:
+    plan-motion-fade 150ms ease-in reverse both,
+    plan-motion-copy-travel-out var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+:root::view-transition-new(.plan-thumbnail-copy) {
+  animation:
+    plan-motion-fade 200ms ease-out 280ms both,
+    plan-motion-copy-travel-in var(--plan-motion-duration) var(--plan-motion-ease) both;
+}
+
+@keyframes plan-motion-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes plan-motion-slide {
+  from { translate: var(--plan-slide-x) 0; }
+  to { translate: 0 0; }
+}
+
+@keyframes plan-motion-corners {
+  from { border-radius: 12px; }
+  to { border-radius: var(--plan-radius); }
+}
+
+@keyframes plan-motion-copy-travel-in {
+  from { translate: var(--plan-copy-enter-x, 0px) var(--plan-copy-enter-y, 0px); }
+  to { translate: 0 0; }
+}
+
+@keyframes plan-motion-copy-travel-out {
+  from { translate: 0 0; }
+  to { translate: var(--plan-copy-exit-x, 0px) var(--plan-copy-exit-y, 0px); }
+}
+
+@keyframes plan-motion-copy-enter {
+  from {
+    translate: var(--plan-copy-enter-x, 0px) var(--plan-copy-enter-y, 0px);
+    clip-path: inset(0 var(--plan-copy-enter-right, 0px) var(--plan-copy-enter-bottom, 0px) 0);
+  }
+  to { translate: 0 0; clip-path: inset(0); }
+}
+
+@keyframes plan-motion-copy-exit {
+  from { translate: 0 0; clip-path: inset(0); }
+  to {
+    translate: var(--plan-copy-exit-x, 0px) var(--plan-copy-exit-y, 0px);
+    clip-path: inset(0 var(--plan-copy-exit-right, 0px) var(--plan-copy-exit-bottom, 0px) 0);
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --plan-motion-header: 88px;
+    --plan-page-enter-x: 14px;
+    --plan-page-exit-x: -12px;
+  }
+  :root:has(.motion-page[data-plan-motion-direction="close"]) {
+    --plan-page-enter-x: -12px;
+    --plan-page-exit-x: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root::view-transition-old(*),
+  :root::view-transition-new(*),
+  :root::view-transition-group(*),
+  :root::view-transition-image-pair(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

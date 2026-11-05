@@ -1,9 +1,11 @@
-import { Component, Suspense, lazy, type ComponentType, type ReactNode, useLayoutEffect } from 'react'
+import { Component, Suspense, lazy, type ComponentType, type ReactNode, useLayoutEffect, useRef } from 'react'
 import { createBrowserRouter, createRoutesFromElements, Link, Navigate, Outlet, Route, RouterProvider, useLocation, useParams } from 'react-router-dom'
 import { PublicLayout, PortalLayout } from './components/layout'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
 import { RouteMetadata } from './components/layout/RouteMetadata'
+import { rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
+import { discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
 
 function page<T, K extends keyof T>(load: () => Promise<T>, name: K) {
   return lazy<ComponentType>(async () => ({ default: (await load())[name] as ComponentType }))
@@ -35,10 +37,17 @@ function RequireAuth({ children, admin = false }: { children: ReactNode; admin?:
   return children
 }
 function ScrollTop() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
+  const previousRoute = useRef<string | null>(null)
   useLayoutEffect(() => {
-    if (!hash) window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname, hash])
+    const route = `${location.pathname}${location.hash}`
+    const restored = restorePlanScroll(location, getPlanNavigationIntent(`${location.pathname}${location.search}${location.hash}`))
+    discardPlanNavigationIntent()
+    if (!restored && !location.hash && previousRoute.current !== route)
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    previousRoute.current = route
+    return () => rememberPlanPageScroll(location)
+  }, [location])
   return null
 }
 class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {

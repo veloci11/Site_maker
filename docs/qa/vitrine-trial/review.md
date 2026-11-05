@@ -1,6 +1,6 @@
 # Essai Vitrine, couleurs et configuration
 
-4 novembre 2026, date utilisateur. Version locale vérifiée ; publication directe demandée pour l’essai de la première carte.
+4 novembre 2026, date utilisateur. Application `3d4d854677066c9779cf7c743e068c92ece3e880` publiée à la demande de Mathis. L’essai fonctionne, mais Mathis refuse ensuite la faible définition de la source générée de 724 px ; la version suivante doit reprendre le master haute définition.
 
 Vitrine utilise seule l’image générée, à échelle fixe, avec une continuité vers le bas sans miroir. Les cinq autres variantes conservent leurs images. La configuration retrouve des couleurs plus vives : suppression de l’assombrissement `brightness(.78)` et voile réduit, avec une ombre de texte discrète pour les petits libellés. Les trois originaux restent identiques octet pour octet.
 
@@ -21,3 +21,7 @@ Le [run 41968746233](https://github.com/veloci11/Site_maker/actions/runs/4196874
 ## Suite autorisée
 
 Améliorer nettement les transitions aller-retour entre les listes et les six fiches. Ce travail n’est pas déclaré terminé par ce premier essai visuel.
+
+## Publication de l’essai
+
+Release `20261105T050156Z-3d4d85467706`. Sauvegarde réussie, Sharp et archive contrôlés avant bascule ; santé valide et catalogue inchangé. Les 25 autres services gardent leur PID, tunnel compris. IAB public : nouvel asset Vitrine, absence de `brightness(.78)`, carte sticky, trois rubriques simultanément ouvertes, aucune erreur/alerte observée et aucun envoi. Traces dans `deployment-artifact.json`, `deployment-origin.json` et `public-checks.json`. La capture pleine page faite après un scroll de contrôle n’est pas retenue comme preuve de la position initiale du header.

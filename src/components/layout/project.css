@@ -10,7 +10,7 @@
 .selected-plan__content:focus-visible { outline:2px solid rgb(255 255 255 / .8); outline-offset:3px; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
 .selected-plan__texture {
-  position:absolute; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
+  position:absolute; top:0; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
 }
 .selected-plan__texture::before {
   content:""; position:absolute; inset:0; z-index:-2;
@@ -20,14 +20,19 @@
   transform:scale(var(--card-scale-x),var(--card-scale-y));
 }
 .selected-plan__texture::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .04),rgb(12 9 28 / .04) 45%,rgb(12 9 28 / .2)); }
-/* Mirrored continuations meet on the same edge pixels. Every tile keeps its
-   fixed height, including its lighting, while the card reveals more below. */
-.selected-plan__texture[data-reflected=true] { transform:scaleY(-1); }
-/* User-requested Vitrine trial. Its portrait canvas keeps a fixed scale and
-   continues downwards without mirrored or repeated material. */
-.selected-plan__texture--trial { top:calc(var(--plan-texture-height) * -1.5); height:calc(var(--plan-texture-height) * 4.5); }
-.selected-plan__texture--trial::before { background-image:url('/assets/textures/grain-plasma-vitrine-trial.webp'); }
-.selected-plan__texture--trial::after { top:calc(var(--plan-texture-height) * 1.5); bottom:auto; height:calc(var(--plan-texture-height) * 3); }
+/* Keep the original upper master at its exact fixed scale. The lower canvas
+   is native-resolution outpainting, never a reflected or repeated copy. */
+.selected-plan__texture--continuation { top:var(--plan-texture-height); height:calc(var(--plan-texture-height) * 2); }
+.selected-plan__texture--continuation::before {
+  background-image:url('/assets/textures/grain-plasma-vitrine-continuation.webp');
+  background-image:image-set(url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp') 1x,url('/assets/textures/grain-plasma-vitrine-continuation.webp') 2x);
+}
+.selected-plan__texture--continuation::after { background:rgb(12 9 28 / .2); }
+.pricing-card--custom .selected-plan__texture--continuation { height:var(--plan-texture-height); }
+.pricing-card--custom .selected-plan__texture--continuation::before {
+  background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top.webp');
+  background-image:image-set(url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp') 1x,url('/assets/textures/grain-plasma-vitrine-continuation-top.webp') 2x);
+}
 .selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px; }
 .selected-plan__eyebrow { font-size:13px; letter-spacing:.015em; opacity:.9; }
 .selected-plan__change { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid rgb(255 255 255 / .38); border-radius:999px; color:inherit; background:rgb(255 255 255 / .08); font-size:12px; }

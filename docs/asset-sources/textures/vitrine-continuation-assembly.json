@@ -1,0 +1,116 @@
+{
+  "originals": [
+    {
+      "file": "grain-plasma-master.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2636656,
+      "sha256": "f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76"
+    },
+    {
+      "file": "grain-plasma-card.webp",
+      "width": 768,
+      "height": 512,
+      "bytes": 162744,
+      "sha256": "bc85e2eb445c152ee2d740a17ad9f5fdf128ea1ed662b23f36c8621cc0569524"
+    },
+    {
+      "file": "grain-plasma-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 879898,
+      "sha256": "b2178faf78f6d2b33834b893cee7ca61e8943a00d9ebf37a3dc2b830bb332d99"
+    },
+    {
+      "file": "grain-plasma-vitrine-trial.webp",
+      "width": 724,
+      "height": 2172,
+      "bytes": 433004,
+      "sha256": "9144802fe54692bb9f269ffc71bd138478fcc069517018dc42364bd8f56110db"
+    }
+  ],
+  "exports": [
+    {
+      "file": "grain-plasma-vitrine-continuation.webp",
+      "width": 1536,
+      "height": 2048,
+      "bytes": 4556058,
+      "sha256": "baa08c63dd3b9aa650f6d96f4501147b8b844b5154c61acf52dec24977edcc0a"
+    },
+    {
+      "file": "grain-plasma-vitrine-continuation-1x.webp",
+      "width": 768,
+      "height": 1024,
+      "bytes": 434368,
+      "sha256": "bfe7a6be76c7534ce11c96561932f98f0bad40388a15184f2d27d0ef03df1c40"
+    },
+    {
+      "file": "grain-plasma-vitrine-continuation-top.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2431116,
+      "sha256": "79b0276275c465006a61f6cceb3dd4d94116bbbfffe5d8564bcc3c215076f1da"
+    },
+    {
+      "file": "grain-plasma-vitrine-continuation-top-1x.webp",
+      "width": 768,
+      "height": 512,
+      "bytes": 175750,
+      "sha256": "09103c8d441c65d6e58743d364ba9325eeb10108fe03f8b5ce229e1635b08ee8"
+    }
+  ],
+  "generation": {
+    "tool": "built-in image_gen",
+    "nativePanelWidth": 1536,
+    "nativePanelHeight": 1024,
+    "resizedUpward": false,
+    "rejectedPortraitUsed": false
+  },
+  "width": 1536,
+  "sourceHeight": 1024,
+  "continuationHeight": 2048,
+  "overlapDiscardedPerPanel": 256,
+  "seamStats": [
+    {
+      "panel": 1,
+      "fadeHeight": 192,
+      "maxColorCorrection": 19
+    },
+    {
+      "panel": 2,
+      "fadeHeight": 192,
+      "maxColorCorrection": 14
+    },
+    {
+      "panel": 3,
+      "fadeHeight": 192,
+      "maxColorCorrection": 9
+    }
+  ],
+  "upward": {
+    "width": 1536,
+    "height": 1024,
+    "fadeHeight": 192,
+    "maxColorCorrection": 175,
+    "orientation": "Natural: top is far above; bottom joins original top edge. Rotate 180 degrees with original for custom variant."
+  },
+  "grainCompositing": {
+    "generatedLowPassSigma": 4,
+    "sourceHighPassSigma": 4,
+    "sourceBands": {
+      "downward": "original rows 512–1023",
+      "upward": "original rows 0–511"
+    },
+    "patchSize": 32,
+    "candidateSelection": "Irregular choice among 6 nearest source-tone patches. No mirror, rotation, noise synthesis or source color-field copying."
+  },
+  "integration": {
+    "originalHeightAtWidthW": "2W/3",
+    "downwardHeightAtWidthW": "4W/3",
+    "upwardHeightAtWidthW": "2W/3"
+  },
+  "encoding": {
+    "main": "lossless WebP, effort 6",
+    "oneX": "WebP quality95, 50% native width, Lanczos3"
+  }
+}

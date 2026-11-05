@@ -1,0 +1,8 @@
+{
+  "cardHeight": 835.453125,
+  "continuation": "image-set(url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp\") 1dppx, url(\"http://127.0.0.1:4173/assets/textures/grain-plasma-vitrine-continuation-top.webp\") 2dppx)",
+  "overflow": false,
+  "selected": 10,
+  "textureHeight": 500,
+  "transform": "matrix(-1, 0, 0, -1, 0, 0)"
+}

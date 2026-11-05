@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { offers, type OfferId } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
@@ -31,42 +31,11 @@ export function SelectedPlanCard({
   const href = 'slug' in plan ? `/forfaits/${plan.slug}` : plan.href
   const surfaceTransition = usePlanTransition(variant, href)
   const contentTransition = usePlanTransition(variant, href, 'content')
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [textureTiles, setTextureTiles] = useState(3)
-
-  useLayoutEffect(() => {
-    const card = cardRef.current
-    if (!card) return
-    // Texture dimensions stay independent of content. Desktop content scrolls
-    // inside its sticky card when a long selection exceeds the available space.
-    const update = () => {
-      const height = card.getBoundingClientRect().height
-      const textureHeight = parseFloat(getComputedStyle(card).getPropertyValue('--plan-texture-height'))
-      // Keep one continuation ready below the clip. Card growth reveals more
-      // texture; it never changes the dimensions or position of existing tiles.
-      setTextureTiles(Math.ceil(height / textureHeight) + 1)
-    }
-    update()
-    const observer = new ResizeObserver(update)
-    observer.observe(card)
-    window.addEventListener('resize', update)
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
   return (
-    <div ref={cardRef} className={`selected-plan pricing-card--${variant}`}>
+    <div className={`selected-plan pricing-card--${variant}`}>
       <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
-        {variant === 'vitrine' ? <span className="selected-plan__texture selected-plan__texture--trial" /> : Array.from({ length: textureTiles }, (_, index) => (
-          <span
-            key={index}
-            className="selected-plan__texture"
-            data-reflected={index % 2 === 1 || undefined}
-            style={{ top: `calc(var(--plan-texture-height) * ${index})` }}
-          />
-        ))}
+        <span className="selected-plan__texture" />
+        {'slug' in plan ? <span className="selected-plan__texture selected-plan__texture--continuation" /> : null}
       </span>
       <div className="selected-plan__content" style={contentTransition} tabIndex={0} role="region" aria-label="Détails du forfait et options choisies">
         <div className="selected-plan__heading">

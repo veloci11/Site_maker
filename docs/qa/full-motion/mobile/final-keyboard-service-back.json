@@ -1,0 +1,16 @@
+{
+  "keyboardRapid": {
+    "before": {
+      "path": "/forfaits/immersif-3d",
+      "active": true
+    },
+    "after": "http://127.0.0.1:4173/"
+  },
+  "serviceSwitch": {
+    "path": "/contact?besoin=refonte",
+    "surfaces": [],
+    "title": "Refonte"
+  },
+  "browserBack": "http://127.0.0.1:4173/contact?besoin=evolution",
+  "console": []
+}

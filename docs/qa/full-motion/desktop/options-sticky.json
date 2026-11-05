@@ -1,0 +1,49 @@
+{
+  "desktopOptions": {
+    "card": {
+      "bottom": 650.875,
+      "height": 720,
+      "left": 72.5,
+      "right": 684.6015625,
+      "top": -69.125,
+      "width": 612.1015625,
+      "x": 72.5,
+      "y": -69.125
+    },
+    "groupsOpen": [
+      "01Votre site3Adaptation mobile et tablette · Français + anglais · Gestion des textes et images",
+      "02Vos fonctionnalités1Prise de rendez-vous",
+      "03Vos contenus4Galerie de réalisations · Pages supplémentaires · Une autre langue · Aide à la rédaction",
+      "04Visibilité et outils1Référencement local",
+      "05Mise en ligne et suivi3Mise en ligne du site · Maintenance du site · Hébergement géré",
+      "01Votre activité et vos visiteurs"
+    ],
+    "inner": {
+      "client": 656,
+      "scroll": 909
+    },
+    "overflow": false,
+    "selected": 12,
+    "selectedRows": 14,
+    "texture": {
+      "bottom": 510.875,
+      "height": 580,
+      "left": 72.5,
+      "right": 684.6015625,
+      "top": -69.125,
+      "width": 612.1015625,
+      "x": 72.5,
+      "y": -69.125
+    }
+  },
+  "sticky": {
+    "scrollY": 720,
+    "y": 112
+  },
+  "addAnimation": {
+    "maxDuration": 620,
+    "textureHeights": [
+      580
+    ]
+  }
+}

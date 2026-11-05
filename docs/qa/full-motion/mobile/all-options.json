@@ -1,0 +1,38 @@
+{
+  "card": {
+    "bottom": -1237.2421875,
+    "height": 872.7578125,
+    "left": 20,
+    "right": 355,
+    "top": -2110,
+    "width": 335,
+    "x": 20,
+    "y": -2110
+  },
+  "content": {
+    "client": 825,
+    "overflow": "visible",
+    "scroll": 825
+  },
+  "dpr": 1,
+  "groupsOpen": [
+    "01Votre site3Adaptation mobile et tablette · Français + anglais · Gestion des textes et images",
+    "02Vos fonctionnalités1Prise de rendez-vous",
+    "03Vos contenus4Galerie de réalisations · Pages supplémentaires · Une autre langue · Aide à la rédaction",
+    "04Visibilité et outils1Référencement local",
+    "05Mise en ligne et suivi3Mise en ligne du site · Maintenance du site · Hébergement géré",
+    "01Votre activité et vos visiteurs"
+  ],
+  "overflow": false,
+  "selected": 12,
+  "texture": {
+    "bottom": -1610,
+    "height": 500,
+    "left": 20,
+    "right": 355,
+    "top": -2110,
+    "width": 335,
+    "x": 20,
+    "y": -2110
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "reducedOpen": {
+    "frames": 216,
+    "pseudos": [
+      "::before",
+      "::after"
+    ],
+    "durations": [
+      0.01
+    ]
+  },
+  "reducedState": {
+    "options": [
+      "option-language-en"
+    ],
+    "path": "/forfaits/vitrine",
+    "reduce": true
+  }
+}
