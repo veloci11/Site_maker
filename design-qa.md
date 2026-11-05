@@ -1,3 +1,7 @@
+## Taille stable et transitions coordonnées — contrôle local du 5 novembre 2026
+
+Les règles compactes selon le nombre de choix sont retirées : au cinquième choix, titre à 64 px et carte à 679,03 px, au lieu de passer de 679,55 à 580 px. Le premier choix agrandit le résumé sans zoom de page. Largeur stable jusqu’à douze options ; retrait avec glissements et fondu. Les six fiches sont contrôlées à l’ouverture et au retour, sur ordinateur et mobile : durée 760 ms, pas de relance d’entrée à la fin, retour au scroll exact, aucune image étirée ni barre interne. Le pointeur peut bouger sans couper la transition ; actions et réduction du mouvement prioritaires. Frames réellement peintes inspectées via screencast, distinctes des captures stabilisées. Preuves/revue React : `docs/qa/stable-motion/review.md`. Choix locaux restaurés, viewport réinitialisé, console sans erreur/alerte. TypeScript, build et 213 tests passent ; publication préparée.
+
 ## Retrait et replacement sans saut — 5 novembre 2026
 
 Le placement instantané de grille est maintenant accompagné d’un vrai déplacement FLIP de 620 ms ; la copie de sortie disparaît en 420 ms et la hauteur est animée. L’alternance commence à gauche après les deux blocs de trois. La configuration et les totaux changent immédiatement.

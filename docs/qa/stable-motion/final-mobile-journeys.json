@@ -1,0 +1,402 @@
+[
+  {
+    "plan": "vitrine",
+    "open": {
+      "nativeFrames": 94,
+      "nativeStart": 142,
+      "nativeEnd": 933,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1350,
+        "path": "/forfaits/vitrine",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 436
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/vitrine",
+      "textureHeight": 500,
+      "title": "Vitrine"
+    },
+    "close": {
+      "nativeFrames": 93,
+      "nativeStart": 158,
+      "nativeEnd": 915,
+      "durations": [
+        520,
+        340,
+        760,
+        360,
+        300,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1398,
+        "path": "/",
+        "scrollY": 436,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  },
+  {
+    "plan": "connecte",
+    "open": {
+      "nativeFrames": 93,
+      "nativeStart": 153,
+      "nativeEnd": 910,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1343,
+        "path": "/forfaits/connecte",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 859.5
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/connecte",
+      "textureHeight": 500,
+      "title": "Connecté"
+    },
+    "close": {
+      "nativeFrames": 93,
+      "nativeStart": 155,
+      "nativeEnd": 916,
+      "durations": [
+        120,
+        150,
+        300,
+        520,
+        360,
+        340,
+        760,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1398,
+        "path": "/",
+        "scrollY": 859.5,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  },
+  {
+    "plan": "immersif",
+    "open": {
+      "nativeFrames": 93,
+      "nativeStart": 162,
+      "nativeEnd": 923,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1363,
+        "path": "/forfaits/immersif-3d",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 1282.5
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/immersif-3d",
+      "textureHeight": 500,
+      "title": "Immersif 3D"
+    },
+    "close": {
+      "nativeFrames": 94,
+      "nativeStart": 144,
+      "nativeEnd": 909,
+      "durations": [
+        120,
+        150,
+        300,
+        520,
+        360,
+        340,
+        760,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1384,
+        "path": "/",
+        "scrollY": 1282.5,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  },
+  {
+    "plan": "custom",
+    "open": {
+      "nativeFrames": 94,
+      "nativeStart": 152,
+      "nativeEnd": 922,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1347,
+        "path": "/forfaits/sur-mesure",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 1706
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/forfaits/sur-mesure",
+      "textureHeight": 500,
+      "title": "Sur mesure"
+    },
+    "close": {
+      "nativeFrames": 93,
+      "nativeStart": 152,
+      "nativeEnd": 907,
+      "durations": [
+        120,
+        150,
+        300,
+        520,
+        360,
+        340,
+        760,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1391,
+        "path": "/",
+        "scrollY": 1706,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  },
+  {
+    "plan": "evolution",
+    "open": {
+      "nativeFrames": 92,
+      "nativeStart": 85,
+      "nativeEnd": 843,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1343,
+        "path": "/contact?besoin=evolution",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 2141
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/contact?besoin=evolution",
+      "textureHeight": 500,
+      "title": "Évolution"
+    },
+    "close": {
+      "nativeFrames": 93,
+      "nativeStart": 101,
+      "nativeEnd": 857,
+      "durations": [
+        120,
+        150,
+        300,
+        520,
+        360,
+        340,
+        760,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1340,
+        "path": "/",
+        "scrollY": 2141,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  },
+  {
+    "plan": "refonte",
+    "open": {
+      "nativeFrames": 92,
+      "nativeStart": 85,
+      "nativeEnd": 843,
+      "durations": [
+        280,
+        320,
+        340,
+        360,
+        500,
+        640,
+        520,
+        760,
+        160,
+        480
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1342,
+        "path": "/contact?besoin=refonte",
+        "scrollY": 0,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 2564.5
+    },
+    "detail": {
+      "overflow": false,
+      "path": "/contact?besoin=refonte",
+      "textureHeight": 500,
+      "title": "Refonte"
+    },
+    "close": {
+      "nativeFrames": 93,
+      "nativeStart": 99,
+      "nativeEnd": 856,
+      "durations": [
+        120,
+        150,
+        300,
+        520,
+        360,
+        340,
+        760,
+        320,
+        380
+      ],
+      "rootStableAfter": true,
+      "last": {
+        "t": 1339,
+        "path": "/",
+        "scrollY": 2564.5,
+        "native": false,
+        "opacity": "1",
+        "transform": "none",
+        "rootAnimation": "none",
+        "animations": []
+      },
+      "sourceScroll": 0
+    },
+    "returnScrollDelta": 0
+  }
+]

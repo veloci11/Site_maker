@@ -1,0 +1,20 @@
+{
+  "movementBefore": {
+    "active": true
+  },
+  "movementAfter": {
+    "active": true
+  },
+  "menuDuringMotion": 1,
+  "quickSwitch": {
+    "path": "http://127.0.0.1:4173/contact?besoin=refonte",
+    "title": "Refonte"
+  },
+  "quickLast": "http://127.0.0.1:4173/",
+  "reducedFinal": {
+    "path": "/forfaits/vitrine",
+    "native": false,
+    "reduce": true,
+    "animations": []
+  }
+}

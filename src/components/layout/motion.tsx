@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type CSSProperties, type HTMLAttributes } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties, type HTMLAttributes } from 'react'
 import { useLocation, useViewTransitionState } from 'react-router-dom'
 import { cn } from '../../lib/utils'
 import { preparePlanNavigation } from '../../lib/plan-return'
@@ -16,34 +16,36 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
   return <div className={cn('motion-reveal', className)} data-visible="true" {...props}>{children}</div>
 }
 
-type Geometry = { id: string; surface: DOMRect; content?: DOMRect }
+type Geometry = { id: string; surface: DOMRect; content?: DOMRect; anchor?: DOMRect }
 
 function surfaceGeometry(page: HTMLDivElement, variant: string): Omit<Geometry, 'id'> | null {
   const surface = page.querySelector<HTMLElement>('.selected-plan__surface')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__surface`)
   if (!surface) return null
-  const content = page.querySelector<HTMLElement>('.selected-plan__content')
-  return { surface: surface.getBoundingClientRect(), content: content?.getBoundingClientRect() }
+  const content = page.querySelector<HTMLElement>('.selected-plan__copy')
+  const anchor = page.querySelector<HTMLElement>('.selected-plan__copy h1')
+    ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} h3`)
+  return { surface: surface.getBoundingClientRect(), content: content?.getBoundingClientRect(), anchor: anchor?.getBoundingClientRect() }
 }
 
 function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null) {
   const style = document.documentElement.style
-  const x = old && next ? old.surface.x - next.surface.x : 0
-  const y = old && next ? old.surface.y - next.surface.y : 0
+  const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
+  const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0
   style.setProperty('--plan-copy-enter-x', `${x}px`)
   style.setProperty('--plan-copy-enter-y', `${y}px`)
   style.setProperty('--plan-copy-exit-x', `${-x}px`)
   style.setProperty('--plan-copy-exit-y', `${-y}px`)
   // Copy translates with the moving frame but never scales. Clip only pixels
   // outside that frame, revealing final-resolution type as its bounds grow.
-  for (const [phase, content, ownSurface, otherSurface] of [
-    ['enter', next?.content, next?.surface, old?.surface],
-    ['exit', old?.content, old?.surface, next?.surface],
+  for (const [phase, content, otherSurface, offsetX, offsetY] of [
+    ['enter', next?.content, old?.surface, x, y],
+    ['exit', old?.content, next?.surface, -x, -y],
   ] as const) {
-    const right = content && ownSurface && otherSurface
-      ? Math.max(0, content.width - otherSurface.width + content.x - ownSurface.x) : 0
-    const bottom = content && ownSurface && otherSurface
-      ? Math.max(0, content.height - otherSurface.height + content.y - ownSurface.y) : 0
+    const right = content && otherSurface
+      ? Math.max(0, content.right + offsetX - otherSurface.right) : 0
+    const bottom = content && otherSurface
+      ? Math.max(0, content.bottom + offsetY - otherSurface.bottom) : 0
     style.setProperty(`--plan-copy-${phase}-right`, `${right}px`)
     style.setProperty(`--plan-copy-${phase}-bottom`, `${bottom}px`)
   }
@@ -51,11 +53,13 @@ function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'
 
 /** Coordinated route/body and card layers; the persistent header stays live. */
 export function PageTransition({ children, className, style, ...props }: HTMLAttributes<HTMLDivElement>) {
-  const { pathname } = useLocation()
+  const location = useLocation()
+  const { pathname } = location
   const transitioning = useViewTransitionState(pathname)
   const planTransition = usePlanNavigationTransition()
   const page = useRef<HTMLDivElement>(null)
   const outgoing = useRef<Geometry | null>(null)
+  const [planArrivalKey, setPlanArrivalKey] = useState<string>()
   const id = planTransition?.id
   const phase = planTransition?.phase
   const nextHref = planTransition?.nextHref
@@ -76,15 +80,16 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
       setGeometry(null, null)
     } else {
       setGeometry(outgoing.current?.id === id ? outgoing.current : null, surfaceGeometry(page.current, variant))
+      // Retain the completed entrance for this location. Removing the native
+      // context must not restart the ordinary page entrance underneath it.
+      setPlanArrivalKey(location.key)
     }
-  }, [id, phase, nextHref, variant])
+  }, [id, phase, nextHref, variant, location.key])
 
-  const motionStyle: CSSProperties = planTransition ? {
-    // Different names deliberately form two unpaired snapshots. Each keeps its
-    // native viewport rectangle, including the old page's actual scroll.
-    // Pairing entire pages would resize/reposition a long listing into a short
-    // detail page and require fragile scroll compensation.
-    viewTransitionName: `plan-page-${planTransition.phase}`,
+  const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' ? {
+    // Only the departing page is captured. The arriving page stays live so
+    // pointer movement can never cancel its motion or suppress its controls.
+    viewTransitionName: 'plan-page-outgoing',
     viewTransitionClass: 'plan-page',
   } : {}
 
@@ -92,7 +97,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
     <div
       key={pathname}
       ref={page}
-      className={cn('motion-page', transitioning && 'motion-page--transitioning', planTransition && 'motion-page--plan-transitioning', className)}
+      className={cn('motion-page', transitioning && 'motion-page--transitioning', planTransition && 'motion-page--plan-transitioning', planArrivalKey === location.key && 'motion-page--plan-arrived', className)}
       data-plan-motion-direction={planTransition?.direction}
       data-plan-motion-phase={phase}
       style={{ ...style, ...motionStyle }}

@@ -7,6 +7,7 @@
 .configurator-card-column { position:sticky; top:min(112px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
 .selected-plan { --plan-texture-height:580px; --plan-min-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
+.selected-plan__copy { display:flex; flex-direction:column; min-width:0; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
 .selected-plan__texture {
   position:absolute; top:0; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
@@ -155,23 +156,8 @@
 }
 @media(min-width:761px) {
  .selected-plan { min-height:min(var(--plan-min-height),calc(100dvh - 180px)); }
- .selected-plan__heading { transition:margin-bottom var(--option-duration) var(--option-ease); }
- .selected-plan h1 { transition:font-size var(--option-duration) var(--option-ease),margin-bottom var(--option-duration) var(--option-ease); }
- .selected-plan__description { transition:font-size var(--option-duration) var(--option-ease),line-height var(--option-duration) var(--option-ease); }
- .selected-plan__features { transition:margin var(--option-duration) var(--option-ease),gap var(--option-duration) var(--option-ease),font-size var(--option-duration) var(--option-ease); }
- .selected-plan__selection-content { transition:padding var(--option-duration) var(--option-ease); }
- .selected-plan__option-content { transition:padding-bottom var(--option-duration) var(--option-ease),font-size var(--option-duration) var(--option-ease); }
- .selected-plan__total > strong { transition:font-size var(--option-duration) var(--option-ease); }
- /* Keep a long summary comfortable to read instead of squeezing it into a
-    fixed-height panel. Explicit slots preserve the requested filling order;
-    narrow cards stay single. */
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__heading { margin-bottom:14px; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) h1 { font-size:clamp(38px,3.6vw,50px); margin-bottom:12px; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__description { font-size:14px; line-height:1.4; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__features { margin:20px 0; gap:8px; font-size:13px; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__selection-content { padding:16px 0 10px; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__option-content { padding-bottom:8px; font-size:12px; }
- .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__total > strong { font-size:38px; }
+ /* Typography and spacing never depend on the selected count. Only the
+    summary grows; explicit slots and natural page scrolling keep it usable. */
 }
 @media(max-width:760px) {
  .configurator-page { padding-top:12px; padding-bottom:108px; }

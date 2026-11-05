@@ -55,7 +55,7 @@ export function SelectedPlanCard({
         <span className="selected-plan__texture" />
         {'slug' in plan ? <span className="selected-plan__texture selected-plan__texture--continuation" /> : null}
       </span>
-      <div className="selected-plan__content" style={contentTransition} role="region" aria-label="Détails du forfait et options choisies">
+      <div className="selected-plan__content" role="region" aria-label="Détails du forfait et options choisies">
         <div className="selected-plan__heading">
           <span className="selected-plan__eyebrow">Votre forfait</span>
           <DropdownMenu>
@@ -112,16 +112,18 @@ export function SelectedPlanCard({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <h1>{plan.title}</h1>
-        <p className="selected-plan__description">{plan.description}</p>
-        <ul className="selected-plan__features">
-          {plan.features.map((feature) => (
-            <li key={feature}>
-              <Check size={19} strokeWidth={1.6} aria-hidden="true" />
-              {feature}
-            </li>
-          ))}
-        </ul>
+        <div className="selected-plan__copy" style={contentTransition}>
+          <h1>{plan.title}</h1>
+          <p className="selected-plan__description">{plan.description}</p>
+          <ul className="selected-plan__features">
+            {plan.features.map((feature) => (
+              <li key={feature}>
+                <Check size={19} strokeWidth={1.6} aria-hidden="true" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="selected-plan__bottom">{children}</div>
       </div>
     </div>

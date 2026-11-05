@@ -1,0 +1,11 @@
+{
+  "before": {
+    "active": true,
+    "path": "/forfaits/vitrine"
+  },
+  "after": {
+    "active": false,
+    "path": "/forfaits/vitrine",
+    "animations": 0
+  }
+}

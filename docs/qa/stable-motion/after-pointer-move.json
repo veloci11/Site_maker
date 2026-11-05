@@ -1,0 +1,13 @@
+{
+  "before": {
+    "active": true,
+    "path": "/forfaits/vitrine"
+  },
+  "after": {
+    "active": true,
+    "path": "/forfaits/vitrine",
+    "pageName": "none",
+    "copyName": "plan-vitrine-content",
+    "returnHit": "Tous les forfaits"
+  }
+}

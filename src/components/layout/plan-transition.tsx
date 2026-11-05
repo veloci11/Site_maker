@@ -39,22 +39,15 @@ function interruptPlanMotion() {
 
 function handlePlanMotionInput(event: Event) {
   if (!event.isTrusted) return
-  // Mouse over/out can be generated solely by capture changing the hit-test
-  // tree beneath a stationary cursor. A touch over is a new physical contact.
-  if (event.type === 'pointerover' && (event as PointerEvent).pointerType !== 'touch') return
-  if (event.type === 'pointermove') {
-    const pointer = event as PointerEvent
-    if (pointer.pointerType === 'mouse' && !pointer.movementX && !pointer.movementY) return
-  }
   interruptPlanMotion()
 }
 
 function usePlanMotionInterruption(active: boolean) {
   useLayoutEffect(() => {
     if (!active) return
-    // Named snapshots suppress hit testing of their source subtree. Finish on
-    // approach, before the following pointer press is hit-tested against it.
-    const events = ['pointerover', 'pointermove', 'pointerdown', 'keydown'] as const
+    // Incoming controls are outside the captured copy. Mere pointer movement
+    // keeps the full choreography; a new action or scroll takes over at once.
+    const events = ['pointerdown', 'keydown', 'wheel', 'touchmove'] as const
     if (interruptionListeners++ === 0)
       for (const event of events) document.addEventListener(event, handlePlanMotionInput, { capture: true, passive: true })
     return () => {

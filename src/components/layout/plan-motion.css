@@ -1,8 +1,8 @@
 /* React Router owns the native transition lifecycle. Only plan/list journeys
    opt into this choreography; no root/header screenshot or image scaling. */
 :root {
-  --plan-motion-duration: 520ms;
-  --plan-motion-ease: cubic-bezier(.32, 0, .2, 1);
+  --plan-motion-duration: 760ms;
+  --plan-motion-ease: cubic-bezier(.4, 0, .2, 1);
   --plan-motion-header: 96px;
   --plan-page-enter-x: 28px;
   --plan-page-exit-x: -22px;
@@ -32,26 +32,61 @@
 }
 
 .motion-page.motion-page--plan-transitioning,
+.motion-page.motion-page--plan-arrived,
 .motion-page.motion-page--plan-transitioning .configurator-options,
-.motion-page.motion-page--plan-transitioning .configurator-topline,
-.motion-page.motion-page--plan-transitioning .configurator-groups,
-.motion-page.motion-page--plan-transitioning .configurator-contact,
-.motion-page.motion-page--plan-transitioning .configurator-success,
-.motion-page.motion-page--plan-transitioning .selected-plan__total > strong,
-.motion-page.motion-page--plan-transitioning .selected-plan__total > small,
-.motion-page.motion-page--plan-transitioning .selected-plan__monthly > p {
+.motion-page.motion-page--plan-transitioning .configurator-topline {
   animation: none;
 }
 
-/* Separate names preserve each footer's viewport position too. */
+/* Capture only departing content. Live arrivals stay hit-testable; shared
+   surface/text layers are excluded from every live ancestor animation. */
 .public-shell:has(.motion-page[data-plan-motion-phase="outgoing"]) .site-footer {
   view-transition-name: plan-footer-outgoing;
   view-transition-class: plan-page;
 }
 
 .public-shell:has(.motion-page[data-plan-motion-phase="incoming"]) .site-footer {
-  view-transition-name: plan-footer-incoming;
-  view-transition-class: plan-page;
+  animation:plan-motion-fade 520ms ease-out 80ms both;
+}
+
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] > :not(:has([style*="view-transition-name:"])),
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:not(:has(.pricing-card__top[style*="view-transition-name:"])) {
+  animation:plan-motion-fade 520ms ease-out 100ms both;
+}
+
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-topline {
+  animation:plan-motion-fade 280ms ease-out 80ms both;
+}
+
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-options {
+  --plan-slide-x:var(--plan-page-enter-x);
+  animation:
+    plan-motion-fade 500ms ease-out 100ms both,
+    plan-motion-slide 640ms var(--plan-motion-ease) 80ms both;
+}
+
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .selected-plan__heading {
+  animation:plan-motion-fade 320ms ease-out 360ms both;
+}
+
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .selected-plan__bottom,
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__cta,
+.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__features {
+  animation:plan-motion-fade 340ms ease-out 380ms both;
+}
+
+/* A selected thumbnail keeps the same painted state as its snapshot. After
+   arrival the ordinary hover transitions take over, including a gentle fade
+   to the resting state when the pointer is elsewhere. */
+.motion-page.motion-page--plan-transitioning .pricing-card__top[style*="view-transition-name:"] {
+  color:#fff;
+  transition:none;
+}
+
+.motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface::before,
+.motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface::after {
+  opacity:1;
+  transition:none;
 }
 
 :root::view-transition-group(.plan-page) {
@@ -64,8 +99,7 @@
   overflow: visible;
 }
 
-:root::view-transition-old(.plan-page),
-:root::view-transition-new(.plan-page) {
+:root::view-transition-old(.plan-page) {
   width: 100%;
   height: 100%;
   object-fit: none;
@@ -76,15 +110,8 @@
 :root::view-transition-old(.plan-page) {
   --plan-slide-x: var(--plan-page-exit-x);
   animation:
-    plan-motion-fade 300ms ease-in reverse both,
-    plan-motion-slide 420ms var(--plan-motion-ease) reverse both;
-}
-
-:root::view-transition-new(.plan-page) {
-  --plan-slide-x: var(--plan-page-enter-x);
-  animation:
-    plan-motion-fade 360ms ease-out 80ms both,
-    plan-motion-slide var(--plan-motion-duration) var(--plan-motion-ease) both;
+    plan-motion-fade 360ms ease-in reverse both,
+    plan-motion-slide var(--plan-motion-duration) var(--plan-motion-ease) reverse both;
 }
 
 /* Only the decorative frame changes dimensions. Each captured image keeps
@@ -120,15 +147,21 @@
 }
 
 :root::view-transition-old(.plan-surface) {
-  animation: plan-motion-fade 240ms ease-in reverse both;
+  animation: plan-motion-fade 340ms ease-in reverse both;
 }
 
 :root::view-transition-new(.plan-surface) {
-  animation: plan-motion-fade 380ms ease-out 40ms both;
+  animation: plan-motion-fade 500ms ease-out 40ms both;
 }
 
 :root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-new(.plan-surface) {
-  animation-delay: 100ms;
+  animation:plan-motion-fade 360ms ease-out 400ms both;
+}
+
+/* The large bitmap must cover the shrinking frame until the small snapshot
+   can fill it. Fading it early leaves a transparent moving rectangle. */
+:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-old(.plan-surface) {
+  animation:plan-motion-fade 300ms ease-in 460ms reverse both;
 }
 
 /* The copy follows the moving surface without scaling either heading raster. */
@@ -157,25 +190,25 @@
 
 :root::view-transition-old(.plan-content) {
   animation:
-    plan-motion-fade 200ms ease-in reverse both,
+    plan-motion-fade 320ms ease-in 100ms reverse both,
     plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-new(.plan-content) {
   animation:
-    plan-motion-fade 340ms ease-out 100ms both,
+    plan-motion-fade 480ms ease-out 140ms both,
     plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-old(.plan-thumbnail-copy) {
   animation:
-    plan-motion-fade 150ms ease-in reverse both,
+    plan-motion-fade 160ms ease-in reverse both,
     plan-motion-copy-travel-out var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-new(.plan-thumbnail-copy) {
   animation:
-    plan-motion-fade 200ms ease-out 280ms both,
+    plan-motion-fade 380ms ease-out 300ms both,
     plan-motion-copy-travel-in var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 

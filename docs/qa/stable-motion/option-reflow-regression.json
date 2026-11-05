@@ -1,0 +1,4612 @@
+[
+  {
+    "t": 0,
+    "count": 12,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1,
+    "count": 12,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 11.300000011920929,
+    "count": 12,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 20.400000035762787,
+    "count": 12,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 63.80000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 65,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 69.20000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 77.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 86,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 94.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 102.70000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 110.90000003576279,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 119.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 127.70000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 136,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 144.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 152.70000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 160.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 169.20000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 177.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 120,
+        "target": null
+      },
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 194.20000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 202.5,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 210.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 219.20000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 227.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 235.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 244.20000004768372,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 252.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 260.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 269.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 277.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 285.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 294.2000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 302.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 310.5,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 319.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 327.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 336,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 344.30000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 352.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 360.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 369,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 377.7000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 385.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 393.80000001192093,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 402.7000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 410.9000000357628,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 419.2000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 360,
+        "target": null
+      },
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 427.7000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 435.60000002384186,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 444.2000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 452.5,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 461,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 469.2000000476837,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 477.5,
+    "count": 11,
+    "exits": 1,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      },
+      {
+        "duration": 420,
+        "target": null
+      }
+    ]
+  },
+  {
+    "t": 486.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 494.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 502.5,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 510.5,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 519.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 527.5,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 535.5,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 544.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 552.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 561,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 569.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 577.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 585.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 594.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 602.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 611.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 619.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 627.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 636,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 644.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 652.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 661.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 669.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 677.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": [
+      {
+        "duration": 620,
+        "target": "managed-content"
+      },
+      {
+        "duration": 620,
+        "target": "booking"
+      },
+      {
+        "duration": 620,
+        "target": "portfolio-gallery"
+      },
+      {
+        "duration": 620,
+        "target": "extra-pages"
+      },
+      {
+        "duration": 620,
+        "target": "additional-language"
+      },
+      {
+        "duration": 620,
+        "target": "copywriting"
+      },
+      {
+        "duration": 620,
+        "target": "local-seo"
+      },
+      {
+        "duration": 620,
+        "target": "deployment"
+      },
+      {
+        "duration": 620,
+        "target": "maintenance-monthly"
+      },
+      {
+        "duration": 620,
+        "target": "hosting-monthly"
+      }
+    ]
+  },
+  {
+    "t": 685.8000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 693.8000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 702.8000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 712,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 719.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 727.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 735.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 744.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 753.5,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 761.5,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 770.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 777.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 786,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 794.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 802.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 810.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 819.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 827.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 835.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 844.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 852.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 861.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 870.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 878.1000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 886.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 894.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 903,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 910.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 919.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 928.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 936,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 944.8000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 952.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 961.5,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 970.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 979.1000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 986.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 994.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1002.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1011.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1019.3000000119209,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1027.6000000238419,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1035.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1047,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1053.4000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1060.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1069.2000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1077.7000000476837,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1085.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1095,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  },
+  {
+    "t": 1102.9000000357628,
+    "count": 11,
+    "exits": 0,
+    "animations": []
+  }
+]
