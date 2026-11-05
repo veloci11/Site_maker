@@ -47,11 +47,15 @@
 .selected-plan__selection { display:grid; grid-template-rows:0fr; opacity:0; transition:grid-template-rows var(--option-duration) var(--option-ease),opacity 420ms ease-in-out; }
 .selected-plan__selection[data-open=true] { grid-template-rows:1fr; opacity:1; }
 .selected-plan__selection-clip,.selected-plan__option-clip { min-height:0; overflow:hidden; }
-.selected-plan__selection-content { padding:20px 0 14px; border-top:1px solid rgb(255 255 255 / .25); }
+.selected-plan__selection-content { container-type:inline-size; padding:20px 0 14px; border-top:1px solid rgb(255 255 255 / .25); }
 .selected-plan__selection-content > p { margin:0 0 12px; font-size:12px; color:rgb(255 255 255 / .85); }
-.selected-plan__selection ul { margin:0; padding:0; list-style:none; columns:200px 2; column-gap:24px; }
-.selected-plan__selection li { display:grid; grid-template-rows:0fr; break-inside:avoid; opacity:0; transform:translateY(-4px); transition:grid-template-rows var(--option-duration) var(--option-ease),opacity 420ms ease-in-out,transform var(--option-duration) var(--option-ease); }
+.selected-plan__selection ul { display:grid; grid-template-columns:minmax(0,1fr); margin:0; padding:0; list-style:none; column-gap:24px; }
+.selected-plan__selection li { display:grid; grid-row:var(--option-sequence); min-width:0; grid-template-rows:0fr; opacity:0; transform:translateY(-4px); transition:grid-template-rows var(--option-duration) var(--option-ease),opacity 420ms ease-in-out,transform var(--option-duration) var(--option-ease); }
 .selected-plan__selection li[data-selected=true] { grid-template-rows:1fr; opacity:1; transform:none; }
+@container (min-width:424px) {
+ .selected-plan__selection ul { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .selected-plan__selection li { grid-column:var(--option-column); grid-row:var(--option-row); }
+}
 .selected-plan__option-content { display:grid; grid-template-columns:15px minmax(0,1fr) auto; align-items:baseline; gap:8px; padding-bottom:10px; font-size:13px; line-height:1.5; }
 .selected-plan__option-content > svg { align-self:start; margin-top:3px; }
 .selected-plan__option-content > span { overflow-wrap:anywhere; }
@@ -158,7 +162,8 @@
  .selected-plan__option-content { transition:padding-bottom var(--option-duration) var(--option-ease),font-size var(--option-duration) var(--option-ease); }
  .selected-plan__total > strong { transition:font-size var(--option-duration) var(--option-ease); }
  /* Keep a long summary comfortable to read instead of squeezing it into a
-    fixed-height panel. Columns balance naturally; narrow cards stay single. */
+    fixed-height panel. Explicit slots preserve the requested filling order;
+    narrow cards stay single. */
  .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__heading { margin-bottom:14px; }
  .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) h1 { font-size:clamp(38px,3.6vw,50px); margin-bottom:12px; }
  .selected-plan:has(.selected-plan__selection li:nth-child(5 of [data-selected=true])) .selected-plan__description { font-size:14px; line-height:1.4; }

@@ -1,3 +1,9 @@
+## Ordre des options fixé — 5 novembre 2026
+
+Dernière précision : trois choix à gauche, trois à droite, puis droite/gauche. Grille explicite à la place du rééquilibrage CSS automatique. L’ordre de sélection est suivi dans la session, et la carte étroite utilise cette même séquence en une colonne. Les calculs, textures, défilement normal et protections du formulaire restent inchangés.
+
+IAB local : douze sélections hors ordre du catalogue, vérification des douze états et des coordonnées CSS. Retrait/réajout, mobile 390 × 844, image fixe et absence de console/débordement contrôlés. Preuves : `docs/qa/option-order/`. Publication après le check final.
+
 ## Résumé des options sans défilement interne — 5 novembre 2026
 
 Demande : retirer la barre intérieure lorsque beaucoup d’options sont choisies. Solution retenue : deux colonnes équilibrées avec une largeur minimale de 200 px, une seule sur carte étroite. La liste garde son ordre de lecture vertical dans chaque colonne et les animations de hauteur/fondu existantes. À partir de cinq choix, la présentation desktop se compacte en 620 ms.

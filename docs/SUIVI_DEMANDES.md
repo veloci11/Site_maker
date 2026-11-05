@@ -1,3 +1,7 @@
+## Ordre explicite des options — vérification locale, 5 novembre 2026
+
+Le rééquilibrage automatique est remplacé par des cases explicites : trois choix à gauche, trois à droite, puis alternance droite/gauche. La séquence des clics guide la présentation courante ; les calculs et la configuration restent inchangés. Sur carte étroite, une seule colonne garde la même séquence. Les lignes restent montées pour conserver leur entrée/sortie animée. Publication après contrôle local.
+
 ## Résumé sans barre interne — publié et vérifié, 5 novembre 2026
 
 Dernier retour : beaucoup d’options ne doivent pas créer de défilement à l’intérieur de la carte. Résumé en deux colonnes équilibrées quand la largeur le permet, une colonne sur carte étroite. Carte naturellement haute et présentation compacte animée à partir de cinq choix ; ancrage sticky adapté à la hauteur, sans listener de scroll. Le total et chaque option restent dans le flux de la page. Textures et transitions existantes conservées. TypeScript, build et 213 tests passent. Publié : révision `0cdbd93`, release `20261105T061831Z-0cdbd930aa81`. IAB public desktop/mobile et neuf empreintes HTTP contrôlés ; 12 options sans défilement interne, aucune erreur de console. Preuves dans `qa/option-columns/`. Choix publics initiaux restaurés et localhost arrêté.

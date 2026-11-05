@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
@@ -111,6 +111,21 @@ export function ConfiguratorPage() {
   const offer = getOffer(configuration.offerId)!
   const quote = quoteConfiguration(configuration, pricing)
   const selected = quote.lines.filter((line) => line.key !== 'base' && !line.included)
+  // Presentation order follows the choices, independently of quote/catalogue
+  // order. Existing configurations start in their canonical catalogue order.
+  const [selectionOrder, setSelectionOrder] = useState<string[]>([])
+  const activeKeys = new Set(selected.map((line) => line.key))
+  const orderedSelection = [
+    ...selectionOrder.filter((key) => activeKeys.has(key)),
+    ...selected.filter((line) => !selectionOrder.includes(line.key)).map((line) => line.key),
+  ]
+  const selectionRanks = new Map(orderedSelection.map((key, index) => [key, index]))
+  const previousRanks = useRef(new Map<string, number>())
+  const selectionOrderKey = orderedSelection.join('|')
+  useLayoutEffect(() => {
+    if (!selectionOrderKey) return
+    selectionOrderKey.split('|').forEach((key, index) => previousRanks.current.set(key, index))
+  }, [selectionOrderKey])
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
@@ -177,6 +192,9 @@ export function ConfiguratorPage() {
 
   function changeOption(id: OptionId, checked: boolean) {
     const next = withOption(configuration, id, checked)
+    setSelectionOrder(checked
+      ? [...orderedSelection.filter((key) => key !== id), id]
+      : orderedSelection.filter((key) => key !== id))
     setConfiguration(editingId ? next : prunePublicConfiguration(next))
     setError('')
   }
@@ -304,11 +322,28 @@ export function ConfiguratorPage() {
                   <ul>
                     {/* Stable rows let CSS reverse an unfinished enter/exit on rapid clicks.
                         Hidden rows take no space and are excluded from accessibility. */}
-                    {availableOptions.map((option) => {
-                      const active = selected.some((line) => line.key === option.id)
+                    {[...availableOptions].sort((a, b) =>
+                      (selectionRanks.get(a.id) ?? availableOptions.length)
+                      - (selectionRanks.get(b.id) ?? availableOptions.length),
+                    ).map((option, fallbackIndex) => {
+                      const active = selectionRanks.has(option.id)
+                      const index = selectionRanks.get(option.id) ?? previousRanks.current.get(option.id) ?? fallbackIndex
+                      // 1–3 left, 4–6 right; then right/left pairs below.
+                      const column = index < 3 ? 1 : index < 6 ? 2 : index % 2 === 0 ? 2 : 1
+                      const row = index < 3 ? index + 1 : index < 6 ? index - 2 : 4 + Math.floor((index - 6) / 2)
                       const amount = pricing.options[option.id]
                       return (
-                        <li key={option.id} data-selected={active} aria-hidden={!active}>
+                        <li
+                          key={option.id}
+                          data-option={option.id}
+                          data-selected={active}
+                          aria-hidden={!active}
+                          style={{
+                            '--option-column': column,
+                            '--option-row': row,
+                            '--option-sequence': index + 1,
+                          } as CSSProperties}
+                        >
                           <div className="selected-plan__option-clip">
                             <div className="selected-plan__option-content">
                               <Check size={15} strokeWidth={1.6} aria-hidden="true" />
