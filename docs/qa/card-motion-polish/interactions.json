@@ -1,0 +1,21 @@
+{
+  "earlyChange": {
+    "incoming": true,
+    "menuOpened": true
+  },
+  "switchedPath": "http://127.0.0.1:4173/contact?besoin=refonte",
+  "reduced": {
+    "reduce": true,
+    "native": 0,
+    "phase": null
+  },
+  "optionToggle": {
+    "before": {
+      "height": 697.078125,
+      "title": "56.925px",
+      "texture": 580
+    },
+    "restored": true
+  },
+  "fastKeyboardReturn": "http://127.0.0.1:4173/forfaits"
+}

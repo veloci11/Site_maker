@@ -1,3 +1,7 @@
+## Dernier correctif — raccord complet des six cartes, 5 novembre 2026
+
+Les 24 trajets locaux sont vérifiés après correction : image opaque pendant le déplacement, masques portés par les groupes natifs, copie nette et contenu inférieur dans le cadre. Changer conserve un vrai bouton vivant, distinct de son apparence décorative capturée. Erreur de raccord mesurée inférieure à 0,3 px CSS pendant les déplacements de ces visites. Retour sans miniature, réduction du mouvement et actions rapides contrôlés. Rapport : `docs/qa/card-motion-polish/review.md`. Publication en cours.
+
 ## Taille stable et transitions coordonnées — publiées le 5 novembre 2026
 
 Les règles compactes selon le nombre de choix sont retirées : au cinquième choix, titre à 64 px et carte à 679,03 px, au lieu de passer de 679,55 à 580 px. Le premier choix agrandit le résumé sans zoom de page. Largeur stable jusqu’à douze options ; retrait avec glissements et fondu. Les six fiches sont contrôlées à l’ouverture et au retour, sur ordinateur et mobile : durée 760 ms, pas de relance d’entrée à la fin, retour au scroll exact, aucune image étirée ni barre interne. Le pointeur peut bouger sans couper la transition ; actions et réduction du mouvement prioritaires. Frames réellement peintes inspectées via screencast, distinctes des captures stabilisées. Preuves/revue React : `docs/qa/stable-motion/review.md`. TypeScript, build et 213 tests passent.

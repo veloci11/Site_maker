@@ -209,12 +209,12 @@ export const MotionNavLink = forwardRef<HTMLAnchorElement, NavLinkProps>(functio
 export function usePlanTransition(
   variant: string,
   href: string,
-  part: 'surface' | 'content' | 'thumbnail' = 'surface',
+  part: 'surface' | 'content' | 'heading' | 'thumbnail' = 'surface',
 ): CSSProperties {
   const transition = usePlanNavigationTransition()
   const active = transition && [transition.fromPlan, transition.toPlan]
     .some((plan) => plan?.variant === variant && plan.href === href)
-  const suffix = part === 'surface' ? '' : part === 'thumbnail' ? '-thumbnail-copy' : '-content'
+  const suffix = part === 'surface' ? '' : part === 'thumbnail' ? '-thumbnail-copy' : `-${part}`
   return {
     viewTransitionName: active ? `plan-${variant}${suffix}` : undefined,
     viewTransitionClass: part === 'thumbnail' ? 'plan-thumbnail-copy' : `plan-${part}`,

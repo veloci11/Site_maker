@@ -38,6 +38,9 @@
   animation: none;
 }
 
+.motion-page--plan-transitioning .selected-plan__change-visual { visibility:visible; }
+.motion-page--plan-transitioning .selected-plan__heading-frame > .selected-plan__change { opacity:0; }
+
 /* Capture only departing content. Live arrivals stay hit-testable; shared
    surface/text layers are excluded from every live ancestor animation. */
 .public-shell:has(.motion-page[data-plan-motion-phase="outgoing"]) .site-footer {
@@ -65,11 +68,6 @@
     plan-motion-slide 640ms var(--plan-motion-ease) 80ms both;
 }
 
-.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .selected-plan__heading {
-  animation:plan-motion-fade 320ms ease-out 360ms both;
-}
-
-.motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .selected-plan__bottom,
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__cta,
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__features {
   animation:plan-motion-fade 340ms ease-out 380ms both;
@@ -147,31 +145,53 @@
 }
 
 :root::view-transition-old(.plan-surface) {
+  z-index:1;
   animation: plan-motion-fade 340ms ease-in reverse both;
 }
 
 :root::view-transition-new(.plan-surface) {
-  animation: plan-motion-fade 500ms ease-out 40ms both;
+  z-index:0;
+  animation:plan-motion-fade 500ms ease-out both;
 }
 
-:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-new(.plan-surface) {
+:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="open"])::view-transition-new(.plan-surface) {
+  animation: none;
+}
+
+:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="close"])::view-transition-new(.plan-surface) {
+  z-index:1;
   animation:plan-motion-fade 360ms ease-out 400ms both;
 }
 
-/* The large bitmap must cover the shrinking frame until the small snapshot
-   can fill it. Fading it early leaves a transparent moving rectangle. */
-:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-old(.plan-surface) {
-  animation:plan-motion-fade 300ms ease-in 460ms reverse both;
+/* Always keep an opaque full-size bitmap underneath the crossfade. The old
+   large image fills a closing frame until the final small image covers it;
+   the new large image fills an opening frame from its very first pixel. */
+:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="close"])::view-transition-old(.plan-surface) {
+  z-index:0;
+  animation:none;
 }
 
 /* The copy follows the moving surface without scaling either heading raster. */
 :root::view-transition-group(.plan-content),
+:root::view-transition-group(.plan-heading),
 :root::view-transition-group(.plan-thumbnail-copy) {
-  animation: none;
+  animation:plan-motion-clip-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
   z-index: 2;
 }
 
+:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-group(.plan-content),
+:root:has(.motion-page[data-plan-motion-direction="close"])::view-transition-group(.plan-heading),
+:root:has(.motion-page[data-plan-motion-direction="open"])::view-transition-group(.plan-thumbnail-copy) {
+  animation-name:plan-motion-clip-exit;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="switch"])::view-transition-group(.plan-content),
+:root:has(.motion-page[data-plan-motion-direction="switch"])::view-transition-group(.plan-heading) {
+  animation:none;
+}
+
 :root::view-transition-image-pair(.plan-content),
+:root::view-transition-image-pair(.plan-heading),
 :root::view-transition-image-pair(.plan-thumbnail-copy) {
   isolation: auto;
   overflow: visible;
@@ -179,6 +199,8 @@
 
 :root::view-transition-old(.plan-content),
 :root::view-transition-new(.plan-content),
+:root::view-transition-old(.plan-heading),
+:root::view-transition-new(.plan-heading),
 :root::view-transition-old(.plan-thumbnail-copy),
 :root::view-transition-new(.plan-thumbnail-copy) {
   width: 100%;
@@ -190,7 +212,7 @@
 
 :root::view-transition-old(.plan-content) {
   animation:
-    plan-motion-fade 320ms ease-in 100ms reverse both,
+    plan-motion-fade 280ms ease-in 40ms reverse both,
     plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
@@ -200,16 +222,38 @@
     plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
+:root::view-transition-group(.plan-heading) {
+  --plan-copy-exit-top:var(--plan-heading-exit-top,0px);
+  --plan-copy-exit-right:var(--plan-heading-exit-right,0px);
+  --plan-copy-exit-bottom:var(--plan-heading-exit-bottom,0px);
+  --plan-copy-exit-left:var(--plan-heading-exit-left,0px);
+  --plan-copy-exit-rest-top:var(--plan-heading-exit-rest-top,0px);
+  --plan-copy-exit-rest-right:var(--plan-heading-exit-rest-right,0px);
+  --plan-copy-exit-rest-bottom:var(--plan-heading-exit-rest-bottom,0px);
+  --plan-copy-exit-rest-left:var(--plan-heading-exit-rest-left,0px);
+  --plan-copy-enter-top:var(--plan-heading-enter-top,0px);
+  --plan-copy-enter-right:var(--plan-heading-enter-right,0px);
+  --plan-copy-enter-bottom:var(--plan-heading-enter-bottom,0px);
+  --plan-copy-enter-left:var(--plan-heading-enter-left,0px);
+  --plan-copy-enter-rest-top:var(--plan-heading-enter-rest-top,0px);
+  --plan-copy-enter-rest-right:var(--plan-heading-enter-rest-right,0px);
+  --plan-copy-enter-rest-bottom:var(--plan-heading-enter-rest-bottom,0px);
+  --plan-copy-enter-rest-left:var(--plan-heading-enter-rest-left,0px);
+}
+
+:root::view-transition-old(.plan-heading) { animation:plan-motion-fade 220ms ease-in reverse both; }
+:root::view-transition-new(.plan-heading) { animation:plan-motion-fade 480ms ease-out 140ms both; }
+
 :root::view-transition-old(.plan-thumbnail-copy) {
   animation:
     plan-motion-fade 160ms ease-in reverse both,
-    plan-motion-copy-travel-out var(--plan-motion-duration) var(--plan-motion-ease) both;
+    plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-new(.plan-thumbnail-copy) {
   animation:
-    plan-motion-fade 380ms ease-out 300ms both,
-    plan-motion-copy-travel-in var(--plan-motion-duration) var(--plan-motion-ease) both;
+    plan-motion-fade 440ms ease-out 320ms both,
+    plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 @keyframes plan-motion-fade {
@@ -227,30 +271,26 @@
   to { border-radius: var(--plan-radius); }
 }
 
-@keyframes plan-motion-copy-travel-in {
+@keyframes plan-motion-copy-enter {
   from { translate: var(--plan-copy-enter-x, 0px) var(--plan-copy-enter-y, 0px); }
   to { translate: 0 0; }
 }
 
-@keyframes plan-motion-copy-travel-out {
+@keyframes plan-motion-copy-exit {
   from { translate: 0 0; }
   to { translate: var(--plan-copy-exit-x, 0px) var(--plan-copy-exit-y, 0px); }
 }
 
-@keyframes plan-motion-copy-enter {
-  from {
-    translate: var(--plan-copy-enter-x, 0px) var(--plan-copy-enter-y, 0px);
-    clip-path: inset(0 var(--plan-copy-enter-right, 0px) var(--plan-copy-enter-bottom, 0px) 0);
-  }
-  to { translate: 0 0; clip-path: inset(0); }
+/* Clip the outer group; each sharp bitmap translates independently inside it.
+   The decorative controls stay aligned with their real, live hit area. */
+@keyframes plan-motion-clip-enter {
+  from { clip-path: inset(var(--plan-copy-enter-top, 0px) var(--plan-copy-enter-right, 0px) var(--plan-copy-enter-bottom, 0px) var(--plan-copy-enter-left, 0px)); }
+  to { clip-path: inset(var(--plan-copy-enter-rest-top, 0px) var(--plan-copy-enter-rest-right, 0px) var(--plan-copy-enter-rest-bottom, 0px) var(--plan-copy-enter-rest-left, 0px)); }
 }
 
-@keyframes plan-motion-copy-exit {
-  from { translate: 0 0; clip-path: inset(0); }
-  to {
-    translate: var(--plan-copy-exit-x, 0px) var(--plan-copy-exit-y, 0px);
-    clip-path: inset(0 var(--plan-copy-exit-right, 0px) var(--plan-copy-exit-bottom, 0px) 0);
-  }
+@keyframes plan-motion-clip-exit {
+  from { clip-path: inset(var(--plan-copy-exit-rest-top, 0px) var(--plan-copy-exit-rest-right, 0px) var(--plan-copy-exit-rest-bottom, 0px) var(--plan-copy-exit-rest-left, 0px)); }
+  to { clip-path: inset(var(--plan-copy-exit-top, 0px) var(--plan-copy-exit-right, 0px) var(--plan-copy-exit-bottom, 0px) var(--plan-copy-exit-left, 0px)); }
 }
 
 @media (max-width: 760px) {

@@ -32,6 +32,7 @@ export function SelectedPlanCard({
   const href = 'slug' in plan ? `/forfaits/${plan.slug}` : plan.href
   const surfaceTransition = usePlanTransition(variant, href)
   const contentTransition = usePlanTransition(variant, href, 'content')
+  const headingTransition = usePlanTransition(variant, href, 'heading')
 
   useLayoutEffect(() => {
     const card = cardRef.current
@@ -56,8 +57,15 @@ export function SelectedPlanCard({
         {'slug' in plan ? <span className="selected-plan__texture selected-plan__texture--continuation" /> : null}
       </span>
       <div className="selected-plan__content" role="region" aria-label="Détails du forfait et options choisies">
-        <div className="selected-plan__heading">
-          <span className="selected-plan__eyebrow">Votre forfait</span>
+        <div className="selected-plan__heading-frame">
+          <div className="selected-plan__heading" style={headingTransition}>
+            <span className="selected-plan__eyebrow">Votre forfait</span>
+            {/* The native visual is decorative. Its live trigger stays outside
+                the captured subtree so an early click still reaches Radix. */}
+            <span className="selected-plan__change selected-plan__change-visual" aria-hidden="true">
+              Changer <ChevronDown size={14} aria-hidden="true" />
+            </span>
+          </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button type="button" className="selected-plan__change" disabled={disabled}>
@@ -123,8 +131,8 @@ export function SelectedPlanCard({
               </li>
             ))}
           </ul>
+          <div className="selected-plan__bottom">{children}</div>
         </div>
-        <div className="selected-plan__bottom">{children}</div>
       </div>
     </div>
   )

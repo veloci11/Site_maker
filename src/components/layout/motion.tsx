@@ -16,19 +16,27 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
   return <div className={cn('motion-reveal', className)} data-visible="true" {...props}>{children}</div>
 }
 
-type Geometry = { id: string; surface: DOMRect; content?: DOMRect; anchor?: DOMRect }
+type Geometry = { id: string; surface: DOMRect; content?: DOMRect; heading?: DOMRect; anchor?: DOMRect }
 
 function surfaceGeometry(page: HTMLDivElement, variant: string): Omit<Geometry, 'id'> | null {
   const surface = page.querySelector<HTMLElement>('.selected-plan__surface')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__surface`)
   if (!surface) return null
   const content = page.querySelector<HTMLElement>('.selected-plan__copy')
+    ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__top`)
+  const heading = page.querySelector<HTMLElement>('.selected-plan__heading')
   const anchor = page.querySelector<HTMLElement>('.selected-plan__copy h1')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} h3`)
-  return { surface: surface.getBoundingClientRect(), content: content?.getBoundingClientRect(), anchor: anchor?.getBoundingClientRect() }
+  return {
+    surface: surface.getBoundingClientRect(),
+    content: content?.getBoundingClientRect(),
+    heading: heading?.getBoundingClientRect(),
+    anchor: anchor?.getBoundingClientRect(),
+  }
 }
 
 function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null) {
+  document.documentElement.dataset.planMotionShared = String(Boolean(old && next))
   const style = document.documentElement.style
   const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
   const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0
@@ -36,18 +44,32 @@ function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'
   style.setProperty('--plan-copy-enter-y', `${y}px`)
   style.setProperty('--plan-copy-exit-x', `${-x}px`)
   style.setProperty('--plan-copy-exit-y', `${-y}px`)
-  // Copy translates with the moving frame but never scales. Clip only pixels
-  // outside that frame, revealing final-resolution type as its bounds grow.
-  for (const [phase, content, otherSurface, offsetX, offsetY] of [
-    ['enter', next?.content, old?.surface, x, y],
-    ['exit', old?.content, next?.surface, -x, -y],
+  // Both endpoints use the same title anchor and easing as the frame. Clip all
+  // four edges: the eyebrow and total must travel inside it, including when a
+  // far-right or lower-row thumbnail moves across the viewport.
+  for (const [phase, geometry, otherSurface] of [
+    ['enter', next, old?.surface],
+    ['exit', old, next?.surface],
   ] as const) {
-    const right = content && otherSurface
-      ? Math.max(0, content.right + offsetX - otherSurface.right) : 0
-    const bottom = content && otherSurface
-      ? Math.max(0, content.bottom + offsetY - otherSurface.bottom) : 0
-    style.setProperty(`--plan-copy-${phase}-right`, `${right}px`)
-    style.setProperty(`--plan-copy-${phase}-bottom`, `${bottom}px`)
+    for (const [part, rect] of [['copy', geometry?.content], ['heading', geometry?.heading]] as const) {
+      for (const [state, surface] of [
+        ['', otherSurface],
+        ['-rest', geometry?.surface],
+      ] as const) {
+        // Signed insets interpolate the exact frame bounds. Clamping to zero
+        // would keep trimming the eyebrow after it has already entered the card.
+        // Clip the group, not its replaced bitmap: the browser can give that
+        // bitmap a different intrinsic paint box from the element's DOM rect.
+        const insets = rect && surface ? {
+          top: surface.top - rect.top,
+          right: rect.right - surface.right,
+          bottom: rect.bottom - surface.bottom,
+          left: surface.left - rect.left,
+        } : { top: 0, right: 0, bottom: 0, left: 0 }
+        for (const [edge, inset] of Object.entries(insets))
+          style.setProperty(`--plan-${part}-${phase}${state}-${edge}`, `${inset}px`)
+      }
+    }
   }
 }
 

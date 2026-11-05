@@ -7,7 +7,7 @@
 .configurator-card-column { position:sticky; top:min(112px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
 .selected-plan { --plan-texture-height:580px; --plan-min-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
-.selected-plan__copy { display:flex; flex-direction:column; min-width:0; }
+.selected-plan__copy { display:flex; flex:1; flex-direction:column; min-width:0; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
 .selected-plan__texture {
   position:absolute; top:0; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
@@ -33,7 +33,10 @@
   background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top.webp');
   background-image:image-set(url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp') 1x,url('/assets/textures/grain-plasma-vitrine-continuation-top.webp') 2x);
 }
-.selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px; }
+.selected-plan__heading-frame { position:relative; margin-bottom:26px; }
+.selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.selected-plan__heading-frame > .selected-plan__change { position:absolute; top:0; right:0; }
+.selected-plan__change-visual { visibility:hidden; pointer-events:none; }
 .selected-plan__eyebrow { font-size:13px; letter-spacing:.015em; opacity:.9; }
 .selected-plan__change { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid rgb(255 255 255 / .38); border-radius:999px; color:inherit; background:rgb(255 255 255 / .08); font-size:12px; }
 .selected-plan__change:hover { background:rgb(255 255 255 / .18); }
