@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée : 04/11/2026 à 22:09, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée : 04/11/2026 à 22:34, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `7b502655e6312b4ed88b6781e753f16ddb0ff729`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T040603Z-7b502655e631` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DnwITJOI.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `9b04e915ac37adc145b6663479bdfcd7b0f751b6f89959727195f8fa334cd535`.
-- Version précédente disponible : `releases/20261105T032011Z-3e8bd1274408`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `3d1c08c6d4744bfeff745ad52cceb3c51c34a59d`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T042958Z-3d1c08c6d474` ; lien `current` basculé atomiquement.
+- Empreinte client publique : `index-DRYtrdAp.js`, identique au build prévu.
+- Archive vérifiée avant extraction : SHA-256 `da979bc3e503a2d48f27e222db0ba0392d20a60b7f40f5aa7c556a62d0fd732d`.
+- Version précédente disponible : `releases/20261105T040603Z-7b502655e631`. Releases et sauvegardes précédentes conservées.
 
 Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
 
@@ -27,7 +27,15 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 
 Catalogue et JSX indentés ; textes partagés dans `shared/catalog.ts` et `src/content/`, guide manuel `docs/MODIFIER_LE_SITE.md`. Primitives shadcn/Radix, Geist et Lucide conservés ; Sharp ajouté côté serveur pour le décodage réel des images ; aucun décodeur natif dans le client. Les dernières vérifications navigateur utilisent exclusivement le navigateur intégré demandé par Mathis.
 
-## Dernier lot — fluidité après essai public
+## Dernier lot — image fixe et fond prolongé
+
+Application `3d1c08c` : la texture et sa lumière gardent une hauteur fixe quand la carte grandit ; une continuation en miroir de la même matière apparaît dessous. Les bandes suivantes sont préparées hors du cadrage, sans nouvelle image ni modification des trois originaux. Les deux instantanés natifs restent à leur taille propre. Options et hauteur ralenties à 620 ms, fondu à 420 ms, accélération douce et préférence de réduction du mouvement conservée.
+
+TypeScript, build et 213 tests passent. Client public SHA-256 `e5638dca06eb7b705d5aaa67e3e3b4ab73a40790d569a3b4fb6ee104311d4ece` ; client, huit CSS et trois textures identiques au build par HTTPS. Sauvegarde réussie, Sharp et archive vérifiés avant bascule. Santé valide, catalogue inchangé et 25 autres services gardent leur PID, tunnel compris. Aucun changement de DNS ou de configuration du tunnel.
+
+IAB public : zéro à douze options, carte de 580 à 973 px, première bande toujours de 612,1 × 580 px. Mesures pendant l’ajout : ancrage à 0, hauteur inchangée et transitions effectives de 620/420 ms. Mobile 390 × 844 : carte de 872,8 px à douze options, bande de 335 × 500 px. Document/client 1425/1425 et 375/375, sans débordement. Choix de départ rétablis, aucun formulaire envoyé, console sans erreur/alerte observée ; viewport temporaire retiré, accueil public conservé et localhost arrêté. Rapport : `docs/qa/fixed-texture/review.md`.
+
+## Lot précédent — fluidité après essai public
 
 Application `7b50265` : cadre et coins progressifs en 520 ms, grande texture révélée à sa taille finale sans étirement, texte capturé séparément et fondu au-dessus de l’image. Préchargement du configurateur au survol/focus, sans attente au clic. Ajout/retrait des options et hauteur de carte progressifs en 360 ms ; totaux, mensuel, rubriques et brief animés. Réduction du mouvement relue au clic et appliquée aussi aux coins du cadre natif.
 

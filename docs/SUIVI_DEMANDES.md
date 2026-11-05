@@ -1,14 +1,14 @@
 # Suivi des demandes
 
-Version actuelle vérifiée : `7b50265` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
+Version actuelle vérifiée : `3d1c08c` sur https://gilmathis.com/. Les anciens lots ci-dessous constituent l’historique ; les dernières décisions priment.
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Image fixe, fond prolongé et options plus lentes — 4 novembre 2026, correction locale vérifiée
+## Image fixe, fond prolongé et options plus lentes — 4 novembre 2026, terminé et vérifié en ligne
 
 Mathis précise que la texture doit garder sa taille quand la carte s’allonge : ajouter du fond en bas. Le `cover` lié à la hauteur totale de la carte est remplacé par des bandes de hauteur fixe, avec continuation en miroir de la même matière. L’image et sa lumière ne changent plus de taille pendant la sélection ; les fichiers d’origine restent intacts. Les deux instantanés natifs gardent également leur taille propre.
 
-Options ralenties à 620 ms avec fondu de 420 ms et accélération douce. IAB local : carte de 580 à 973 px, bande supérieure toujours de 612,1 × 580 px ; sur mobile, carte de 607 à 873 px, bande de 335 × 500 px. Ajout/retrait, douze choix, préférence de mouvement et console contrôlés ; sélection initiale rétablie, aucun envoi. TypeScript, build et 213 tests passent. Publication en préparation. Rapport : `qa/fixed-texture/review.md`.
+Options ralenties à 620 ms avec fondu de 420 ms et accélération douce. TypeScript, build et 213 tests passent. Application `3d1c08c` poussée, déployée et vérifiée sur gilmathis.com : carte de 580 à 973 px pour zéro à douze options, bande supérieure toujours de 612,1 × 580 px, y compris pendant l’ajout. Mobile : bande de 335 × 500 px pour une carte de 873 px, sans débordement. Ajout/retrait, préférence de mouvement et sélection initiale également contrôlés localement. Client, CSS et textures publics conformes au build ; sauvegarde, Sharp et santé vérifiés, catalogue et autres services inchangés. Choix de départ et réglages rétablis, aucun envoi, console sans erreur/alerte observée et localhost arrêté. Rapport et captures publiques : `qa/fixed-texture/review.md`.
 
 ## Lot précédent — fluidité après essai public, 4 novembre 2026
 
