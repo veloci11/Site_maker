@@ -1,0 +1,17 @@
+{
+  "cardHeight": 872.7578125,
+  "content": {
+    "height": 825,
+    "overflow": "visible",
+    "scroll": 825
+  },
+  "itemXs": [
+    44
+  ],
+  "overflow": false,
+  "textureHeight": 500,
+  "viewport": {
+    "innerHeight": 844,
+    "innerWidth": 390
+  }
+}

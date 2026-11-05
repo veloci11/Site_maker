@@ -1,3 +1,7 @@
+## Résumé sans barre interne — en vérification locale, 5 novembre 2026
+
+Dernier retour : beaucoup d’options ne doivent pas créer de défilement à l’intérieur de la carte. Résumé en deux colonnes équilibrées quand la largeur le permet, une colonne sur carte étroite. Carte naturellement haute et présentation compacte animée à partir de cinq choix ; ancrage sticky adapté à la hauteur, sans listener de scroll. Le total et chaque option restent dans le flux de la page. Textures et transitions existantes conservées. Vérification locale puis publication en cours.
+
 ## Livraison finale publiée et vérifiée — animations et qualité
 
 Version applicative `891bfac`, release `20261105T055902Z-891bfac29685`, publiée sur https://gilmathis.com/ et contrôlée en ligne.

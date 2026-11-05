@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { useLayoutEffect, useRef, type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { offers, type OfferId } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
@@ -27,17 +27,35 @@ export function SelectedPlanCard({
   disabled = false,
   onOfferChange,
 }: SelectedPlanCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
   const variant = 'variant' in plan ? plan.variant : plan.id
   const href = 'slug' in plan ? `/forfaits/${plan.slug}` : plan.href
   const surfaceTransition = usePlanTransition(variant, href)
   const contentTransition = usePlanTransition(variant, href, 'content')
+
+  useLayoutEffect(() => {
+    const card = cardRef.current
+    const column = card?.closest<HTMLElement>('.configurator-card-column')
+    if (!card || !column) return
+    // A tall card follows the page until its bottom fits the viewport. Keep
+    // every option accessible without creating a second scrolling region.
+    const measure = () => column.style.setProperty('--selected-plan-height', `${Math.ceil(card.getBoundingClientRect().height)}px`)
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(card)
+    return () => {
+      observer.disconnect()
+      column.style.removeProperty('--selected-plan-height')
+    }
+  }, [])
+
   return (
-    <div className={`selected-plan pricing-card--${variant}`}>
+    <div ref={cardRef} className={`selected-plan pricing-card--${variant}`}>
       <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
         <span className="selected-plan__texture" />
         {'slug' in plan ? <span className="selected-plan__texture selected-plan__texture--continuation" /> : null}
       </span>
-      <div className="selected-plan__content" style={contentTransition} tabIndex={0} role="region" aria-label="Détails du forfait et options choisies">
+      <div className="selected-plan__content" style={contentTransition} role="region" aria-label="Détails du forfait et options choisies">
         <div className="selected-plan__heading">
           <span className="selected-plan__eyebrow">Votre forfait</span>
           <DropdownMenu>

@@ -1,0 +1,30 @@
+{
+  "card": {
+    "bottom": 446.875,
+    "height": 659.6953125,
+    "left": 40,
+    "right": 649.765625,
+    "top": -212.8203125,
+    "width": 609.765625,
+    "x": 40,
+    "y": -212.8203125
+  },
+  "innerOverflow": "visible",
+  "overflow": false,
+  "scrollY": 1538.5,
+  "stickyTop": "16px",
+  "total": {
+    "bottom": 420.875,
+    "height": 131.3359375,
+    "left": 66,
+    "right": 623.765625,
+    "top": 289.5390625,
+    "width": 557.765625,
+    "x": 66,
+    "y": 289.5390625
+  },
+  "viewport": {
+    "innerHeight": 700,
+    "innerWidth": 1366
+  }
+}

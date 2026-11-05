@@ -1,3 +1,13 @@
+## Résumé des options sans défilement interne — 5 novembre 2026
+
+Demande : retirer la barre intérieure lorsque beaucoup d’options sont choisies. Solution retenue : deux colonnes équilibrées avec une largeur minimale de 200 px, une seule sur carte étroite. La liste garde son ordre de lecture vertical dans chaque colonne et les animations de hauteur/fondu existantes. À partir de cinq choix, la présentation desktop se compacte en 620 ms.
+
+La hauteur maximale et l’overflow interne ont été retirés. Un ResizeObserver mesure uniquement la hauteur de la carte et adapte son ancrage sticky, sans écouteur de scroll ; sur écran bas, le défilement normal de la page permet d’atteindre son bas. Les originales, la texture fixe et le prolongement existant restent intacts. Le focus artificiel de l’ancienne région défilable a été retiré.
+
+IAB local : Vitrine et Connecté avec 12 choix : deux colonnes, carte de 672,56 px, total accessible, contenu client/scroll identiques et overflow visible. Sur mesure avec 10 choix : deux colonnes, aucun débordement. Écran 1366 × 700 : carte ancrée à 16 px après scroll, bas à 675,70 px et total visible ; retour vers le haut par la page. Mobile 390 × 844 : une colonne, hauteur naturelle 872,76 px, contenu client/scroll 825/825 et texture de 500 px. Entrée compacte : transitions de 620 ms, image constante de 580 px. Ouverture clavier depuis le comparatif : transition native observée. Console sans erreur/avertissement, choix locaux initiaux restaurés et émulation réinitialisée.
+
+Preuves : `docs/qa/option-columns/`. Vérification du build et publication suivies dans `ops/DEPLOYMENT_STATUS.md`.
+
 # Vérification visuelle — forfaits et options, 4 novembre 2026
 
 final result: passed

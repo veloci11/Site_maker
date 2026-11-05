@@ -1,0 +1,180 @@
+{
+  "card": {
+    "bottom": 852.5625,
+    "height": 672.5625,
+    "left": 72.5,
+    "right": 684.6015625,
+    "top": 180,
+    "width": 612.1015625,
+    "x": 72.5,
+    "y": 180
+  },
+  "columnWidth": "200px",
+  "columns": "2",
+  "content": {
+    "height": 609,
+    "overflow": "visible",
+    "scroll": 609
+  },
+  "items": [
+    {
+      "label": "Adaptation mobile et tablette+ … €",
+      "rect": {
+        "bottom": 549.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 523.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 523.2265625
+      }
+    },
+    {
+      "label": "Français + anglais+ … €",
+      "rect": {
+        "bottom": 575.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 549.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 549.2265625
+      }
+    },
+    {
+      "label": "Gestion des textes et images+ … €",
+      "rect": {
+        "bottom": 601.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 575.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 575.2265625
+      }
+    },
+    {
+      "label": "Prise de rendez-vous+ … €",
+      "rect": {
+        "bottom": 627.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 601.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 601.2265625
+      }
+    },
+    {
+      "label": "Galerie de réalisations+ … €",
+      "rect": {
+        "bottom": 653.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 627.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 627.2265625
+      }
+    },
+    {
+      "label": "Pages supplémentaires+ … €",
+      "rect": {
+        "bottom": 679.2265625,
+        "height": 26,
+        "left": 104.5,
+        "right": 366.546875,
+        "top": 653.2265625,
+        "width": 262.046875,
+        "x": 104.5,
+        "y": 653.2265625
+      }
+    },
+    {
+      "label": "Une autre langue+ … €",
+      "rect": {
+        "bottom": 549.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 523.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 523.2265625
+      }
+    },
+    {
+      "label": "Aide à la rédaction+ … €",
+      "rect": {
+        "bottom": 575.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 549.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 549.2265625
+      }
+    },
+    {
+      "label": "Référencement local+ … €",
+      "rect": {
+        "bottom": 601.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 575.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 575.2265625
+      }
+    },
+    {
+      "label": "Mise en ligne du site+ … €",
+      "rect": {
+        "bottom": 627.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 601.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 601.2265625
+      }
+    },
+    {
+      "label": "Maintenance du site+ … € / mois",
+      "rect": {
+        "bottom": 653.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 627.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 627.2265625
+      }
+    },
+    {
+      "label": "Hébergement géré+ … € / mois",
+      "rect": {
+        "bottom": 679.2265625,
+        "height": 26,
+        "left": 390.5546875,
+        "right": 652.6015625,
+        "top": 653.2265625,
+        "width": 262.046875,
+        "x": 390.5546875,
+        "y": 653.2265625
+      }
+    }
+  ],
+  "overflow": false,
+  "stickyTop": "112px",
+  "texture": 580
+}
