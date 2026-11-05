@@ -31,4 +31,18 @@ Guide `vercel-react-view-transitions` utilisé pour les six ouvertures, retours,
 
 Revue `vercel:react-best-practices` : hooks inconditionnels, effet de layout lié à la clé de navigation, garde de contexte avant mesure, état minimal d’arrivée, géométrie lue par lot, nettoyage des écouteurs conservé. Menu et contrôles hors de la copie capturée. Aucun changement de prix, calcul serveur, stockage, données privées ou garde de brouillon. Moteur de replacement et sources d’images inchangés. Tests métier existants et matrice navigateur pertinents ; aucun test recopiant les règles CSS ajouté.
 
-`npm run check` final : TypeScript, build et 213 tests passent (`check.log`). `git diff --check` propre. Les trois textures originales sont identiques octet pour octet à la révision précédente (`original-images.json`). Serveur local arrêté. Publication consignée après exécution dans le suivi et `ops/DEPLOYMENT_STATUS.md`.
+`npm run check` final : TypeScript, build et 213 tests passent (`check-summary.json`). `git diff --check` propre. Les trois textures originales sont identiques octet pour octet à la révision précédente (`original-images.json`). Serveur local arrêté.
+
+## Publication et contrôle public
+
+Révision applicative `57aacc2a6ad686bab809dbe65c168935d1c91b2c`, release `20261105T090925Z-57aacc2a6ad6`. Santé origine/HTTPS et neuf empreintes (client + huit CSS) conformes au build. Sauvegarde réussie, catalogue et 25 autres PID de services inchangés.
+
+Les six allers-retours sont recontrôlés dans l’IAB public sur ordinateur et mobile (`public-*-journeys.json`). Durée native de 760 ms sur chaque trajet, racine stable après arrivée et absence de débordement sur mobile. La première fenêtre de mesure Vitrine à froid se terminait pendant sa capture ; le contrôle à chaud complet (`public-vitrine-warm-open.json`) établit sa fin stable. Les matrices locales complètes restent aussi disponibles.
+
+En public à la largeur par défaut : premier choix de 530 à 549,67 px ; cinquième de 608,67 à 608,67 px, H1 constamment à 50 px, page 1265 px et échelle 1. Ce titre de 50 px vient du breakpoint de largeur, pas du nombre de choix. Texture fixe de 530 px dans ce viewport. Mobile : largeur/client 375/375, texture fixe de 500 px. Retrait public : 620/420 ms puis aucune animation résiduelle.
+
+Capture native finale `public-final.jpg`, avec cinq options de contrôle. Tous ces choix ont ensuite été retirés, groupes et viewport restaurés ; onglet Vitrine conservé, scroll nul (`public-restored.json`). Aucun formulaire envoyé. Le journal public contient un seul abandon natif « Viewport size changed » pendant le changement de dimensions du banc de contrôle ; les parcours à dimensions stables aboutissent normalement. Ne pas présenter ce journal comme vide.
+
+## GitHub Actions
+
+Le run [42000019786](https://github.com/veloci11/Site_maker/actions/runs/42000019786), signalé à nouveau par Mathis, échoue entre 09:09:10 et 09:09:12 UTC. Annotation : « The job was not started because your account is locked due to a billing issue. » Runner 0, aucune étape. Preuve `ci.json`. Le titulaire doit lever le verrouillage de facturation du compte avant de relancer ; changer le workflow ou les animations ne le résout pas. Aucun réglage de facturation ni contournement des vérifications effectué. Validation locale passante et publication effective distinctes de ce blocage externe.

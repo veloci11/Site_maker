@@ -1,0 +1,38 @@
+[
+  {
+    "name": "check",
+    "status": "completed",
+    "conclusion": "failure",
+    "details_url": "https://github.com/veloci11/Site_maker/actions/runs/42000019786/job/127152585037",
+    "started_at": "2026-11-05T09:09:10Z",
+    "completed_at": "2026-11-05T09:09:12Z",
+    "annotations": [
+      {
+        "path": ".github",
+        "blob_href": "https://github.com/veloci11/Site_maker/blob/57aacc2a6ad686bab809dbe65c168935d1c91b2c/.github",
+        "start_line": 1,
+        "start_column": null,
+        "end_line": 1,
+        "end_column": null,
+        "annotation_level": "failure",
+        "title": "",
+        "message": "The job was not started because your account is locked due to a billing issue.",
+        "raw_details": ""
+      },
+      {
+        "path": ".github",
+        "blob_href": "https://github.com/veloci11/Site_maker/blob/57aacc2a6ad686bab809dbe65c168935d1c91b2c/.github",
+        "start_line": 1,
+        "start_column": null,
+        "end_line": 1,
+        "end_column": null,
+        "annotation_level": "notice",
+        "title": "",
+        "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+        "raw_details": ""
+      }
+    ],
+    "runner_id": 0,
+    "steps": []
+  }
+]

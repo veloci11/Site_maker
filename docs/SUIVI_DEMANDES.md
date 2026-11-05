@@ -1,6 +1,6 @@
-## Taille stable et transitions coordonnées — validation locale, 5 novembre 2026
+## Taille stable et transitions coordonnées — publiées et vérifiées, 5 novembre 2026
 
-La présentation compacte au cinquième choix faisait rétrécir titre et carte : elle est supprimée. Le résumé grandit sans modifier la typographie ; gutter stable évitant les changements de largeur. Six allers-retours sur 760 ms, page entrante utilisable, mouvements de souris sans interruption et aucun second fondu à l’arrivée. Image et retrait inchangés. Les 24 trajets ordinateur/mobile, les douze options, le retrait et les actions rapides passent dans l’IAB local. Rapport : `qa/stable-motion/review.md`. TypeScript, build et 213 tests passent ; publication préparée.
+La présentation compacte au cinquième choix faisait rétrécir titre et carte : elle est supprimée. Le résumé grandit sans modifier la typographie ; gutter stable évitant les changements de largeur. Six allers-retours sur 760 ms, page entrante utilisable, mouvements de souris sans interruption et aucun second fondu à l’arrivée. Image et retrait inchangés. Les 24 trajets ordinateur/mobile, les douze options, le retrait et les actions rapides passent dans l’IAB local. Publié : `57aacc2`, release `20261105T090925Z-57aacc2a6ad6`. Six allers-retours recontrôlés en public sur ordinateur et mobile, tailles stables, neuf empreintes HTTPS conformes, 25 autres services inchangés. Choix/viewport restaurés et localhost arrêté. TypeScript, build et 213 tests passent. Rapport : `qa/stable-motion/review.md`. Nouveau run GitHub 42000019786 toujours empêché par la facturation du compte avant tout runner ; action nécessaire du titulaire.
 
 ## Retrait et replacement animés — publiés et vérifiés, 5 novembre 2026
 

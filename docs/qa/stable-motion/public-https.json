@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-05T09:10:16.176466+00:00",
+  "revision": "57aacc2a6ad686bab809dbe65c168935d1c91b2c",
+  "health": {
+    "ok": true
+  },
+  "checks": [
+    {
+      "path": "/assets/index-CGr-Hiyd.js",
+      "sha256": "abb3e5a159baed258060eda2b7658dd167a896948e726efa2cd01b7c7f133583",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/ProjectBriefForm-ExNdTMib.css",
+      "sha256": "b9a428b334b3c7de7c9b5ac9153ff22f2f12a8c956aa80828f5c486367b4ca87",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/SelectedPlanCard-BL41QBOv.css",
+      "sha256": "de68968a238a3c1d1c90ebbf7e6db97baa471453cb57b91b8f3a8830429d47f3",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-BX8I7Wd4.css",
+      "sha256": "320c200b83fd8e075f316aca9859ca46b75a46f08bfccc256b8da7fbf8cfd061",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-BkRDUtcw.css",
+      "sha256": "a05f615c00e63700645dc8ca6810afdaf9efa698b571942af7651dc1e8764b87",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-CDRAuKij.css",
+      "sha256": "eb961cefb13ad1d91617e63722ad84f5ba9ac2fcf4de424d6ddc96e42b0fae49",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-CIiXzOsc.css",
+      "sha256": "b617ebaa0a36c997763e9e588fdf7cb8cbbac0e81253e2aff89ab73b45735204",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-CZvM1oZF.css",
+      "sha256": "c4298e769a090d8397ee7ece3d81dfc86c42f8b73e1f3f7f6b5fac56a3bdf043",
+      "identicalToBuild": true
+    },
+    {
+      "path": "/assets/index-CzRZcDmU.css",
+      "sha256": "1e5fd170ee87beb561810a8cfaba840c448154c99fce819760c86bb4fbace9c7",
+      "identicalToBuild": true
+    }
+  ]
+}

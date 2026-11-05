@@ -5,23 +5,32 @@ Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’I
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `ab76cb29705868e4882b5835d6db0a9c0fcd98d4`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T065746Z-ab76cb297058` ; bascule atomique de `current`.
-- Client public : `/assets/index-BIgh2Va4.js` ; SHA-256 `56630dd0f76366b3e21642643150ea68c31d25b80b4bda38d232316eb01e7cf8`.
-- Archive : SHA-256 `f63889f71145178e0c5b5fba00e2c3666eab3777365d3e9aac3a0b30a7db21db`, 13970877 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T063308Z-94865388d5c2`.
+- Révision applicative : `57aacc2a6ad686bab809dbe65c168935d1c91b2c`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T090925Z-57aacc2a6ad6` ; bascule atomique de `current`.
+- Client public : `/assets/index-CGr-Hiyd.js` ; SHA-256 `abb3e5a159baed258060eda2b7658dd167a896948e726efa2cd01b7c7f133583`.
+- Archive : SHA-256 `c761a8041d38d06eeba078bd6cd3a7e974fe20f21a8a165d222501b9124ff115`, 13969575 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T065746Z-ab76cb297058`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
 ## Animations et textures livrées
 
-Les six offres utilisent une ouverture/fermeture de 520 ms : déplacement de la surface et copies séparées, sans étirement du texte ni de l’image. Les retours retrouvent la liste d’origine ; les deux services sont distingués par leur paramètre `besoin`. Un nouveau geste interrompt la capture native pour laisser immédiatement passer le clic ou le clavier, sans clic synthétique ni navigation retardée. Les liens ordinaires, la réduction du mouvement et les protections du brouillon sont conservés.
+Les six offres utilisent une ouverture/fermeture de 760 ms : déplacement de surface et copies séparées, sans étirement du texte ni de l’image. Seule la page sortante est capturée ; les contrôles entrants restent vivants. Les retours retrouvent la liste d’origine ; les services sont distingués par `besoin`. Un déplacement de souris ne coupe plus l’effet ; pression, clavier et défilement reprennent la main. L’arrivée reste stable sans second fondu de page. Liens ordinaires, réduction du mouvement et protections du brouillon conservés.
 
 Les trois textures d’origine restent identiques octet pour octet. La partie haute garde l’original 1536 × 1024 ; une vraie continuation native prolonge le bas sans miroir visible ni agrandissement de la source rejetée de 724 px. Exports 1x et 2x, ces derniers sans perte. Le filtre sombre a été allégé. Les fichiers sources, la consigne et l’assemblage sont dans `docs/asset-sources/textures/vitrine-continuation-prompts.md` et `vitrine-continuation-assembly.json`.
 
-L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé utilise une grille à emplacements explicites quand la largeur le permet : trois choix à gauche, trois à droite, puis alternance gauche/droite. Il suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte à partir de cinq choix reste animée sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
+L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Aucune hauteur maximale ni défilement interne. Grille explicite : trois choix à gauche, trois à droite, puis alternance gauche/droite. Elle suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte selon le nombre de choix est supprimée : titre et espacements ne rétrécissent plus. Gutter stable pour la largeur de page. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle ; le défilement normal permet d’accéder au bas. Plusieurs groupes d’options peuvent rester ouverts.
 
-## Vérification finale des retraits animés
+## Vérification finale — taille et transitions
+
+- TypeScript, build et 213 tests passants ; trois textures originales identiques octet pour octet.
+- IAB local : six ouvertures et six retours sur ordinateur puis mobile, entrée stable, scroll de retour exact, douze options sans réduction, retrait et actions rapides contrôlés.
+- IAB public : mêmes six parcours dans les deux formats, animations natives 760 ms, premier/cinquième choix sans réduction et retrait 620/420 ms. Le premier relevé Vitrine à froid finit avant la transition ; recontrôle complet à chaud stable. Aucun débordement mobile.
+- Santé origine/HTTPS et neuf empreintes conformes. Sauvegarde réussie, catalogue et 25 autres PID inchangés. Aucun formulaire envoyé ; choix, groupes et viewport restaurés ; localhost arrêté.
+- Journal public : un abandon natif au redimensionnement du banc de test, détaillé dans le rapport ; parcours à taille stable passants. Capture `docs/qa/stable-motion/public-final.jpg`, preuves dans le même dossier.
+- GitHub run 42000019786 : compte verrouillé pour facturation, runner 0 et aucune étape. Le titulaire doit lever le verrouillage avant relance. Le code n’a pas produit d’échec de test sur ce run.
+
+## Contrôle précédent — retraits animés
 
 Le retrait garde une copie décorative en fondu de 420 ms, hors du flux et de l’arbre accessible. Les lignes restantes glissent sur 620 ms vers leurs nouvelles cases et la hauteur du résumé est animée. Les clics rapides repartent de la position visuelle courante ; les copies et animations sont nettoyées, y compris au démontage et en réduction du mouvement. Configuration et totaux restent immédiats. Après les blocs de trois, l’alternance commence désormais à gauche.
 

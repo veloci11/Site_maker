@@ -1,0 +1,64 @@
+{
+  "state": {
+    "groups": [
+      {
+        "open": "true",
+        "text": "01Votre site"
+      },
+      {
+        "open": "false",
+        "text": "02Vos fonctionnalités"
+      },
+      {
+        "open": "false",
+        "text": "03Vos contenus"
+      },
+      {
+        "open": "false",
+        "text": "04Visibilité et outils"
+      },
+      {
+        "open": "false",
+        "text": "05Mise en ligne et suivi"
+      },
+      {
+        "open": "true",
+        "text": "01Votre activité et vos visiteurs"
+      },
+      {
+        "open": "false",
+        "text": "02Les pages et les contenus"
+      },
+      {
+        "open": "false",
+        "text": "03La mise en place"
+      },
+      {
+        "open": "false",
+        "text": "04Le calendrier et les contraintes"
+      },
+      {
+        "open": "false",
+        "text": "05Vos coordonnées"
+      },
+      {
+        "open": "false",
+        "text": "06Vos fichiers · facultatif"
+      }
+    ],
+    "page": 1265,
+    "path": "/forfaits/vitrine",
+    "scrollWidth": 1265,
+    "scrollY": 0,
+    "selected": 0
+  },
+  "logs": [
+    {
+      "level": "error",
+      "message": "InvalidStateError: Transition was aborted because of invalid state. Viewport size changed",
+      "timestamp": "2026-11-05T09:14:19.485Z",
+      "url": "https://gilmathis.com/forfaits/vitrine"
+    }
+  ],
+  "viewportReset": true
+}

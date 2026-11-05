@@ -1,0 +1,10 @@
+{
+  "command": "npm run check",
+  "exitCode": 0,
+  "typecheck": "passed",
+  "build": "passed",
+  "tests": 213,
+  "passed": 213,
+  "failed": 0,
+  "logSha256": "ef64c47f1d1da6c94e02144b9031f26050bcf2db7bb611b9dab5d84418a622ed"
+}

@@ -1,0 +1,11 @@
+{
+  "previousRelease": "/home/mathis/site-maker/releases/20261105T065746Z-ab76cb297058",
+  "activeRelease": "/home/mathis/site-maker/releases/20261105T090925Z-57aacc2a6ad6",
+  "health": {
+    "ok": true
+  },
+  "catalogueUnchanged": true,
+  "otherRunningServicePidsUnchanged": 25,
+  "otherServicePidsChanged": [],
+  "backupResult": "success"
+}
