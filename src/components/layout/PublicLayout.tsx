@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { offers } from '../../../shared/catalog'
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
@@ -21,6 +21,7 @@ import {
 import { cn } from '../../lib/utils'
 import { PageTransition } from './motion'
 import { AmbientGrain } from './AmbientGrain'
+import { MotionLink as Link, MotionNavLink as NavLink, canAnimatePlanNavigation } from './plan-transition'
 
 const offerLinks = offers.map((offer) => ({
   title: offer.title,
@@ -55,11 +56,11 @@ export function PublicHeader() {
   return (
     <div className="public-header-wrap">
       <header className="site-header">
-        <Link className="wordmark" to="/" aria-label="studio — accueil">
+        <Link className="wordmark" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="studio — accueil">
           studio
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
-          <NavLink to="/" end className={desktopNavClassName}>
+          <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
             Accueil
           </NavLink>
           <DropdownMenu open={offersOpen} onOpenChange={setOffersOpen} modal={false}>
@@ -82,6 +83,7 @@ export function PublicHeader() {
                 <DropdownMenuItem key={offer.href} asChild>
                   <Link
                     to={offer.href}
+                    viewTransition={canAnimatePlanNavigation()}
                     className={`public-offer-link pricing-card--${offer.variant}`}
                     aria-current={location.pathname === offer.href ? 'page' : undefined}
                   >
@@ -95,6 +97,7 @@ export function PublicHeader() {
                 <DropdownMenuItem key={offer.id} asChild>
                   <Link
                     to={offer.href}
+                    viewTransition={canAnimatePlanNavigation()}
                     className={`public-offer-link pricing-card--${offer.id}`}
                     aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
                   >
@@ -105,15 +108,15 @@ export function PublicHeader() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <NavLink to="/exemples" className={desktopNavClassName}>
+          <NavLink to="/exemples" viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
             Exemples de sites
           </NavLink>
         </nav>
         <div className="header-actions">
-          <NavLink to="/faq" className={headerFaqClassName}>
+          <NavLink to="/faq" viewTransition={canAnimatePlanNavigation()} className={headerFaqClassName}>
             FAQ
           </NavLink>
-          <Link className="header-login" to="/contact">
+          <Link className="header-login" to="/contact" viewTransition={canAnimatePlanNavigation()}>
             Nous contacter
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
@@ -133,7 +136,7 @@ export function PublicHeader() {
                 <SheetDescription className="sr-only">Navigation du site</SheetDescription>
               </SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
-                <NavLink to="/" end className={mobileNavClassName}>
+                <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   Accueil
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
@@ -144,7 +147,7 @@ export function PublicHeader() {
                   </summary>
                   <div className="mobile-offers-submenu">
                     {offerLinks.map((offer) => (
-                      <NavLink key={offer.href} to={offer.href} className={mobileOfferClassName}>
+                      <NavLink key={offer.href} to={offer.href} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
                         {offer.title}
                         <ArrowRight size={16} aria-hidden="true" />
                       </NavLink>
@@ -153,6 +156,7 @@ export function PublicHeader() {
                       <Link
                         key={offer.id}
                         to={offer.href}
+                        viewTransition={canAnimatePlanNavigation()}
                         className={cn(
                           'mobile-offer-link',
                           index === 0 && 'mobile-offer-link--refit',
@@ -166,15 +170,15 @@ export function PublicHeader() {
                     ))}
                   </div>
                 </details>
-                <NavLink to="/exemples" className={mobileNavClassName}>
+                <NavLink to="/exemples" viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   Exemples de sites
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <NavLink to="/faq" className={mobileNavClassName}>
+                <NavLink to="/faq" viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   FAQ
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <Link to="/contact" className="mobile-nav-heading mobile-nav-contact">
+                <Link to="/contact" viewTransition={canAnimatePlanNavigation()} className="mobile-nav-heading mobile-nav-contact">
                   Nous contacter
                   <ArrowRight size={20} aria-hidden="true" />
                 </Link>
@@ -190,14 +194,14 @@ export function PublicHeader() {
 export function PublicFooter() {
   return (
     <footer className="site-footer container">
-      <Link to="/" className="wordmark wordmark--small" aria-label="studio — accueil">
+      <Link to="/" viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="studio — accueil">
         studio
       </Link>
       <nav aria-label="Liens de pied de page">
-        <Link to="/forfaits">Comparer les forfaits</Link>
-        <Link to="/exemples">Exemples de sites</Link>
-        <Link to="/faq">FAQ</Link>
-        <Link to="/contact">Nous contacter</Link>
+        <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>Comparer les forfaits</Link>
+        <Link to="/exemples" viewTransition={canAnimatePlanNavigation()}>Exemples de sites</Link>
+        <Link to="/faq" viewTransition={canAnimatePlanNavigation()}>FAQ</Link>
+        <Link to="/contact" viewTransition={canAnimatePlanNavigation()}>Nous contacter</Link>
       </nav>
     </footer>
   )

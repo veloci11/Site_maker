@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { offers, type OfferId } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
@@ -11,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import './project.css'
+import { MotionLink as Link, canAnimatePlanNavigation, usePlanSurfaceTransition } from './plan-transition'
 
 type Plan = (typeof offers)[number] | (typeof existingSiteOffers)[number]
 
@@ -28,9 +28,29 @@ export function SelectedPlanCard({
   onOfferChange,
 }: SelectedPlanCardProps) {
   const variant = 'variant' in plan ? plan.variant : plan.id
+  const href = 'slug' in plan ? `/forfaits/${plan.slug}` : plan.href
+  const surfaceTransition = usePlanSurfaceTransition(variant, href)
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [tall, setTall] = useState(false)
+
+  useLayoutEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+    // A visible selection can grow beyond the viewport; let the whole card scroll.
+    const update = () => setTall(card.getBoundingClientRect().height > window.innerHeight - 136)
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(card)
+    window.addEventListener('resize', update)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', update)
+    }
+  }, [])
 
   return (
-    <div className={`selected-plan pricing-card--${variant}`}>
+    <div ref={cardRef} className={`selected-plan pricing-card--${variant}`} data-tall={tall || undefined}>
+      <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true" />
       <div className="selected-plan__heading">
         <span className="selected-plan__eyebrow">Votre forfait</span>
         <DropdownMenu>
@@ -65,7 +85,7 @@ export function SelectedPlanCard({
                 </DropdownMenuItem>
               ) : (
                 <DropdownMenuItem key={item.id} asChild className={className}>
-                  <Link to={`/forfaits/${item.slug}`} aria-current={current}>
+                  <Link to={`/forfaits/${item.slug}`} viewTransition={canAnimatePlanNavigation()} aria-current={current}>
                     {label}
                   </Link>
                 </DropdownMenuItem>
@@ -78,7 +98,7 @@ export function SelectedPlanCard({
                 asChild
                 className={`public-offer-link pricing-card--${item.id}`}
               >
-                <Link to={item.href} aria-current={item.id === plan.id ? 'page' : undefined}>
+                <Link to={item.href} viewTransition={canAnimatePlanNavigation()} aria-current={item.id === plan.id ? 'page' : undefined}>
                   {item.title}
                   {item.id === plan.id ? <Check size={16} aria-hidden="true" /> : null}
                 </Link>

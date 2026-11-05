@@ -1,0 +1,48 @@
+[
+  {
+    "path": "/forfaits/vitrine",
+    "title": "Vitrine",
+    "animations": [],
+    "overflow": false
+  },
+  {
+    "path": "/forfaits/connecte",
+    "title": "Connecté",
+    "animations": [],
+    "overflow": false
+  },
+  {
+    "path": "/forfaits/immersif-3d",
+    "title": "Immersif 3D",
+    "animations": [],
+    "overflow": false
+  },
+  {
+    "path": "/forfaits/sur-mesure",
+    "title": "Sur mesure",
+    "animations": [],
+    "overflow": false
+  },
+  {
+    "path": "/contact?besoin=evolution",
+    "title": "Évolution",
+    "animations": [
+      {
+        "name": "-ua-view-transition-group-anim-plan-evolution",
+        "duration": 420
+      }
+    ],
+    "overflow": false
+  },
+  {
+    "path": "/contact?besoin=refonte",
+    "title": "Refonte",
+    "animations": [
+      {
+        "name": "-ua-view-transition-group-anim-plan-refonte",
+        "duration": 420
+      }
+    ],
+    "overflow": false
+  }
+]

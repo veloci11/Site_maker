@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, Mail } from 'lucide-react'
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
   defaultPricing,
   formatMoney,
@@ -27,6 +27,7 @@ import {
 import { Button } from '../../components/ui/button'
 import { Checkbox } from '../../components/ui/checkbox'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
+import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import {
   ProjectBriefForm,
   type InquiryResult,
@@ -179,7 +180,11 @@ export function ConfiguratorPage() {
   function changeOffer(offerId: OfferId) {
     if (offerId === configuration.offerId) return
     if (!editingId) {
-      navigate(`/forfaits/${getOffer(offerId)!.slug}`, { preventScrollReset: true })
+      navigate(`/forfaits/${getOffer(offerId)!.slug}`, {
+        preventScrollReset: true,
+        viewTransition: canAnimatePlanNavigation(),
+        flushSync: canAnimatePlanNavigation(),
+      })
       return
     }
     setConfiguration(forOffer(configuration, offerId))
@@ -271,11 +276,11 @@ export function ConfiguratorPage() {
   return (
     <section className="configurator-page container">
       <div className="configurator-topline">
-        <Link to="/forfaits">
+        <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
           <ArrowLeft size={15} aria-hidden="true" />
           Tous les forfaits
         </Link>
-        <Link to="/exemples">
+        <Link to="/exemples" viewTransition={canAnimatePlanNavigation()}>
           Exemples de sites <ArrowRight size={15} aria-hidden="true" />
         </Link>
       </div>
@@ -286,6 +291,24 @@ export function ConfiguratorPage() {
             disabled={sending || stage === 'success'}
             onOfferChange={changeOffer}
           >
+            {selected.length ? (
+              <section className="selected-plan__selection" aria-label="Options choisies">
+                <p>Options choisies</p>
+                <ul>
+                  {selected.map((line) => (
+                    <li key={line.key}>
+                      <Check size={15} strokeWidth={1.6} aria-hidden="true" />
+                      <span>{line.label}</span>
+                      <strong>
+                        {custom && line.amountCents === null
+                          ? 'À définir'
+                          : `+ ${formatMoney(line.amountCents, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`}
+                      </strong>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
             <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
               <span>{custom ? 'Votre projet' : 'Création du site'}</span>
               <strong>{totalLabel}</strong>
@@ -327,28 +350,6 @@ export function ConfiguratorPage() {
               </button>
             ) : null}
           </SelectedPlanCard>
-          {selected.length ? (
-            <details className="configurator-selection">
-              <summary>
-                Votre sélection{' '}
-                <span>
-                  {selected.length} <ChevronDown size={14} aria-hidden="true" />
-                </span>
-              </summary>
-              <ul>
-                {selected.map((line) => (
-                  <li key={line.key}>
-                    <span>{line.label}</span>
-                    <strong>
-                      {custom && line.amountCents === null
-                        ? 'À définir'
-                        : `+ ${formatMoney(line.amountCents, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`}
-                    </strong>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ) : null}
         </aside>
         <div className="configurator-options">
           {stage === 'options' ? (

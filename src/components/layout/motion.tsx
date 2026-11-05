@@ -1,5 +1,5 @@
 import { type HTMLAttributes } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useViewTransitionState } from "react-router-dom";
 import { cn } from "../../lib/utils";
 
 export interface RevealProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,5 +16,6 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
 /** A brief, non-blocking route entrance; routing itself is handled by native React Router links. */
 export function PageTransition({ children, className, ...props }: HTMLAttributes<HTMLDivElement>) {
   const { pathname } = useLocation();
-  return <div key={pathname} className={cn("motion-page", className)} {...props}>{children}</div>;
+  const transitioning = useViewTransitionState(pathname);
+  return <div key={pathname} className={cn("motion-page", transitioning && "motion-page--transitioning", className)} {...props}>{children}</div>;
 }

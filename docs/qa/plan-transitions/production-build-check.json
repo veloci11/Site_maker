@@ -1,0 +1,6 @@
+{
+  "result": {
+    "type": "string",
+    "value": "{\"path\":\"/forfaits/vitrine\",\"title\":\"Vitrine\",\"rootCapture\":\"none\",\"animations\":[{\"name\":\"-ua-view-transition-group-anim-plan-vitrine\",\"duration\":420,\"frames\":[{\"offset\":0,\"easing\":\"cubic-bezier(0.22, 1, 0.36, 1)\",\"composite\":\"auto\",\"width\":\"291.5px\",\"transform\":\"matrix(1, 0, 0, 1, 81.5, 305.5)\",\"height\":\"196px\",\"backdropFilter\":\"none\",\"computedOffset\":0},{\"offset\":1,\"easing\":\"cubic-bezier(0.22, 1, 0.36, 1)\",\"composite\":\"replace\",\"width\":\"612.094px\",\"transform\":\"matrix(1, 0, 0, 1, 72.5, 180)\",\"height\":\"707.453px\",\"backdropFilter\":\"none\",\"computedOffset\":1}]}],\"selected\":[\"Français + anglais+ … €\",\"Prise de rendez-vous+ … €\",\"Maintenance du site+ … € / mois\"],\"folded\":0,\"overflow\":false}"
+  }
+}

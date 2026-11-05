@@ -4,6 +4,26 @@ Version actuelle vérifiée : `e8895ae` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
+## Ouverture des forfaits et options visibles — 4 novembre 2026, implémenté localement
+
+Demande suivante à l’audit : fluidifier le clic sur un forfait jusqu’à sa grande carte. Puis correction reçue pendant l’implémentation : afficher les options sélectionnées dans la carte, et supprimer le détail replié sous celle-ci.
+
+Transition native de surface en 420 ms, apparition douce du contenu, navigation et contrôles laissés hors des captures pour conserver les clics rapides. Coordination synchrone via le routeur ; vraies ancres, clavier et clics modifiés conservés. Modules publics résolus avant capture de la page cible, y compris à froid. Animations réduites selon la préférence système ; fallback sans API native. Textures d’origine identiques octet pour octet.
+
+Options choisies affichées dans la carte au-dessus du total, mises à jour à la sélection/désélection et visibles aussi au brief. Carte extensible, arrêt de sticky si sa hauteur dépasse l’espace disponible. Contrôles IAB ordinateur/mobile, douze options visibles, aucune largeur débordante, retour au brief et refus de quitter conservant la saisie. Prix, données et logique d’envoi inchangés ; aucune demande envoyée. Rapport : `qa/plan-transitions/design-qa.md`.
+
+État de livraison : modifications locales, pas de commit/push ni de déploiement Ubuntu. TypeScript, build et 213 tests passent après la dernière modification. Build Express local, six destinations, clics rapides, clavier, Cmd+clic et reduced motion vérifiés ; console finale sans erreur/alerte observée. Sélection et réglages rétablis, saisies fictives effacées, onglets et serveurs temporaires fermés. Détails et limites dans le rapport du lot.
+
+## Audit général et transparence des prix — 4 novembre 2026, audit terminé
+
+Cinq avis indépendants, puis cinq relectures d’un corpus anonymisé et arbitrage du coordinateur. Sources actuelles relues et parcours publics contrôlés dans l’IAB sur ordinateur/mobile, sans soumission. Rapport : `qa/general-council-2026-11-04/rapport-general.md` ; parcours visuel numéroté : `qa/general-council-2026-11-04/design-qa.md`. Les avis initiaux sont conservés et scellés par SHA-256.
+
+Objectif exprimé : connaître son budget avant contact, avec une estimation aussi proche que possible du prix final, et éviter les suppléments inattendus. Recommandation à arbitrer : prix forfaitaires et options en euros au premier plan ; heures surtout internes, éventuellement détail facultatif ou intervention réellement vendue au temps avec plafond convenu. Précision ±10–20 % non démontrée ; définir d’abord inclusions, unités et volumes, puis adopter les tarifs. Aucun prix de l’étude antérieure adopté ou publié.
+
+Constats confirmés : montants publics en attente, options de volume sans quantités, textes légaux provisoires, Galerie retirée sans explication au passage Vitrine → Connecté et contraste local trop faible de petits textes. À améliorer ensuite : budget complet, récapitulatif conservable/versionné, confirmation et retours d’état du prix. Vrai passage mobile vers le brief fonctionnel ; aucune panne GeoBoss, e-mail ou indexation démontrée. Destination Resend toujours volontairement reportée, aucune relance pendant cet audit.
+
+55 tests existants ciblés passent. Documentation uniquement ; aucun fichier produit modifié, aucun commit/push/déploiement, aucun serveur local lancé. Viewport réinitialisé et onglets temporaires fermés. Les recommandations restent à décider avant un lot d’implémentation.
+
 ## Questionnaires et conseil croisé — terminé et vérifié en ligne
 
 Cinq conseillers indépendants puis cinq relectures des avis anonymisés, avec arbitrage final documenté. Questions allégées ou précisées selon le forfait, branches Réservation/Boutique liées aux options, Sur mesure créatif, incertitude exclusive et historique conservé. Lien HTTPS facultatif WeTransfer/SwissTransfer/dossier partagé, précision conditionnelle et récapitulatif privé ; limites des images inchangées, aucune récupération automatique.

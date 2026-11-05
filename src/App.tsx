@@ -14,8 +14,12 @@ const portalModule = () => import('./pages/portal/index')
 const collaborationModule = () => import('./pages/collaboration/index')
 const ordersModule = () => import('./pages/orders/index')
 const configuratorModule = () => import('./pages/configurator/index')
-const Configurator = page(configuratorModule, 'ConfiguratorPage'), ForfaitConfigurator = page(configuratorModule, 'ForfaitConfiguratorPage')
-const Home = page(publicModule, 'HomePage'), Offers = page(publicModule, 'OffersPage'), Examples = page(publicModule, 'ExamplesPage'), Example = page(publicModule, 'ExampleDetailPage'), Faq = page(publicModule, 'FaqPage'), Contact = page(publicModule, 'ContactPage'), Options = page(publicModule, 'OptionsPage')
+const Configurator = page(configuratorModule, 'ConfiguratorPage')
+// Resolve these route modules before committing, so the transition captures the
+// real card and options on the first visit rather than a Suspense fallback.
+const loadForfait = async () => ({ Component: (await configuratorModule()).ForfaitConfiguratorPage })
+const loadPublicPage = (name: keyof Awaited<ReturnType<typeof publicModule>>) =>
+  async () => ({ Component: (await publicModule())[name] as ComponentType })
 const Register = page(authModule, 'RegisterPage'), Login = page(authModule, 'LoginPage'), Forgot = page(authModule, 'ForgotPasswordPage'), Reset = page(authModule, 'ResetPasswordPage')
 const Dashboard = page(portalModule, 'DashboardPage'), Contents = page(portalModule, 'ContentsPage'), Account = page(portalModule, 'AccountPage'), Messages = page(collaborationModule, 'MessagesPage'), Previews = page(collaborationModule, 'PreviewsPage')
 const Checkout = page(ordersModule, 'CheckoutPage'), Order = page(ordersModule, 'PortalOrderPage'), Admin = page(ordersModule, 'AdminPage')
@@ -59,19 +63,22 @@ function ApplicationShell() {
 }
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route element={<ApplicationShell />}>
+  <Route
+    element={<ApplicationShell />}
+    hydrateFallbackElement={<div className="loading-state loading-state--page" role="status">Chargement…</div>}
+  >
     <Route element={<PublicLayout />}>
-      <Route index element={<Home />} />
-      <Route path="forfaits" element={<Offers />} />
-      <Route path="forfaits/:slug" element={<ForfaitConfigurator />} />
+      <Route index lazy={loadPublicPage('HomePage')} />
+      <Route path="forfaits" lazy={loadPublicPage('OffersPage')} />
+      <Route path="forfaits/:slug" lazy={loadForfait} />
       <Route path="formules" element={<Navigate to="/forfaits" replace />} />
       <Route path="formules/:slug" element={<LegacyOffer />} />
-      <Route path="options" element={<Options />} />
-      <Route path="exemples" element={<Examples />} />
-      <Route path="exemples/:slug" element={<Example />} />
+      <Route path="options" lazy={loadPublicPage('OptionsPage')} />
+      <Route path="exemples" lazy={loadPublicPage('ExamplesPage')} />
+      <Route path="exemples/:slug" lazy={loadPublicPage('ExampleDetailPage')} />
       <Route path="methode" element={<Navigate to="/#fonctionnement" replace />} />
-      <Route path="faq" element={<Faq />} />
-      <Route path="contact" element={<Contact />} />
+      <Route path="faq" lazy={loadPublicPage('FaqPage')} />
+      <Route path="contact" lazy={loadPublicPage('ContactPage')} />
       <Route path="configurateur" element={<Configurator />} />
       <Route path="inscription" element={<Register />} />
       <Route path="connexion" element={<Login />} />

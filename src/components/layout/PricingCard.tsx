@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
 import { Check } from 'lucide-react'
 import { cn } from '../../lib/utils'
+import { MotionLink as Link, canAnimatePlanNavigation, usePlanSurfaceTransition } from './plan-transition'
 
 export interface PricingCardProps {
   slug: string
@@ -39,16 +39,20 @@ export function PricingCard({
   const custom = color === 'custom'
   const publicSlug = slug === 'immersif' ? 'immersif-3d' : slug
   const destination = href ?? `/forfaits/${publicSlug}`
+  const surfaceTransition = usePlanSurfaceTransition(color, destination)
   const priceLabel = price ?? (custom ? 'Sur devis' : 'À partir de…')
   const actionLabel = cta ?? (custom ? 'Parlons de votre projet' : `Découvrir ${title}`)
   return (
     <Link
       to={destination}
+      viewTransition={canAnimatePlanNavigation()}
       className={cn('pricing-card', `pricing-card--${color}`, className)}
       aria-label={`${actionLabel}. ${priceLabel}`}
     >
       <div className="pricing-card__top">
-        <span className="pricing-card__grain" aria-hidden="true" />
+        <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
+          <span className="pricing-card__grain" />
+        </span>
         <h3>{title}</h3>
         <p className="pricing-card__price">{priceLabel}</p>
       </div>

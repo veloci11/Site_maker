@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
-import { Link, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, ChevronDown, ChevronRight, ShieldCheck } from 'lucide-react'
 import {
   offers,
@@ -18,6 +18,7 @@ import {
 import { getPublicOptions } from '../../../shared/offer-options'
 import { PricingCard } from '../../components/layout/PricingCard'
 import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
+import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
 import {
@@ -264,7 +265,7 @@ export function HomePage() {
             <h2 id="home-faq-title">Questions fréquentes</h2>
           </div>
           <FaqList items={homeFaqs} prefix="home" />
-          <Link className="text-link home-faq__all" to="/faq">
+          <Link className="text-link home-faq__all" to="/faq" viewTransition={canAnimatePlanNavigation()}>
             Toutes les questions <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </Reveal>
@@ -356,6 +357,7 @@ function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
                     <Link
                       className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
                       to={configureHref(offer.id)}
+                      viewTransition={canAnimatePlanNavigation()}
                       aria-label={
                         offer.id === 'sur-mesure'
                           ? 'Parler du projet sur mesure'
@@ -572,7 +574,7 @@ export function OptionsPage() {
           la maintenance est mensuelle.
         </p>
         <Button asChild>
-          <Link to="/forfaits">
+          <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
             Choisir mon forfait <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </Button>
@@ -780,11 +782,11 @@ export function ContactPage() {
     return (
       <section className="configurator-page container existing-site-page">
         <div className="configurator-topline">
-          <Link to="/forfaits">
+          <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
             <ArrowLeft size={15} aria-hidden="true" />
             Tous les forfaits
           </Link>
-          <Link to="/exemples">
+          <Link to="/exemples" viewTransition={canAnimatePlanNavigation()}>
             Exemples de sites <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>

@@ -350,10 +350,11 @@ ul, ol { padding-left: 1.25rem; }
 @media (hover: hover) {
   .plan-cta:hover::before { opacity: 1; }
 }
-.pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; background: #f2efec; color: #111; transition: color 150ms ease; }
-.pricing-card__top::before, .pricing-card__top::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 300ms cubic-bezier(.4, 0, .2, 1); }
-.pricing-card__top::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(1.04) brightness(.94); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
-.pricing-card__top::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
+.pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; color: #111; transition: color 150ms ease; }
+.pricing-card__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#f2efec; pointer-events:none; }
+.pricing-card__surface::before, .pricing-card__surface::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 300ms cubic-bezier(.4, 0, .2, 1); }
+.pricing-card__surface::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(1.04) brightness(.94); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
+.pricing-card__surface::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
 /* Keep the approved image still. Only this fine grain moves briefly on entry. */
 .pricing-card__grain {
   position: absolute;
@@ -385,7 +386,7 @@ ul, ol { padding-left: 1.25rem; }
   100% { transform: none; }
 }
 .pricing-card:is(:hover, :focus-visible) .pricing-card__top { color: #fff; }
-.pricing-card:is(:hover, :focus-visible) .pricing-card__top::before, .pricing-card:is(:hover, :focus-visible) .pricing-card__top::after { opacity: 1; }
+.pricing-card:is(:hover, :focus-visible) .pricing-card__surface::before, .pricing-card:is(:hover, :focus-visible) .pricing-card__surface::after { opacity: 1; }
 .pricing-card__top h3 { color: inherit; font-size: 28px; font-weight: 500; letter-spacing: -.045em; line-height: 1.2; }
 .pricing-card__price { color: inherit; font-size: 22px; font-weight: 500; letter-spacing: -.035em; line-height: 1.3; }
 .pricing-card__cta { min-height: 46px; margin-top: 10px; padding-inline: 10px; }
@@ -396,6 +397,23 @@ ul, ol { padding-left: 1.25rem; }
 /* Always-visible content, with a single 180ms route entrance and no scroll observers. */
 .motion-reveal { opacity: 1; transform: none; }
 .motion-page { animation: page-in 180ms ease-out; }
+.motion-page--transitioning { animation:none; }
+.motion-page--transitioning .selected-plan__selection li { animation:none; }
+
+/* Native shared surface: geometry moves, while text stays sharp in the page.
+   Timings, isolated navigation and reduced-motion follow the VT recipes. */
+:root { --duration-exit:150ms; --duration-enter:210ms; --duration-move:420ms; view-transition-name:none; }
+/* Capture only the decorative surface. Navigation and controls stay live while
+   it moves, so another click can immediately supersede the current opening. */
+.motion-page--transitioning .selected-plan > :not(.selected-plan__surface),
+.motion-page--transitioning .configurator-options { animation:var(--duration-enter) ease-out 80ms both plan-fade-in; }
+::view-transition { pointer-events:none; }
+::view-transition-group(*) { animation-timing-function:cubic-bezier(.22,1,.36,1); }
+::view-transition-group(.plan-surface) { animation-duration:var(--duration-move); }
+::view-transition-old(.plan-surface) { animation:var(--duration-exit) ease-in both plan-fade-out; }
+::view-transition-new(.plan-surface) { animation:var(--duration-enter) ease-out 80ms both plan-fade-in; }
+@keyframes plan-fade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes plan-fade-out { from { opacity:1; } to { opacity:0; } }
 
 .portal-shell { display: grid; grid-template-columns: 224px minmax(0, 1fr); grid-template-rows: 76px 1fr; min-height: 100dvh; background: #fff; }
 .portal-header { position: sticky; z-index: 50; top: 0; grid-column: 1 / -1; display: grid; grid-template-columns: 224px minmax(0, 1fr) auto; align-items: center; min-height: 76px; border-bottom: 1px solid var(--border); background: #fff; }
@@ -513,12 +531,13 @@ ul, ol { padding-left: 1.25rem; }
 }
 @media (hover: none) {
   .pricing-card:hover .pricing-card__top { color: #111; }
-  .pricing-card:hover .pricing-card__top::before, .pricing-card:hover .pricing-card__top::after { opacity: 0; }
+  .pricing-card:hover .pricing-card__surface::before, .pricing-card:hover .pricing-card__surface::after { opacity: 0; }
   .pricing-card:focus-visible .pricing-card__top { color: #fff; }
-  .pricing-card:focus-visible .pricing-card__top::before, .pricing-card:focus-visible .pricing-card__top::after { opacity: 1; }
+  .pricing-card:focus-visible .pricing-card__surface::before, .pricing-card:focus-visible .pricing-card__surface::after { opacity: 1; }
   .pricing-card:hover .pricing-card__cta { background: #111; }
 }
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*), ::view-transition-new(*), ::view-transition-group(*) { animation-duration:0s !important; animation-delay:0s !important; }
   html { scroll-behavior: auto; }
   .motion-reveal { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

@@ -1,8 +1,14 @@
-# Vérification visuelle — questionnaires, accueil et options, 3 novembre 2026
+# Vérification visuelle — forfaits et options, 4 novembre 2026
 
 final result: passed
 
-## Lot actuel : contour de sélection des options
+## Lot actuel : ouverture des forfaits et options visibles — local uniquement
+
+Petite surface de carte reliée à la grande carte du forfait en 420 ms, contenu en fondu ; surface décorative seule capturée pour garder les contrôles et la navigation cliquables. Six destinations et clics rapides vérifiés. Les modules sont prêts avant la capture, y compris à froid. Les options choisies sont visibles dans la carte au-dessus du total ; ancien résumé replié retiré. La carte s’allonge et cesse d’être sticky si nécessaire.
+
+TypeScript, build et 213 tests passent. IAB et vrai build Express local : ordinateur/mobile, douze options sans débordement, clavier, Cmd+clic, reduced motion et garde du brief. Images approuvées inchangées octet pour octet, prix et logique serveur inchangés. Aucun envoi. Réglages et sélection de contrôle rétablis, onglets temporaires fermés et localhost arrêté. **Aucun commit/push ni déploiement de ce lot.** Preuves, captures et limites : [rapport du lot](docs/qa/plan-transitions/design-qa.md).
+
+## Lot précédent : contour de sélection des options
 
 Application `e8895ae`, poussée, déployée et vérifiée. Le contour violet de `:focus-within` entourait toute la ligne au clic ; supprimé dans options et choix du brief. Sélection : coche noire, bordure fine et aucune ombre intérieure. Au clavier uniquement, un repère sombre de 2 px entoure la petite case.
 
