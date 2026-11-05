@@ -1,0 +1,21 @@
+{
+  "revision": "0cdbd930aa8157086a53e8994e9d4ebb65106a48",
+  "checks": [
+    {
+      "name": "check",
+      "status": "completed",
+      "conclusion": "failure",
+      "detailsUrl": "https://github.com/veloci11/Site_maker/actions/runs/41979502273/job/127086086960",
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The job was not started because your account is locked due to a billing issue."
+        },
+        {
+          "level": "notice",
+          "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\""
+        }
+      ]
+    }
+  ]
+}

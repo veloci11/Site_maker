@@ -5,11 +5,11 @@ Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’I
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `891bfac296850f83b0a39d94009738c7543576b8`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T055902Z-891bfac29685` ; bascule atomique de `current`.
-- Client public : `/assets/index-CRL_a74v.js` ; SHA-256 `7cb95a9e5a7df1825619bac2dca519a6990a75a1c9eb19c7c763441170447252`.
-- Archive : SHA-256 `472b3e8be2e7a4d759f68a550bb8d4f19abc5678cd2744fc441cdd9d6d1b7152`, 13968649 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T050156Z-3d4d85467706`.
+- Révision applicative : `0cdbd930aa8157086a53e8994e9d4ebb65106a48`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T061831Z-0cdbd930aa81` ; bascule atomique de `current`.
+- Client public : `/assets/index-DyVT6Exg.js` ; SHA-256 `f35f348ca57732a01138cf6bd8d48c08bae308f7a4c2f859fe68b60bab78ae9d`.
+- Archive : SHA-256 `1998023179c1b1b6d527c30abadca063025f606fc9afc1a1c6eb34210f3140e2`, 13970464 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T055902Z-891bfac29685`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -19,11 +19,19 @@ Les six offres utilisent une ouverture/fermeture de 520 ms : déplacement de la 
 
 Les trois textures d’origine restent identiques octet pour octet. La partie haute garde l’original 1536 × 1024 ; une vraie continuation native prolonge le bas sans miroir visible ni agrandissement de la source rejetée de 724 px. Exports 1x et 2x, ces derniers sans perte. Le filtre sombre a été allégé. Les fichiers sources, la consigne et l’assemblage sont dans `docs/asset-sources/textures/vitrine-continuation-prompts.md` et `vitrine-continuation-assembly.json`.
 
-L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Sur ordinateur, la carte suit le défilement dans sa colonne à 112 px de l’en-tête ; ses longs contenus défilent intérieurement. Sur mobile, elle garde une hauteur naturelle. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
+L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. La carte n’a plus de hauteur maximale ni de défilement interne. Le résumé passe en deux colonnes équilibrées quand la largeur le permet, avec une présentation compacte animée à partir de cinq choix sur ordinateur. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle : sur écran bas, le défilement normal de la page laisse accéder au bas sans seconde barre. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
 
-## Vérification finale
+## Vérification finale du résumé sans barre
 
-- `npm run check` : TypeScript, build et **213 tests passants**, après la correction des clics rapides. Revue finale indépendante sans blocage.
+- Build/typecheck et **213 tests locaux passants** après cette correction. Vitrine et Connecté à 12 choix, Sur mesure à 10, mobile et écran bas contrôlés dans l’IAB ; entrée compacte de 620 ms et texture inchangée.
+- IAB public : client attendu, 12 options Vitrine en deux colonnes ; contenu client/scroll 609/609, overflow visible, total dans la carte. Mobile 390 × 844 : une seule colonne, texture de 500 px, absence de débordement. Aucune erreur/alerte de console. Choix publics initiaux vides restaurés ; groupes et viewport réinitialisés.
+- HTTPS : santé valide, client et huit CSS (9 empreintes) identiques au build. Sauvegarde avant bascule ; catalogue et 25 autres PID de services inchangés. Localhost arrêté et ports 4173/4174 libres.
+- Preuves actuelles : `docs/qa/option-columns/`. Capture publique : `public-desktop.jpg`. Les trois originaux restent identiques à la révision précédente.
+
+## Contrôles précédents conservés — animations et textures
+
+
+- `npm run check` : TypeScript, build et **213 tests passants**, après le retrait du défilement interne. Revue finale indépendante sans blocage.
 - IAB local : six ouvertures et six retours sur ordinateur/mobile, services et retour navigateur, texte du brouillon conservé après annulation, clavier, réduction du mouvement dynamique et absence de débordement. Douze options Vitrine et dix Sur mesure contrôlées ; image fixe à 580 px / 500 px pendant la croissance. Le DPR 2 charge effectivement le master original et la continuation native.
 - IAB public : nouveau client attendu, ouverture native, premier ajout 0→1 et groupes simultanés ; mobile 390 × 844 (client 375 avec barre de défilement), image fixe et croissance normale. Clic rapide vers Connecté reçu, retour et sélection initiale vide restaurés ; console sans erreur/avertissement. Capture : `docs/qa/full-motion/public/desktop.jpg`.
 - HTTPS : santé valide, client et **16 fichiers** comparés au build par SHA-256, dont les trois textures originales et les quatre continuations.
@@ -34,7 +42,7 @@ Preuves : `docs/qa/full-motion/` (traces, dix interventions spécialisées, revu
 
 ## GitHub Actions
 
-Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41977433109). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/full-motion/final-ci.json`.
+Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41979502273). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/option-columns/ci.json`.
 
 ## Éléments commerciaux reportés
 

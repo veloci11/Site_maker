@@ -6,7 +6,7 @@ La hauteur maximale et l’overflow interne ont été retirés. Un ResizeObserve
 
 IAB local : Vitrine et Connecté avec 12 choix : deux colonnes, carte de 672,56 px, total accessible, contenu client/scroll identiques et overflow visible. Sur mesure avec 10 choix : deux colonnes, aucun débordement. Écran 1366 × 700 : carte ancrée à 16 px après scroll, bas à 675,70 px et total visible ; retour vers le haut par la page. Mobile 390 × 844 : une colonne, hauteur naturelle 872,76 px, contenu client/scroll 825/825 et texture de 500 px. Entrée compacte : transitions de 620 ms, image constante de 580 px. Ouverture clavier depuis le comparatif : transition native observée. Console sans erreur/avertissement, choix locaux initiaux restaurés et émulation réinitialisée.
 
-Preuves : `docs/qa/option-columns/`. Vérification du build et publication suivies dans `ops/DEPLOYMENT_STATUS.md`.
+Preuves : `docs/qa/option-columns/`. TypeScript, build et 213 tests passent. Version `0cdbd93` publiée et vérifiée dans l’IAB public sur ordinateur/mobile, sans défilement interne ni erreur de console. Choix initiaux et viewport restaurés ; localhost arrêté. Empreintes et publication dans `ops/DEPLOYMENT_STATUS.md`.
 
 # Vérification visuelle — forfaits et options, 4 novembre 2026
 

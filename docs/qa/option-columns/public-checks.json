@@ -1,0 +1,100 @@
+{
+  "desktop": {
+    "cardHeight": 672.5625,
+    "client": [
+      "https://gilmathis.com/assets/index-DyVT6Exg.js"
+    ],
+    "content": {
+      "height": 609,
+      "overflow": "visible",
+      "scroll": 609
+    },
+    "options": 12,
+    "overflow": false,
+    "textureHeight": 580,
+    "url": "https://gilmathis.com/forfaits/vitrine",
+    "xs": [
+      104.5,
+      390.5546875
+    ]
+  },
+  "mobile": {
+    "innerOverflow": "visible",
+    "items": 12,
+    "overflow": false,
+    "textureHeight": 500,
+    "viewport": {
+      "innerHeight": 844,
+      "innerWidth": 390
+    },
+    "xs": [
+      44
+    ]
+  },
+  "initialChoices": [
+    {
+      "checked": false,
+      "id": "option-mobile"
+    },
+    {
+      "checked": false,
+      "id": "option-language-en"
+    },
+    {
+      "checked": false,
+      "id": "option-managed-content"
+    },
+    {
+      "checked": false,
+      "id": "option-booking"
+    },
+    {
+      "checked": false,
+      "id": "option-portfolio-gallery"
+    },
+    {
+      "checked": false,
+      "id": "option-extra-pages"
+    },
+    {
+      "checked": false,
+      "id": "option-additional-language"
+    },
+    {
+      "checked": false,
+      "id": "option-copywriting"
+    },
+    {
+      "checked": false,
+      "id": "option-local-seo"
+    },
+    {
+      "checked": false,
+      "id": "option-deployment"
+    },
+    {
+      "checked": false,
+      "id": "option-maintenance-monthly"
+    },
+    {
+      "checked": false,
+      "id": "option-hosting-monthly"
+    }
+  ],
+  "restoredVisibleChoices": [
+    {
+      "checked": false,
+      "id": "option-mobile"
+    },
+    {
+      "checked": false,
+      "id": "option-language-en"
+    },
+    {
+      "checked": false,
+      "id": "option-managed-content"
+    }
+  ],
+  "summary": "Création du siteÀ partir de…+ 0 € / moisForfait de base",
+  "console": []
+}
