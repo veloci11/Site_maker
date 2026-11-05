@@ -33,12 +33,20 @@ export function SelectedPlanCard({
   const contentTransition = usePlanTransition(variant, href, 'content')
   const cardRef = useRef<HTMLDivElement>(null)
   const [tall, setTall] = useState(false)
+  const [textureTiles, setTextureTiles] = useState(3)
 
   useLayoutEffect(() => {
     const card = cardRef.current
     if (!card) return
     // A visible selection can grow beyond the viewport; let the whole card scroll.
-    const update = () => setTall(card.getBoundingClientRect().height > window.innerHeight - 136)
+    const update = () => {
+      const height = card.getBoundingClientRect().height
+      const textureHeight = parseFloat(getComputedStyle(card).getPropertyValue('--plan-texture-height'))
+      setTall(height > window.innerHeight - 136)
+      // Keep one continuation ready below the clip. Card growth reveals more
+      // texture; it never changes the dimensions or position of existing tiles.
+      setTextureTiles(Math.ceil(height / textureHeight) + 1)
+    }
     update()
     const observer = new ResizeObserver(update)
     observer.observe(card)
@@ -51,7 +59,16 @@ export function SelectedPlanCard({
 
   return (
     <div ref={cardRef} className={`selected-plan pricing-card--${variant}`} data-tall={tall || undefined}>
-      <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true" />
+      <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
+        {Array.from({ length: textureTiles }, (_, index) => (
+          <span
+            key={index}
+            className="selected-plan__texture"
+            data-reflected={index % 2 === 1 || undefined}
+            style={{ top: `calc(var(--plan-texture-height) * ${index})` }}
+          />
+        ))}
+      </span>
       <div className="selected-plan__content" style={contentTransition}>
         <div className="selected-plan__heading">
           <span className="selected-plan__eyebrow">Votre forfait</span>

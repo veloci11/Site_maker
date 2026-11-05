@@ -2,7 +2,13 @@
 
 final result: passed
 
-## Lot actuel : fluidité après essai public — publié et vérifié
+## Lot actuel : image fixe et fond prolongé — correction locale vérifiée
+
+La précédente correction conservait le cadrage natif, mais le fond en `cover` pouvait encore zoomer avec la hauteur de carte. Après clarification de Mathis, image et lumière ont une hauteur fixe et la même texture se prolonge sous elles en miroir, sans nouvel export. Options ralenties à 620 ms, fondu de 420 ms et accélération douce. Ancien et nouvel instantanés de navigation à leur taille propre.
+
+TypeScript, build et 213 tests passent. IAB local : carte de 580 à 973 px pour zéro à douze options, image toujours de 612,1 × 580 px et ancrée à 0 pendant l’ajout et le retrait. Sur mobile, carte de 607 à 873 px et image de 335 × 500 px constante. Aucun débordement, aucune erreur/alerte de console observée ; préférence de réduction du mouvement respectée, sélection initiale et réglages rétablis, aucun envoi. Publication en préparation. [Rapport, mesures et captures](docs/qa/fixed-texture/review.md).
+
+## Lot précédent : fluidité après essai public — publié et vérifié
 
 Retour utilisateur traité : texture entrante révélée sans redimensionnement, cadre et coins animés en 520 ms avec accélération progressive. Texte dans une couche distincte, à sa taille finale, dont le fondu reste visible au-dessus de la texture. Préchargement sur intention sans délai ajouté au clic. Les options se déplient et se replient en 360 ms ; premier/dernier choix, hauteur de carte, mensualité, compteurs, rubriques et passage au brief suivent le mouvement.
 

@@ -1,0 +1,13 @@
+{
+  "format": "PNG",
+  "region": {
+    "left": 500,
+    "top": 480,
+    "width": 70,
+    "height": 50
+  },
+  "channelsCompared": 10500,
+  "meanAbsoluteDifference": 0.2723809523809524,
+  "maxDifference": 4,
+  "differentChannels": 2055
+}

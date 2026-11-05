@@ -1,0 +1,12 @@
+{
+  "region": {
+    "left": 500,
+    "top": 480,
+    "width": 70,
+    "height": 50
+  },
+  "channelsCompared": 10500,
+  "meanAbsoluteDifference": 0.7104761904761905,
+  "maxDifference": 5,
+  "differentChannels": 5285
+}

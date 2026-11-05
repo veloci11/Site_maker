@@ -1,0 +1,67 @@
+{
+  "before": {
+    "width": 1440,
+    "height": 900,
+    "card": {
+      "x": 72.5,
+      "y": 180,
+      "width": 612.1015625,
+      "height": 580
+    },
+    "tiles": [
+      {
+        "top": "calc(var(--plan-texture-height) * 0)",
+        "width": 612.1015625,
+        "height": 580,
+        "transform": "none",
+        "background": "cover, cover"
+      },
+      {
+        "top": "calc(var(--plan-texture-height) * 1)",
+        "width": 612.1015625,
+        "height": 580,
+        "transform": "matrix(1, 0, 0, -1, 0, 0)",
+        "background": "cover, cover"
+      }
+    ],
+    "chosen": 0,
+    "doc": 1425,
+    "client": 1425
+  },
+  "after": {
+    "width": 1440,
+    "height": 900,
+    "card": {
+      "x": 72.5,
+      "y": 180,
+      "width": 612.1015625,
+      "height": 972.953125
+    },
+    "tiles": [
+      {
+        "top": "calc(var(--plan-texture-height) * 0)",
+        "width": 612.1015625,
+        "height": 580,
+        "transform": "none",
+        "background": "cover, cover"
+      },
+      {
+        "top": "calc(var(--plan-texture-height) * 1)",
+        "width": 612.1015625,
+        "height": 580,
+        "transform": "matrix(1, 0, 0, -1, 0, 0)",
+        "background": "cover, cover"
+      },
+      {
+        "top": "calc(var(--plan-texture-height) * 2)",
+        "width": 612.1015625,
+        "height": 580,
+        "transform": "none",
+        "background": "cover, cover"
+      }
+    ],
+    "chosen": 12,
+    "doc": 1425,
+    "client": 1425
+  }
+}

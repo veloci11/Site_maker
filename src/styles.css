@@ -414,13 +414,13 @@ ul, ol { padding-left: 1.25rem; }
 ::view-transition-group(.plan-content) { animation:none; z-index:1; }
 ::view-transition-old(.plan-content) { animation:var(--duration-exit) ease-out both plan-fade-out; }
 ::view-transition-new(.plan-content) { animation:var(--duration-enter) ease-out 160ms both plan-fade-in; }
-/* Reveal the final texture at its own size through the moving card clip.
-   Only the outgoing thumbnail may scale uniformly; the incoming image never stretches. */
+/* Reveal both snapshots at their own size through the moving clip. Card growth
+   must never resize either the thumbnail or the detail texture. */
 ::view-transition-image-pair(.plan-surface) { overflow:hidden; border-radius:var(--plan-radius); animation:plan-card-corners var(--duration-move) cubic-bezier(.32,0,.2,1) both; }
 :root:not(:has(.selected-plan))::view-transition-image-pair(.plan-surface) { animation-direction:reverse; }
-::view-transition-old(.plan-surface),::view-transition-new(.plan-surface) { width:100%; height:100%; object-fit:cover; object-position:center; mix-blend-mode:normal; }
+::view-transition-old(.plan-surface),::view-transition-new(.plan-surface) { width:100%; height:100%; object-fit:none; object-position:left top; mix-blend-mode:normal; }
 ::view-transition-old(.plan-surface) { animation:var(--duration-exit) ease-out both plan-fade-out; }
-::view-transition-new(.plan-surface) { object-fit:none; object-position:left top; animation:var(--duration-enter) ease-out both plan-fade-in; }
+::view-transition-new(.plan-surface) { animation:var(--duration-enter) ease-out both plan-fade-in; }
 @keyframes plan-fade-in { from { opacity:0; } to { opacity:1; } }
 @keyframes plan-fade-out { from { opacity:1; } to { opacity:0; } }
 @keyframes plan-card-corners { from { border-radius:12px; } to { border-radius:var(--plan-radius); } }

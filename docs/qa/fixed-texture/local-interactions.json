@@ -1,0 +1,241 @@
+{
+  "desktop": {
+    "before": {
+      "width": 1440,
+      "height": 900,
+      "card": {
+        "x": 72.5,
+        "y": 180,
+        "width": 612.1015625,
+        "height": 580
+      },
+      "tiles": [
+        {
+          "top": "calc(var(--plan-texture-height) * 0)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "none",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 1)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "matrix(1, 0, 0, -1, 0, 0)",
+          "background": "cover, cover"
+        }
+      ],
+      "chosen": 0,
+      "doc": 1425,
+      "client": 1425
+    },
+    "long": {
+      "width": 1440,
+      "height": 900,
+      "card": {
+        "x": 72.5,
+        "y": 180,
+        "width": 612.1015625,
+        "height": 972.953125
+      },
+      "tiles": [
+        {
+          "top": "calc(var(--plan-texture-height) * 0)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "none",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 1)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "matrix(1, 0, 0, -1, 0, 0)",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 2)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "none",
+          "background": "cover, cover"
+        }
+      ],
+      "chosen": 12,
+      "doc": 1425,
+      "client": 1425
+    },
+    "restored": {
+      "width": 1440,
+      "height": 900,
+      "card": {
+        "x": 72.5,
+        "y": 180,
+        "width": 612.1015625,
+        "height": 707.453125
+      },
+      "tiles": [
+        {
+          "top": "calc(var(--plan-texture-height) * 0)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "none",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 1)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "matrix(1, 0, 0, -1, 0, 0)",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 2)",
+          "width": 612.1015625,
+          "height": 580,
+          "transform": "none",
+          "background": "cover, cover"
+        }
+      ],
+      "chosen": 3,
+      "doc": 1425,
+      "client": 1425
+    }
+  },
+  "mobile": {
+    "long": {
+      "width": 390,
+      "height": 844,
+      "card": {
+        "x": 20,
+        "y": 150,
+        "width": 335,
+        "height": 872.7578125
+      },
+      "tiles": [
+        {
+          "top": "calc(var(--plan-texture-height) * 0)",
+          "width": 335,
+          "height": 500,
+          "transform": "none",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 1)",
+          "width": 335,
+          "height": 500,
+          "transform": "matrix(1, 0, 0, -1, 0, 0)",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 2)",
+          "width": 335,
+          "height": 500,
+          "transform": "none",
+          "background": "cover, cover"
+        }
+      ],
+      "chosen": 12,
+      "doc": 375,
+      "client": 375
+    },
+    "restored": {
+      "width": 390,
+      "height": 844,
+      "card": {
+        "x": 20,
+        "y": 150,
+        "width": 335,
+        "height": 607.2578125
+      },
+      "tiles": [
+        {
+          "top": "calc(var(--plan-texture-height) * 0)",
+          "width": 335,
+          "height": 500,
+          "transform": "none",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 1)",
+          "width": 335,
+          "height": 500,
+          "transform": "matrix(1, 0, 0, -1, 0, 0)",
+          "background": "cover, cover"
+        },
+        {
+          "top": "calc(var(--plan-texture-height) * 2)",
+          "width": 335,
+          "height": 500,
+          "transform": "none",
+          "background": "cover, cover"
+        }
+      ],
+      "chosen": 3,
+      "doc": 375,
+      "client": 375
+    }
+  },
+  "navigation": {
+    "duration": 520,
+    "oldFit": "none",
+    "newFit": "none"
+  },
+  "reduced": {
+    "reduced": true,
+    "active": 0,
+    "tileHeight": 580
+  },
+  "restoredChecks": [
+    {
+      "id": "option-mobile",
+      "checked": "false"
+    },
+    {
+      "id": "option-language-en",
+      "checked": "true"
+    },
+    {
+      "id": "option-managed-content",
+      "checked": "false"
+    },
+    {
+      "id": "option-booking",
+      "checked": "true"
+    },
+    {
+      "id": "option-portfolio-gallery",
+      "checked": "false"
+    },
+    {
+      "id": "option-extra-pages",
+      "checked": "false"
+    },
+    {
+      "id": "option-additional-language",
+      "checked": "false"
+    },
+    {
+      "id": "option-copywriting",
+      "checked": "false"
+    },
+    {
+      "id": "option-local-seo",
+      "checked": "false"
+    },
+    {
+      "id": "option-deployment",
+      "checked": "false"
+    },
+    {
+      "id": "option-maintenance-monthly",
+      "checked": "true"
+    },
+    {
+      "id": "option-hosting-monthly",
+      "checked": "false"
+    }
+  ],
+  "console": [],
+  "noFormsSubmitted": true
+}

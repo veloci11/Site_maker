@@ -4,7 +4,13 @@ Version actuelle vérifiée : `7b50265` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Fluidité après essai public — 4 novembre 2026, terminé et vérifié en ligne
+## Image fixe, fond prolongé et options plus lentes — 4 novembre 2026, correction locale vérifiée
+
+Mathis précise que la texture doit garder sa taille quand la carte s’allonge : ajouter du fond en bas. Le `cover` lié à la hauteur totale de la carte est remplacé par des bandes de hauteur fixe, avec continuation en miroir de la même matière. L’image et sa lumière ne changent plus de taille pendant la sélection ; les fichiers d’origine restent intacts. Les deux instantanés natifs gardent également leur taille propre.
+
+Options ralenties à 620 ms avec fondu de 420 ms et accélération douce. IAB local : carte de 580 à 973 px, bande supérieure toujours de 612,1 × 580 px ; sur mobile, carte de 607 à 873 px, bande de 335 × 500 px. Ajout/retrait, douze choix, préférence de mouvement et console contrôlés ; sélection initiale rétablie, aucun envoi. TypeScript, build et 213 tests passent. Publication en préparation. Rapport : `qa/fixed-texture/review.md`.
+
+## Lot précédent — fluidité après essai public, 4 novembre 2026
 
 Retour de Mathis : passage accueil → forfait trop brusque, texture étirée pendant l’agrandissement et ajout d’options insuffisamment animé. Agrandissement porté à 520 ms avec accélération progressive ; grande texture révélée à sa taille finale, texte dans une couche distincte au-dessus pour conserver son fondu. Préchargement du module au survol/focus sans attente au clic.
 
