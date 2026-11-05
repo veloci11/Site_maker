@@ -1,0 +1,150 @@
+{
+  "stickyA": {
+    "pageScroll": 360,
+    "cardY": 112,
+    "cardHeight": 696,
+    "column": "sticky",
+    "content": {
+      "top": 277,
+      "client": 632,
+      "scroll": 909,
+      "overflow": "auto"
+    },
+    "open": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "chosen": 12,
+    "width": 1440,
+    "height": 900,
+    "doc": 1425,
+    "client": 1425
+  },
+  "stickyB": {
+    "pageScroll": 720,
+    "cardY": 112,
+    "cardHeight": 696,
+    "column": "sticky",
+    "content": {
+      "top": 277,
+      "client": 632,
+      "scroll": 909,
+      "overflow": "auto"
+    },
+    "open": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "chosen": 12,
+    "width": 1440,
+    "height": 900,
+    "doc": 1425,
+    "client": 1425
+  },
+  "innerScroll": {
+    "pageScroll": 1338.5,
+    "cardY": -49.125,
+    "cardHeight": 696,
+    "column": "sticky",
+    "content": {
+      "top": 277,
+      "client": 632,
+      "scroll": 909,
+      "overflow": "auto"
+    },
+    "open": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "chosen": 12,
+    "width": 1440,
+    "height": 900,
+    "doc": 1425,
+    "client": 1425
+  },
+  "mobile": {
+    "pageScroll": 0,
+    "cardY": 150,
+    "cardHeight": 607.2578125,
+    "column": "static",
+    "content": {
+      "top": 0,
+      "client": 559,
+      "scroll": 559,
+      "overflow": "visible"
+    },
+    "open": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ],
+    "chosen": 3,
+    "width": 390,
+    "height": 844,
+    "doc": 375,
+    "client": 375
+  },
+  "restoredOriginal": [
+    [
+      "option-mobile",
+      false
+    ],
+    [
+      "option-language-en",
+      true
+    ],
+    [
+      "option-managed-content",
+      false
+    ],
+    [
+      "option-booking",
+      true
+    ],
+    [
+      "option-portfolio-gallery",
+      false
+    ],
+    [
+      "option-extra-pages",
+      false
+    ],
+    [
+      "option-additional-language",
+      false
+    ],
+    [
+      "option-copywriting",
+      false
+    ],
+    [
+      "option-local-seo",
+      false
+    ],
+    [
+      "option-deployment",
+      false
+    ],
+    [
+      "option-maintenance-monthly",
+      true
+    ],
+    [
+      "option-hosting-monthly",
+      false
+    ]
+  ],
+  "console": [],
+  "noFormsSubmitted": true
+}

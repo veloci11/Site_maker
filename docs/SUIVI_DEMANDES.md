@@ -4,7 +4,13 @@ Version actuelle vérifiée : `3d1c08c` sur https://gilmathis.com/. Les anciens 
 
 Traiter les demandes dans l’ordre : terminer le lot en cours, le vérifier, puis prendre le suivant. Une nouvelle instruction rejoint la file ; elle ne remplace pas silencieusement le travail déjà commencé. Les dernières décisions explicites remplacent les anciennes demandes contradictoires.
 
-## Image fixe, fond prolongé et options plus lentes — 4 novembre 2026, terminé et vérifié en ligne
+## Essai Vitrine, couleurs, carte sticky et rubriques multiples — 4 novembre 2026, local vérifié
+
+Mathis juge le miroir visible, puis demande de tester directement en ligne l’image générée sur la première carte, Vitrine uniquement. Il souhaite aussi retrouver les couleurs de l’image en configuration, garder la carte à gauche pendant le défilement et ouvrir plusieurs rubriques d’options ensemble. Ces points sont implémentés et contrôlés localement ; les trois originaux restent conservés. La reprise des transitions aller-retour sur les six fiches est l’étape suivante autorisée.
+
+TypeScript, build et 213 tests passent. Rapport : `qa/vitrine-trial/review.md`. GitHub Actions n’a pas exécuté le run signalé : le compte est bloqué pour un problème de facturation, d’après l’annotation du run ; ce blocage est distinct des vérifications locales et de la disponibilité du site.
+
+## Lot précédent — image fixe, fond prolongé et options plus lentes, 4 novembre 2026
 
 Mathis précise que la texture doit garder sa taille quand la carte s’allonge : ajouter du fond en bas. Le `cover` lié à la hauteur totale de la carte est remplacé par des bandes de hauteur fixe, avec continuation en miroir de la même matière. L’image et sa lumière ne changent plus de taille pendant la sélection ; les fichiers d’origine restent intacts. Les deux instantanés natifs gardent également leur taille propre.
 

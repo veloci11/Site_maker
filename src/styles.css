@@ -298,7 +298,7 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card { --card-texture: url("/assets/textures/grain-plasma-card.webp"); --card-hue: 0deg; --card-scale-x: 1; --card-scale-y: 1; --plasma-position: 20% 20%; position: relative; display: flex; flex-direction: column; min-width: 0; padding: 8px; border: 1px solid #e9e6eb; border-radius: 16px; background: #fff; color: #111; text-decoration: none; transition: border-color 120ms ease; }
 .pricing-card:hover { border-color: #d4cedb; }
 .pricing-card:focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
-.pricing-card--vitrine { --card-hue: -6deg; --plasma-position: 4% 10%; }
+.pricing-card--vitrine { --card-texture:url('/assets/textures/grain-plasma-vitrine-trial.webp'); --card-hue: -6deg; --plasma-position: 4% 10%; }
 .pricing-card--connecte { --card-hue: -57deg; --card-scale-x: -1; --plasma-position: 42% 75%; }
 .pricing-card--immersif { --card-hue: -24deg; --card-scale-y: -1; --plasma-position: 74% 8%; }
 .pricing-card--custom { --card-hue: 12deg; --card-scale-x: -1; --card-scale-y: -1; --plasma-position: 92% 74%; }
@@ -354,6 +354,7 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#f2efec; pointer-events:none; }
 .pricing-card__surface::before, .pricing-card__surface::after { position: absolute; content: ""; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 300ms cubic-bezier(.4, 0, .2, 1); }
 .pricing-card__surface::before { inset: 0; background-image: var(--card-texture); background-size: 155% 145%; background-position: var(--plasma-position); filter: hue-rotate(var(--card-hue)) saturate(1.04) brightness(.94); transform: scale(var(--card-scale-x), var(--card-scale-y)); }
+.pricing-card--vitrine .pricing-card__surface::before { background-size:155% auto; background-position:4% 44%; }
 .pricing-card__surface::after { inset: 0; background: linear-gradient(to bottom, rgb(0 0 0 / .12), transparent 35%, rgb(0 0 0 / .2)); }
 /* Keep the approved image still. Only this fine grain moves briefly on entry. */
 .pricing-card__grain {

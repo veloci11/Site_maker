@@ -5,9 +5,9 @@
 .configurator-topline a:hover { color:#111; }
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
 .configurator-card-column { position:sticky; top:112px; min-width:0; }
-.configurator-card-column:has(.selected-plan[data-tall]) { position:static; }
-.selected-plan { --plan-texture-height:580px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; }
-.selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; }
+.selected-plan { --plan-texture-height:580px; --plan-min-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; }
+.selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
+.selected-plan__content:focus-visible { outline:2px solid rgb(255 255 255 / .8); outline-offset:3px; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
 .selected-plan__texture {
   position:absolute; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
@@ -16,20 +16,25 @@
   content:""; position:absolute; inset:0; z-index:-2;
   background:url('/assets/textures/grain-plasma-master.webp') var(--plasma-position) / cover no-repeat;
   background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-master.webp') 2x),url('/assets/textures/grain-plasma-card.webp');
-  filter:hue-rotate(var(--card-hue)) saturate(.93) brightness(.78);
+  filter:hue-rotate(var(--card-hue)) saturate(1.04);
   transform:scale(var(--card-scale-x),var(--card-scale-y));
 }
-.selected-plan__texture::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .12),rgb(12 9 28 / .08) 35%,rgb(12 9 28 / .5)); }
+.selected-plan__texture::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .04),rgb(12 9 28 / .04) 45%,rgb(12 9 28 / .2)); }
 /* Mirrored continuations meet on the same edge pixels. Every tile keeps its
    fixed height, including its lighting, while the card reveals more below. */
 .selected-plan__texture[data-reflected=true] { transform:scaleY(-1); }
+/* User-requested Vitrine trial. Its portrait canvas keeps a fixed scale and
+   continues downwards without mirrored or repeated material. */
+.selected-plan__texture--trial { top:calc(var(--plan-texture-height) * -1.5); height:calc(var(--plan-texture-height) * 4.5); }
+.selected-plan__texture--trial::before { background-image:url('/assets/textures/grain-plasma-vitrine-trial.webp'); }
+.selected-plan__texture--trial::after { top:calc(var(--plan-texture-height) * 1.5); bottom:auto; height:calc(var(--plan-texture-height) * 3); }
 .selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:26px; }
 .selected-plan__eyebrow { font-size:13px; letter-spacing:.015em; opacity:.9; }
 .selected-plan__change { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid rgb(255 255 255 / .38); border-radius:999px; color:inherit; background:rgb(255 255 255 / .08); font-size:12px; }
 .selected-plan__change:hover { background:rgb(255 255 255 / .18); }
 .selected-plan__change > svg { transition:transform 120ms ease; }
 .selected-plan__change[data-state="open"] > svg { transform:rotate(180deg); }
-.selected-plan h1 { color:inherit; font-size:clamp(40px,4.5vw,64px); font-weight:500; letter-spacing:-.055em; line-height:1.05; margin:0 0 18px; }
+.selected-plan h1 { color:inherit; font-size:clamp(40px,4.5vw,64px); font-weight:500; letter-spacing:-.055em; line-height:1.05; margin:0 0 18px; text-shadow:none; }
 .selected-plan__description { max-width:360px; font-size:16px; line-height:1.55; color:rgb(255 255 255 / .95); }
 .selected-plan__features { display:grid; gap:12px; margin:32px 0 36px; padding:0; list-style:none; font-size:15px; }
 .selected-plan__features li { display:flex; align-items:center; gap:10px; }
@@ -59,6 +64,7 @@
 .selected-plan__total small { display:block; font-size:12px; color:rgb(255 255 255 / .82); margin-top:3px; }
 .selected-plan__button { display:flex; justify-content:center; align-items:center; gap:10px; min-height:50px; width:100%; padding:12px 20px; border:0; border-radius:999px; background:#fff; color:#111; font-size:15px; font-weight:500; }
 .selected-plan__button:hover { background:#f2eff5; }
+.selected-plan__button { text-shadow:none; }
 .selected-plan__button:focus-visible { outline:3px solid #fff; outline-offset:4px; }
 .selected-plan__change:focus-visible { outline:none; text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px; }
 .selected-plan__bottom > .selected-plan__total:last-child { margin-bottom:0; }
@@ -120,19 +126,16 @@
 .configurator-success__actions { margin-top:32px; display:flex; align-items:center; flex-wrap:wrap; gap:20px; }
 .configurator-mobile-bar { display:none; }
 @media(min-width:1000px) and (max-height:780px) {
- .selected-plan { --plan-texture-height:530px; min-height:530px; padding:26px; }
+ .selected-plan { --plan-texture-height:530px; --plan-min-height:530px; --plan-padding:26px; min-height:530px; padding:26px; }
  .selected-plan__heading { margin-bottom:18px; }
  .selected-plan__features { margin:22px 0 26px; gap:10px; }
  .selected-plan__description { font-size:14px; }
  .selected-plan h1 { font-size:50px; }
  .selected-plan__total > strong { font-size:38px; }
 }
-@media(min-width:761px) and (max-height:680px) {
- .configurator-card-column { position:static; }
-}
 @media(max-width:999px) {
  .configurator-grid { gap:32px; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); }
- .selected-plan { --plan-texture-height:540px; padding:24px; min-height:540px; }
+ .selected-plan { --plan-texture-height:540px; --plan-min-height:540px; --plan-padding:24px; padding:24px; min-height:540px; }
  .selected-plan h1 { font-size:42px; }
  .selected-plan__description { font-size:14px; }
  .configurator-choice { grid-template-columns:18px minmax(0,1fr); padding:16px; gap:10px; }
@@ -140,6 +143,10 @@
  .configurator-choice__copy > span { font-size:12px; }
  .configurator-next { gap:12px; }
  .configurator-next > span { max-width:none; }
+}
+@media(min-width:761px) {
+ .selected-plan { min-height:min(var(--plan-min-height),calc(100dvh - 180px)); max-height:calc(100dvh - 180px); }
+ .selected-plan__content { min-height:0; max-height:calc(100dvh - 180px - 2 * var(--plan-padding)); overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:rgb(255 255 255 / .5) transparent; }
 }
 @media(max-width:760px) {
  .configurator-page { padding-top:12px; padding-bottom:108px; }

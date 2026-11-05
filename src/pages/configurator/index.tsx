@@ -379,9 +379,8 @@ export function ConfiguratorPage() {
                 <p>{includedGuidance[offer.id]}</p>
               </header>
               <Accordion
-                type="single"
-                collapsible
-                defaultValue="essentials"
+                type="multiple"
+                defaultValue={['essentials']}
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {

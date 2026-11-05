@@ -32,17 +32,16 @@ export function SelectedPlanCard({
   const surfaceTransition = usePlanTransition(variant, href)
   const contentTransition = usePlanTransition(variant, href, 'content')
   const cardRef = useRef<HTMLDivElement>(null)
-  const [tall, setTall] = useState(false)
   const [textureTiles, setTextureTiles] = useState(3)
 
   useLayoutEffect(() => {
     const card = cardRef.current
     if (!card) return
-    // A visible selection can grow beyond the viewport; let the whole card scroll.
+    // Texture dimensions stay independent of content. Desktop content scrolls
+    // inside its sticky card when a long selection exceeds the available space.
     const update = () => {
       const height = card.getBoundingClientRect().height
       const textureHeight = parseFloat(getComputedStyle(card).getPropertyValue('--plan-texture-height'))
-      setTall(height > window.innerHeight - 136)
       // Keep one continuation ready below the clip. Card growth reveals more
       // texture; it never changes the dimensions or position of existing tiles.
       setTextureTiles(Math.ceil(height / textureHeight) + 1)
@@ -58,9 +57,9 @@ export function SelectedPlanCard({
   }, [])
 
   return (
-    <div ref={cardRef} className={`selected-plan pricing-card--${variant}`} data-tall={tall || undefined}>
+    <div ref={cardRef} className={`selected-plan pricing-card--${variant}`}>
       <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
-        {Array.from({ length: textureTiles }, (_, index) => (
+        {variant === 'vitrine' ? <span className="selected-plan__texture selected-plan__texture--trial" /> : Array.from({ length: textureTiles }, (_, index) => (
           <span
             key={index}
             className="selected-plan__texture"
@@ -69,7 +68,7 @@ export function SelectedPlanCard({
           />
         ))}
       </span>
-      <div className="selected-plan__content" style={contentTransition}>
+      <div className="selected-plan__content" style={contentTransition} tabIndex={0} role="region" aria-label="Détails du forfait et options choisies">
         <div className="selected-plan__heading">
           <span className="selected-plan__eyebrow">Votre forfait</span>
           <DropdownMenu>
