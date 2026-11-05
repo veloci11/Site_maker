@@ -25,3 +25,7 @@ Les dix derniers runs montrent sept échecs successifs (#48 à #54) ; le dernier
 Ouvrir les [paramètres de facturation du compte GitHub](https://github.com/settings/billing), examiner l’alerte de verrouillage et suivre la résolution demandée par GitHub. Si l’état ne s’explique pas ou reste verrouillé, contacter le [support GitHub](https://support.github.com/contact) en donnant les deux liens de runs ci-dessus. Une fois le compte débloqué, relancer le workflow et attendre son résultat avant de qualifier la CI de réussie. Aucun changement du code CI ne résout le blocage de compte signalé.
 
 Aucun lien portant un jeton de notification e-mail n’a été utilisé ou conservé.
+
+## Révision finale vérifiée
+
+Le contrôle du commit `891bfac296850f83b0a39d94009738c7543576b8` affiche le même blocage de facturation avant lancement du job. [Exécution](https://github.com/veloci11/Site_maker/actions/runs/41977433109). Détail et annotation conservés dans `final-ci.json`.

@@ -12,3 +12,7 @@
 - GitHub Actions : blocage du compte/facturation avant démarrage du runner, indépendant du code ; voir ci-provenance.md.
 
 Les captures complètes représentent un état statique et ne démontrent pas à elles seules une cadence de 60 images/seconde. Les traces JSON confirment l’exécution et les durées des animations.
+
+## Publication terminée
+
+Révision `891bfac296850f83b0a39d94009738c7543576b8`, release `20261105T055902Z-891bfac29685`. Santé origine/HTTPS valide, 16 empreintes identiques au build, catalogue et 25 autres PID conservés. Contrôle public desktop/mobile sans erreur de console ; choix initial vide restauré, émulations réinitialisées et serveur local arrêté. Sources : `deployment-origin.json`, `public-https.json` et `public/checks.json`.

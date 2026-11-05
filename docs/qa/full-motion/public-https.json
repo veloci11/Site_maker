@@ -1,0 +1,107 @@
+{
+  "checkedAtUTC": "2026-11-05T06:00:58.851129+00:00",
+  "url": "https://gilmathis.com/",
+  "revision": "891bfac296850f83b0a39d94009738c7543576b8",
+  "health": {
+    "ok": true
+  },
+  "htmlClientMatches": true,
+  "assets": [
+    {
+      "path": "/assets/index-CRL_a74v.js",
+      "sha256": "7cb95a9e5a7df1825619bac2dca519a6990a75a1c9eb19c7c763441170447252",
+      "bytes": 481862,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CIYnVkQS.css",
+      "sha256": "ef50ac268c46aec05f6f7862f2aa641a8a7f0affc5e71965fd244ea1b221c1a8",
+      "bytes": 42186,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-BX8I7Wd4.css",
+      "sha256": "320c200b83fd8e075f316aca9859ca46b75a46f08bfccc256b8da7fbf8cfd061",
+      "bytes": 11670,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/ProjectBriefForm-ExNdTMib.css",
+      "sha256": "b9a428b334b3c7de7c9b5ac9153ff22f2f12a8c956aa80828f5c486367b4ca87",
+      "bytes": 5192,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/SelectedPlanCard-CI0sKdcz.css",
+      "sha256": "493812367a704573080b20d66d3ae4f44230b291f7a39072acea34df6246ec8d",
+      "bytes": 15098,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CIiXzOsc.css",
+      "sha256": "b617ebaa0a36c997763e9e588fdf7cb8cbbac0e81253e2aff89ab73b45735204",
+      "bytes": 21691,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CzRZcDmU.css",
+      "sha256": "1e5fd170ee87beb561810a8cfaba840c448154c99fce819760c86bb4fbace9c7",
+      "bytes": 9706,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-BkRDUtcw.css",
+      "sha256": "a05f615c00e63700645dc8ca6810afdaf9efa698b571942af7651dc1e8764b87",
+      "bytes": 10400,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/index-CDRAuKij.css",
+      "sha256": "eb961cefb13ad1d91617e63722ad84f5ba9ac2fcf4de424d6ddc96e42b0fae49",
+      "bytes": 6251,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-master.webp",
+      "sha256": "f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76",
+      "bytes": 2636656,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-card.webp",
+      "sha256": "bc85e2eb445c152ee2d740a17ad9f5fdf128ea1ed662b23f36c8621cc0569524",
+      "bytes": 162744,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-detail.webp",
+      "sha256": "b2178faf78f6d2b33834b893cee7ca61e8943a00d9ebf37a3dc2b830bb332d99",
+      "bytes": 879898,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-vitrine-continuation.webp",
+      "sha256": "baa08c63dd3b9aa650f6d96f4501147b8b844b5154c61acf52dec24977edcc0a",
+      "bytes": 4556058,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-vitrine-continuation-1x.webp",
+      "sha256": "bfe7a6be76c7534ce11c96561932f98f0bad40388a15184f2d27d0ef03df1c40",
+      "bytes": 434368,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-vitrine-continuation-top.webp",
+      "sha256": "79b0276275c465006a61f6cceb3dd4d94116bbbfffe5d8564bcc3c215076f1da",
+      "bytes": 2431116,
+      "matchesBuild": true
+    },
+    {
+      "path": "/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp",
+      "sha256": "09103c8d441c65d6e58743d364ba9325eeb10108fe03f8b5ce229e1635b08ee8",
+      "bytes": 175750,
+      "matchesBuild": true
+    }
+  ]
+}

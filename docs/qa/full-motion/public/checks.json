@@ -1,0 +1,21 @@
+{
+  "mobile": {
+    "clientWidth": 375,
+    "contentOverflow": "visible",
+    "dpr": 1,
+    "groupsOpen": [
+      "01Votre site1Adaptation mobile et tablette",
+      "02Vos fonctionnalités"
+    ],
+    "innerHeight": 844,
+    "innerWidth": 390,
+    "overflow": false,
+    "textureHeight": 500
+  },
+  "publicRapid": "https://gilmathis.com/forfaits/connecte",
+  "restored": {
+    "path": "/forfaits/vitrine",
+    "summary": "Création du siteÀ partir de…+ 0 € / moisForfait de base"
+  },
+  "console": []
+}

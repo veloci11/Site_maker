@@ -1,4 +1,6 @@
-## Livraison finale en préparation — animations et qualité
+## Livraison finale publiée et vérifiée — animations et qualité
+
+Version applicative `891bfac`, release `20261105T055902Z-891bfac29685`, publiée sur https://gilmathis.com/ et contrôlée en ligne.
 
 Les six parcours accueil/forfait et leurs retours ont été revus dans l’IAB, sur ordinateur et mobile. Carte native de 520 ms, copies séparées pour garder le texte net, image fixe et prolongement organique sans miroir ; ajout/retrait des options de 620 ms. Grande carte sticky et défilement interne sur ordinateur, hauteur naturelle sur mobile, groupes multiples indépendants. Original haute définition conservé octet pour octet, continuation native 1536 px et versions 1x/2x. Les clics rapides et le clavier interrompent la capture sans perdre la navigation ; annuler un changement conserve le brouillon. TypeScript, build et 213 tests passent après la dernière correction.
 

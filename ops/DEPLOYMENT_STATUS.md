@@ -1,19 +1,46 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée : 04/11/2026 à 22:34, heure de Mexico (UTC−06), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `3d1c08c6d4744bfeff745ad52cceb3c51c34a59d`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T042958Z-3d1c08c6d474` ; lien `current` basculé atomiquement.
-- Empreinte client publique : `index-DRYtrdAp.js`, identique au build prévu.
-- Archive vérifiée avant extraction : SHA-256 `da979bc3e503a2d48f27e222db0ba0392d20a60b7f40f5aa7c556a62d0fd732d`.
-- Version précédente disponible : `releases/20261105T040603Z-7b502655e631`. Releases et sauvegardes précédentes conservées.
+- Révision applicative : `891bfac296850f83b0a39d94009738c7543576b8`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261105T055902Z-891bfac29685` ; bascule atomique de `current`.
+- Client public : `/assets/index-CRL_a74v.js` ; SHA-256 `7cb95a9e5a7df1825619bac2dca519a6990a75a1c9eb19c7c763441170447252`.
+- Archive : SHA-256 `472b3e8be2e7a4d759f68a550bb8d4f19abc5678cd2744fc441cdd9d6d1b7152`, 13968649 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T050156Z-3d4d85467706`.
 
-Le dépôt peut contenir un compte rendu plus récent ; la révision ci-dessus est le code applicatif effectivement en ligne. Les lots précédents ont été terminés et contrôlés avant les suivants. Le suivi est dans `docs/SUIVI_DEMANDES.md`.
+Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
-## Interface livrée
+## Animations et textures livrées
+
+Les six offres utilisent une ouverture/fermeture de 520 ms : déplacement de la surface et copies séparées, sans étirement du texte ni de l’image. Les retours retrouvent la liste d’origine ; les deux services sont distingués par leur paramètre `besoin`. Un nouveau geste interrompt la capture native pour laisser immédiatement passer le clic ou le clavier, sans clic synthétique ni navigation retardée. Les liens ordinaires, la réduction du mouvement et les protections du brouillon sont conservés.
+
+Les trois textures d’origine restent identiques octet pour octet. La partie haute garde l’original 1536 × 1024 ; une vraie continuation native prolonge le bas sans miroir visible ni agrandissement de la source rejetée de 724 px. Exports 1x et 2x, ces derniers sans perte. Le filtre sombre a été allégé. Les fichiers sources, la consigne et l’assemblage sont dans `docs/asset-sources/textures/vitrine-continuation-prompts.md` et `vitrine-continuation-assembly.json`.
+
+L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Sur ordinateur, la carte suit le défilement dans sa colonne à 112 px de l’en-tête ; ses longs contenus défilent intérieurement. Sur mobile, elle garde une hauteur naturelle. Plusieurs groupes d’options peuvent rester ouverts ; fermer l’un ne ferme pas les autres.
+
+## Vérification finale
+
+- `npm run check` : TypeScript, build et **213 tests passants**, après la correction des clics rapides. Revue finale indépendante sans blocage.
+- IAB local : six ouvertures et six retours sur ordinateur/mobile, services et retour navigateur, texte du brouillon conservé après annulation, clavier, réduction du mouvement dynamique et absence de débordement. Douze options Vitrine et dix Sur mesure contrôlées ; image fixe à 580 px / 500 px pendant la croissance. Le DPR 2 charge effectivement le master original et la continuation native.
+- IAB public : nouveau client attendu, ouverture native, premier ajout 0→1 et groupes simultanés ; mobile 390 × 844 (client 375 avec barre de défilement), image fixe et croissance normale. Clic rapide vers Connecté reçu, retour et sélection initiale vide restaurés ; console sans erreur/avertissement. Capture : `docs/qa/full-motion/public/desktop.jpg`.
+- HTTPS : santé valide, client et **16 fichiers** comparés au build par SHA-256, dont les trois textures originales et les quatre continuations.
+- Origine : sauvegarde réussie avant bascule, Sharp vérifié, catalogue inchangé, **25 autres PID de services inchangés** ; seul `site-maker.service` redémarré. Tunnel inchangé.
+- Aucun formulaire réel envoyé, aucun e-mail émis pendant ces contrôles. Les serveurs de test locaux sont arrêtés ; les émulations temporaires ont été réinitialisées.
+
+Preuves : `docs/qa/full-motion/` (traces, dix interventions spécialisées, revues, empreintes et captures). Les traces attestent les durées/exécutions observées ; elles ne garantissent pas 60 images/s sur chaque appareil.
+
+## GitHub Actions
+
+Le contrôle de cette révision échoue avant tout lancement de job : compte GitHub bloqué pour un problème de facturation. [Exécution concernée](https://github.com/veloci11/Site_maker/actions/runs/41977433109). Il ne s’agit pas d’un test applicatif en échec ; les contrôles locaux ont passé et la publication Ubuntu a été vérifiée séparément. Le workflow n’a pas été contourné et aucune opération de facturation n’a été effectuée. Preuve actuelle : `docs/qa/full-motion/final-ci.json`.
+
+## Éléments commerciaux reportés
+
+Les prix et périmètres restent ceux du catalogue existant et attendent leurs montants définitifs ; aucun prix ni délai n’a été inventé. Le destinataire Resend reste reporté par Mathis ; les demandes sont conservées mais une réception réelle devra être vérifiée après sa configuration. Les documents commerciaux définitifs restent à compléter.
+
+## Base conservée et historique des lots précédents
 
 Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. Évolution et Refonte concernent un site existant et conduisent à deux fiches sur devis, avec la même grande carte à gauche et leur formulaire contextualisé à droite. Le sujet est fixé par la fiche, sans sélecteur redondant. Ces deux cartes utilisent maintenant le même composant `PricingCard`, les mêmes dimensions, la même matière, trois points et le même CTA que les quatre créations. Elles sont centrées en colonnes 2 et 3 sur grand écran, puis partagent les règles tablette/mobile. Les quatre identifiants techniques de création restent inchangés.
 
@@ -21,7 +48,7 @@ Quatre forfaits de création : Vitrine, Connecté, Immersif 3D et Sur mesure. É
 - Cartes : matière et effets approuvés des quatre créations conservés ; deux nouvelles variantes pour les services. Boutons noirs au repos, texture au survol/focus partagée avec le comparatif ; Configurer sans flèche. Flèches diagonales retirées du public.
 - Dernière clarification de Mathis : nos images restent exactement les mêmes. Reflet, liseré et halo retirés. Les couleurs apparaissent en 300 ms et le texte en 150 ms ; un grain indépendant précalculé (WebP 256 × 256, 107 058 octets, overlay 0,32) se déplace de quelques pixels pendant 360 ms à l’entrée du survol/focus, une seule fois, puis s’immobilise. Carte et image fixes, pas de filtre animé ni de bruit calculé à l’interaction. CTA et menu conservent 120 ms.
 - Comparatif : « Afficher plus de détails » sous le tableau, puis « Masquer les détails », chevron et dépliage CSS de 280 ms ; aucune case à cocher. Tableau sémantique unique et réduction du mouvement respectée.
-- Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon simple refermable : une rubrique ouverte à la fois, résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. Les six offres partagent la grande carte `SelectedPlanCard` et leurs styles dans `src/components/layout/project.css`. « Changer » est un menu translucide de 210 px attaché au bouton, avec six choix et coche sur le choix courant ; couleurs au survol/clavier, aucun dialogue ni contour de focus extérieur. Le doublon Continuer est retiré de la carte ; une action explicite reste après les options. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
+- Configuration : grande carte à gauche, options à droite, inclusions expliquées par forfait, coordonnées et demande au studio. Accordéon à groupes multiples indépendants (la version antérieure n’ouvrait qu’une rubrique à la fois), résumés des choix actifs dans les rubriques fermées, inclusions signalées et compteurs cohérents. Les six offres partagent la grande carte `SelectedPlanCard` et leurs styles dans `src/components/layout/project.css`. « Changer » est un menu translucide de 210 px attaché au bouton, avec six choix et coche sur le choix courant ; couleurs au survol/clavier, aucun dialogue ni contour de focus extérieur. Le doublon Continuer est retiré de la carte ; une action explicite reste après les options. Totaux ponctuels et mensuels séparés. Vitrine commence sur ordinateur, mobile facultatif ; Connecté comprend les comptes visiteurs et les contenus modifiables.
 - Galerie : dix références externes avec filtres et crédits. Le bloc d’introduction est retiré, le H1 accessible conservé. Filtrage strict par offre sans saut de scroll : Lactel en Vitrine, GeoBoss en Connecté, Julie Thiam en Sur mesure ; Cal.com ajouté comme exemple avec connexion vérifiée. La remarque de l’ami sur les aplats est annulée. Un seul badge par site, avec la matière et la variante de sa carte forfait ; les filtres de catégorie restent blancs au repos et révèlent la matière au survol réel, au focus clavier ou à la sélection, avec fondu de 300 ms. Le filtre actif porte un contour. Les badges secondaires sont retirés ; Projet archivé reste dans la description. GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D ajoutés depuis le portfolio de Raphaël. Trois aperçus capturés sur les vrais sites dans l’IAB ; Atlante reprend le poster original et porte la mention « Projet archivé » dans sa description, avec lien vers le README de l’auteur. DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven et Addiction Agency conservés. Image, titre et action ouvrent directement la destination dans un nouvel onglet ; anciennes fiches redirigées directement, aperçu en sous-fenêtre supprimé. Aucune scène externe chargée automatiquement.
 - FAQ : dix questions concrètes. Les huit premières couvrent frais, contenus, autonomie, domaine, mobile, site existant, calendrier et référencement, avec provenance Reddit qualitative documentée. Deux questions supplémentaires demandées directement par Mathis rassurent sur le choix du forfait et la réorientation par nos développeurs avant démarrage ; ajoutées en fin de liste, elles préservent les trois questions de l’accueil. Aucun prix, avis client, rabais ou délai chiffré inventé.
 
