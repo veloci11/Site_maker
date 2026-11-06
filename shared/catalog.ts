@@ -83,7 +83,7 @@ export const offers = [
     description:
       'Proposez des comptes à vos visiteurs et gérez vos contenus. Ajoutez les fonctions utiles à votre activité.',
     features: ['Comptes utilisateurs', 'Contenus modifiables', 'Ordinateur et mobile'],
-    exampleId: 'lactel',
+    exampleId: 'cal-com',
     variant: 'connecte',
   },
   {
@@ -93,7 +93,7 @@ export const offers = [
     headline: 'Votre univers prend vie.',
     description: 'Présentez votre activité avec un élément 3D interactif intégré à votre site.',
     features: ['Élément 3D interactif', 'Interactions soignées', 'Ordinateur et mobile'],
-    exampleId: 'julie-thiam',
+    exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
   {
@@ -392,7 +392,8 @@ export const optionDefinitions = [
   {
     id: 'online-store',
     title: 'Boutique en ligne',
-    description: 'Catalogue, panier et paiement réunis. Produits et livraison à préciser ensemble.',
+    description:
+      'Catalogue, panier et paiement réunis. Produits et livraison à préciser ; frais du prestataire de paiement séparés.',
     billing: 'once',
     group: 'features',
   },
@@ -427,7 +428,8 @@ export const optionDefinitions = [
   {
     id: 'additional-language',
     title: 'Une autre langue',
-    description: 'Ajoutez une version dans la langue de votre choix. Langue, contenus et traduction à préciser.',
+    description:
+      'Une version dans une langue autre que l’anglais. Langue, pages et traduction à préciser.',
     billing: 'once',
     group: 'content',
   },
@@ -483,7 +485,8 @@ export const optionDefinitions = [
   {
     id: 'deployment',
     title: 'Mise en ligne du site',
-    description: 'Mise en ligne par le studio : domaine web, HTTPS et installation sur un hébergement compatible.',
+    description:
+      'Installation sur un hébergement compatible, raccordement du domaine et HTTPS. Domaine et hébergement à prévoir séparément.',
     billing: 'once',
     group: 'launch',
   },

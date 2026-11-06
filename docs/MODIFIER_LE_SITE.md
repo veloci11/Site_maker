@@ -16,7 +16,11 @@ Le site utilise React, TypeScript et des composants shadcn/Radix. Les contenus r
 | Titres, descriptions, canoniques et indexation | `shared/seo.ts` | `getRouteSeo`, `publicPagePaths` ; head servi par Express et synchronisé après navigation |
 | Protection du brief non envoyé | `src/components/inquiries/BriefNavigationGuard.tsx` | Dialogue de sortie et protection du rechargement, sans stockage personnel |
 | Structure du menu | `src/components/layout/PublicLayout.tsx` | `PublicHeader` ; les quatre liens proviennent de `offers` |
-| Accueil, comparatif, galerie et formulaire de contact | `src/pages/public/index.tsx` | Fonctions `HomePage`, `OfferComparison`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
+| Accueil, galerie et formulaire de contact | `src/pages/public/index.tsx` | `HomePage`, `ExamplesPage`, `InquiryForm`, `ContactPage` |
+| Comparatif des forfaits | `src/pages/public/OfferComparison.tsx` | Lignes de base, détails et leur rendu |
+| Ouverture et fermeture des FAQ | `src/pages/public/FaqList.tsx` | Accordéon accessible ; textes dans `shared/catalog.ts` |
+| Lecture des prix publics et libellé de départ | `src/pages/public/pricing.ts` | `usePricing`, `startingPrice`, `configureHref` |
+| Routes, accès privés et pages de repli | `src/App.tsx` | Chargement des pages, `RequireAuth`, `AppBoundary` |
 | Options et étapes de configuration | `src/pages/configurator/index.tsx` | `ConfiguratorPage` |
 | Questions de création, Évolution et Refonte | `shared/brief.ts` | `sectionsByRequest` : rubriques, questions, choix, champs requis et conditions |
 | Coordonnées requises et leur validation | `shared/inquiry-contact.ts` | `validateInquiryContact` utilisé par le navigateur et le serveur |
@@ -51,7 +55,7 @@ Dans `InquiryForm`, `website` est un champ antispam masqué. L’URL fournie par
 
 Placer les exports actifs dans `public/assets/examples/`, puis modifier le chemin dans `examples`. Garder le lien réel et le crédit du site présenté. Les originaux et anciens essais restent dans `docs/asset-sources/` ou `docs/qa/`, hors du build public. La provenance des captures est documentée dans `docs/ASSETS_REFERENCES.md`.
 
-Les dix références sont DOMTEKNIKA, Lactel, Julie Thiam, Tiny Heaven, Addiction Agency, GeoBoss, Aéma Groupe, Satellite Story et Atlante 3D. Pour qu’un exemple classé autrement apparaisse aussi dans le filtre 3D, utiliser `tags: ['3D']` comme GeoBoss. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
+Les dix références sont DOMTEKNIKA, Lactel, Aéma Groupe, GeoBoss, Cal.com, Tiny Heaven, Satellite Story, Atlante, Julie Thiam et Addiction Agency. Chaque référence appartient à un seul filtre, déterminé par `offerId`. Ne pas utiliser les tags secondaires pour afficher un site dans plusieurs catégories. Pour un projet archivé, conserver `archived: true`, une description honnête et une destination encore consultable : Atlante ouvre son README GitHub avec « Voir la présentation ». Ne pas transformer ce lien en promesse de démonstration active.
 
 Les images, titres et actions des exemples sont des liens directs dans un nouvel onglet. Les crédits conservent leur propre lien source. `ExampleDetailPage` maintient la compatibilité de `/exemples/:slug` : il redirige par effet vers `example.url` avec `window.location.replace` et laisse un lien de repli. Le composant `ExamplePreview` est retiré ; ne pas réintroduire de fenêtre intermédiaire ou de scène embarquée.
 
@@ -82,7 +86,7 @@ La préférence de Mathis concerne aussi les recherches de références : utilis
 
 Arrêter la prévisualisation avec Ctrl+C. Un résultat local ne modifie ni GitHub ni le site public. La mise en ligne isolée sur Ubuntu est décrite dans `ops/README.md` ; son état vérifié est suivi dans `ops/DEPLOYMENT_STATUS.md`.
 
-Les rubriques d’options dans `src/pages/configurator/index.tsx` utilisent `Accordion type="single" collapsible`. Le résumé de chaque rubrique fermée est calculé depuis `isOptionSelected` et `isOptionIncluded` ; ne pas conserver une seconde liste de choix dans un état React. La galerie affiche un seul badge par référence. Badges et filtres récupèrent la classe `pricing-card--${offer.variant}` du catalogue et partagent un pseudo-élément texturé dans `src/pages/public.css` ; les variables de couleur et de cadrage viennent de `src/styles.css`, comme pour les cartes. Les tags secondaires servent uniquement au classement interne ; « Projet archivé » est écrit dans la description.
+Les rubriques d’options dans `src/pages/configurator/index.tsx` utilisent `Accordion type="multiple"`. Le résumé de chaque rubrique fermée est calculé depuis `isOptionSelected` et `isOptionIncluded` ; ne pas conserver une seconde liste de choix dans un état React. La galerie affiche un seul badge par référence. Badges et filtres récupèrent la classe `pricing-card--${offer.variant}` du catalogue et partagent un pseudo-élément texturé dans `src/pages/public.css` ; les variables de couleur et de cadrage viennent de `src/styles.css`, comme pour les cartes. Les tags secondaires ne modifient jamais le filtre public ; « Projet archivé » est écrit dans la description.
 
 Le choix de forfait dans `src/pages/configurator/index.tsx` réutilise `DropdownMenu` et le style `.public-offers-menu` du header. Les quatre créations viennent du catalogue ; Évolution/Refonte viennent de `existingSiteOffers`, sans copie des URL ou sujets. Le dialogue central et ses styles ont été retirés. Le focus de `.nav-offers-trigger` se voit par son trait noir de 2 px ; ne pas supprimer la règle globale de focus pour tous les autres contrôles.
 
@@ -90,8 +94,21 @@ La grande carte des six offres est partagée dans `src/components/layout/Selecte
 
 ## Questions, partage de fichiers et confiance
 
-Les questions se modifient dans `shared/brief.ts` ; éviter de créer le même champ dans plusieurs composants. `showWhen` dépend d’un choix antérieur, `showWhenAnswered` d’un champ renseigné, `showForOption` d’une fonction choisie dans le configurateur. Garder le même contexte dans l’interface et l’API. `exclusiveValues` réserve les réponses d’incertitude seules. Préserver les identifiants et la lecture historique quand une condition évolue.
+Les questions se modifient dans `shared/brief.ts` ; éviter de créer le même champ dans plusieurs composants. `showWhen` dépend d’un choix antérieur, `showWhenAnswered` d’un champ renseigné, `showForOption` d’une fonction choisie dans le configurateur ; `showForAnyOption` demande au moins une option de sa liste (par exemple anglais ou autre langue). Garder le même contexte dans l’interface et l’API. `exclusiveValues` réserve les réponses d’incertitude seules. Préserver les identifiants et la lecture historique quand une condition évolue.
 
 La rubrique de fichiers est commune aux sept contextes : le lien et la description rejoignent le dossier privé sans stockage des fichiers externes. Le rendu et les limites des images sont dans `ProjectBriefForm.tsx` et `brief-form-files.ts`. Ne pas ajouter de récupération automatique ou d’aperçu d’un lien partagé.
 
 Les engagements de l’accueil sont dans `HomePage`, `.home-assurance` et les trois étapes existantes. Les images et effets des cartes restent approuvés. La proposition mentionnant un ingénieur reste dans `TEXTE_SECURITE_A_CONFIRMER.md` tant que l’intervention précise n’est pas confirmée. Les prix du rapport de marché restent des hypothèses commerciales ; ils ne remplissent pas le catalogue automatiquement.
+
+## Animation : où intervenir
+
+- `src/components/layout/plan-transition.tsx` relie les liens/navigation aux transitions du routeur et interrompt les instantanés quand le visiteur agit.
+- `motion.tsx` mesure la petite et la grande carte ; `plan-motion.css` règle le raccord, les masques et les fondus. Le timing approuvé est de 760 ms.
+- `use-option-reflow.ts` anime le déplacement des choix après ajout/retrait, sans retarder la configuration ni les prix.
+- `project.css` fixe les dimensions de la matière et le résumé ; ne pas réduire les titres ou ajouter un défilement interne quand la sélection grandit.
+
+Après modification, contrôler les six offres dans les deux sens, le premier clic sur Changer, le retour navigateur, une sélection longue et la préférence de réduction des animations. Un viewport changé pendant un raccord annule naturellement sa capture : mesurer à dimensions stables.
+
+## Principe commercial
+
+STUDIO propose une base puis des modules utiles à la carte. Un module réutilisable et précisément borné peut recevoir un prix simple ; une intégration ou une création spécifique demande un périmètre distinct. Le catalogue du configurateur ne démontre pas à lui seul l’existence d’une bibliothèque de modules livrables : vérifier ce qui est réellement réutilisable avant de garantir un prix fixe. Les recherches de marché restent des propositions, pas les tarifs de production.

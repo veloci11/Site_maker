@@ -1,5 +1,23 @@
-import { Component, Suspense, lazy, type ComponentType, type ReactNode, useLayoutEffect, useRef } from 'react'
-import { createBrowserRouter, createRoutesFromElements, Link, Navigate, Outlet, Route, RouterProvider, useLocation, useParams } from 'react-router-dom'
+import {
+  Component,
+  Suspense,
+  lazy,
+  type ComponentType,
+  type ReactNode,
+  useLayoutEffect,
+  useRef,
+} from 'react'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Link,
+  Navigate,
+  Outlet,
+  Route,
+  RouterProvider,
+  useLocation,
+  useParams,
+} from 'react-router-dom'
 import { PublicLayout, PortalLayout } from './components/layout'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
@@ -22,15 +40,60 @@ const Configurator = page(configuratorModule, 'ConfiguratorPage')
 const loadForfait = async () => ({ Component: (await configuratorModule()).ForfaitConfiguratorPage })
 const loadPublicPage = (name: keyof Awaited<ReturnType<typeof publicModule>>) =>
   async () => ({ Component: (await publicModule())[name] as ComponentType })
-const Register = page(authModule, 'RegisterPage'), Login = page(authModule, 'LoginPage'), Forgot = page(authModule, 'ForgotPasswordPage'), Reset = page(authModule, 'ResetPasswordPage')
-const Dashboard = page(portalModule, 'DashboardPage'), Contents = page(portalModule, 'ContentsPage'), Account = page(portalModule, 'AccountPage'), Messages = page(collaborationModule, 'MessagesPage'), Previews = page(collaborationModule, 'PreviewsPage')
-const Checkout = page(ordersModule, 'CheckoutPage'), Order = page(ordersModule, 'PortalOrderPage'), Admin = page(ordersModule, 'AdminPage')
+const Register = page(authModule, 'RegisterPage')
+const Login = page(authModule, 'LoginPage')
+const Forgot = page(authModule, 'ForgotPasswordPage')
+const Reset = page(authModule, 'ResetPasswordPage')
+const Dashboard = page(portalModule, 'DashboardPage')
+const Contents = page(portalModule, 'ContentsPage')
+const Account = page(portalModule, 'AccountPage')
+const Messages = page(collaborationModule, 'MessagesPage')
+const Previews = page(collaborationModule, 'PreviewsPage')
+const Checkout = page(ordersModule, 'CheckoutPage')
+const Order = page(ordersModule, 'PortalOrderPage')
+const Admin = page(ordersModule, 'AdminPage')
 
-function NotFound() { return <section className="container page-section"><p className="eyebrow">Page introuvable</p><h1 className="page-heading">Reprenons le bon chemin.</h1><p className="page-subtitle">Cette adresse ne correspond à aucune page du site.</p><Link className="button" to="/">Revenir à l’accueil</Link></section> }
-function LegacyOffer() { const { slug } = useParams(); return <Navigate to={`/forfaits/${slug || ''}`} replace /> }
-function LegalPage({ privacy = false }: { privacy?: boolean }) { return <section className="container page-section legal-page"><h1 className="page-heading">{privacy ? 'Confidentialité' : 'Informations légales'}</h1><div className="stack"><p>Les informations de l’éditeur et les conditions commerciales seront complétées avant l’ouverture des commandes.</p><p>{privacy ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Vos réponses et images jointes sont conservées dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail ; les images restent consultables dans son administration protégée.' : 'Les références externes présentées illustrent les formats de sites. Elles ne sont pas présentées comme des réalisations ou des clients du studio.'}</p><Link to="/contact">Nous contacter</Link></div></section> }
+function NotFound() {
+  return (
+    <section className="container page-section">
+      <p className="eyebrow">Page introuvable</p>
+      <h1 className="page-heading">Reprenons le bon chemin.</h1>
+      <p className="page-subtitle">Cette adresse ne correspond à aucune page du site.</p>
+      <Link className="button" to="/">Revenir à l’accueil</Link>
+    </section>
+  )
+}
+
+function LegacyOffer() {
+  const { slug } = useParams()
+  return <Navigate to={`/forfaits/${slug || ''}`} replace />
+}
+
+function LegalPage({ privacy = false }: { privacy?: boolean }) {
+  return (
+    <section className="container page-section legal-page">
+      <h1 className="page-heading">
+        {privacy ? 'Confidentialité' : 'Informations légales'}
+      </h1>
+      <div className="stack">
+        <p>
+          Les informations de l’éditeur et les conditions commerciales seront complétées avant
+          l’ouverture des commandes.
+        </p>
+        <p>
+          {privacy
+            ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Vos réponses et images jointes sont conservées dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail ; les images restent consultables dans son administration protégée.'
+            : 'Les références externes présentées illustrent les formats de sites. Elles ne sont pas présentées comme des réalisations ou des clients du studio.'}
+        </p>
+        <Link to="/contact">Nous contacter</Link>
+      </div>
+    </section>
+  )
+}
+
 function RequireAuth({ children, admin = false }: { children: ReactNode; admin?: boolean }) {
-  const { user, loading } = useAuth(); const location = useLocation()
+  const { user, loading } = useAuth()
+  const location = useLocation()
   if (loading) return <div className="loading-state" role="status">Ouverture de votre espace…</div>
   if (!user) return <Navigate to={`/connexion?retour=${encodeURIComponent(location.pathname + location.search)}`} replace />
   if (admin && user.role !== 'admin') return <Navigate to="/espace" replace />
@@ -52,9 +115,25 @@ function ScrollTop() {
 }
 class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
-  static getDerivedStateFromError() { return { failed: true } }
-  render() { return this.state.failed ? <main className="container page-section"><h1 className="page-heading">La page n’a pas pu s’ouvrir.</h1><p className="page-subtitle">Vous pouvez recharger la page pour reprendre votre visite.</p><button className="button" onClick={() => window.location.reload()}>Recharger la page</button></main> : this.props.children }
+
+  static getDerivedStateFromError() {
+    return { failed: true }
+  }
+
+  render() {
+    if (!this.state.failed) return this.props.children
+    return (
+      <main className="container page-section">
+        <h1 className="page-heading">La page n’a pas pu s’ouvrir.</h1>
+        <p className="page-subtitle">Vous pouvez recharger la page pour reprendre votre visite.</p>
+        <button className="button" onClick={() => window.location.reload()}>
+          Recharger la page
+        </button>
+      </main>
+    )
+  }
 }
+
 function ApplicationShell() {
   return (
     <AppBoundary>

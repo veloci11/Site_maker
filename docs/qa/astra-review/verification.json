@@ -1,0 +1,467 @@
+{
+  "desktop": [
+    {
+      "offer": "Vitrine",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/vitrine",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "offer": "Connect\u00e9",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/connecte",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "offer": "Immersif 3D",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/immersif-3d",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "offer": "Sur mesure",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/sur-mesure",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "offer": "\u00c9volution",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/contact?besoin=evolution",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    },
+    {
+      "offer": "Refonte",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/contact?besoin=refonte",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          1280,
+          720
+        ]
+      }
+    }
+  ],
+  "mobile": [
+    {
+      "offer": "Vitrine",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/vitrine",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "offer": "Connect\u00e9",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/connecte",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "offer": "Immersif 3D",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/immersif-3d",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "offer": "Sur mesure",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/forfaits/sur-mesure",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "offer": "\u00c9volution",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/contact?besoin=evolution",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "offer": "Refonte",
+      "durationsObserved": [
+        160,
+        220,
+        280,
+        340,
+        360,
+        440,
+        480,
+        500,
+        520,
+        640,
+        760
+      ],
+      "open": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/contact?besoin=refonte",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "close": {
+        "native": 0,
+        "opacity": "1",
+        "overflow": false,
+        "path": "/",
+        "phase": null,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    }
+  ],
+  "texturesUnchanged": {
+    "grain-plasma-card.webp": "bc85e2eb445c152ee2d740a17ad9f5fdf128ea1ed662b23f36c8621cc0569524",
+    "grain-plasma-master.webp": "f7dc38f6e2309482bb66a2089e884d4f22f6d92f03f7f15fd323658630d00b76",
+    "grain-plasma-detail.webp": "b2178faf78f6d2b33834b893cee7ca61e8943a00d9ebf37a3dc2b830bb332d99"
+  }
+}

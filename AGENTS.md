@@ -97,3 +97,9 @@ La rubrique « Vos fichiers · facultatif » accepte un lien HTTPS de partage et
 L’accueil décrit l’accompagnement et le vrai questionnaire. La clarification de Mathis sur RGPD concerne les sites livrés : revue de sécurité avant livraison et conception tenant compte du RGPD, pas un badge sur nos seuls formulaires. Son « je pense » ne confirme pas encore l’intervention systématique d’un ingénieur spécialisé : la formulation avec cette qualification est préparée dans `docs/TEXTE_SECURITE_A_CONFIRMER.md`, sans fausse certification publiée. Ne pas inventer de diplôme ou d’audit effectué.
 
 L’étude de prix France est dans `docs/ETUDE_MARCHE_PRIX_FRANCE_2026-11-03.md`. Fourchettes proposées, pas des prix approuvés : ne pas remplir le catalogue ou annoncer −50 % par déduction. Garder la Vitrine ordinateur de base avec mobile facultatif, et comparer le coût complet aux offres qui l’incluent. Les informations légales et la destination Resend restent à renseigner ultérieurement.
+
+## Revue Astra — lisibilité et prix modulaires
+
+Mathis demande des prix fondés sur de vraies offres publiées, en comprenant le principe base + modules réutilisables. Le rapport `docs/PRIX_ASTRA_2026-11-05.md` distingue petits lots, variantes spécifiques, coût complet et prix recommandés. Il ne remplit pas le catalogue. Ne pas annoncer une économie universelle ni la disponibilité d’une bibliothèque de modules non démontrée. Le configurateur ne gère pas encore de quantités ni de tarifs différents par type de site pour un même ID.
+
+Le comparatif public, l’accordéon FAQ et les helpers de prix vivent maintenant dans `src/pages/public/OfferComparison.tsx`, `FaqList.tsx` et `pricing.ts`. La chorégraphie des cartes reste dans `plan-motion.css` ; les anciennes règles natives surchargées de `styles.css` ont été retirées. Préserver les effets et images approuvés.

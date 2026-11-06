@@ -2,6 +2,10 @@
 
 Mathis demande l’arrêt des exécutions et notifications automatiques de `Check application`. Les déclencheurs `push` et `pull_request` sont remplacés par `workflow_dispatch` : le contrôle reste lançable manuellement depuis GitHub. Les commandes de vérification locales sont conservées. Changement limité à la configuration du dépôt, sans déploiement applicatif.
 
+## Revue Astra des prix et du code — vérifiée localement, 5 novembre 2026
+
+Six missions Astra, contre-revue indépendante et contrôle parent. 6 forfaits/services et 26 options étudiés à partir de sources réelles, prix proposés non publiés. Périmètres/frais clarifiés, références catalogue corrigées, fusion des en-têtes API corrigée. Comparatif/FAQ/prix extraits pour faciliter les modifications ; anciennes règles d’animation retirées, guide actualisé. TypeScript/build et 230 tests passent ; 24 trajets ordinateur/mobile et interactions rapides contrôlés dans l’IAB. Rapport : `qa/astra-review/review.md`. Publication suivie dans `ops/DEPLOYMENT_STATUS.md`.
+
 ## Revue critique des prix, options et fiabilité — publiée et vérifiée, 5 novembre 2026
 
 Neuf spécialistes ont réalisé les cinq critiques, deux recherches de bugs, une revue des animations et le contre-audit. Newsletter/statistiques disponibles, langues et SEO local transversaux, galerie Connecté, quatre précisions facultatives conditionnelles ; statut du devis, coûts des outils et FAQ alignés. Bugs UTF-8 des fichiers privés et réponses API illisibles corrigés ; catalogue partiel refusé sans casser les pages. FAQ progressive et interruptible, focus du lien d'évitement et noms des liens de galerie précisés. TypeScript/build et 228 tests passent ; 24 trajets IAB locaux, longue sélection de 17 choix et demande locale isolée vérifiés. Publié : `43b5fce`, release `20261106T035942Z-43b5fce8a17a` ; 24 trajets publics, menus et FAQ contrôlés en HTTPS sur ordinateur/mobile. Prix de production conservés, sauvegarde réussie et 24 autres services inchangés. Aucun envoi public, choix/viewport restaurés, localhost arrêté. Les prix révisés restent des propositions. Rapport : `qa/site-review-v2/review.md`.

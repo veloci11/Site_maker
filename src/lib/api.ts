@@ -4,7 +4,12 @@ export class ApiError extends Error {
   fields?: Record<string, string>
   data?: unknown
   constructor(message: string, status: number, code?: string, fields?: Record<string, string>, data?: unknown) {
-    super(message); this.name = 'ApiError'; this.status = status; this.code = code; this.fields = fields; this.data = data
+    super(message)
+    this.name = 'ApiError'
+    this.status = status
+    this.code = code
+    this.fields = fields
+    this.data = data
   }
 }
 
@@ -12,11 +17,19 @@ type ApiOptions = Omit<RequestInit, 'body'> & { body?: unknown }
 export async function api<T>(path: string, options: ApiOptions = {}): Promise<T> {
   const { body, headers, ...rest } = options
   const multipart = body instanceof FormData
+  // Headers accepts all RequestInit forms and treats names case-insensitively.
+  // Leave multipart Content-Type to fetch, which supplies the boundary.
+  const requestHeaders = new Headers(headers)
+  if (!requestHeaders.has('Accept')) requestHeaders.set('Accept', 'application/json')
+  if (body !== undefined && !multipart && !requestHeaders.has('Content-Type')) {
+    requestHeaders.set('Content-Type', 'application/json')
+  }
   let response: Response
   try {
     response = await fetch(path, {
-      ...rest, credentials: 'same-origin',
-      headers: { Accept: 'application/json', ...(body !== undefined && !multipart ? { 'Content-Type': 'application/json' } : {}), ...headers },
+      ...rest,
+      credentials: 'same-origin',
+      headers: requestHeaders,
       body: body === undefined ? undefined : multipart ? body : JSON.stringify(body),
     })
   } catch (error) {
@@ -32,7 +45,15 @@ export async function api<T>(path: string, options: ApiOptions = {}): Promise<T>
       if (response.ok) throw new ApiError('La réponse du serveur n’a pas pu être lue. Réessayez dans un instant.', response.status, 'INVALID_RESPONSE')
     }
   }
-  if (!response.ok) throw new ApiError(data?.error || 'La demande n’a pas abouti. Réessayez.', response.status, data?.code, data?.fields, data)
+  if (!response.ok) {
+    throw new ApiError(
+      data?.error || 'La demande n’a pas abouti. Réessayez.',
+      response.status,
+      data?.code,
+      data?.fields,
+      data,
+    )
+  }
   return data as T
 }
 
@@ -42,5 +63,10 @@ export function errorMessage(error: unknown, fallback = 'Une erreur est survenue
 
 export function safeReturnPath(value: string | null | undefined, fallback = '/espace') {
   if (!value || !value.startsWith('/') || value.startsWith('//') || /[\\\r\n]/.test(value)) return fallback
-  try { const url = new URL(value, 'https://studio.local'); return url.origin === 'https://studio.local' ? `${url.pathname}${url.search}${url.hash}` : fallback } catch { return fallback }
+  try {
+    const url = new URL(value, 'https://studio.local')
+    return url.origin === 'https://studio.local' ? `${url.pathname}${url.search}${url.hash}` : fallback
+  } catch {
+    return fallback
+  }
 }

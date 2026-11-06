@@ -33,7 +33,7 @@ test('normal JSON, no-content and multipart requests keep their transport behavi
   form.append('files', new Blob(['fixture'], { type: 'text/plain' }), 'fixture.txt');
   assert.deepEqual(await api('/api/inquiries', { method: 'POST', body: form }), { ok: true, id: 'local-fixture' });
   assert.equal(calls[0].options.body, form);
-  assert.equal(calls[0].options.headers['Content-Type'], undefined, 'the browser must supply the multipart boundary');
+  assert.equal(new Headers(calls[0].options.headers).has('Content-Type'), false, 'the browser must supply the multipart boundary');
   assert.equal(calls[0].options.credentials, 'same-origin');
   assert.equal(await api('/api/auth/logout', { method: 'POST' }), null);
 });
@@ -57,4 +57,22 @@ test('aborting while the JSON body is read remains an abort, not a connection or
     json: async () => { throw new DOMException('Aborted', 'AbortError'); },
   }));
   await assert.rejects(api('/api/catalogue'), error => error.name === 'AbortError');
+});
+
+test('all HeadersInit forms preserve custom headers and replace defaults case-insensitively', async (t) => {
+  const calls = [];
+  t.mock.method(globalThis, 'fetch', async (path, options) => {
+    calls.push(new Request(new URL(path, 'https://studio.test'), options));
+    return Response.json({ ok: true });
+  });
+  const values = { accept: 'application/problem+json', 'content-type': 'application/vnd.studio+json', 'x-request-id': 'local-fixture' };
+  for (const headers of [values, new Headers(values), Object.entries(values)]) {
+    await api('/api/inquiries', { method: 'POST', headers, body: { fixture: true } });
+    const request = calls.at(-1);
+    assert.equal(request.headers.get('accept'), values.accept);
+    assert.equal(request.headers.get('content-type'), values['content-type']);
+    assert.equal(request.headers.get('x-request-id'), 'local-fixture');
+    assert.equal(request.headers.has('0'), false);
+    assert.deepEqual(await request.json(), { fixture: true });
+  }
 });

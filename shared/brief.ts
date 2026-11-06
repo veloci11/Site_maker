@@ -1,3 +1,5 @@
+import { isOptionSelected, type Configuration, type OptionId } from './catalog.ts'
+
 export const requestTypes = ['vitrine', 'connecte', 'immersif', 'sur-mesure', 'evolution', 'refonte', 'contact'] as const
 export type RequestType = (typeof requestTypes)[number]
 export type BriefAnswer = string | string[]
@@ -152,7 +154,7 @@ const analyticsDetails: Question = {
 const languageDetails: Question = {
   id: 'languageDetails', label: 'Quelles langues et quelles pages faut-il prévoir ?', type: 'textarea',
   showForAnyOption: ['language-en', 'additional-language'],
-  hint: 'Précisez les langues, les pages concernées et si les traductions sont disponibles. La première version traduite et les suivantes sont chiffrées selon ce qui est déjà en place.',
+  hint: 'Précisez les langues, les pages concernées et si les traductions sont disponibles. « Français + anglais » couvre l’anglais ; « Une autre langue » précise les autres versions. Le chiffrage tient compte de ce qui est déjà en place.',
 }
 const localSeoDetails: Question = {
   id: 'localSeoDetails', label: 'Quelle zone d’activité et quels établissements souhaitez-vous présenter ?', type: 'textarea',
@@ -305,11 +307,11 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
     { id: 'scenario', title: 'Un cas d’usage concret', questions: [
       {
         id: 'scenario', label: 'Décrivez une utilisation du début à la fin.', type: 'textarea', required: true,
-        hint: 'Par exemple : une personne fait une demande, votre équipe la traite, puis elle retrouve le résultat dans son espace.',
+        hint: 'Par exemple : un visiteur découvre un univers visuel, explore les projets puis vous contacte ; ou une personne fait une demande et retrouve son suivi dans un espace.',
       },
       {
         id: 'actors', label: 'Qui intervient et que fait chaque personne ?', type: 'textarea', required: true,
-        hint: 'Visiteur, client, collaborateur, partenaire, responsable… Précisez leurs actions et leurs droits si vous les connaissez.',
+        hint: 'Un visiteur qui explore le site peut suffire. Si plusieurs personnes interviennent, précisez leurs actions et leurs droits : client, collaborateur, partenaire…',
       },
       {
         ...workflow,
@@ -336,7 +338,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
       },
       {
         id: 'successCriteria', label: 'À quoi verrez-vous que le projet répond à votre besoin ?', type: 'textarea',
-        hint: 'Par exemple : une tâche réalisable sans tableur, un parcours plus court ou une information accessible à la bonne personne.',
+        hint: 'Par exemple : des réalisations faciles à explorer, un univers visuel fidèle à votre identité, un parcours plus court ou une tâche réalisable sans tableur.',
       },
       pages, references, budget, deadline, constraints,
     ] },
@@ -459,18 +461,29 @@ export function emptyBrief(): BriefAnswers {
   return {}
 }
 
-export function isBriefQuestionVisible(question: Question, answers: BriefAnswers, configuration: Configuration | null = null): boolean {
-  if (question.showForOption && (!configuration || !isOptionSelected(configuration, question.showForOption))) return false
-  if (question.showForAnyOption && (!configuration || !question.showForAnyOption.some(id => isOptionSelected(configuration, id)))) return false
+export function isBriefQuestionVisible(
+  question: Question,
+  answers: BriefAnswers,
+  configuration: Configuration | null = null,
+): boolean {
+  if (
+    question.showForOption &&
+    (!configuration || !isOptionSelected(configuration, question.showForOption))
+  ) return false
+  if (
+    question.showForAnyOption &&
+    (!configuration || !question.showForAnyOption.some(id => isOptionSelected(configuration, id)))
+  ) return false
   if (question.showWhenAnswered) {
     const answer = Object.hasOwn(answers, question.showWhenAnswered) ? answers[question.showWhenAnswered] : undefined
     if (!containsAnswer(answer)) return false
   }
-  if (!question.showWhen) return true
-  const answer = Object.hasOwn(answers, question.showWhen.field) ? answers[question.showWhen.field] : undefined
+  const condition = question.showWhen
+  if (!condition) return true
+  const answer = Object.hasOwn(answers, condition.field) ? answers[condition.field] : undefined
   return typeof answer === 'string'
-    ? question.showWhen.values.includes(answer)
-    : Array.isArray(answer) && answer.some(value => question.showWhen!.values.includes(value))
+    ? condition.values.includes(answer)
+    : Array.isArray(answer) && answer.some(value => condition.values.includes(value))
 }
 
 /** An uncertainty choice replaces precise choices; a later precise choice replaces it. */
@@ -629,4 +642,3 @@ export function summarizeBrief(requestType: RequestType, input: BriefAnswers, { 
     }),
   })).filter(section => section.items.length > 0)
 }
-import { isOptionSelected, type Configuration, type OptionId } from './catalog.ts'

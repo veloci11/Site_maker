@@ -9,5 +9,5 @@ export const includedGuidance: Record<OfferId, string> = {
   immersif:
     'L’intégration d’un modèle 3D fourni, ses interactions et l’adaptation mobile sont comprises. La création d’un modèle sur mesure se choisit dans les options.',
   'sur-mesure':
-    'Les options ci-dessous précisent des besoins courants. Décrivez aussi les fonctions spécifiques de votre projet pour définir ensemble le périmètre et le devis.',
+    'Les options ci-dessous précisent des besoins courants. Décrivez aussi votre direction visuelle, les appareils visés et les fonctions spécifiques : leur périmètre sera défini dans le devis.',
 }

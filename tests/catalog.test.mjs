@@ -1,6 +1,26 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeConfiguration, quoteConfiguration, defaultPricing, EXTRA_OPTION_IDS, optionDefinitions, optionGroups, isOptionIncluded, isOptionSelected, withOption } from '../shared/catalog.ts';
+import {
+  normalizeConfiguration,
+  quoteConfiguration,
+  defaultPricing,
+  EXTRA_OPTION_IDS,
+  offers,
+  examples,
+  optionDefinitions,
+  optionGroups,
+  isOptionIncluded,
+  isOptionSelected,
+  withOption,
+} from '../shared/catalog.ts';
+
+test('each offer references an existing example from its own gallery category', () => {
+  for (const offer of offers) {
+    const example = examples.find(item => item.id === offer.exampleId);
+    assert.ok(example, `${offer.id}: example ${offer.exampleId} exists`);
+    assert.equal(example.offerId, offer.id, `${offer.id}: its example matches the public gallery category`);
+  }
+});
 
 test('included capabilities are normalized and are not charged twice', () => {
   const pricing = { ...defaultPricing, base: { vitrine: 10000, connecte: 20000, immersif: 30000, 'sur-mesure': null }, options: { ...defaultPricing.options, 'managed-content': 5000, 'scene-3d': 8000, 'language-en': 4000 } };
