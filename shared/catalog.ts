@@ -1,5 +1,9 @@
 export const OFFER_IDS = ['vitrine', 'connecte', 'immersif', 'sur-mesure'] as const
 export type OfferId = (typeof OFFER_IDS)[number]
+export const PUBLIC_OFFER_IDS = ['vitrine', 'connecte', 'immersif'] as const
+export type PublicOfferId = (typeof PUBLIC_OFFER_IDS)[number]
+export const isPublicOffer = (id: unknown): id is PublicOfferId =>
+  (PUBLIC_OFFER_IDS as readonly unknown[]).includes(id)
 export const EXTRA_OPTION_IDS = [
   'user-accounts',
   'member-roles',
@@ -19,7 +23,9 @@ export const EXTRA_OPTION_IDS = [
   'extra-pages',
   'additional-language',
   'custom-3d',
+  'extra-scene-3d',
   'hosting-monthly',
+  'serenity-monthly',
   'backups-monthly',
 ] as const
 export type ExtraOptionId = (typeof EXTRA_OPTION_IDS)[number]
@@ -54,13 +60,18 @@ export type Quote = {
     key: string
     label: string
     amountCents: number | null
+    maximumCents?: number | null
+    estimated?: boolean
     included: boolean
     billing: 'once' | 'monthly'
   }[]
   totalCents: number | null
+  /** Absent on historical snapshots; null means no approved upper estimate. */
+  maximumTotalCents?: number | null
   monthlyTotalCents: number | null
   checkoutReady: boolean
   requiresQuote: boolean
+  estimated: boolean
 }
 
 export const offers = [
@@ -70,29 +81,29 @@ export const offers = [
     title: 'Vitrine',
     headline: 'Votre activité, en ligne.',
     description:
-      'Présentez vos services, vos réalisations et vos coordonnées sur un site à votre image.',
-    features: ['Design adapté à votre activité', 'Version ordinateur', 'Formulaire de contact'],
+      'Pour les indépendants qui veulent une présence en ligne claire et professionnelle.',
+    features: ['1 à 3 pages sur un template', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
   },
   {
     id: 'connecte',
     slug: 'connecte',
-    title: 'Connecté',
-    headline: 'Un site avec des utilisateurs.',
+    title: 'Business',
+    headline: 'Un site plus complet pour votre activité.',
     description:
-      'Proposez des comptes à vos visiteurs et gérez vos contenus. Ajoutez les fonctions utiles à votre activité.',
-    features: ['Comptes utilisateurs', 'Contenus modifiables', 'Ordinateur et mobile'],
-    exampleId: 'cal-com',
+      'Notre offre principale pour les professionnels : présentez votre activité et facilitez les prises de contact.',
+    features: ['Jusqu’à 6 pages personnalisées et modifiables', 'Formulaire avancé et réservation', 'SEO local, galerie et statistiques'],
+    exampleId: 'lactel',
     variant: 'connecte',
   },
   {
     id: 'immersif',
     slug: 'immersif-3d',
-    title: 'Immersif 3D',
-    headline: 'Votre univers prend vie.',
-    description: 'Présentez votre activité avec un élément 3D interactif intégré à votre site.',
-    features: ['Élément 3D interactif', 'Interactions soignées', 'Ordinateur et mobile'],
+    title: 'Premium / 3D',
+    headline: 'Une présence visuelle distinctive.',
+    description: 'Pour les projets qui demandent une direction artistique personnalisée et une expérience visuelle singulière.',
+    features: ['Direction artistique personnalisée', 'Animations et interactions avancées', '3D si pertinente, performances soignées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -108,6 +119,8 @@ export const offers = [
     variant: 'custom',
   },
 ] as const
+/** The fourth definition remains available to historical private dossiers only. */
+export const publicOffers = offers.filter((offer) => isPublicOffer(offer.id))
 export function getOffer(idOrSlug: unknown) {
   return offers.find((offer) => offer.id === idOrSlug || offer.slug === idOrSlug)
 }
@@ -143,8 +156,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'lactel',
     title: 'Lactel',
-    category: 'Vitrine',
-    offerId: 'vitrine',
+    category: 'Business',
+    offerId: 'connecte',
     image: '/assets/examples/lactel.webp',
     url: 'https://www.lactel.fr/',
     sourceUrl: 'https://raphael-ferreira.com/',
@@ -155,8 +168,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'julie-thiam',
     title: 'Julie Thiam',
-    category: 'Sur mesure',
-    offerId: 'sur-mesure',
+    category: 'Premium / 3D',
+    offerId: 'immersif',
     image: '/assets/examples/julie-thiam.webp',
     url: 'https://juliethiam.art/',
     sourceUrl: 'https://juliethiam.art/',
@@ -165,21 +178,9 @@ export const examples: readonly SiteExample[] = [
     embeddable: false,
   },
   {
-    id: 'cal-com',
-    title: 'Cal.com',
-    category: 'Connecté',
-    offerId: 'connecte',
-    image: '/assets/examples/cal-com.jpg',
-    url: 'https://cal.com/fr/',
-    sourceUrl: 'https://cal.com/fr/',
-    creator: 'Cal.com',
-    description: 'Connexion à un compte et réservation de créneaux en ligne.',
-    embeddable: false,
-  },
-  {
     id: 'tiny-heaven',
     title: 'Tiny Heaven',
-    category: '3D',
+    category: 'Premium / 3D',
     offerId: 'immersif',
     image: '/assets/examples/tiny-heaven.webp',
     url: 'https://tiny.raphael-ferreira.com/',
@@ -191,8 +192,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'addiction-agency',
     title: 'Addiction Agency',
-    category: 'Sur mesure',
-    offerId: 'sur-mesure',
+    category: 'Premium / 3D',
+    offerId: 'immersif',
     image: '/assets/examples/addiction-agency.webp',
     url: 'https://addiction-agency.com/agence',
     sourceUrl: 'https://addiction-agency.com/',
@@ -203,8 +204,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'geoboss',
     title: 'GeoBoss',
-    category: 'Connecté',
-    offerId: 'connecte',
+    category: 'Premium / 3D',
+    offerId: 'immersif',
     image: '/assets/examples/geoboss.webp',
     url: 'https://geoboss.onrender.com/',
     sourceUrl: 'https://raphael-ferreira.com/',
@@ -215,8 +216,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'aema',
     title: 'Aéma Groupe',
-    category: 'Vitrine',
-    offerId: 'vitrine',
+    category: 'Business',
+    offerId: 'connecte',
     image: '/assets/examples/aema.webp',
     url: 'https://www.aemagroupe.fr/',
     sourceUrl: 'https://raphael-ferreira.com/',
@@ -228,7 +229,7 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'satellite-story',
     title: 'Satellite Story',
-    category: '3D',
+    category: 'Premium / 3D',
     offerId: 'immersif',
     image: '/assets/examples/satellite.webp',
     url: 'https://satellite.raphael-ferreira.com/',
@@ -240,7 +241,7 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'atlante-3d',
     title: 'Atlante 3D',
-    category: '3D',
+    category: 'Premium / 3D',
     offerId: 'immersif',
     image: '/assets/examples/atlante.webp',
     url: 'https://github.com/rqphy/Atlante3d#readme',
@@ -254,64 +255,100 @@ export const examples: readonly SiteExample[] = [
 
 export const faqs = [
   {
-    question: 'Quels frais dois-je prévoir après la création du site ?',
+    question: "Quels frais dois-je prévoir après la création du site ?",
     answer:
-      'Le configurateur distingue la création et les options ponctuelles des services mensuels que vous choisissez : hébergement géré et maintenance. Les sauvegardes et les conditions de restauration sont précisées dans le suivi retenu. La mise en ligne est une prestation ponctuelle. Le domaine et les éventuels abonnements à des outils externes sont précisés avant le démarrage.',
-    category: 'Budget et suivi',
+      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Le nom de domaine, les éventuels abonnements aux outils de réservation ou d’envoi d’e-mails et les frais du prestataire de paiement sont séparés. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
+    category: "Budget et suivi",
   },
   {
-    question: 'Qui prépare les textes et les photos ?',
+    question: "Qui prépare les textes et les photos ?",
     answer:
-      'Préparez vos coordonnées, les textes de vos pages et les images que vous souhaitez utiliser, ainsi que votre logo si vous en avez un. Une aide à la rédaction est proposée dans le configurateur. La reprise des contenus d’un ancien site est précisée avec le projet.',
-    category: 'Contenus',
+      "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Si vous avez déjà un site, l’option de reprise couvre jusqu’à cinq pages et quinze médias ; la réécriture et la création de nouveaux contenus restent distinctes.",
+    category: "Contenus",
   },
   {
-    question: 'Pourrai-je modifier mes textes et mes photos après la livraison ?',
+    question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
-      'Connecté comprend une interface pour modifier vos textes et vos images. Cette gestion peut être ajoutée aux autres forfaits. Pour ajouter de nouvelles pages ou fonctionnalités, nous définissons une intervention selon votre besoin.',
-    category: 'Après la livraison',
+      "Business et Premium / 3D comprennent une interface de gestion des textes et images. Pour Vitrine, l’option « Modifier mes contenus » couvre jusqu’à cinq pages. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Modifier un contenu existant se distingue d’ajouter une page, de changer la structure ou de développer une nouvelle fonction : ces interventions sont précisées selon votre besoin.",
+    category: "Après la livraison",
   },
   {
-    question: 'Puis-je garder mon nom de domaine et mon hébergement ?',
+    question: "Puis-je garder mon nom de domaine et mon hébergement ?",
     answer:
-      'Indiquez votre domaine et votre hébergement dans votre demande. Nous vérifions ce qui peut être conservé, la compatibilité avec le projet et les changements nécessaires avant la mise en ligne.',
-    category: 'Mise en ligne',
+      "Oui, lorsque les services existants sont compatibles avec le nouveau site. Indiquez le nom de domaine et l’hébergeur dans votre message : nous vérifions ce qui peut être conservé et les éventuels changements nécessaires. Le domaine, l’hébergement et les adresses e-mail peuvent relever de services différents ; précisez aussi si vous utilisez une messagerie professionnelle liée à ce domaine. Aucun mot de passe n’est à envoyer dans le formulaire.",
+    category: "Mise en ligne",
   },
   {
-    question: 'Le site sera-t-il adapté aux téléphones et tablettes ?',
+    question: "Le site sera-t-il adapté aux téléphones et tablettes ?",
     answer:
-      'L’adaptation mobile et tablette est comprise dans Connecté et Immersif 3D. Vitrine est prévu pour ordinateur à la base ; cette adaptation se choisit dans le configurateur. Pour Sur mesure, les formats sont définis avec le projet.',
-    category: 'Fonctionnement du site',
+      "Oui. Vitrine, Business et Premium / 3D comprennent une mise en page adaptée aux téléphones, aux tablettes et aux ordinateurs. Les contenus et les interactions sont ajustés aux petits écrans ; une animation ou une scène 3D doit aussi rester pertinente et utilisable sur mobile.",
+    category: "Fonctionnement du site",
   },
   {
-    question: 'J’ai déjà un site : faut-il tout refaire ?',
+    question: "J’ai déjà un site : peut-on reprendre mes contenus ?",
     answer:
-      'Évolution permet d’ajouter des pages ou des fonctionnalités. Refonte sert à repenser le design et la structure du site. Ces deux prestations sont sur devis, après examen de l’existant et des éléments qui peuvent être conservés.',
-    category: 'Site existant',
+      "Indiquez l’adresse de votre site et les textes, images ou rubriques à conserver. Nous examinons ce qui peut être réutilisé dans le nouveau projet. L’option de reprise concerne jusqu’à cinq pages et quinze médias ; elle ne comprend pas la réécriture ni la création de nouvelles pages. La compatibilité technique et le volume à reprendre sont confirmés avant le démarrage.",
+    category: "Site existant",
   },
   {
-    question: 'Quand mon site pourra-t-il être mis en ligne ?',
+    question: "Quand mon site pourra-t-il être mis en ligne ?",
     answer:
-      'Le calendrier dépend des fonctionnalités choisies et des contenus disponibles. Nous confirmons une date de livraison après avoir étudié votre demande, avant de commencer le projet.',
-    category: 'Création et livraison',
+      "Le calendrier dépend du nombre de pages, des fonctions choisies, des intégrations et de la disponibilité de vos contenus. Une date souhaitée ou un événement peut être indiqué dans votre message. Nous confirmons le planning après l’étude de votre demande et du périmètre, avant de commencer. Un changement important de contenu ou de fonctionnalités peut nécessiter de revoir ce planning avec vous.",
+    category: "Création et livraison",
   },
   {
-    question: 'Le référencement Google est-il compris ?',
+    question: "Le référencement Google est-il compris ?",
     answer:
-      'Une option Référencement local est disponible dans le configurateur. Elle prévoit des pages et des informations structurées pour votre zone d’activité. Les actions à réaliser sont précisées avec le projet ; aucune position sur Google ni aucun nombre de ventes n’est promis.',
-    category: 'Visibilité',
+      "Les trois forfaits comprennent les bases du référencement technique. Business comprend aussi les bases du référencement local. Cela prépare le site à être compris par les moteurs de recherche, mais ne garantit ni une position, ni un volume de visites ou de ventes. La visibilité dépend aussi des contenus, de la concurrence et du travail réalisé dans le temps ; les actions prévues sont précisées avec votre projet.",
+    category: "Visibilité",
   },
   {
-    question: 'Comment savoir quel forfait choisir ?',
+    question: "Comment savoir quel forfait choisir ?",
     answer:
-      'Choisissez celui qui vous semble le plus proche de votre projet et décrivez votre besoin dans votre demande. Nos développeurs vous guideront pour confirmer le forfait et les options adaptés.',
-    category: 'Choix du forfait',
+      "Vitrine convient à une présentation de votre activité en une à trois pages. Business permet un site plus complet, jusqu’à six pages, avec notamment réservation, formulaire avancé et statistiques. Premium / 3D s’adresse à un besoin de direction artistique, d’animations ou d’interactions particulières. Choisissez le forfait qui semble correspondre à votre projet : nos développeurs vérifient ensuite le besoin et les options avec vous.",
+    category: "Choix du forfait",
   },
   {
-    question: 'Et si je choisis le mauvais forfait ?',
+    question: "Et si je choisis le mauvais forfait ?",
     answer:
-      'Notre équipe étudie votre demande avant de démarrer. Si un autre forfait correspond mieux à votre besoin, nous vous réorientons et ajustons la configuration avec vous.',
-    category: 'Choix du forfait',
+      "Votre sélection sert de point de départ à l’échange. Notre équipe étudie votre demande avant le démarrage et vous propose un autre forfait si son périmètre est plus adapté. Le choix et les options sont confirmés avec vous. Envoyer le formulaire ne déclenche aucun paiement.",
+    category: "Choix du forfait",
+  },
+  {
+    question: "Quelle différence entre Hébergement, Maintenance et Sérénité ?",
+    answer:
+      "Hébergement à 19 €/mois couvre l’hébergement, le certificat SSL et la surveillance de disponibilité. Maintenance à 39 €/mois ajoute les mises à jour, les sauvegardes et de petites modifications de contenus existants, dont le périmètre est précisé avant activation. Les nouvelles pages et fonctionnalités sont chiffrées séparément. Sérénité à 69 €/mois comprend Maintenance, une heure de modifications par mois et un support prioritaire. Les demandes au-delà de cette heure sont chiffrées séparément.",
+    category: "Budget et suivi",
+  },
+  {
+    question: "Peut-on intégrer Doctolib ou mon outil de réservation ?",
+    answer:
+      "Business comprend l’intégration de Doctolib ou d’un outil de réservation compatible. Nous vérifions la solution utilisée et les possibilités qu’elle autorise avant de définir son intégration au site. Un abonnement éventuel à ce service reste à votre charge. Une réservation développée spécialement, ou une connexion à une API particulière, demande une étude distincte.",
+    category: "Fonctionnalités",
+  },
+  {
+    question: "Puis-je proposer mon site dans une autre langue ?",
+    answer:
+      "Oui. L’option à 100 € ajoute une langue supplémentaire pour cinq pages maximum, navigation comprise. Vous fournissez les traductions ; la rédaction et la traduction ne sont pas comprises. Indiquez la langue et les pages concernées dans votre message. Un volume plus important ou plusieurs langues nécessitent de confirmer le périmètre et le prix.",
+    category: "Contenus",
+  },
+  {
+    question: "Ai-je besoin de liens de paiement ou d’une boutique ?",
+    answer:
+      "Les liens de paiement à 100 € conviennent pour encaisser une prestation ou un produit, avec un prestataire et jusqu’à trois liens, sans panier. La boutique à 600–1 100 € ajoute un catalogue, un panier, le paiement et la gestion de dix produits simples. Les frais du prestataire de paiement restent séparés. Les règles de livraison et de taxes à configurer sont précisées avant le démarrage.",
+    category: "Fonctionnalités",
+  },
+  {
+    question: "La 3D est-elle indispensable dans Premium / 3D ?",
+    answer:
+      "Non. Premium / 3D repose d’abord sur une direction artistique et des interactions adaptées à votre projet. Three.js ou WebGL sont utilisés lorsque la 3D apporte un intérêt réel à la présentation. Le modèle à intégrer est fourni ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
+    category: "Design et 3D",
+  },
+  {
+    question: "Que se passe-t-il après l’envoi de ma demande ?",
+    answer:
+      "Votre forfait, vos options et votre message sont enregistrés ensemble. Nous étudions le besoin, les contenus disponibles et les contraintes pour préciser le périmètre, le prix et le calendrier avec vous. Vous pouvez aussi utiliser Nous contacter si vous n’avez pas encore choisi de forfait. Le formulaire sert à préparer cet échange : il ne lance ni le développement ni un paiement automatique.",
+    category: "Création et livraison",
   },
 ]
 
@@ -333,15 +370,22 @@ export const optionDefinitions = [
   },
   {
     id: 'language-en',
-    title: 'Français + anglais',
-    description: 'Une version du site dans chaque langue. Textes fournis par vos soins.',
+    title: 'Ajouter une version anglaise',
+    description: 'Une version anglaise pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traductions ; rédaction et traduction ne sont pas incluses.',
+    billing: 'once',
+    group: 'essentials',
+  },
+  {
+    id: 'additional-language',
+    title: 'Langue supplémentaire',
+    description: 'Une langue supplémentaire pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traductions ; précisez la langue dans votre message ou lors de notre échange. Rédaction et traduction ne sont pas incluses.',
     billing: 'once',
     group: 'essentials',
   },
   {
     id: 'managed-content',
-    title: 'Gestion des textes et images',
-    description: 'Modifiez vos contenus après la livraison depuis une interface dédiée.',
+    title: 'Modifier mes contenus',
+    description: 'Une interface simple pour modifier les textes et images de 5 pages maximum. Pour Vitrine ; déjà comprise dans Business et Premium / 3D. La gestion des articles du blog reste comprise dans l’option Blog.',
     billing: 'once',
     group: 'essentials',
   },
@@ -354,8 +398,8 @@ export const optionDefinitions = [
   },
   {
     id: 'user-accounts',
-    title: 'Comptes utilisateurs',
-    description: 'Inscription, connexion et espace personnel sur votre futur site.',
+    title: 'Espace membres',
+    description: 'Inscription, connexion et profil simple avec un mécanisme d’authentification. Rôles complexes, abonnements et espace métier exclus ; périmètre confirmé avant devis.',
     billing: 'once',
     group: 'features',
   },
@@ -383,17 +427,15 @@ export const optionDefinitions = [
   },
   {
     id: 'online-payment',
-    title: 'Paiement en ligne',
-    description:
-      'Un paiement sécurisé via un prestataire. Frais du prestataire à prévoir séparément.',
+    title: 'Liens de paiement',
+    description: 'Un prestataire de paiement et jusqu’à 3 liens pour encaisser une prestation ou un produit, sans panier. Déjà compris si vous choisissez la boutique ; frais du prestataire séparés.',
     billing: 'once',
     group: 'features',
   },
   {
     id: 'online-store',
-    title: 'Boutique en ligne',
-    description:
-      'Catalogue, panier et paiement réunis. Produits et livraison à préciser ; frais du prestataire de paiement séparés.',
+    title: 'Boutique avec panier et paiement',
+    description: 'Une boutique native avec catalogue, panier, paiement et gestion de 10 produits simples. Les liens de paiement et la gestion des produits ne sont pas facturés une seconde fois. Livraison, taxes et frais du prestataire à préciser.',
     billing: 'once',
     group: 'features',
   },
@@ -406,8 +448,8 @@ export const optionDefinitions = [
   },
   {
     id: 'blog',
-    title: 'Blog et actualités',
-    description: 'Publiez vos articles dans une rubrique dédiée.',
+    title: 'Blog prêt à publier',
+    description: 'Une rubrique avec une interface pour publier vos articles et l’intégration de 3 articles fournis. La gestion du blog est incluse ; l’option Modifier mes contenus concerne les autres pages du site.',
     billing: 'once',
     group: 'content',
   },
@@ -420,16 +462,8 @@ export const optionDefinitions = [
   },
   {
     id: 'extra-pages',
-    title: 'Pages supplémentaires',
-    description: 'Développez vos services ou vos rubriques. Nombre à préciser ensemble.',
-    billing: 'once',
-    group: 'content',
-  },
-  {
-    id: 'additional-language',
-    title: 'Une autre langue',
-    description:
-      'Une version dans une langue autre que l’anglais. Langue, pages et traduction à préciser.',
+    title: 'Ajouter une page',
+    description: 'Une page supplémentaire construite sur un modèle existant, avec vos textes et images. Prix par page ; nombre de pages à confirmer dans la demande.',
     billing: 'once',
     group: 'content',
   },
@@ -442,15 +476,22 @@ export const optionDefinitions = [
   },
   {
     id: 'content-import',
-    title: 'Reprise de contenus existants',
-    description: 'Transférez les textes et médias de votre ancien site. Volume à définir.',
+    title: 'Reprendre mon ancien contenu',
+    description: 'Reprise de 5 pages et 15 médias maximum depuis votre site existant, avec vos droits d’utilisation. Nettoyage et réintégration simples ; réécriture et création de nouvelles pages exclues.',
     billing: 'once',
     group: 'content',
   },
   {
     id: 'custom-3d',
-    title: 'Création d’un modèle 3D',
-    description: 'Un modèle réalisé pour votre projet. Complexité à préciser ensemble.',
+    title: 'Créer mon modèle 3D',
+    description: 'Création d’un objet 3D simple avec une révision. Le modèle et son intégration sont deux prestations distinctes : la première intégration est comprise dans Premium / 3D. Pour Vitrine et Business, l’intégration se choisit séparément avec Ajouter un élément 3D, de 250 à 600 €. Aucune intégration payante n’est ajoutée automatiquement.',
+    billing: 'once',
+    group: 'content',
+  },
+  {
+    id: 'extra-scene-3d',
+    title: 'Ajouter un élément 3D',
+    description: 'Intégration d’un modèle fourni sur une page, avec interactions simples et optimisation. Dans Premium / 3D, cette option ajoute un élément au-delà de la première intégration. Si vous ne disposez pas du modèle, sa création est une option distincte.',
     billing: 'once',
     group: 'content',
   },
@@ -463,15 +504,15 @@ export const optionDefinitions = [
   },
   {
     id: 'analytics',
-    title: 'Statistiques de visites',
-    description: 'Installation d’un outil pour suivre les visites et les actions utiles. Abonnement éventuel à prévoir.',
+    title: 'Suivre mes visites',
+    description: 'Configuration des statistiques d’un site : visites et un événement utile, avec réglages adaptés à l’outil retenu. Déjà compris dans Business ; abonnement éventuel de l’outil séparé.',
     billing: 'once',
     group: 'visibility',
   },
   {
     id: 'newsletter',
-    title: 'Inscription à la newsletter',
-    description: 'Reliez un formulaire à votre outil d’envoi d’e-mails. Abonnement et rédaction des campagnes séparés.',
+    title: 'Collecter les inscriptions e-mail',
+    description: 'Un formulaire de 2 champs relié à une liste de votre outil d’envoi, avec confirmation adaptée. Abonnement de l’outil, création des campagnes et envoi des e-mails exclus.',
     billing: 'once',
     group: 'visibility',
   },
@@ -491,16 +532,23 @@ export const optionDefinitions = [
     group: 'launch',
   },
   {
-    id: 'maintenance-monthly',
-    title: 'Maintenance du site',
-    description: 'Suivi technique et mises à jour. Interventions et conditions de sauvegarde à définir avant activation.',
+    id: 'hosting-monthly',
+    title: 'Hébergement',
+    description: 'Hébergement du site, certificat SSL et surveillance de sa disponibilité. Nom de domaine et abonnements aux outils externes séparés.',
     billing: 'monthly',
     group: 'launch',
   },
   {
-    id: 'hosting-monthly',
-    title: 'Hébergement géré',
-    description: 'Hébergement du site et suivi de sa disponibilité. Ressources à définir.',
+    id: 'maintenance-monthly',
+    title: 'Maintenance',
+    description: 'Hébergement, mises à jour, sauvegardes et petites modifications de contenus existants. Périmètre défini avant activation ; nouvelles pages et fonctionnalités chiffrées séparément.',
+    billing: 'monthly',
+    group: 'launch',
+  },
+  {
+    id: 'serenity-monthly',
+    title: 'Sérénité',
+    description: 'Tous les services de Maintenance, plus 1 heure de modifications par mois et un support prioritaire. Les demandes dépassant cette heure sont chiffrées séparément.',
     billing: 'monthly',
     group: 'launch',
   },
@@ -519,13 +567,42 @@ export const optionDefinitions = [
   group: OptionGroupId
 }[]
 
+/** Minimums for scoped options; their displayed ranges never become a fixed quote. */
+export const OPTION_PRICE_RANGES: Partial<Record<OptionId, { min: number; max?: number }>> = {
+  'user-accounts': { min: 30_000, max: 60_000 },
+  'online-store': { min: 60_000, max: 110_000 },
+  'extra-pages': { min: 6_000, max: 12_000 },
+  'content-import': { min: 10_000, max: 25_000 },
+  'custom-3d': { min: 15_000 },
+  'extra-scene-3d': { min: 25_000, max: 60_000 },
+  newsletter: { min: 9_000 },
+}
+
+export const MONTHLY_PLAN_IDS = ['hosting-monthly', 'maintenance-monthly', 'serenity-monthly'] as const
+
 export const defaultPricing: Pricing = {
-  version: 'draft-v2',
+  version: 'public-2026-11-06',
   currency: 'EUR',
-  base: { vitrine: null, connecte: null, immersif: null, 'sur-mesure': null },
-  options: Object.fromEntries(
-    optionDefinitions.map((option) => [option.id, null]),
-  ) as Pricing['options'],
+  base: { vitrine: 89_000, connecte: 149_000, immersif: 249_900, 'sur-mesure': null },
+  options: {
+    ...Object.fromEntries(optionDefinitions.map((option) => [option.id, null])),
+    'language-en': 10_000,
+    'additional-language': 10_000,
+    'managed-content': 30_000,
+    'user-accounts': 30_000,
+    'online-payment': 10_000,
+    'online-store': 60_000,
+    blog: 15_000,
+    'extra-pages': 6_000,
+    'content-import': 10_000,
+    'custom-3d': 15_000,
+    'extra-scene-3d': 25_000,
+    analytics: 6_000,
+    newsletter: 9_000,
+    'hosting-monthly': 1_900,
+    'maintenance-monthly': 3_900,
+    'serenity-monthly': 6_900,
+  } as Pricing['options'],
 }
 
 export function normalizeConfiguration(input: unknown): Configuration {
@@ -551,31 +628,39 @@ export function normalizeConfiguration(input: unknown): Configuration {
   )
     throw new Error('Vérifiez les fonctionnalités choisies.')
   const extras = new Set((value.extras ?? []) as ExtraOptionId[])
-  if (offer.id === 'connecte') extras.add('user-accounts')
+  if (offer.id === 'connecte') {
+    for (const id of ['booking', 'advanced-forms', 'portfolio-gallery', 'analytics', 'local-seo'] as const)
+      extras.add(id)
+  }
   if (extras.has('member-roles')) extras.add('user-accounts')
   // A shop already covers the standalone catalogue and checkout; never charge both.
   if (extras.has('online-store')) {
     extras.delete('product-catalog')
     extras.delete('online-payment')
   }
+  // A recurring plan replaces the smaller plans; never add their monthly fees.
+  const serenity = extras.has('serenity-monthly')
+  const maintenance = !serenity && value.maintenance === true
+  if (serenity || maintenance) extras.delete('hosting-monthly')
   return {
     offerId: offer.id,
     language,
-    mobile: offer.id === 'connecte' || offer.id === 'immersif' || value.mobile === true,
-    managedContent: offer.id === 'connecte' || value.managedContent === true,
+    mobile: isPublicOffer(offer.id) || value.mobile === true,
+    managedContent: offer.id === 'connecte' || offer.id === 'immersif' || value.managedContent === true,
     scene3d: offer.id === 'immersif' || value.scene3d === true,
-    deployment: value.deployment === true,
-    maintenance: value.maintenance === true,
+    deployment: isPublicOffer(offer.id) || value.deployment === true,
+    maintenance,
     extras: EXTRA_OPTION_IDS.filter((id) => extras.has(id)),
   }
 }
 
 export function isOptionIncluded(configuration: Configuration, id: OptionId): boolean {
   return (
-    (id === 'mobile' &&
+    ((id === 'mobile' || id === 'deployment') && isPublicOffer(configuration.offerId)) ||
+    (id === 'managed-content' &&
       (configuration.offerId === 'connecte' || configuration.offerId === 'immersif')) ||
-    ((id === 'managed-content' || id === 'user-accounts') &&
-      configuration.offerId === 'connecte') ||
+    (configuration.offerId === 'connecte' &&
+      (['booking', 'advanced-forms', 'portfolio-gallery', 'analytics', 'local-seo'] as OptionId[]).includes(id)) ||
     (id === 'scene-3d' && configuration.offerId === 'immersif') ||
     ((id === 'product-catalog' || id === 'online-payment') &&
       configuration.extras.includes('online-store'))
@@ -604,7 +689,11 @@ export function withOption(
   id: OptionId,
   selected: boolean,
 ): Configuration {
-  const value = { ...configuration }
+  const value = { ...configuration, extras: [...configuration.extras] }
+  if (selected && (MONTHLY_PLAN_IDS as readonly OptionId[]).includes(id)) {
+    value.maintenance = false
+    value.extras = value.extras.filter(key => key !== 'hosting-monthly' && key !== 'serenity-monthly')
+  }
   switch (id) {
     case 'language-en':
       value.language = selected ? 'fr-en' : 'fr'
@@ -645,6 +734,8 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
       key: 'base',
       label: offer.title,
       amountCents: amount(pricing.base?.[config.offerId]),
+      maximumCents: amount(pricing.base?.[config.offerId]),
+      estimated: false,
       included: false,
       billing: 'once',
     },
@@ -652,30 +743,84 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
   for (const option of optionDefinitions) {
     if (!isOptionSelected(config, option.id)) continue
     const included = isOptionIncluded(config, option.id)
+    const minimum = included ? 0 : amount(pricing.options?.[option.id])
+    const range = included ? undefined : OPTION_PRICE_RANGES[option.id]
+    // Published upper bounds apply to their approved EUR minimums only. An
+    // independently configured admin price must not inherit an invented cap.
+    const maximum = range
+      ? minimum === range.min && pricing.currency === 'EUR' ? range.max ?? null : null
+      : minimum
     lines.push({
       key: option.id,
       label: option.title,
-      amountCents: included ? 0 : amount(pricing.options?.[option.id]),
+      amountCents: minimum,
+      maximumCents: maximum,
+      estimated: Boolean(range),
       included,
       billing: option.billing,
     })
   }
-  const requiresQuote = config.offerId === 'sur-mesure'
+  const estimated = lines.some(line => line.estimated)
+  const requiresQuote = config.offerId === 'sur-mesure' || estimated
   const sum = (items: Quote['lines']) =>
     items.some((line) => line.amountCents === null)
       ? null
       : items.reduce((total, line) => total + (line.amountCents ?? 0), 0)
-  const totalCents = requiresQuote ? null : sum(lines.filter((line) => line.billing === 'once'))
+  const totalCents = config.offerId === 'sur-mesure' ? null : sum(lines.filter((line) => line.billing === 'once'))
+  const once = lines.filter(line => line.billing === 'once')
+  const maximumTotalCents = config.offerId === 'sur-mesure' || once.some(line => line.maximumCents == null)
+    ? null
+    : once.reduce((total, line) => total + (line.maximumCents ?? 0), 0)
   const monthlyTotalCents = sum(lines.filter((line) => line.billing === 'monthly'))
   return {
     currency: pricing.currency || 'EUR',
     version: pricing.version || 'draft-v2',
     lines,
     totalCents,
+    maximumTotalCents,
     monthlyTotalCents,
     checkoutReady: !requiresQuote && totalCents !== null && monthlyTotalCents !== null,
     requiresQuote,
+    estimated,
   }
+}
+
+function formatEstimate(minimum: number | null, maximum: number | null | undefined, estimated: boolean | undefined, currency: string) {
+  if (minimum === null) return 'À préciser'
+  if (typeof maximum === 'number' && maximum > minimum)
+    return `${formatMoney(minimum, currency)}–${formatMoney(maximum, currency)}`
+  return `${estimated && maximum !== minimum ? 'À partir de ' : ''}${formatMoney(minimum, currency)}`
+}
+
+/** Read the saved bounds only; never reconstruct historical estimates from today's catalogue. */
+export function formatQuoteTotal(quote: Pick<Quote, 'totalCents' | 'currency'> & Partial<Quote>): string {
+  if (quote.totalCents === null && quote.requiresQuote) return 'Sur devis'
+  return formatEstimate(quote.totalCents, quote.maximumTotalCents, quote.estimated, quote.currency)
+}
+
+export function formatQuoteLine(line: Pick<Quote['lines'][number], 'amountCents' | 'maximumCents' | 'estimated'>, currency = 'EUR'): string {
+  return formatEstimate(line.amountCents, line.maximumCents, line.estimated, currency)
+}
+
+export function quoteEstimateNotice(quote: Pick<Quote, 'estimated' | 'maximumTotalCents'>): string {
+  return quote.maximumTotalCents == null
+    ? 'Estimation minimale : certaines options n’ont pas de plafond défini. Le montant dépend du périmètre et sera confirmé sur devis.'
+    : 'Fourchette indicative selon le périmètre des options. Le montant sera confirmé sur devis.'
+}
+
+/** Show the approved range, and a minimum when a future admin tariff differs. */
+export function formatOptionPrice(id: OptionId, pricing: Pricing = defaultPricing): string {
+  const amount = pricing.options[id]
+  const range = OPTION_PRICE_RANGES[id]
+  const option = optionDefinitions.find(item => item.id === id)!
+  const suffix = option.billing === 'monthly' ? ' / mois' : ''
+  if (amount == null) return 'Sur devis'
+  if (range) {
+    if (range.max !== undefined && amount === range.min && pricing.currency === 'EUR')
+      return `${formatMoney(amount, pricing.currency)}–${formatMoney(range.max, pricing.currency)}`
+    return `À partir de ${formatMoney(amount, pricing.currency)}`
+  }
+  return `${formatMoney(amount, pricing.currency)}${suffix}`
 }
 export function formatMoney(amountCents: number | null | undefined, currency = 'EUR'): string {
   if (amountCents == null) return currency === 'EUR' ? '… €' : `… ${currency}`

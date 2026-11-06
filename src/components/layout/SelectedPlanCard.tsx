@@ -1,12 +1,11 @@
 import { useLayoutEffect, useRef, type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
-import { offers, type OfferId } from '../../../shared/catalog'
+import { offers, publicOffers, type OfferId } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import './project.css'
@@ -77,7 +76,7 @@ export function SelectedPlanCard({
               className="public-offers-menu selected-plan-menu"
               aria-label="Changer de forfait"
             >
-              {offers.map((item) => {
+              {publicOffers.map((item) => {
                 const className = `public-offer-link pricing-card--${item.variant}`
                 const current = item.id === plan.id ? 'page' : undefined
                 const label = (
@@ -104,19 +103,6 @@ export function SelectedPlanCard({
                   </DropdownMenuItem>
                 )
               })}
-              <DropdownMenuSeparator />
-              {existingSiteOffers.map((item) => (
-                <DropdownMenuItem
-                  key={item.id}
-                  asChild
-                  className={`public-offer-link pricing-card--${item.id}`}
-                >
-                  <Link to={item.href} viewTransition={canAnimatePlanNavigation()} aria-current={item.id === plan.id ? 'page' : undefined}>
-                    {item.title}
-                    {item.id === plan.id ? <Check size={16} aria-hidden="true" /> : null}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

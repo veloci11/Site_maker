@@ -1,8 +1,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
-import { offers } from '../../../shared/catalog'
-import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
+import { publicOffers } from '../../../shared/catalog'
 import {
   Sheet,
   SheetContent,
@@ -15,7 +14,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { cn } from '../../lib/utils'
@@ -23,7 +21,7 @@ import { PageTransition } from './motion'
 import { AmbientGrain } from './AmbientGrain'
 import { MotionLink as Link, MotionNavLink as NavLink, canAnimatePlanNavigation } from './plan-transition'
 
-const offerLinks = offers.map((offer) => ({
+const offerLinks = publicOffers.map((offer) => ({
   title: offer.title,
   href: `/forfaits/${offer.slug}`,
   variant: offer.variant,
@@ -42,11 +40,7 @@ export function PublicHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [offersOpen, setOffersOpen] = useState(false)
-  const activeExistingSiteOffer =
-    location.pathname === '/contact'
-      ? getExistingSiteOffer(new URLSearchParams(location.search).get('besoin'))
-      : undefined
-  const offerActive = location.pathname.startsWith('/forfaits') || !!activeExistingSiteOffer
+  const offerActive = location.pathname.startsWith('/forfaits')
 
   useEffect(() => {
     setMobileOpen(false)
@@ -86,20 +80,6 @@ export function PublicHeader() {
                     viewTransition={canAnimatePlanNavigation()}
                     className={`public-offer-link pricing-card--${offer.variant}`}
                     aria-current={location.pathname === offer.href ? 'page' : undefined}
-                  >
-                    {offer.title}
-                    <ArrowRight size={14} aria-hidden="true" />
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-              <DropdownMenuSeparator />
-              {existingSiteOffers.map((offer) => (
-                <DropdownMenuItem key={offer.id} asChild>
-                  <Link
-                    to={offer.href}
-                    viewTransition={canAnimatePlanNavigation()}
-                    className={`public-offer-link pricing-card--${offer.id}`}
-                    aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
                   >
                     {offer.title}
                     <ArrowRight size={14} aria-hidden="true" />
@@ -151,22 +131,6 @@ export function PublicHeader() {
                         {offer.title}
                         <ArrowRight size={16} aria-hidden="true" />
                       </NavLink>
-                    ))}
-                    {existingSiteOffers.map((offer, index) => (
-                      <Link
-                        key={offer.id}
-                        to={offer.href}
-                        viewTransition={canAnimatePlanNavigation()}
-                        className={cn(
-                          'mobile-offer-link',
-                          index === 0 && 'mobile-offer-link--refit',
-                          activeExistingSiteOffer?.id === offer.id && 'is-active',
-                        )}
-                        aria-current={activeExistingSiteOffer?.id === offer.id ? 'page' : undefined}
-                      >
-                        {offer.title}
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </Link>
                     ))}
                   </div>
                 </details>

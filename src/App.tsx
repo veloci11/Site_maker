@@ -37,7 +37,19 @@ const configuratorModule = () => import('./pages/configurator/index')
 const Configurator = page(configuratorModule, 'ConfiguratorPage')
 // Resolve these route modules before committing, so the transition captures the
 // real card and options on the first visit rather than a Suspense fallback.
-const loadForfait = async () => ({ Component: (await configuratorModule()).ForfaitConfiguratorPage })
+const loadForfait = async () => {
+  const { ForfaitConfiguratorPage } = await configuratorModule()
+  return { Component: function ForfaitRoute() {
+    const { slug } = useParams()
+    const location = useLocation()
+    const params = new URLSearchParams(location.search)
+    // Existing private projects keep their original offer and saved configuration.
+    if (slug === 'sur-mesure' && !params.has('projet') && !params.has('projectId')) {
+      return <Navigate to={`/forfaits/immersif-3d${location.search}${location.hash}`} replace />
+    }
+    return <ForfaitConfiguratorPage />
+  } }
+}
 const loadPublicPage = (name: keyof Awaited<ReturnType<typeof publicModule>>) =>
   async () => ({ Component: (await publicModule())[name] as ComponentType })
 const Register = page(authModule, 'RegisterPage')
@@ -66,7 +78,9 @@ function NotFound() {
 
 function LegacyOffer() {
   const { slug } = useParams()
-  return <Navigate to={`/forfaits/${slug || ''}`} replace />
+  const location = useLocation()
+  const publicSlug = slug === 'immersif' ? 'immersif-3d' : slug
+  return <Navigate to={`/forfaits/${publicSlug || ''}${location.search}${location.hash}`} replace />
 }
 
 function LegalPage({ privacy = false }: { privacy?: boolean }) {
@@ -82,7 +96,7 @@ function LegalPage({ privacy = false }: { privacy?: boolean }) {
         </p>
         <p>
           {privacy
-            ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Vos réponses et images jointes sont conservées dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail ; les images restent consultables dans son administration protégée.'
+            ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Votre message et votre choix de forfait et d’options sont conservés dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail.'
             : 'Les références externes présentées illustrent les formats de sites. Elles ne sont pas présentées comme des réalisations ou des clients du studio.'}
         </p>
         <Link to="/contact">Nous contacter</Link>

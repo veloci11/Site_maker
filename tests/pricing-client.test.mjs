@@ -8,7 +8,7 @@ const response = () => ({ pricing: structuredClone(defaultPricing) });
 const invalid = value => assert.throws(() => readCataloguePricing(value), error =>
   error instanceof ApiError && error.code === 'INVALID_CATALOGUE');
 
-test('a complete unpriced catalogue and server-supported currencies remain valid', () => {
+test('a complete approved catalogue and server-supported currencies remain valid', () => {
   for (const currency of ['EUR', 'CHF']) {
     const source = response();
     source.pricing.currency = currency;

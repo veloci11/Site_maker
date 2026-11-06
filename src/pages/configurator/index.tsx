@@ -4,9 +4,13 @@ import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
   defaultPricing,
   formatMoney,
+  formatQuoteTotal,
+  quoteEstimateNotice,
+  formatOptionPrice,
   getOffer,
   isOptionIncluded,
   isOptionSelected,
+  isPublicOffer,
   normalizeConfiguration,
   optionDefinitions,
   optionGroups,
@@ -17,7 +21,7 @@ import {
   type OptionId,
   type Pricing,
 } from '../../../shared/catalog'
-import { getPublicOptions, prunePublicConfiguration } from '../../../shared/offer-options'
+import { changePublicOffer, getPublicOptions, prunePublicConfiguration } from '../../../shared/offer-options'
 import {
   Accordion,
   AccordionContent,
@@ -40,6 +44,7 @@ import {
   clearDraft,
   configurationKey,
   readDraft,
+  readPublicDraftConfiguration,
   writeDraft,
   type ProjectDraft,
 } from '../../lib/draft'
@@ -47,7 +52,7 @@ import { includedGuidance } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
-function forOffer(current: Configuration, offerId: OfferId): Configuration {
+function changePrivateOffer(current: Configuration, offerId: OfferId): Configuration {
   if (current.offerId === offerId) return current
   return normalizeConfiguration({
     ...current,
@@ -62,8 +67,13 @@ function initialConfiguration(params: URLSearchParams, slug?: string): Configura
   if (params.get('nouveau') === '1') clearDraft()
   const editing = Boolean(params.get('projet') || params.get('projectId'))
   const requested = getOffer(slug) ?? getOffer(params.get('forfait') ?? params.get('formule'))
-  const previous = readDraft()?.configuration ?? normalizeConfiguration({ offerId: requested?.id })
-  const selected = requested ? forOffer(previous, requested.id) : previous
+  const previous = (editing ? readDraft()?.configuration : readPublicDraftConfiguration()) ?? normalizeConfiguration({ offerId: requested?.id })
+  const requestedConfiguration = requested
+    ? editing ? changePrivateOffer(previous, requested.id) : changePublicOffer(previous, requested.id)
+    : previous
+  const selected = !editing && !isPublicOffer(requestedConfiguration.offerId)
+    ? changePublicOffer(requestedConfiguration, 'immersif')
+    : requestedConfiguration
   const options = editing ? optionDefinitions : getPublicOptions(selected.offerId)
   const option = options.find((item) => item.id === params.get('option'))
   const configuration = option ? withOption(selected, option.id, true) : selected
@@ -108,7 +118,7 @@ export function ConfiguratorPage() {
   const routeOffer = getOffer(slug)
   const configuration =
     routeOffer && !editingId && routeOffer.id !== storedConfiguration.offerId
-      ? prunePublicConfiguration(forOffer(storedConfiguration, routeOffer.id))
+      ? changePublicOffer(storedConfiguration, routeOffer.id)
       : storedConfiguration
   const offer = getOffer(configuration.offerId)!
   const quote = quoteConfiguration(configuration, pricing)
@@ -127,15 +137,12 @@ export function ConfiguratorPage() {
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
-  const totalLabel = custom
-    ? 'Sur devis'
-    : quote.totalCents === null
-      ? 'À partir de…'
-      : formatMoney(quote.totalCents, quote.currency)
+  const totalLabel = formatQuoteTotal(quote)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
   const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
+  const visibleOptions = editingId ? optionDefinitions : getPublicOptions(configuration)
   const visibleGroups = optionGroups.filter((group) =>
-    availableOptions.some((option) => option.group === group.id),
+    visibleOptions.some((option) => option.group === group.id),
   )
 
   useEffect(() => {
@@ -143,7 +150,7 @@ export function ConfiguratorPage() {
   }, [title])
   useEffect(() => {
     if (!routeOffer || editingId) return
-    setConfiguration((current) => prunePublicConfiguration(forOffer(current, routeOffer.id)))
+    setConfiguration((current) => changePublicOffer(current, routeOffer.id))
     setStage('options')
     setError('')
     setResult(null)
@@ -205,7 +212,7 @@ export function ConfiguratorPage() {
       })
       return
     }
-    setConfiguration(forOffer(configuration, offerId))
+    setConfiguration(changePrivateOffer(configuration, offerId))
     setStage('options')
     setError('')
     setResult(null)
@@ -263,8 +270,7 @@ export function ConfiguratorPage() {
         (id === 'product-catalog' || id === 'online-payment')
         ? 'Dans la boutique'
         : 'Inclus'
-    const option = optionDefinitions.find((item) => item.id === id)!
-    return `+ ${formatMoney(pricing.options[id], pricing.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`
+    return `+ ${formatOptionPrice(id, pricing)}`
   }
 
   if (slug && !routeOffer)
@@ -329,7 +335,6 @@ export function ConfiguratorPage() {
                         // 1–3 left, 4–6 right; then left/right pairs below.
                         const column = index < 3 ? 1 : index < 6 ? 2 : index % 2 === 0 ? 1 : 2
                         const row = index < 3 ? index + 1 : index < 6 ? index - 2 : 4 + Math.floor((index - 6) / 2)
-                        const amount = pricing.options[option.id]
                         return (
                           <li
                             key={option.id}
@@ -347,9 +352,7 @@ export function ConfiguratorPage() {
                                 <Check size={15} strokeWidth={1.6} aria-hidden="true" />
                                 <span>{option.title}</span>
                                 <strong>
-                                  {custom && amount === null
-                                    ? 'À définir'
-                                    : `+ ${formatMoney(amount, quote.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`}
+                                  {`+ ${formatOptionPrice(option.id, pricing)}`}
                                 </strong>
                               </div>
                             </div>
@@ -362,7 +365,7 @@ export function ConfiguratorPage() {
               </div>
             </section>
             <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
-              <span>{custom ? 'Votre projet' : 'Création du site'}</span>
+              <span>{custom ? 'Votre projet' : quote.estimated ? 'Estimation de création' : 'Création du site'}</span>
               <strong key={totalLabel}>{totalLabel}</strong>
               <div className="selected-plan__monthly" data-open={monthly} aria-hidden={!monthly}>
                 <p key={quote.monthlyTotalCents}>
@@ -420,7 +423,7 @@ export function ConfiguratorPage() {
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {
-                  const options = availableOptions.filter((option) => option.group === group.id)
+                  const options = visibleOptions.filter((option) => option.group === group.id)
                   const selectedOptions = options.filter((option) =>
                     isOptionSelected(configuration, option.id),
                   )
@@ -453,6 +456,7 @@ export function ConfiguratorPage() {
                         </span>
                       </AccordionTrigger>
                       <AccordionContent inert={!openGroups.includes(group.id)} aria-hidden={!openGroups.includes(group.id)}>
+                        {group.id === 'launch' ? <p className="configurator-notice">Choisissez une formule mensuelle facultative. Chaque formule remplace la précédente.</p> : null}
                         <div className="configurator-choice-list">
                           {options.map((option) => {
                             const included = isOptionIncluded(configuration, option.id)
@@ -490,8 +494,9 @@ export function ConfiguratorPage() {
                 })}
               </Accordion>
               <p className="configurator-notice">
-                Votre sélection sert à préparer le devis. Les montants et les frais des outils
-                externes sont confirmés avant le démarrage.
+                {quote.estimated ? `${quoteEstimateNotice(quote)} ` : ''}
+                Votre sélection sert à préparer le devis. Le périmètre, les montants et les frais
+                des outils externes sont confirmés avant le démarrage.
               </p>
               {pricingError ? (
                 <p className="configurator-notice" role="status">
@@ -501,7 +506,7 @@ export function ConfiguratorPage() {
               ) : null}
               <div className="configurator-next">
                 <Button size="lg" onClick={editingId ? saveExisting : goContact} disabled={sending}>
-                  {editingId ? 'Enregistrer mes choix' : 'Décrire mon projet'}
+                  {editingId ? 'Enregistrer mes choix' : 'Continuer'}
                   <ArrowRight size={17} aria-hidden="true" />
                 </Button>
               </div>
@@ -526,9 +531,9 @@ export function ConfiguratorPage() {
                   </button>
                 </div>
                 <h2 ref={contactHeading} tabIndex={-1}>
-                  Décrivez votre projet.
+                  Envoyez votre demande.
                 </h2>
-                <p>Précisez vos besoins et laissez vos coordonnées pour préparer votre site.</p>
+                <p>Laissez vos coordonnées et quelques mots sur votre projet. Votre forfait et vos options sont joints à la demande.</p>
               </header>
               <ProjectBriefForm
                 key={offer.id}
@@ -583,7 +588,7 @@ export function ConfiguratorPage() {
             ) : null}
           </div>
           <Button onClick={editingId ? saveExisting : goContact} disabled={sending}>
-            {editingId ? 'Enregistrer' : 'Décrire mon projet'}
+            {editingId ? 'Enregistrer' : 'Continuer'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
         </div>

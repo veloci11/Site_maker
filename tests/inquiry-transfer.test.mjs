@@ -144,7 +144,7 @@ test('the API validates option-specific questions against the normalized submitt
   const f = await fixture(t);
   const admin = await f.adminSession();
   for (const [type, option, field, answer] of [
-    ['vitrine', 'booking', 'bookingDetails', 'Réserver un rendez-vous, confirmé par notre équipe.'],
+    ['vitrine', 'newsletter', 'newsletterDetails', 'Inscription à notre liste de nouvelles.'],
     ['connecte', 'online-store', 'storeDetails', 'Vendre trois produits avec retrait en boutique.'],
   ]) {
     const payload = validInquiry(type, { configuration: { offerId: type, extras: [option] } });
@@ -164,8 +164,8 @@ test('the API validates option-specific questions against the normalized submitt
 test('the real notification pipeline includes transfer and selected-option answers using an injected email transport', async t => {
   const f = await fixture(t, mailEnvironment);
   const payload = withTransfer('vitrine');
-  payload.configuration.extras = ['booking'];
-  payload.brief.bookingDetails = 'Le client réserve, notre équipe confirme le créneau.';
+  payload.configuration.extras = ['newsletter'];
+  payload.brief.newsletterDetails = 'Un formulaire pour rejoindre la liste de nouvelles.';
   const saved = await f.post(payload);
   assert.equal(saved.status, 201);
   assert.equal(saved.body.notification, 'queued');
@@ -182,7 +182,7 @@ test('the real notification pipeline includes transfer and selected-option answe
   assert.equal(sent.length, 1);
   assert.ok(sent[0].text.includes(transferUrl));
   assert.ok(sent[0].text.includes(transferDetails));
-  assert.ok(sent[0].text.includes(payload.brief.bookingDetails));
+  assert.ok(sent[0].text.includes(payload.brief.newsletterDetails));
   assert.equal(Object.hasOwn(sent[0], 'attachments'), false, 'the external files are never attached automatically');
 });
 

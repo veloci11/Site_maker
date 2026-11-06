@@ -1,13 +1,13 @@
 import type { OfferId } from '../../shared/catalog'
 
-// Explain the base offer before the visitor chooses paid options.
+// Explain the approved scope before the visitor chooses paid additions.
 export const includedGuidance: Record<OfferId, string> = {
   vitrine:
-    'Le design, l’intégration de vos contenus et un formulaire de contact sont compris. L’adaptation mobile se choisit ci-dessous. Pour des comptes visiteurs ou une expérience 3D, choisissez Connecté ou Immersif 3D.',
+    'Votre site de 1 à 3 pages repose sur un template. La version mobile, tablette et ordinateur, le formulaire de contact, les bases du SEO technique et la mise en production sont compris. Vous fournissez les textes et les images. Pour un template personnalisé, une réservation, un formulaire avancé ou le référencement local, choisissez Business.',
   connecte:
-    'Les comptes de vos visiteurs, la gestion des textes et images et les versions ordinateur et mobile sont compris. Ajoutez les fonctionnalités utiles à votre activité.',
+    'Jusqu’à 6 pages avec un template personnalisé, un formulaire avancé, l’intégration de Doctolib ou d’un outil de réservation compatible, les bases du SEO local, une galerie, vos tarifs et témoignages, ainsi que les statistiques avec une configuration adaptée. Gestion des textes et images, version responsive et mise en production comprises. Les abonnements éventuels aux outils restent séparés.',
   immersif:
-    'L’intégration d’un modèle 3D fourni, ses interactions et l’adaptation mobile sont comprises. La création d’un modèle sur mesure se choisit dans les options.',
+    'Direction artistique personnalisée, animations avancées, interactions propres à votre projet et Three.js / WebGL si pertinent. Le périmètre visuel est défini ensemble, avec optimisation des performances et accompagnement renforcé. Gestion des contenus, version responsive, formulaire de contact, bases du SEO technique et mise en production compris. Le modèle 3D est fourni ; sa création ou un élément supplémentaire se choisissent ci-dessous.',
   'sur-mesure':
-    'Les options ci-dessous précisent des besoins courants. Décrivez aussi votre direction visuelle, les appareils visés et les fonctions spécifiques : leur périmètre sera défini dans le devis.',
+    'Le périmètre et les fonctions de ce dossier historique restent définis par son devis.',
 }

@@ -2,8 +2,9 @@ import { normalizeConfiguration, type Configuration } from '../../shared/catalog
 
 const KEY = 'studio.project-draft.v1'
 const MAX_AGE = 30 * 24 * 60 * 60 * 1000
+const CATALOGUE_VERSION = 'public-2026-11-06'
 type DraftSaved = { userId: string; projectId: string }
-export type ProjectDraft = { version: 1; id: string; configuration: Configuration; updatedAt: number; saved?: DraftSaved }
+export type ProjectDraft = { version: 1; id: string; configuration: Configuration; updatedAt: number; catalogueVersion?: typeof CATALOGUE_VERSION; saved?: DraftSaved }
 
 function storage(): Storage | null {
   try { return typeof window === 'undefined' ? null : window.localStorage } catch { return null }
@@ -21,16 +22,29 @@ export function readDraft(): ProjectDraft | null {
     const configuration = normalizeConfiguration(value.configuration)
     const saved = value.saved && typeof value.saved.userId === 'string' && typeof value.saved.projectId === 'string'
       ? { userId: value.saved.userId, projectId: value.saved.projectId } : undefined
-    return { version: 1, id: value.id, configuration, updatedAt: value.updatedAt, ...(saved ? { saved } : {}) }
+    return { version: 1, id: value.id, configuration, updatedAt: value.updatedAt, ...(value.catalogueVersion === CATALOGUE_VERSION ? { catalogueVersion: CATALOGUE_VERSION } : {}), ...(saved ? { saved } : {}) }
   } catch { return null }
+}
+/** Restore current public choices without charging for an old included feature. */
+export function readPublicDraftConfiguration(): Configuration | null {
+  const draft = readDraft()
+  if (!draft) return null
+  if (draft.catalogueVersion === CATALOGUE_VERSION || draft.configuration.offerId !== 'connecte') return draft.configuration
+  // The former Connecté offer always persisted user accounts as an inclusion.
+  // Remove the retired roles add-on too, or normalization would restore accounts.
+  // Only public restoration migrates it; private drafts/projects keep their data.
+  return normalizeConfiguration({
+    ...draft.configuration,
+    extras: draft.configuration.extras.filter(id => id !== 'user-accounts' && id !== 'member-roles'),
+  })
 }
 function persist(draft: ProjectDraft) { try { storage()?.setItem(KEY, JSON.stringify(draft)) } catch { /* Configuration remains usable when storage is unavailable. */ } }
 export function writeDraft(configuration: Configuration): ProjectDraft {
   const normalized = normalizeConfiguration(configuration)
   const previous = readDraft()
   const draft: ProjectDraft = previous && configurationKey(previous.configuration) === configurationKey(normalized)
-    ? { ...previous, updatedAt: Date.now() }
-    : { version: 1, id: crypto.randomUUID(), configuration: normalized, updatedAt: Date.now() }
+    ? { ...previous, catalogueVersion: CATALOGUE_VERSION, updatedAt: Date.now() }
+    : { version: 1, id: crypto.randomUUID(), configuration: normalized, catalogueVersion: CATALOGUE_VERSION, updatedAt: Date.now() }
   persist(draft)
   return draft
 }

@@ -1,210 +1,180 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {
-  OFFER_IDS,
-  defaultPricing,
-  isOptionIncluded,
-  isOptionSelected,
-  normalizeConfiguration,
-  optionDefinitions,
-  quoteConfiguration,
-  withOption,
-} from '../shared/catalog.ts';
-import {
-  PUBLIC_OPTIONS_BY_OFFER,
-  getPublicOptions,
-  getUnavailableOptions,
-  prunePublicConfiguration,
-} from '../shared/offer-options.ts';
+import { PUBLIC_OFFER_IDS, defaultPricing, optionDefinitions, normalizeConfiguration, isOptionIncluded, isOptionSelected, quoteConfiguration, withOption } from '../shared/catalog.ts';
+import { PUBLIC_OPTIONS_BY_OFFER, changePublicOffer, getPublicOptions, getUnavailableOptions, prunePublicConfiguration } from '../shared/offer-options.ts';
 
-const publicIds = (offerId) => getPublicOptions(offerId).map(option => option.id);
+const publicIds = id => getPublicOptions(id).map(option => option.id);
+const approved = ['additional-language', 'managed-content', 'user-accounts', 'online-payment', 'online-store', 'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d', 'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly'];
 
-test('each offer has a targeted optional menu in the existing catalogue order', () => {
-  const expectedCounts = { vitrine: 14, connecte: 17, immersif: 14, 'sur-mesure': 14 };
-  for (const offerId of OFFER_IDS) {
-    const choices = getPublicOptions(offerId);
-    const ids = choices.map(option => option.id);
-    assert.equal(choices.length, expectedCounts[offerId], offerId);
-    assert.equal(new Set(ids).size, choices.length, offerId);
-    assert.deepEqual(ids, optionDefinitions.filter(option => ids.includes(option.id)).map(option => option.id));
-    assert.ok(choices.every(option => optionDefinitions.includes(option)), 'definitions and prices have one source');
-    assert.ok(choices.every(option => !isOptionIncluded(normalizeConfiguration({ offerId }), option.id)));
+test('public menus expose only the selected additions and three monthly plans in catalogue order', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
+    const ids = publicIds(offerId);
+    assert.equal(new Set(ids).size, ids.length);
     assert.deepEqual(ids, [...PUBLIC_OPTIONS_BY_OFFER[offerId]]);
+    assert.deepEqual(ids, optionDefinitions.filter(option => ids.includes(option.id)).map(option => option.id));
+    assert.ok(ids.every(id => approved.includes(id)));
+    assert.ok(ids.every(id => !isOptionIncluded(normalizeConfiguration({ offerId }), id)));
+    assert.deepEqual(ids.slice(-3), ['hosting-monthly', 'maintenance-monthly', 'serenity-monthly']);
   }
-  assert.notDeepEqual(publicIds('vitrine'), publicIds('connecte'));
-  assert.notDeepEqual(publicIds('immersif'), publicIds('sur-mesure'));
+  assert.deepEqual(publicIds('sur-mesure'), []);
 });
 
-test('Vitrine keeps mobile optional and directs account and 3D needs to the other offers', () => {
-  const ids = publicIds('vitrine');
-  assert.ok(ids.includes('mobile'));
-  assert.ok(ids.includes('managed-content'), 'the editable-content addition promised by the FAQ stays available');
-  for (const id of ['user-accounts', 'member-roles', 'scene-3d', 'custom-3d', 'online-store']) {
-    assert.ok(!ids.includes(id), id);
+test('included responsive and launch cannot become paid choices; CMS is only offered on Vitrine', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
+    const config = prunePublicConfiguration({ offerId });
+    assert.equal(config.mobile, true);
+    assert.equal(config.deployment, true);
+    assert.ok(!publicIds(offerId).includes('mobile'));
+    assert.ok(!publicIds(offerId).includes('deployment'));
+    assert.equal(publicIds(offerId).includes('managed-content'), offerId === 'vitrine');
+    assert.deepEqual(getUnavailableOptions(config), []);
   }
-  const base = prunePublicConfiguration({ offerId: 'vitrine' });
-  assert.equal(base.mobile, false);
-  assert.equal(isOptionIncluded(base, 'mobile'), false);
-  assert.equal(prunePublicConfiguration(withOption(base, 'mobile', true)).mobile, true);
 });
 
-test('shared visitor needs survive offer changes without exposing historical-only options', () => {
-  for (const offerId of OFFER_IDS) {
-    const ids = publicIds(offerId);
-    for (const id of ['analytics', 'newsletter', 'additional-language', 'local-seo']) {
-      assert.ok(ids.includes(id), `${offerId}/${id}`);
-      const selected = prunePublicConfiguration({ offerId, extras: [id] });
-      assert.equal(isOptionSelected(selected, id), true);
-      assert.deepEqual(getUnavailableOptions(selected), []);
-    }
-    for (const id of ['content-import', 'backups-monthly']) assert.ok(!ids.includes(id));
+test('all highlighted additions remain available or included as appropriate', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
+    const config = prunePublicConfiguration({ offerId });
+    for (const id of approved) assert.ok(publicIds(offerId).includes(id) || isOptionIncluded(config, id), `${offerId}/${id}`);
   }
-  assert.ok(publicIds('connecte').includes('portfolio-gallery'));
-  const source = prunePublicConfiguration({ offerId: 'vitrine', extras: ['analytics', 'newsletter', 'additional-language', 'local-seo', 'portfolio-gallery'] });
-  const connected = prunePublicConfiguration({ ...source, offerId: 'connecte' });
-  for (const id of source.extras) assert.equal(isOptionSelected(connected, id), true, id);
-  assert.equal(isOptionIncluded(connected, 'managed-content'), true);
+  assert.equal(publicIds('connecte').includes('analytics'), false);
+  assert.equal(isOptionIncluded(prunePublicConfiguration({ offerId: 'connecte' }), 'analytics'), true);
 });
 
-test('included Connecté and Immersif functions remain selected without appearing as paid choices', () => {
-  for (const [offerId, included] of [
-    ['connecte', ['mobile', 'managed-content', 'user-accounts']],
-    ['immersif', ['mobile', 'scene-3d']],
-  ]) {
-    const configuration = prunePublicConfiguration({ offerId });
-    assert.deepEqual(getUnavailableOptions(configuration), []);
-    for (const id of included) {
-      assert.ok(!publicIds(offerId).includes(id), id);
-      assert.equal(isOptionIncluded(configuration, id), true);
-      assert.equal(isOptionSelected(configuration, id), true);
-    }
-  }
-  assert.ok(publicIds('immersif').includes('custom-3d'), 'creating a model is distinct from integrating a supplied one');
-  assert.ok(publicIds('immersif').includes('managed-content'));
-  assert.ok(publicIds('sur-mesure').includes('managed-content'));
+test('unapproved additions are pruned without mutating the source configuration', () => {
+  const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['member-roles', 'booking', 'newsletter', 'backups-monthly', 'content-import'] });
+  const snapshot = structuredClone(config);
+  assert.deepEqual(getUnavailableOptions(config), ['member-roles', 'booking', 'backups-monthly']);
+  const pruned = prunePublicConfiguration(config);
+  assert.deepEqual(pruned.extras, ['user-accounts', 'newsletter', 'content-import']);
+  assert.deepEqual(getUnavailableOptions(pruned), []);
+  assert.deepEqual(prunePublicConfiguration(pruned), pruned);
+  assert.deepEqual(config, snapshot);
 });
 
-test('deployment, maintenance and hosting stay independent optional choices on every offer', () => {
-  for (const offerId of OFFER_IDS) {
-    const ids = publicIds(offerId);
-    for (const id of ['deployment', 'maintenance-monthly', 'hosting-monthly']) assert.ok(ids.includes(id));
-    assert.ok(!ids.includes('backups-monthly'));
+test('switching offers preserves compatible choices and removes functions not included on the new offer', () => {
+  const connected = prunePublicConfiguration({ offerId: 'connecte', language: 'fr-en', extras: ['user-accounts', 'blog', 'hosting-monthly'] });
+  const vitrine = changePublicOffer(connected, 'vitrine');
+  for (const id of ['user-accounts', 'blog', 'hosting-monthly']) assert.equal(isOptionSelected(vitrine, id), true);
+  for (const id of ['booking', 'advanced-forms', 'portfolio-gallery', 'local-seo']) assert.equal(isOptionSelected(vitrine, id), false);
+  assert.equal(vitrine.language, 'fr');
+  assert.equal(isOptionSelected(vitrine, 'additional-language'), true);
+  assert.equal(vitrine.managedContent, false);
+  assert.equal(isOptionSelected(vitrine, 'analytics'), false);
+  assert.ok(connected.extras.includes('booking'));
+});
+
+test('a selected shop makes payment included and keeps the server quote consistent', () => {
+  const base = prunePublicConfiguration({ offerId: 'connecte', extras: ['online-payment'] });
+  const shop = prunePublicConfiguration(withOption(base, 'online-store', true));
+  assert.deepEqual(getUnavailableOptions(shop), []);
+  assert.equal(isOptionSelected(shop, 'online-payment'), true);
+  assert.equal(isOptionIncluded(shop, 'online-payment'), true);
+  const quote = quoteConfiguration(shop);
+  assert.equal(quote.totalCents, defaultPricing.base.connecte + defaultPricing.options['online-store']);
+  assert.equal(quote.lines.find(line => line.key === 'online-payment').amountCents, 0);
+});
+
+test('public choices hide every included feature, including payment covered by the selected shop', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
     const base = prunePublicConfiguration({ offerId });
-    assert.equal(base.deployment, false);
-    assert.equal(base.maintenance, false);
-    assert.ok(!base.extras.includes('hosting-monthly'));
-    const hosted = prunePublicConfiguration(withOption(base, 'hosting-monthly', true));
-    assert.equal(hosted.deployment, false);
-    assert.equal(hosted.maintenance, false);
-    assert.ok(hosted.extras.includes('hosting-monthly'));
+    const payment = prunePublicConfiguration(withOption(base, 'online-payment', true));
+    assert.ok(getPublicOptions(payment).some(option => option.id === 'online-payment'), 'standalone payment stays available to deselect');
+    const shop = prunePublicConfiguration(withOption(payment, 'online-store', true));
+    const visible = getPublicOptions(shop);
+    assert.ok(visible.every(option => !isOptionIncluded(shop, option.id)), `${offerId}: no included feature is a selectable addition`);
+    assert.ok(!visible.some(option => option.id === 'online-payment'), 'the shop already covers payment');
+    assert.ok(visible.some(option => option.id === 'online-store'), 'the selected shop remains available to deselect');
+    assert.equal(quoteConfiguration(shop).totalCents, defaultPricing.base[offerId] + defaultPricing.options['online-store']);
+
+    const withoutShop = prunePublicConfiguration(withOption(shop, 'online-store', false));
+    assert.ok(getPublicOptions(withoutShop).some(option => option.id === 'online-payment'), 'standalone payment returns as an available choice');
+    assert.equal(isOptionSelected(withoutShop, 'online-payment'), false, 'removing a bundle never silently selects a paid standalone option');
+    assert.equal(quoteConfiguration(withoutShop).totalCents, defaultPricing.base[offerId]);
+    assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'managed-content'), offerId === 'vitrine');
+    assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'analytics'), offerId !== 'connecte');
   }
 });
 
-test('server validation identifies unsupported paid selections without changing the configuration', () => {
-  const configuration = normalizeConfiguration({
-    offerId: 'vitrine', mobile: true, scene3d: true,
-    extras: ['member-roles', 'booking', 'custom-3d', 'backups-monthly'],
-  });
-  const snapshot = structuredClone(configuration);
-  assert.deepEqual(getUnavailableOptions(configuration), [
-    'scene-3d', 'user-accounts', 'member-roles', 'custom-3d', 'backups-monthly',
-  ]);
-  assert.deepEqual(configuration, snapshot);
+test('public helpers keep historical catalogue identifiers and reject malformed data', () => {
+  for (const id of ['mobile', 'deployment', 'member-roles', 'backups-monthly', 'copywriting', 'additional-language'])
+    assert.ok(optionDefinitions.some(option => option.id === id));
+  for (const value of [{ offerId: 'unknown' }, { mobile: 'true' }, { extras: ['unknown'] }])
+    assert.throws(() => prunePublicConfiguration(value));
 });
 
-test('pruning removes only incompatible choices and keeps launch services and compatible options', () => {
-  const input = Object.freeze({
-    offerId: 'vitrine', language: 'fr-en', mobile: true, managedContent: true,
-    scene3d: true, deployment: true, maintenance: true,
-    extras: Object.freeze(['member-roles', 'booking', 'portfolio-gallery', 'custom-3d', 'hosting-monthly', 'backups-monthly']),
-  });
-  const configuration = prunePublicConfiguration(input);
-  assert.deepEqual(configuration, {
-    offerId: 'vitrine', language: 'fr-en', mobile: true, managedContent: true,
-    scene3d: false, deployment: true, maintenance: true,
-    extras: ['booking', 'portfolio-gallery', 'hosting-monthly'],
-  });
-  assert.deepEqual(getUnavailableOptions(configuration), []);
-  assert.deepEqual(prunePublicConfiguration(configuration), configuration);
-  assert.equal(input.scene3d, true);
-  assert.ok(input.extras.includes('backups-monthly'));
+test('offer changes retain chosen shop and language without billing prior included CMS or analytics', () => {
+  for (const source of ['connecte', 'immersif']) {
+    const original = prunePublicConfiguration({ offerId: source, language: 'fr-en', extras: ['online-store', 'serenity-monthly'] });
+    const snapshot = structuredClone(original);
+    const vitrine = changePublicOffer(original, 'vitrine');
+    assert.equal(vitrine.managedContent, false);
+    assert.equal(isOptionSelected(vitrine, 'analytics'), false);
+    assert.equal(vitrine.scene3d, false);
+    assert.equal(vitrine.language, 'fr');
+    assert.equal(isOptionSelected(vitrine, 'additional-language'), true);
+    assert.equal(isOptionSelected(vitrine, 'online-store'), true);
+    assert.equal(isOptionIncluded(vitrine, 'online-payment'), true);
+    assert.equal(quoteConfiguration(vitrine).totalCents, 159000);
+    assert.equal(quoteConfiguration(vitrine).monthlyTotalCents, 6900);
+    assert.deepEqual(original, snapshot);
+  }
+  const vitrine = prunePublicConfiguration({ offerId: 'vitrine', managedContent: true, extras: ['analytics'] });
+  assert.deepEqual(changePublicOffer(vitrine, 'vitrine'), vitrine, 'staying on the same offer preserves paid additions');
+  assert.equal(quoteConfiguration(changePublicOffer(vitrine, 'connecte')).totalCents, 149000, 'new inclusions replace paid choices');
 });
 
-test('changing offer prunes accounts and roles while preserving compatible selections', () => {
-  const connected = prunePublicConfiguration({
-    offerId: 'connecte', language: 'fr-en',
-    extras: ['member-roles', 'booking', 'blog', 'hosting-monthly'],
-  });
-  assert.deepEqual(connected.extras, ['user-accounts', 'member-roles', 'booking', 'blog', 'hosting-monthly']);
-  const vitrine = prunePublicConfiguration({ ...connected, offerId: 'vitrine' });
-  assert.deepEqual(vitrine.extras, ['booking', 'hosting-monthly']);
-  assert.equal(vitrine.mobile, true);
-  assert.equal(vitrine.managedContent, true);
-  assert.equal(vitrine.language, 'fr-en');
-  assert.ok(connected.extras.includes('member-roles'), 'the source draft is not modified');
+test('upgrading to Premium includes the first 3D integration without requesting or charging a second', () => {
+  for (const source of ['vitrine', 'connecte']) {
+    const previous = prunePublicConfiguration({
+      offerId: source,
+      language: 'fr-en',
+      extras: ['extra-scene-3d', 'custom-3d', 'blog', 'serenity-monthly'],
+    });
+    const snapshot = structuredClone(previous);
+    const premium = changePublicOffer(previous, 'immersif');
+    assert.equal(isOptionIncluded(premium, 'scene-3d'), true, 'the first integration belongs to the Premium base');
+    assert.equal(isOptionSelected(premium, 'extra-scene-3d'), false, 'a second integration must be chosen explicitly');
+    for (const id of ['custom-3d', 'blog', 'serenity-monthly']) assert.equal(isOptionSelected(premium, id), true, id);
+    assert.equal(premium.language, 'fr');
+    assert.equal(isOptionSelected(premium, 'additional-language'), true);
+    assert.equal(quoteConfiguration(premium).totalCents, 289900);
+    assert.equal(quoteConfiguration(premium).monthlyTotalCents, 6900);
+    assert.deepEqual(previous, snapshot);
+
+    const secondElement = withOption(premium, 'extra-scene-3d', true);
+    assert.equal(quoteConfiguration(secondElement).totalCents, 314900, 'a deliberately added second element costs the quoted minimum');
+    assert.equal(isOptionSelected(changePublicOffer(secondElement, 'immersif'), 'extra-scene-3d'), true, 'staying on Premium retains the explicit second element');
+  }
 });
 
-test('roles are only offered where their account dependency is available', () => {
-  for (const offerId of OFFER_IDS) {
-    if (!publicIds(offerId).includes('member-roles')) continue;
+test('the public language option is generic and priced once without encoding English', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
     const base = prunePublicConfiguration({ offerId });
-    assert.ok(isOptionIncluded(base, 'user-accounts') || publicIds(offerId).includes('user-accounts'));
-    const roles = prunePublicConfiguration(withOption(base, 'member-roles', true));
-    assert.equal(isOptionSelected(roles, 'user-accounts'), true);
-    assert.equal(isOptionSelected(roles, 'member-roles'), true);
-    assert.deepEqual(getUnavailableOptions(roles), []);
+    const choice = prunePublicConfiguration(withOption(base, 'additional-language', true));
+    assert.equal(choice.language, 'fr');
+    assert.equal(isOptionSelected(choice, 'additional-language'), true);
+    assert.equal(isOptionSelected(choice, 'language-en'), false);
+    assert.equal(quoteConfiguration(choice).totalCents, defaultPricing.base[offerId] + 10000);
+    assert.ok(!publicIds(offerId).includes('language-en'));
+    assert.deepEqual(getUnavailableOptions(choice), []);
   }
 });
 
-test('a public shop includes catalogue and payment without unavailable errors or double charges', () => {
-  const pricing = {
-    ...defaultPricing,
-    base: { ...defaultPricing.base, connecte: 100000 },
-    options: { ...defaultPricing.options, 'online-store': 60000 },
-  };
-  const configuration = prunePublicConfiguration({
-    offerId: 'connecte', extras: ['online-store', 'product-catalog', 'online-payment'],
-  });
-  assert.ok(!publicIds('connecte').includes('product-catalog'));
-  assert.ok(!publicIds('connecte').includes('online-payment'));
-  assert.deepEqual(getUnavailableOptions(configuration), []);
-  assert.deepEqual(configuration.extras, ['user-accounts', 'online-store']);
-  const quote = quoteConfiguration(configuration, pricing);
-  assert.equal(quote.totalCents, 160000);
-  for (const id of ['product-catalog', 'online-payment']) {
-    assert.equal(quote.lines.find(line => line.key === id).amountCents, 0);
-    assert.equal(quote.lines.find(line => line.key === id).included, true);
+test('legacy public English drafts become one generic option idempotently without changing historical input', () => {
+  for (const offerId of PUBLIC_OFFER_IDS) {
+    const legacy = normalizeConfiguration({ offerId, language: 'fr-en', extras: ['additional-language', 'blog'] });
+    const snapshot = structuredClone(legacy);
+    const migrated = prunePublicConfiguration(legacy);
+    assert.equal(migrated.language, 'fr');
+    assert.equal(migrated.extras.filter(id => id === 'additional-language').length, 1);
+    assert.equal(quoteConfiguration(migrated).totalCents, defaultPricing.base[offerId] + 10000 + 15000);
+    assert.deepEqual(prunePublicConfiguration(migrated), migrated);
+    assert.deepEqual(legacy, snapshot);
+    assert.equal(normalizeConfiguration(legacy).language, 'fr-en', 'private normalization does not reinterpret an existing English selection');
   }
-});
-
-test('public pruning does not replace validation of malformed configurations', () => {
-  for (const input of [
-    { offerId: 'unknown' },
-    { offerId: 'vitrine', mobile: 'true' },
-    { offerId: 'connecte', extras: ['unknown-option'] },
-  ]) assert.throws(() => prunePublicConfiguration(input));
-});
-
-test('historical catalogue definitions and pricing still support options removed from public menus', () => {
-  assert.equal(optionDefinitions.length, 26);
-  assert.equal(Object.keys(defaultPricing.options).length, 26);
-  assert.ok(Object.values(defaultPricing.options).every(price => price === null));
-  const legacy = normalizeConfiguration({
-    offerId: 'vitrine', scene3d: true,
-    extras: ['user-accounts', 'backups-monthly'],
-  });
-  const snapshot = structuredClone(legacy);
-  const pricing = {
-    ...defaultPricing,
-    base: { ...defaultPricing.base, vitrine: 100000 },
-    options: { ...defaultPricing.options, 'scene-3d': 20000, 'user-accounts': 15000, 'backups-monthly': 1000 },
-  };
-  const quote = quoteConfiguration(legacy, pricing);
-  assert.equal(quote.totalCents, 135000);
-  assert.equal(quote.monthlyTotalCents, 1000);
-  assert.deepEqual(quote.lines.map(line => line.key), ['base', 'scene-3d', 'user-accounts', 'backups-monthly']);
-  getUnavailableOptions(legacy);
-  getPublicOptions('vitrine');
-  assert.deepEqual(legacy, snapshot, 'existing private configurations are never rewritten by the public helpers');
-  assert.deepEqual(quoteConfiguration(legacy, pricing), quote);
+  const legacyCustom = normalizeConfiguration({ offerId: 'sur-mesure', language: 'fr-en' });
+  const snapshot = structuredClone(legacyCustom);
+  prunePublicConfiguration(legacyCustom);
+  assert.deepEqual(legacyCustom, snapshot);
+  assert.equal(quoteConfiguration(legacyCustom).lines.some(line => line.key === 'language-en'), true);
 });

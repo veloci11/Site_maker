@@ -54,11 +54,13 @@ function owned(route, options = {}) { return request(`/api/projects/${project.id
 test('public catalogue, quote and inquiry stay accessible before protected routers; origin checks apply', async () => {
   const catalogue = await request('/api/catalogue');
   assert.equal(catalogue.status, 200); assert.equal(catalogue.body.paymentAvailable, false);
-  assert.ok(Object.values(catalogue.body.pricing.base).every(value => value === null));
+  assert.deepEqual(catalogue.body.pricing.base, { vitrine: 89000, connecte: 149000, immersif: 249900, 'sur-mesure': null });
   assert.equal(catalogue.headers.get('cache-control'), 'no-store');
   const configuration = { offerId: 'vitrine', language: 'fr', managedContent: false, scene3d: false };
   const quote = await request('/api/quote', { method: 'POST', body: { configuration } });
-  assert.equal(quote.status, 200); assert.equal(quote.body.quote.checkoutReady, false); assert.equal(quote.body.quote.totalCents, null);
+  assert.equal(quote.status, 200); assert.equal(quote.body.quote.checkoutReady, true); assert.equal(quote.body.quote.totalCents, 89000);
+  assert.equal(quote.body.quote.lines.find(line => line.key === 'mobile').included, true);
+  assert.equal(quote.body.quote.lines.find(line => line.key === 'deployment').amountCents, 0);
   const inquiry = validInquiry('contact', { email: 'inquiry@example.test', brief: { message: 'Un projet de site pour vérifier le formulaire.' } });
   const rejected = await request('/api/inquiries', { method: 'POST', origin: 'https://foreign.example', body: inquiry });
   assert.equal(rejected.status, 403); assert.equal(rejected.body.code, 'INVALID_ORIGIN');
@@ -134,14 +136,14 @@ test('saved order snapshots survive price/config changes and no readiness state 
   const billing = { fullName: 'Client A', company: 'Atelier test', email: 'client-a@example.test', address: '1 rue du Test', postalCode: '75001', city: 'Paris', country: 'FR', vatNumber: '' };
   const draft = await owned('/order', { method: 'PUT', body: { billing } });
   assert.equal(draft.status, 200); const first = draft.body.order;
-  assert.equal(first.status, 'draft'); assert.equal(first.totalCents, null); assert.equal(draft.body.payment.enabled, false);
+  assert.equal(first.status, 'draft'); assert.equal(first.totalCents, 159000); assert.equal(draft.body.payment.enabled, false);
   assert.equal((await owned('/order', { cookie: second })).status, 404);
-  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'PRICE_UNAVAILABLE');
+  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'PAYMENT_UNAVAILABLE');
   const prices = { currency: 'EUR', base: { vitrine: 100000, connecte: 150000, immersif: 200000, 'sur-mesure': null }, options: { 'language-en': 10000, 'managed-content': 20000, 'scene-3d': 30000, deployment: null, 'maintenance-monthly': null } };
   assert.equal((await request('/api/admin/pricing', { cookie: client, method: 'PUT', body: prices })).status, 403);
   assert.equal((await request('/api/admin/pricing', { cookie: admin, method: 'PUT', body: prices })).status, 200);
   const stale = await owned('/order');
-  assert.equal(stale.body.isCurrent, false); assert.equal(stale.body.order.totalCents, null); assert.equal(stale.body.quote.totalCents, 160000);
+  assert.equal(stale.body.isCurrent, false); assert.equal(stale.body.order.totalCents, 159000); assert.equal(stale.body.quote.totalCents, 160000);
   assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'ORDER_STALE');
   const refreshed = await owned('/order', { method: 'PUT', body: { billing } });
   assert.equal(refreshed.status, 200); const current = refreshed.body.order;
@@ -152,7 +154,7 @@ test('saved order snapshots survive price/config changes and no readiness state 
   const restored = await owned('/order');
   assert.equal(restored.body.order.id, current.id); assert.equal(restored.body.order.status, 'draft');
   const historic = getDb().prepare('SELECT status,total_cents,configuration_snapshot FROM orders WHERE id = ?').get(first.id);
-  assert.equal(historic.status, 'superseded'); assert.equal(historic.total_cents, null); assert.equal(JSON.parse(historic.configuration_snapshot).quote.totalCents, null);
+  assert.equal(historic.status, 'superseded'); assert.equal(historic.total_cents, 159000); assert.equal(JSON.parse(historic.configuration_snapshot).quote.totalCents, 159000);
   assert.equal(getDb().prepare("SELECT count(*) AS n FROM orders WHERE status = 'paid'").get().n, 0);
   const catalogue = await request('/api/catalogue');
   assert.equal(catalogue.body.pricing.base.connecte, 150000); assert.equal(catalogue.body.paymentAvailable, false);
@@ -181,13 +183,15 @@ test('deployment and maintenance choices are validated, owner scoped and durable
   assert.equal(durable.body.project.configuration.deployment, true); assert.equal(durable.body.project.configuration.maintenance, false);
 });
 
-test('integrated quote and order keep one-time deployment separate from recurring maintenance, including price changes', async () => {
+test('integrated quote and order keep included deployment separate from recurring maintenance, including price changes', async () => {
   const prices = { currency: 'EUR', base: { vitrine: 100000, connecte: 150000, immersif: 200000, 'sur-mesure': null }, options: { 'language-en': 10000, 'managed-content': 20000, 'scene-3d': 30000, deployment: 25000, 'maintenance-monthly': 5000 } };
   assert.equal((await request('/api/admin/pricing', { cookie: admin, method: 'PUT', body: prices })).status, 200);
   const configuration = { offerId: 'connecte', language: 'fr', deployment: true, maintenance: true };
   const quoted = await request('/api/quote', { method: 'POST', body: { configuration } });
-  assert.equal(quoted.status, 200); assert.equal(quoted.body.quote.totalCents, 175000); assert.equal(quoted.body.quote.monthlyTotalCents, 5000);
+  assert.equal(quoted.status, 200); assert.equal(quoted.body.quote.totalCents, 150000); assert.equal(quoted.body.quote.monthlyTotalCents, 5000);
   assert.equal(quoted.body.quote.lines.find(line => line.key === 'deployment').billing, 'once');
+  assert.equal(quoted.body.quote.lines.find(line => line.key === 'deployment').included, true);
+  assert.equal(quoted.body.quote.lines.find(line => line.key === 'deployment').amountCents, 0);
   assert.equal(quoted.body.quote.lines.find(line => line.key === 'maintenance-monthly').billing, 'monthly');
   assert.equal(quoted.body.quote.lines.find(line => line.key === 'managed-content').included, true);
   const created = await request('/api/projects', { cookie: client, method: 'POST', body: { configuration } });
@@ -196,14 +200,14 @@ test('integrated quote and order keep one-time deployment separate from recurrin
   const billing = { fullName: 'Client A', email: 'client-a@example.test', address: '1 rue du Test', postalCode: '75001', city: 'Paris', country: 'FR' };
   const saved = await request(`${route}/order`, { cookie: client, method: 'PUT', body: { billing } });
   assert.equal(saved.status, 200); const first = saved.body.order;
-  assert.equal(first.totalCents, 175000); assert.equal(first.monthlyTotalCents, 5000);
+  assert.equal(first.totalCents, 150000); assert.equal(first.monthlyTotalCents, 5000);
   assert.equal(first.snapshot.quote.monthlyTotalCents, 5000);
   assert.equal(first.snapshot.configuration.deployment, true); assert.equal(first.snapshot.configuration.maintenance, true);
   const serialized = getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.id).configuration_snapshot;
   assert.equal((await request('/api/admin/pricing', { cookie: admin, method: 'PUT', body: { ...prices, options: { ...prices.options, 'maintenance-monthly': 8000 } } })).status, 200);
   const changed = await request(`${route}/order`, { cookie: client });
   assert.equal(changed.body.isCurrent, false); assert.equal(changed.body.order.monthlyTotalCents, 5000); assert.equal(changed.body.quote.monthlyTotalCents, 8000);
-  assert.equal(changed.body.order.totalCents, 175000); assert.equal(changed.body.quote.totalCents, 175000);
+  assert.equal(changed.body.order.totalCents, 150000); assert.equal(changed.body.quote.totalCents, 150000);
   const resaved = await request(`${route}/order`, { cookie: client, method: 'PUT', body: { billing } });
   assert.equal(resaved.status, 200); assert.notEqual(resaved.body.order.id, first.id); assert.equal(resaved.body.order.monthlyTotalCents, 8000);
   assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.id).configuration_snapshot, serialized, 'historical creation and monthly prices must not be rewritten');
@@ -211,11 +215,11 @@ test('integrated quote and order keep one-time deployment separate from recurrin
   assert.equal((await request(`${route}/order`, { cookie: second })).status, 404);
   closeDb();
   const restored = await request(`${route}/order`, { cookie: client });
-  assert.equal(restored.body.order.monthlyTotalCents, 8000); assert.equal(restored.body.order.totalCents, 175000);
+  assert.equal(restored.body.order.monthlyTotalCents, 8000); assert.equal(restored.body.order.totalCents, 150000);
   const disabled = await request(route, { cookie: client, method: 'PATCH', body: { configuration: { maintenance: false } } });
   assert.equal(disabled.status, 200);
   const withoutMaintenance = await request(`${route}/order`, { cookie: client });
-  assert.equal(withoutMaintenance.body.quote.monthlyTotalCents, 0); assert.equal(withoutMaintenance.body.quote.totalCents, 175000);
+  assert.equal(withoutMaintenance.body.quote.monthlyTotalCents, 0); assert.equal(withoutMaintenance.body.quote.totalCents, 150000);
   assert.equal(withoutMaintenance.body.order.monthlyTotalCents, 8000, 'uncommitted changes do not mutate the saved dossier');
 });
 

@@ -1,8 +1,10 @@
-# Revue Astra publiée — 5 novembre 2026
+# Trois forfaits — revue complète du 6 novembre 2026
 
-Corrections publiées sur https://gilmathis.com/ (`5b792f1`). Rapport courant : [revue, étapes et captures](docs/qa/astra-review/review.md). Code plus facile à modifier, périmètres précisés, bug API corrigé et anciennes règles d’animation retirées. Prix proposés dans une étude distincte, aucune modification des montants de production.
+Vitrine 890 €, Business 1 490 €, Premium / 3D 2 499 €. Douze options retenues et détaillées, prix variables et totaux en fourchette, trois suivis mensuels exclusifs, formulaire court, Cal.com retiré. Langue supplémentaire générique, fonctions incluses hors des choix payants, comparatif valorisant Business. FAQ enrichie à seize questions avec sources primaires vérifiées.
 
-230 tests passants, 24 trajets locaux et 24 publics ordinateur/mobile contrôlés, interactions rapides et préférence réduite vérifiées. Images approuvées conservées. Aucun formulaire public envoyé ; prévisualisation arrêtée. Les comptes rendus antérieurs ci-dessous gardent leur statut historique.
+Dix spécialistes techniques/éditoriaux, puis deux spécialistes stratégie commerciale/rentabilité. Corrections supplémentaires : migration des anciens brouillons Connecté, focus après annulation de navigation, contraste des champs facultatifs, footer mobile et prolongement des très longues cartes Premium. Prix approuvés conservés.
+
+TypeScript, build et **241 tests passent**. Contrôles locaux IAB 320/390/820/1280 px, formulaires et navigation. Publication autorisée ; l’état précis de la livraison est dans `ops/DEPLOYMENT_STATUS.md` et `docs/qa/three-offers/review.md` (liens depuis la racine du dépôt). Les entrées suivantes sont historiques.
 
 ## Dernier correctif — six raccords publiés et vérifiés, 5 novembre 2026
 

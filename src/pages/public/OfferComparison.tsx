@@ -1,37 +1,31 @@
 import { useState, type ReactNode } from 'react'
 import { ArrowRight, Check, ChevronDown } from 'lucide-react'
-import { offers, type Pricing } from '../../../shared/catalog'
+import { publicOffers, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 
-type ComparisonStatus = 'included' | 'absent' | 'custom'
+type ComparisonStatus = 'included' | 'absent' | '1 à 3' | 'Jusqu’à 6' | 'À définir' | 'Si pertinent'
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint?: string }
 const comparisonRows: readonly ComparisonRow[] = [
-  { title: 'Présentation sur ordinateur', values: ['included', 'included', 'included', 'custom'] },
-  { title: 'Adaptation mobile', values: ['absent', 'included', 'included', 'custom'] },
-  {
-    title: 'Comptes utilisateurs',
-    values: ['absent', 'included', 'absent', 'custom'],
-    hint: 'Des visiteurs peuvent se connecter à leur espace sur votre site.',
-  },
-  {
-    title: 'Textes et images modifiables',
-    values: ['absent', 'included', 'absent', 'custom'],
-    hint: 'Modifiez les textes et les images du site livré.',
-  },
-  { title: 'Élément 3D interactif', values: ['absent', 'absent', 'included', 'custom'] },
+  { title: 'Nombre de pages', values: ['1 à 3', 'Jusqu’à 6', 'À définir'] },
+  { title: 'Template personnalisé', values: ['absent', 'included', 'absent'], hint: 'Vitrine utilise un template ; Business le personnalise. Premium / 3D repose sur une direction artistique propre au projet.' },
+  { title: 'Textes et images modifiables', values: ['absent', 'included', 'included'], hint: 'Compris dans Business et Premium / 3D. Peut être ajouté à Vitrine, sans les autres fonctions du forfait Business.' },
+  { title: 'Doctolib ou outil de réservation', values: ['absent', 'included', 'absent'], hint: 'Intégration d’un outil compatible ; son abonnement éventuel reste séparé.' },
+  { title: 'Statistiques avec configuration adaptée', values: ['absent', 'included', 'absent'] },
+  { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'] },
+  { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'] },
 ]
 const comparisonDetails: readonly ComparisonRow[] = [
-  {
-    title: 'Design adapté à votre activité',
-    values: ['included', 'included', 'included', 'custom'],
-  },
-  { title: 'Formulaire de contact', values: ['included', 'included', 'included', 'custom'] },
-  { title: 'Site en français', values: ['included', 'included', 'included', 'custom'] },
-  { title: 'Français + anglais', values: ['absent', 'absent', 'absent', 'custom'] },
-  { title: 'Mise en ligne par nos soins', values: ['absent', 'absent', 'absent', 'custom'] },
-  { title: 'Maintenance mensuelle', values: ['absent', 'absent', 'absent', 'custom'] },
-  { title: 'Fonctions et intégrations dédiées', values: ['absent', 'absent', 'absent', 'custom'] },
+  { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'] },
+  { title: 'Three.js / WebGL', values: ['absent', 'absent', 'Si pertinent'], hint: 'Le recours à la 3D dépend du projet. La création d’un modèle et les éléments supplémentaires sont distincts de l’intégration initiale.' },
+  { title: 'Formulaire de contact', values: ['included', 'included', 'included'] },
+  { title: 'Formulaire avancé', values: ['absent', 'included', 'absent'] },
+  { title: 'Bases du SEO technique', values: ['included', 'included', 'included'] },
+  { title: 'Bases du référencement local', values: ['absent', 'included', 'absent'] },
+  { title: 'Galerie, tarifs et témoignages', values: ['absent', 'included', 'absent'] },
+  { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'] },
+  { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'] },
+  { title: 'Mise en production', values: ['included', 'included', 'included'] },
 ]
 
 function ComparisonCell({ status }: { status: ComparisonStatus }) {
@@ -49,7 +43,7 @@ function ComparisonCell({ status }: { status: ComparisonStatus }) {
         <span className="public-sr-only">Non compris dans le forfait</span>
       </span>
     )
-  return <span className="comparison-status">Selon besoin</span>
+  return <span className="comparison-status">{status}</span>
 }
 
 function ComparisonReveal({ children, collapsed }: { children: ReactNode; collapsed?: boolean }) {
@@ -68,18 +62,18 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
         className="table-scroll comparison-scroll"
         tabIndex={0}
         role="region"
-        aria-label="Comparatif des quatre forfaits, défilement horizontal sur petit écran"
+        aria-label="Comparatif des trois forfaits, défilement horizontal sur petit écran"
       >
         <table id={`${id}-table`} className="comparison-table">
           <caption className="public-sr-only">
-            Comparer les fonctions comprises dans les quatre forfaits de création de sites internet.
+            Comparer les fonctions comprises dans les trois forfaits de création de sites internet.
           </caption>
           <thead>
             <tr>
               <th scope="col">
                 <span>Fonctions</span>
               </th>
-              {offers.map((offer) => (
+              {publicOffers.map((offer) => (
                 <th key={offer.id} scope="col">
                   <div className="comparison-offer">
                     <h3>{offer.title}</h3>
@@ -88,13 +82,9 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                       className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
                       to={configureHref(offer.id)}
                       viewTransition={canAnimatePlanNavigation()}
-                      aria-label={
-                        offer.id === 'sur-mesure'
-                          ? 'Parler du projet sur mesure'
-                          : `Configurer le forfait ${offer.title}`
-                      }
+                      aria-label={`Configurer le forfait ${offer.title}`}
                     >
-                      {offer.id === 'sur-mesure' ? 'Parlons-en' : 'Configurer'}
+                      Configurer
                     </Link>
                   </div>
                 </th>
@@ -113,7 +103,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                   ) : null}
                 </th>
                 {row.values.map((value, index) => (
-                  <td key={offers[index].id}>
+                  <td key={publicOffers[index].id}>
                     <ComparisonCell status={value} />
                   </td>
                 ))}
@@ -132,7 +122,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                   </ComparisonReveal>
                 </th>
                 {row.values.map((value, index) => (
-                  <td key={offers[index].id}>
+                  <td key={publicOffers[index].id}>
                     <ComparisonReveal>
                       <div className="comparison-detail-cell">
                         <ComparisonCell status={value} />

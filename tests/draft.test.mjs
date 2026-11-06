@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { clearDraft, configurationKey, readDraft, saveDraftProjectOnce, writeDraft } from '../src/lib/draft.ts'
+import { clearDraft, configurationKey, readDraft, readPublicDraftConfiguration, saveDraftProjectOnce, writeDraft } from '../src/lib/draft.ts'
+import { quoteConfiguration } from '../shared/catalog.ts'
+import { changePublicOffer } from '../shared/offer-options.ts'
 
 class MemoryStorage {
   values = new Map()
@@ -42,9 +44,9 @@ test('configuration draft survives sign-in and deduplicates concurrent save atte
     assert.notEqual(changed.id, draft.id)
     assert.equal(changed.saved, undefined)
     assert.equal(configurationKey(configuration), configurationKey({ ...configuration, managedContent: true }))
-    assert.notEqual(configurationKey(configuration), configurationKey({ ...configuration, deployment: true }), 'deployment changes cannot reuse an already saved project')
+    assert.equal(configurationKey(configuration), configurationKey({ ...configuration, deployment: true }), 'included deployment does not create a false draft revision')
     assert.notEqual(configurationKey(configuration), configurationKey({ ...configuration, maintenance: true }), 'monthly maintenance changes cannot reuse an already saved project')
-    assert.deepEqual(Object.keys(JSON.parse([...localStorage.values.values()][0])).sort(), ['configuration', 'id', 'updatedAt', 'version'], 'draft stores no name, e-mail, password or content')
+    assert.deepEqual(Object.keys(JSON.parse([...localStorage.values.values()][0])).sort(), ['catalogueVersion', 'configuration', 'id', 'updatedAt', 'version'], 'draft stores no name, e-mail, password or content')
 
     let attempts = 0
     const retryableCreate = async () => {
@@ -66,7 +68,7 @@ test('configuration draft survives sign-in and deduplicates concurrent save atte
   }
 })
 
-test('mobile and extras change a draft identity while canonical equivalents preserve it', async () => {
+test('included mobile preserves a draft identity while paid extras change it', async () => {
   const previousWindow = globalThis.window
   globalThis.window = { localStorage: new MemoryStorage() }
   try {
@@ -83,8 +85,8 @@ test('mobile and extras change a draft identity while canonical equivalents pres
     assert.equal(await saveDraftProjectOnce('canonical-account', remembered, create), 'canonical-project-1')
     assert.equal(creates, 1)
     const mobile = writeDraft({ ...remembered.configuration, mobile: true })
-    assert.notEqual(mobile.id, original.id); assert.equal(mobile.saved, undefined)
-    assert.notEqual(configurationKey(mobile.configuration), configurationKey(original.configuration))
+    assert.equal(mobile.id, original.id); assert.equal(mobile.saved.projectId, 'canonical-project-1')
+    assert.equal(configurationKey(mobile.configuration), configurationKey(original.configuration))
     const extra = writeDraft({ ...mobile.configuration, extras: [...mobile.configuration.extras, 'analytics'] })
     assert.notEqual(extra.id, mobile.id); assert.equal(extra.saved, undefined)
     assert.equal(await saveDraftProjectOnce('canonical-account', extra, create), 'canonical-project-2')
@@ -96,7 +98,7 @@ test('mobile and extras change a draft identity while canonical equivalents pres
 })
 
 test('included and covered options do not produce false draft revisions', () => {
-  assert.equal(configurationKey({ offerId: 'connecte', mobile: false, managedContent: false, extras: [] }), configurationKey({ offerId: 'connecte', mobile: true, managedContent: true, extras: ['user-accounts', 'user-accounts'] }))
+  assert.equal(configurationKey({ offerId: 'connecte', mobile: false, managedContent: false, extras: [] }), configurationKey({ offerId: 'connecte', mobile: true, managedContent: true, extras: ['booking', 'booking'] }))
   assert.equal(configurationKey({ offerId: 'immersif', mobile: false, scene3d: false }), configurationKey({ offerId: 'immersif', mobile: true, scene3d: true, extras: [] }))
   assert.equal(configurationKey({ offerId: 'vitrine', extras: ['online-store'] }), configurationKey({ offerId: 'vitrine', extras: ['online-payment', 'online-store', 'product-catalog'] }))
   assert.equal(configurationKey({ offerId: 'vitrine', extras: ['member-roles'] }), configurationKey({ offerId: 'vitrine', extras: ['user-accounts', 'member-roles'] }))
@@ -111,14 +113,71 @@ test('legacy drafts gain default fields without losing their saved project ident
     const restored = readDraft()
     assert.equal(restored.id, legacy.id); assert.deepEqual(restored.saved, legacy.saved)
     assert.equal(restored.configuration.mobile, true); assert.equal(restored.configuration.managedContent, true)
-    assert.deepEqual(restored.configuration.extras, ['user-accounts'])
+    assert.deepEqual(restored.configuration.extras, ['booking', 'portfolio-gallery', 'advanced-forms', 'analytics', 'local-seo'])
     assert.equal(writeDraft(restored.configuration).id, legacy.id)
     assert.deepEqual(readDraft().saved, legacy.saved)
     legacy.configuration.offerId = 'vitrine'; delete legacy.saved
     localStorage.setItem('studio.project-draft.v1', JSON.stringify(legacy))
-    assert.equal(readDraft().configuration.mobile, false); assert.deepEqual(readDraft().configuration.extras, [])
+    assert.equal(readDraft().configuration.mobile, true); assert.deepEqual(readDraft().configuration.extras, [])
     localStorage.setItem('studio.project-draft.v1', JSON.stringify({ ...legacy, configuration: { offerId: 'vitrine', extras: ['unknown-option'] } }))
     assert.equal(readDraft(), null, 'an invalid option cannot be silently applied from localStorage')
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('old public Connecté drafts do not turn included accounts into a paid Business option', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    const legacy = { version: 1, id: 'old-connected-draft', updatedAt: Date.now(), configuration: { offerId: 'connecte', managedContent: true, extras: ['user-accounts'] }, saved: { userId: 'old-account', projectId: 'old-project' } }
+    localStorage.setItem('studio.project-draft.v1', JSON.stringify(legacy))
+    const privateDraft = readDraft()
+    assert.equal(privateDraft.configuration.extras.includes('user-accounts'), true, 'private restoration retains the original configuration')
+    assert.deepEqual(privateDraft.saved, legacy.saved)
+
+    const publicConfiguration = readPublicDraftConfiguration()
+    assert.equal(publicConfiguration.extras.includes('user-accounts'), false)
+    assert.equal(quoteConfiguration(publicConfiguration).totalCents, 149000)
+    assert.equal(quoteConfiguration(changePublicOffer(publicConfiguration, 'vitrine')).totalCents, 89000, 'migration happens before changing the public offer')
+    assert.equal(localStorage.getItem('studio.project-draft.v1'), JSON.stringify(legacy), 'public restoration does not mutate the saved private draft')
+
+    const migrated = writeDraft(publicConfiguration)
+    assert.notEqual(migrated.id, legacy.id, 'a changed public configuration cannot reopen an old saved project')
+    assert.equal(migrated.saved, undefined)
+    assert.equal(readDraft().catalogueVersion, 'public-2026-11-06')
+    assert.deepEqual(readPublicDraftConfiguration(), publicConfiguration, 'reloading the migration is idempotent')
+
+    writeDraft({ ...publicConfiguration, extras: [...publicConfiguration.extras, 'user-accounts'] })
+    assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'an explicit new paid selection survives reload')
+    assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 179000)
+
+    legacy.configuration = { offerId: 'vitrine', extras: ['user-accounts'] }
+    localStorage.setItem('studio.project-draft.v1', JSON.stringify(legacy))
+    assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'accounts were already a paid choice in Vitrine')
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('retired roles cannot restore paid accounts while migrating an old public Connecté draft', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    const legacy = { version: 1, id: 'old-connected-roles', updatedAt: Date.now(), configuration: { offerId: 'connecte', extras: ['user-accounts', 'member-roles', 'newsletter'] } }
+    localStorage.setItem('studio.project-draft.v1', JSON.stringify(legacy))
+    const migrated = readPublicDraftConfiguration()
+    assert.equal(migrated.extras.includes('user-accounts'), false)
+    assert.equal(migrated.extras.includes('member-roles'), false)
+    assert.equal(migrated.extras.includes('newsletter'), true, 'other chosen options remain selected')
+    assert.equal(quoteConfiguration(changePublicOffer(migrated, 'connecte')).totalCents, 158000, 'Business only adds the selected newsletter')
+    assert.equal(readDraft().configuration.extras.includes('member-roles'), true, 'the private draft remains untouched')
+    assert.equal(localStorage.getItem('studio.project-draft.v1'), JSON.stringify(legacy))
+    writeDraft({ ...migrated, extras: [...migrated.extras, 'user-accounts'] })
+    assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'versioned explicit paid accounts still survive restoration')
+    assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 188000)
   } finally {
     if (previousWindow === undefined) delete globalThis.window
     else globalThis.window = previousWindow

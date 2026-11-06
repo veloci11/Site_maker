@@ -11,7 +11,7 @@ import { createOrdersRouter, getPricing, getPaymentAvailability } from './orders
 import { createInquiriesRouter } from './inquiries.mjs';
 import { createInquiryAdminRouter } from './inquiry-admin.mjs';
 import { createSeoHandlers } from './seo.mjs';
-import { offers, optionDefinitions, normalizeConfiguration, quoteConfiguration } from '../shared/catalog.ts';
+import { publicOffers, optionDefinitions, normalizeConfiguration, quoteConfiguration } from '../shared/catalog.ts';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 export function createApp() {
@@ -33,7 +33,7 @@ export function createApp() {
   app.use('/api', (req, res, next) => { res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' }); next(); });
   app.use('/api', csrfProtection);
   app.get('/api/health', (_req, res) => res.json({ ok: true }));
-  app.get('/api/catalogue', (_req, res) => res.json({ offers, options: optionDefinitions, pricing: getPricing(), paymentAvailable: getPaymentAvailability().enabled }));
+  app.get('/api/catalogue', (_req, res) => res.json({ offers: publicOffers, options: optionDefinitions, pricing: getPricing(), paymentAvailable: getPaymentAvailability().enabled }));
   app.post('/api/quote', (req, res) => {
     try { res.json({ quote: quoteConfiguration(normalizeConfiguration(req.body?.configuration), getPricing()) }); }
     catch { res.status(400).json({ error: 'Vérifiez le forfait et les options choisies.' }); }

@@ -1,4 +1,4 @@
-import { examples, getOffer, offers } from './catalog.ts'
+import { examples, getOffer, publicOffers } from './catalog.ts'
 
 // A fixed, verified public origin keeps canonicals independent of request headers.
 export const siteOrigin = 'https://gilmathis.com'
@@ -23,12 +23,12 @@ const page = (title: string, description: string, pathname: string): RouteSeo =>
 const publicPages: Record<string, RouteSeo> = {
   '/': page(
     'Création de sites internet clé en main',
-    'Création de sites internet : Vitrine, Connecté, Immersif 3D ou Sur mesure. Comparez les forfaits, choisissez vos options et décrivez votre projet.',
+    'Création de sites internet : Vitrine à 890 €, Business à 1 490 € et Premium / 3D à 2 499 €. Comparez les trois forfaits et choisissez vos options.',
     '/',
   ),
   '/forfaits': page(
     'Comparer les forfaits de création de sites',
-    'Comparez les forfaits Vitrine, Connecté, Immersif 3D et Sur mesure : présentation de votre activité, comptes utilisateurs et interactions 3D selon vos besoins.',
+    'Comparez les trois forfaits Vitrine, Business et Premium / 3D : pages, design, réservation et animations selon les besoins de votre site internet.',
     '/forfaits',
   ),
   '/options': page(
@@ -38,12 +38,12 @@ const publicPages: Record<string, RouteSeo> = {
   ),
   '/exemples': page(
     'Exemples de sites',
-    'Explorez des références externes créditées pour comparer les formats Vitrine, Connecté, Immersif 3D et Sur mesure. Elles illustrent les possibilités de votre site.',
+    'Explorez des références externes créditées pour comparer les formats Vitrine, Business et Premium / 3D. Elles illustrent les possibilités de votre site.',
     '/exemples',
   ),
   '/faq': page(
     'Questions fréquentes',
-    'Préparez votre projet de site internet : contenus, frais après création, modifications, hébergement, mobile, évolution, refonte et référencement Google.',
+    'Préparez votre projet de site internet : contenus, frais après création, modifications, hébergement, mobile et référencement Google.',
     '/faq',
   ),
   '/contact': page(
@@ -91,15 +91,7 @@ const offerPage = (idOrSlug: string): RouteSeo | undefined => {
   )
 }
 
-function currentPage(pathname: string, params: URLSearchParams): RouteSeo | undefined {
-  if (pathname === '/contact') {
-    if (params.get('besoin') === 'evolution') {
-      return page('Évolution de site', 'Ajoutez des pages ou des fonctionnalités à votre site actuel. Présentez votre site et les ajouts souhaités au studio.', '/contact?besoin=evolution')
-    }
-    if (params.get('besoin') === 'refonte') {
-      return page('Refonte de site', 'Repensez le design et la structure de votre site actuel. Présentez votre site et ce que vous souhaitez transformer au studio.', '/contact?besoin=refonte')
-    }
-  }
+function currentPage(pathname: string): RouteSeo | undefined {
   if (publicPages[pathname]) return publicPages[pathname]
   const offer = /^\/forfaits\/([^/]+)$/.exec(pathname)
   if (offer) return offerPage(offer[1])
@@ -111,13 +103,11 @@ function currentPage(pathname: string, params: URLSearchParams): RouteSeo | unde
 export const publicPagePaths = [
   '/',
   '/forfaits',
-  ...offers.map(offer => `/forfaits/${offer.slug}`),
+  ...publicOffers.map(offer => `/forfaits/${offer.slug}`),
   '/options',
   '/exemples',
   '/faq',
   '/contact',
-  '/contact?besoin=evolution',
-  '/contact?besoin=refonte',
 ] as const
 
 /** Only known routes and meaningful service parameters become canonical URLs. */
@@ -127,6 +117,16 @@ export function getRouteSeo(pathname: string, search = ''): RouteSeo {
   const normalized = pathname.replace(/\/+$/, '').toLowerCase() || '/'
   if (!pathname.startsWith('/') || pathname.startsWith('//') || pathname.includes('\\')) {
     return excludedPage('Page introuvable', 404)
+  }
+
+  if (normalized === '/contact' && ['evolution', 'refonte'].includes(params.get('besoin') ?? '')) {
+    params.delete('besoin')
+    const remaining = params.size ? `?${params.toString()}` : ''
+    return { ...publicPages['/contact'], status: 301, redirect: `/contact${remaining}` }
+  }
+  if (['/forfaits/sur-mesure', '/formules/sur-mesure'].includes(normalized) &&
+    !params.has('projet') && !params.has('projectId')) {
+    return { ...offerPage('immersif')!, status: 301, redirect: `/forfaits/immersif-3d${legacySearch}` }
   }
 
   if (normalized === '/formules') {
@@ -148,7 +148,7 @@ export function getRouteSeo(pathname: string, search = ''): RouteSeo {
     return { ...excludedPage(example.title), status: 301, redirect: example.url }
   }
 
-  const metadata = currentPage(normalized, params)
+  const metadata = currentPage(normalized)
   if (!metadata) return excludedPage('Page introuvable', 404)
   // The project editor can share a public configurator route; its URL stays private.
   if (params.has('projet') || params.has('projectId')) {

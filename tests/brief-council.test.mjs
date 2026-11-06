@@ -65,7 +65,7 @@ test('option questions depend on the submitted configuration and never change it
   const configured = withOption(withOption(base, 'booking', true), 'online-store', true);
   const before = JSON.stringify(configured);
   const answers = { bookingDetails: 'Un cours, confirmation par notre équipe.', storeDetails: 'Dix produits, retrait sur place.' };
-  assert.ok(validateBrief('connecte', answers, base).fields.bookingDetails);
+  assert.equal(validateBrief('connecte', answers, base).fields.bookingDetails, undefined, 'reservation is now included in Business');
   assert.ok(validateBrief('connecte', answers, base).fields.storeDetails);
   const result = validateBrief('connecte', answers, configured);
   assert.equal(result.fields.bookingDetails, undefined);
@@ -88,8 +88,9 @@ test('visitor tools and language details follow selected options without adding 
       .reduce((current, id) => withOption(current, id, true), base);
     const before = JSON.stringify(configured);
     for (const id of Object.keys(answers)) {
-      assert.equal(isBriefQuestionVisible(question(type, id), {}, base), false);
-      assert.ok(validateBrief(type, answers, base).fields[id], `${type}/${id} is refused while hidden`);
+      const includedInBusiness = type === 'connecte' && ['analyticsDetails', 'localSeoDetails'].includes(id);
+      assert.equal(isBriefQuestionVisible(question(type, id), {}, base), includedInBusiness);
+      assert.equal(Boolean(validateBrief(type, answers, base).fields[id]), !includedInBusiness, `${type}/${id} follows the selected or included service`);
     }
     const result = validateBrief(type, answers, configured);
     for (const id of Object.keys(answers)) {

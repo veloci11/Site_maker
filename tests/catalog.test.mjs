@@ -1,198 +1,232 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  normalizeConfiguration,
-  quoteConfiguration,
-  defaultPricing,
-  EXTRA_OPTION_IDS,
-  offers,
-  examples,
-  optionDefinitions,
-  optionGroups,
-  isOptionIncluded,
-  isOptionSelected,
-  withOption,
+  normalizeConfiguration, quoteConfiguration, defaultPricing, EXTRA_OPTION_IDS,
+  offers, publicOffers, examples, optionDefinitions, optionGroups, isOptionIncluded,
+  isOptionSelected, withOption, formatOptionPrice, formatQuoteTotal, formatQuoteLine, getOffer, MONTHLY_PLAN_IDS,
 } from '../shared/catalog.ts';
 
-test('each offer references an existing example from its own gallery category', () => {
-  for (const offer of offers) {
+const billable = quote => quote.lines.filter(line => !line.included);
+
+test('three public offers have approved names, prices and matching gallery references', () => {
+  assert.deepEqual(publicOffers.map(offer => offer.title), ['Vitrine', 'Business', 'Premium / 3D']);
+  assert.deepEqual(publicOffers.map(offer => defaultPricing.base[offer.id]), [89000, 149000, 249900]);
+  for (const offer of publicOffers) {
     const example = examples.find(item => item.id === offer.exampleId);
-    assert.ok(example, `${offer.id}: example ${offer.exampleId} exists`);
-    assert.equal(example.offerId, offer.id, `${offer.id}: its example matches the public gallery category`);
+    assert.ok(example, offer.id);
+    assert.equal(example.offerId, offer.id);
+  }
+  assert.ok(!examples.some(example => example.id === 'cal-com'));
+  assert.ok(examples.every(example => publicOffers.some(offer => offer.id === example.offerId && offer.title === example.category)));
+  assert.equal(offers.length, 4, 'private historical offer is retained');
+  assert.equal(getOffer('sur-mesure').title, 'Sur mesure');
+});
+
+test('every public base includes responsive and launch without charging them again', () => {
+  for (const offer of publicOffers) {
+    const config = normalizeConfiguration({ offerId: offer.id, mobile: false, deployment: false });
+    assert.equal(config.mobile, true);
+    assert.equal(config.deployment, true);
+    const quote = quoteConfiguration(config);
+    assert.equal(quote.totalCents, defaultPricing.base[offer.id]);
+    assert.equal(quote.monthlyTotalCents, 0);
+    assert.equal(quote.estimated, false);
+    assert.equal(quote.checkoutReady, true);
+    for (const id of ['mobile', 'deployment']) {
+      assert.equal(isOptionIncluded(config, id), true);
+      assert.equal(quote.lines.find(line => line.key === id).amountCents, 0);
+      assert.equal(isOptionSelected(withOption(config, id, false), id), true);
+    }
   }
 });
 
-test('included capabilities are normalized and are not charged twice', () => {
-  const pricing = { ...defaultPricing, base: { vitrine: 10000, connecte: 20000, immersif: 30000, 'sur-mesure': null }, options: { ...defaultPricing.options, 'managed-content': 5000, 'scene-3d': 8000, 'language-en': 4000 } };
-  const connected = quoteConfiguration(normalizeConfiguration({ offerId: 'connecte', language: 'fr' }), pricing);
-  assert.equal(connected.totalCents, 20000);
-  assert.equal(connected.lines.find(line => line.key === 'managed-content').included, true);
-  const immersive = quoteConfiguration(normalizeConfiguration({ offerId: 'immersif', managedContent: true, language: 'fr-en' }), pricing);
-  assert.equal(immersive.totalCents, 39000);
+test('Business includes its professional functions while accounts remain a paid addition', () => {
+  const config = normalizeConfiguration({ offerId: 'connecte' });
+  for (const id of ['managed-content', 'booking', 'advanced-forms', 'portfolio-gallery', 'local-seo', 'analytics']) {
+    assert.equal(isOptionIncluded(config, id), true, id);
+    assert.equal(isOptionSelected(config, id), true, id);
+    assert.equal(quoteConfiguration(config).lines.find(line => line.key === id).amountCents, 0);
+  }
+  assert.equal(isOptionSelected(config, 'user-accounts'), false);
+  assert.equal(isOptionIncluded(config, 'user-accounts'), false);
+  const accounts = quoteConfiguration(withOption(config, 'user-accounts', true));
+  assert.equal(accounts.totalCents, 179000);
+  assert.equal(accounts.estimated, true);
+  assert.equal(accounts.requiresQuote, true);
+  assert.equal(accounts.checkoutReady, false);
 });
-test('unpriced and custom configurations never enable checkout', () => {
-  assert.equal(quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine' })).checkoutReady, false);
+
+test('Premium distinguishes included integration, extra integration and model creation', () => {
+  const base = normalizeConfiguration({ offerId: 'immersif' });
+  assert.equal(isOptionIncluded(base, 'scene-3d'), true);
+  assert.equal(isOptionIncluded(base, 'managed-content'), true);
+  const extra = quoteConfiguration(withOption(base, 'extra-scene-3d', true));
+  assert.equal(extra.totalCents, 274900);
+  assert.equal(extra.lines.find(line => line.key === 'scene-3d').amountCents, 0);
+  assert.equal(extra.lines.find(line => line.key === 'extra-scene-3d').amountCents, 25000);
+  const model = quoteConfiguration(withOption(base, 'custom-3d', true));
+  assert.equal(model.totalCents, 264900);
+  assert.equal(model.lines.some(line => line.key === 'extra-scene-3d'), false, 'creating a model does not silently add another paid integration');
+});
+
+test('approved fixed additions and scoped ranges are explicitly displayed', () => {
+  assert.match(formatOptionPrice('additional-language'), /^100\s€/);
+  assert.equal(optionDefinitions.find(option => option.id === 'additional-language').title, 'Langue supplémentaire');
+  assert.match(formatOptionPrice('extra-pages'), /60\s€–120\s€/);
+  assert.match(formatOptionPrice('extra-scene-3d'), /250\s€–600\s€/);
+  assert.match(formatOptionPrice('custom-3d'), /À partir de 150\s€/);
+  assert.match(formatOptionPrice('newsletter'), /À partir de 90\s€/);
+  assert.match(formatOptionPrice('hosting-monthly'), /19\s€ \/ mois/);
+  const unknown = { ...defaultPricing, options: { ...defaultPricing.options, 'language-en': null } };
+  assert.equal(formatOptionPrice('language-en', unknown), 'Sur devis');
+  const changed = { ...defaultPricing, options: { ...defaultPricing.options, 'extra-pages': 9000 } };
+  assert.match(formatOptionPrice('extra-pages', changed), /À partir de 90\s€/);
+});
+
+test('monthly plans replace each other in both directions and keep creation independent', () => {
+  let config = normalizeConfiguration({ offerId: 'vitrine', language: 'fr-en' });
+  for (const id of [...MONTHLY_PLAN_IDS, ...MONTHLY_PLAN_IDS.toReversed()]) {
+    const previous = config;
+    const before = structuredClone(previous);
+    config = withOption(previous, id, true);
+    assert.equal(MONTHLY_PLAN_IDS.filter(candidate => isOptionSelected(config, candidate)).length, 1);
+    const quote = quoteConfiguration(config);
+    assert.equal(quote.totalCents, 99000);
+    assert.equal(quote.monthlyTotalCents, defaultPricing.options[id]);
+    assert.equal(billable(quote).filter(line => line.billing === 'monthly').length, 1);
+    assert.deepEqual(previous, before, 'selection does not mutate the prior configuration');
+  }
+  config = withOption(config, 'hosting-monthly', false);
+  assert.equal(quoteConfiguration(config).monthlyTotalCents, 0);
+});
+
+test('malformed overlapping monthly selections normalize to the highest plan exactly once', () => {
+  const input = Object.freeze({ offerId: 'vitrine', maintenance: true, extras: Object.freeze(['hosting-monthly', 'serenity-monthly']) });
+  const config = normalizeConfiguration(input);
+  assert.equal(config.maintenance, false);
+  assert.deepEqual(config.extras, ['serenity-monthly']);
+  assert.equal(quoteConfiguration(config).monthlyTotalCents, 6900);
+  assert.deepEqual(input.extras, ['hosting-monthly', 'serenity-monthly']);
+  assert.deepEqual(normalizeConfiguration(config), config);
+});
+
+test('a shop includes standalone catalogue and payment without double charging', () => {
+  const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['online-payment', 'product-catalog', 'online-store'] });
+  assert.deepEqual(config.extras, ['online-store']);
+  const quote = quoteConfiguration(config);
+  assert.equal(quote.totalCents, 149000);
+  assert.equal(quote.estimated, true);
+  for (const id of ['online-payment', 'product-catalog']) {
+    assert.equal(isOptionIncluded(config, id), true);
+    assert.equal(quote.lines.find(line => line.key === id).amountCents, 0);
+  }
+  assert.equal(quoteConfiguration(withOption(config, 'online-store', false)).totalCents, 89000);
+});
+
+test('blog has its own editor and does not silently add a general CMS fee', () => {
+  const config = withOption(normalizeConfiguration({ offerId: 'vitrine' }), 'blog', true);
+  assert.equal(config.managedContent, false);
+  assert.equal(quoteConfiguration(config).totalCents, 104000);
+  assert.equal(quoteConfiguration(withOption(config, 'managed-content', true)).totalCents, 134000);
+});
+
+test('unknown prices do not become free and only hide their own billing total', () => {
+  const pricing = { ...defaultPricing, options: { ...defaultPricing.options, 'language-en': null, 'hosting-monthly': null } };
+  const once = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', language: 'fr-en' }), pricing);
+  assert.equal(once.totalCents, null);
+  assert.equal(once.monthlyTotalCents, 0);
+  assert.equal(once.checkoutReady, false);
+  const monthly = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', extras: ['hosting-monthly'] }), pricing);
+  assert.equal(monthly.totalCents, 89000);
+  assert.equal(monthly.monthlyTotalCents, null);
+  assert.equal(monthly.checkoutReady, false);
   const custom = quoteConfiguration(normalizeConfiguration({ offerId: 'sur-mesure' }));
-  assert.equal(custom.requiresQuote, true); assert.equal(custom.totalCents, null);
-});
-test('unknown offers and wrongly typed options are rejected', () => {
-  assert.throws(() => normalizeConfiguration({ offerId: 'unknown' }));
-  assert.throws(() => normalizeConfiguration({ managedContent: 'false' }));
-  assert.throws(() => normalizeConfiguration({ language: 'xx' }));
-  assert.throws(() => normalizeConfiguration({ deployment: 'true' }));
-  assert.throws(() => normalizeConfiguration({ maintenance: 1 }));
+  assert.equal(custom.totalCents, null);
+  assert.equal(custom.requiresQuote, true);
 });
 
-test('deployment is a single creation fee and maintenance is a separate optional monthly amount', () => {
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, connecte: 100000 }, options: { ...defaultPricing.options, 'managed-content': 30000, deployment: 20000, 'maintenance-monthly': 5000 } };
-  const quote = quoteConfiguration(normalizeConfiguration({ offerId: 'connecte', deployment: true, maintenance: true }), pricing);
-  assert.equal(quote.totalCents, 120000, 'creation includes deployment once and excludes maintenance');
-  assert.equal(quote.monthlyTotalCents, 5000);
-  assert.equal(quote.checkoutReady, true);
-  assert.equal(quote.lines.find(line => line.key === 'managed-content').amountCents, 0, 'CMS already included');
-  assert.equal(quote.lines.filter(line => line.key === 'deployment').length, 1);
-  assert.equal(quote.lines.find(line => line.key === 'deployment').billing, 'once');
-  assert.equal(quote.lines.find(line => line.key === 'maintenance-monthly').billing, 'monthly');
-  const removed = quoteConfiguration(normalizeConfiguration({ offerId: 'connecte' }), pricing);
-  assert.equal(removed.totalCents, 100000);
-  assert.equal(removed.monthlyTotalCents, 0);
-  assert.ok(removed.lines.every(line => line.billing === 'once'));
-});
-
-test('unknown maintenance price blocks checkout without hiding the known creation amount', () => {
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 } };
-  const selected = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', maintenance: true }), pricing);
-  assert.equal(selected.totalCents, 100000);
-  assert.equal(selected.monthlyTotalCents, null);
-  assert.equal(selected.checkoutReady, false);
-  const unselected = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine' }), pricing);
-  assert.equal(unselected.monthlyTotalCents, 0);
-  assert.equal(unselected.checkoutReady, true);
-  const unknownDeployment = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', deployment: true }), pricing);
-  assert.equal(unknownDeployment.totalCents, null);
-  assert.equal(unknownDeployment.monthlyTotalCents, 0);
-  assert.equal(unknownDeployment.checkoutReady, false);
-});
-
-test('older configuration inputs keep both new services unselected by default', () => {
-  const legacy = normalizeConfiguration({ offerId: 'vitrine', language: 'fr', managedContent: false, scene3d: false });
-  assert.equal(legacy.deployment, false);
-  assert.equal(legacy.maintenance, false);
-});
-
-test('the public catalogue has one unknown price and one group per distinct option', () => {
+test('catalogue identifiers stay unique and historical additions remain readable', () => {
   const ids = optionDefinitions.map(option => option.id);
   assert.equal(new Set(ids).size, ids.length);
   assert.deepEqual(Object.keys(defaultPricing.options).sort(), [...ids].sort());
-  assert.ok(Object.values(defaultPricing.base).every(value => value === null));
-  assert.ok(Object.values(defaultPricing.options).every(value => value === null), 'test fixtures must never populate production prices');
-  const groups = new Set(optionGroups.map(group => group.id));
-  assert.ok(optionDefinitions.every(option => groups.has(option.group)));
-  assert.ok(EXTRA_OPTION_IDS.every(id => ids.includes(id)), 'a selectable extra must have a catalogue entry');
+  assert.ok(EXTRA_OPTION_IDS.every(id => ids.includes(id)));
+  assert.ok(optionDefinitions.every(option => optionGroups.some(group => group.id === option.group)));
+  const config = normalizeConfiguration({ offerId: 'sur-mesure', extras: ['member-roles', 'backups-monthly'] });
+  assert.deepEqual(config.extras, ['user-accounts', 'member-roles', 'backups-monthly']);
+  assert.equal(isOptionSelected(config, 'backups-monthly'), true);
 });
 
-test('Vitrine is desktop-only by default and mobile adaptation adds exactly its selected fee', () => {
-  const base = normalizeConfiguration({ offerId: 'vitrine' });
-  assert.equal(base.mobile, false); assert.deepEqual(base.extras, []);
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, mobile: 15000 } };
-  const desktop = quoteConfiguration(base, pricing);
-  assert.equal(desktop.totalCents, 100000); assert.ok(!desktop.lines.some(line => line.key === 'mobile'));
-  const selected = withOption(base, 'mobile', true);
-  assert.equal(base.mobile, false, 'selection does not mutate the prior configuration');
-  assert.equal(selected.mobile, true); assert.equal(isOptionIncluded(selected, 'mobile'), false); assert.equal(isOptionSelected(selected, 'mobile'), true);
-  const adapted = quoteConfiguration(selected, pricing);
-  assert.equal(adapted.totalCents, 115000);
-  assert.equal(adapted.lines.filter(line => line.key === 'mobile').length, 1);
-  assert.equal(adapted.lines.find(line => line.key === 'mobile').included, false);
-  assert.equal(quoteConfiguration(withOption(selected, 'mobile', false), pricing).totalCents, 100000);
+test('malformed and unknown configuration inputs are rejected', () => {
+  for (const value of [
+    { offerId: 'unknown' }, { mobile: 'false' }, { managedContent: null },
+    { deployment: 'true' }, { maintenance: 1 }, { language: 'xx' },
+    { extras: null }, { extras: ['unknown'] }, { extras: [1] },
+    { extras: Array(EXTRA_OPTION_IDS.length + 1).fill('blog') },
+  ]) assert.throws(() => normalizeConfiguration(value));
 });
 
-test('included mobile, CMS, user accounts and 3D stay selected and free despite unknown individual prices', () => {
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, connecte: 200000, immersif: 300000 } };
-  const connected = normalizeConfiguration({ offerId: 'connecte', mobile: false, managedContent: false, extras: [] });
-  assert.equal(connected.mobile, true); assert.equal(connected.managedContent, true); assert.deepEqual(connected.extras, ['user-accounts']);
-  const connectedQuote = quoteConfiguration(connected, pricing);
-  assert.equal(connectedQuote.totalCents, 200000); assert.equal(connectedQuote.checkoutReady, true);
-  for (const id of ['mobile', 'managed-content', 'user-accounts']) {
-    assert.equal(isOptionIncluded(connected, id), true, id); assert.equal(isOptionSelected(connected, id), true, id);
-    const line = connectedQuote.lines.find(line => line.key === id);
-    assert.equal(line.amountCents, 0, id); assert.equal(line.included, true, id);
-    assert.equal(connectedQuote.lines.filter(line => line.key === id).length, 1, id);
-    assert.equal(isOptionSelected(withOption(connected, id, false), id), true, id + ' cannot be removed from its package');
+test('creation totals aggregate approved lower and upper bounds while monthly fees remain separate', () => {
+  const quote = quoteConfiguration(normalizeConfiguration({
+    offerId: 'vitrine',
+    extras: ['additional-language', 'user-accounts', 'extra-pages', 'content-import', 'hosting-monthly'],
+  }));
+  assert.equal(quote.totalCents, 145000);
+  assert.equal(quote.maximumTotalCents, 196000);
+  assert.equal(quote.monthlyTotalCents, 1900);
+  assert.match(formatQuoteTotal(quote), /^1\s450\s€–1\s960\s€$/);
+  const accounts = quote.lines.find(line => line.key === 'user-accounts');
+  assert.equal(accounts.amountCents, 30000);
+  assert.equal(accounts.maximumCents, 60000);
+  assert.equal(accounts.estimated, true);
+  assert.match(formatQuoteLine(accounts), /^300\s€–600\s€$/);
+  assert.equal(quote.checkoutReady, false);
+  assert.equal(quote.requiresQuote, true);
+});
+
+test('one option without a ceiling keeps a minimum total instead of inventing a maximum', () => {
+  const quote = quoteConfiguration(normalizeConfiguration({
+    offerId: 'vitrine', extras: ['user-accounts', 'newsletter', 'serenity-monthly'],
+  }));
+  assert.equal(quote.totalCents, 128000);
+  assert.equal(quote.maximumTotalCents, null);
+  assert.equal(quote.monthlyTotalCents, 6900);
+  assert.match(formatQuoteTotal(quote), /^À partir de 1\s280\s€$/);
+  assert.match(formatQuoteLine(quote.lines.find(line => line.key === 'newsletter')), /^À partir de 90\s€$/);
+});
+
+test('included additions and fixed-price bases do not create artificial ranges', () => {
+  const quote = quoteConfiguration(normalizeConfiguration({ offerId: 'connecte', extras: ['analytics', 'blog'] }));
+  assert.equal(quote.totalCents, 164000);
+  assert.equal(quote.maximumTotalCents, 164000);
+  assert.equal(quote.estimated, false);
+  assert.match(formatQuoteTotal(quote), /^1\s640\s€$/);
+  assert.equal(quote.lines.find(line => line.key === 'analytics').maximumCents, 0);
+});
+
+test('admin prices and other currencies do not inherit unrelated published EUR upper bounds', () => {
+  const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['user-accounts'] });
+  for (const pricing of [
+    { ...defaultPricing, currency: 'CHF' },
+    { ...defaultPricing, options: { ...defaultPricing.options, 'user-accounts': 40000 } },
+  ]) {
+    const quote = quoteConfiguration(config, pricing);
+    assert.equal(quote.maximumTotalCents, null);
+    assert.match(formatQuoteTotal(quote), /^À partir de /);
   }
-  const immersive = normalizeConfiguration({ offerId: 'immersif', mobile: false, scene3d: false });
-  assert.equal(immersive.mobile, true); assert.equal(immersive.scene3d, true);
-  const immersiveQuote = quoteConfiguration(immersive, pricing);
-  assert.equal(immersiveQuote.totalCents, 300000); assert.equal(immersiveQuote.checkoutReady, true);
-  assert.equal(immersiveQuote.lines.find(line => line.key === 'scene-3d').amountCents, 0);
-  assert.equal(isOptionSelected(withOption(immersive, 'scene-3d', false), 'scene-3d'), true);
+  const unknown = quoteConfiguration(config, { ...defaultPricing, options: { ...defaultPricing.options, 'user-accounts': null } });
+  assert.equal(unknown.totalCents, null);
+  assert.equal(unknown.maximumTotalCents, null);
+  assert.equal(formatQuoteTotal(unknown), 'Sur devis');
 });
 
-test('extras use a stable catalogue order, deduplicate and preserve the input array', () => {
-  const extras = Object.freeze(['blog', 'booking', 'blog', 'user-accounts']);
-  const config = normalizeConfiguration(Object.freeze({ offerId: 'vitrine', extras }));
-  assert.deepEqual(config.extras, ['user-accounts', 'booking', 'blog']);
-  assert.deepEqual(extras, ['blog', 'booking', 'blog', 'user-accounts']);
-  assert.deepEqual(normalizeConfiguration(config), config, 'normalization is idempotent');
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, 'user-accounts': 25000, booking: 12000, blog: 9000 } };
-  const quote = quoteConfiguration(config, pricing);
-  assert.equal(quote.totalCents, 146000);
-  assert.deepEqual(quote.lines.map(line => line.key), ['base', 'user-accounts', 'booking', 'blog']);
-  assert.equal(new Set(quote.lines.map(line => line.key)).size, quote.lines.length);
-});
-
-test('malformed extras and wrongly typed mobile values cannot silently become valid options', () => {
-  for (const extras of ['booking', null, {}, [1], ['unknown-option'], ['mobile'], ['managed-content']]) {
-    assert.throws(() => normalizeConfiguration({ offerId: 'vitrine', extras }), JSON.stringify(extras));
-  }
-  for (const mobile of ['false', 1, null]) assert.throws(() => normalizeConfiguration({ mobile }));
-  assert.throws(() => normalizeConfiguration({ extras: Array(EXTRA_OPTION_IDS.length + 1).fill('booking') }));
-});
-
-test('member roles add their account dependency and removing optional accounts removes those roles', () => {
-  const base = normalizeConfiguration({ offerId: 'vitrine' });
-  const roles = withOption(base, 'member-roles', true);
-  assert.deepEqual(roles.extras, ['user-accounts', 'member-roles']);
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, 'user-accounts': 25000, 'member-roles': 10000 } };
-  assert.equal(quoteConfiguration(roles, pricing).totalCents, 135000);
-  const removed = withOption(roles, 'user-accounts', false);
-  assert.deepEqual(removed.extras, []); assert.equal(quoteConfiguration(removed, pricing).totalCents, 100000);
-  assert.deepEqual(withOption(roles, 'member-roles', false).extras, ['user-accounts'], 'removing roles does not discard independently useful accounts');
-});
-
-test('a shop covers standalone catalogue and payment without double charging or unknown-price blocking', () => {
-  const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['product-catalog', 'online-payment', 'online-store', 'online-store'] });
-  assert.deepEqual(config.extras, ['online-store']);
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, 'online-store': 60000 } };
-  const quote = quoteConfiguration(config, pricing);
-  assert.equal(quote.totalCents, 160000); assert.equal(quote.checkoutReady, true);
-  for (const id of ['product-catalog', 'online-payment']) {
-    assert.equal(isOptionSelected(config, id), true); assert.equal(isOptionIncluded(config, id), true);
-    assert.equal(quote.lines.find(line => line.key === id).amountCents, 0); assert.equal(quote.lines.find(line => line.key === id).included, true);
-  }
-  assert.deepEqual(withOption(config, 'product-catalog', true), config, 'selecting an included component is a no-op');
-  const noShop = withOption(config, 'online-store', false);
-  assert.ok(!isOptionSelected(noShop, 'product-catalog')); assert.ok(!isOptionSelected(noShop, 'online-payment'));
-  assert.equal(quoteConfiguration(noShop, pricing).totalCents, 100000);
-});
-
-test('extended one-time features and recurring services use independent totals', () => {
-  // Deliberate test-only amounts; defaultPricing remains untouched and unknown.
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, mobile: 15000, booking: 12000, deployment: 20000, 'maintenance-monthly': 4000, 'hosting-monthly': 2000, 'backups-monthly': 1000 } };
-  const config = normalizeConfiguration({ offerId: 'vitrine', mobile: true, deployment: true, maintenance: true, extras: ['booking', 'hosting-monthly', 'backups-monthly'] });
-  const quote = quoteConfiguration(config, pricing);
-  assert.equal(quote.totalCents, 147000); assert.equal(quote.monthlyTotalCents, 7000); assert.equal(quote.checkoutReady, true);
-  assert.deepEqual(quote.lines.filter(line => line.billing === 'monthly').map(line => line.key), ['maintenance-monthly', 'hosting-monthly', 'backups-monthly']);
-  assert.equal(quote.lines.find(line => line.key === 'booking').billing, 'once');
-  assert.equal(defaultPricing.options.booking, null, 'the fixture never mutates public prices');
-});
-
-test('an unknown extra fee blocks only its own billing total and never becomes zero', () => {
-  const pricing = { ...defaultPricing, base: { ...defaultPricing.base, vitrine: 100000 }, options: { ...defaultPricing.options, 'hosting-monthly': 2000 } };
-  const onceUnknown = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', extras: ['booking', 'hosting-monthly'] }), pricing);
-  assert.equal(onceUnknown.totalCents, null); assert.equal(onceUnknown.monthlyTotalCents, 2000); assert.equal(onceUnknown.checkoutReady, false);
-  const monthlyUnknown = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', extras: ['hosting-monthly', 'backups-monthly'] }), pricing);
-  assert.equal(monthlyUnknown.totalCents, 100000); assert.equal(monthlyUnknown.monthlyTotalCents, null); assert.equal(monthlyUnknown.checkoutReady, false);
-  const absentServices = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine' }), pricing);
-  assert.equal(absentServices.totalCents, 100000); assert.equal(absentServices.monthlyTotalCents, 0); assert.equal(absentServices.checkoutReady, true);
+test('legacy quote formatting reads saved amounts without reconstructing or mutating bounds', () => {
+  const fixed = { currency: 'EUR', totalCents: 123400, lines: [{ amountCents: 30000 }] };
+  const minimum = { ...fixed, estimated: true };
+  const snapshot = structuredClone(minimum);
+  assert.match(formatQuoteTotal(fixed), /^1\s234\s€$/);
+  assert.match(formatQuoteTotal(minimum), /^À partir de 1\s234\s€$/);
+  assert.match(formatQuoteLine(fixed.lines[0]), /^300\s€$/);
+  assert.deepEqual(minimum, snapshot);
+  assert.equal(Object.hasOwn(minimum, 'maximumTotalCents'), false);
+  assert.equal(formatQuoteTotal({ currency: 'EUR', totalCents: null, requiresQuote: true }), 'Sur devis');
 });

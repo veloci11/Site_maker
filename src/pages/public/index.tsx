@@ -1,26 +1,24 @@
-import { lazy, Suspense, useEffect, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, type ReactNode } from 'react'
 import { Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Check, ChevronRight, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Check, ShieldCheck } from 'lucide-react'
 import {
-  offers,
+  publicOffers,
+  isPublicOffer,
   getOffer,
   examples,
   faqs,
-  optionDefinitions,
   optionGroups,
-  formatMoney,
+  formatOptionPrice,
   normalizeConfiguration,
   isOptionIncluded,
   type OfferId,
 } from '../../../shared/catalog'
 import { getPublicOptions } from '../../../shared/offer-options'
 import { PricingCard } from '../../components/layout/PricingCard'
-import { SelectedPlanCard } from '../../components/layout/SelectedPlanCard'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
-import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
-import { didRestorePlanScroll, getPlanReturnHref } from '../../lib/plan-return'
+import { didRestorePlanScroll } from '../../lib/plan-return'
 import { FaqList } from './FaqList'
 import { OfferComparison } from './OfferComparison'
 import { configureHref, startingPrice, usePricing } from './pricing'
@@ -36,27 +34,6 @@ function usePageTitle(title: string) {
   useEffect(() => {
     document.title = `${title} · studio`
   }, [title])
-}
-
-function ExistingSiteServices() {
-  return (
-    <section className="container existing-site-offers" aria-label="Pour votre site actuel">
-      <div className="pricing-grid pricing-grid--existing">
-        {existingSiteOffers.map((service) => (
-          <PricingCard
-            key={service.id}
-            slug={service.id}
-            title={service.title}
-            price="Sur devis"
-            features={service.features}
-            href={service.href}
-            variant={service.id}
-            cta={service.cta}
-          />
-        ))}
-      </div>
-    </section>
-  )
 }
 
 function Intro({
@@ -82,16 +59,6 @@ function Intro({
   )
 }
 
-function Breadcrumb({ children }: { children: ReactNode }) {
-  return (
-    <nav className="public-breadcrumb" aria-label="Fil d’Ariane">
-      <Link to="/forfaits">Forfaits</Link>
-      <ChevronRight size={15} aria-hidden="true" />
-      <span aria-current="page">{children}</span>
-    </nav>
-  )
-}
-
 export function HomePage() {
   usePageTitle('Création de sites internet clé en main')
   const pricing = usePricing()
@@ -114,7 +81,7 @@ export function HomePage() {
             Clé en main.
           </h1>
           <p className="home-hero__description">
-            Présentez votre activité, proposez un espace client ou faites découvrir votre univers en 3D.
+            Présentez votre activité, facilitez les prises de contact ou faites découvrir votre univers en 3D.
             Nous vous aidons à choisir les fonctions utiles, puis réalisons votre site.
           </p>
           <div className="home-hero__actions">
@@ -140,7 +107,7 @@ export function HomePage() {
           </a>
         </Reveal>
         <div className="pricing-grid">
-          {offers.map((offer, index) => (
+          {publicOffers.map((offer, index) => (
             <Reveal key={offer.id} delay={index * 65}>
               <PricingCard
                 slug={offer.slug}
@@ -149,17 +116,13 @@ export function HomePage() {
                 features={offer.features}
                 href={configureHref(offer.id)}
                 variant={offer.variant}
-                cta={
-                  offer.id === 'sur-mesure'
-                    ? 'Parlons de votre projet'
-                    : `Configurer ${offer.title}`
-                }
+                cta={`Configurer ${offer.title}`}
+                featured={offer.id === 'connecte'}
               />
             </Reveal>
           ))}
         </div>
       </section>
-      <ExistingSiteServices />
       <section
         className="container home-method"
         id="fonctionnement"
@@ -172,7 +135,7 @@ export function HomePage() {
           ],
           [
             'Décrivez votre projet',
-            'Partagez vos besoins, vos fichiers et vos coordonnées dans un questionnaire adapté.',
+            'Laissez vos coordonnées et un court message. Votre forfait et vos options accompagnent la demande.',
           ],
           [
             'Préparons votre site',
@@ -243,7 +206,6 @@ export function OffersPage() {
       <section className="container public-comparison" aria-label="Comparaison des forfaits">
         <OfferComparison pricing={pricing} id="forfaits-comparison" />
       </section>
-      <ExistingSiteServices />
     </>
   )
 }
@@ -253,7 +215,7 @@ function OptionRows({ offerId = 'vitrine' }: { offerId?: OfferId }) {
   const configuration = normalizeConfiguration({ offerId })
   return (
     <div className="public-option-list">
-      {optionGroups.map((group) => (
+      {optionGroups.filter(group => getPublicOptions(offerId).some(option => option.group === group.id)).map((group) => (
         <section
           className="public-option-group"
           key={group.id}
@@ -274,7 +236,7 @@ function OptionRows({ offerId = 'vitrine' }: { offerId?: OfferId }) {
                     <span>
                       {included
                         ? 'Compris'
-                        : `+ ${formatMoney(pricing.options[option.id], pricing.currency)}${option.billing === 'monthly' ? ' / mois' : ''}`}
+                        : formatOptionPrice(option.id, pricing)}
                     </span>
                     {included ? (
                       <Check size={22} aria-label="Compris dans le forfait" />
@@ -313,37 +275,7 @@ function MissingPage({ title = 'Cette page n’est pas disponible.' }: { title?:
 }
 
 export function CustomProjectPage() {
-  usePageTitle('Création de site sur mesure')
-  return (
-    <>
-      <section className="container page-intro public-offer-hero">
-        <div>
-          <Breadcrumb>Sur mesure</Breadcrumb>
-          <h1>Un site sur mesure.</h1>
-          <p className="page-subtitle">
-            Des fonctions dédiées, des outils à connecter ou une expérience particulière.
-            Présentez-nous ce que votre site doit permettre.
-          </p>
-        </div>
-        <div className="public-offer-price">
-          <p>Sur devis</p>
-        </div>
-      </section>
-      <section className="container public-custom-project">
-        <div className="public-custom-copy">
-          <h2>Précisons votre besoin.</h2>
-          <p>
-            Votre activité, les personnes qui utiliseront le site et les fonctions attendues nous
-            aident à définir le projet.
-          </p>
-          <p>Nous vous recontactons pour valider le périmètre avant de vous proposer un devis.</p>
-        </div>
-        <div className="public-custom-form" id="projet">
-          <InquiryForm custom />
-        </div>
-      </section>
-    </>
-  )
+  return <Navigate to={configureHref('immersif')} replace />
 }
 
 /** Kept only for older lazy imports; public routes now open the configurator directly. */
@@ -355,7 +287,8 @@ export function OfferDetailPage() {
 
 export function OptionsPage() {
   const [search, setSearch] = useSearchParams()
-  const offer = getOffer(search.get('forfait')) ?? offers[0]
+  const candidate = getOffer(search.get('forfait'))
+  const offer = candidate && isPublicOffer(candidate.id) ? candidate : publicOffers[0]
   usePageTitle('Les options de votre site')
   return (
     <>
@@ -364,13 +297,12 @@ export function OptionsPage() {
         <div className="field">
           <label htmlFor="options-offer">Votre forfait</label>
           <select id="options-offer" className="input" value={offer.id} onChange={event => setSearch({ forfait: event.target.value })}>
-            {offers.map(item => <option value={item.id} key={item.id}>{item.title}</option>)}
+            {publicOffers.map(item => <option value={item.id} key={item.id}>{item.title}</option>)}
           </select>
         </div>
         <OptionRows offerId={offer.id} />
         <p className="public-reference-note">
-          Certaines fonctions sont déjà incluses selon le forfait. La mise en ligne est ponctuelle ;
-          la maintenance est mensuelle.
+          La mise en production est comprise dans chaque forfait. Les offres d’hébergement et de suivi sont facultatives et mensuelles ; un seul abonnement est facturé à la fois.
         </p>
         <Button asChild>
           <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>
@@ -384,11 +316,8 @@ export function OptionsPage() {
 
 const exampleFilters = [
   { id: 'all', label: 'Tous' },
-  { id: 'vitrine', label: 'Vitrine' },
-  { id: 'connecte', label: 'Connecté' },
-  { id: 'immersif', label: '3D' },
-  { id: 'sur-mesure', label: 'Sur mesure' },
-] as const
+  ...publicOffers.map(offer => ({ id: offer.id, label: offer.title })),
+]
 
 export function ExamplesPage() {
   usePageTitle('Exemples de sites')
@@ -555,63 +484,16 @@ export function FaqPage() {
   )
 }
 
-type InquiryFormProps = {
-  custom?: boolean
-  service?: (typeof existingSiteOffers)[number]
-  onBusyChange?: (busy: boolean) => void
-}
-
-function InquiryForm({ custom = false, service, onBusyChange }: InquiryFormProps) {
-  const requestType = service?.id ?? (custom ? 'sur-mesure' : 'contact')
+function InquiryForm() {
   return (
     <Suspense fallback={<p role="status">Chargement du formulaire…</p>}>
-      <ProjectBriefForm
-        key={requestType}
-        requestType={requestType}
-        configuration={custom ? normalizeConfiguration({ offerId: 'sur-mesure' }) : null}
-        onBusyChange={onBusyChange}
-      />
+      <ProjectBriefForm requestType="contact" configuration={null} />
     </Suspense>
   )
 }
 
 export function ContactPage() {
-  const [search] = useSearchParams()
-  const [sending, setSending] = useState(false)
-  const service = getExistingSiteOffer(search.get('besoin'))
-  usePageTitle(service ? `${service.title} de site` : 'Contacter le studio')
-  if (service) {
-    return (
-      <section className="configurator-page container existing-site-page">
-        <div className="configurator-topline">
-          <Link to={getPlanReturnHref()} viewTransition={canAnimatePlanNavigation()}>
-            <ArrowLeft size={15} aria-hidden="true" />
-            Tous les forfaits
-          </Link>
-          <Link to="/exemples" viewTransition={canAnimatePlanNavigation()}>
-            Exemples de sites <ArrowRight size={15} aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="configurator-grid">
-          <aside className="configurator-card-column" aria-label="Votre forfait et son prix">
-            <SelectedPlanCard plan={service} disabled={sending}>
-              <div className="selected-plan__total">
-                <span>Votre projet</span>
-                <strong>Sur devis</strong>
-              </div>
-            </SelectedPlanCard>
-          </aside>
-          <div className="configurator-options">
-            <header className="configurator-section-heading">
-              <h2>{service.contactTitle}</h2>
-              <p>{service.contactDescription}</p>
-            </header>
-            <InquiryForm key={service.id} service={service} onBusyChange={setSending} />
-          </div>
-        </div>
-      </section>
-    )
-  }
+  usePageTitle('Contacter le studio')
   return (
     <>
       <Intro
@@ -628,7 +510,7 @@ export function ContactPage() {
             </Link>
           </div>
         </div>
-        <InquiryForm key="contact" />
+        <InquiryForm />
       </section>
     </>
   )

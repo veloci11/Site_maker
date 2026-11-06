@@ -1,5 +1,16 @@
 # Briefs publics — contrat V2
 
+## Parcours public courant — 6 novembre 2026
+
+Le formulaire public utilise désormais `schemaVersion: 2` et le discriminant facultatif `briefFormat: 'contact'`. Ce mode accepte uniquement `brief.activity` (facultatif) et `brief.message` (requis), plus les coordonnées habituelles (prénom, nom, e-mail, téléphone requis ; entreprise facultative). Les trois offres publiques sont `vitrine`, `connecte` (Business) et `immersif` (Premium / 3D) ; Nous contacter utilise `contact` et une configuration nulle. Calendrier, questionnaire détaillé, pièces jointes et liens de transfert ont disparu de l’interface courante. L’interface courante n’envoie aucune pièce jointe ; le transport multipart historique reste compatible.
+
+`validateContactBrief` assure la validation commune au client et au serveur. Le message simple reste visible dans les résumés historiques sans migration des lignes. Un ancien appel V2 dépourvu de `briefFormat` suit son validateur historique, décrit ci-dessous. Les fichiers et réponses déjà enregistrés restent privés et lisibles. Aucun snapshot, message ou payload d’e-mail existant n’est réécrit.
+
+Les options sélectionnées accompagnent la configuration, les prix sont recalculés côté serveur. Les choix avec fourchette donnent `quote.estimated: true` et des bornes enregistrées : plage totale si les plafonds sont connus, sinon minimum « à partir de », dans l’interface et les nouvelles notifications. Les anciens payloads restent figés. Les montants de création et d’abonnement restent séparés. L’envoi ne crée ni paiement ni engagement de commande.
+
+Les sections suivantes documentent le contrat V2 historique et son stockage compatible.
+
+
 Les nouvelles demandes exigent prénom, nom, e-mail et téléphone. Les anciennes demandes restent lisibles, sans découper leurs noms ni réécrire leurs messages. Aucun compte, commande ou paiement n’est créé par ce formulaire.
 
 ## Transport et validation

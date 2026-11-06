@@ -10,7 +10,7 @@ import { createOrdersRouter, getPricing, getPaymentAvailability } from '../serve
 import { createProjectsRouter } from '../server/projects.mjs';
 import { csrfProtection } from '../server/auth.mjs';
 import { getDb, closeDb, now } from '../server/db.mjs';
-import { optionDefinitions } from '../shared/catalog.ts';
+import { defaultPricing, optionDefinitions } from '../shared/catalog.ts';
 
 const originalDirectory = process.env.DATA_DIR;
 let directory, server, origin;
@@ -50,23 +50,54 @@ async function create(configuration = { offerId: 'vitrine', language: 'fr', mana
 }
 async function setPricing(value = configuredPricing) { return request('/admin/pricing', { user: 'studio', method: 'PUT', body: value }); }
 
-test('initial prices are unknown and a saved dossier cannot masquerade as an order or payment', async () => {
-  assert.equal(getPricing().base.vitrine, null);
+test('published default prices are available but a saved dossier cannot masquerade as a payment', async () => {
+  assert.deepEqual(getPricing(), defaultPricing);
+  assert.deepEqual(getPricing().base, { vitrine: 89000, connecte: 149000, immersif: 249900, 'sur-mesure': null });
+  assert.equal(getDb().prepare("SELECT value FROM studio_settings WHERE key = 'pricing'").get(), undefined, 'reading defaults must not create an admin price document');
   assert.equal(getPaymentAvailability().enabled, false);
   const project = await create();
   const first = await request(`/projects/${project.id}/order`);
   assert.equal(first.body.order, null);
-  assert.equal(first.body.quote.totalCents, null);
+  assert.equal(first.body.quote.totalCents, 89000);
   assert.equal(first.body.payment.enabled, false);
   const result = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
   assert.equal(result.status, 200);
   assert.equal(result.body.order.status, 'draft');
-  assert.equal(result.body.order.totalCents, null);
+  assert.equal(result.body.order.totalCents, 89000);
   assert.equal(result.body.isCurrent, true);
   const checkout = await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: result.body.order.id } });
+  assert.equal(checkout.status, 503);
+  assert.equal(checkout.body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal(getDb().prepare('SELECT payment_reference FROM orders WHERE id = ?').get(result.body.order.id).payment_reference, null);
+});
+
+test('unpriced launch settings use published defaults without rewriting their stored bytes', () => {
+  const legacy = { version: 'draft-v2', currency: 'EUR', base: { vitrine: null, connecte: null, immersif: null, 'sur-mesure': null }, options: { 'language-en': null, 'managed-content': null, 'scene-3d': null } };
+  const serialized = JSON.stringify(legacy);
+  getDb().prepare("INSERT INTO studio_settings(key,value,updated_at) VALUES ('pricing',?,?)").run(serialized, now());
+  closeDb();
+  assert.deepEqual(getPricing(), defaultPricing);
+  assert.equal(getDb().prepare("SELECT value FROM studio_settings WHERE key = 'pricing'").get().value, serialized);
+});
+
+test('explicit admin unknown prices remain unknown and cannot enable checkout', async () => {
+  const unpriced = {
+    currency: 'EUR',
+    base: Object.fromEntries(Object.keys(defaultPricing.base).map(key => [key, null])),
+    options: Object.fromEntries(Object.keys(defaultPricing.options).map(key => [key, null])),
+  };
+  const saved = await setPricing(unpriced);
+  assert.equal(saved.status, 200);
+  assert.equal(getPricing().base.vitrine, null);
+  assert.equal(getPricing().options['hosting-monthly'], null);
+  assert.equal(getPricing().version, saved.body.pricing.version);
+  const project = await create();
+  const dossier = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  assert.equal(dossier.body.order.totalCents, null);
+  const checkout = await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: dossier.body.order.id } });
   assert.equal(checkout.status, 409);
   assert.equal(checkout.body.code, 'PRICE_UNAVAILABLE');
-  assert.equal(getDb().prepare('SELECT payment_reference FROM orders WHERE id = ?').get(result.body.order.id).payment_reference, null);
+  assert.equal(getDb().prepare('SELECT payment_reference FROM orders WHERE id = ?').get(dossier.body.order.id).payment_reference, null);
 });
 
 test('customer cannot read another dossier or invoke any administration endpoint', async () => {
@@ -224,18 +255,18 @@ test('saved dossier separates monthly maintenance from creation and preserves bo
   const project = await create({ offerId: 'connecte', language: 'fr', managedContent: false, scene3d: false, deployment: true, maintenance: true });
   const first = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
   assert.equal(first.status, 200);
-  assert.equal(first.body.order.totalCents, 175000);
+  assert.equal(first.body.order.totalCents, 150000);
   assert.equal(first.body.order.monthlyTotalCents, 5000);
   assert.equal(first.body.quote.lines.find(line => line.key === 'managed-content').amountCents, 0);
   const original = getDb().prepare('SELECT configuration_snapshot,total_cents FROM orders WHERE id = ?').get(first.body.order.id);
   await setPricing({ ...configuredPricing, options: { ...configuredPricing.options, 'maintenance-monthly': 8000 } });
   const next = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
   assert.notEqual(next.body.order.id, first.body.order.id);
-  assert.equal(next.body.order.totalCents, 175000);
+  assert.equal(next.body.order.totalCents, 150000);
   assert.equal(next.body.order.monthlyTotalCents, 8000);
   const history = getDb().prepare('SELECT configuration_snapshot,total_cents FROM orders WHERE id = ?').get(first.body.order.id);
   assert.equal(history.configuration_snapshot, original.configuration_snapshot);
-  assert.equal(history.total_cents, 175000);
+  assert.equal(history.total_cents, 150000);
   assert.equal(JSON.parse(history.configuration_snapshot).quote.monthlyTotalCents, 5000);
 });
 
@@ -260,13 +291,13 @@ test('legacy admin pricing expands new services to unknown while required keys a
   assert.equal(getPricing().version, version, 'invalid legacy or extended requests do not replace saved pricing');
 });
 
-test('historical Connecté snapshots preserve their bytes after display changes and new free package inclusions', async () => {
+test('historical snapshots preserve their bytes after display changes and new free package inclusions', async () => {
   await setPricing();
   const project = await create({ offerId: 'connecte', language: 'fr-en', managedContent: true });
   const saved = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
   const snapshot = structuredClone(saved.body.order.snapshot);
   delete snapshot.configuration.mobile; delete snapshot.configuration.extras;
-  snapshot.quote.lines = snapshot.quote.lines.filter(line => !['mobile', 'user-accounts'].includes(line.key)).reverse();
+  snapshot.quote.lines = snapshot.quote.lines.filter(line => !['mobile', 'booking', 'advanced-forms', 'portfolio-gallery', 'analytics', 'local-seo'].includes(line.key)).reverse();
   for (const line of snapshot.quote.lines) { line.label = 'Ancien libellé de présentation'; delete line.billing; }
   snapshot.quote.version = 'historical-catalogue-version';
   delete snapshot.quote.monthlyTotalCents;
@@ -274,12 +305,32 @@ test('historical Connecté snapshots preserve their bytes after display changes 
   getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(serialized, orderId);
   const current = await request(`/projects/${project.id}/order`);
   assert.equal(current.body.isCurrent, true);
-  assert.equal(current.body.quote.lines.find(line => line.key === 'user-accounts').amountCents, 0);
+  assert.equal(current.body.quote.lines.find(line => line.key === 'booking').amountCents, 0);
+  assert.equal(current.body.quote.lines.some(line => line.key === 'user-accounts'), false);
   const updated = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing: { ...billing, city: 'Lyon' } } });
   assert.equal(updated.body.order.id, orderId);
   assert.equal(updated.body.isCurrent, true);
   assert.equal(updated.body.order.snapshot.quote.version, 'historical-catalogue-version');
   assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(orderId).configuration_snapshot, serialized);
+});
+
+test('old included accounts remain in saved quotes even when a new Business quote needs repricing', async () => {
+  await setPricing();
+  const project = await create({ offerId: 'connecte' });
+  const saved = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  const snapshot = structuredClone(saved.body.order.snapshot);
+  snapshot.configuration.extras.push('user-accounts');
+  snapshot.quote.lines.push({ key: 'user-accounts', label: 'Comptes utilisateurs', amountCents: 0, included: true, billing: 'once' });
+  snapshot.quote.lines[0].label = 'Connecté';
+  const serialized = JSON.stringify(snapshot);
+  getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(serialized, saved.body.order.id);
+  getDb().prepare('UPDATE projects SET configuration = ? WHERE id = ?').run(JSON.stringify(snapshot.configuration), project.id);
+  const reopened = await request(`/projects/${project.id}/order`);
+  assert.equal(reopened.body.isCurrent, false, 'changed commercial inclusions must not masquerade as an unchanged quote');
+  assert.equal(reopened.body.order.snapshot.quote.lines.find(line => line.key === 'user-accounts').included, true);
+  assert.equal(reopened.body.quote.lines.find(line => line.key === 'user-accounts').included, false);
+  assert.equal(reopened.body.order.snapshot.quote.lines[0].label, 'Connecté');
+  assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(saved.body.order.id).configuration_snapshot, serialized);
 });
 
 test('equal totals do not hide changed line prices, billing frequencies or duplicated snapshot lines', async () => {
@@ -301,5 +352,37 @@ test('equal totals do not hide changed line prices, billing frequencies or dupli
     const snapshot = structuredClone(original); alter(snapshot);
     getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(JSON.stringify(snapshot), saved.body.order.id);
     assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, false);
+  }
+});
+
+test('new order snapshots save estimated bounds and old snapshots stay byte-identical', async () => {
+  await setPricing({ currency: defaultPricing.currency, base: defaultPricing.base, options: defaultPricing.options });
+  const project = await create({ offerId: 'vitrine', extras: ['user-accounts', 'extra-pages', 'hosting-monthly'] });
+  const saved = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  const orderId = saved.body.order.id;
+  assert.equal(saved.body.order.snapshot.quote.totalCents, 125000);
+  assert.equal(saved.body.order.snapshot.quote.maximumTotalCents, 161000);
+  assert.equal(saved.body.order.snapshot.quote.monthlyTotalCents, 1900);
+  assert.equal(saved.body.order.snapshot.quote.lines.find(line => line.key === 'extra-pages').maximumCents, 12000);
+  const original = structuredClone(saved.body.order.snapshot);
+  const legacy = structuredClone(original);
+  delete legacy.quote.maximumTotalCents;
+  for (const line of legacy.quote.lines) { delete line.maximumCents; delete line.estimated; }
+  const serialized = JSON.stringify(legacy);
+  getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(serialized, orderId);
+  assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, true);
+  const updated = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing: { ...billing, city: 'Lyon' } } });
+  assert.equal(updated.body.order.id, orderId);
+  assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(orderId).configuration_snapshot, serialized);
+
+  for (const alter of [
+    snapshot => { snapshot.quote.maximumTotalCents += 10000; },
+    snapshot => { snapshot.quote.lines.find(line => line.key === 'extra-pages').maximumCents += 1000; },
+  ]) {
+    const changed = structuredClone(original); alter(changed);
+    const bytes = JSON.stringify(changed);
+    getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(bytes, orderId);
+    assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, false, 'an explicit saved bound is commercial data');
+    assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(orderId).configuration_snapshot, bytes);
   }
 });

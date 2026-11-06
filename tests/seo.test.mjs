@@ -7,7 +7,7 @@ import express from 'express';
 import { getRouteSeo, publicPagePaths, siteOrigin } from '../shared/seo.ts';
 import { createSeoHandlers, renderSeoDocument, renderSeoHead, renderSitemap, renderRobots } from '../server/seo.mjs';
 
-test('public routes have distinct useful metadata and canonical service variants', () => {
+test('public routes have distinct useful metadata for the three current offers', () => {
   const titles = new Set();
   for (const route of publicPagePaths) {
     const url = new URL(route, siteOrigin);
@@ -20,14 +20,14 @@ test('public routes have distinct useful metadata and canonical service variants
     assert.ok(!titles.has(metadata.title), `Duplicate title for ${route}`);
     titles.add(metadata.title);
   }
-  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Site Connecté · studio');
-  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Site Immersif 3D · studio');
-  assert.equal(getRouteSeo('/contact', '?besoin=refonte').title, 'Refonte de site · studio');
+  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Site Business · studio');
+  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Site Premium / 3D · studio');
+  assert.equal(getRouteSeo('/contact', '?besoin=refonte').title, 'Contacter le studio · studio');
 });
 
 test('filter, tracking and arbitrary query values never become canonical content', () => {
   assert.equal(getRouteSeo('/exemples', '?type=immersif&utm_source=test').canonical, `${siteOrigin}/exemples`);
-  assert.equal(getRouteSeo('/contact', '?besoin=evolution&utm_source=test').canonical, `${siteOrigin}/contact?besoin=evolution`);
+  assert.equal(getRouteSeo('/contact', '?besoin=evolution&utm_source=test').canonical, `${siteOrigin}/contact`);
   assert.equal(getRouteSeo('/contact', '?besoin=%22%3E%3Cscript%3E').canonical, `${siteOrigin}/contact`);
   assert.equal(getRouteSeo('/forfaits/vitrine', '?option=mobile&nouveau=1').canonical, `${siteOrigin}/forfaits/vitrine`);
   for (const query of ['?projet=private-id', '?projectId=private-id']) {
@@ -36,6 +36,26 @@ test('filter, tracking and arbitrary query values never become canonical content
     assert.equal(metadata.canonical, null);
     assert.doesNotMatch(JSON.stringify(metadata), /private-id/);
   }
+});
+
+test('removed offers leave public navigation while historical private projects remain addressable', () => {
+  for (const route of ['/forfaits/sur-mesure', '/formules/sur-mesure']) {
+    const metadata = getRouteSeo(route, '?option=scene-3d');
+    assert.equal(metadata.status, 301);
+    assert.equal(metadata.redirect, '/forfaits/immersif-3d?option=scene-3d');
+  }
+  for (const service of ['evolution', 'refonte']) {
+    const metadata = getRouteSeo('/contact', `?besoin=${service}&utm_source=archive`);
+    assert.equal(metadata.status, 301);
+    assert.equal(metadata.redirect, '/contact?utm_source=archive');
+  }
+  const historical = getRouteSeo('/forfaits/sur-mesure', '?projet=existing-id');
+  assert.equal(historical.status, 200);
+  assert.equal(historical.canonical, null);
+  assert.equal(historical.robots, 'noindex, nofollow');
+  assert.equal(historical.redirect, undefined);
+  assert.doesNotMatch(JSON.stringify(historical), /existing-id/);
+  assert.equal(getRouteSeo('/exemples/cal-com').status, 404);
 });
 
 test('private, auth and incomplete legal pages are excluded without echoing identifiers', () => {
@@ -105,7 +125,7 @@ test('sitemap includes canonical indexable public pages only, without invented m
   assert.match(sitemap, /^<\?xml version="1.0" encoding="UTF-8"\?>\n<urlset xmlns="http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9">/);
   const locations = Array.from(sitemap.matchAll(/<loc>(.*?)<\/loc>/g), match => match[1].replaceAll('&amp;', '&'));
   assert.equal(new Set(locations).size, locations.length);
-  assert.equal(locations.length, 12);
+  assert.equal(locations.length, 9);
   for (const location of locations) {
     const url = new URL(location);
     assert.equal(url.origin, siteOrigin);
@@ -114,9 +134,8 @@ test('sitemap includes canonical indexable public pages only, without invented m
     assert.equal(metadata.robots, 'index, follow');
     assert.equal(metadata.canonical, location);
   }
-  assert.ok(locations.includes(`${siteOrigin}/contact?besoin=evolution`));
-  assert.ok(locations.includes(`${siteOrigin}/contact?besoin=refonte`));
-  assert.doesNotMatch(sitemap, /lastmod|priority|changefreq|connexion|espace|conditions|formules|exemples\//);
+  assert.ok(locations.includes(`${siteOrigin}/contact`));
+  assert.doesNotMatch(sitemap, /lastmod|priority|changefreq|connexion|espace|conditions|formules|exemples\/|sur-mesure|besoin=/);
 });
 
 test('robots keeps public resources and noindex HTML crawlable while excluding protected APIs', () => {
@@ -144,8 +163,8 @@ test('Express handlers deliver route heads, correct robots/sitemap types, redire
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('cache-control'), 'no-store');
     const body = await response.text();
-    assert.match(body, /<title>Refonte de site · studio<\/title>/);
-    assert.match(body, /rel="canonical" href="https:\/\/gilmathis.com\/contact\?besoin=refonte"/);
+    assert.match(body, /<title>Contacter le studio · studio<\/title>/);
+    assert.match(body, /rel="canonical" href="https:\/\/gilmathis.com\/contact"/);
     assert.doesNotMatch(body, /untrusted\.example|utm_source/);
     for (const route of ['/connexion?token=secret', '/forfaits/vitrine?projectId=private-id', '/conditions']) {
       const excluded = await fetch(`${base}${route}`);

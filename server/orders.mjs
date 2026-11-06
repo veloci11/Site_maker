@@ -21,17 +21,21 @@ function initialize() {
   return db;
 }
 
-/** Prices are server-owned cents. No configured prices means no commercial confirmation. */
+/** Prices are server-owned cents. Published defaults replace only the unpriced launch catalogue. */
 export function getPricing() {
   const row = initialize().prepare("SELECT value FROM studio_settings WHERE key = 'pricing'").get();
   const candidate = row ? parseJson(row.value, {}) : {};
   const stored = record(candidate) ? candidate : {};
+  const unpublishedDraft = /^draft-v\d+$/.test(stored.version ?? '') &&
+    (!stored.currency || stored.currency === 'EUR') &&
+    [...Object.values(stored.base ?? {}), ...Object.values(stored.options ?? {})].every(value => value === null);
+  if (!row || unpublishedDraft) return structuredClone(defaultPricing);
   const amount = value => value === null || (Number.isSafeInteger(value) && value >= 0 && value <= 1_000_000_000) ? value : null;
   return {
     version: typeof stored.version === 'string' && stored.version ? stored.version : defaultPricing.version,
     currency: ['EUR', 'CHF'].includes(stored.currency) ? stored.currency : defaultPricing.currency,
-    base: Object.fromEntries(OFFER_IDS.map(key => [key, key === 'sur-mesure' ? null : amount(stored.base?.[key] ?? defaultPricing.base[key])])),
-    options: Object.fromEntries(optionKeys.map(key => [key, amount(stored.options?.[key] ?? defaultPricing.options[key])])),
+    base: Object.fromEntries(OFFER_IDS.map(key => [key, key === 'sur-mesure' ? null : amount(stored.base?.[key] ?? null)])),
+    options: Object.fromEntries(optionKeys.map(key => [key, amount(stored.options?.[key] ?? null)])),
   };
 }
 
@@ -87,6 +91,7 @@ function snapshotIsCurrent(serialized, current) {
   const saved = parseJson(serialized);
   if (!saved.configuration || !Array.isArray(saved.quote?.lines)) return false;
   try {
+    const compareEstimates = Object.hasOwn(saved.quote, 'maximumTotalCents');
     const commercialLines = (lines, includedAdditions = []) => {
       const values = new Map();
       for (const line of lines) {
@@ -94,7 +99,12 @@ function snapshotIsCurrent(serialized, current) {
         if (!record(line) || typeof line.key !== 'string' || !line.key || values.has(line.key)
           || (line.amountCents !== null && (!Number.isSafeInteger(line.amountCents) || line.amountCents < 0))
           || typeof line.included !== 'boolean' || !['once', 'monthly'].includes(billing)) throw new Error('Invalid snapshot line');
-        values.set(line.key, { key: line.key, amountCents: line.amountCents, billing, included: line.included });
+        const maximumCents = line.maximumCents === undefined ? line.amountCents : line.maximumCents;
+        if (compareEstimates && ((maximumCents !== null && (!Number.isSafeInteger(maximumCents) || maximumCents < (line.amountCents ?? 0)))
+          || (line.estimated !== undefined && typeof line.estimated !== 'boolean'))) throw new Error('Invalid snapshot estimate');
+        values.set(line.key, { key: line.key, amountCents: line.amountCents, billing, included: line.included,
+          ...(compareEstimates ? { maximumCents, estimated: line.estimated ?? false } : {}),
+        });
       }
       for (const line of includedAdditions) {
         if (line.included && line.amountCents === 0 && !values.has(line.key)) values.set(line.key, line);
@@ -106,10 +116,13 @@ function snapshotIsCurrent(serialized, current) {
       currency: snapshot.quote.currency, lines,
       totalCents: snapshot.quote.totalCents, monthlyTotalCents: snapshot.quote.monthlyTotalCents === undefined ? 0 : snapshot.quote.monthlyTotalCents,
       checkoutReady: snapshot.quote.checkoutReady, requiresQuote: snapshot.quote.requiresQuote,
+      ...(compareEstimates ? { maximumTotalCents: snapshot.quote.maximumTotalCents, estimated: snapshot.quote.estimated ?? false } : {}),
     } });
     // Labels, display order and catalogue-version metadata do not change a
     // commercial selection. New free package inclusions also preserve a legacy
     // snapshot; actual prices, billing frequencies and chosen features must match.
+    // Old snapshots have no range metadata and stay byte-identical. Once bounds
+    // are saved, a later change to either bound requires a new commercial draft.
     return isDeepStrictEqual(comparable(saved, commercialLines(saved.quote.lines, currentLines)), comparable(current, currentLines));
   } catch { return false; }
 }

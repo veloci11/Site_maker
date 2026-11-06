@@ -6,7 +6,7 @@ const record = (value: unknown): value is Record<string, unknown> =>
 const validAmount = (value: unknown): value is number | null =>
   value === null || (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 && value <= 1_000_000_000)
 
-/** A JSON response is not enough: never replace the unpriced fallback with a partial catalogue. */
+/** A JSON response is not enough: never replace the approved fallback with a partial catalogue. */
 export function readCataloguePricing(response: unknown): Pricing {
   const pricing = record(response) ? response.pricing : null
   const optionIds = optionDefinitions.map(option => option.id)

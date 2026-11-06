@@ -133,17 +133,17 @@ test('all seven V2 contexts cross the real anonymous API and create only private
   assert.equal(getDb().prepare('SELECT COUNT(*) AS count FROM inquiry_briefs').get().count, 7);
 });
 
-test('visitor tools and translated/local pages persist with each creation request and its admin summary', async t => {
+test('retained visitor tools and translated pages persist with each public offer and its admin summary', async t => {
   const f = await fixture(t);
-  for (const requestType of ['vitrine', 'connecte', 'immersif', 'sur-mesure']) {
+  for (const requestType of ['vitrine', 'connecte', 'immersif']) {
     const payload = validInquiry(requestType, {
-      configuration: { offerId: requestType, extras: ['newsletter', 'analytics', 'additional-language', 'local-seo'] },
+      configuration: { offerId: requestType, extras: ['newsletter', 'analytics', 'additional-language'] },
     });
     Object.assign(payload.brief, {
       newsletterDetails: 'Outil existant, une liste et textes préparés par notre équipe.',
       analyticsDetails: 'Compter les demandes de contact confirmées.',
       languageDetails: 'Cinq pages en espagnol ; traductions fournies.',
-      localSeoDetails: 'Un établissement à Nantes.',
+      ...(requestType === 'connecte' ? { localSeoDetails: 'Un établissement à Nantes.' } : {}),
     });
     const response = await f.post(payload);
     assert.equal(response.status, 201, requestType);
@@ -153,7 +153,7 @@ test('visitor tools and translated/local pages persist with each creation reques
     assert.deepEqual(configuration, normalizeConfiguration(payload.configuration));
     assert.deepEqual(JSON.parse(stored.brief_snapshot), validateBrief(requestType, payload.brief, configuration).answers);
     const sections = summarizeBrief(requestType, JSON.parse(stored.brief_snapshot), { configuration });
-    for (const key of ['newsletterDetails', 'analyticsDetails', 'languageDetails', 'localSeoDetails']) {
+    for (const key of ['newsletterDetails', 'analyticsDetails', 'languageDetails', ...(requestType === 'connecte' ? ['localSeoDetails'] : [])]) {
       assert.ok(sections.flatMap(section => section.items).some(item => item.value === payload.brief[key]), `${requestType}/${key}`);
     }
   }
@@ -163,7 +163,7 @@ test('visitor tools and translated/local pages persist with each creation reques
   const response = await f.post(stale);
   assert.equal(response.status, 400);
   assert.ok(response.body.fields.analyticsDetails);
-  assert.equal(counts(f.db).inquiries, 4, 'a hidden stale answer never becomes an accepted request');
+  assert.equal(counts(f.db).inquiries, 3, 'a hidden stale answer never becomes an accepted request');
 });
 
 test('V2 required contacts and the 64 KiB inquiry JSON limit survive the app-wide JSON middleware', async t => {
@@ -250,7 +250,7 @@ test('real admin login protects detail and original image responses, with saved 
   assert.deepEqual(inquiry.brief, validateBrief('vitrine', payload.brief).answers);
   assert.deepEqual(inquiry.sections, summarizeBrief('vitrine', inquiry.brief));
   assert.equal(inquiry.configuration.managedContent, false, 'brief preferences must not add a paid option');
-  assert.equal(inquiry.configuration.mobile, false);
+  assert.equal(inquiry.configuration.mobile, true, 'responsive is now included in Vitrine');
   assert.equal(inquiry.configuration.deployment, true);
   assert.equal(inquiry.configuration.maintenance, true);
   assert.deepEqual(inquiry.configuration.extras, []);

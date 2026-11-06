@@ -122,7 +122,7 @@ test('only V2 envelopes, UUID references and configurations matching their reque
     { requestType: 'projet' }, { requestType: undefined }, { requestId: null },
     { name: 'Invented name' }, { subject: 'Invented subject' }, { message: 'Invented message' },
     { quote: {} }, { summary: 'Invented summary' }, { inspiration: 'https://example.test/' },
-    { configuration: null }, { configuration: { offerId: 'connecte' } }, { configuration: { offerId: 'vitrine', extras: ['user-accounts'] } },
+    { configuration: null }, { configuration: { offerId: 'connecte' } }, { configuration: { offerId: 'vitrine', extras: ['member-roles'] } },
   ]) {
     const response = await f.post(validInquiry('vitrine', extra));
     assert.equal(response.status, 400, JSON.stringify(extra)); assert.equal(response.body.code, 'INVALID_INPUT');
@@ -176,10 +176,11 @@ test('configured request normalizes included features and stores its own immutab
   const detail = getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(first.body.id);
   const configuration = JSON.parse(detail.configuration_snapshot), quote = JSON.parse(detail.quote_snapshot);
   assert.equal(configuration.mobile, true); assert.equal(configuration.managedContent, true);
-  assert.ok(configuration.extras.includes('user-accounts'));
+  assert.equal(configuration.extras.includes('user-accounts'), false, 'Business does not add accounts without a selected option');
   assert.equal(quote.lines.find(line => line.key === 'managed-content').included, true);
-  assert.equal(quote.lines.find(line => line.key === 'user-accounts').included, true);
-  assert.equal(quote.totalCents, null);
+  assert.equal(quote.lines.find(line => line.key === 'booking').included, true);
+  assert.equal(quote.lines.some(line => line.key === 'user-accounts'), false);
+  assert.equal(quote.totalCents, 149000);
   const pricing = { ...defaultPricing, version: 'test-updated', base: { ...defaultPricing.base, connecte: 170000 } };
   getDb().prepare("INSERT INTO studio_settings(key,value,updated_at) VALUES('pricing',?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").run(JSON.stringify(pricing), new Date().toISOString());
   const retry = await f.post(request);

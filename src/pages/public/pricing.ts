@@ -10,7 +10,7 @@ export function usePricing() {
     api<unknown>('/api/catalogue', { signal: controller.signal })
       .then((data) => setPricing(readCataloguePricing(data)))
       .catch(() => {
-        /* The unpriced catalogue remains a valid pre-launch state. */
+        /* Keep the approved shared catalogue when the API is unavailable. */
       })
     return () => controller.abort()
   }, [])
@@ -20,7 +20,7 @@ export function usePricing() {
 export function startingPrice(offerId: OfferId, pricing: Pricing) {
   if (offerId === 'sur-mesure') return 'Sur devis'
   const amount = pricing.base[offerId]
-  return amount == null ? 'À partir de…' : `À partir de ${formatMoney(amount, pricing.currency)}`
+  return amount == null ? 'Sur devis' : formatMoney(amount, pricing.currency)
 }
 
 export const configureHref = (offerId: OfferId) => `/forfaits/${getOffer(offerId)!.slug}`

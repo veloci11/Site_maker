@@ -23,8 +23,8 @@ export type BriefSummarySection = { title: string; items: { label: string; value
 
 export const requestTypeLabels: Record<RequestType, string> = {
   vitrine: 'Vitrine',
-  connecte: 'Connecté',
-  immersif: 'Immersif 3D',
+  connecte: 'Business',
+  immersif: 'Premium / 3D',
   'sur-mesure': 'Sur mesure',
   evolution: 'Évolution',
   refonte: 'Refonte',
@@ -154,7 +154,7 @@ const analyticsDetails: Question = {
 const languageDetails: Question = {
   id: 'languageDetails', label: 'Quelles langues et quelles pages faut-il prévoir ?', type: 'textarea',
   showForAnyOption: ['language-en', 'additional-language'],
-  hint: 'Précisez les langues, les pages concernées et si les traductions sont disponibles. « Français + anglais » couvre l’anglais ; « Une autre langue » précise les autres versions. Le chiffrage tient compte de ce qui est déjà en place.',
+  hint: 'Précisez la langue souhaitée, les pages concernées et si les traductions sont disponibles. L’option couvre une langue supplémentaire, au choix, jusqu’à cinq pages avec les traductions fournies.',
 }
 const localSeoDetails: Question = {
   id: 'localSeoDetails', label: 'Quelle zone d’activité et quels établissements souhaitez-vous présenter ?', type: 'textarea',
@@ -457,6 +457,17 @@ export function getBriefSections(requestType: RequestType): BriefSection[] {
   return isRequestType(requestType) ? [...sectionsByRequest[requestType], fileSection] : []
 }
 
+/** The public contact form is shared by the three offers and the contact page.
+ * Historical questionnaires remain available to read previously saved requests.
+ */
+export function getContactBriefSections(): BriefSection[] {
+  return [sectionsByRequest.contact[0]]
+}
+
+export function validateContactBrief(input: unknown): { answers: BriefAnswers; fields: Record<string, string> } {
+  return validateBrief('contact', input, null, { contactForm: true })
+}
+
 export function emptyBrief(): BriefAnswers {
   return {}
 }
@@ -514,7 +525,7 @@ function isHttpUrl(value: string): boolean {
   }
 }
 
-export function validateBrief(requestType: RequestType, input: unknown, configuration: Configuration | null = null): { answers: BriefAnswers; fields: Record<string, string> } {
+export function validateBrief(requestType: RequestType, input: unknown, configuration: Configuration | null = null, { contactForm = false }: { contactForm?: boolean } = {}): { answers: BriefAnswers; fields: Record<string, string> } {
   const errors = new Map<string, string>()
   const answers: BriefAnswers = {}
   const result = () => ({ answers, fields: Object.fromEntries(errors) })
@@ -528,7 +539,7 @@ export function validateBrief(requestType: RequestType, input: unknown, configur
     return result()
   }
 
-  const questions = getBriefSections(requestType).flatMap(section => section.questions)
+  const questions = (contactForm ? getContactBriefSections() : getBriefSections(requestType)).flatMap(section => section.questions)
   const allowed = new Set(questions.map(question => question.id))
   const descriptors = Object.getOwnPropertyDescriptors(input)
   let totalLength = 0
@@ -624,12 +635,16 @@ export function validateBrief(requestType: RequestType, input: unknown, configur
   return result()
 }
 
-export function summarizeBrief(requestType: RequestType, input: BriefAnswers, { configuration = null, historical = false }: { configuration?: Configuration | null; historical?: boolean } = {}): BriefSummarySection[] {
+export function summarizeBrief(requestType: RequestType, input: BriefAnswers, { configuration = null, historical = false, contactForm = false }: { configuration?: Configuration | null; historical?: boolean; contactForm?: boolean } = {}): BriefSummarySection[] {
   if (!input || typeof input !== 'object' || Array.isArray(input)) return []
   // Saved answers predate today's conditions and exclusivity rules. Never revalidate
   // those snapshots or require a newly introduced parent to display an old answer.
-  const answers = historical ? input : validateBrief(requestType, input, configuration).answers
-  return getBriefSections(requestType).map(section => ({
+  if (!isRequestType(requestType)) return []
+  // New offer requests store the same message field as contact requests. Existing
+  // snapshots have no message field and retain their complete questionnaire.
+  const compact = contactForm || (historical && requestType !== 'contact' && Object.hasOwn(input, 'message'))
+  const answers = historical ? input : validateBrief(requestType, input, configuration, { contactForm: compact }).answers
+  return (compact ? getContactBriefSections() : getBriefSections(requestType)).map(section => ({
     title: section.title,
     items: section.questions.flatMap(question => {
       const answer = Object.getOwnPropertyDescriptor(answers, question.id)?.value

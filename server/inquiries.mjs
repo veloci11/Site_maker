@@ -4,9 +4,9 @@ import { createHash } from 'node:crypto';
 import { getDb, newId, now, transaction } from './db.mjs';
 import { csrfProtection } from './auth.mjs';
 import { getPricing } from './orders.mjs';
-import { getOffer, normalizeConfiguration, quoteConfiguration, formatMoney } from '../shared/catalog.ts';
+import { getOffer, normalizeConfiguration, quoteConfiguration, formatMoney, formatQuoteTotal, formatQuoteLine, quoteEstimateNotice } from '../shared/catalog.ts';
 import { validateInquiryContact } from '../shared/inquiry-contact.ts';
-import { isRequestType, requestTypeLabels, summarizeBrief, validateBrief } from '../shared/brief.ts';
+import { isRequestType, requestTypeLabels, summarizeBrief, validateBrief, validateContactBrief } from '../shared/brief.ts';
 import { getUnavailableOptions } from '../shared/offer-options.ts';
 import { InquiryImageError, parseInquiryTransport, validateInquiryImages } from './inquiry-images.mjs';
 
@@ -16,7 +16,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-
 const oneLineControls = /[\u0000-\u001f\u007f]/;
 const DEFAULT_STORAGE_LIMIT_BYTES = 512 * 1024 * 1024;
 const creationTypes = ['vitrine', 'connecte', 'immersif', 'sur-mesure'];
-const payloadKeys = ['schemaVersion', 'requestId', 'requestType', 'firstName', 'lastName', 'email', 'phone', 'company', 'configuration', 'brief', 'website'];
+const payloadKeys = ['schemaVersion', 'briefFormat', 'requestId', 'requestType', 'firstName', 'lastName', 'email', 'phone', 'company', 'configuration', 'brief', 'website'];
 const configurationKeys = ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras'];
 
 class InputError extends Error {
@@ -88,6 +88,7 @@ function validate(input) {
   if (!hasOnlyKeys(input, payloadKeys)) throw new InputError({ form: 'Les informations de cette demande ne correspondent pas au formulaire.' });
   const fields = {};
   if (input.schemaVersion !== 2) fields.form = 'Rechargez le formulaire avant d’envoyer votre demande.';
+  if (input.briefFormat !== undefined && input.briefFormat !== 'contact') fields.briefFormat = 'Le format de votre demande n’est pas valide.';
   const requestId = typeof input.requestId === 'string' ? input.requestId.trim().toLowerCase() : '';
   if (!UUID.test(requestId)) fields.requestId = 'La référence de votre demande n’est pas valide. Rechargez le formulaire.';
   if (!isRequestType(input.requestType)) fields.requestType = 'Choisissez un type de demande valide.';
@@ -106,19 +107,22 @@ function validate(input) {
   } else if (input.configuration !== null) {
     fields.configuration = 'Cette demande doit être envoyée sans configuration de forfait.';
   }
-  const briefResult = validateBrief(input.requestType, input.brief, configuration);
+  const briefResult = input.briefFormat === 'contact'
+    ? validateContactBrief(input.brief)
+    : validateBrief(input.requestType, input.brief, configuration);
   const briefFields = Object.fromEntries(Object.entries(briefResult.fields).map(([key, value]) => [key === '_form' ? 'form' : key, value]));
   const errors = { ...fields, ...briefFields };
   if (Object.keys(errors).length) throw new InputError(errors);
-  return { schemaVersion: 2, requestId, requestType: input.requestType, ...contactResult.contact, configuration, brief: briefResult.answers };
+  return { schemaVersion: 2, ...(input.briefFormat === 'contact' ? { briefFormat: 'contact' } : {}), requestId, requestType: input.requestType, ...contactResult.contact, configuration, brief: briefResult.answers };
 }
 
 function summary(configuration, quote) {
   if (!configuration) return '';
-  return [`Forfait : ${getOffer(configuration.offerId).title}`, ...quote.lines.map(line => `${line.label} : ${line.included ? 'compris dans le forfait' : line.amountCents === null ? 'à préciser' : formatMoney(line.amountCents, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`),
-    `Création : ${quote.totalCents === null ? 'à préciser' : formatMoney(quote.totalCents, quote.currency)}`,
+  return [`Forfait : ${getOffer(configuration.offerId).title}`, ...quote.lines.map(line => `${line.label} : ${line.included ? 'compris dans le forfait' : formatQuoteLine(line, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`),
+    `Création : ${formatQuoteTotal(quote)}`,
     `Mensuel : ${quote.monthlyTotalCents === null ? 'à préciser' : formatMoney(quote.monthlyTotalCents, quote.currency)} / mois`,
-    'Estimation de préparation ; aucun paiement ni engagement commercial enregistré.'].join('\n');
+    quote.estimated ? quoteEstimateNotice(quote) : '',
+    'Estimation de préparation ; aucun paiement ni engagement commercial enregistré.'].filter(Boolean).join('\n');
 }
 
 function storageLimit(env) {
@@ -140,7 +144,7 @@ function adminUrl(env, id) {
 }
 
 function humanMessage(value, quote, images, env, id) {
-  const sections = summarizeBrief(value.requestType, value.brief, { configuration: value.configuration }).map(section => [section.title, ...section.items.map(item => `${item.label}\n${item.value}`)].join('\n\n'));
+  const sections = summarizeBrief(value.requestType, value.brief, { configuration: value.configuration, contactForm: value.briefFormat === 'contact' }).map(section => [section.title, ...section.items.map(item => `${item.label}\n${item.value}`)].join('\n\n'));
   return [
     `Demande : ${requestTypeLabels[value.requestType]}`,
     [`Prénom : ${value.firstName}`, `Nom : ${value.lastName}`, `E-mail : ${value.email}`, `Téléphone : ${value.phone}`, value.company && `Entreprise : ${value.company}`].filter(Boolean).join('\n'),

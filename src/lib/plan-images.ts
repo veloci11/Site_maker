@@ -5,7 +5,7 @@ export function preloadPlanImages(variant: string) {
   if (typeof window === 'undefined') return
   const highDensity = window.devicePixelRatio > 1
   const original = highDensity ? 'master' : 'card'
-  const continuation = variant === 'custom' ? '-top' : ''
+  const continuation = variant === 'custom' || variant === 'immersif' ? '-top' : ''
   const density = highDensity ? '' : '-1x'
   preload(`/assets/textures/grain-plasma-${original}.webp`, {
     as: 'image', type: 'image/webp', fetchPriority: 'high',
