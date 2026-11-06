@@ -14,4 +14,10 @@ Dans l’IAB : contrôle du raccord réel des trois images entre haut et CTA sur
 
 ## Publication et vérification publique
 
-À compléter après la bascule finale autorisée. Aucun formulaire public ni e-mail de test envoyé. Destination e-mail et informations légales toujours à compléter, sans déclaration de livraison e-mail réelle.
+Publié et vérifié sur **https://gilmathis.com/** : révision `c4c1a6491a63a3e3ff806849ebd7e704a549ade4`, release `20261106T192843Z-c4c1a6491a63`, client `/assets/index-DrfqtuqU.js` confirmé dans l’IAB public.
+
+Trois allers-retours sur ordinateur et trois sur mobile aboutissent. Réservation sélectionnée puis retirée sur les trois : fourchettes 980–1 070 €, 1 580–1 670 € et 2 589–2 679 € confirmées. CMS visible dans les arguments et la description Business/Premium, comparatif développé cohérent, FAQ17 sans les anciennes mentions. Contrôles à 1280, 820, 390 et 320 px ; aucun débordement global et badge sans chevauchement. Raccord texture des trois cartes observé en public. Formulaire court à droite de la carte, sans calendrier ni fichier. Réduction du mouvement : zéro animation active. Console publique sans erreur ni avertissement observé.
+
+Preuves : `public-final.jpg`, `public-business-mobile.jpg`, `public-checks.json`. Aucun formulaire public ni e-mail de test envoyé ; sélections vides, préférence temporaire et viewport restaurés. Serveur local arrêté à la livraison. Sauvegarde préalable réussie ; sept tables privées et le réglage tarifaire conservés, les 24 autres services gardent PID/état.
+
+Limites déjà connues : destination e-mail `INQUIRY_TO` absente et informations légales à compléter. Aucun e-mail réellement livré n’est attesté. Les validations techniques n’établissent pas la rentabilité nette d’un projet, faute de temps de réalisation réel.

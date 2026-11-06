@@ -2,7 +2,7 @@
 
 Vitrine : 1 à 3 pages, à partir de 890 €. Business : 1 à 6 pages, à partir de 1 490 €, badge « Populaire », CMS mis en premier argument. Premium / 3D : 1 à 10 pages, à partir de 2 499 €, tout Business et son CMS, prestations visuelles et demandes sur mesure étudiées. Aucune mention de template, Doctolib ou formulaire avancé dans les offres. Prise de rendez-vous générique en option sur les trois forfaits, 90–180 €. FAQ portée à 17 questions ; champs de contact courts et suivis 19/39/69 € conservés.
 
-Prix sans fourchette préfixés « À partir de » ; fourchettes et mensualités préservées. Image continue entre le haut des cartes et le bouton Configurer, Premium plus vif. TypeScript, build et 251 tests passent. Une contre-revue indépendante n’a pas trouvé de nouvelle régression métier. Publication et preuves finales suivies dans `docs/qa/cumulative-offers/review.md` et `ops/DEPLOYMENT_STATUS.md`.
+Prix sans fourchette préfixés « À partir de » ; fourchettes et mensualités préservées. Image continue entre le haut des cartes et le bouton Configurer, Premium plus vif. TypeScript, build et 251 tests passent. Une contre-revue indépendante n’a pas trouvé de nouvelle régression métier. Révision `c4c1a64` publiée et contrôlée dans l’IAB à 320/390/820/1280 px, sans erreur de console observée. Localhost arrêté. Publication et preuves finales dans `docs/qa/cumulative-offers/review.md` et `ops/DEPLOYMENT_STATUS.md`.
 
 Les sections suivantes conservent l’historique des décisions précédentes.
 

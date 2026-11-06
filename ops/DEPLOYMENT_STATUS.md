@@ -5,21 +5,21 @@ Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans
 ## Version active
 
 - URL : https://gilmathis.com/
-- Révision applicative : `c5f499fc55bd859b99a604e981420b7277685423`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261106T185743Z-c5f499fc55bd` ; bascule atomique de `current`.
-- Client public : `/assets/index-CC1vRoOh.js` ; SHA-256 local `4ba34a9e004de9ee907b6a95da42801167da1c4cfe414df69697fd464c7ccc22`. Chemin du client confirmé dans l’IAB public.
-- Archive : SHA-256 `584b0a0e83c3b021bd9976b53ab09ba50c432f4a1b8a4047878300db758b7fc1`, 13977618 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T050603Z-5b792f1fcbab`.
+- Révision applicative : `c4c1a6491a63a3e3ff806849ebd7e704a549ade4`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T192843Z-c4c1a6491a63` ; bascule atomique de `current`.
+- Client public : `/assets/index-DrfqtuqU.js` ; SHA-256 local `108a913671fa45a02ba79f55fe75e97d891a000cb832109d7ee8ebbb62b4a195`. Chemin confirmé dans l’IAB public.
+- Archive : SHA-256 `0bd09b3b047b92a46223eede11724b828b0509e6c17d6f5d6156dfe2a9fa77e7`, 13977288 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T191058Z-c27abc7bf23f`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif réellement en ligne.
 
-## Trois forfaits, options, formulaires et FAQ
+## Gamme finale et CMS mis en avant
 
-Vitrine890€, Business1490€, Premium /3D2499€. Douze suppléments retenus, langue générique, fonctionnalités incluses hors des choix payants. Fourchettes visibles par option et dans les nouveaux totaux lorsque leurs bornes sont connues ; anciens instantanés conservés. Suivis mensuels19/39/69€ exclusifs. Formulaire court à droite, aucun calendrier/fichier public ; Cal.com retiré et catégories alignées. FAQ16, comparateur valorisant les fonctions Business, périmètres précisés sans changer les tarifs approuvés.
+Vitrine : 1 à 3 pages, à partir de 890 €. Business : 1 à 6 pages, à partir de 1 490 €, « Populaire », CMS au premier plan. Premium / 3D : 1 à 10 pages, à partir de 2 499 €, tout Business et son CMS, prestations visuelles et demandes sur mesure étudiées. Treize options ponctuelles, dont réservation générique 90–180 € sur les trois. FAQ17, mensualités19/39/69 € exclusives, formulaire court. Image continue haut/bouton des cartes, Premium plus vif, badge tablette corrigé.
 
-Dix spécialistes techniques/éditoriaux puis deux revues commerciales. TypeScript, build et241tests passent. IAB public320/390/820/1280px : offres, allers-retours, options et tarifs, formulaire/erreurs/protection de saisie,16FAQ, galerie1/2/6 et menus contrôlés. Anciennes adresses et réduction du mouvement validées, aucune erreur/alerte console observée. Les captures et limites sont dans `docs/qa/three-offers/review.md`.
+TypeScript, build et **251 tests passent** ; build relancé après le dernier ajustement CSS. Contrôles IAB publics ordinateur/tablette/mobile (1280/820/390/320 px), trois allers-retours ordinateur et trois mobile, réservation et ses totaux sur les trois, comparatif développé, FAQ, formulaire à droite, textures et réduction du mouvement. Aucune erreur/alerte console observée. Preuves dans `docs/qa/cumulative-offers/review.md`.
 
-Sauvegarde réussie ; données privées/réglage de prix inchangés,24autres services gardent PID/état. Aucun formulaire public envoyé. Viewport et choix de test restaurés, localhost arrêté. DestinationResendINQUIRY_TO et informationslégales toujours à compléter. Aucun e-mailréellementlivré n’est attesté.
+Sauvegarde réussie ; sept tables privées et réglage tarifaire inchangés ; 24 autres services conservent PID/état. Aucun formulaire public envoyé. Choix de test, viewport et préférence réduite restaurés, localhost arrêté. Destination `INQUIRY_TO` et informations légales toujours à compléter. Aucune réception e-mail réelle n’est attestée.
 
 ## Animations et textures — livraison précédente
 

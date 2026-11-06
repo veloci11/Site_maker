@@ -1,0 +1,80 @@
+{
+  "desktop": [
+    {
+      "heading": {
+        "bottom": 335.09375,
+        "height": 52.5,
+        "left": 66,
+        "right": 582.765625,
+        "top": 282.59375,
+        "width": 516.765625,
+        "x": 66,
+        "y": 282.59375
+      },
+      "scroll": 1265,
+      "text": "Tous les forfaits\nExemples de sites\nVotre forfait\nChanger\nVitrine\n\nPrésentez votre activité avec un site personnalisé et donnez à vos visiteurs un moyen simple de vous contacter.\n\nSite personnalisé de 1 à 3 pages\nMobile, tablette et ordinateur\nContact, SEO de base et mise en ligne\n\nOptions choisies\n\nCréation du site\nÀ partir de 890 €\n\n+ 0 € / mois\n\nForfait de base\n01 / 02\nConfigurez votre site.\n\nUn site personnalisé de 1 à 3 pages pour présenter votre activité. La version mobile, tablette et ordinateur, le formulaire de contact, les bases du SEO technique et la mise en production sont compris. Vous fournissez les textes et les images. Pour gérer vos contenus avec un CMS, passer à 1 à 6 pages et bénéficier du référencement local et des statistiques, choisissez Business.\n\n01\nVotre site\nLangue supplémentaire\nUne langue supplémentaire pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traductions ; précisez la langue dans votre message ou lors de notre échange. Rédaction et traduction ne sont pas incluses.\n+ 100 €\nModifier mes contenus\nUne interface simple pour modifier les t",
+      "title": "Vitrine",
+      "url": "/forfaits/vitrine",
+      "width": 1280
+    },
+    {
+      "heading": {
+        "bottom": 335.09375,
+        "height": 52.5,
+        "left": 66,
+        "right": 582.765625,
+        "top": 282.59375,
+        "width": 516.765625,
+        "x": 66,
+        "y": 282.59375
+      },
+      "scroll": 1265,
+      "text": "Tous les forfaits\nExemples de sites\nVotre forfait\nChanger\nBusiness\n\nUn site personnalisé de 1 à 6 pages avec un CMS pour actualiser vos contenus vous-même, développer votre présence locale et suivre les visites.\n\nCMS inclus : modifiez textes et images\nSite personnalisé de 1 à 6 pages\nRéférencement local et statistiques\n\nOptions choisies\n\nCréation du site\nÀ partir de 1 490 €\n\n+ 0 € / mois\n\nForfait de base\n01 / 02\nConfigurez votre site.\n\nUn site personnalisé de 1 à 6 pages avec CMS inclus : votre espace de gestion pour modifier vos textes et vos images vous-même. Présentez vos réalisations, vos tarifs et les témoignages de vos clients, avec les bases du référencement local et les statistiques de visites. Mobile, tablette et ordinateur, formulaire de contact, SEO technique et mise en production sont compris.\n\n01\nVotre site\nLangue supplémentaire\nUne langue supplémentaire pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traductions ; précisez la langue dans votre message ou lors de notre échange. Rédaction et traduction ne sont pas incluses.\n+ 100 €\n02\nVos fonctionnalités\n03",
+      "title": "Business",
+      "url": "/forfaits/connecte",
+      "width": 1280
+    },
+    {
+      "heading": {
+        "bottom": 335.09375,
+        "height": 52.5,
+        "left": 66,
+        "right": 582.765625,
+        "top": 282.59375,
+        "width": 516.765625,
+        "x": 66,
+        "y": 282.59375
+      },
+      "scroll": 1265,
+      "text": "Tous les forfaits\nExemples de sites\nVotre forfait\nChanger\nPremium / 3D\n\nTout Business, CMS compris, avec 1 à 10 pages et une expérience visuelle propre à votre marque. Vos demandes sur mesure sont étudiées pour définir le périmètre du projet.\n\nTout Business avec CMS, de 1 à 10 pages\nDirection artistique et animations avancées\n3D si pertinente, performances soignées\nDemandes sur mesure étudiées\n\nOptions choisies\n\nCréation du site\nÀ partir de 2 499 €\n\n+ 0 € / mois\n\nForfait de base\n01 / 02\nConfigurez votre site.\n\nToutes les fonctions Business sont comprises, CMS inclus, avec un site de 1 à 10 pages. Premium ajoute une direction artistique personnalisée, des animations et interactions avancées, et la 3D si elle sert votre projet, avec performances et accompagnement renforcés. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. Le modèle 3D est fourni ; sa création ou un élément supplémentaire se choisissent ci-dessous.\n\n01\nVotre site\nLangue supplémentaire\nUne langue supplémentaire pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traduct",
+      "title": "Premium / 3D",
+      "url": "/forfaits/immersif-3d",
+      "width": 1280
+    }
+  ],
+  "mobile": [
+    {
+      "booking": "checked",
+      "scroll": 375,
+      "url": "/forfaits/vitrine",
+      "width": 390,
+      "selectedQuote": "980 €–1 070 €+ 0 € / mois1 option sélectionnée"
+    },
+    {
+      "booking": "checked",
+      "scroll": 375,
+      "url": "/forfaits/connecte",
+      "width": 390,
+      "selectedQuote": "1 580 €–1 670 €+ 0 € / mois1 option sélectionnée"
+    },
+    {
+      "booking": "checked",
+      "scroll": 375,
+      "url": "/forfaits/immersif-3d",
+      "width": 390,
+      "selectedQuote": "2 589 €–2 679 €+ 0 € / mois1 option sélectionnée"
+    }
+  ],
+  "release": "20261106T192843Z-c4c1a6491a63",
+  "console": []
+}
