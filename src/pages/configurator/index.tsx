@@ -546,20 +546,16 @@ export function ConfiguratorPage() {
               />
             </div>
           ) : null}
-          {stage === 'success' ? (
+          {stage === 'success' && result ? (
             <div className="configurator-success" role="status">
               <span className="configurator-success__icon">
                 <Mail size={28} strokeWidth={1.5} aria-hidden="true" />
               </span>
               <h2 ref={successHeading} tabIndex={-1}>
-                Votre demande est enregistrée.
+                Votre demande a bien été enregistrée.
               </h2>
               <p>
-                {result?.notification === 'accepted'
-                  ? 'La notification au studio a été acceptée par le service d’e-mail. Sa livraison n’est pas encore confirmée.'
-                  : result?.notification === 'queued'
-                    ? 'La notification au studio est en attente d’envoi. Votre demande est conservée.'
-                    : 'La notification par e-mail est momentanément indisponible. Votre demande reste enregistrée.'}
+                Un développeur vous contactera au plus vite pour échanger sur votre projet.
               </p>
               <div className="configurator-success__actions">
                 <Button asChild variant="outline">

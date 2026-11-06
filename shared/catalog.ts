@@ -82,7 +82,7 @@ export const offers = [
     headline: 'Votre activité, en ligne.',
     description:
       'Présentez votre activité avec un site personnalisé et donnez à vos visiteurs un moyen simple de vous contacter.',
-    features: ['Site personnalisé de 1 à 3 pages', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
+    features: ['Site personnalisé de 1 à 3 pages', 'Mobile, tablette et ordinateur', 'Contact, référencement de base, mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
   },
@@ -92,7 +92,7 @@ export const offers = [
     title: 'Business',
     headline: 'Un site plus complet pour votre activité.',
     description:
-      'Un site personnalisé de 1 à 6 pages avec un CMS pour actualiser vos contenus vous-même, développer votre présence locale et suivre les visites.',
+      'Un site personnalisé de 1 à 6 pages avec un espace de gestion (CMS) pour modifier vos textes et images vous-même, un référencement local de base et des statistiques de visites.',
     features: ['CMS inclus : modifiez textes et images', 'Site personnalisé de 1 à 6 pages', 'Référencement local et statistiques'],
     exampleId: 'lactel',
     variant: 'connecte',
@@ -102,7 +102,7 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout Business, CMS compris, avec 1 à 10 pages et une expérience visuelle propre à votre marque. Vos demandes sur mesure sont étudiées pour définir le périmètre du projet.',
+    description: 'Tout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Une expérience visuelle propre à votre marque et l’étude de vos demandes sur mesure.',
     features: ['Tout Business avec CMS, de 1 à 10 pages', 'Direction artistique et animations avancées', '3D si pertinente, performances soignées', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
@@ -269,7 +269,7 @@ export const faqs = [
   {
     question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
-      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus » peut être ajoutée. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
+      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus (CMS) » peut être ajoutée. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
     category: "Après la livraison",
   },
   {
@@ -323,7 +323,7 @@ export const faqs = [
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Premium / 3D reprend toutes les fonctions Business, dont le CMS pour gérer vos contenus, le référencement local et les statistiques, et porte le site à 1 à 10 pages. Il ajoute une direction artistique personnalisée, des animations et interactions avancées, une optimisation des performances et un accompagnement renforcés. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
+      "Premium / 3D reprend toutes les fonctions Business, dont l’espace de gestion (CMS) pour modifier vos textes et images vous-même, le référencement local et les statistiques, et porte le site à 1 à 10 pages. Il ajoute une direction artistique personnalisée, des animations et interactions avancées, un travail renforcé sur le chargement et la fluidité du site, ainsi qu’un accompagnement renforcé. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
     category: "Fonctionnalités",
   },
   {
@@ -341,7 +341,7 @@ export const faqs = [
   {
     question: "La 3D est-elle indispensable dans Premium / 3D ?",
     answer:
-      "Non. Premium / 3D reprend tout Business et ajoute une direction artistique et des interactions adaptées à votre projet. Three.js ou WebGL sont utilisés lorsque la 3D apporte un intérêt réel à la présentation. Le modèle à intégrer est fourni ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
+      "Non. Premium / 3D reprend tout Business et ajoute une direction artistique et des interactions adaptées à votre projet. Un élément 3D est intégré lorsqu’il apporte un intérêt réel à la présentation. Vous fournissez le modèle à intégrer ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
     category: "Design et 3D",
   },
   {
@@ -390,8 +390,8 @@ export const optionDefinitions = [
   },
   {
     id: 'managed-content',
-    title: 'Modifier mes contenus',
-    description: 'Une interface simple pour modifier les textes et images de 5 pages maximum. Pour Vitrine ; déjà comprise dans Business et Premium / 3D. La gestion des articles du blog reste comprise dans l’option Blog.',
+    title: 'Modifier mes contenus (CMS)',
+    description: 'Un espace de gestion pour modifier vous-même les textes et images de 5 pages maximum. La gestion des articles du blog reste comprise dans l’option Blog.',
     billing: 'once',
     group: 'essentials',
   },
@@ -461,7 +461,7 @@ export const optionDefinitions = [
   },
   {
     id: 'portfolio-gallery',
-    title: 'Galerie de réalisations',
+    title: 'Photos de réalisations',
     description: 'Présentez vos photos et vos projets avec des filtres.',
     billing: 'once',
     group: 'content',
@@ -511,7 +511,7 @@ export const optionDefinitions = [
   {
     id: 'analytics',
     title: 'Suivre mes visites',
-    description: 'Configuration des statistiques d’un site : visites et un événement utile, avec réglages adaptés à l’outil retenu. Déjà compris dans Business et Premium / 3D ; abonnement éventuel de l’outil séparé.',
+    description: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu. L’abonnement éventuel à cet outil reste séparé.',
     billing: 'once',
     group: 'visibility',
   },

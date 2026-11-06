@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Clarté client et revue critique — 6 novembre 2026
+
+« Photos de réalisations, tarifs et avis clients » remplace « Galerie, tarifs et témoignages ». Chaque ligne du comparatif reçoit une explication fonctionnelle accessible avec les détails ; ne pas répéter dans ces descriptions les inclusions et options que les coches indiquent déjà. Expliquer explicitement l’espace de gestion (CMS) dans les descriptions Business et Premium. L’option Vitrine nomme aussi le CMS. Prix, pages, inclusions et textures restent inchangés.
+
+Formulaire commun : « Décrivez brièvement votre projet », aide courte. Après succès de l’enregistrement uniquement : « Votre demande a bien été enregistrée. Un développeur vous contactera au plus vite pour échanger sur votre projet. » Même message dans Contact et configurateur, sans promettre une livraison e-mail ni un délai chiffré. La notification et le traitement effectif restent à suivre côté exploitation.
+
+La revue critique complète est dans `docs/qa/critical-review-2026-11-06/`. Distinguer les retouches demandées et vérifiées des recommandations, décisions commerciales ou informations réelles encore à fournir. Ne pas présenter la revue comme une certification juridique, accessibilité ou sécurité.
+
 ## Derniers arbitrages confirmés — 6 novembre 2026
 
 Cette section prévaut sur toutes les anciennes répartitions. **Vitrine : site personnalisé de 1 à 3 pages, à partir de 890 €. Business : site personnalisé de 1 à 6 pages, à partir de 1 490 €. Premium / 3D : de 1 à 10 pages, à partir de 2 499 €.** Badge Business : **« Populaire »**, sans « Plus ». CMS mis au premier plan dans Business : « CMS inclus : modifiez textes et images » ; CMS également inclus Premium, option Vitrine. Premium reprend toutes les fonctions Business et ajoute direction artistique, animations/interactions, 3D si pertinente, performances/accompagnement renforcés et **demandes sur mesure étudiées**. Le périmètre est confirmé et chiffré avant démarrage, sans promettre des développements illimités.

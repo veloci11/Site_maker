@@ -1,3 +1,11 @@
+# Clarté des détails et revue critique — 6 novembre 2026
+
+Quinze fonctions expliquées dans le comparatif, « Photos de réalisations, tarifs et avis clients », CMS explicite dans Business et Premium et dans l’option Vitrine. Descriptions sans répétition des forfaits déjà indiqués par les coches. Formulaire bref et confirmation de rappel développeur dans les deux parcours, après enregistrement réussi.
+
+TypeScript, build et 251 tests passent. Deux demandes enregistrées uniquement dans une base locale isolée, e-mail désactivé : confirmations Contact et Business observées, mobile et focus d’erreur vérifiés. Revue critique actuelle, sources primaires et captures dans `docs/qa/critical-review-2026-11-06/REVIEW.md`. Les défauts de robustesse et les décisions commerciales y sont distingués des corrections effectuées. Publication en cours.
+
+Les sections suivantes conservent l’historique.
+
 # Derniers ajustements — 6 novembre 2026
 
 Vitrine : 1 à 3 pages, à partir de 890 €. Business : 1 à 6 pages, à partir de 1 490 €, badge « Populaire », CMS mis en premier argument. Premium / 3D : 1 à 10 pages, à partir de 2 499 €, tout Business et son CMS, prestations visuelles et demandes sur mesure étudiées. Aucune mention de template, Doctolib ou formulaire avancé dans les offres. Prise de rendez-vous générique en option sur les trois forfaits, 90–180 €. FAQ portée à 17 questions ; champs de contact courts et suivis 19/39/69 € conservés.

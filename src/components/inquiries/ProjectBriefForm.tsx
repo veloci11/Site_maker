@@ -174,12 +174,8 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
     if (onSuccess) return null
     return (
       <div className="project-brief-form__success" ref={successRef} tabIndex={-1} role="status">
-        <h3>Votre demande est enregistrée.</h3>
-        <p>{result.notification === 'accepted'
-          ? 'La notification au studio a été acceptée par le service d’e-mail. Sa livraison n’est pas encore confirmée.'
-          : result.notification === 'queued'
-            ? 'La notification au studio est en attente d’envoi. Votre demande est conservée.'
-            : 'La notification par e-mail est actuellement indisponible. Votre demande reste enregistrée.'}</p>
+        <h3>Votre demande a bien été enregistrée.</h3>
+        <p>Un développeur vous contactera au plus vite pour échanger sur votre projet.</p>
       </div>
     )
   }

@@ -441,8 +441,8 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
     { id: 'request', title: 'Votre demande', questions: [
       { ...activity, required: false },
       {
-        id: 'message', label: 'Comment pouvons-nous vous aider ?', type: 'textarea', required: true,
-        hint: 'Décrivez votre besoin ou votre question. Aucun mot de passe ni information confidentielle.',
+        id: 'message', label: 'Décrivez brièvement votre projet', type: 'textarea', required: true,
+        hint: 'Quelques mots sur votre activité, votre besoin ou votre question.',
       },
     ] },
     { id: 'timing', title: 'Votre calendrier', questions: [deadline] },

@@ -1,3 +1,5 @@
+Dernière clarification : chaque ligne du comparatif possède une description fonctionnelle, dépliée avec les détails. Ne pas y répéter les inclusions indiquées dans les colonnes. Intitulé : « Photos de réalisations, tarifs et avis clients ». Décrire concrètement le CMS et garder le vocabulaire compréhensible par un client.
+
 # Pages publiques
 
 Le rendu public garde la direction approuvée : fond statique, cartes texturées, trois forfaits de création, galerie et FAQ. Les textes partagés et règles commerciales vivent dans `shared/` et `src/content/`.
