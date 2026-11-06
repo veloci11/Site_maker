@@ -1,3 +1,5 @@
+> Mise à jour après correction : les deux défauts techniques, les quantités de pages supplémentaires et les limites des options ont été traités dans le lot suivant. Voir [les corrections et leurs preuves](../fixes-2026-11-06/REVIEW.md). Ce document conserve les constats de la revue initiale ; les besoins de destinataire e-mail, d’identité éditoriale et de suivi des coûts restent distincts.
+
 # Revue critique de gilmathis.com — 6 novembre 2026
 
 **Verdict : les trois offres sont plus lisibles et le parcours normal fonctionne. Le site doit encore renforcer la prise en charge des demandes, l’identité du prestataire et les preuves de son travail avant de soutenir une acquisition commerciale régulière.** Les prochains efforts les plus utiles portent sur ces points, puis sur le périmètre des prestations et la robustesse en cas de panne.

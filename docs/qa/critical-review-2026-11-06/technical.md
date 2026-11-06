@@ -1,3 +1,5 @@
+> Mise à jour après correction : les deux défauts techniques, les quantités de pages supplémentaires et les limites des options ont été traités dans le lot suivant. Voir [les corrections et leurs preuves](../fixes-2026-11-06/REVIEW.md). Ce document conserve les constats de la revue initiale ; les besoins de destinataire e-mail, d’identité éditoriale et de suivi des coûts restent distincts.
+
 # Revue technique critique — 6 novembre 2026
 
 Périmètre : code courant de `/Users/mathis/Site Business/site`, parcours public, estimation, formulaire, notification, SEO, accessibilité structurelle et poids des ressources. Lecture directe des sources (base Git `55f0632` et ajustements de textes en cours) et du build présent, plus deux reproductions locales isolées. Le build mesuré précède ces derniers ajustements de textes ; il est identifié par son nom de fichier, sans être présenté comme un nouveau déploiement. Aucune modification de l’application, aucun accès aux données privées, aucune requête vers la production et aucun formulaire/e-mail envoyé. La QA visuelle IAB est réalisée séparément par le coordinateur. Ce rapport n’est pas un pentest ni une validation juridique.

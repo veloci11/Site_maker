@@ -1,0 +1,11 @@
+{
+  "release": "/home/mathis/site-maker/releases/20261106T202312Z-dbcd9e38577f",
+  "otherServicesUnchanged": true,
+  "otherServiceCount": 24,
+  "privateTablesUnchanged": true,
+  "privateTableCount": 7,
+  "storedPricingUnchanged": true,
+  "emailConfigured": false,
+  "localPortsFree": true,
+  "localTestDataRemoved": true
+}

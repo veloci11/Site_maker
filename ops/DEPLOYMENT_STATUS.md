@@ -5,13 +5,21 @@ Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans
 ## Version active
 
 - URL : https://gilmathis.com/
-- Révision applicative : `69a44d57e5f11fec1db7907a06e6b149694f7b71`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261106T195333Z-69a44d57e5f1`, bascule atomique.
-- Client public : `/assets/index-ClTsqN9B.js`, SHA-256 local `a440d27ce9a2b40bfb877837c3ed316a2adce2b1d4007a3cba508d05700f30d1`, chemin confirmé dans l’IAB public.
-- Archive : SHA-256 `f73fcbd2e56b29602c4b8e541425e0acf9ee0fad4f58bcb2e4428697c39e3e17`, 13978289 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T192843Z-c4c1a6491a63`.
+- Révision applicative : `dbcd9e38577fb155c00ae42b9ffba4d61edd3996`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T202312Z-dbcd9e38577f`, bascule atomique.
+- Client public : `/assets/index-CcPXBE2O.js`, SHA-256 local `a6c20418c6567d5341a1ef75a552309f73b1e7bd4b05d32ef89289a4bfd6f17c`, chemin confirmé dans l’IAB public.
+- Archive : SHA-256 `f0fda0e4ca6df18f0b27bf02792a9a0cb58b4c4dd2b08116f94e0d530c1df1da`, 13983514 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T201720Z-8a46e1369fd9`. Lot fonctionnel initial : `8a46e13`, suivi du correctif de largeur `dbcd9e3`.
 
 Le dépôt peut contenir un rapport plus récent ; cette révision désigne l’application en production.
+
+## Robustesse, pages, marketing et petits écrans
+
+Frontière d’erreur française des routes, échéance de soumission de 30 s avec saisie et idempotence conservées, quantité de pages supplémentaires à 60–120 €/page. Limites langue/CMS/reprise visibles dans les sélections et nouveaux dossiers ; anciens instantanés préservés. Correction du passage privé de cinq à une page. Arguments des trois offres clarifiés, référencement local mieux visible, 18 FAQ, rôle des références externes précisé. Prix et inclusions validés conservés.
+
+TypeScript, build et **268 tests passent**. IAB local : rejet réel de module, attente réseau suspendue, même requestId au nouvel essai, puis confirmation ; deux demandes locales, zéro tentative e-mail. IAB public : trois ouvertures/retours ordinateur puis mobile, quantités, exclusivité des suivis, boutique/paiement, comparatif/FAQ/galerie et formulaire. Contrôle final 320/390/820/1280 px : aucun débordement global, y compris après menu à 320 px ; mouvement réduit et console sans erreur/alerte observée. Preuves : `docs/qa/fixes-2026-11-06/REVIEW.md`.
+
+Sauvegardes réussies ; sept tables privées, tarif stocké et 24 autres services inchangés. Aucun envoi public. Sélections de test vides, préférence de mouvement et viewport restaurés ; serveur local arrêté, ports 4173/4174 libres et données locales supprimées. `INQUIRY_TO` et identité légale toujours à compléter ; aucune réception e-mail réelle attestée.
 
 ## Clarté des détails, formulaire et revue critique
 

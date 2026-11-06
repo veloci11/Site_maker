@@ -1,0 +1,10 @@
+{
+  "inquiries": 2,
+  "notifications": [
+    {
+      "status": "unavailable",
+      "attempts": 0,
+      "count": 2
+    }
+  ]
+}

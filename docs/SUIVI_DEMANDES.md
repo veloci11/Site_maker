@@ -1,3 +1,11 @@
+# Corrections publiées et contrôlées — 6 novembre 2026
+
+Les deux bugs techniques sont corrigés : chargement différé avec récupération française et envoi borné à 30 s, saisie/idempotence conservées. Quantités de pages, limites des options, estimations et CMS cohérents ; prix validés conservés. Arguments renforcés et FAQ portée à 18 questions. Deux défauts supplémentaires corrigés : retour privé de cinq à une page et largeur minimale à 320 px avec scrollbar.
+
+Application `dbcd9e3` en ligne, client `/assets/index-CcPXBE2O.js`. TypeScript, build et **268 tests** passent. Vérifications IAB ordinateur/mobile, y compris 320/390/820/1280 px ; pas d’erreur console observée. Deux enregistrements locaux seulement, aucun e-mail de test ni soumission en production. Données privées et 24 autres services inchangés. Localhost arrêté. [Rapport et preuves](qa/fixes-2026-11-06/REVIEW.md).
+
+Restent les informations réelles déjà signalées : destinataire des notifications et informations légales définitives. Les sections suivantes conservent l’historique.
+
 # Clarté des détails et revue critique — 6 novembre 2026
 
 Quinze fonctions expliquées dans le comparatif, « Photos de réalisations, tarifs et avis clients », CMS explicite dans Business et Premium et dans l’option Vitrine. Descriptions sans répétition des forfaits déjà indiqués par les coches. Formulaire bref et confirmation de rappel développeur dans les deux parcours, après enregistrement réussi.
