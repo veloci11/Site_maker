@@ -2,7 +2,7 @@
 
 Quinze fonctions expliquées dans le comparatif, « Photos de réalisations, tarifs et avis clients », CMS explicite dans Business et Premium et dans l’option Vitrine. Descriptions sans répétition des forfaits déjà indiqués par les coches. Formulaire bref et confirmation de rappel développeur dans les deux parcours, après enregistrement réussi.
 
-TypeScript, build et 251 tests passent. Deux demandes enregistrées uniquement dans une base locale isolée, e-mail désactivé : confirmations Contact et Business observées, mobile et focus d’erreur vérifiés. Revue critique actuelle, sources primaires et captures dans `docs/qa/critical-review-2026-11-06/REVIEW.md`. Les défauts de robustesse et les décisions commerciales y sont distingués des corrections effectuées. Publication en cours.
+TypeScript, build et 251 tests passent. Deux demandes enregistrées uniquement dans une base locale isolée, e-mail désactivé : confirmations Contact et Business observées, mobile et focus d’erreur vérifiés. Revue critique actuelle, sources primaires et captures dans `docs/qa/critical-review-2026-11-06/REVIEW.md`. Les défauts de robustesse et les décisions commerciales y sont distingués des corrections effectuées. Publié : `69a44d5`, client `/assets/index-ClTsqN9B.js`, contrôlé dans l’IAB public à 320/390/820/1280 px. Descriptions/CMS/champ bref vérifiés, aucune erreur de console observée. Données et 24 autres services inchangés ; localhost arrêté.
 
 Les sections suivantes conservent l’historique.
 

@@ -5,13 +5,23 @@ Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans
 ## Version active
 
 - URL : https://gilmathis.com/
-- Révision applicative : `c4c1a6491a63a3e3ff806849ebd7e704a549ade4`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261106T192843Z-c4c1a6491a63` ; bascule atomique de `current`.
-- Client public : `/assets/index-DrfqtuqU.js` ; SHA-256 local `108a913671fa45a02ba79f55fe75e97d891a000cb832109d7ee8ebbb62b4a195`. Chemin confirmé dans l’IAB public.
-- Archive : SHA-256 `0bd09b3b047b92a46223eede11724b828b0509e6c17d6f5d6156dfe2a9fa77e7`, 13977288 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T191058Z-c27abc7bf23f`.
+- Révision applicative : `69a44d57e5f11fec1db7907a06e6b149694f7b71`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T195333Z-69a44d57e5f1`, bascule atomique.
+- Client public : `/assets/index-ClTsqN9B.js`, SHA-256 local `a440d27ce9a2b40bfb877837c3ed316a2adce2b1d4007a3cba508d05700f30d1`, chemin confirmé dans l’IAB public.
+- Archive : SHA-256 `f73fcbd2e56b29602c4b8e541425e0acf9ee0fad4f58bcb2e4428697c39e3e17`, 13978289 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T192843Z-c4c1a6491a63`.
 
-Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif réellement en ligne.
+Le dépôt peut contenir un rapport plus récent ; cette révision désigne l’application en production.
+
+## Clarté des détails, formulaire et revue critique
+
+Quinze descriptions de comparaison sans répéter les inclusions ; photos de réalisations/tarifs/avis clients renommés, CMS explicite dans Business/Premium et l’option Vitrine. Formulaire « Décrivez brièvement votre projet » ; après succès API, enregistrement confirmé et rappel par un développeur. Prix/pages/inclusions/graphisme approuvés conservés.
+
+TypeScript, build et 251 tests passent ; dernier build après ajustement d’une référence textuelle de FAQ. Deux confirmations contrôlées avec deux enregistrements locaux isolés, aucun e-mail. IAB public à 320/390/820/1280 px : nouveau client, 15 descriptions, CMS dans les deux fiches, nouveau champ dans les deux parcours, absence de débordement global et de console en erreur. Revue complète et sources : `docs/qa/critical-review-2026-11-06/REVIEW.md`.
+
+Sauvegarde réussie, santé valide, données privées/réglage de prix et 24 autres services inchangés. Aucun envoi public. Serveur local arrêté, base de test supprimée, viewport restauré. `INQUIRY_TO` toujours absent ; informations légales provisoires. La revue documente également deux défauts de robustesse (chargement différé et attente réseau), sans les déclarer corrigés par ce lot de textes.
+
+Les sections suivantes décrivent les livraisons précédentes.
 
 ## Gamme finale et CMS mis en avant
 

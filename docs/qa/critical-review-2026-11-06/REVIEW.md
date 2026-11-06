@@ -133,7 +133,29 @@ La page légale reste un texte d’attente. La confidentialité décrit sommaire
 
 ## Livraison et limites
 
-Les retouches demandées sont vérifiées localement. Publication et contrôle du nouveau client en cours ; cette section est complétée après vérification publique.
+**Publié et vérifié sur https://gilmathis.com/** : application `69a44d57e5f11fec1db7907a06e6b149694f7b71`, release `20261106T195333Z-69a44d57e5f1`, client `/assets/index-ClTsqN9B.js` confirmé dans le navigateur public. Les descriptions du comparatif ont été relues dans le DOM public : 15 explications, nouvel intitulé présent, ancienne phrase répétitive absente. CMS explicite observé dans la carte et les détails de Business et Premium ; option Vitrine correctement nommée. Nouveau champ présent dans Contact et dans le configurateur.
+
+Contrôles publics à 320, 390, 820 et 1280 px : pas de débordement global, cartes cohérentes, comparatif mobile défilable au clavier. Console publique sans erreur ni avertissement observé. Capture du champ publié : `13-contact-public-corrige.jpg` ; intitulé et descriptions : `14-descriptions-publiques.jpg` ; Business mobile : `12-business-cms-public-mobile.jpg`. Relevés dans `public-checks.json`.
+
+`npm run check` : TypeScript, build et **251 tests passants**. Un build final supplémentaire intègre la référence au nom CMS dans la FAQ. Les deux confirmations ont été observées après deux enregistrements dans la base locale isolée, notifications `unavailable` et transport désactivé. Aucun formulaire de test n’a été envoyé en production, aucun e-mail externe émis. La livraison réelle d’une notification reste non attestée ; le destinataire manque toujours.
+
+Sauvegarde préalable réussie ; santé valide et deux services studio actifs. Sept tables privées, réglage tarifaire et PID/état des 24 autres services inchangés. Viewport restauré, onglets temporaires fermés, serveur local arrêté et base de test supprimée. Les originaux d’image et tarifs n’ont pas changé.
+
+Entrée finale : 493 193 octets bruts, 158 255 octets gzip calculés localement. Ces tailles ne sont pas une mesure de temps de chargement ni une preuve de l’encodage servi.
+
+### Vérification de la demande, point par point
+
+| Demande | Résultat prouvé |
+| --- | --- |
+| Renommer l’intitulé ambigu | Nouveau texte dans le comparatif public, capture14 ; recherche source sans ancien intitulé dans src/shared. |
+| Expliquer CMS dans Business et Premium | Deux descriptions et deux textes de détails observés dans le client publié, relevés JSON. |
+| Descriptions pour toutes les fonctions | Quinze lignes et quinze explications relues après dépliage public. |
+| Éviter les répétitions de répartition | Phrase « inclus dans... disponible en option... » absente du tableau publié ; coches conservées. |
+| Champ bref et rappel développeur | Champ publié sur les deux parcours ; deux confirmations locales réellement atteintes après succès API ; même build publié. |
+| Revue complète et critique du site | Sept étapes observées, priorités, périmètres, prix, confiance, technique, SEO, accessibilité et limites documentés ; deux analyses spécialisées jointes. |
+| S’appuyer sur des sources en ligne | Six sources primaires ouvertes dans l’IAB, synthèses et liens dans sources.md et près des recommandations. |
+| Vérifier la livraison | Client public identifié, quatre largeurs contrôlées, santé et isolation des données/services vérifiées. |
+
 
 La revue porte sur les pages et parcours publics, le code utile à leur fonctionnement et les preuves citées. Elle ne certifie ni la conformité juridique, ni WCAG, ni la sécurité exhaustive, ni les performances sur tous les appareils. Les données commerciales manquantes et les recommandations restent explicitement ouvertes ; le livrable demandé est cette revue critique et les corrections de contenu, pas une affirmation que tout le site est désormais exempt de problèmes.
 

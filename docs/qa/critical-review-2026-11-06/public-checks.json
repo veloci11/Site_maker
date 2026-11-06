@@ -1,0 +1,156 @@
+{
+  "release": "20261106T195333Z-69a44d57e5f1",
+  "comparison": {
+    "hints": [
+      "Le nombre de pages prévu pour présenter votre activité, vos services et vos informations pratiques.",
+      "Un espace de gestion pour mettre à jour vos contenus vous-même.",
+      "Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu.",
+      "Des choix de couleurs, de typographies et de mise en page propres à votre marque et à votre projet.",
+      "Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.",
+      "Vos besoins spécifiques sont étudiés pour définir les solutions possibles et leur prix avant le démarrage.",
+      "La mise en page, les textes et les interactions s’adaptent à la taille de l’écran du visiteur.",
+      "Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. Sa création et les éléments supplémentaires sont des prestations distinctes.",
+      "Vos visiteurs peuvent vous envoyer une demande directement depuis votre site.",
+      "Des réglages techniques de base pour aider les moteurs de recherche à lire et comprendre vos pages.",
+      "Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.",
+      "Présentez des exemples de votre travail, affichez vos tarifs et publiez les avis que vos clients vous ont transmis.",
+      "Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.",
+      "Un suivi plus poussé pour préciser les choix visuels, les fonctions et les ajustements de votre projet.",
+      "Installation et publication du site sur l’hébergement retenu, une fois le projet validé."
+    ],
+    "old": false,
+    "renamed": true,
+    "script": [
+      "https://gilmathis.com/assets/index-ClTsqN9B.js"
+    ],
+    "scroll": 375,
+    "table": {
+      "scroll": 680,
+      "width": 333
+    },
+    "url": "https://gilmathis.com/forfaits",
+    "width": 390
+  },
+  "cms": [
+    {
+      "description": "Votre forfait\nChanger\nBusiness\n\nUn site personnalisé de 1 à 6 pages avec un espace de gestion (CMS) pour modifier vos textes et images vous-même, un référencement local de base et des statistiques de visites.\n\nCMS inclus : modifiez textes et images\nSite personnalisé de 1 à 6 pages\nRéférencement local et statistiques\n\nOptions choisies\n\nCréation du site\nÀ partir de 1 490 €\n\n+ 0 € / mois\n\nForfait de base",
+      "guidance": [
+        "Un site personnalisé de 1 à 6 pages avec un espace de gestion (CMS) pour modifier vos textes et images vous-même, un référencement local de base et des statistiques de visites.",
+        "Un site personnalisé de 1 à 6 pages avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Présentez les photos de vos réalisations, vos tarifs et les avis de vos clients, avec les bases du référencement local et les statistiques de visites. L’adaptation aux différents écrans, le formulaire de contact, les réglages de base pour les moteurs de recherche et la mise en ligne sont compris."
+      ],
+      "scroll": 375,
+      "title": "Business",
+      "width": 390
+    },
+    {
+      "description": "Votre forfait\nChanger\nPremium / 3D\n\nTout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Une expérience visuelle propre à votre marque et l’étude de vos demandes sur mesure.\n\nTout Business avec CMS, de 1 à 10 pages\nDirection artistique et animations avancées\n3D si pertinente, performances soignées\nDemandes sur mesure étudiées\n\nOptions choisies\n\nCréation du site\nÀ partir de 2 499 €\n\n+ 0 € / mois\n\nForfait de base",
+      "guidance": [
+        "Tout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Une expérience visuelle propre à votre marque et l’étude de vos demandes sur mesure.",
+        "Toutes les fonctions Business sont comprises dans un site de 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Premium ajoute une direction artistique personnalisée, des animations et interactions avancées, et la 3D si elle sert votre projet, avec un travail renforcé sur la fluidité du site et l’accompagnement. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. Vous fournissez le modèle 3D ; sa création ou un élément supplémentaire se choisissent ci-dessous."
+      ],
+      "scroll": 320,
+      "title": "Premium / 3D",
+      "width": 320
+    }
+  ],
+  "filters": [
+    {
+      "count": "1 référence externe",
+      "filter": "Vitrine",
+      "titles": [
+        "DOMTEKNIKA"
+      ]
+    },
+    {
+      "count": "2 références externes",
+      "filter": "Business",
+      "titles": [
+        "Lactel",
+        "Aéma Groupe"
+      ]
+    },
+    {
+      "count": "6 références externes",
+      "filter": "Premium / 3D",
+      "titles": [
+        "Julie Thiam",
+        "Tiny Heaven",
+        "Addiction Agency",
+        "GeoBoss",
+        "Satellite Story",
+        "Atlante 3D"
+      ]
+    },
+    {
+      "count": "9 références externes",
+      "filter": "Tous",
+      "titles": [
+        "DOMTEKNIKA",
+        "Lactel",
+        "Julie Thiam",
+        "Tiny Heaven",
+        "Addiction Agency",
+        "GeoBoss",
+        "Aéma Groupe",
+        "Satellite Story",
+        "Atlante 3D"
+      ]
+    }
+  ],
+  "tablet": {
+    "badge": {
+      "bottom": 372.8203125,
+      "height": 23,
+      "left": 430.609375,
+      "right": 493.6640625,
+      "top": 349.8203125,
+      "width": 63.0546875,
+      "x": 430.609375,
+      "y": 349.8203125
+    },
+    "businessTitle": {
+      "bottom": 375.6171875,
+      "height": 28.796875,
+      "left": 311.328125,
+      "right": 404.65625,
+      "top": 346.8203125,
+      "width": 93.328125,
+      "x": 311.328125,
+      "y": 346.8203125
+    },
+    "cards": [
+      {
+        "features": [
+          "Site personnalisé de 1 à 3 pages",
+          "Mobile, tablette et ordinateur",
+          "Contact, référencement de base, mise en ligne"
+        ],
+        "height": 531,
+        "title": "Vitrine"
+      },
+      {
+        "features": [
+          "CMS inclus : modifiez textes et images",
+          "Site personnalisé de 1 à 6 pages",
+          "Référencement local et statistiques"
+        ],
+        "height": 531,
+        "title": "Business"
+      },
+      {
+        "features": [
+          "Tout Business avec CMS, de 1 à 10 pages",
+          "Direction artistique et animations avancées",
+          "3D si pertinente, performances soignées",
+          "Demandes sur mesure étudiées"
+        ],
+        "height": 531,
+        "title": "Premium / 3D"
+      }
+    ],
+    "scroll": 805,
+    "width": 820
+  },
+  "console": [],
+  "confirmation": "Deux enregistrements locaux isolés, aucun envoi public"
+}
