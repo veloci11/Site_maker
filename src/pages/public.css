@@ -322,7 +322,7 @@
   background:linear-gradient(rgb(0 0 0 / .18),rgb(0 0 0 / .18)),url("/assets/textures/grain-plasma-card.webp");
   background-size:155% 145%;
   background-position:var(--plasma-position,20% 20%);
-  filter:hue-rotate(var(--card-hue,0deg)) saturate(var(--card-saturation, .93)) brightness(.76);
+  filter:hue-rotate(var(--card-hue,0deg)) saturate(var(--card-saturation, .93)) brightness(var(--card-control-brightness, .76));
   transform:scale(var(--card-scale-x,1),var(--card-scale-y,1));
 }
 .public-gallery-filter::before { opacity:0; transition:opacity 300ms cubic-bezier(.4,0,.2,1); }

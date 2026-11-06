@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Derniers arbitrages confirmés — 6 novembre 2026
+
+Cette section prévaut sur toutes les anciennes répartitions. **Vitrine : site personnalisé de 1 à 3 pages, à partir de 890 €. Business : site personnalisé de 1 à 6 pages, à partir de 1 490 €. Premium / 3D : de 1 à 10 pages, à partir de 2 499 €.** Badge Business : **« Populaire »**, sans « Plus ». CMS mis au premier plan dans Business : « CMS inclus : modifiez textes et images » ; CMS également inclus Premium, option Vitrine. Premium reprend toutes les fonctions Business et ajoute direction artistique, animations/interactions, 3D si pertinente, performances/accompagnement renforcés et **demandes sur mesure étudiées**. Le périmètre est confirmé et chiffré avant démarrage, sans promettre des développements illimités.
+
+Ne pas parler de template, de Doctolib ni de formulaire avancé dans les offres publiques. La réservation est désormais une **option indépendante sur les trois forfaits** : « Prise de rendez-vous en ligne », 90–180 € pour la configuration, l’intégration autorisée et les tests d’un outil compatible ; abonnement externe séparé. Treize options ponctuelles et trois suivis mensuels exclusifs. Les anciens brouillons Business contenant une réservation automatiquement incluse ne doivent pas devenir payants ; migration dédiée et versionnée, sans réécrire les dossiers privés. Les unités des autres options (langue 100 €/5 pages, CMS Vitrine 300 €/5 pages, etc.) restent celles validées.
+
+Les cartes et le comparatif affichent « À partir de ». Le configurateur public préfixe ses totaux sans fourchette ; les fourchettes existantes et tarifs mensuels restent explicites. Premium reprend des couleurs plus vives (saturation 1,2, luminosité grande carte 1,12) sans modifier les fichiers d’image. Les hauts de cartes et leurs boutons Configurer sont deux fenêtres sur une image continue, cadrée sur leur hauteur commune incluant le séparateur ; le survol révèle les deux ensemble. Un quatrième argument Premium est autorisé. Les boutons isolés du comparatif gardent leur propre cadrage. FAQ : dix-sept questions, dont le CMS et la prise de rendez-vous.
+
 ## Dernière correction — gamme cumulative, 6 novembre 2026
 
 Mathis demande « Plus populaire » sur Business, à la place d’« Offre principale ». Retirer des offres et du comparatif publics les mentions Template personnalisé, Doctolib/outil de réservation et Formulaire avancé. Les anciens IDs restent pour les dossiers historiques, sans les proposer ni les inclure dans les nouvelles configurations publiques.

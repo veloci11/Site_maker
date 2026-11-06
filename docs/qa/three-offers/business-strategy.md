@@ -1,5 +1,8 @@
 # Structure commerciale et maîtrise du périmètre — 6 novembre 2026
 
+Note : cette analyse précède les derniers arbitrages. Le périmètre actuel, notamment Premium cumulatif, CMS, pages 3/6/10 et réservation optionnelle, est documenté dans `../cumulative-offers/review.md` et en tête de `AGENTS.md`.
+
+
 Revue du catalogue et des textes courants, sans modification du code ni des prix validés. Vitrine : 890 € ; Business : 1 490 € ; Premium / 3D : 2 499 €. La rentabilité réelle reste à calculer avec les temps de production, coûts directs, temps commercial et objectif horaire. Les écarts de prix ci-dessous ne sont pas des bénéfices.
 
 ## Cinq actions prioritaires

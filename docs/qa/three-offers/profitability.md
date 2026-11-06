@@ -1,5 +1,8 @@
 # Rentabilité — cadrage interne du 6 novembre 2026
 
+Note : cette analyse précède les derniers arbitrages. Le périmètre actuel, notamment Premium cumulatif, CMS, pages 3/6/10 et réservation optionnelle, est documenté dans `../cumulative-offers/review.md` et en tête de `AGENTS.md`.
+
+
 **Décision maintenue : Vitrine 890 €, Business 1 490 €, Premium / 3D 2 499 €.** Les douze options et les formules à 19, 39 et 69 €/mois conservent les prix fournis par Mathis. Son dernier retour demande explicitement de prendre ces prix comme base. Ce document interne ne modifie ni le catalogue ni les engagements clients.
 
 Le coût du travail, les heures nécessaires, les frais directs et la fiscalité applicable ne sont pas renseignés. Il est donc impossible de conclure à un bénéfice réel. Les divisions ci-dessous représentent du chiffre d’affaires par heure, avant frais et prélèvements ; elles ne représentent ni salaire ni bénéfice net.

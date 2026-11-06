@@ -200,6 +200,34 @@ test('prices, unknown configuration, invalid fields and missing request referenc
   assert.equal(inquiryCount(), 0);
 });
 
+test('the short public form stores optional booking and its full estimated range for each offer', async t => {
+  const f = await fixture(t);
+  for (const offerId of ['vitrine', 'connecte', 'immersif']) {
+    const request = validInquiry(offerId, {
+      briefFormat: 'contact',
+      brief: { message: 'Je souhaite permettre aux visiteurs de réserver un créneau en ligne.' },
+      configuration: { offerId, extras: ['booking', 'hosting-monthly'] },
+    });
+    const response = await f.post(request);
+    assert.equal(response.status, 201, offerId);
+    assert.equal(response.body.notification, 'unavailable');
+    const details = getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(response.body.id);
+    const quote = JSON.parse(details.quote_snapshot);
+    assert.ok(JSON.parse(details.configuration_snapshot).extras.includes('booking'));
+    const booking = quote.lines.find(line => line.key === 'booking');
+    assert.equal(booking.label, 'Prise de rendez-vous en ligne');
+    assert.equal(booking.included, false);
+    assert.equal(booking.amountCents, 9000);
+    assert.equal(booking.maximumCents, 18000);
+    assert.equal(quote.totalCents, defaultPricing.base[offerId] + 9000);
+    assert.equal(quote.maximumTotalCents, defaultPricing.base[offerId] + 18000);
+    assert.equal(quote.monthlyTotalCents, 1900);
+    assert.equal(quote.checkoutReady, false);
+    assert.equal((await f.post(request)).status, 200);
+    assert.deepEqual(getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(response.body.id), details);
+  }
+});
+
 test('honeypot and foreign origins never create notifications or requests', async t => {
   const f = await fixture(t);
   const bot = await f.post(configuredRequest({ website: 'https://spam.example' }));

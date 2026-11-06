@@ -81,8 +81,8 @@ export const offers = [
     title: 'Vitrine',
     headline: 'Votre activité, en ligne.',
     description:
-      'Pour les indépendants qui veulent une présence en ligne claire et professionnelle.',
-    features: ['1 à 3 pages pour présenter votre activité', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
+      'Présentez votre activité avec un site personnalisé et donnez à vos visiteurs un moyen simple de vous contacter.',
+    features: ['Site personnalisé de 1 à 3 pages', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
   },
@@ -92,8 +92,8 @@ export const offers = [
     title: 'Business',
     headline: 'Un site plus complet pour votre activité.',
     description:
-      'Pour les professionnels qui souhaitent présenter leur activité, gérer leurs contenus et suivre les visites de leur site.',
-    features: ['Jusqu’à 6 pages personnalisées et modifiables', 'Galerie, tarifs et témoignages', 'SEO local et statistiques de visites'],
+      'Un site personnalisé de 1 à 6 pages avec un CMS pour actualiser vos contenus vous-même, développer votre présence locale et suivre les visites.',
+    features: ['CMS inclus : modifiez textes et images', 'Site personnalisé de 1 à 6 pages', 'Référencement local et statistiques'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -102,8 +102,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout ce que comprend Business, avec une direction artistique personnalisée et une expérience visuelle singulière.',
-    features: ['Tout Business, jusqu’à 6 pages', 'Direction artistique et animations avancées', '3D si pertinente et accompagnement renforcé'],
+    description: 'Tout Business, CMS compris, avec 1 à 10 pages et une expérience visuelle propre à votre marque. Vos demandes sur mesure sont étudiées pour définir le périmètre du projet.',
+    features: ['Tout Business avec CMS, de 1 à 10 pages', 'Direction artistique et animations avancées', '3D si pertinente, performances soignées', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -269,7 +269,7 @@ export const faqs = [
   {
     question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
-      "Business et Premium / 3D comprennent une interface de gestion des textes et images. Pour Vitrine, l’option « Modifier mes contenus » couvre jusqu’à cinq pages. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Modifier un contenu existant se distingue d’ajouter une page, de changer la structure ou de développer une nouvelle fonction : ces interventions sont précisées selon votre besoin.",
+      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus » peut être ajoutée. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
     category: "Après la livraison",
   },
   {
@@ -305,7 +305,7 @@ export const faqs = [
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine convient à une présentation de votre activité en une à trois pages. Business permet un site plus complet, jusqu’à six pages modifiables, avec galerie, tarifs, témoignages, référencement local et statistiques. Premium / 3D reprend tous ces éléments et ajoute une direction artistique, des animations et des interactions adaptées au projet. Choisissez le forfait qui semble correspondre à votre projet : nos développeurs vérifient ensuite le besoin et les options avec vous.",
+      "Vitrine convient pour présenter votre activité sur un site personnalisé de 1 à 3 pages. Business comprend 1 à 6 pages et un CMS pour modifier vos textes et images vous-même, avec référencement local et statistiques. Premium / 3D reprend tout Business sur 1 à 10 pages, avec direction artistique, animations et interactions avancées, et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne reste une option dans les trois forfaits. Nos développeurs vérifient votre besoin avant de confirmer le choix.",
     category: "Choix du forfait",
   },
   {
@@ -323,7 +323,7 @@ export const faqs = [
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Premium / 3D comprend tout Business : jusqu’à six pages modifiables, une galerie, vos tarifs et témoignages, les bases du référencement local et les statistiques. Il ajoute une direction artistique personnalisée, des animations avancées, des interactions propres au projet, une optimisation renforcée des performances et un accompagnement renforcé. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
+      "Premium / 3D reprend toutes les fonctions Business, dont le CMS pour gérer vos contenus, le référencement local et les statistiques, et porte le site à 1 à 10 pages. Il ajoute une direction artistique personnalisée, des animations et interactions avancées, une optimisation des performances et un accompagnement renforcés. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
     category: "Fonctionnalités",
   },
   {
@@ -343,6 +343,12 @@ export const faqs = [
     answer:
       "Non. Premium / 3D reprend tout Business et ajoute une direction artistique et des interactions adaptées à votre projet. Three.js ou WebGL sont utilisés lorsque la 3D apporte un intérêt réel à la présentation. Le modèle à intégrer est fourni ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
     category: "Design et 3D",
+  },
+  {
+    question: "Peut-on prendre rendez-vous directement depuis mon site ?",
+    answer:
+      "Oui. L’option « Prise de rendez-vous en ligne », disponible dans les trois forfaits, permet à vos visiteurs de choisir un créneau avec un outil compatible. La configuration, l’intégration autorisée et les tests sont estimés entre 90 et 180 € pour un outil. Son abonnement éventuel reste séparé. Un simple lien ne nécessite pas cette prestation ; un système développé spécialement ou une connexion particulière demande une étude distincte.",
+    category: "Fonctionnalités",
   },
   {
     question: "Que se passe-t-il après l’envoi de ma demande ?",
@@ -413,8 +419,8 @@ export const optionDefinitions = [
   },
   {
     id: 'booking',
-    title: 'Prise de rendez-vous',
-    description: 'Reliez un calendrier à votre site pour réserver un créneau. Abonnement éventuel à prévoir.',
+    title: 'Prise de rendez-vous en ligne',
+    description: 'Permettez à vos visiteurs de choisir un créneau en ligne. Configuration, intégration autorisée et tests d’un outil compatible ; un simple lien seul ne nécessite pas cette prestation. L’abonnement éventuel à l’outil reste séparé. Une réservation développée spécialement ou une connexion à une API particulière fait l’objet d’une étude distincte.',
     billing: 'once',
     group: 'features',
   },
@@ -569,6 +575,7 @@ export const optionDefinitions = [
 
 /** Minimums for scoped options; their displayed ranges never become a fixed quote. */
 export const OPTION_PRICE_RANGES: Partial<Record<OptionId, { min: number; max?: number }>> = {
+  booking: { min: 9_000, max: 18_000 },
   'user-accounts': { min: 30_000, max: 60_000 },
   'online-store': { min: 60_000, max: 110_000 },
   'extra-pages': { min: 6_000, max: 12_000 },
@@ -581,7 +588,7 @@ export const OPTION_PRICE_RANGES: Partial<Record<OptionId, { min: number; max?: 
 export const MONTHLY_PLAN_IDS = ['hosting-monthly', 'maintenance-monthly', 'serenity-monthly'] as const
 
 export const defaultPricing: Pricing = {
-  version: 'public-2026-11-06',
+  version: 'public-2026-11-06-booking-v2',
   currency: 'EUR',
   base: { vitrine: 89_000, connecte: 149_000, immersif: 249_900, 'sur-mesure': null },
   options: {
@@ -590,6 +597,7 @@ export const defaultPricing: Pricing = {
     'additional-language': 10_000,
     'managed-content': 30_000,
     'user-accounts': 30_000,
+    booking: 9_000,
     'online-payment': 10_000,
     'online-store': 60_000,
     blog: 15_000,

@@ -15,17 +15,17 @@ import {
 // A monthly plan replaces the previous plan through withOption/normalization.
 export const PUBLIC_OPTIONS_BY_OFFER = {
   vitrine: [
-    'additional-language', 'managed-content', 'user-accounts', 'online-payment', 'online-store',
+    'additional-language', 'managed-content', 'user-accounts', 'booking', 'online-payment', 'online-store',
     'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d',
     'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
   ],
   connecte: [
-    'additional-language', 'user-accounts', 'online-payment', 'online-store',
+    'additional-language', 'user-accounts', 'booking', 'online-payment', 'online-store',
     'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d',
     'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
   ],
   immersif: [
-    'additional-language', 'user-accounts', 'online-payment', 'online-store',
+    'additional-language', 'user-accounts', 'booking', 'online-payment', 'online-store',
     'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d',
     'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
   ],

@@ -4,7 +4,7 @@ import { PUBLIC_OFFER_IDS, defaultPricing, optionDefinitions, normalizeConfigura
 import { PUBLIC_OPTIONS_BY_OFFER, changePublicOffer, getPublicOptions, getUnavailableOptions, prunePublicConfiguration } from '../shared/offer-options.ts';
 
 const publicIds = id => getPublicOptions(id).map(option => option.id);
-const approved = ['additional-language', 'managed-content', 'user-accounts', 'online-payment', 'online-store', 'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d', 'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly'];
+const approved = ['additional-language', 'managed-content', 'user-accounts', 'booking', 'online-payment', 'online-store', 'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d', 'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly'];
 
 test('public menus expose only the selected additions and three monthly plans in catalogue order', () => {
   for (const offerId of PUBLIC_OFFER_IDS) {
@@ -43,9 +43,9 @@ test('all highlighted additions remain available or included as appropriate', ()
 test('unapproved additions are pruned without mutating the source configuration', () => {
   const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['member-roles', 'booking', 'newsletter', 'backups-monthly', 'content-import'] });
   const snapshot = structuredClone(config);
-  assert.deepEqual(getUnavailableOptions(config), ['member-roles', 'booking', 'backups-monthly']);
+  assert.deepEqual(getUnavailableOptions(config), ['member-roles', 'backups-monthly']);
   const pruned = prunePublicConfiguration(config);
-  assert.deepEqual(pruned.extras, ['user-accounts', 'newsletter', 'content-import']);
+  assert.deepEqual(pruned.extras, ['user-accounts', 'booking', 'newsletter', 'content-import']);
   assert.deepEqual(getUnavailableOptions(pruned), []);
   assert.deepEqual(prunePublicConfiguration(pruned), pruned);
   assert.deepEqual(config, snapshot);
@@ -179,15 +179,16 @@ test('legacy public English drafts become one generic option idempotently withou
   assert.equal(quoteConfiguration(legacyCustom).lines.some(line => line.key === 'language-en'), true);
 });
 
-test('old public Business selections lose retired inclusions and Premium analytics becomes free', () => {
+test('public pruning removes retired advanced forms, retains explicit booking and includes Premium analytics', () => {
   const previous = normalizeConfiguration({ offerId: 'connecte', extras: ['booking', 'advanced-forms', 'additional-language', 'hosting-monthly'] });
   const snapshot = structuredClone(previous);
   const current = prunePublicConfiguration(previous);
-  for (const id of ['booking', 'advanced-forms']) {
-    assert.equal(isOptionSelected(current, id), false);
-    assert.ok(!getPublicOptions(current).some(option => option.id === id));
-  }
-  assert.equal(quoteConfiguration(current).totalCents, 159000);
+  assert.equal(isOptionSelected(current, 'advanced-forms'), false);
+  assert.ok(!getPublicOptions(current).some(option => option.id === 'advanced-forms'));
+  assert.equal(isOptionSelected(current, 'booking'), true);
+  assert.ok(getPublicOptions(current).some(option => option.id === 'booking'));
+  assert.equal(quoteConfiguration(current).totalCents, 168000);
+  assert.equal(quoteConfiguration(current).maximumTotalCents, 177000);
   assert.equal(quoteConfiguration(current).monthlyTotalCents, 1900);
   assert.deepEqual(previous, snapshot);
   for (const offerId of ['connecte', 'immersif']) {
@@ -200,14 +201,16 @@ test('old public Business selections lose retired inclusions and Premium analyti
 
 test('all public offer transitions retain paid choices without charging formerly included capabilities', () => {
   for (const source of PUBLIC_OFFER_IDS) {
-    const original = prunePublicConfiguration({ offerId: source, extras: ['additional-language', 'user-accounts', 'online-store', 'serenity-monthly'] });
+    const original = prunePublicConfiguration({ offerId: source, extras: ['additional-language', 'user-accounts', 'booking', 'online-store', 'serenity-monthly'] });
     const before = structuredClone(original);
     for (const target of PUBLIC_OFFER_IDS) {
       const changed = changePublicOffer(original, target);
       const quote = quoteConfiguration(changed);
-      assert.equal(quote.totalCents, defaultPricing.base[target] + 10000 + 30000 + 60000);
-      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + 10000 + 60000 + 110000);
+      assert.equal(quote.totalCents, defaultPricing.base[target] + 10000 + 30000 + 9000 + 60000);
+      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + 10000 + 60000 + 18000 + 110000);
       assert.equal(quote.monthlyTotalCents, 6900);
+      assert.equal(isOptionSelected(changed, 'booking'), true);
+      assert.equal(isOptionIncluded(changed, 'booking'), false);
       assert.deepEqual(getUnavailableOptions(changed), []);
       if (target === 'vitrine') {
         for (const id of ['managed-content', 'analytics', 'local-seo', 'portfolio-gallery']) assert.equal(isOptionSelected(changed, id), false);

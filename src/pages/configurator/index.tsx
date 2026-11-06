@@ -137,7 +137,9 @@ export function ConfiguratorPage() {
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
-  const totalLabel = formatQuoteTotal(quote)
+  const totalLabel = !editingId && quote.totalCents !== null && !quote.estimated
+    ? `À partir de ${formatQuoteTotal(quote)}`
+    : formatQuoteTotal(quote)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
   const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
   const visibleOptions = editingId ? optionDefinitions : getPublicOptions(configuration)
@@ -165,8 +167,8 @@ export function ConfiguratorPage() {
     return () => controller.abort()
   }, [])
   useEffect(() => {
-    if (editingLoaded && stage !== 'success') writeDraft(configuration)
-  }, [configuration, editingLoaded, stage])
+    if (editingLoaded && stage !== 'success') writeDraft(configuration, { markCurrentCatalogue: !editingId })
+  }, [configuration, editingLoaded, editingId, stage])
   useEffect(() => {
     if (!editingId || authLoading) return
     if (!user) {

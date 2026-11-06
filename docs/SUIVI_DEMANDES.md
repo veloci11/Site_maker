@@ -1,6 +1,8 @@
-# Correction de gamme — 6 novembre 2026
+# Derniers ajustements — 6 novembre 2026
 
-Business : « Plus populaire ». Mentions template, réservation/Doctolib et formulaire avancé retirées. Premium inclut tout Business (jusqu’à 6 pages, contenus modifiables, galerie, SEO local, statistiques) et ses prestations visuelles supplémentaires. Prix inchangés, historiques privés préservés. TypeScript, build et 246 tests passent ; contrôle IAB local ordinateur/mobile. Publication et preuves : `docs/qa/cumulative-offers/review.md` depuis la racine du dépôt.
+Vitrine : 1 à 3 pages, à partir de 890 €. Business : 1 à 6 pages, à partir de 1 490 €, badge « Populaire », CMS mis en premier argument. Premium / 3D : 1 à 10 pages, à partir de 2 499 €, tout Business et son CMS, prestations visuelles et demandes sur mesure étudiées. Aucune mention de template, Doctolib ou formulaire avancé dans les offres. Prise de rendez-vous générique en option sur les trois forfaits, 90–180 €. FAQ portée à 17 questions ; champs de contact courts et suivis 19/39/69 € conservés.
+
+Prix sans fourchette préfixés « À partir de » ; fourchettes et mensualités préservées. Image continue entre le haut des cartes et le bouton Configurer, Premium plus vif. TypeScript, build et 251 tests passent. Une contre-revue indépendante n’a pas trouvé de nouvelle régression métier. Publication et preuves finales suivies dans `docs/qa/cumulative-offers/review.md` et `ops/DEPLOYMENT_STATUS.md`.
 
 Les sections suivantes conservent l’historique des décisions précédentes.
 

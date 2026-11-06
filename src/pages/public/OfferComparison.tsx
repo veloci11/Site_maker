@@ -4,14 +4,15 @@ import { publicOffers, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 
-type ComparisonStatus = 'included' | 'absent' | '1 à 3' | 'Jusqu’à 6' | 'Si pertinent'
+type ComparisonStatus = 'included' | 'absent' | '1 à 3' | '1 à 6' | '1 à 10' | 'Si pertinent'
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint?: string }
 const comparisonRows: readonly ComparisonRow[] = [
-  { title: 'Nombre de pages', values: ['1 à 3', 'Jusqu’à 6', 'Jusqu’à 6'] },
-  { title: 'Textes et images modifiables', values: ['absent', 'included', 'included'], hint: 'Compris dans Business et Premium / 3D. Peut être ajouté à Vitrine, sans les autres fonctions du forfait Business.' },
+  { title: 'Nombre de pages', values: ['1 à 3', '1 à 6', '1 à 10'] },
+  { title: 'CMS : modifiez vos textes et images', values: ['absent', 'included', 'included'], hint: 'Un espace de gestion pour mettre à jour vos contenus vous-même. Inclus dans Business et Premium / 3D ; disponible en option sur Vitrine.' },
   { title: 'Statistiques avec configuration adaptée', values: ['absent', 'included', 'included'] },
   { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'] },
   { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'] },
+  { title: 'Étude des demandes sur mesure', values: ['absent', 'absent', 'included'], hint: 'Les besoins spécifiques sont étudiés et chiffrés selon le périmètre avant le démarrage.' },
 ]
 const comparisonDetails: readonly ComparisonRow[] = [
   { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'] },

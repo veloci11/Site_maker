@@ -249,10 +249,10 @@ test('Premium includes every Business capability and adds its visual experience 
     assert.equal(line.included, true, id);
     assert.equal(line.amountCents, 0, id);
   }
-  assert.match(getOffer('immersif').features.join(' '), /Tout Business.*6 pages/);
+  assert.match(getOffer('immersif').features.join(' '), /Tout Business.*10 pages/);
 });
 
-test('retired booking and advanced forms are not included in any new public base but historical identifiers remain', () => {
+test('booking and historical advanced forms are not included in any new public base', () => {
   for (const offer of publicOffers) {
     const config = normalizeConfiguration({ offerId: offer.id });
     for (const id of ['booking', 'advanced-forms']) {
@@ -262,6 +262,29 @@ test('retired booking and advanced forms are not included in any new public base
     }
   }
   const text = JSON.stringify({ offers: publicOffers, faqs });
-  assert.doesNotMatch(text, /template|Doctolib|réservation|formulaire avancé|offre principale/i);
+  assert.doesNotMatch(text, /template|Doctolib|formulaire avancé|offre principale/i);
   assert.ok(faqs.some(faq => faq.question === 'Qu’apporte Premium / 3D par rapport à Business ?'));
+});
+
+test('booking is an optional 90–180 euro integration on all three offers', () => {
+  const booking = optionDefinitions.find(option => option.id === 'booking');
+  assert.equal(booking.title, 'Prise de rendez-vous en ligne');
+  assert.doesNotMatch(booking.description, /Doctolib/i);
+  assert.match(formatOptionPrice('booking'), /^90\s€–180\s€$/);
+  for (const offer of publicOffers) {
+    const base = normalizeConfiguration({ offerId: offer.id, maintenance: true });
+    const selected = withOption(base, 'booking', true);
+    const quote = quoteConfiguration(selected);
+    const line = quote.lines.find(line => line.key === 'booking');
+    assert.equal(line.included, false);
+    assert.equal(line.amountCents, 9000);
+    assert.equal(line.maximumCents, 18000);
+    assert.equal(line.estimated, true);
+    assert.equal(quote.totalCents, defaultPricing.base[offer.id] + 9000);
+    assert.equal(quote.maximumTotalCents, defaultPricing.base[offer.id] + 18000);
+    assert.equal(quote.monthlyTotalCents, 3900);
+    assert.equal(quote.requiresQuote, true);
+    assert.equal(quote.checkoutReady, false);
+    assert.deepEqual(withOption(selected, 'booking', false), base);
+  }
 });

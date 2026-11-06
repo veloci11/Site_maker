@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from 'react'
 import { Check } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { preloadPlanImages } from '../../lib/plan-images'
@@ -31,6 +32,9 @@ export function PricingCard({
   featured = false,
   prepare = () => import('../../pages/configurator/index'),
 }: PricingCardProps) {
+  const cardRef = useRef<HTMLAnchorElement>(null)
+  const topRef = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLSpanElement>(null)
   const color =
     variant ??
     (slug === 'sur-mesure'
@@ -47,12 +51,45 @@ export function PricingCard({
   const thumbnailTransition = usePlanTransition(color, destination, 'thumbnail')
   const priceLabel = price ?? (custom ? 'Sur devis' : 'À partir de…')
   const actionLabel = cta ?? (custom ? 'Parlons de votre projet' : `Découvrir ${title}`)
+  useLayoutEffect(() => {
+    const card = cardRef.current
+    const top = topRef.current
+    const cta = ctaRef.current
+    if (!card || !top || !cta) return
+    // The title and CTA are two clipped windows onto one complete image.
+    // Size its canvas through the CTA so every crop, including mirrored
+    // variants, stays covered beyond the intervening white gap.
+    const measure = () => {
+      const topRect = top.getBoundingClientRect()
+      const ctaRect = cta.getBoundingClientRect()
+      const offset = ctaRect.top - topRect.top
+      const height = offset + ctaRect.height
+      const imageHeight = height * 1.45
+      const style = getComputedStyle(card)
+      const [positionX = '20%', positionY = '20%'] = style.getPropertyValue('--plasma-position').trim().split(/\s+/)
+      const imageY = (height - imageHeight) * (parseFloat(positionY) / 100)
+      const properties = {
+        '--card-canvas-height': `${height}px`,
+        '--card-image-height': `${imageHeight}px`,
+        '--card-canvas-position': `${positionX} ${imageY}px`,
+        '--card-cta-offset': `${offset}px`,
+      }
+      for (const [property, value] of Object.entries(properties))
+        if (card.style.getPropertyValue(property) !== value) card.style.setProperty(property, value)
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(top)
+    observer.observe(cta)
+    return () => observer.disconnect()
+  }, [color])
   const prepareDestination = () => {
     preloadPlanImages(color)
     if (destination.startsWith('/forfaits/')) void prepare().catch(() => {})
   }
   return (
     <Link
+      ref={cardRef}
       to={destination}
       viewTransition={canAnimatePlanNavigation()}
       className={cn('pricing-card', `pricing-card--${color}`, className)}
@@ -60,19 +97,19 @@ export function PricingCard({
       onPointerEnter={prepareDestination}
       onFocus={prepareDestination}
     >
-      <div className="pricing-card__top" style={thumbnailTransition}>
+      <div ref={topRef} className="pricing-card__top" style={thumbnailTransition}>
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
           <span className="pricing-card__grain" />
         </span>
-        {featured ? <span className="pricing-card__featured">Plus populaire</span> : null}
+        {featured ? <span className="pricing-card__featured">Populaire</span> : null}
         <h3>{title}</h3>
         <p className="pricing-card__price">{priceLabel}</p>
       </div>
-      <span className="plan-cta pricing-card__cta" aria-hidden="true">
+      <span ref={ctaRef} className="plan-cta pricing-card__cta" aria-hidden="true">
         {actionLabel}
       </span>
       <ul className="pricing-card__features">
-        {features.slice(0, 3).map((feature) => (
+        {features.map((feature) => (
           <li key={feature}>
             <Check size={18} strokeWidth={1.8} aria-hidden="true" />
             <span>{feature}</span>

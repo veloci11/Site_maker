@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { clearDraft, configurationKey, readDraft, readPublicDraftConfiguration, saveDraftProjectOnce, writeDraft } from '../src/lib/draft.ts'
-import { quoteConfiguration } from '../shared/catalog.ts'
+import { defaultPricing, quoteConfiguration, withOption } from '../shared/catalog.ts'
 import { changePublicOffer } from '../shared/offer-options.ts'
 
 class MemoryStorage {
@@ -146,7 +146,7 @@ test('old public Connecté drafts do not turn included accounts into a paid Busi
     const migrated = writeDraft(publicConfiguration)
     assert.notEqual(migrated.id, legacy.id, 'a changed public configuration cannot reopen an old saved project')
     assert.equal(migrated.saved, undefined)
-    assert.equal(readDraft().catalogueVersion, 'public-2026-11-06')
+    assert.equal(readDraft().catalogueVersion, 'public-2026-11-06-booking-v2')
     assert.deepEqual(readPublicDraftConfiguration(), publicConfiguration, 'reloading the migration is idempotent')
 
     writeDraft({ ...publicConfiguration, extras: [...publicConfiguration.extras, 'user-accounts'] })
@@ -178,6 +178,99 @@ test('retired roles cannot restore paid accounts while migrating an old public C
     writeDraft({ ...migrated, extras: [...migrated.extras, 'user-accounts'] })
     assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'versioned explicit paid accounts still survive restoration')
     assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 188000)
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('former Business booking inclusions migrate once without losing other paid choices', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    for (const catalogueVersion of [undefined, 'public-2026-11-06']) {
+      const legacy = {
+        version: 1, id: 'former-booking-inclusion', updatedAt: Date.now(),
+        ...(catalogueVersion ? { catalogueVersion } : {}),
+        configuration: { offerId: 'connecte', extras: ['booking', 'user-accounts', 'additional-language', 'online-store', 'hosting-monthly'] },
+        saved: { userId: 'previous-account', projectId: 'previous-project' },
+      }
+      const raw = JSON.stringify(legacy)
+      localStorage.setItem('studio.project-draft.v1', raw)
+      const current = readPublicDraftConfiguration()
+      assert.equal(current.extras.includes('booking'), false, 'an earlier Business inclusion cannot become a paid selection')
+      assert.equal(current.extras.includes('user-accounts'), Boolean(catalogueVersion), 'only the version before accounts became optional loses that inclusion')
+      for (const id of ['additional-language', 'online-store', 'hosting-monthly']) assert.equal(current.extras.includes(id), true, id)
+      const retainedAccountsPrice = catalogueVersion ? 30000 : 0
+      assert.equal(quoteConfiguration(current).totalCents, 149000 + 10000 + 60000 + retainedAccountsPrice)
+      assert.equal(quoteConfiguration(current).monthlyTotalCents, 1900)
+      for (const target of ['vitrine', 'connecte', 'immersif']) {
+        const changed = changePublicOffer(current, target)
+        assert.equal(changed.extras.includes('booking'), false, target)
+        assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + 10000 + 60000 + retainedAccountsPrice)
+      }
+      assert.equal(localStorage.getItem('studio.project-draft.v1'), raw, 'public reading never rewrites the historical draft')
+      assert.equal(readDraft().configuration.extras.includes('booking'), true, 'private restoration still reads the original selection')
+      assert.deepEqual(readDraft().saved, legacy.saved)
+
+      writeDraft(current)
+      assert.deepEqual(readPublicDraftConfiguration(), current, 'the migrated public selection is stable after saving and reloading')
+      assert.equal(readDraft().catalogueVersion, 'public-2026-11-06-booking-v2')
+      const explicit = withOption(current, 'booking', true)
+      writeDraft(explicit)
+      assert.deepEqual(readPublicDraftConfiguration(), explicit, 'an intentional new paid selection survives subsequent reloads')
+      assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, quoteConfiguration(current).totalCents + 9000)
+      assert.equal(quoteConfiguration(readPublicDraftConfiguration()).maximumTotalCents, quoteConfiguration(current).maximumTotalCents + 18000)
+    }
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('historical booking selections outside Business remain explicit paid choices', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    for (const offerId of ['vitrine', 'immersif', 'sur-mesure']) {
+      for (const catalogueVersion of [undefined, 'public-2026-11-06']) {
+        localStorage.setItem('studio.project-draft.v1', JSON.stringify({
+          version: 1, id: 'previous-explicit-booking', updatedAt: Date.now(),
+          ...(catalogueVersion ? { catalogueVersion } : {}),
+          configuration: { offerId, extras: ['booking', 'user-accounts'] },
+        }))
+        assert.deepEqual(readPublicDraftConfiguration(), readDraft().configuration)
+        assert.equal(readPublicDraftConfiguration().extras.includes('booking'), true)
+      }
+    }
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('a private auto-save cannot mark a historical Business booking inclusion as a new public choice', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    for (const catalogueVersion of [undefined, 'public-2026-11-06']) {
+      localStorage.setItem('studio.project-draft.v1', JSON.stringify({
+        version: 1, id: 'private-historical-booking', updatedAt: Date.now(),
+        ...(catalogueVersion ? { catalogueVersion } : {}),
+        configuration: { offerId: 'connecte', extras: ['booking', 'user-accounts'] },
+      }))
+      const privateDraft = readDraft()
+      const saved = writeDraft(privateDraft.configuration, { markCurrentCatalogue: false })
+      assert.equal(saved.id, privateDraft.id)
+      assert.equal(readDraft().catalogueVersion, catalogueVersion)
+      assert.equal(readDraft().configuration.extras.includes('booking'), true)
+      assert.equal(readPublicDraftConfiguration().extras.includes('booking'), false)
+      assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), Boolean(catalogueVersion))
+    }
+    clearDraft()
+    writeDraft({ offerId: 'connecte', extras: ['booking'] }, { markCurrentCatalogue: false })
+    assert.equal(readDraft().catalogueVersion, undefined, 'loading a historical project without an existing draft must not declare current public selections')
+    assert.equal(readPublicDraftConfiguration().extras.includes('booking'), false)
   } finally {
     if (previousWindow === undefined) delete globalThis.window
     else globalThis.window = previousWindow

@@ -20,7 +20,7 @@ export function usePricing() {
 export function startingPrice(offerId: OfferId, pricing: Pricing) {
   if (offerId === 'sur-mesure') return 'Sur devis'
   const amount = pricing.base[offerId]
-  return amount == null ? 'Sur devis' : formatMoney(amount, pricing.currency)
+  return amount == null ? 'Sur devis' : `À partir de ${formatMoney(amount, pricing.currency)}`
 }
 
 export const configureHref = (offerId: OfferId) => `/forfaits/${getOffer(offerId)!.slug}`

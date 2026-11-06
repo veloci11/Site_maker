@@ -39,7 +39,7 @@ La FAQ actuelle répond aux frais après création, aux contenus, aux modificati
 
 ## Prix et inclusions
 
-Les trois forfaits approuvés sont **Vitrine 890 €**, **Business 1 490 €** et **Premium / 3D 2 499 €**. Vitrine couvre 1 à 3 pages sur template ; Business jusqu’à 6 pages avec réservation, formulaire avancé, SEO local, galerie et statistiques ; Premium / 3D une direction artistique et des interactions personnalisées. Les trois incluent responsive et mise en production. Les détails sont dans `includedGuidance` et le comparatif.
+Les forfaits affichent « À partir de » : Vitrine 890 € (site personnalisé de 1 à 3 pages), Business 1 490 € (1 à 6 pages, CMS inclus au premier plan, SEO local, galerie et statistiques), Premium / 3D 2 499 € (tout Business sur 1 à 10 pages, direction artistique, animations/3D pertinente, performances et demandes sur mesure étudiées). Badge Business : « Populaire ». Les trois incluent responsive et mise en production. Réservation générique en option 90–180 € sur les trois, sans marque citée. Ne pas réintroduire template ou formulaire avancé dans le public.
 
 Les tarifs actifs se règlent dans l’administration privée, rubrique tarifs. Ils sont persistés côté serveur, en centimes ; `server/orders.mjs` les lit et `shared/catalog.ts` calcule les totaux. `defaultPricing` contient les montants approuvés. Il est utilisé sans réécriture si aucun réglage n’existe ou si l’ancien catalogue EUR `draft-vN` était entièrement à null. Les tarifs administratifs déjà enregistrés restent prioritaires : modifier cette constante ne les remplace pas. Leurs valeurs null explicites et leurs nouvelles clés absentes restent inconnues. `null` signifie « prix à définir », et non gratuit.
 
