@@ -1,19 +1,27 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée le 6 novembre 2026 (UTC, 5 novembre au Mexique), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans le navigateur intégré en formats ordinateur, tablette et mobile.
 
 ## Version active
 
-- URL publique : https://gilmathis.com/
-- Révision applicative : `5b792f1fcbab2bf6c7cff9bc3427782c72728aa4`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261106T050603Z-5b792f1fcbab` ; bascule atomique de `current`.
-- Client public : `/assets/index-CZJaxSig.js` ; SHA-256 du build archivé `d0b571d7b246ee8d0f5cac0eed3fe1531eeaf923a947012b0c475aa2af295347`, même URL de contenu vérifiée dans l’IAB public.
-- Archive : SHA-256 `901cfb26ec80ffe0496d19b438e4edd49dc916fab4ede3c19321f7c73927ab1e`, 13990777 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T035942Z-43b5fce8a17a`.
+- URL : https://gilmathis.com/
+- Révision applicative : `c5f499fc55bd859b99a604e981420b7277685423`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T185743Z-c5f499fc55bd` ; bascule atomique de `current`.
+- Client public : `/assets/index-CC1vRoOh.js` ; SHA-256 local `4ba34a9e004de9ee907b6a95da42801167da1c4cfe414df69697fd464c7ccc22`. Chemin du client confirmé dans l’IAB public.
+- Archive : SHA-256 `584b0a0e83c3b021bd9976b53ab09ba50c432f4a1b8a4047878300db758b7fc1`, 13977618 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T050603Z-5b792f1fcbab`.
 
-Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
+Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif réellement en ligne.
 
-## Animations et textures livrées
+## Trois forfaits, options, formulaires et FAQ
+
+Vitrine890€, Business1490€, Premium /3D2499€. Douze suppléments retenus, langue générique, fonctionnalités incluses hors des choix payants. Fourchettes visibles par option et dans les nouveaux totaux lorsque leurs bornes sont connues ; anciens instantanés conservés. Suivis mensuels19/39/69€ exclusifs. Formulaire court à droite, aucun calendrier/fichier public ; Cal.com retiré et catégories alignées. FAQ16, comparateur valorisant les fonctions Business, périmètres précisés sans changer les tarifs approuvés.
+
+Dix spécialistes techniques/éditoriaux puis deux revues commerciales. TypeScript, build et241tests passent. IAB public320/390/820/1280px : offres, allers-retours, options et tarifs, formulaire/erreurs/protection de saisie,16FAQ, galerie1/2/6 et menus contrôlés. Anciennes adresses et réduction du mouvement validées, aucune erreur/alerte console observée. Les captures et limites sont dans `docs/qa/three-offers/review.md`.
+
+Sauvegarde réussie ; données privées/réglage de prix inchangés,24autres services gardent PID/état. Aucun formulaire public envoyé. Viewport et choix de test restaurés, localhost arrêté. DestinationResendINQUIRY_TO et informationslégales toujours à compléter. Aucun e-mailréellementlivré n’est attesté.
+
+## Animations et textures — livraison précédente
 
 Les six offres utilisent une ouverture/fermeture de 760 ms : déplacement de surface et copies séparées, sans étirement du texte ni de l’image. Seule la page sortante est capturée ; les contrôles entrants restent vivants. Les retours retrouvent la liste d’origine ; les services sont distingués par `besoin`. Un déplacement de souris ne coupe plus l’effet ; pression, clavier et défilement reprennent la main. L’arrivée reste stable sans second fondu de page. Liens ordinaires, réduction du mouvement et protections du brouillon conservés.
 
@@ -234,4 +242,4 @@ Le master `grain-plasma-master.webp` reste l’export sans perte de la source or
 
 La configuration Resend existante est conservée : domaine d’envoi et expéditeur dédiés installés, destinataire **INQUIRY_TO reporté explicitement par Mathis**. Les demandes sont persistées, mais une réception réelle reste à vérifier après fourniture de l’adresse. Ne pas redemander cette adresse pendant les corrections visuelles.
 
-Les prix et périmètres commerciaux précis, l’identité et les documents commerciaux définitifs restent à arrêter. Les pages provisoires ne sont pas validées par cette livraison d’interface. Aucun paiement n’est demandé à l’envoi d’une demande. Détails opérateur : `docs/EMAIL_REQUESTS.md`, `docs/RESEND_DNS.md` et `docs/AUDIT_SITE_2026-11-02.md`.
+Les prix publics et périmètres sont ceux confirmés dans la livraison actuelle. L’identité et les documents commerciaux définitifs restent à compléter. Les pages provisoires ne sont pas validées par cette livraison d’interface. Aucun paiement n’est demandé à l’envoi d’une demande. Détails opérateur : `docs/EMAIL_REQUESTS.md`, `docs/RESEND_DNS.md` et `docs/AUDIT_SITE_2026-11-02.md`.

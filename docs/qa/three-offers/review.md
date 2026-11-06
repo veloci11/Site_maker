@@ -1,6 +1,6 @@
-# Trois forfaits — vérification locale du 6 novembre 2026
+# Trois forfaits — publiés et vérifiés le 6 novembre 2026
 
-Statut avant publication : revue finale locale terminée, publication explicitement autorisée. La section de livraison sera complétée après les contrôles publics.
+Statut : révision `c5f499fc55bd859b99a604e981420b7277685423` poussée sur main, publiée et contrôlée sur https://gilmathis.com/. Release `20261106T185743Z-c5f499fc55bd`.
 
 ## Résultat
 
@@ -29,7 +29,7 @@ Captures : `home-desktop.jpg`, `home-tablet.jpg`, `form-desktop.jpg`, `form-mobi
 
 La continuité des animations et de la préférence de réduction du mouvement est préservée dans le code ; pas de nouveau relevé image par image pour ce lot. Les mesures de transitions des lots précédents ne sont pas présentées comme un nouveau contrôle.
 
-Le serveur local est arrêté après les vérifications et la base isolée de contrôle est supprimée. Les données privées existantes et la production n’ont pas été modifiées.
+Le serveur local est arrêté après les vérifications et la base isolée de contrôle est supprimée. Les données privées existantes n’ont pas été modifiées ; la publication ultérieure est détaillée ci-dessous.
 
 ## Double vérification finale et stratégie commerciale
 
@@ -40,3 +40,16 @@ Corrections vérifiées : anciens brouillons Connecté et rôles ne produisent p
 FAQ16 et navigation au clavier contrôlées à320px. Six allers-retours comparateur/forfait contrôlés en local à1280 et390px, arrivée des trois titres et absence de débordement. Vitrine+Espace membres affiche1190–1490€ avec retour ligne lisible à320px. Comparateur rend la valeur Business visible ; aucun tarif approuvé modifié. Sources et raisonnements dans faq-research.md, business-strategy.md et profitability.md. La rentabilité réelle n’est pas démontrée sans coûts et temps réels.
 
 Limites connues : destinataire Resend INQUIRY_TO non renseigné ; notifications réelles non validées. Informations légales de l’éditeur et documents commerciaux encore provisoires. Aucun envoi de formulaire en production pour les essais.
+
+## Publication et contrôles publics
+
+- Release `20261106T185743Z-c5f499fc55bd` ; archive SHA-256 `584b0a0e83c3b021bd9976b53ab09ba50c432f4a1b8a4047878300db758b7fc1`, vérifiée avant extraction. Client `/assets/index-CC1vRoOh.js` observé dans l’IAB public, identique au chemin du build testé.
+- Sauvegarde privée réussie avant bascule atomique. Santé origine valide, trois offres et prix approuvés servis, paiements désactivés. Données privées et réglage de prix conservés ; 24 autres services gardent leurs états et PID.
+- Ordinateur1280/mobile390 : six allers-retours de forfaits, titres et bases890/1490/2499 conformes, aucun débordement. Business ne propose pas gestion des contenus/statistiques en supplément ; langue100€+Sérénité69€ donnent1590€+69€/mois, un seul abonnement.
+- Formulaire ordinateur à droite : carte x40–608, formulaire x685–1225. Aucun fichier ni calendrier. Changer→Vitrine→Rester conserve Business, prix, message et focus ; retour aux options puis formulaire conserve la saisie. Saisie effacée après contrôle. Validation vide sur mobile bloque avant envoi et focalise le prénom.
+- Contact court confirmé après chargement du formulaire. Les seize FAQ s’ouvrent. Galerie filtrée1/2/6, Cal.com absent. Menu mobile comporte exactement les trois forfaits.
+- Largeur320 : Vitrine+Espace membres affiche1190–1490€ ; Premium avec11options affiche un minimum4359€+69€/mois, sans débordement ni coupure de teinte au bas de la grande carte. La boutique masque les liens de paiement déjà compris. Les liens du footer restent accessibles au-dessus de la barre fixe.
+- Tablette820 : trois cartes alignées sans chevauchement ni débordement. Ancien Sur mesure redirige vers Premium, ancienne demande Évolution vers Contact. Réduction du mouvement : zéro animation active observée.
+- Console publique : aucun avertissement/erreur observé. Choix de contrôle remis à zéro, viewport restauré, serveur local arrêté. Aucun formulaire public soumis, aucun e-mail de test réel.
+
+Preuves : deployment-proof.json, public-motion.json et captures public-*.jpg. Le destinataire Resend et les informations légales restent à compléter ; cette validation n’atteste pas de livraison réelle d’un e-mail ni de conformité juridique complète.

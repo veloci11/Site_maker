@@ -1,10 +1,10 @@
-# Trois forfaits — revue complète du 6 novembre 2026
+# Trois forfaits — publiés et vérifiés le 6 novembre 2026
 
 Vitrine 890 €, Business 1 490 €, Premium / 3D 2 499 €. Douze options retenues et détaillées, prix variables et totaux en fourchette, trois suivis mensuels exclusifs, formulaire court, Cal.com retiré. Langue supplémentaire générique, fonctions incluses hors des choix payants, comparatif valorisant Business. FAQ enrichie à seize questions avec sources primaires vérifiées.
 
 Dix spécialistes techniques/éditoriaux, puis deux spécialistes stratégie commerciale/rentabilité. Corrections supplémentaires : migration des anciens brouillons Connecté, focus après annulation de navigation, contraste des champs facultatifs, footer mobile et prolongement des très longues cartes Premium. Prix approuvés conservés.
 
-TypeScript, build et **241 tests passent**. Contrôles locaux IAB 320/390/820/1280 px, formulaires et navigation. Publication autorisée ; l’état précis de la livraison est dans `ops/DEPLOYMENT_STATUS.md` et `docs/qa/three-offers/review.md` (liens depuis la racine du dépôt). Les entrées suivantes sont historiques.
+TypeScript, build et **241 tests passent**. Contrôles locaux IAB 320/390/820/1280 px, formulaires et navigation. Révision applicative `c5f499fc55bd` publiée et contrôlée dans l’IAB public, sans erreur/alerte console observée. Les données privées et les 24 autres services sont inchangés ; localhost arrêté. Le destinataire e-mail et les informations légales restent à compléter. L’état précis de la livraison est dans `ops/DEPLOYMENT_STATUS.md` et `docs/qa/three-offers/review.md` (liens depuis la racine du dépôt). Les entrées suivantes sont historiques.
 
 ## Dernier correctif — six raccords publiés et vérifiés, 5 novembre 2026
 

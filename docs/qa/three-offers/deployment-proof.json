@@ -1,0 +1,25 @@
+{
+  "privateTablesUnchanged": true,
+  "pricingOverrideUnchanged": true,
+  "otherServicesUnchanged": true,
+  "otherServicesCount": 24,
+  "current": "/home/mathis/site-maker/releases/20261106T185743Z-c5f499fc55bd",
+  "emailRecipientConfigured": false,
+  "commit": "c5f499fc55bd859b99a604e981420b7277685423",
+  "release": "20261106T185743Z-c5f499fc55bd",
+  "archiveSha256": "584b0a0e83c3b021bd9976b53ab09ba50c432f4a1b8a4047878300db758b7fc1",
+  "archiveBytes": 13977618,
+  "client": "/assets/index-CC1vRoOh.js",
+  "clientSha256": "4ba34a9e004de9ee907b6a95da42801167da1c4cfe414df69697fd464c7ccc22",
+  "testsPassed": 241,
+  "publicWidthsChecked": [
+    320,
+    390,
+    820,
+    1280
+  ],
+  "publicClientObserved": "/assets/index-CC1vRoOh.js",
+  "publicConsoleErrorsOrWarnings": 0,
+  "publicFormsSubmitted": 0,
+  "localServerStopped": true
+}

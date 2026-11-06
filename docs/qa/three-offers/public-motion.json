@@ -1,0 +1,56 @@
+[
+  {
+    "width": 1280,
+    "name": "Vitrine",
+    "state": {
+      "heading": "Vitrine",
+      "overflow": false,
+      "total": "890 €"
+    }
+  },
+  {
+    "width": 1280,
+    "name": "Business",
+    "state": {
+      "heading": "Business",
+      "overflow": false,
+      "total": "1 490 €"
+    }
+  },
+  {
+    "width": 1280,
+    "name": "Premium / 3D",
+    "state": {
+      "heading": "Premium / 3D",
+      "overflow": false,
+      "total": "2 499 €"
+    }
+  },
+  {
+    "width": 390,
+    "name": "Vitrine",
+    "state": {
+      "heading": "Vitrine",
+      "overflow": false,
+      "total": "890 €"
+    }
+  },
+  {
+    "width": 390,
+    "name": "Business",
+    "state": {
+      "heading": "Business",
+      "overflow": false,
+      "total": "1 490 €"
+    }
+  },
+  {
+    "width": 390,
+    "name": "Premium / 3D",
+    "state": {
+      "heading": "Premium / 3D",
+      "overflow": false,
+      "total": "2 499 €"
+    }
+  }
+]
