@@ -70,6 +70,19 @@ test('verified files are stored privately and can be downloaded and previewed', 
   assert.match(preview.headers.get('content-type'), /^image\/png/);
   await preview.arrayBuffer();
 });
+test('UTF-8 filenames survive upload, database storage and authenticated download', async () => {
+  const name = 'référence été 東京.png';
+  const { response, data } = await upload({ name });
+  assert.equal(response.status, 201);
+  const file = data.files[0];
+  assert.equal(file.originalName, name);
+  assert.equal(getDb().prepare('SELECT original_name FROM files WHERE id = ?').get(file.id).original_name, name);
+  const download = await request(`/project-a/files/${file.id}/download`);
+  assert.equal(download.status, 200);
+  const encodedName = download.headers.get('content-disposition').match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+  assert.equal(decodeURIComponent(encodedName), name);
+  assert.deepEqual(Buffer.from(await download.arrayBuffer()), png);
+});
 test('a second client cannot list, read, delete, restore, or cross-reference another file', async () => {
   const { data } = await upload(); const file = data.files[0];
   for (const [method, suffix] of [['GET', ''], ['GET', `/${file.id}/download`], ['GET', `/${file.id}/preview`], ['DELETE', `/${file.id}`], ['POST', `/${file.id}/restore`]]) assert.equal((await request(`/project-a/files${suffix}`, { user: 'client-b', method })).status, 404);

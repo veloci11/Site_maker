@@ -20,7 +20,7 @@ import {
 const publicIds = (offerId) => getPublicOptions(offerId).map(option => option.id);
 
 test('each offer has a targeted optional menu in the existing catalogue order', () => {
-  const expectedCounts = { vitrine: 12, connecte: 12, immersif: 12, 'sur-mesure': 10 };
+  const expectedCounts = { vitrine: 14, connecte: 17, immersif: 14, 'sur-mesure': 14 };
   for (const offerId of OFFER_IDS) {
     const choices = getPublicOptions(offerId);
     const ids = choices.map(option => option.id);
@@ -46,6 +46,24 @@ test('Vitrine keeps mobile optional and directs account and 3D needs to the othe
   assert.equal(base.mobile, false);
   assert.equal(isOptionIncluded(base, 'mobile'), false);
   assert.equal(prunePublicConfiguration(withOption(base, 'mobile', true)).mobile, true);
+});
+
+test('shared visitor needs survive offer changes without exposing historical-only options', () => {
+  for (const offerId of OFFER_IDS) {
+    const ids = publicIds(offerId);
+    for (const id of ['analytics', 'newsletter', 'additional-language', 'local-seo']) {
+      assert.ok(ids.includes(id), `${offerId}/${id}`);
+      const selected = prunePublicConfiguration({ offerId, extras: [id] });
+      assert.equal(isOptionSelected(selected, id), true);
+      assert.deepEqual(getUnavailableOptions(selected), []);
+    }
+    for (const id of ['content-import', 'backups-monthly']) assert.ok(!ids.includes(id));
+  }
+  assert.ok(publicIds('connecte').includes('portfolio-gallery'));
+  const source = prunePublicConfiguration({ offerId: 'vitrine', extras: ['analytics', 'newsletter', 'additional-language', 'local-seo', 'portfolio-gallery'] });
+  const connected = prunePublicConfiguration({ ...source, offerId: 'connecte' });
+  for (const id of source.extras) assert.equal(isOptionSelected(connected, id), true, id);
+  assert.equal(isOptionIncluded(connected, 'managed-content'), true);
 });
 
 test('included Connecté and Immersif functions remain selected without appearing as paid choices', () => {

@@ -34,6 +34,7 @@ import {
 } from '../../components/inquiries/ProjectBriefForm'
 import { useAuth } from '../../lib/auth'
 import { api, errorMessage } from '../../lib/api'
+import { readCataloguePricing } from '../../lib/pricing'
 import { useProject } from '../../lib/project'
 import {
   clearDraft,
@@ -149,8 +150,8 @@ export function ConfiguratorPage() {
   }, [routeOffer?.id, editingId])
   useEffect(() => {
     const controller = new AbortController()
-    api<{ pricing: Pricing }>('/api/catalogue', { signal: controller.signal })
-      .then((data) => setPricing(data.pricing))
+    api<unknown>('/api/catalogue', { signal: controller.signal })
+      .then((data) => setPricing(readCataloguePricing(data)))
       .catch((error) => {
         if (error.name !== 'AbortError') setPricingError(true)
       })
@@ -488,6 +489,10 @@ export function ConfiguratorPage() {
                   )
                 })}
               </Accordion>
+              <p className="configurator-notice">
+                Votre sélection sert à préparer le devis. Les montants et les frais des outils
+                externes sont confirmés avant le démarrage.
+              </p>
               {pricingError ? (
                 <p className="configurator-notice" role="status">
                   Les tarifs sont temporairement indisponibles. Vous pouvez nous transmettre vos

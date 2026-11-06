@@ -42,8 +42,29 @@
 .section-heading > p { color: var(--muted-foreground); margin-top: 10px; }
 .public-faq-list { border-bottom: 1px solid var(--border); }
 .public-faq-list .accordion-item { border-top: 1px solid var(--border); border-bottom: 0; }
-.public-faq-list .accordion-content { max-width: 1000px; }
-.public-faq-list .accordion-content-root[data-state="closed"] { height:0; visibility:hidden; }
+/* Radix temporarily disables root transitions while measuring. Animate its
+   child so an interrupted open/close can continue from the visible height. */
+.public-faq-list .accordion-content-root { animation:none; }
+.public-faq-list .accordion-content {
+  display:grid;
+  grid-template-rows:0fr;
+  max-width:1000px;
+  padding:0;
+  opacity:0;
+  visibility:hidden;
+  transition:grid-template-rows 160ms ease-out,opacity 160ms ease-out,visibility 0s linear 160ms;
+}
+.public-faq-list .accordion-content-root[data-state="open"] > .accordion-content {
+  grid-template-rows:1fr;
+  opacity:1;
+  visibility:visible;
+  transition-delay:0s;
+}
+.public-faq-answer { min-height:0; overflow:hidden; }
+.public-faq-answer > p { padding:0 4px 24px; }
+@media (prefers-reduced-motion: reduce) {
+  .public-faq-list .accordion-content { transition:none; }
+}
 .public-comparison { padding-top: 8px; }
 .comparison-details-toggle {
   display: flex;

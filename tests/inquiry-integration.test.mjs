@@ -133,6 +133,39 @@ test('all seven V2 contexts cross the real anonymous API and create only private
   assert.equal(getDb().prepare('SELECT COUNT(*) AS count FROM inquiry_briefs').get().count, 7);
 });
 
+test('visitor tools and translated/local pages persist with each creation request and its admin summary', async t => {
+  const f = await fixture(t);
+  for (const requestType of ['vitrine', 'connecte', 'immersif', 'sur-mesure']) {
+    const payload = validInquiry(requestType, {
+      configuration: { offerId: requestType, extras: ['newsletter', 'analytics', 'additional-language', 'local-seo'] },
+    });
+    Object.assign(payload.brief, {
+      newsletterDetails: 'Outil existant, une liste et textes préparés par notre équipe.',
+      analyticsDetails: 'Compter les demandes de contact confirmées.',
+      languageDetails: 'Cinq pages en espagnol ; traductions fournies.',
+      localSeoDetails: 'Un établissement à Nantes.',
+    });
+    const response = await f.post(payload);
+    assert.equal(response.status, 201, requestType);
+    assert.equal(response.body.notification, 'unavailable');
+    const stored = f.db.prepare('SELECT brief_snapshot FROM inquiry_briefs WHERE inquiry_id=?').get(response.body.id);
+    const configuration = JSON.parse(f.db.prepare('SELECT configuration_snapshot FROM inquiry_details WHERE inquiry_id=?').get(response.body.id).configuration_snapshot);
+    assert.deepEqual(configuration, normalizeConfiguration(payload.configuration));
+    assert.deepEqual(JSON.parse(stored.brief_snapshot), validateBrief(requestType, payload.brief, configuration).answers);
+    const sections = summarizeBrief(requestType, JSON.parse(stored.brief_snapshot), { configuration });
+    for (const key of ['newsletterDetails', 'analyticsDetails', 'languageDetails', 'localSeoDetails']) {
+      assert.ok(sections.flatMap(section => section.items).some(item => item.value === payload.brief[key]), `${requestType}/${key}`);
+    }
+  }
+  assert.equal(f.db.prepare('SELECT SUM(attempts) AS total FROM inquiry_outbox').get().total, 0);
+  const stale = validInquiry('vitrine');
+  stale.brief.analyticsDetails = 'Une ancienne réponse, option retirée.';
+  const response = await f.post(stale);
+  assert.equal(response.status, 400);
+  assert.ok(response.body.fields.analyticsDetails);
+  assert.equal(counts(f.db).inquiries, 4, 'a hidden stale answer never becomes an accepted request');
+});
+
 test('V2 required contacts and the 64 KiB inquiry JSON limit survive the app-wide JSON middleware', async t => {
   const f = await fixture(t);
   for (const field of ['firstName', 'lastName', 'email', 'phone']) {

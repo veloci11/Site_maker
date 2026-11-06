@@ -12,6 +12,7 @@ export type Question = {
   showWhen?: { field: string; values: string[] }
   showWhenAnswered?: string
   showForOption?: OptionId
+  showForAnyOption?: readonly OptionId[]
   exclusiveValues?: string[]
   httpsOnly?: boolean
 }
@@ -138,6 +139,27 @@ const storeDetails: Question = {
   showForOption: 'online-store',
   hint: 'Indiquez les produits et leur nombre approximatif, puis la livraison, le retrait ou l’accès au contenu acheté. Aucun export de vos clients.',
 }
+const newsletterDetails: Question = {
+  id: 'newsletterDetails', label: 'Quel outil et quels messages prévoyez-vous pour la newsletter ?', type: 'textarea',
+  showForOption: 'newsletter',
+  hint: 'Indiquez la plateforme si vous la connaissez, qui préparera les messages et si votre adresse d’envoi est déjà configurée. « À définir ensemble » suffit. Aucune liste de contacts ni clé d’accès.',
+}
+const analyticsDetails: Question = {
+  id: 'analyticsDetails', label: 'Que souhaitez-vous mesurer sur votre site ?', type: 'textarea',
+  showForOption: 'analytics',
+  hint: 'Par exemple : les visites, les demandes de contact ou les réservations. Indiquez votre outil actuel si vous en avez un, ou « À définir ensemble ».',
+}
+const languageDetails: Question = {
+  id: 'languageDetails', label: 'Quelles langues et quelles pages faut-il prévoir ?', type: 'textarea',
+  showForAnyOption: ['language-en', 'additional-language'],
+  hint: 'Précisez les langues, les pages concernées et si les traductions sont disponibles. La première version traduite et les suivantes sont chiffrées selon ce qui est déjà en place.',
+}
+const localSeoDetails: Question = {
+  id: 'localSeoDetails', label: 'Quelle zone d’activité et quels établissements souhaitez-vous présenter ?', type: 'textarea',
+  showForOption: 'local-seo',
+  hint: 'Indiquez les villes desservies et votre fiche Google Business si elle existe. Les actions sont définies ensemble, sans promesse de position sur Google.',
+}
+const optionDetails = [newsletterDetails, analyticsDetails, languageDetails, localSeoDetails]
 const fileSection: BriefSection = {
   id: 'project-files', title: 'Vos fichiers', questions: [
     {
@@ -157,6 +179,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
     { id: 'content', title: 'Les pages et les contenus', questions: [{ ...pages, required: true }, contentReady, references] },
     { id: 'setup', title: 'La mise en place', questions: [
       bookingDetails,
+      ...optionDetails,
       domainHosting,
       {
         id: 'hostingDetails', label: 'Que souhaitez-vous conserver ?', type: 'text',
@@ -214,6 +237,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
       integrations,
       bookingDetails,
       storeDetails,
+      ...optionDetails,
     ] },
     { id: 'delivery', title: 'Les contenus et le calendrier', questions: [pages, contentReady, references, domainHosting, deadline, constraints] },
   ],
@@ -274,7 +298,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         ],
       },
     ] },
-    { id: 'delivery', title: 'Le site autour de la 3D', questions: [pages, contentReady, references, bookingDetails, domainHosting, deadline, constraints] },
+    { id: 'delivery', title: 'Le site autour de la 3D', questions: [pages, contentReady, references, bookingDetails, ...optionDetails, domainHosting, deadline, constraints] },
   ],
   'sur-mesure': [
     { id: 'project', title: 'Votre activité et votre objectif', questions: [activity, { ...audience, required: false }, { ...primaryAction, required: false }] },
@@ -303,7 +327,7 @@ const sectionsByRequest: Record<RequestType, BriefSection[]> = {
         ],
       },
       { ...dataFields, required: false, showWhen: { field: 'dataNeeds', values: ['yes'] } },
-      integrations, bookingDetails, storeDetails, contentReady, domainHosting,
+      integrations, bookingDetails, storeDetails, ...optionDetails, contentReady, domainHosting,
     ] },
     { id: 'priorities', title: 'Les priorités et le résultat attendu', questions: [
       {
@@ -437,6 +461,7 @@ export function emptyBrief(): BriefAnswers {
 
 export function isBriefQuestionVisible(question: Question, answers: BriefAnswers, configuration: Configuration | null = null): boolean {
   if (question.showForOption && (!configuration || !isOptionSelected(configuration, question.showForOption))) return false
+  if (question.showForAnyOption && (!configuration || !question.showForAnyOption.some(id => isOptionSelected(configuration, id)))) return false
   if (question.showWhenAnswered) {
     const answer = Object.hasOwn(answers, question.showWhenAnswered) ? answers[question.showWhenAnswered] : undefined
     if (!containsAnswer(answer)) return false

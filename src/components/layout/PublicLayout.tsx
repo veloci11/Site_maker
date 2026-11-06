@@ -215,7 +215,7 @@ export function PublicLayout() {
         Aller au contenu
       </a>
       <PublicHeader />
-      <main id="main-content" className="public-main">
+      <main id="main-content" className="public-main" tabIndex={-1}>
         <Suspense
           fallback={
             <div className="loading-state" role="status">

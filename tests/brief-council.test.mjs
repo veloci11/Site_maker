@@ -75,6 +75,33 @@ test('option questions depend on the submitted configuration and never change it
   assert.equal(isBriefQuestionVisible(question('connecte', 'bookingDetails'), {}, configured), true);
 });
 
+test('visitor tools and language details follow selected options without adding paid choices', () => {
+  for (const type of ['vitrine', 'connecte', 'immersif', 'sur-mesure']) {
+    const base = normalizeConfiguration({ offerId: type });
+    const answers = {
+      newsletterDetails: 'Un formulaire Brevo ; textes préparés par mon équipe.',
+      analyticsDetails: 'Mesurer les demandes de contact.',
+      languageDetails: 'Français et espagnol, cinq pages ; textes fournis.',
+      localSeoDetails: 'Un atelier à Nantes et ses environs.',
+    };
+    const configured = ['newsletter', 'analytics', 'additional-language', 'local-seo']
+      .reduce((current, id) => withOption(current, id, true), base);
+    const before = JSON.stringify(configured);
+    for (const id of Object.keys(answers)) {
+      assert.equal(isBriefQuestionVisible(question(type, id), {}, base), false);
+      assert.ok(validateBrief(type, answers, base).fields[id], `${type}/${id} is refused while hidden`);
+    }
+    const result = validateBrief(type, answers, configured);
+    for (const id of Object.keys(answers)) {
+      assert.equal(result.fields[id], undefined, `${type}/${id}`);
+      assert.equal(result.answers[id], answers[id]);
+    }
+    assert.equal(JSON.stringify(configured), before);
+    assert.equal(isBriefQuestionVisible(question(type, 'languageDetails'), {}, withOption(base, 'language-en', true)), true);
+    assert.ok(summarizeBrief(type, answers, { configuration: configured }).flatMap(section => section.items).some(item => item.value === answers.analyticsDetails));
+  }
+});
+
 test('historical summaries preserve earlier conditions and contradictory selections without rewriting answers', () => {
   const snapshot = Object.freeze({ dataFields: 'Données décrites avant la nouvelle branche.', availableAccess: ['unknown', 'admin'], modelDetails: 'Anciennes précisions.' });
   const custom = summarizeBrief('sur-mesure', snapshot, { historical: true }).flatMap(s => s.items);

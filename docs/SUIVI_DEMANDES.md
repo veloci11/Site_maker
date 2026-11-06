@@ -2,6 +2,10 @@
 
 Mathis demande l’arrêt des exécutions et notifications automatiques de `Check application`. Les déclencheurs `push` et `pull_request` sont remplacés par `workflow_dispatch` : le contrôle reste lançable manuellement depuis GitHub. Les commandes de vérification locales sont conservées. Changement limité à la configuration du dépôt, sans déploiement applicatif.
 
+## Revue critique des prix, options et fiabilité — vérifiée localement, 5 novembre 2026
+
+Neuf spécialistes ont réalisé les cinq critiques, deux recherches de bugs, une revue des animations et le contre-audit. Newsletter/statistiques disponibles, langues et SEO local transversaux, galerie Connecté, quatre précisions facultatives conditionnelles ; statut du devis, coûts des outils et FAQ alignés. Bugs UTF-8 des fichiers privés et réponses API illisibles corrigés ; catalogue partiel refusé sans casser les pages. FAQ progressive et interruptible, focus du lien d'évitement et noms des liens de galerie précisés. TypeScript/build et 228 tests passent ; 24 trajets IAB ordinateur/mobile, longue sélection de 17 choix et demande locale isolée vérifiés. Les prix révisés restent des propositions, pas des montants publiés. Publication et vérification HTTPS à suivre. Rapport : `qa/site-review-v2/review.md`.
+
 ## Ouverture et fermeture des six cartes — publiées et vérifiées, 5 novembre 2026
 
 Image opaque, masque des quatre bords porté par le groupe natif, résumé et total coordonnés, titres séquencés au retour et vrai bouton Changer hors capture. Cas du comparatif sans miniature traité. Révision applicative `b261ffa`, release `20261105T205039Z-b261ffad11fb`. Les 24 trajets passent dans l’IAB local et public ; clic rapide public confirmé. TypeScript/build et 213 tests passent. Treize empreintes publiques conformes, catalogue et 24 autres services inchangés. Images originales identiques. Aucun formulaire envoyé, viewport réinitialisé et localhost arrêté. Rapport : `docs/qa/card-motion-polish/review.md`.

@@ -29,6 +29,7 @@ import {
 } from '../../components/ui/accordion'
 import { existingSiteOffers, getExistingSiteOffer } from '../../content/existing-site'
 import { api } from '../../lib/api'
+import { readCataloguePricing } from '../../lib/pricing'
 import { didRestorePlanScroll, getPlanReturnHref } from '../../lib/plan-return'
 import '../public.css'
 
@@ -44,10 +45,8 @@ function usePricing() {
   const [pricing, setPricing] = useState<Pricing>(defaultPricing)
   useEffect(() => {
     const controller = new AbortController()
-    api<{ pricing?: Pricing }>('/api/catalogue', { signal: controller.signal })
-      .then((data) => {
-        if (data.pricing?.base && data.pricing?.options) setPricing(data.pricing)
-      })
+    api<unknown>('/api/catalogue', { signal: controller.signal })
+      .then((data) => setPricing(readCataloguePricing(data)))
       .catch(() => {
         /* The unpriced catalogue remains a valid pre-launch state. */
       })
@@ -125,12 +124,19 @@ function FaqList({
   items: readonly { question: string; answer: string }[]
   prefix?: string
 }) {
+  const [openItem, setOpenItem] = useState('')
   return (
-    <Accordion type="single" collapsible className="public-faq-list">
+    <Accordion type="single" collapsible value={openItem} onValueChange={setOpenItem} className="public-faq-list">
       {items.map((item, index) => (
         <AccordionItem key={item.question} value={`${prefix}-${index}`}>
           <AccordionTrigger>{item.question}</AccordionTrigger>
-          <AccordionContent forceMount>{item.answer}</AccordionContent>
+          <AccordionContent
+            forceMount
+            aria-hidden={openItem !== `${prefix}-${index}`}
+            inert={openItem !== `${prefix}-${index}`}
+          >
+            <div className="public-faq-answer"><p>{item.answer}</p></div>
+          </AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
@@ -672,6 +678,7 @@ export function ExamplesPage() {
                   href={example.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${example.title} (nouvel onglet)`}
                 >
                   <h2>{example.title}</h2>
                   <ArrowRight size={21} aria-hidden="true" />
@@ -686,6 +693,7 @@ export function ExamplesPage() {
                     href={example.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Source de ${example.title} : ${example.creator} (nouvel onglet)`}
                   >
                     Source : {example.creator}
                   </a>
@@ -694,6 +702,7 @@ export function ExamplesPage() {
                     href={example.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${example.archived ? 'Voir la présentation de' : 'Voir le site'} ${example.title} (nouvel onglet)`}
                   >
                     {example.archived ? 'Voir la présentation' : 'Voir le site'}
                   </a>
@@ -822,7 +831,7 @@ export function ContactPage() {
         <div className="public-contact-copy">
           <div>
             <h2>Choisir un forfait</h2>
-            <p>Comparez les fonctions et les options avant de nous écrire.</p>
+            <p>Vous pouvez nous écrire sans avoir choisi. Le comparatif peut vous aider à préciser votre besoin.</p>
             <Link className="text-link" to="/forfaits">
               Comparer les forfaits <ArrowRight size={18} aria-hidden="true" />
             </Link>

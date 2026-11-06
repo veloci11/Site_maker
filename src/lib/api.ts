@@ -23,7 +23,15 @@ export async function api<T>(path: string, options: ApiOptions = {}): Promise<T>
     if (error instanceof DOMException && error.name === 'AbortError') throw error
     throw new ApiError('La connexion n’a pas abouti. Réessayez dans un instant.', 0)
   }
-  const data = response.status === 204 ? null : await response.json().catch(() => null)
+  let data = null
+  if (response.status !== 204) {
+    try {
+      data = await response.json()
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') throw error
+      if (response.ok) throw new ApiError('La réponse du serveur n’a pas pu être lue. Réessayez dans un instant.', response.status, 'INVALID_RESPONSE')
+    }
+  }
   if (!response.ok) throw new ApiError(data?.error || 'La demande n’a pas abouti. Réessayez.', response.status, data?.code, data?.fields, data)
   return data as T
 }

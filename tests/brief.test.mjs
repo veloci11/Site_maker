@@ -22,7 +22,8 @@ test('the seven request types share a bounded French questionnaire contract', ()
     assert.equal(sections.at(-1).id, 'project-files', 'every request can share files by link');
     assert.equal(new Set(sections.map(section => section.id)).size, sections.length, type);
     assert.equal(new Set(questions.map(question => question.id)).size, questions.length, type);
-    assert.ok(questions.length <= (type === 'contact' ? 5 : 24), type);
+    assert.ok(questions.filter(question => !question.showForOption && !question.showForAnyOption).length <= (type === 'contact' ? 5 : 24), type);
+    assert.ok(questions.length <= (type === 'contact' ? 5 : 28), 'additional questions stay optional and conditional');
     assert.ok(questions.filter(question => question.required).length <= 6, type);
     assert.ok(questions.every(question => question.label && question.id && ['text', 'textarea', 'select', 'multiselect', 'url'].includes(question.type)));
     const preceding = new Set();

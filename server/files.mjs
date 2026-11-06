@@ -95,6 +95,7 @@ export function createFilesRouter({ requireAuth = requireSignedIn } = {}) {
   const router = Router();
   const access = [requireAuth, ensureFileProjectAccess];
   const upload = multer({
+    defParamCharset: 'utf8',
     storage: multer.diskStorage({
       destination(_req, _file, callback) { try { callback(null, privateDirectories().temporary); } catch (error) { callback(error); } },
       filename(_req, _file, callback) { callback(null, randomUUID()); },

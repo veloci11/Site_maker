@@ -256,7 +256,7 @@ export const faqs = [
   {
     question: 'Quels frais dois-je prévoir après la création du site ?',
     answer:
-      'Le configurateur distingue la création et les options ponctuelles des services mensuels que vous choisissez : hébergement géré, maintenance et sauvegardes suivies. La mise en ligne est une prestation ponctuelle. Le domaine et les éventuels abonnements à des outils externes sont précisés avant le démarrage.',
+      'Le configurateur distingue la création et les options ponctuelles des services mensuels que vous choisissez : hébergement géré et maintenance. Les sauvegardes et les conditions de restauration sont précisées dans le suivi retenu. La mise en ligne est une prestation ponctuelle. Le domaine et les éventuels abonnements à des outils externes sont précisés avant le démarrage.',
     category: 'Budget et suivi',
   },
   {
@@ -370,7 +370,7 @@ export const optionDefinitions = [
   {
     id: 'booking',
     title: 'Prise de rendez-vous',
-    description: 'Vos clients choisissent un créneau dans un calendrier en ligne.',
+    description: 'Reliez un calendrier à votre site pour réserver un créneau. Abonnement éventuel à prévoir.',
     billing: 'once',
     group: 'features',
   },
@@ -427,7 +427,7 @@ export const optionDefinitions = [
   {
     id: 'additional-language',
     title: 'Une autre langue',
-    description: 'Ajoutez une version dans la langue de votre choix.',
+    description: 'Ajoutez une version dans la langue de votre choix. Langue, contenus et traduction à préciser.',
     billing: 'once',
     group: 'content',
   },
@@ -462,35 +462,35 @@ export const optionDefinitions = [
   {
     id: 'analytics',
     title: 'Statistiques de visites',
-    description: 'Un outil pour comprendre les visites et les actions sur votre site.',
+    description: 'Installation d’un outil pour suivre les visites et les actions utiles. Abonnement éventuel à prévoir.',
     billing: 'once',
     group: 'visibility',
   },
   {
     id: 'newsletter',
     title: 'Inscription à la newsletter',
-    description: 'Reliez un formulaire à votre outil d’envoi d’e-mails.',
+    description: 'Reliez un formulaire à votre outil d’envoi d’e-mails. Abonnement et rédaction des campagnes séparés.',
     billing: 'once',
     group: 'visibility',
   },
   {
     id: 'crm-integration',
     title: 'Connexion à vos outils',
-    description: 'Reliez votre site à un CRM ou un service externe. Intégration à préciser.',
+    description: 'Reliez votre site à un CRM ou un service externe. Échanges, intégration et frais du service à préciser.',
     billing: 'once',
     group: 'visibility',
   },
   {
     id: 'deployment',
     title: 'Mise en ligne du site',
-    description: 'Configuration du domaine et installation sur un hébergement compatible.',
+    description: 'Mise en ligne par le studio : domaine web, HTTPS et installation sur un hébergement compatible.',
     billing: 'once',
     group: 'launch',
   },
   {
     id: 'maintenance-monthly',
     title: 'Maintenance du site',
-    description: 'Suivi technique et mises à jour. Périmètre précisé avant activation.',
+    description: 'Suivi technique et mises à jour. Interventions et conditions de sauvegarde à définir avant activation.',
     billing: 'monthly',
     group: 'launch',
   },
