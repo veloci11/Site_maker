@@ -22,6 +22,7 @@ import { PublicLayout, PortalLayout } from './components/layout'
 import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
 import { RouteMetadata } from './components/layout/RouteMetadata'
+import { PageRecovery } from './components/layout/PageRecovery'
 import { rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
 import { discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
 
@@ -136,15 +137,7 @@ class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }
 
   render() {
     if (!this.state.failed) return this.props.children
-    return (
-      <main className="container page-section">
-        <h1 className="page-heading">La page n’a pas pu s’ouvrir.</h1>
-        <p className="page-subtitle">Vous pouvez recharger la page pour reprendre votre visite.</p>
-        <button className="button" onClick={() => window.location.reload()}>
-          Recharger la page
-        </button>
-      </main>
-    )
+    return <PageRecovery />
   }
 }
 
@@ -167,6 +160,7 @@ function ApplicationShell() {
 const router = createBrowserRouter(createRoutesFromElements(
   <Route
     element={<ApplicationShell />}
+    errorElement={<PageRecovery />}
     hydrateFallbackElement={<div className="loading-state loading-state--page" role="status">Chargement…</div>}
   >
     <Route element={<PublicLayout />}>

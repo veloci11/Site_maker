@@ -276,3 +276,23 @@ test('a private auto-save cannot mark a historical Business booking inclusion as
     else globalThis.window = previousWindow
   }
 })
+
+test('page quantity survives drafts and changes their save identity without revising implicit legacy one-page choices', () => {
+  const previousWindow = globalThis.window
+  globalThis.window = { localStorage: new MemoryStorage() }
+  try {
+    const one = writeDraft({ offerId: 'vitrine', extras: ['extra-pages'] })
+    assert.equal(writeDraft({ ...one.configuration, extraPageCount: 1 }).id, one.id)
+    const three = writeDraft(withOption({ ...one.configuration, extraPageCount: 3 }, 'extra-pages', true))
+    assert.notEqual(three.id, one.id)
+    assert.notEqual(configurationKey(three.configuration), configurationKey(one.configuration))
+    assert.equal(readPublicDraftConfiguration().extraPageCount, 3)
+    assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 107000)
+    const removed = writeDraft(withOption(three.configuration, 'extra-pages', false))
+    assert.equal(removed.configuration.extraPageCount, undefined)
+    assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 89000)
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})

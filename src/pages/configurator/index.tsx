@@ -5,6 +5,10 @@ import {
   defaultPricing,
   formatMoney,
   formatQuoteTotal,
+  formatQuoteLine,
+  getConfigurationScopeNotes,
+  getOptionScope,
+  MAX_EXTRA_PAGE_COUNT,
   quoteEstimateNotice,
   formatOptionPrice,
   getOffer,
@@ -16,6 +20,7 @@ import {
   optionGroups,
   quoteConfiguration,
   withOption,
+  withExtraPageCount,
   type Configuration,
   type OfferId,
   type OptionId,
@@ -123,6 +128,7 @@ export function ConfiguratorPage() {
   const offer = getOffer(configuration.offerId)!
   const quote = quoteConfiguration(configuration, pricing)
   const selected = quote.lines.filter((line) => line.key !== 'base' && !line.included)
+  const scopeNotes = getConfigurationScopeNotes(configuration)
   // Presentation order follows the choices, independently of quote/catalogue
   // order. Existing configurations start in their canonical catalogue order.
   const [selectionOrder, setSelectionOrder] = useState<string[]>([])
@@ -132,7 +138,7 @@ export function ConfiguratorPage() {
     ...selected.filter((line) => !selectionOrder.includes(line.key)).map((line) => line.key),
   ]
   const selectionRanks = new Map(orderedSelection.map((key, index) => [key, index]))
-  const selectionOrderKey = orderedSelection.join('|')
+  const selectionOrderKey = `${orderedSelection.join('|')}:${configuration.extraPageCount ?? 1}`
   const optionReflow = useOptionReflow(selectionOrderKey)
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
@@ -352,9 +358,14 @@ export function ConfiguratorPage() {
                             <div className="selected-plan__option-clip">
                               <div className="selected-plan__option-content">
                                 <Check size={15} strokeWidth={1.6} aria-hidden="true" />
-                                <span>{option.title}</span>
+                                <span>
+                                  {selected.find(line => line.key === option.id)?.label ?? option.title}
+                                  {getOptionScope(configuration, option.id) ? <small>{getOptionScope(configuration, option.id)}</small> : null}
+                                </span>
                                 <strong>
-                                  {`+ ${formatOptionPrice(option.id, pricing)}`}
+                                  {`+ ${option.id === 'extra-pages'
+                                    ? formatQuoteLine(selected.find(line => line.key === option.id) ?? { amountCents: null }, pricing.currency)
+                                    : formatOptionPrice(option.id, pricing)}`}
                                 </strong>
                               </div>
                             </div>
@@ -450,7 +461,9 @@ export function ConfiguratorPage() {
                                 .map((option) =>
                                   isOptionIncluded(configuration, option.id)
                                     ? `${option.title} (inclus)`
-                                    : option.title,
+                                    : option.id === 'extra-pages'
+                                      ? `${configuration.extraPageCount ?? 1} page${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''} supplémentaire${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''}`
+                                      : option.title,
                                 )
                                 .join(' · ')}
                             </span>
@@ -464,29 +477,54 @@ export function ConfiguratorPage() {
                             const included = isOptionIncluded(configuration, option.id)
                             const checked = isOptionSelected(configuration, option.id)
                             return (
-                              <label
-                                key={option.id}
-                                className={`configurator-choice${included ? ' configurator-choice--included' : ''}`}
-                                data-selected={checked}
-                                htmlFor={`option-${option.id}`}
-                              >
-                                <Checkbox
-                                  id={`option-${option.id}`}
-                                  checked={checked}
-                                  disabled={included || sending}
-                                  onCheckedChange={(value) =>
-                                    changeOption(option.id, value === true)
-                                  }
-                                  aria-describedby={`description-${option.id}`}
-                                />
-                                <span className="configurator-choice__copy">
-                                  <strong>{option.title}</strong>
-                                  <span id={`description-${option.id}`}>{option.description}</span>
-                                </span>
-                                <span className="configurator-choice__price">
-                                  {optionPrice(option.id)}
-                                </span>
-                              </label>
+                              <div key={option.id} className="configurator-choice-item">
+                                <label
+                                  className={`configurator-choice${included ? ' configurator-choice--included' : ''}`}
+                                  data-selected={checked}
+                                  htmlFor={`option-${option.id}`}
+                                >
+                                  <Checkbox
+                                    id={`option-${option.id}`}
+                                    checked={checked}
+                                    disabled={included || sending}
+                                    onCheckedChange={(value) =>
+                                      changeOption(option.id, value === true)
+                                    }
+                                    aria-describedby={`description-${option.id}`}
+                                  />
+                                  <span className="configurator-choice__copy">
+                                    <strong>{option.title}</strong>
+                                    <span id={`description-${option.id}`}>{option.description}</span>
+                                  </span>
+                                  <span className="configurator-choice__price">
+                                    {optionPrice(option.id)}
+                                  </span>
+                                </label>
+                                {option.id === 'extra-pages' && checked ? (
+                                  <div className="configurator-quantity">
+                                    <label htmlFor="extra-page-count">Nombre de pages supplémentaires</label>
+                                    <input
+                                      id="extra-page-count"
+                                      type="number"
+                                      className="input"
+                                      min={1}
+                                      max={MAX_EXTRA_PAGE_COUNT}
+                                      step={1}
+                                      value={configuration.extraPageCount ?? 1}
+                                      disabled={sending}
+                                      aria-describedby="extra-page-count-help"
+                                      onChange={(event) => {
+                                        const count = event.currentTarget.valueAsNumber
+                                        if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
+                                        optionReflow.capture()
+                                        setConfiguration(withExtraPageCount(configuration, count))
+                                        setError('')
+                                      }}
+                                    />
+                                    <p id="extra-page-count-help">En plus des pages de votre forfait. {formatOptionPrice('extra-pages', pricing)} par page, dans le design de votre site.</p>
+                                  </div>
+                                ) : null}
+                              </div>
                             )
                           })}
                         </div>
@@ -495,6 +533,12 @@ export function ConfiguratorPage() {
                   )
                 })}
               </Accordion>
+              {scopeNotes.length > 0 ? (
+                <aside className="configurator-scope" aria-label="Périmètre des options choisies">
+                  <strong>Les pages couvertes par vos options</strong>
+                  <ul>{scopeNotes.map(note => <li key={note}>{note}</li>)}</ul>
+                </aside>
+              ) : null}
               <p className="configurator-notice">
                 {quote.estimated ? `${quoteEstimateNotice(quote)} ` : ''}
                 Votre sélection sert à préparer le devis. Le périmètre, les montants et les frais

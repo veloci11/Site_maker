@@ -228,6 +228,38 @@ test('the short public form stores optional booking and its full estimated range
   }
 });
 
+test('page quantities and capped scopes are calculated by the API, saved and included in the operator message', async t => {
+  const f = await fixture(t);
+  const request = validInquiry('vitrine', {
+    briefFormat: 'contact', brief: { message: 'Trois pages supplémentaires et une langue.' },
+    configuration: { offerId: 'vitrine', extras: ['extra-pages', 'additional-language'], extraPageCount: 3 },
+  });
+  for (const extraPageCount of [0, -1, 1.5, '3', null, 101]) {
+    const invalid = await f.post({ ...request, configuration: { ...request.configuration, extraPageCount } });
+    assert.equal(invalid.status, 400);
+  }
+  assert.equal(inquiryCount(), 0);
+  const first = await f.post(request);
+  assert.equal(first.status, 201);
+  const detail = getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(first.body.id);
+  const config = JSON.parse(detail.configuration_snapshot), quote = JSON.parse(detail.quote_snapshot);
+  assert.equal(config.extraPageCount, 3);
+  assert.equal(quote.totalCents, 117000);
+  assert.equal(quote.maximumTotalCents, 135000);
+  const page = quote.lines.find(line => line.key === 'extra-pages');
+  assert.equal(page.quantity, 3);
+  assert.equal(page.amountCents, 18000);
+  assert.equal(page.maximumCents, 36000);
+  assert.equal(quote.lines.find(line => line.key === 'additional-language').amountCents, 10000);
+  const message = getDb().prepare('SELECT message FROM inquiries WHERE id=?').get(first.body.id).message;
+  assert.match(message, /3 pages/);
+  assert.match(message, /180\s€–360\s€/);
+  assert.match(message, /5 pages.*devis complémentaire/);
+  assert.equal((await f.post(request)).status, 200);
+  assert.equal((await f.post({ ...request, configuration: { ...request.configuration, extraPageCount: 4 } })).status, 409);
+  assert.deepEqual(getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(first.body.id), detail);
+});
+
 test('honeypot and foreign origins never create notifications or requests', async t => {
   const f = await fixture(t);
   const bot = await f.post(configuredRequest({ website: 'https://spam.example' }));

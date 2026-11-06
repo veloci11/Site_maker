@@ -76,3 +76,85 @@ test('all HeadersInit forms preserve custom headers and replace defaults case-in
     assert.deepEqual(await request.json(), { fixture: true });
   }
 });
+
+test('the submission deadline releases a request with no response headers even if fetch ignores abort', async (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let signal;
+  t.mock.method(globalThis, 'fetch', (_path, options) => {
+    signal = options.signal;
+    return new Promise(() => {});
+  });
+  const pending = api('/api/inquiries', { method: 'POST', body: { requestId: 'unchanged' }, timeoutMs: 30_000 });
+  const rejected = assert.rejects(pending, error => {
+    assert.ok(error instanceof ApiError);
+    assert.equal(error.code, 'REQUEST_TIMEOUT');
+    assert.equal(error.status, 0);
+    assert.match(error.message, /peut déjà être enregistrée/);
+    assert.match(error.message, /mêmes informations/);
+    return true;
+  });
+  t.mock.timers.tick(29_999);
+  assert.equal(signal.aborted, false);
+  t.mock.timers.tick(1);
+  await rejected;
+  assert.equal(signal.aborted, true);
+});
+
+test('one total deadline covers waiting for headers and a stalled JSON body', async (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  const headers = Promise.withResolvers();
+  let signal;
+  let readingBody = false;
+  t.mock.method(globalThis, 'fetch', (_path, options) => {
+    signal = options.signal;
+    return headers.promise;
+  });
+  const pending = api('/api/inquiries', { method: 'POST', timeoutMs: 30_000 });
+  const rejected = assert.rejects(pending, error => error instanceof ApiError && error.code === 'REQUEST_TIMEOUT');
+  t.mock.timers.tick(20_000);
+  headers.resolve({
+    status: 201, ok: true,
+    json: () => { readingBody = true; return new Promise(() => {}); },
+  });
+  await Promise.resolve();
+  assert.equal(readingBody, true);
+  t.mock.timers.tick(9_999);
+  assert.equal(signal.aborted, false);
+  t.mock.timers.tick(1);
+  await rejected;
+  assert.equal(signal.aborted, true, 'reading JSON does not start another thirty-second allowance');
+});
+
+test('caller cancellation remains an AbortError and an already aborted request never starts', async (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let calls = 0;
+  let signal;
+  t.mock.method(globalThis, 'fetch', (_path, options) => {
+    calls += 1;
+    signal = options.signal;
+    return new Promise(() => {});
+  });
+  const controller = new AbortController();
+  const pending = api('/api/inquiries', { timeoutMs: 30_000, signal: controller.signal });
+  const rejected = assert.rejects(pending, error => error.name === 'AbortError');
+  controller.abort();
+  await rejected;
+  assert.equal(signal.aborted, true);
+  assert.equal(signal.reason.name, 'AbortError');
+  await assert.rejects(api('/api/inquiries', { timeoutMs: 30_000, signal: controller.signal }), error => error.name === 'AbortError');
+  assert.equal(calls, 1);
+});
+
+test('a completed request clears its deadline and detaches the caller cancellation listener', async (t) => {
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  let signal;
+  t.mock.method(globalThis, 'fetch', async (_path, options) => {
+    signal = options.signal;
+    return Response.json({ ok: true });
+  });
+  const controller = new AbortController();
+  assert.deepEqual(await api('/api/inquiries', { timeoutMs: 30_000, signal: controller.signal }), { ok: true });
+  t.mock.timers.tick(30_000);
+  controller.abort();
+  assert.equal(signal.aborted, false, 'a finished request is not interrupted by a stale timer or listener');
+});

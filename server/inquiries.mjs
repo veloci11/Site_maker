@@ -17,7 +17,7 @@ const oneLineControls = /[\u0000-\u001f\u007f]/;
 const DEFAULT_STORAGE_LIMIT_BYTES = 512 * 1024 * 1024;
 const creationTypes = ['vitrine', 'connecte', 'immersif', 'sur-mesure'];
 const payloadKeys = ['schemaVersion', 'briefFormat', 'requestId', 'requestType', 'firstName', 'lastName', 'email', 'phone', 'company', 'configuration', 'brief', 'website'];
-const configurationKeys = ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras'];
+const configurationKeys = ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras', 'extraPageCount'];
 
 class InputError extends Error {
   constructor(fields) {
@@ -118,7 +118,7 @@ function validate(input) {
 
 function summary(configuration, quote) {
   if (!configuration) return '';
-  return [`Forfait : ${getOffer(configuration.offerId).title}`, ...quote.lines.map(line => `${line.label} : ${line.included ? 'compris dans le forfait' : formatQuoteLine(line, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}`),
+  return [`Forfait : ${getOffer(configuration.offerId).title}`, ...quote.lines.map(line => `${line.label} : ${line.included ? 'compris dans le forfait' : formatQuoteLine(line, quote.currency)}${line.billing === 'monthly' ? ' / mois' : ''}${line.scope ? `\n${line.scope}` : ''}`),
     `Création : ${formatQuoteTotal(quote)}`,
     `Mensuel : ${quote.monthlyTotalCents === null ? 'à préciser' : formatMoney(quote.monthlyTotalCents, quote.currency)} / mois`,
     quote.estimated ? quoteEstimateNotice(quote) : '',

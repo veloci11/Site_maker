@@ -68,6 +68,7 @@
 .selected-plan__option-content { display:grid; grid-template-columns:15px minmax(0,1fr) auto; align-items:baseline; gap:8px; padding-bottom:10px; font-size:13px; line-height:1.5; }
 .selected-plan__option-content > svg { align-self:start; margin-top:3px; }
 .selected-plan__option-content > span { overflow-wrap:anywhere; }
+.selected-plan__option-content > span > small { display:block; font-size:11px; line-height:1.4; margin-top:3px; opacity:.9; }
 .selected-plan__option-content > strong { font-size:12px; font-weight:500; text-align:right; font-variant-numeric:tabular-nums; }
 .selected-plan__total { display:grid; gap:6px; margin-bottom:24px; }
 .selected-plan__total > span { font-size:13px; color:rgb(255 255 255 / .85); }
@@ -122,6 +123,13 @@
 .configurator-group__number { font-size:11px; color:#81758c; font-weight:400; letter-spacing:0; }
 .configurator-group__count { display:inline-flex; align-items:center; justify-content:center; min-width:21px; height:21px; padding:0 6px; border-radius:999px; background:#e6dff0; font-size:11px; font-weight:500; color:#42334f; }
 .configurator-choice-list { display:grid; gap:10px; padding-bottom:8px; }
+.configurator-choice-item { min-width:0; }
+.configurator-quantity { display:grid; grid-template-columns:minmax(0,1fr) 80px; gap:8px 16px; align-items:center; padding:14px 16px; font-size:13px; }
+.configurator-quantity .input { width:100%; min-height:44px; }
+.configurator-quantity p { grid-column:1 / -1; color:#665d71; font-size:12px; line-height:1.5; margin:0; }
+.configurator-scope { margin-top:22px; padding:16px 18px; border:1px solid #ddd7e2; border-radius:14px; font-size:13px; line-height:1.6; }
+.configurator-scope ul { margin:8px 0 0; padding-left:18px; color:#665d71; }
+.configurator-scope li + li { margin-top:8px; }
 .configurator-choice { display:grid; grid-template-columns:18px minmax(0,1fr) auto; align-items:center; gap:12px; padding:18px 16px; border:1px solid #ddd7e2; border-radius:14px; background:rgb(255 255 255 / .72); cursor:pointer; transition:border-color 120ms,background-color 120ms; }
 .configurator-choice:hover { border-color:#a69baf; }
 .configurator-choice[data-selected=true] { border-color:#b9b1c0; background:#fff; }

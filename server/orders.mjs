@@ -92,6 +92,7 @@ function snapshotIsCurrent(serialized, current) {
   if (!saved.configuration || !Array.isArray(saved.quote?.lines)) return false;
   try {
     const compareEstimates = Object.hasOwn(saved.quote, 'maximumTotalCents');
+    const compareScopeBasis = saved.quote.estimateBasis === 'scope';
     const commercialLines = (lines, includedAdditions = []) => {
       const values = new Map();
       for (const line of lines) {
@@ -102,8 +103,11 @@ function snapshotIsCurrent(serialized, current) {
         const maximumCents = line.maximumCents === undefined ? line.amountCents : line.maximumCents;
         if (compareEstimates && ((maximumCents !== null && (!Number.isSafeInteger(maximumCents) || maximumCents < (line.amountCents ?? 0)))
           || (line.estimated !== undefined && typeof line.estimated !== 'boolean'))) throw new Error('Invalid snapshot estimate');
+        const quantity = line.quantity ?? 1;
+        if (line.key === 'extra-pages' && (!Number.isSafeInteger(quantity) || quantity < 1)) throw new Error('Invalid snapshot quantity');
         values.set(line.key, { key: line.key, amountCents: line.amountCents, billing, included: line.included,
-          ...(compareEstimates ? { maximumCents, estimated: line.estimated ?? false } : {}),
+          ...(line.key === 'extra-pages' ? { quantity } : {}),
+          ...(compareEstimates ? { maximumCents, estimated: !compareScopeBasis && line.key === 'base' ? false : line.estimated ?? false } : {}),
         });
       }
       for (const line of includedAdditions) {
@@ -112,12 +116,24 @@ function snapshotIsCurrent(serialized, current) {
       return [...values.values()].sort((a, b) => a.key.localeCompare(b.key));
     };
     const currentLines = commercialLines(current.quote.lines);
-    const comparable = (snapshot, lines) => ({ projectName: snapshot.projectName, configuration: normalizeConfiguration(snapshot.configuration), quote: {
-      currency: snapshot.quote.currency, lines,
-      totalCents: snapshot.quote.totalCents, monthlyTotalCents: snapshot.quote.monthlyTotalCents === undefined ? 0 : snapshot.quote.monthlyTotalCents,
-      checkoutReady: snapshot.quote.checkoutReady, requiresQuote: snapshot.quote.requiresQuote,
-      ...(compareEstimates ? { maximumTotalCents: snapshot.quote.maximumTotalCents, estimated: snapshot.quote.estimated ?? false } : {}),
-    } });
+    const comparable = (snapshot, lines) => {
+      // The new scope estimate is presentation/approval policy, not a change to
+      // a historical commercial selection. Compare old flags under their old
+      // policy, without rewriting the saved quote or enabling payment today.
+      const legacyPolicy = !compareScopeBasis && snapshot.quote.estimateBasis === 'scope';
+      const estimated = legacyPolicy
+        ? snapshot.quote.lines.some(line => line.key !== 'base' && line.estimated)
+        : snapshot.quote.estimated ?? false;
+      const requiresQuote = legacyPolicy ? snapshot.configuration.offerId === 'sur-mesure' || estimated : snapshot.quote.requiresQuote;
+      const monthlyTotalCents = snapshot.quote.monthlyTotalCents === undefined ? 0 : snapshot.quote.monthlyTotalCents;
+      return { projectName: snapshot.projectName, configuration: normalizeConfiguration(snapshot.configuration), quote: {
+        currency: snapshot.quote.currency, lines,
+        totalCents: snapshot.quote.totalCents, monthlyTotalCents,
+        checkoutReady: legacyPolicy ? !requiresQuote && snapshot.quote.totalCents !== null && monthlyTotalCents !== null : snapshot.quote.checkoutReady,
+        requiresQuote,
+        ...(compareEstimates ? { maximumTotalCents: snapshot.quote.maximumTotalCents, estimated } : {}),
+      } };
+    };
     // Labels, display order and catalogue-version metadata do not change a
     // commercial selection. New free package inclusions also preserve a legacy
     // snapshot; actual prices, billing frequencies and chosen features must match.

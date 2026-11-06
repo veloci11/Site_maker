@@ -137,7 +137,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
     let accepted: InquiryResult | null = null
     try {
       const response = await api<InquiryResult>('/api/inquiries', {
-        method: 'POST', body: { ...payload, requestId: attempt.current.requestId },
+        method: 'POST', body: { ...payload, requestId: attempt.current.requestId }, timeoutMs: 30_000,
       })
       if (response?.ok !== true || typeof response.id !== 'string' || !response.id) {
         throw new Error('La confirmation de votre demande n’a pas abouti. Réessayez dans un instant.')
@@ -150,7 +150,7 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
       }
     } catch (error) {
       if (mounted.current) {
-        const message = errorMessage(error, 'Votre demande n’a pas pu être enregistrée. Réessayez.')
+        const message = errorMessage(error, 'La confirmation de votre demande n’a pas pu être reçue. Réessayez avec les mêmes informations.')
         const questionIds = new Set(questions.map(question => question.id))
         const errors = error instanceof ApiError && error.fields
           ? Object.fromEntries(Object.entries(error.fields).map(([key, value]) => [questionIds.has(key) ? `brief.${key}` : key, value]))

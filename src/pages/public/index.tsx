@@ -364,6 +364,9 @@ export function ExamplesPage() {
             {filtered.length} référence{filtered.length > 1 ? 's' : ''} externe{filtered.length > 1 ? 's' : ''}
           </span>
         </div>
+        <p className="public-reference-note">
+          Des références externes pour explorer des styles et des fonctionnalités. Le périmètre complet de ces sites n’est pas compris dans les prix de départ de nos forfaits.
+        </p>
         <div className="public-examples-grid">
           {filtered.map((example, index) => (
             <article className="public-example-tile" key={example.id}>

@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Robustesse, pages et marketing — 6 novembre 2026
+
+Les deux chemins d’échec sont corrigés : frontière React Router française pour les routes différées et délai total de 30 s pour le formulaire (en-têtes et JSON), sans perte de saisie ni changement de requestId lors d’une reprise identique. Aucun rechargement automatique.
+
+Les pages supplémentaires ont une quantité explicite à 60–120 € par page. L’absence de quantité dans un ancien dossier signifie une page ; ne pas recalculer les instantanés historiques. Langue 100 €/5 pages maximum, CMS Vitrine 300 €/5 pages maximum et reprise 100–250 €/5 pages +15 médias restent des lots, jamais multipliés arbitrairement. Le CMS Business/Premium couvre les pages du forfait ; la gestion de pages ajoutées est à confirmer. Les unités figurent dans les résumés, nouveaux dossiers et notifications. Les nouvelles estimations simples affichent « À partir de », les fourchettes approuvées restent visibles.
+
+Les arguments expliquent l’usage de chaque offre, le référencement local apparaît au premier niveau du comparatif, les rubriques Business se distinguent des textes/photos simples possibles dans Vitrine. La galerie précise le rôle d’inspiration de ses références externes. FAQ : 18 questions, dont une sur le calcul des pages et les limites indépendantes des options. Prix, inclusions, images et animations validés conservés. Publication et preuves : `docs/qa/fixes-2026-11-06/`.
+
 ## Clarté client et revue critique — 6 novembre 2026
 
 « Photos de réalisations, tarifs et avis clients » remplace « Galerie, tarifs et témoignages ». Chaque ligne du comparatif reçoit une explication fonctionnelle accessible avec les détails ; ne pas répéter dans ces descriptions les inclusions et options que les coches indiquent déjà. Expliquer explicitement l’espace de gestion (CMS) dans les descriptions Business et Premium. L’option Vitrine nomme aussi le CMS. Prix, pages, inclusions et textures restent inchangés.

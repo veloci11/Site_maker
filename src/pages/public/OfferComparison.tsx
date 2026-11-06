@@ -9,8 +9,9 @@ type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint?
 const comparisonRows: readonly ComparisonRow[] = [
   { title: 'Nombre de pages', values: ['1 à 3', '1 à 6', '1 à 10'], hint: 'Le nombre de pages prévu pour présenter votre activité, vos services et vos informations pratiques.' },
   { title: 'CMS : modifiez vos textes et images', values: ['absent', 'included', 'included'], hint: 'Un espace de gestion pour mettre à jour vos contenus vous-même.' },
+  { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
   { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu.' },
-  { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'], hint: 'Des choix de couleurs, de typographies et de mise en page propres à votre marque et à votre projet.' },
+  { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'], hint: 'Une conception visuelle d’ensemble : composition des pages, univers graphique et interactions sont pensés ensemble pour donner une identité distinctive au site.' },
   { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'], hint: 'Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.' },
   { title: 'Étude des demandes sur mesure', values: ['absent', 'absent', 'included'], hint: 'Vos besoins spécifiques sont étudiés pour définir les solutions possibles et leur prix avant le démarrage.' },
 ]
@@ -19,8 +20,7 @@ const comparisonDetails: readonly ComparisonRow[] = [
   { title: 'Éléments 3D interactifs', values: ['absent', 'absent', 'Si pertinent'], hint: 'Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. Sa création et les éléments supplémentaires sont des prestations distinctes.' },
   { title: 'Formulaire de contact', values: ['included', 'included', 'included'], hint: 'Vos visiteurs peuvent vous envoyer une demande directement depuis votre site.' },
   { title: 'Bases du référencement naturel', values: ['included', 'included', 'included'], hint: 'Des réglages techniques de base pour aider les moteurs de recherche à lire et comprendre vos pages.' },
-  { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
-  { title: 'Photos de réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Présentez des exemples de votre travail, affichez vos tarifs et publiez les avis que vos clients vous ont transmis.' },
+  { title: 'Rubriques réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Organisez ces contenus dans des rubriques dédiées pour aider vos visiteurs à comparer vos services et découvrir votre travail. Les textes et images simples restent possibles dans les pages Vitrine ; ici, c’est leur présentation en rubriques qui est prévue.' },
   { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'], hint: 'Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.' },
   { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'], hint: 'Un suivi plus poussé pour préciser les choix visuels, les fonctions et les ajustements de votre projet.' },
   { title: 'Mise en ligne', values: ['included', 'included', 'included'], hint: 'Installation et publication du site sur l’hébergement retenu, une fois le projet validé.' },

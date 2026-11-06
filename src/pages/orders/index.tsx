@@ -46,7 +46,7 @@ function QuoteSummary({ quote, title = 'Votre sélection' }: { quote: Quote; tit
   const once = quote.lines.filter(line => line.billing !== 'monthly')
   return <section className="order-summary panel" aria-label={title}>
     <h2>{title}</h2>
-    <dl className="order-lines">{once.map(line => <div key={line.key}><dt>{line.label}</dt><dd>{line.included ? 'Inclus' : formatQuoteLine(line, quote.currency)}</dd></div>)}</dl>
+    <dl className="order-lines">{once.map(line => <div key={line.key}><dt>{line.label}{line.scope ? <p className="order-small">{line.scope}</p> : null}</dt><dd>{line.included ? 'Inclus' : formatQuoteLine(line, quote.currency)}</dd></div>)}</dl>
     <div className="order-total"><span>{quote.estimated ? 'Estimation de création' : 'Total création'}</span><strong>{formatQuoteTotal(quote)}</strong></div>
     {quote.estimated && <p className="order-small">{quoteEstimateNotice(quote)}</p>}
     {quote.totalCents === null && <p className="order-small">Le prix sera précisé avant tout engagement.</p>}

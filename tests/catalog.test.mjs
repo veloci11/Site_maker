@@ -4,6 +4,7 @@ import {
   normalizeConfiguration, quoteConfiguration, defaultPricing, EXTRA_OPTION_IDS,
   offers, publicOffers, examples, faqs, optionDefinitions, optionGroups, isOptionIncluded,
   isOptionSelected, withOption, formatOptionPrice, formatQuoteTotal, formatQuoteLine, getOffer, MONTHLY_PLAN_IDS,
+  withExtraPageCount, MAX_EXTRA_PAGE_COUNT, getOptionScope, getConfigurationScopeNotes,
 } from '../shared/catalog.ts';
 
 const billable = quote => quote.lines.filter(line => !line.included);
@@ -30,8 +31,8 @@ test('every public base includes responsive and launch without charging them aga
     const quote = quoteConfiguration(config);
     assert.equal(quote.totalCents, defaultPricing.base[offer.id]);
     assert.equal(quote.monthlyTotalCents, 0);
-    assert.equal(quote.estimated, false);
-    assert.equal(quote.checkoutReady, true);
+    assert.equal(quote.estimated, true);
+    assert.equal(quote.checkoutReady, false);
     for (const id of ['mobile', 'deployment']) {
       assert.equal(isOptionIncluded(config, id), true);
       assert.equal(quote.lines.find(line => line.key === id).amountCents, 0);
@@ -198,8 +199,8 @@ test('included additions and fixed-price bases do not create artificial ranges',
   const quote = quoteConfiguration(normalizeConfiguration({ offerId: 'connecte', extras: ['analytics', 'blog'] }));
   assert.equal(quote.totalCents, 164000);
   assert.equal(quote.maximumTotalCents, 164000);
-  assert.equal(quote.estimated, false);
-  assert.match(formatQuoteTotal(quote), /^1\s640\s€$/);
+  assert.equal(quote.estimated, true);
+  assert.match(formatQuoteTotal(quote), /^À partir de 1\s640\s€$/);
   assert.equal(quote.lines.find(line => line.key === 'analytics').maximumCents, 0);
 });
 
@@ -243,7 +244,7 @@ test('Premium includes every Business capability and adds its visual experience 
   const quote = quoteConfiguration(premium);
   assert.equal(quote.totalCents, 249900);
   assert.equal(quote.maximumTotalCents, 249900);
-  assert.equal(quote.estimated, false);
+  assert.equal(quote.estimated, true);
   for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d']) {
     const line = quote.lines.find(line => line.key === id);
     assert.equal(line.included, true, id);
@@ -286,5 +287,84 @@ test('booking is an optional 90–180 euro integration on all three offers', () 
     assert.equal(quote.requiresQuote, true);
     assert.equal(quote.checkoutReady, false);
     assert.deepEqual(withOption(selected, 'booking', false), base);
+  }
+});
+
+test('extra pages multiply both approved bounds and keep legacy selections equivalent to one page', () => {
+  for (const offer of publicOffers) {
+    const legacy = normalizeConfiguration({ offerId: offer.id, extras: ['extra-pages', 'hosting-monthly'] });
+    assert.deepEqual(normalizeConfiguration({ ...legacy, extraPageCount: 1 }), legacy);
+    const selected = withExtraPageCount(legacy, 3);
+    const quote = quoteConfiguration(selected);
+    const line = quote.lines.find(line => line.key === 'extra-pages');
+    assert.equal(line.quantity, 3);
+    assert.equal(line.amountCents, 18000);
+    assert.equal(line.maximumCents, 36000);
+    assert.match(line.label, /3 pages/);
+    assert.equal(quote.totalCents, defaultPricing.base[offer.id] + 18000);
+    assert.equal(quote.maximumTotalCents, defaultPricing.base[offer.id] + 36000);
+    assert.equal(quote.monthlyTotalCents, 1900);
+    assert.deepEqual(normalizeConfiguration(selected), selected);
+    const removed = withOption(selected, 'extra-pages', false);
+    assert.equal(removed.extraPageCount, undefined);
+    assert.equal(quoteConfiguration(removed).totalCents, defaultPricing.base[offer.id]);
+    assert.equal(quoteConfiguration(withOption(removed, 'extra-pages', true)).lines.find(line => line.key === 'extra-pages').quantity, 1);
+  }
+});
+
+test('page quantities are validated without coercion and use server pricing rather than the published minimum', () => {
+  for (const extraPageCount of [0, -1, 1.5, '3', null, Infinity, NaN, MAX_EXTRA_PAGE_COUNT + 1]) {
+    assert.throws(() => normalizeConfiguration({ offerId: 'vitrine', extras: ['extra-pages'], extraPageCount }));
+  }
+  assert.equal(normalizeConfiguration({ offerId: 'vitrine', extraPageCount: 3 }).extraPageCount, undefined, 'quantity alone cannot silently select a paid option');
+  const config = withExtraPageCount(normalizeConfiguration({ offerId: 'vitrine' }), 3);
+  const changed = quoteConfiguration(config, { ...defaultPricing, options: { ...defaultPricing.options, 'extra-pages': 9000 } });
+  assert.equal(changed.totalCents, 116000);
+  assert.equal(changed.maximumTotalCents, null, 'a changed unit tariff has no invented upper bound');
+  const unknown = quoteConfiguration(config, { ...defaultPricing, options: { ...defaultPricing.options, 'extra-pages': null } });
+  assert.equal(unknown.totalCents, null);
+  assert.equal(unknown.lines.find(line => line.key === 'extra-pages').amountCents, null);
+});
+
+test('capped language, CMS and import lots never expand or multiply with page quantities', () => {
+  const config = withExtraPageCount(normalizeConfiguration({ offerId: 'vitrine', managedContent: true, extras: ['additional-language', 'content-import'] }), 5);
+  const quote = quoteConfiguration(config);
+  assert.equal(quote.totalCents, 169000);
+  assert.equal(quote.maximumTotalCents, 214000);
+  for (const [id, minimum, maximum] of [['additional-language', 10000, 10000], ['managed-content', 30000, 30000], ['content-import', 10000, 25000]]) {
+    const line = quote.lines.find(line => line.key === id);
+    assert.equal(line.amountCents, minimum);
+    assert.equal(line.maximumCents, maximum);
+    assert.equal(line.quantity, undefined);
+    assert.match(line.scope, /5 pages/);
+    assert.match(line.scope, /devis complémentaire/);
+  }
+  assert.match(getOptionScope(config, 'content-import'), /15 médias/);
+  assert.doesNotMatch(getOptionScope(config, 'additional-language'), /devis complémentaire/, 'cards receive the compact scope');
+  assert.ok(getConfigurationScopeNotes(config).some(note => /Langue supplémentaire.*devis complémentaire/.test(note)));
+  for (const offerId of ['connecte', 'immersif']) {
+    const base = normalizeConfiguration({ offerId });
+    assert.equal(getOptionScope(base, 'managed-content'), null);
+    const addedPages = withExtraPageCount(base, 2);
+    const cms = quoteConfiguration(addedPages).lines.find(line => line.key === 'managed-content');
+    assert.equal(cms.included, true);
+    assert.equal(cms.amountCents, 0);
+    assert.doesNotMatch(cms.scope, /5 pages/);
+    assert.match(cms.scope, /pages supplémentaires.*à confirmer/);
+  }
+});
+
+test('new base prices are scope estimates while saved historical amounts retain their own presentation', () => {
+  for (const offer of publicOffers) {
+    const quote = quoteConfiguration(normalizeConfiguration({ offerId: offer.id }));
+    assert.equal(quote.estimateBasis, 'scope');
+    assert.equal(quote.estimated, true);
+    assert.equal(quote.requiresQuote, true);
+    assert.equal(quote.checkoutReady, false);
+    assert.match(formatQuoteTotal(quote), /^À partir de /);
+    const historic = { currency: quote.currency, totalCents: quote.totalCents, maximumTotalCents: quote.totalCents, estimated: false };
+    const before = structuredClone(historic);
+    assert.doesNotMatch(formatQuoteTotal(historic), /À partir de/);
+    assert.deepEqual(historic, before);
   }
 });

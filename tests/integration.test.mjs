@@ -58,7 +58,7 @@ test('public catalogue, quote and inquiry stay accessible before protected route
   assert.equal(catalogue.headers.get('cache-control'), 'no-store');
   const configuration = { offerId: 'vitrine', language: 'fr', managedContent: false, scene3d: false };
   const quote = await request('/api/quote', { method: 'POST', body: { configuration } });
-  assert.equal(quote.status, 200); assert.equal(quote.body.quote.checkoutReady, true); assert.equal(quote.body.quote.totalCents, 89000);
+  assert.equal(quote.status, 200); assert.equal(quote.body.quote.checkoutReady, false); assert.equal(quote.body.quote.totalCents, 89000);
   assert.equal(quote.body.quote.lines.find(line => line.key === 'mobile').included, true);
   assert.equal(quote.body.quote.lines.find(line => line.key === 'deployment').amountCents, 0);
   const inquiry = validInquiry('contact', { email: 'inquiry@example.test', brief: { message: 'Un projet de site pour vérifier le formulaire.' } });
@@ -138,18 +138,18 @@ test('saved order snapshots survive price/config changes and no readiness state 
   assert.equal(draft.status, 200); const first = draft.body.order;
   assert.equal(first.status, 'draft'); assert.equal(first.totalCents, 159000); assert.equal(draft.body.payment.enabled, false);
   assert.equal((await owned('/order', { cookie: second })).status, 404);
-  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'PRICE_UNAVAILABLE');
   const prices = { currency: 'EUR', base: { vitrine: 100000, connecte: 150000, immersif: 200000, 'sur-mesure': null }, options: { 'language-en': 10000, 'managed-content': 20000, 'scene-3d': 30000, deployment: null, 'maintenance-monthly': null } };
   assert.equal((await request('/api/admin/pricing', { cookie: client, method: 'PUT', body: prices })).status, 403);
   assert.equal((await request('/api/admin/pricing', { cookie: admin, method: 'PUT', body: prices })).status, 200);
   const stale = await owned('/order');
   assert.equal(stale.body.isCurrent, false); assert.equal(stale.body.order.totalCents, 159000); assert.equal(stale.body.quote.totalCents, 160000);
-  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'ORDER_STALE');
+  assert.equal((await owned('/checkout', { method: 'POST', body: { orderId: first.id } })).body.code, 'PRICE_UNAVAILABLE');
   const refreshed = await owned('/order', { method: 'PUT', body: { billing } });
   assert.equal(refreshed.status, 200); const current = refreshed.body.order;
   assert.notEqual(current.id, first.id); assert.equal(current.totalCents, 160000); assert.equal(current.snapshot.configuration.managedContent, true);
   const refused = await owned('/checkout', { method: 'POST', body: { orderId: current.id } });
-  assert.equal(refused.status, 503); assert.equal(refused.body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal(refused.status, 409); assert.equal(refused.body.code, 'PRICE_UNAVAILABLE');
   closeDb();
   const restored = await owned('/order');
   assert.equal(restored.body.order.id, current.id); assert.equal(restored.body.order.status, 'draft');
@@ -211,7 +211,7 @@ test('integrated quote and order keep included deployment separate from recurrin
   const resaved = await request(`${route}/order`, { cookie: client, method: 'PUT', body: { billing } });
   assert.equal(resaved.status, 200); assert.notEqual(resaved.body.order.id, first.id); assert.equal(resaved.body.order.monthlyTotalCents, 8000);
   assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.id).configuration_snapshot, serialized, 'historical creation and monthly prices must not be rewritten');
-  assert.equal((await request(`${route}/checkout`, { cookie: client, method: 'POST', body: { orderId: resaved.body.order.id } })).body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal((await request(`${route}/checkout`, { cookie: client, method: 'POST', body: { orderId: resaved.body.order.id } })).body.code, 'PRICE_UNAVAILABLE');
   assert.equal((await request(`${route}/order`, { cookie: second })).status, 404);
   closeDb();
   const restored = await request(`${route}/order`, { cookie: client });
@@ -255,5 +255,5 @@ test('legacy settings and dossier snapshots remain readable and current without 
   assert.equal(updated.status, 200); assert.equal(updated.body.order.id, orderId, 'editing billing must not create a fake configuration revision');
   assert.equal(updated.body.isCurrent, true); assert.equal(updated.body.order.billing.company, 'Nom actualisé');
   assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(orderId).configuration_snapshot, serialized);
-  assert.equal((await request(`${route}/checkout`, { cookie: client, method: 'POST', body: { orderId } })).body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal((await request(`${route}/checkout`, { cookie: client, method: 'POST', body: { orderId } })).body.code, 'PRICE_UNAVAILABLE');
 });

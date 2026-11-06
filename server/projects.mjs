@@ -39,8 +39,11 @@ function stringRecord(value) {
 }
 
 function configuration(input, existing) {
-  onlyKeys(input, ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras']);
+  onlyKeys(input, ['offerId', 'language', 'mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance', 'extras', 'extraPageCount']);
   const candidate = { ...existing, ...input };
+  // An explicit option list without a count uses the historical/default one
+  // page. A partial patch of unrelated fields retains the existing quantity.
+  if (Object.hasOwn(input, 'extras') && !Object.hasOwn(input, 'extraPageCount')) delete candidate.extraPageCount;
   if (!OFFER_IDS.includes(candidate.offerId)
     || (candidate.language !== undefined && !['fr', 'fr-en'].includes(candidate.language))
     || (candidate.managedContent !== undefined && typeof candidate.managedContent !== 'boolean')

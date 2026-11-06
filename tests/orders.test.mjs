@@ -10,7 +10,7 @@ import { createOrdersRouter, getPricing, getPaymentAvailability } from '../serve
 import { createProjectsRouter } from '../server/projects.mjs';
 import { csrfProtection } from '../server/auth.mjs';
 import { getDb, closeDb, now } from '../server/db.mjs';
-import { defaultPricing, optionDefinitions } from '../shared/catalog.ts';
+import { defaultPricing, optionDefinitions, withExtraPageCount } from '../shared/catalog.ts';
 
 const originalDirectory = process.env.DATA_DIR;
 let directory, server, origin;
@@ -66,8 +66,8 @@ test('published default prices are available but a saved dossier cannot masquera
   assert.equal(result.body.order.totalCents, 89000);
   assert.equal(result.body.isCurrent, true);
   const checkout = await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: result.body.order.id } });
-  assert.equal(checkout.status, 503);
-  assert.equal(checkout.body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal(checkout.status, 409);
+  assert.equal(checkout.body.code, 'PRICE_UNAVAILABLE');
   assert.equal(getDb().prepare('SELECT payment_reference FROM orders WHERE id = ?').get(result.body.order.id).payment_reference, null);
 });
 
@@ -148,7 +148,7 @@ test('configuration and price snapshots stay immutable while subsequent edits cr
   assert.equal(same.body.order.id, a.body.order.id);
   await request(`/projects/${project.id}`, { method: 'PATCH', body: { configuration: { language: 'fr-en' } } });
   assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, false);
-  assert.equal((await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: a.body.order.id } })).body.code, 'ORDER_STALE');
+  assert.equal((await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: a.body.order.id } })).body.code, 'PRICE_UNAVAILABLE');
   const b = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
   assert.notEqual(b.body.order.id, a.body.order.id);
   assert.equal(b.body.order.totalCents, 120000);
@@ -167,11 +167,11 @@ test('configured prices still cannot trigger payment without a real enabled adap
   await setPricing();
   const project = await create();
   const saved = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
-  assert.equal(saved.body.quote.checkoutReady, true);
+  assert.equal(saved.body.quote.checkoutReady, false);
   assert.equal(saved.body.payment.enabled, false);
   const checkout = await request(`/projects/${project.id}/checkout`, { method: 'POST', body: { orderId: saved.body.order.id } });
-  assert.equal(checkout.status, 503);
-  assert.equal(checkout.body.code, 'PAYMENT_UNAVAILABLE');
+  assert.equal(checkout.status, 409);
+  assert.equal(checkout.body.code, 'PRICE_UNAVAILABLE');
   assert.equal(getDb().prepare('SELECT status FROM orders WHERE id = ?').get(saved.body.order.id).status, 'draft');
   const custom = await create({ offerId: 'sur-mesure', language: 'fr', managedContent: false, scene3d: false });
   assert.equal((await request(`/projects/${custom.id}/checkout`, { method: 'POST', body: {} })).body.code, 'PRICE_UNAVAILABLE');
@@ -367,7 +367,7 @@ test('new order snapshots save estimated bounds and old snapshots stay byte-iden
   const original = structuredClone(saved.body.order.snapshot);
   const legacy = structuredClone(original);
   delete legacy.quote.maximumTotalCents;
-  for (const line of legacy.quote.lines) { delete line.maximumCents; delete line.estimated; }
+  for (const line of legacy.quote.lines) { delete line.maximumCents; delete line.estimated; delete line.quantity; delete line.scope; }
   const serialized = JSON.stringify(legacy);
   getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(serialized, orderId);
   assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, true);
@@ -406,4 +406,47 @@ test('historical booking and advanced-form inclusions stay untouched after remov
     assert.equal(reopened.body.quote.lines.find(line => line.key === id).included, false);
   }
   assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(saved.body.order.id).configuration_snapshot, bytes);
+});
+
+test('quantities survive project patches and changed quantities produce new immutable order snapshots', async () => {
+  await setPricing({ currency: defaultPricing.currency, base: defaultPricing.base, options: defaultPricing.options });
+  const project = await create({ offerId: 'vitrine', extras: ['extra-pages'], extraPageCount: 5 });
+  const first = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  const original = getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.body.order.id).configuration_snapshot;
+  assert.equal(first.body.quote.totalCents, 119000);
+  const partial = await request(`/projects/${project.id}`, { method: 'PATCH', body: { configuration: { language: 'fr-en' } } });
+  assert.equal(partial.body.project.configuration.extraPageCount, 5, 'an unrelated partial patch preserves quantity');
+  const onePage = withExtraPageCount({ ...partial.body.project.configuration, language: 'fr' }, 1);
+  assert.equal(onePage.extraPageCount, undefined, 'one page keeps the historical canonical representation');
+  const changed = await request(`/projects/${project.id}`, { method: 'PATCH', body: { configuration: onePage } });
+  assert.equal(changed.status, 200);
+  assert.equal(changed.body.project.configuration.extraPageCount, undefined, 'an explicit list with implicit one page replaces the old quantity');
+  const current = await request(`/projects/${project.id}/order`);
+  assert.equal(current.body.quote.totalCents, 95000);
+  assert.equal(current.body.isCurrent, false);
+  const second = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  assert.notEqual(second.body.order.id, first.body.order.id);
+  assert.equal(second.body.order.snapshot.quote.lines.find(line => line.key === 'extra-pages').quantity, 1);
+  assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.body.order.id).configuration_snapshot, original);
+});
+
+test('historical fixed-price snapshots remain current and byte-identical when new bases become scope estimates', async () => {
+  await setPricing({ currency: defaultPricing.currency, base: defaultPricing.base, options: defaultPricing.options });
+  const project = await create({ offerId: 'connecte', extras: ['additional-language'] });
+  const first = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  const historic = structuredClone(first.body.order.snapshot);
+  delete historic.quote.estimateBasis;
+  historic.quote.lines.find(line => line.key === 'base').estimated = false;
+  historic.quote.estimated = false;
+  historic.quote.requiresQuote = false;
+  historic.quote.checkoutReady = true;
+  const bytes = JSON.stringify(historic);
+  getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(bytes, first.body.order.id);
+  const read = await request(`/projects/${project.id}/order`);
+  assert.equal(read.body.isCurrent, true);
+  assert.equal(read.body.quote.estimated, true);
+  assert.equal(read.body.quote.checkoutReady, false, 'historical flags never authorize current payment');
+  const updated = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing: { ...billing, city: 'Lyon' } } });
+  assert.equal(updated.body.order.id, first.body.order.id);
+  assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(first.body.order.id).configuration_snapshot, bytes);
 });

@@ -219,3 +219,16 @@ test('all public offer transitions retain paid choices without charging formerly
     }
   }
 });
+
+test('all public offer changes preserve the chosen additional-page quantity', () => {
+  for (const source of PUBLIC_OFFER_IDS) {
+    const previous = prunePublicConfiguration({ offerId: source, extras: ['extra-pages', 'additional-language'], extraPageCount: 4 });
+    for (const target of PUBLIC_OFFER_IDS) {
+      const changed = changePublicOffer(previous, target);
+      assert.equal(changed.extraPageCount, 4);
+      assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + 24000 + 10000);
+      assert.equal(quoteConfiguration(changed).maximumTotalCents, defaultPricing.base[target] + 48000 + 10000);
+      assert.deepEqual(prunePublicConfiguration(changed), changed);
+    }
+  }
+});

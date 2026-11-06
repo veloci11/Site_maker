@@ -29,6 +29,8 @@ export const EXTRA_OPTION_IDS = [
   'backups-monthly',
 ] as const
 export type ExtraOptionId = (typeof EXTRA_OPTION_IDS)[number]
+/** Technical input limit, not a commitment to deliver projects of this size. */
+export const MAX_EXTRA_PAGE_COUNT = 100
 export type Configuration = {
   offerId: OfferId
   language: 'fr' | 'fr-en'
@@ -38,6 +40,8 @@ export type Configuration = {
   deployment: boolean
   maintenance: boolean
   extras: ExtraOptionId[]
+  /** Historical selections without a quantity mean one additional page. */
+  extraPageCount?: number
 }
 export type OptionId =
   | 'language-en'
@@ -64,6 +68,8 @@ export type Quote = {
     estimated?: boolean
     included: boolean
     billing: 'once' | 'monthly'
+    quantity?: number
+    scope?: string
   }[]
   totalCents: number | null
   /** Absent on historical snapshots; null means no approved upper estimate. */
@@ -72,6 +78,8 @@ export type Quote = {
   checkoutReady: boolean
   requiresQuote: boolean
   estimated: boolean
+  /** New estimates depend on the confirmed project scope; absent in old snapshots. */
+  estimateBasis?: 'scope'
 }
 
 export const offers = [
@@ -81,7 +89,7 @@ export const offers = [
     title: 'Vitrine',
     headline: 'Votre activité, en ligne.',
     description:
-      'Présentez votre activité avec un site personnalisé et donnez à vos visiteurs un moyen simple de vous contacter.',
+      'Présentez clairement votre activité, vos services et vos coordonnées sur 1 à 3 pages personnalisées. Un point de contact accessible sur mobile comme sur ordinateur.',
     features: ['Site personnalisé de 1 à 3 pages', 'Mobile, tablette et ordinateur', 'Contact, référencement de base, mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
@@ -90,9 +98,9 @@ export const offers = [
     id: 'connecte',
     slug: 'connecte',
     title: 'Business',
-    headline: 'Un site plus complet pour votre activité.',
+    headline: 'Votre site évolue avec votre activité.',
     description:
-      'Un site personnalisé de 1 à 6 pages avec un espace de gestion (CMS) pour modifier vos textes et images vous-même, un référencement local de base et des statistiques de visites.',
+      'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
     features: ['CMS inclus : modifiez textes et images', 'Site personnalisé de 1 à 6 pages', 'Référencement local et statistiques'],
     exampleId: 'lactel',
     variant: 'connecte',
@@ -102,7 +110,7 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Une expérience visuelle propre à votre marque et l’étude de vos demandes sur mesure.',
+    description: 'Tout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Distinguez votre marque avec une direction artistique et des interactions pensées pour votre projet. Vos demandes sur mesure sont étudiées avant devis.',
     features: ['Tout Business avec CMS, de 1 à 10 pages', 'Direction artistique et animations avancées', '3D si pertinente, performances soignées', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
@@ -269,7 +277,7 @@ export const faqs = [
   {
     question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
-      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus (CMS) » peut être ajoutée. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
+      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus (CMS) » à 300 € couvre cinq pages maximum ; au-delà, un devis complémentaire est nécessaire. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
     category: "Après la livraison",
   },
   {
@@ -305,8 +313,14 @@ export const faqs = [
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine convient pour présenter votre activité sur un site personnalisé de 1 à 3 pages. Business comprend 1 à 6 pages et un CMS pour modifier vos textes et images vous-même, avec référencement local et statistiques. Premium / 3D reprend tout Business sur 1 à 10 pages, avec direction artistique, animations et interactions avancées, et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne reste une option dans les trois forfaits. Nos développeurs vérifient votre besoin avant de confirmer le choix.",
+      "Vitrine convient pour présenter votre activité sur un site personnalisé de 1 à 3 pages. Business comprend 1 à 6 pages et un CMS pour modifier vos textes et images vous-même, avec référencement local et statistiques. Premium / 3D reprend tout Business sur 1 à 10 pages, avec direction artistique, animations et interactions avancées, et l’étude de vos demandes sur mesure. L’option « Ajouter une page » est estimée entre 60 et 120 € par page, selon la quantité choisie ; les fonctions des pages ajoutées sont à confirmer. La prise de rendez-vous en ligne reste une option dans les trois forfaits. Nos développeurs vérifient votre besoin avant de confirmer le choix.",
     category: "Choix du forfait",
+  },
+  {
+    question: "Comment sont comptées les pages supplémentaires et les options ?",
+    answer:
+      "Vitrine prévoit 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Si votre besoin dépasse cette capacité, choisissez le nombre de pages supplémentaires : chacune est estimée entre 60 et 120 €, dans le design du site et avec vos contenus. Par exemple, deux pages ajoutent 120 à 240 € à l’estimation. Les autres options conservent leur propre périmètre : une langue couvre jusqu’à cinq pages et la reprise de contenus jusqu’à cinq pages et quinze médias. Ces limites ne grandissent pas automatiquement avec le forfait. Précisez les pages concernées dans votre message ; tout complément est confirmé sur devis avant le démarrage.",
+    category: "Budget et suivi",
   },
   {
     question: "Et si je choisis le mauvais forfait ?",
@@ -329,7 +343,7 @@ export const faqs = [
   {
     question: "Puis-je proposer mon site dans une autre langue ?",
     answer:
-      "Oui. L’option à 100 € ajoute une langue supplémentaire pour cinq pages maximum, navigation comprise. Vous fournissez les traductions ; la rédaction et la traduction ne sont pas comprises. Indiquez la langue et les pages concernées dans votre message. Un volume plus important ou plusieurs langues nécessitent de confirmer le périmètre et le prix.",
+      "Oui. L’option à 100 € ajoute une langue supplémentaire pour cinq pages maximum, navigation comprise. Vous fournissez les traductions ; la rédaction et la traduction ne sont pas comprises. Indiquez la langue et les pages concernées dans votre message. Au-delà de cinq pages ou pour plusieurs langues, un devis complémentaire est nécessaire : le nombre de pages de votre forfait n’étend pas automatiquement cette option.",
     category: "Contenus",
   },
   {
@@ -469,7 +483,7 @@ export const optionDefinitions = [
   {
     id: 'extra-pages',
     title: 'Ajouter une page',
-    description: 'Une page supplémentaire construite sur un modèle existant, avec vos textes et images. Prix par page ; nombre de pages à confirmer dans la demande.',
+    description: 'Des pages supplémentaires dans le design de votre site, avec vos textes et images. Le prix par page est multiplié par la quantité choisie. Les fonctions et le périmètre sont confirmés avant le démarrage.',
     billing: 'once',
     group: 'content',
   },
@@ -636,6 +650,10 @@ export function normalizeConfiguration(input: unknown): Configuration {
   )
     throw new Error('Vérifiez les fonctionnalités choisies.')
   const extras = new Set((value.extras ?? []) as ExtraOptionId[])
+  if (value.extraPageCount !== undefined &&
+    (typeof value.extraPageCount !== 'number' || !Number.isSafeInteger(value.extraPageCount) ||
+      value.extraPageCount < 1 || value.extraPageCount > MAX_EXTRA_PAGE_COUNT))
+    throw new Error(`Choisissez entre 1 et ${MAX_EXTRA_PAGE_COUNT} pages supplémentaires.`)
   if (offer.id === 'connecte' || offer.id === 'immersif') {
     for (const id of ['portfolio-gallery', 'analytics', 'local-seo'] as const)
       extras.add(id)
@@ -659,6 +677,8 @@ export function normalizeConfiguration(input: unknown): Configuration {
     deployment: isPublicOffer(offer.id) || value.deployment === true,
     maintenance,
     extras: EXTRA_OPTION_IDS.filter((id) => extras.has(id)),
+    ...(extras.has('extra-pages') && typeof value.extraPageCount === 'number' && value.extraPageCount > 1
+      ? { extraPageCount: value.extraPageCount } : {}),
   }
 }
 
@@ -730,6 +750,55 @@ export function withOption(
   }
   return normalizeConfiguration(value)
 }
+
+/** Quantities only apply to explicitly selected extra pages, never to capped lots. */
+export function withExtraPageCount(configuration: Configuration, count: number): Configuration {
+  return normalizeConfiguration({
+    ...configuration,
+    extras: [...new Set([...configuration.extras, 'extra-pages'])],
+    extraPageCount: count,
+  })
+}
+export function getOptionScope(configuration: Configuration, id: OptionId): string | null {
+  if (isOptionIncluded(configuration, id))
+    return id === 'managed-content' && configuration.extras.includes('extra-pages')
+      ? 'Gestion des contenus des pages prévues dans le forfait.' : null
+  switch (id) {
+    case 'extra-pages': {
+      const count = configuration.extraPageCount ?? 1
+      return `${count} page${count > 1 ? 's' : ''} supplémentaire${count > 1 ? 's' : ''} dans le design du site, avec vos textes et images.`
+    }
+    case 'language-en':
+    case 'additional-language':
+      return 'Une langue, jusqu’à 5 pages, traductions fournies.'
+    case 'managed-content':
+      return 'Gestion des textes et images de 5 pages maximum.'
+    case 'content-import':
+      return 'Reprise de 5 pages et 15 médias maximum.'
+    default:
+      return null
+  }
+}
+function optionScopeDetail(configuration: Configuration, id: OptionId): string | null {
+  const scope = getOptionScope(configuration, id)
+  if (!scope) return null
+  if (id === 'language-en' || id === 'additional-language')
+    return `${scope} Au-delà de 5 pages ou pour plusieurs langues, un devis complémentaire est nécessaire.`
+  if (id === 'managed-content')
+    return `${scope} ${isOptionIncluded(configuration, id)
+      ? 'La gestion des pages supplémentaires et son éventuel complément de devis sont à confirmer.'
+      : 'Au-delà de 5 pages, un devis complémentaire est nécessaire.'}`
+  if (id === 'content-import')
+    return `${scope} Au-delà de l’une de ces limites, un devis complémentaire est nécessaire.`
+  return scope
+}
+export function getConfigurationScopeNotes(configuration: Configuration): string[] {
+  return optionDefinitions.flatMap(option => {
+    if (!isOptionSelected(configuration, option.id)) return []
+    const scope = optionScopeDetail(configuration, option.id)
+    return scope ? [`${option.title} : ${scope}`] : []
+  })
+}
 export function quoteConfiguration(input: Configuration, pricing: Pricing = defaultPricing): Quote {
   const config = normalizeConfiguration(input)
   const offer = getOffer(config.offerId)!
@@ -743,7 +812,7 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
       label: offer.title,
       amountCents: amount(pricing.base?.[config.offerId]),
       maximumCents: amount(pricing.base?.[config.offerId]),
-      estimated: false,
+      estimated: isPublicOffer(config.offerId),
       included: false,
       billing: 'once',
     },
@@ -751,21 +820,26 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
   for (const option of optionDefinitions) {
     if (!isOptionSelected(config, option.id)) continue
     const included = isOptionIncluded(config, option.id)
-    const minimum = included ? 0 : amount(pricing.options?.[option.id])
+    const unitMinimum = included ? 0 : amount(pricing.options?.[option.id])
+    const quantity = option.id === 'extra-pages' ? config.extraPageCount ?? 1 : 1
+    const minimum = unitMinimum === null ? null : unitMinimum * quantity
     const range = included ? undefined : OPTION_PRICE_RANGES[option.id]
     // Published upper bounds apply to their approved EUR minimums only. An
     // independently configured admin price must not inherit an invented cap.
     const maximum = range
-      ? minimum === range.min && pricing.currency === 'EUR' ? range.max ?? null : null
+      ? unitMinimum === range.min && pricing.currency === 'EUR' ? range.max === undefined ? null : range.max * quantity : null
       : minimum
+    const scope = optionScopeDetail(config, option.id)
     lines.push({
       key: option.id,
-      label: option.title,
+      label: option.id === 'extra-pages' && quantity > 1 ? `Pages supplémentaires (${quantity} pages)` : option.title,
       amountCents: minimum,
       maximumCents: maximum,
       estimated: Boolean(range),
       included,
       billing: option.billing,
+      ...(option.id === 'extra-pages' ? { quantity } : {}),
+      ...(scope ? { scope } : {}),
     })
   }
   const estimated = lines.some(line => line.estimated)
@@ -790,6 +864,7 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
     checkoutReady: !requiresQuote && totalCents !== null && monthlyTotalCents !== null,
     requiresQuote,
     estimated,
+    estimateBasis: 'scope',
   }
 }
 
@@ -797,7 +872,7 @@ function formatEstimate(minimum: number | null, maximum: number | null | undefin
   if (minimum === null) return 'À préciser'
   if (typeof maximum === 'number' && maximum > minimum)
     return `${formatMoney(minimum, currency)}–${formatMoney(maximum, currency)}`
-  return `${estimated && maximum !== minimum ? 'À partir de ' : ''}${formatMoney(minimum, currency)}`
+  return `${estimated ? 'À partir de ' : ''}${formatMoney(minimum, currency)}`
 }
 
 /** Read the saved bounds only; never reconstruct historical estimates from today's catalogue. */
@@ -810,7 +885,9 @@ export function formatQuoteLine(line: Pick<Quote['lines'][number], 'amountCents'
   return formatEstimate(line.amountCents, line.maximumCents, line.estimated, currency)
 }
 
-export function quoteEstimateNotice(quote: Pick<Quote, 'estimated' | 'maximumTotalCents'>): string {
+export function quoteEstimateNotice(quote: Pick<Quote, 'estimated' | 'maximumTotalCents'> & Partial<Pick<Quote, 'totalCents'>>): string {
+  if (quote.maximumTotalCents != null && quote.maximumTotalCents === quote.totalCents)
+    return 'Estimation de départ selon le périmètre du projet. Le montant sera confirmé sur devis.'
   return quote.maximumTotalCents == null
     ? 'Estimation minimale : certaines options n’ont pas de plafond défini. Le montant dépend du périmètre et sera confirmé sur devis.'
     : 'Fourchette indicative selon le périmètre des options. Le montant sera confirmé sur devis.'
