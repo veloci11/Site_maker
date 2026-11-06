@@ -1,3 +1,9 @@
+# Revue Astra publiée — 5 novembre 2026
+
+Corrections publiées sur https://gilmathis.com/ (`5b792f1`). Rapport courant : [revue, étapes et captures](docs/qa/astra-review/review.md). Code plus facile à modifier, périmètres précisés, bug API corrigé et anciennes règles d’animation retirées. Prix proposés dans une étude distincte, aucune modification des montants de production.
+
+230 tests passants, 24 trajets locaux et 24 publics ordinateur/mobile contrôlés, interactions rapides et préférence réduite vérifiées. Images approuvées conservées. Aucun formulaire public envoyé ; prévisualisation arrêtée. Les comptes rendus antérieurs ci-dessous gardent leur statut historique.
+
 ## Dernier correctif — six raccords publiés et vérifiés, 5 novembre 2026
 
 Version applicative `b261ffa`, release `20261105T205039Z-b261ffad11fb`, sur gilmathis.com. Chaque carte et son retour ont été vérifiés dans l’IAB local et public, sur ordinateur et mobile. Image opaque, contenu masqué par le cadre mobile, résumé/total coordonnés et Changer répondant pendant l’arrivée. Écart cadre/masque inférieur à 0,31 px CSS dans les relevés publics. 213 tests passants, 13 empreintes publiques conformes, aucune erreur/alerte IAB observée. Images et choix initiaux conservés, aucun envoi, viewport réinitialisé et localhost arrêté. Rapport et capture finale : `docs/qa/card-motion-polish/`.

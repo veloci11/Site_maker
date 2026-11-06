@@ -5,11 +5,11 @@ Dernière livraison applicative contrôlée le 6 novembre 2026 (UTC, 5 novembre 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `43b5fce8a17ac30dcb45727d59857842cb5ac049`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261106T035942Z-43b5fce8a17a` ; bascule atomique de `current`.
-- Client public : `/assets/index-Dv5GqWYT.js` ; SHA-256 du build archivé `2ae3ad8f90c61d53a3b6d8cea0720f5689ba6efb3e21d71f7509d6b853b76a33`, même URL de contenu vérifiée dans l’IAB public.
-- Archive : SHA-256 `efe0748bc9a30c14512229eaed0c57ba03df1a62c7d467425a88134620dc5447`, 13988243 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T205039Z-b261ffad11fb`.
+- Révision applicative : `5b792f1fcbab2bf6c7cff9bc3427782c72728aa4`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T050603Z-5b792f1fcbab` ; bascule atomique de `current`.
+- Client public : `/assets/index-CZJaxSig.js` ; SHA-256 du build archivé `d0b571d7b246ee8d0f5cac0eed3fe1531eeaf923a947012b0c475aa2af295347`, même URL de contenu vérifiée dans l’IAB public.
+- Archive : SHA-256 `901cfb26ec80ffe0496d19b438e4edd49dc916fab4ede3c19321f7c73927ab1e`, 13990777 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261106T035942Z-43b5fce8a17a`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -21,7 +21,15 @@ Les trois textures d’origine restent identiques octet pour octet. La partie ha
 
 L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Aucune hauteur maximale ni défilement interne. Grille explicite : trois choix à gauche, trois à droite, puis alternance gauche/droite. Elle suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte selon le nombre de choix est supprimée : titre et espacements ne rétrécissent plus. Gutter stable pour la largeur de page. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle ; le défilement normal permet d’accéder au bas. Plusieurs groupes d’options peuvent rester ouverts.
 
-## Dernière vérification — revue critique des options et fiabilité
+## Dernière vérification — revue Astra du modèle modulaire
+
+Six missions Astra et vérification parent. Les prix recommandés couvrent 6 forfaits/services et 26 options, avec comparables primaires, cas spécifiques et limites du moteur ; ils restent hors du catalogue de production. Contenus précisés, défaut HeadersInit corrigé, pages publiques rendues plus lisibles, règles CSS natives obsolètes retirées et guide manuel actualisé.
+
+TypeScript/build et 230 tests passent. 24 trajets locaux puis 24 trajets publics ordinateur/mobile aboutissent avec opacité 1, phase nulle, aucune animation active et aucun débordement. En local : Changer pendant l’ouverture, Évolution/Refonte puis historique, 17 choix et retrait/réajout, préférence réduite, FAQ/comparatif et erreurs du brief contrôlés. En public : client attendu, précisions mise en ligne, FAQ et console sans erreur/alerte observée.
+
+Sauvegarde réussie, prix et identifiants historiques conservés, définitions conformes au build ; 24 autres services gardent PID/état et GP Park répond HTTP 200. Aucun formulaire public envoyé. Choix publics vides, viewport restauré et localhost arrêté (4173/4174 libres). Workflow GitHub toujours uniquement manuel. Rapport et captures : `docs/qa/astra-review/review.md`.
+
+## Vérification précédente — revue critique des options et fiabilité
 
 Neuf avis spécialisés et contre-audit final ; newsletter/statistiques réexposées, langues/SEO local transversaux et galerie Connecté. Brief conditionnel, clarté du devis, bugs UTF-8/API, focus et FAQ 160 ms corrigés. TypeScript/build et 228 tests passent. Vingt-quatre trajets IAB publics ordinateur/mobile aboutissent avec phase nulle, opacité 1, zéro animation native active et aucun débordement. Les quatre menus publiés comportent 14/17/14/14 choix ; client attendu confirmé, FAQ progressive observée et console sans erreur/alerte. Préférence réduite publique contrôlée. Aucun formulaire ni fichier de test envoyé en production ; choix publics vides et viewport restaurés, localhost arrêté.
 

@@ -1,6 +1,6 @@
 # Revue Astra du 5 novembre 2026
 
-État de ce premier lot : code vérifié localement, publication suivie séparément dans `ops/DEPLOYMENT_STATUS.md`. Les prix restent des recommandations, aucun tarif de production remplacé.
+État : corrections publiées et vérifiées sur https://gilmathis.com/ ; détail dans `ops/DEPLOYMENT_STATUS.md`. Les prix restent des recommandations, aucun tarif de production remplacé.
 
 ## Demande et équipe
 
@@ -35,3 +35,37 @@ FAQ extraite : fermeture progressive 100,78 → 0 px, contenu immédiatement ine
 5. FAQ/comparatif : dépliage, repli et clavier contrôlés après extraction.
 
 Captures courantes conservées dans le dossier de travail `revue-astra-2026-11-05/captures`. Les vérifications décrivent ces parcours, pas tous les navigateurs ni une conformité d’accessibilité certifiée. Aucune demande de test en production.
+
+## Publication et livrables
+
+Révision `5b792f1fcbab2bf6c7cff9bc3427782c72728aa4`, release `20261106T050603Z-5b792f1fcbab`. Sauvegarde privée préalable et santé vérifiées ; prix, IDs et 24 autres services préservés. Vingt-quatre trajets publics à tailles stables réussis, bon client attendu et console observée sans erreur/alerte. Aucun formulaire public envoyé ; sélection vide, viewport restauré et prévisualisation locale arrêtée.
+
+Le classeur final comprend Fourchettes, Budgets, Marché et Périmètres : 32 références uniques, dix sources et quatorze prix d’options réellement affichés. Formules testées par modification d’entrée puis restauration, erreurs absentes, export relu indépendamment et rendus inspectés. Pas d’Excel natif exécuté. Les repères restent des propositions de devis, pas des prix activés.
+
+## Captures acceptées de cette revue
+
+1. Accueil initial : lecture et choix des six offres.
+
+![Accueil](01-accueil-avant.jpg)
+
+2. Configurateur initial : carte et choix compatibles.
+
+![Configuration](02-configurateur-avant.jpg)
+
+3. Questionnaire : passage et validation des champs.
+
+![Questionnaire](03-brief.jpg)
+
+4. Galerie filtrée : deux références Connecté.
+
+![Galerie](04-galerie.jpg)
+
+5. FAQ extraite : réponse ouverte, fermeture progressive contrôlée.
+
+![FAQ](05-faq.jpg)
+
+6. Rendu public final : prix non remplacés et présentation préservée.
+
+![Version publiée](06-public-final.jpg)
+
+Une première capture pleine page après scroll produisait un décalage du header sticky ; elle a été rejetée et remplacée par la capture du viewport à scroll initial. Elle n’est pas utilisée comme preuve d’un défaut de l’interface.

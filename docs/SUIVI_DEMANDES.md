@@ -2,9 +2,9 @@
 
 Mathis demande l’arrêt des exécutions et notifications automatiques de `Check application`. Les déclencheurs `push` et `pull_request` sont remplacés par `workflow_dispatch` : le contrôle reste lançable manuellement depuis GitHub. Les commandes de vérification locales sont conservées. Changement limité à la configuration du dépôt, sans déploiement applicatif.
 
-## Revue Astra des prix et du code — vérifiée localement, 5 novembre 2026
+## Revue Astra des prix et du code — publiée et vérifiée, 5 novembre 2026
 
-Six missions Astra, contre-revue indépendante et contrôle parent. 6 forfaits/services et 26 options étudiés à partir de sources réelles, prix proposés non publiés. Périmètres/frais clarifiés, références catalogue corrigées, fusion des en-têtes API corrigée. Comparatif/FAQ/prix extraits pour faciliter les modifications ; anciennes règles d’animation retirées, guide actualisé. TypeScript/build et 230 tests passent ; 24 trajets ordinateur/mobile et interactions rapides contrôlés dans l’IAB. Rapport : `qa/astra-review/review.md`. Publication suivie dans `ops/DEPLOYMENT_STATUS.md`.
+Six missions Astra, contre-revue indépendante et contrôle parent. 6 forfaits/services et 26 options étudiés à partir de sources réelles, prix proposés non publiés. Périmètres/frais clarifiés, références catalogue corrigées, fusion des en-têtes API corrigée. Comparatif/FAQ/prix extraits pour faciliter les modifications ; anciennes règles d’animation retirées, guide actualisé. TypeScript/build et 230 tests passent ; 24 trajets ordinateur/mobile et interactions rapides contrôlés dans l’IAB. Rapport : `qa/astra-review/review.md`. Publication `5b792f1`, release `20261106T050603Z-5b792f1fcbab` : 24 trajets publics passent, prix préservés, sauvegarde réussie, autres services inchangés. Localhost arrêté. Détail dans `ops/DEPLOYMENT_STATUS.md`.
 
 ## Revue critique des prix, options et fiabilité — publiée et vérifiée, 5 novembre 2026
 
