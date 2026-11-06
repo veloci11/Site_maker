@@ -1,6 +1,8 @@
 # FAQ — proposition éditoriale du 6 novembre 2026
 
-Statut : réponses intégrées dans `shared/catalog.ts`, relues au regard du périmètre confirmé et des sources ci-dessous. Les réponses ci-dessous sont rédigées à partir du périmètre commercial confirmé et du code courant, sans copier une FAQ externe.
+Historique de la première livraison. La correction ultérieure « gamme cumulative » remplace les réponses sur les inclusions : voir `../cumulative-offers/review.md` et le catalogue courant.
+
+Statut initial : réponses intégrées dans `shared/catalog.ts`, relues au regard du périmètre confirmé et des sources ci-dessous. Les réponses ci-dessous sont rédigées à partir du périmètre commercial confirmé et du code courant, sans copier une FAQ externe.
 
 ## Recherche externe vérifiée
 

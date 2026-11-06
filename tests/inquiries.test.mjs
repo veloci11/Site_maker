@@ -170,7 +170,7 @@ test('normalization makes repeated equivalent V2 payloads idempotent', async t =
 
 test('configured request normalizes included features and stores its own immutable server quote', async t => {
   const f = await fixture(t, { env: mailEnvironment() });
-  const request = configuredRequest({ configuration: { offerId: 'connecte', mobile: false, managedContent: false, extras: ['booking'] } });
+  const request = configuredRequest({ configuration: { offerId: 'connecte', mobile: false, managedContent: false, extras: ['analytics'] } });
   const first = await f.post(request);
   assert.equal(first.status, 201); assert.equal(first.body.notification, 'queued');
   const detail = getDb().prepare('SELECT * FROM inquiry_details WHERE inquiry_id=?').get(first.body.id);
@@ -178,7 +178,8 @@ test('configured request normalizes included features and stores its own immutab
   assert.equal(configuration.mobile, true); assert.equal(configuration.managedContent, true);
   assert.equal(configuration.extras.includes('user-accounts'), false, 'Business does not add accounts without a selected option');
   assert.equal(quote.lines.find(line => line.key === 'managed-content').included, true);
-  assert.equal(quote.lines.find(line => line.key === 'booking').included, true);
+  assert.equal(quote.lines.find(line => line.key === 'analytics').included, true);
+  assert.equal(quote.lines.some(line => ['booking', 'advanced-forms'].includes(line.key)), false);
   assert.equal(quote.lines.some(line => line.key === 'user-accounts'), false);
   assert.equal(quote.totalCents, 149000);
   const pricing = { ...defaultPricing, version: 'test-updated', base: { ...defaultPricing.base, connecte: 170000 } };

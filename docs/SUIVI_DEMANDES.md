@@ -1,3 +1,9 @@
+# Correction de gamme — 6 novembre 2026
+
+Business : « Plus populaire ». Mentions template, réservation/Doctolib et formulaire avancé retirées. Premium inclut tout Business (jusqu’à 6 pages, contenus modifiables, galerie, SEO local, statistiques) et ses prestations visuelles supplémentaires. Prix inchangés, historiques privés préservés. TypeScript, build et 246 tests passent ; contrôle IAB local ordinateur/mobile. Publication et preuves : `docs/qa/cumulative-offers/review.md` depuis la racine du dépôt.
+
+Les sections suivantes conservent l’historique des décisions précédentes.
+
 # Trois forfaits — publiés et vérifiés le 6 novembre 2026
 
 Vitrine 890 €, Business 1 490 €, Premium / 3D 2 499 €. Douze options retenues et détaillées, prix variables et totaux en fourchette, trois suivis mensuels exclusifs, formulaire court, Cal.com retiré. Langue supplémentaire générique, fonctions incluses hors des choix payants, comparatif valorisant Business. FAQ enrichie à seize questions avec sources primaires vérifiées.

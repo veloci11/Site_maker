@@ -305,7 +305,7 @@ test('historical snapshots preserve their bytes after display changes and new fr
   getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(serialized, orderId);
   const current = await request(`/projects/${project.id}/order`);
   assert.equal(current.body.isCurrent, true);
-  assert.equal(current.body.quote.lines.find(line => line.key === 'booking').amountCents, 0);
+  assert.equal(current.body.quote.lines.find(line => line.key === 'analytics').amountCents, 0);
   assert.equal(current.body.quote.lines.some(line => line.key === 'user-accounts'), false);
   const updated = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing: { ...billing, city: 'Lyon' } } });
   assert.equal(updated.body.order.id, orderId);
@@ -385,4 +385,25 @@ test('new order snapshots save estimated bounds and old snapshots stay byte-iden
     assert.equal((await request(`/projects/${project.id}/order`)).body.isCurrent, false, 'an explicit saved bound is commercial data');
     assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(orderId).configuration_snapshot, bytes);
   }
+});
+
+test('historical booking and advanced-form inclusions stay untouched after removal from current packages', async () => {
+  await setPricing({ currency: defaultPricing.currency, base: defaultPricing.base, options: defaultPricing.options });
+  const project = await create({ offerId: 'connecte' });
+  const saved = await request(`/projects/${project.id}/order`, { method: 'PUT', body: { billing } });
+  const snapshot = structuredClone(saved.body.order.snapshot);
+  for (const id of ['booking', 'advanced-forms']) {
+    snapshot.configuration.extras.push(id);
+    snapshot.quote.lines.push({ key: id, label: `Historique ${id}`, amountCents: 0, maximumCents: 0, estimated: false, included: true, billing: 'once' });
+  }
+  const bytes = JSON.stringify(snapshot);
+  getDb().prepare('UPDATE orders SET configuration_snapshot = ? WHERE id = ?').run(bytes, saved.body.order.id);
+  getDb().prepare('UPDATE projects SET configuration = ? WHERE id = ?').run(JSON.stringify(snapshot.configuration), project.id);
+  const reopened = await request(`/projects/${project.id}/order`);
+  assert.equal(reopened.body.isCurrent, false);
+  for (const id of ['booking', 'advanced-forms']) {
+    assert.equal(reopened.body.order.snapshot.quote.lines.find(line => line.key === id).included, true);
+    assert.equal(reopened.body.quote.lines.find(line => line.key === id).included, false);
+  }
+  assert.equal(getDb().prepare('SELECT configuration_snapshot FROM orders WHERE id = ?').get(saved.body.order.id).configuration_snapshot, bytes);
 });

@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Dernière correction — gamme cumulative, 6 novembre 2026
+
+Mathis demande « Plus populaire » sur Business, à la place d’« Offre principale ». Retirer des offres et du comparatif publics les mentions Template personnalisé, Doctolib/outil de réservation et Formulaire avancé. Les anciens IDs restent pour les dossiers historiques, sans les proposer ni les inclure dans les nouvelles configurations publiques.
+
+**Premium / 3D comprend désormais toutes les prestations Business** : jusqu’à 6 pages, gestion des textes/images, référencement local, galerie/tarifs/témoignages, statistiques et le socle commun mobile/contact/SEO technique/mise en production. S’y ajoutent direction artistique, animations/interactions avancées, 3D si pertinente, optimisation et accompagnement renforcés. Les statistiques ne sont plus un supplément Premium. Un changement de forfait ne doit pas rendre payante une ancienne inclusion. Prix inchangés : 890 / 1 490 / 2 499 €. Cette correction remplace les descriptions antérieures contradictoires, notamment la distinction de Premium comme offre qui ne reprendrait pas Business.
+
 ## Dernière décision — trois forfaits, 6 novembre 2026
 
 Cette demande de Mathis remplace les consignes historiques contradictoires ci-dessous. Public : **Vitrine 890 €**, **Business 1 490 €**, **Premium / 3D 2 499 €**, noms et montants confirmés dans le chat. Retirer les offres publiques Sur mesure, Évolution et Refonte. `publicOffers` / `PUBLIC_OFFER_IDS` portent les trois offres ; `offers` et les quatre IDs historiques restent disponibles pour les anciens dossiers. Les slugs connecte et immersif-3d sont conservés. Les anciennes routes publiques redirigent proprement.

@@ -4,14 +4,12 @@ import { publicOffers, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 
-type ComparisonStatus = 'included' | 'absent' | '1 à 3' | 'Jusqu’à 6' | 'À définir' | 'Si pertinent'
+type ComparisonStatus = 'included' | 'absent' | '1 à 3' | 'Jusqu’à 6' | 'Si pertinent'
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint?: string }
 const comparisonRows: readonly ComparisonRow[] = [
-  { title: 'Nombre de pages', values: ['1 à 3', 'Jusqu’à 6', 'À définir'] },
-  { title: 'Template personnalisé', values: ['absent', 'included', 'absent'], hint: 'Vitrine utilise un template ; Business le personnalise. Premium / 3D repose sur une direction artistique propre au projet.' },
+  { title: 'Nombre de pages', values: ['1 à 3', 'Jusqu’à 6', 'Jusqu’à 6'] },
   { title: 'Textes et images modifiables', values: ['absent', 'included', 'included'], hint: 'Compris dans Business et Premium / 3D. Peut être ajouté à Vitrine, sans les autres fonctions du forfait Business.' },
-  { title: 'Doctolib ou outil de réservation', values: ['absent', 'included', 'absent'], hint: 'Intégration d’un outil compatible ; son abonnement éventuel reste séparé.' },
-  { title: 'Statistiques avec configuration adaptée', values: ['absent', 'included', 'absent'] },
+  { title: 'Statistiques avec configuration adaptée', values: ['absent', 'included', 'included'] },
   { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'] },
   { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'] },
 ]
@@ -19,10 +17,9 @@ const comparisonDetails: readonly ComparisonRow[] = [
   { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'] },
   { title: 'Three.js / WebGL', values: ['absent', 'absent', 'Si pertinent'], hint: 'Le recours à la 3D dépend du projet. La création d’un modèle et les éléments supplémentaires sont distincts de l’intégration initiale.' },
   { title: 'Formulaire de contact', values: ['included', 'included', 'included'] },
-  { title: 'Formulaire avancé', values: ['absent', 'included', 'absent'] },
   { title: 'Bases du SEO technique', values: ['included', 'included', 'included'] },
-  { title: 'Bases du référencement local', values: ['absent', 'included', 'absent'] },
-  { title: 'Galerie, tarifs et témoignages', values: ['absent', 'included', 'absent'] },
+  { title: 'Bases du référencement local', values: ['absent', 'included', 'included'] },
+  { title: 'Galerie, tarifs et témoignages', values: ['absent', 'included', 'included'] },
   { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'] },
   { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'] },
   { title: 'Mise en production', values: ['included', 'included', 'included'] },

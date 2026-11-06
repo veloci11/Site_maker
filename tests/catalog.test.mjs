@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   normalizeConfiguration, quoteConfiguration, defaultPricing, EXTRA_OPTION_IDS,
-  offers, publicOffers, examples, optionDefinitions, optionGroups, isOptionIncluded,
+  offers, publicOffers, examples, faqs, optionDefinitions, optionGroups, isOptionIncluded,
   isOptionSelected, withOption, formatOptionPrice, formatQuoteTotal, formatQuoteLine, getOffer, MONTHLY_PLAN_IDS,
 } from '../shared/catalog.ts';
 
@@ -42,7 +42,7 @@ test('every public base includes responsive and launch without charging them aga
 
 test('Business includes its professional functions while accounts remain a paid addition', () => {
   const config = normalizeConfiguration({ offerId: 'connecte' });
-  for (const id of ['managed-content', 'booking', 'advanced-forms', 'portfolio-gallery', 'local-seo', 'analytics']) {
+  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics']) {
     assert.equal(isOptionIncluded(config, id), true, id);
     assert.equal(isOptionSelected(config, id), true, id);
     assert.equal(quoteConfiguration(config).lines.find(line => line.key === id).amountCents, 0);
@@ -229,4 +229,39 @@ test('legacy quote formatting reads saved amounts without reconstructing or muta
   assert.deepEqual(minimum, snapshot);
   assert.equal(Object.hasOwn(minimum, 'maximumTotalCents'), false);
   assert.equal(formatQuoteTotal({ currency: 'EUR', totalCents: null, requiresQuote: true }), 'Sur devis');
+});
+
+test('Premium includes every Business capability and adds its visual experience at the approved price', () => {
+  const business = normalizeConfiguration({ offerId: 'connecte' });
+  const premium = normalizeConfiguration({ offerId: 'immersif', extras: ['analytics'] });
+  for (const option of optionDefinitions) {
+    if (isOptionIncluded(business, option.id)) {
+      assert.equal(isOptionIncluded(premium, option.id), true, option.id);
+      assert.equal(isOptionSelected(premium, option.id), true, option.id);
+    }
+  }
+  const quote = quoteConfiguration(premium);
+  assert.equal(quote.totalCents, 249900);
+  assert.equal(quote.maximumTotalCents, 249900);
+  assert.equal(quote.estimated, false);
+  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d']) {
+    const line = quote.lines.find(line => line.key === id);
+    assert.equal(line.included, true, id);
+    assert.equal(line.amountCents, 0, id);
+  }
+  assert.match(getOffer('immersif').features.join(' '), /Tout Business.*6 pages/);
+});
+
+test('retired booking and advanced forms are not included in any new public base but historical identifiers remain', () => {
+  for (const offer of publicOffers) {
+    const config = normalizeConfiguration({ offerId: offer.id });
+    for (const id of ['booking', 'advanced-forms']) {
+      assert.equal(isOptionIncluded(config, id), false);
+      assert.equal(isOptionSelected(config, id), false);
+      assert.ok(optionDefinitions.some(option => option.id === id));
+    }
+  }
+  const text = JSON.stringify({ offers: publicOffers, faqs });
+  assert.doesNotMatch(text, /template|Doctolib|réservation|formulaire avancé|offre principale/i);
+  assert.ok(faqs.some(faq => faq.question === 'Qu’apporte Premium / 3D par rapport à Business ?'));
 });

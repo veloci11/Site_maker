@@ -27,7 +27,7 @@ export const PUBLIC_OPTIONS_BY_OFFER = {
   immersif: [
     'additional-language', 'user-accounts', 'online-payment', 'online-store',
     'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d',
-    'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
+    'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
   ],
   'sur-mesure': [],
 } as const satisfies Record<OfferId, readonly OptionId[]>

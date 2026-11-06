@@ -28,7 +28,7 @@ const publicPages: Record<string, RouteSeo> = {
   ),
   '/forfaits': page(
     'Comparer les forfaits de création de sites',
-    'Comparez les trois forfaits Vitrine, Business et Premium / 3D : pages, design, réservation et animations selon les besoins de votre site internet.',
+    'Comparez les trois forfaits Vitrine, Business et Premium / 3D : pages, gestion des contenus, référencement, statistiques et animations pour votre site internet.',
     '/forfaits',
   ),
   '/options': page(

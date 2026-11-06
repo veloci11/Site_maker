@@ -98,7 +98,7 @@ test('included mobile preserves a draft identity while paid extras change it', a
 })
 
 test('included and covered options do not produce false draft revisions', () => {
-  assert.equal(configurationKey({ offerId: 'connecte', mobile: false, managedContent: false, extras: [] }), configurationKey({ offerId: 'connecte', mobile: true, managedContent: true, extras: ['booking', 'booking'] }))
+  assert.equal(configurationKey({ offerId: 'connecte', mobile: false, managedContent: false, extras: [] }), configurationKey({ offerId: 'connecte', mobile: true, managedContent: true, extras: ['analytics', 'analytics'] }))
   assert.equal(configurationKey({ offerId: 'immersif', mobile: false, scene3d: false }), configurationKey({ offerId: 'immersif', mobile: true, scene3d: true, extras: [] }))
   assert.equal(configurationKey({ offerId: 'vitrine', extras: ['online-store'] }), configurationKey({ offerId: 'vitrine', extras: ['online-payment', 'online-store', 'product-catalog'] }))
   assert.equal(configurationKey({ offerId: 'vitrine', extras: ['member-roles'] }), configurationKey({ offerId: 'vitrine', extras: ['user-accounts', 'member-roles'] }))
@@ -113,7 +113,7 @@ test('legacy drafts gain default fields without losing their saved project ident
     const restored = readDraft()
     assert.equal(restored.id, legacy.id); assert.deepEqual(restored.saved, legacy.saved)
     assert.equal(restored.configuration.mobile, true); assert.equal(restored.configuration.managedContent, true)
-    assert.deepEqual(restored.configuration.extras, ['booking', 'portfolio-gallery', 'advanced-forms', 'analytics', 'local-seo'])
+    assert.deepEqual(restored.configuration.extras, ['portfolio-gallery', 'analytics', 'local-seo'])
     assert.equal(writeDraft(restored.configuration).id, legacy.id)
     assert.deepEqual(readDraft().saved, legacy.saved)
     legacy.configuration.offerId = 'vitrine'; delete legacy.saved

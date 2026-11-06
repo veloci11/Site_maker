@@ -82,7 +82,7 @@ export const offers = [
     headline: 'Votre activité, en ligne.',
     description:
       'Pour les indépendants qui veulent une présence en ligne claire et professionnelle.',
-    features: ['1 à 3 pages sur un template', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
+    features: ['1 à 3 pages pour présenter votre activité', 'Mobile, tablette et ordinateur', 'Contact, SEO de base et mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
   },
@@ -92,8 +92,8 @@ export const offers = [
     title: 'Business',
     headline: 'Un site plus complet pour votre activité.',
     description:
-      'Notre offre principale pour les professionnels : présentez votre activité et facilitez les prises de contact.',
-    features: ['Jusqu’à 6 pages personnalisées et modifiables', 'Formulaire avancé et réservation', 'SEO local, galerie et statistiques'],
+      'Pour les professionnels qui souhaitent présenter leur activité, gérer leurs contenus et suivre les visites de leur site.',
+    features: ['Jusqu’à 6 pages personnalisées et modifiables', 'Galerie, tarifs et témoignages', 'SEO local et statistiques de visites'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -102,8 +102,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Pour les projets qui demandent une direction artistique personnalisée et une expérience visuelle singulière.',
-    features: ['Direction artistique personnalisée', 'Animations et interactions avancées', '3D si pertinente, performances soignées'],
+    description: 'Tout ce que comprend Business, avec une direction artistique personnalisée et une expérience visuelle singulière.',
+    features: ['Tout Business, jusqu’à 6 pages', 'Direction artistique et animations avancées', '3D si pertinente et accompagnement renforcé'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -257,7 +257,7 @@ export const faqs = [
   {
     question: "Quels frais dois-je prévoir après la création du site ?",
     answer:
-      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Le nom de domaine, les éventuels abonnements aux outils de réservation ou d’envoi d’e-mails et les frais du prestataire de paiement sont séparés. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
+      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Le nom de domaine, les éventuels abonnements aux outils externes et les frais du prestataire de paiement sont séparés. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
     category: "Budget et suivi",
   },
   {
@@ -299,13 +299,13 @@ export const faqs = [
   {
     question: "Le référencement Google est-il compris ?",
     answer:
-      "Les trois forfaits comprennent les bases du référencement technique. Business comprend aussi les bases du référencement local. Cela prépare le site à être compris par les moteurs de recherche, mais ne garantit ni une position, ni un volume de visites ou de ventes. La visibilité dépend aussi des contenus, de la concurrence et du travail réalisé dans le temps ; les actions prévues sont précisées avec votre projet.",
+      "Les trois forfaits comprennent les bases du référencement technique. Business et Premium / 3D comprennent aussi les bases du référencement local. Cela prépare le site à être compris par les moteurs de recherche, mais ne garantit ni une position, ni un volume de visites ou de ventes. La visibilité dépend aussi des contenus, de la concurrence et du travail réalisé dans le temps ; les actions prévues sont précisées avec votre projet.",
     category: "Visibilité",
   },
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine convient à une présentation de votre activité en une à trois pages. Business permet un site plus complet, jusqu’à six pages, avec notamment réservation, formulaire avancé et statistiques. Premium / 3D s’adresse à un besoin de direction artistique, d’animations ou d’interactions particulières. Choisissez le forfait qui semble correspondre à votre projet : nos développeurs vérifient ensuite le besoin et les options avec vous.",
+      "Vitrine convient à une présentation de votre activité en une à trois pages. Business permet un site plus complet, jusqu’à six pages modifiables, avec galerie, tarifs, témoignages, référencement local et statistiques. Premium / 3D reprend tous ces éléments et ajoute une direction artistique, des animations et des interactions adaptées au projet. Choisissez le forfait qui semble correspondre à votre projet : nos développeurs vérifient ensuite le besoin et les options avec vous.",
     category: "Choix du forfait",
   },
   {
@@ -321,9 +321,9 @@ export const faqs = [
     category: "Budget et suivi",
   },
   {
-    question: "Peut-on intégrer Doctolib ou mon outil de réservation ?",
+    question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Business comprend l’intégration de Doctolib ou d’un outil de réservation compatible. Nous vérifions la solution utilisée et les possibilités qu’elle autorise avant de définir son intégration au site. Un abonnement éventuel à ce service reste à votre charge. Une réservation développée spécialement, ou une connexion à une API particulière, demande une étude distincte.",
+      "Premium / 3D comprend tout Business : jusqu’à six pages modifiables, une galerie, vos tarifs et témoignages, les bases du référencement local et les statistiques. Il ajoute une direction artistique personnalisée, des animations avancées, des interactions propres au projet, une optimisation renforcée des performances et un accompagnement renforcé. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
     category: "Fonctionnalités",
   },
   {
@@ -341,7 +341,7 @@ export const faqs = [
   {
     question: "La 3D est-elle indispensable dans Premium / 3D ?",
     answer:
-      "Non. Premium / 3D repose d’abord sur une direction artistique et des interactions adaptées à votre projet. Three.js ou WebGL sont utilisés lorsque la 3D apporte un intérêt réel à la présentation. Le modèle à intégrer est fourni ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
+      "Non. Premium / 3D reprend tout Business et ajoute une direction artistique et des interactions adaptées à votre projet. Three.js ou WebGL sont utilisés lorsque la 3D apporte un intérêt réel à la présentation. Le modèle à intégrer est fourni ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
     category: "Design et 3D",
   },
   {
@@ -505,7 +505,7 @@ export const optionDefinitions = [
   {
     id: 'analytics',
     title: 'Suivre mes visites',
-    description: 'Configuration des statistiques d’un site : visites et un événement utile, avec réglages adaptés à l’outil retenu. Déjà compris dans Business ; abonnement éventuel de l’outil séparé.',
+    description: 'Configuration des statistiques d’un site : visites et un événement utile, avec réglages adaptés à l’outil retenu. Déjà compris dans Business et Premium / 3D ; abonnement éventuel de l’outil séparé.',
     billing: 'once',
     group: 'visibility',
   },
@@ -628,8 +628,8 @@ export function normalizeConfiguration(input: unknown): Configuration {
   )
     throw new Error('Vérifiez les fonctionnalités choisies.')
   const extras = new Set((value.extras ?? []) as ExtraOptionId[])
-  if (offer.id === 'connecte') {
-    for (const id of ['booking', 'advanced-forms', 'portfolio-gallery', 'analytics', 'local-seo'] as const)
+  if (offer.id === 'connecte' || offer.id === 'immersif') {
+    for (const id of ['portfolio-gallery', 'analytics', 'local-seo'] as const)
       extras.add(id)
   }
   if (extras.has('member-roles')) extras.add('user-accounts')
@@ -659,8 +659,8 @@ export function isOptionIncluded(configuration: Configuration, id: OptionId): bo
     ((id === 'mobile' || id === 'deployment') && isPublicOffer(configuration.offerId)) ||
     (id === 'managed-content' &&
       (configuration.offerId === 'connecte' || configuration.offerId === 'immersif')) ||
-    (configuration.offerId === 'connecte' &&
-      (['booking', 'advanced-forms', 'portfolio-gallery', 'analytics', 'local-seo'] as OptionId[]).includes(id)) ||
+    ((configuration.offerId === 'connecte' || configuration.offerId === 'immersif') &&
+      (['portfolio-gallery', 'analytics', 'local-seo'] as OptionId[]).includes(id)) ||
     (id === 'scene-3d' && configuration.offerId === 'immersif') ||
     ((id === 'product-catalog' || id === 'online-payment') &&
       configuration.extras.includes('online-store'))

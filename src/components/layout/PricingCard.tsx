@@ -64,7 +64,7 @@ export function PricingCard({
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
           <span className="pricing-card__grain" />
         </span>
-        {featured ? <span className="pricing-card__featured">Offre principale</span> : null}
+        {featured ? <span className="pricing-card__featured">Plus populaire</span> : null}
         <h3>{title}</h3>
         <p className="pricing-card__price">{priceLabel}</p>
       </div>

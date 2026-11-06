@@ -60,7 +60,7 @@ test('switching offers preserves compatible choices and removes functions not in
   assert.equal(isOptionSelected(vitrine, 'additional-language'), true);
   assert.equal(vitrine.managedContent, false);
   assert.equal(isOptionSelected(vitrine, 'analytics'), false);
-  assert.ok(connected.extras.includes('booking'));
+  assert.ok(connected.extras.includes('portfolio-gallery'));
 });
 
 test('a selected shop makes payment included and keeps the server quote consistent', () => {
@@ -91,7 +91,7 @@ test('public choices hide every included feature, including payment covered by t
     assert.equal(isOptionSelected(withoutShop, 'online-payment'), false, 'removing a bundle never silently selects a paid standalone option');
     assert.equal(quoteConfiguration(withoutShop).totalCents, defaultPricing.base[offerId]);
     assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'managed-content'), offerId === 'vitrine');
-    assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'analytics'), offerId !== 'connecte');
+    assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'analytics'), offerId === 'vitrine');
   }
 });
 
@@ -177,4 +177,42 @@ test('legacy public English drafts become one generic option idempotently withou
   prunePublicConfiguration(legacyCustom);
   assert.deepEqual(legacyCustom, snapshot);
   assert.equal(quoteConfiguration(legacyCustom).lines.some(line => line.key === 'language-en'), true);
+});
+
+test('old public Business selections lose retired inclusions and Premium analytics becomes free', () => {
+  const previous = normalizeConfiguration({ offerId: 'connecte', extras: ['booking', 'advanced-forms', 'additional-language', 'hosting-monthly'] });
+  const snapshot = structuredClone(previous);
+  const current = prunePublicConfiguration(previous);
+  for (const id of ['booking', 'advanced-forms']) {
+    assert.equal(isOptionSelected(current, id), false);
+    assert.ok(!getPublicOptions(current).some(option => option.id === id));
+  }
+  assert.equal(quoteConfiguration(current).totalCents, 159000);
+  assert.equal(quoteConfiguration(current).monthlyTotalCents, 1900);
+  assert.deepEqual(previous, snapshot);
+  for (const offerId of ['connecte', 'immersif']) {
+    const config = prunePublicConfiguration({ offerId, extras: ['analytics'] });
+    assert.ok(!getPublicOptions(config).some(option => option.id === 'analytics'));
+    assert.equal(quoteConfiguration(config).totalCents, defaultPricing.base[offerId]);
+    assert.equal(quoteConfiguration(config).lines.find(line => line.key === 'analytics').amountCents, 0);
+  }
+});
+
+test('all public offer transitions retain paid choices without charging formerly included capabilities', () => {
+  for (const source of PUBLIC_OFFER_IDS) {
+    const original = prunePublicConfiguration({ offerId: source, extras: ['additional-language', 'user-accounts', 'online-store', 'serenity-monthly'] });
+    const before = structuredClone(original);
+    for (const target of PUBLIC_OFFER_IDS) {
+      const changed = changePublicOffer(original, target);
+      const quote = quoteConfiguration(changed);
+      assert.equal(quote.totalCents, defaultPricing.base[target] + 10000 + 30000 + 60000);
+      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + 10000 + 60000 + 110000);
+      assert.equal(quote.monthlyTotalCents, 6900);
+      assert.deepEqual(getUnavailableOptions(changed), []);
+      if (target === 'vitrine') {
+        for (const id of ['managed-content', 'analytics', 'local-seo', 'portfolio-gallery']) assert.equal(isOptionSelected(changed, id), false);
+      }
+      assert.deepEqual(original, before);
+    }
+  }
 });
