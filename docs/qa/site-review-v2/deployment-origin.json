@@ -1,0 +1,15 @@
+{
+  "release": "20261106T035942Z-43b5fce8a17a",
+  "commit": "43b5fce8a17ac30dcb45727d59857842cb5ac049",
+  "previous": "releases/20261105T205039Z-b261ffad11fb",
+  "health": true,
+  "offers": 4,
+  "options": 26,
+  "productionPricesUnchanged": true,
+  "historicalIdsUnchanged": true,
+  "reviewedDefinitionsMatch": true,
+  "otherServicesChecked": 24,
+  "otherProjectsUnchanged": true,
+  "gpStatus": 200,
+  "backupCompleted": true
+}

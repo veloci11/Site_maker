@@ -1,15 +1,15 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative contrôlée le 5 novembre 2026 (UTC), dans l’IAB public sur ordinateur et mobile.
+Dernière livraison applicative contrôlée le 6 novembre 2026 (UTC, 5 novembre au Mexique), dans l’IAB public sur ordinateur et mobile.
 
 ## Version active
 
 - URL publique : https://gilmathis.com/
-- Révision applicative : `b261ffad11fb09fe49cf6d0377bf901f5a728fd4`, poussée sur `veloci11/Site_maker` / `main`.
-- Release : `/home/mathis/site-maker/releases/20261105T205039Z-b261ffad11fb` ; bascule atomique de `current`.
-- Client public : `/assets/index-BlW3ueHa.js` ; SHA-256 `0c054222afbf5ce835b5da7dcbb0287831dd8eab5183c4c3b501b6a2cf6da7db`.
-- Archive : SHA-256 `d6f8922b27287cfefa7929d1734c025c8cb0ebb7f895c83f8023c222f01c75d7`, 13985580 octets, vérifiée avant extraction.
-- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T090925Z-57aacc2a6ad6`.
+- Révision applicative : `43b5fce8a17ac30dcb45727d59857842cb5ac049`, poussée sur `veloci11/Site_maker` / `main`.
+- Release : `/home/mathis/site-maker/releases/20261106T035942Z-43b5fce8a17a` ; bascule atomique de `current`.
+- Client public : `/assets/index-Dv5GqWYT.js` ; SHA-256 du build archivé `2ae3ad8f90c61d53a3b6d8cea0720f5689ba6efb3e21d71f7509d6b853b76a33`, même URL de contenu vérifiée dans l’IAB public.
+- Archive : SHA-256 `efe0748bc9a30c14512229eaed0c57ba03df1a62c7d467425a88134620dc5447`, 13988243 octets, vérifiée avant extraction.
+- Version précédente conservée : `/home/mathis/site-maker/releases/20261105T205039Z-b261ffad11fb`.
 
 Le dépôt peut contenir un compte rendu plus récent ; cette révision désigne le code applicatif effectivement en ligne.
 
@@ -21,7 +21,13 @@ Les trois textures d’origine restent identiques octet pour octet. La partie ha
 
 L’image a une hauteur fixe pendant l’ajout/retrait des options, animé sur 620 ms dans la carte. Aucune hauteur maximale ni défilement interne. Grille explicite : trois choix à gauche, trois à droite, puis alternance gauche/droite. Elle suit les choix dans la session ; un retrait compacte la séquence et un réajout arrive à sa fin. La présentation compacte selon le nombre de choix est supprimée : titre et espacements ne rétrécissent plus. Gutter stable pour la largeur de page. Sur mobile ou carte étroite, une colonne conserve la lisibilité. L’ancrage sticky tient compte de la hauteur réelle ; le défilement normal permet d’accéder au bas. Plusieurs groupes d’options peuvent rester ouverts.
 
-## Dernière vérification — raccord complet des cartes
+## Dernière vérification — revue critique des options et fiabilité
+
+Neuf avis spécialisés et contre-audit final ; newsletter/statistiques réexposées, langues/SEO local transversaux et galerie Connecté. Brief conditionnel, clarté du devis, bugs UTF-8/API, focus et FAQ 160 ms corrigés. TypeScript/build et 228 tests passent. Vingt-quatre trajets IAB publics ordinateur/mobile aboutissent avec phase nulle, opacité 1, zéro animation native active et aucun débordement. Les quatre menus publiés comportent 14/17/14/14 choix ; client attendu confirmé, FAQ progressive observée et console sans erreur/alerte. Préférence réduite publique contrôlée. Aucun formulaire ni fichier de test envoyé en production ; choix publics vides et viewport restaurés, localhost arrêté.
+
+Sauvegarde privée préalable réussie. Prix en production et 26 IDs historiques inchangés ; définitions d’options conformes au build relu. Santé valide, 24 autres services conservent PID/état, GP Park HTTP 200. Workflow GitHub toujours manuel. Les nouveaux tarifs restent des propositions dans le classeur révisé. Rapport : `docs/qa/site-review-v2/review.md`.
+
+## Vérification précédente — raccord complet des cartes
 
 Révision `b261ffa` : 24 trajets locaux et 24 publics contrôlés dans l’IAB, sur ordinateur et mobile. Un calque d’image reste opaque ; le masque extérieur suit les quatre bords du cadre. Résumé et total suivent le contenu, titres séquencés et Changer vivant hors capture, avec apparence décorative pour le raccord. Retour au comparatif sans miniature en fondu normal. Mouvement réduit et actions rapides préservés.
 

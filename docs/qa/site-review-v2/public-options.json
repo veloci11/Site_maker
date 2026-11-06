@@ -1,0 +1,85 @@
+[
+  {
+    "plan": "Vitrine",
+    "count": 14,
+    "ids": [
+      "option-mobile",
+      "option-language-en",
+      "option-managed-content",
+      "option-booking",
+      "option-portfolio-gallery",
+      "option-extra-pages",
+      "option-additional-language",
+      "option-copywriting",
+      "option-local-seo",
+      "option-analytics",
+      "option-newsletter",
+      "option-deployment",
+      "option-maintenance-monthly",
+      "option-hosting-monthly"
+    ]
+  },
+  {
+    "plan": "Connecté",
+    "count": 17,
+    "ids": [
+      "option-language-en",
+      "option-member-roles",
+      "option-booking",
+      "option-online-store",
+      "option-advanced-forms",
+      "option-blog",
+      "option-portfolio-gallery",
+      "option-extra-pages",
+      "option-additional-language",
+      "option-copywriting",
+      "option-local-seo",
+      "option-analytics",
+      "option-newsletter",
+      "option-crm-integration",
+      "option-deployment",
+      "option-maintenance-monthly",
+      "option-hosting-monthly"
+    ]
+  },
+  {
+    "plan": "Immersif 3D",
+    "count": 14,
+    "ids": [
+      "option-language-en",
+      "option-managed-content",
+      "option-booking",
+      "option-portfolio-gallery",
+      "option-extra-pages",
+      "option-additional-language",
+      "option-copywriting",
+      "option-custom-3d",
+      "option-local-seo",
+      "option-analytics",
+      "option-newsletter",
+      "option-deployment",
+      "option-maintenance-monthly",
+      "option-hosting-monthly"
+    ]
+  },
+  {
+    "plan": "Sur mesure",
+    "count": 14,
+    "ids": [
+      "option-language-en",
+      "option-managed-content",
+      "option-booking",
+      "option-online-store",
+      "option-extra-pages",
+      "option-additional-language",
+      "option-copywriting",
+      "option-local-seo",
+      "option-analytics",
+      "option-newsletter",
+      "option-crm-integration",
+      "option-deployment",
+      "option-maintenance-monthly",
+      "option-hosting-monthly"
+    ]
+  }
+]

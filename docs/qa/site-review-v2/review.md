@@ -39,4 +39,26 @@ Le classeur révisé comporte deux onglets, 26 options, dix références et 26 �
 
 Identité commerciale, conditions précises, tarifs définitifs et destination Resend restent les décisions explicitement différées par Mathis. Aucun renseignement ni secret inventé. Aucune demande ni image de test envoyée en production. Les vérifications locales ne prouvent pas un envoi réel d'e-mail ni les prestations qui seront assurées aux futurs clients.
 
-État au présent compte rendu : code validé localement ; publication sur l'instance existante et vérification HTTPS à suivre. Le workflow GitHub reste uniquement manuel. Images originales, arbitrages mobile/mise en ligne, données et anciens dossiers conservés.
+Version `43b5fce8a17ac30dcb45727d59857842cb5ac049`, release `20261106T035942Z-43b5fce8a17a`, publiée sur https://gilmathis.com/. Sauvegarde préalable réussie ; prix de production et IDs historiques conservés ; 24 autres services gardent PID/état et GP Park répond HTTP 200. Le client `/assets/index-Dv5GqWYT.js` attendu est chargé dans l'IAB public.
+
+Les 24 trajets publics ordinateur/mobile aboutissent avec opacité 1, phase nulle, zéro animation native active et aucun débordement. Les quatre menus réels ont 14/17/14/14 choix. La FAQ publique se replie progressivement (66 relevés, 21 hauteurs), la préférence réduite est contrôlée et la console publique ne contient aucune erreur/alerte observée. Aucun formulaire envoyé en public. Choix publics vides, viewport restauré et localhost arrêté.
+
+Le workflow GitHub reste uniquement manuel. Images originales, arbitrages mobile/mise en ligne, données et anciens dossiers conservés. Les contrôles ne garantissent pas tous les appareils ni la livraison d'un e-mail.
+
+## Captures du parcours
+
+1. **Accueil avant correction — lisible et fonctionnel.**
+
+![Accueil capturé dans l'IAB](accueil-avant.jpg)
+
+2. **Options avant correction — fonctions disponibles mais statut du devis peu explicite.**
+
+![Options avant correction](options-avant.jpg)
+
+3. **Questionnaire avant correction — passage et retour fonctionnels ; précisions des nouvelles options ajoutées ensuite.**
+
+![Questionnaire de référence](brief-avant.jpg)
+
+4. **Options publiées — newsletter/statistiques accessibles, périmètre et devis explicités.**
+
+![Options publiées dans l'IAB](public-options.jpg)

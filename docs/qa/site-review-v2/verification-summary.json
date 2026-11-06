@@ -1,0 +1,270 @@
+{
+  "localTests": 228,
+  "publicJourneys": 24,
+  "matrices": {
+    "public-motion-desktop.json": [
+      {
+        "plan": "Vitrine",
+        "openingStable": {
+          "heading": "Vitrine",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      },
+      {
+        "plan": "Connecté",
+        "openingStable": {
+          "heading": "Connecté",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      },
+      {
+        "plan": "Immersif 3D",
+        "openingStable": {
+          "heading": "Immersif 3D",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      },
+      {
+        "plan": "Sur mesure",
+        "openingStable": {
+          "heading": "Sur mesure",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      },
+      {
+        "plan": "Évolution",
+        "openingStable": {
+          "heading": "Évolution",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      },
+      {
+        "plan": "Refonte",
+        "openingStable": {
+          "heading": "Refonte",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 720,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 1280
+        }
+      }
+    ],
+    "public-motion-mobile.json": [
+      {
+        "plan": "Vitrine",
+        "openingStable": {
+          "heading": "Vitrine",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      },
+      {
+        "plan": "Connecté",
+        "openingStable": {
+          "heading": "Connecté",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      },
+      {
+        "plan": "Immersif 3D",
+        "openingStable": {
+          "heading": "Immersif 3D",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      },
+      {
+        "plan": "Sur mesure",
+        "openingStable": {
+          "heading": "Sur mesure",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      },
+      {
+        "plan": "Évolution",
+        "openingStable": {
+          "heading": "Évolution",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      },
+      {
+        "plan": "Refonte",
+        "openingStable": {
+          "heading": "Refonte",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        },
+        "returnStable": {
+          "heading": "Votre site internet.Clé en main.",
+          "height": 844,
+          "nativeRunning": 0,
+          "opacity": "1",
+          "overflow": false,
+          "phase": null,
+          "width": 390
+        }
+      }
+    ]
+  },
+  "imagesUnchanged": [
+    "grain-plasma-card.webp",
+    "grain-plasma-master.webp",
+    "grain-plasma-detail.webp"
+  ],
+  "publicNoFormSubmission": true,
+  "publicSelectionRestored": true,
+  "viewportRestored": true
+}
