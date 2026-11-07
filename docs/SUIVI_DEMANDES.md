@@ -1,3 +1,11 @@
+# Langue, comparatif et carte publiés le 7 novembre 2026
+
+L’option Langue supplémentaire à 100 € couvre cinq pages sur Vitrine et six sur Business et Premium / 3D, avec les textes traduits fournis. Le même périmètre apparaît dans le configurateur, la FAQ et les nouvelles estimations. Le comparatif présente les inclusions Vitrine, puis Business, puis Premium / 3D. La carte du configurateur affiche les points clés, les choix et le prix à la hauteur de leur contenu.
+
+Le configurateur donne 1 310–1 370 € pour quatre pages Vitrine avec CMS et statistiques, 1 370–1 490 € pour cinq et 1 430–1 610 € pour six. Le lot CMS Vitrine couvre cinq pages. Business démarre à 1 490 € avec CMS sur les pages du forfait et référencement local.
+
+Révision `3e543b2` en ligne et contrôlée dans le navigateur intégré à 320, 390 et 1 280 px. TypeScript, build et 268 tests passent. [Contrôles publics](qa/forfaits-2026-11-07/).
+
 # Corrections publiées et contrôlées — 6 novembre 2026
 
 Les deux bugs techniques sont corrigés : chargement différé avec récupération française et envoi borné à 30 s, saisie/idempotence conservées. Quantités de pages, limites des options, estimations et CMS cohérents ; prix validés conservés. Arguments renforcés et FAQ portée à 18 questions. Deux défauts supplémentaires corrigés : retour privé de cinq à une page et largeur minimale à 320 px avec scrollbar.

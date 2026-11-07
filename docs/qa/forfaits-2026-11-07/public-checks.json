@@ -1,0 +1,134 @@
+{
+  "entry": "/assets/index-DgwnpVUQ.js",
+  "comparison": {
+    "hintsOpen": 0,
+    "plans": [
+      "Vitrine",
+      "Business",
+      "Premium / 3D"
+    ],
+    "prices": [
+      "À partir de 890 €",
+      "À partir de 1 490 €",
+      "À partir de 2 499 €"
+    ],
+    "sections": [
+      {
+        "label": "Inclus dès Vitrine",
+        "rows": [
+          "Nombre de pages",
+          "Mobile, tablette et ordinateur",
+          "Formulaire de contact",
+          "Bases du référencement technique",
+          "Mise en ligne"
+        ]
+      },
+      {
+        "label": "Inclus dès Business",
+        "rows": [
+          "CMS pour modifier vos textes et images",
+          "Bases du référencement local",
+          "Statistiques de visites",
+          "Rubriques réalisations, tarifs et avis clients"
+        ]
+      },
+      {
+        "label": "Inclus avec Premium / 3D",
+        "rows": [
+          "Direction artistique personnalisée",
+          "Animations avancées et interactions",
+          "Éléments 3D interactifs",
+          "Optimisation des performances renforcée",
+          "Accompagnement renforcé",
+          "Étude des demandes sur mesure"
+        ]
+      }
+    ],
+    "width": [
+      1265,
+      1265
+    ]
+  },
+  "details": 15,
+  "businessDesktop": {
+    "descriptions": 0,
+    "features": [
+      "CMS inclus : modifiez textes et images",
+      "Site personnalisé de 1 à 6 pages",
+      "Référencement local et statistiques"
+    ],
+    "height": 425,
+    "language": "Jusqu’à 6 pages. Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.",
+    "price": "Estimation de création\nÀ partir de 1 490 €\n\n+ 0 € / mois\n\nForfait de base",
+    "title": "Business",
+    "width": [
+      1265,
+      1265
+    ]
+  },
+  "business390": {
+    "descriptions": 0,
+    "features": [
+      "CMS inclus : modifiez textes et images",
+      "Site personnalisé de 1 à 6 pages",
+      "Référencement local et statistiques"
+    ],
+    "height": 389,
+    "language": "Jusqu’à 6 pages. Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.",
+    "price": "Estimation de création\nÀ partir de 1 490 €\n\n+ 0 € / mois\n\nForfait de base",
+    "title": "Business",
+    "width": [
+      375,
+      375
+    ]
+  },
+  "languagePrice390": "Estimation de création\nÀ partir de 1 590 €\n\n+ 0 € / mois\n\n1 option sélectionnée",
+  "compare320": [
+    305,
+    305
+  ],
+  "compareScroll320": {
+    "content": 680,
+    "scrollLeft": 40,
+    "viewport": 263
+  },
+  "premium320": {
+    "descriptions": 0,
+    "features": [
+      "Tout Business avec CMS, de 1 à 10 pages",
+      "Direction artistique et animations avancées",
+      "3D si pertinente, performances soignées",
+      "Demandes sur mesure étudiées"
+    ],
+    "height": 564,
+    "language": "Jusqu’à 6 pages. Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.",
+    "price": "Estimation de création\nÀ partir de 2 499 €\n\n+ 0 € / mois\n\nForfait de base",
+    "title": "Premium / 3D",
+    "width": [
+      305,
+      305
+    ]
+  },
+  "vitrine320": {
+    "descriptions": 0,
+    "features": [
+      "Site personnalisé de 1 à 3 pages",
+      "Mobile, tablette et ordinateur",
+      "Contact, référencement de base, mise en ligne"
+    ],
+    "height": 468,
+    "language": "Jusqu’à 5 pages. Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.",
+    "price": "Estimation de création\nÀ partir de 890 €\n\n+ 0 € / mois\n\nForfait de base",
+    "title": "Vitrine",
+    "width": [
+      305,
+      305
+    ]
+  },
+  "home": [
+    "Inclus dès Vitrine",
+    "Inclus dès Business",
+    "Inclus avec Premium / 3D"
+  ],
+  "console": []
+}

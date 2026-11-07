@@ -1,8 +1,20 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans le navigateur intégré en formats ordinateur, tablette et mobile.
+Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/`
+- Révision `3e543b272f921aeaeec6e3d9f6147258ce4523b0` sur `main`
+- Release `/home/mathis/site-maker/releases/20261107T185917Z-3e543b272f92`
+- Client `/assets/index-DgwnpVUQ.js`, SHA-256 `2ee2a6e836926e0ebb613d0562692bdfbf402a8f4c6fb3a0eca3b0778525039a`
+- Archive vérifiée de 13 988 416 octets, SHA-256 `2e8fb2f1af76b267cb4c87d2e645431d03ed4c1ba5185c5359e930889b909221`
+
+Le lot ajuste le périmètre de la langue supplémentaire, ordonne les inclusions et raccourcit la carte du configurateur. `npm run check` a validé TypeScript, le build et 268 tests. La sauvegarde a précédé la bascule du lien `current`. Le service répond et le tunnel conserve son processus. La release précédente reste disponible pour le retour arrière.
+
+Client public vérifié à 1 280, 390 et 320 px. Carte Business sans paragraphe et option de langue à six pages, trois groupes dans le comparatif de l’accueil et de `/forfaits`, aucun débordement de la page ni erreur ou avertissement dans la console observée. [Mesures et captures](../docs/qa/forfaits-2026-11-07/).
+
+## Version vérifiée le 6 novembre
 
 - URL : https://gilmathis.com/
 - Révision applicative : `dbcd9e38577fb155c00ae42b9ffba4d61edd3996`, poussée sur `veloci11/Site_maker` / `main`.
@@ -11,7 +23,7 @@ Dernière livraison applicative publiée et contrôlée le 6 novembre 2026, dans
 - Archive : SHA-256 `f0fda0e4ca6df18f0b27bf02792a9a0cb58b4c4dd2b08116f94e0d530c1df1da`, 13983514 octets, vérifiée avant extraction.
 - Version précédente conservée : `/home/mathis/site-maker/releases/20261106T201720Z-8a46e1369fd9`. Lot fonctionnel initial : `8a46e13`, suivi du correctif de largeur `dbcd9e3`.
 
-Le dépôt peut contenir un rapport plus récent ; cette révision désigne l’application en production.
+Ces éléments concernent la livraison du 6 novembre.
 
 ## Robustesse, pages, marketing et petits écrans
 

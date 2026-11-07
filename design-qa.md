@@ -1,3 +1,9 @@
+# Carte et comparatif publiés le 7 novembre 2026
+
+La carte Business de base mesure 425 px en ligne à 1 280 px de largeur, contre 589 px avant retrait du paragraphe et de la hauteur minimale. La texture conserve son échelle et le récapitulatif grandit avec les choix. Le comparatif affiche 5 lignes dans le groupe Vitrine, 4 dans Business et 6 dans Premium / 3D. Le bouton développe les 15 explications dans cet ordre.
+
+À 390 et 320 px, les largeurs de page restent égales aux largeurs disponibles. Le défilement horizontal fonctionne à l’intérieur du tableau à 320 px. L’option de langue Business porte le total à partir de 1 590 € et le récapitulatif affiche six pages avec les traductions fournies. Aucun message d’erreur ou d’avertissement observé dans la console IAB publique. [Captures et mesures](docs/qa/forfaits-2026-11-07/).
+
 # Corrections publiées et contrôlées — 6 novembre 2026
 
 Les deux bugs techniques sont corrigés : chargement différé avec récupération française et envoi borné à 30 s, saisie/idempotence conservées. Quantités de pages, limites des options, estimations et CMS cohérents ; prix validés conservés. Arguments renforcés et FAQ portée à 18 questions. Deux défauts supplémentaires corrigés : retour privé de cinq à une page et largeur minimale à 320 px avec scrollbar.
