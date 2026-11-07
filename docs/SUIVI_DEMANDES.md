@@ -1,3 +1,11 @@
+# Forfaits cumulatifs publiés le 7 novembre 2026
+
+Business reprend Vitrine. Premium / 3D reprend Business et inclut la reprise de 5 pages et 15 médias. Les cartes et le comparatif montrent les prestations ajoutées. Les précisions de périmètre sont près des options. « Inscription à la newsletter » et « Le prix est donné à titre indicatif » apparaissent dans le parcours public.
+
+Les tarifs validés restent en vigueur. À 6 pages, Vitrine avec CMS sur 5 pages et statistiques est estimé à 1 430–1 610 €. Avec le repère de 180–350 € pour le référencement local de la grille de Mathis, cela donne 1 610–1 960 € avant les rubriques dédiées et le complément de CMS. À 10 pages, Business avec reprise et intégration 3D simple est estimé à 2 080–2 820 €. Les animations avancées, la fluidité et l’accompagnement sont à chiffrer au devis pour comparer à périmètre égal. La règle commerciale est dans `AGENTS.md`.
+
+Révision `f7336f2` publiée et vérifiée en HTTPS à 1 280, 390 et 320 px. Les 268 tests passent. Le passage de Business à Premium absorbe la reprise dans le forfait. Aucun formulaire envoyé en production.
+
 # Défilement de la navigation publié le 7 novembre 2026
 
 La barre publique défile avec la page. Les ancres disposent d’un retrait de 24 px et la carte conserve son ancrage sur ordinateur. L’animation utilise la position de la barre au moment du changement de page.

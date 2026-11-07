@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `f7336f274fbc603cd8ee33647cae425182ee8061` sur `main`
+- Release `/home/mathis/site-maker/releases/20261107T194847Z-f7336f274fbc`
+- Client `/assets/index-B7XQB3PC.js`, SHA-256 `a9472a4c7cd8eb409a62d01bada03be74ae39738182f7e570a508d7df40d6f8e`
+- Archive vérifiée de 13 986 994 octets, SHA-256 `0400fb1305d38e28d63b718f550d8801a168dffb5ad046ebdc7e3edb00c6af0e`
+
+Cartes cumulatives, reprise de contenus incluse dans Premium / 3D, libellé newsletter et mention « à titre indicatif » publiés. TypeScript, build et 268 tests passent. Sauvegarde vérifiée avant bascule. Le contrôle d’origine confirme les mêmes tarifs, la reprise incluse à 2 499 € et le même processus du tunnel. Vérification HTTPS en IAB à 1 280, 390 et 320 px. Aucun envoi de formulaire.
+
+## Défilement de la navigation publié le 7 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `408754b8a2b0eb179d683c2bd73c294a9ca397e9` sur `main`
 - Release `/home/mathis/site-maker/releases/20261107T191513Z-408754b8a2b0`
 - Client `/assets/index-dx-m2Qxf.js`, SHA-256 `7af562fb07b255b6aae681628fec7c81078ba7cca35d397d3b1fa87b6d71920e`

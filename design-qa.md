@@ -1,3 +1,9 @@
+# Forfaits cumulatifs publiés le 7 novembre 2026
+
+Accueil et comparatif vérifiés en HTTPS à 1 280 px. Les cartes affichent le prix de départ et les inclusions cumulatives. La mention « à titre indicatif » est sous les cartes. Le comparatif affiche la reprise seulement comme inclusion Premium.
+
+À 390 px, la reprise est incluse dans la carte Premium et absente des options payantes. La newsletter est libellée « Inscription à la newsletter ». À 320 px, ajouter une page à Vitrine affiche 950–1 010 € et la quantité, sans panneau récapitulatif de périmètre. Aucun débordement horizontal de la page ni avertissement de console observé pendant ces vérifications.
+
 # Défilement de la navigation publié le 7 novembre 2026
 
 La barre masquait 64 px de la carte Business avec une option sélectionnée dans une fenêtre de 1 280 × 560 px. La version publiée place la barre dans le flux et le recouvrement mesuré est de 0 px. Vérifications du comparatif et du menu sur ordinateur, du passage au formulaire à 390 px et de la largeur à 320 px. Aucun avertissement ou erreur de console observé.
