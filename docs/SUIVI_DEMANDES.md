@@ -1,3 +1,9 @@
+# Réinitialisation des options publiée le 7 novembre 2026
+
+Les cartes explicitent les inclusions de Vitrine dans Business et de Business dans Premium. Le blog comprend une rubrique et un éditeur pour les articles du client. Le nombre de pages supplémentaires se règle dans la même case que le prix par page. Le bouton réinitialise les options et le changement de forfait revient au nouveau forfait de base avec les rubriques dans leur état initial.
+
+Révision `6aae31c` vérifiée en HTTPS sur ordinateur et à 320 px. Deux pages Business donnent 1 610–1 730 €. La réinitialisation revient à 1 490 € et le passage à Premium repart de 2 499 €. Les 268 tests passent.
+
 # Forfaits cumulatifs publiés le 7 novembre 2026
 
 Business reprend Vitrine. Premium / 3D reprend Business et inclut la reprise de 5 pages et 15 médias. Les cartes et le comparatif montrent les prestations ajoutées. Les précisions de périmètre sont près des options. « Inscription à la newsletter » et « Le prix est donné à titre indicatif » apparaissent dans le parcours public.

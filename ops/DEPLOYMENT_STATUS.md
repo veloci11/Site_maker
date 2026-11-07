@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `6aae31ce43c10db5f4ffb204dae8fdfc76c9e874` sur `main`
+- Release `/home/mathis/site-maker/releases/20261107T200957Z-6aae31ce43c1`
+- Client `/assets/index-A-fLsKiO.js`, SHA-256 `3c9d22b82066ee5d4e168d183ea6b4639d0f6c29c91358acc82acd0ceb99d895`
+- Archive vérifiée de 13 983 367 octets, SHA-256 `48d87b3209c60c59f6154deda4b9636deaa6b898df5ea242f162d14232843deb`
+
+La quantité de pages supplémentaires est dans la case de l’option. La remise à zéro est disponible dans le résumé et s’applique aussi au changement de forfait public. Les textes des cartes et du blog sont actualisés. TypeScript, build et 268 tests passent. Sauvegarde, santé et prix vérifiés. Le tunnel conserve son processus. Parcours contrôlé en HTTPS à 1 280 et 320 px.
+
+## Forfaits cumulatifs publiés le 7 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `f7336f274fbc603cd8ee33647cae425182ee8061` sur `main`
 - Release `/home/mathis/site-maker/releases/20261107T194847Z-f7336f274fbc`
 - Client `/assets/index-B7XQB3PC.js`, SHA-256 `a9472a4c7cd8eb409a62d01bada03be74ae39738182f7e570a508d7df40d6f8e`

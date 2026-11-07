@@ -1,3 +1,7 @@
+# Remise à zéro et quantité de pages publiées le 7 novembre 2026
+
+À 1 280 et 320 px, le sélecteur de quantité est dans la case « Ajouter une page », aligné avec le prix unitaire. L’option Blog décrit l’éditeur et les articles rédigés par le client. La remise à zéro efface les quantités, les options et le mensuel. Au changement de forfait, seul « Votre site » est ouvert. Une actualisation du même forfait restaure ses choix. Aucun débordement horizontal ni avertissement de console observé.
+
 # Forfaits cumulatifs publiés le 7 novembre 2026
 
 Accueil et comparatif vérifiés en HTTPS à 1 280 px. Les cartes affichent le prix de départ et les inclusions cumulatives. La mention « à titre indicatif » est sous les cartes. Le comparatif affiche la reprise seulement comme inclusion Premium.
