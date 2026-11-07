@@ -108,7 +108,6 @@ export function SelectedPlanCard({
         </div>
         <div className="selected-plan__copy" style={contentTransition}>
           <h1>{plan.title}</h1>
-          <p className="selected-plan__description">{plan.description}</p>
           <ul className="selected-plan__features">
             {plan.features.map((feature) => (
               <li key={feature}>

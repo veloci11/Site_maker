@@ -31,6 +31,7 @@ export const EXTRA_OPTION_IDS = [
 export type ExtraOptionId = (typeof EXTRA_OPTION_IDS)[number]
 /** Technical input limit, not a commitment to deliver projects of this size. */
 export const MAX_EXTRA_PAGE_COUNT = 100
+const ADDITIONAL_LANGUAGE_PAGE_LIMIT = { vitrine: 5, connecte: 6, immersif: 6, 'sur-mesure': 5 } as const
 export type Configuration = {
   offerId: OfferId
   language: 'fr' | 'fr-en'
@@ -319,7 +320,7 @@ export const faqs = [
   {
     question: "Comment sont comptées les pages supplémentaires et les options ?",
     answer:
-      "Vitrine prévoit 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Si votre besoin dépasse cette capacité, choisissez le nombre de pages supplémentaires : chacune est estimée entre 60 et 120 €, dans le design du site et avec vos contenus. Par exemple, deux pages ajoutent 120 à 240 € à l’estimation. Les autres options conservent leur propre périmètre : une langue couvre jusqu’à cinq pages et la reprise de contenus jusqu’à cinq pages et quinze médias. Ces limites ne grandissent pas automatiquement avec le forfait. Précisez les pages concernées dans votre message ; tout complément est confirmé sur devis avant le démarrage.",
+      "Vitrine prévoit 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Chaque page supplémentaire dans le design de votre site et avec vos contenus est estimée entre 60 et 120 €. Deux pages ajoutent donc 120 à 240 € à l’estimation. La reprise de contenus couvre jusqu’à cinq pages et quinze médias. Le configurateur indique le nombre de pages couvertes par l’option de langue. Précisez les pages concernées dans votre message pour que nous puissions chiffrer les éventuels compléments.",
     category: "Budget et suivi",
   },
   {
@@ -343,7 +344,7 @@ export const faqs = [
   {
     question: "Puis-je proposer mon site dans une autre langue ?",
     answer:
-      "Oui. L’option à 100 € ajoute une langue supplémentaire pour cinq pages maximum, navigation comprise. Vous fournissez les traductions ; la rédaction et la traduction ne sont pas comprises. Indiquez la langue et les pages concernées dans votre message. Au-delà de cinq pages ou pour plusieurs langues, un devis complémentaire est nécessaire : le nombre de pages de votre forfait n’étend pas automatiquement cette option.",
+      `Oui. L’option à 100 € ajoute une langue, navigation comprise, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.vitrine} pages avec Vitrine et ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.connecte} avec Business ou Premium / 3D. Vous fournissez les textes traduits. Indiquez la langue et les pages concernées dans votre message. Un devis complémentaire est nécessaire pour dépasser cette limite ou ajouter plusieurs langues.`,
     category: "Contenus",
   },
   {
@@ -398,7 +399,7 @@ export const optionDefinitions = [
   {
     id: 'additional-language',
     title: 'Langue supplémentaire',
-    description: 'Une langue supplémentaire pour jusqu’à 5 pages, navigation comprise. Vous fournissez les traductions ; précisez la langue dans votre message ou lors de notre échange. Rédaction et traduction ne sont pas incluses.',
+    description: 'Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.',
     billing: 'once',
     group: 'essentials',
   },
@@ -759,6 +760,11 @@ export function withExtraPageCount(configuration: Configuration, count: number):
     extraPageCount: count,
   })
 }
+export function getOptionDescription(offerId: OfferId, option: (typeof optionDefinitions)[number]): string {
+  return option.id === 'additional-language'
+    ? `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description}`
+    : option.description
+}
 export function getOptionScope(configuration: Configuration, id: OptionId): string | null {
   if (isOptionIncluded(configuration, id))
     return id === 'managed-content' && configuration.extras.includes('extra-pages')
@@ -769,8 +775,9 @@ export function getOptionScope(configuration: Configuration, id: OptionId): stri
       return `${count} page${count > 1 ? 's' : ''} supplémentaire${count > 1 ? 's' : ''} dans le design du site, avec vos textes et images.`
     }
     case 'language-en':
-    case 'additional-language':
       return 'Une langue, jusqu’à 5 pages, traductions fournies.'
+    case 'additional-language':
+      return `Une langue, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[configuration.offerId]} pages, traductions fournies.`
     case 'managed-content':
       return 'Gestion des textes et images de 5 pages maximum.'
     case 'content-import':
@@ -782,8 +789,10 @@ export function getOptionScope(configuration: Configuration, id: OptionId): stri
 function optionScopeDetail(configuration: Configuration, id: OptionId): string | null {
   const scope = getOptionScope(configuration, id)
   if (!scope) return null
-  if (id === 'language-en' || id === 'additional-language')
-    return `${scope} Au-delà de 5 pages ou pour plusieurs langues, un devis complémentaire est nécessaire.`
+  if (id === 'language-en' || id === 'additional-language') {
+    const pageLimit = id === 'language-en' ? 5 : ADDITIONAL_LANGUAGE_PAGE_LIMIT[configuration.offerId]
+    return `${scope} Un devis complémentaire est nécessaire au-delà de ${pageLimit} pages ou pour plusieurs langues.`
+  }
   if (id === 'managed-content')
     return `${scope} ${isOptionIncluded(configuration, id)
       ? 'La gestion des pages supplémentaires et son éventuel complément de devis sont à confirmer.'

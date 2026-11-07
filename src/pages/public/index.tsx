@@ -5,6 +5,7 @@ import {
   publicOffers,
   isPublicOffer,
   getOffer,
+  getOptionDescription,
   examples,
   faqs,
   optionGroups,
@@ -230,7 +231,7 @@ function OptionRows({ offerId = 'vitrine' }: { offerId?: OfferId }) {
                 <div className="public-option" key={option.id}>
                   <div>
                     <h3>{option.title}</h3>
-                    <p>{option.description}</p>
+                    <p>{getOptionDescription(offerId, option)}</p>
                   </div>
                   <div className="public-option__action">
                     <span>

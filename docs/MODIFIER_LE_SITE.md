@@ -47,7 +47,7 @@ Les douze options ponctuelles conservées sont les suivantes ; leur disponibilit
 
 | Option | Prix approuvé | Périmètre de référence |
 | --- | --- | --- |
-| Langue supplémentaire | 100 € | 1 langue au choix, jusqu’à 5 pages, traductions fournies |
+| Langue supplémentaire | 100 € | 1 langue au choix, jusqu’à 5 pages sur Vitrine ou 6 sur Business et Premium / 3D, textes traduits fournis |
 | Modifier mes contenus | 300 € | CMS simple pour 5 pages de Vitrine ; inclus dans Business et Premium / 3D |
 | Ajouter un élément 3D | 250–600 € | 1 modèle fourni, intégré sur 1 page |
 | Espace membres | 300–600 € | Authentification et profil simple |

@@ -7,6 +7,7 @@ import {
   formatQuoteTotal,
   formatQuoteLine,
   getConfigurationScopeNotes,
+  getOptionDescription,
   getOptionScope,
   MAX_EXTRA_PAGE_COUNT,
   quoteEstimateNotice,
@@ -494,7 +495,7 @@ export function ConfiguratorPage() {
                                   />
                                   <span className="configurator-choice__copy">
                                     <strong>{option.title}</strong>
-                                    <span id={`description-${option.id}`}>{option.description}</span>
+                                    <span id={`description-${option.id}`}>{getOptionDescription(offer.id, option)}</span>
                                   </span>
                                   <span className="configurator-choice__price">
                                     {optionPrice(option.id)}

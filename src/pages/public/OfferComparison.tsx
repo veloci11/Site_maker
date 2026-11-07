@@ -5,25 +5,38 @@ import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/l
 import { configureHref, startingPrice } from './pricing'
 
 type ComparisonStatus = 'included' | 'absent' | '1 à 3' | '1 à 6' | '1 à 10' | 'Si pertinent'
-type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint?: string }
-const comparisonRows: readonly ComparisonRow[] = [
-  { title: 'Nombre de pages', values: ['1 à 3', '1 à 6', '1 à 10'], hint: 'Le nombre de pages prévu pour présenter votre activité, vos services et vos informations pratiques.' },
-  { title: 'CMS : modifiez vos textes et images', values: ['absent', 'included', 'included'], hint: 'Un espace de gestion pour mettre à jour vos contenus vous-même.' },
-  { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
-  { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu.' },
-  { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'], hint: 'Une conception visuelle d’ensemble : composition des pages, univers graphique et interactions sont pensés ensemble pour donner une identité distinctive au site.' },
-  { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'], hint: 'Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.' },
-  { title: 'Étude des demandes sur mesure', values: ['absent', 'absent', 'included'], hint: 'Vos besoins spécifiques sont étudiés pour définir les solutions possibles et leur prix avant le démarrage.' },
-]
-const comparisonDetails: readonly ComparisonRow[] = [
-  { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'], hint: 'La mise en page, les textes et les interactions s’adaptent à la taille de l’écran du visiteur.' },
-  { title: 'Éléments 3D interactifs', values: ['absent', 'absent', 'Si pertinent'], hint: 'Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. Sa création et les éléments supplémentaires sont des prestations distinctes.' },
-  { title: 'Formulaire de contact', values: ['included', 'included', 'included'], hint: 'Vos visiteurs peuvent vous envoyer une demande directement depuis votre site.' },
-  { title: 'Bases du référencement naturel', values: ['included', 'included', 'included'], hint: 'Des réglages techniques de base pour aider les moteurs de recherche à lire et comprendre vos pages.' },
-  { title: 'Rubriques réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Organisez ces contenus dans des rubriques dédiées pour aider vos visiteurs à comparer vos services et découvrir votre travail. Les textes et images simples restent possibles dans les pages Vitrine ; ici, c’est leur présentation en rubriques qui est prévue.' },
-  { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'], hint: 'Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.' },
-  { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'], hint: 'Un suivi plus poussé pour préciser les choix visuels, les fonctions et les ajustements de votre projet.' },
-  { title: 'Mise en ligne', values: ['included', 'included', 'included'], hint: 'Installation et publication du site sur l’hébergement retenu, une fois le projet validé.' },
+type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint: string }
+const comparisonSections: readonly { title: string; rows: readonly ComparisonRow[] }[] = [
+  {
+    title: 'Inclus dès Vitrine',
+    rows: [
+      { title: 'Nombre de pages', values: ['1 à 3', '1 à 6', '1 à 10'], hint: 'Le nombre de pages prévu pour présenter votre activité, vos services et vos informations pratiques.' },
+      { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'], hint: 'La mise en page, les textes et les interactions s’adaptent à la taille de l’écran du visiteur.' },
+      { title: 'Formulaire de contact', values: ['included', 'included', 'included'], hint: 'Vos visiteurs peuvent vous envoyer une demande directement depuis votre site.' },
+      { title: 'Bases du référencement technique', values: ['included', 'included', 'included'], hint: 'Des réglages techniques de base pour aider les moteurs de recherche à lire et comprendre vos pages.' },
+      { title: 'Mise en ligne', values: ['included', 'included', 'included'], hint: 'Installation et publication du site sur l’hébergement retenu, une fois le projet validé.' },
+    ],
+  },
+  {
+    title: 'Inclus dès Business',
+    rows: [
+      { title: 'CMS pour modifier vos textes et images', values: ['absent', 'included', 'included'], hint: 'Un espace de gestion pour mettre à jour les contenus des pages de votre forfait.' },
+      { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
+      { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu.' },
+      { title: 'Rubriques réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Des rubriques dédiées pour montrer votre travail, présenter vos tarifs et donner la parole à vos clients.' },
+    ],
+  },
+  {
+    title: 'Inclus avec Premium / 3D',
+    rows: [
+      { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'], hint: 'La composition, l’univers graphique et les interactions sont pensés ensemble pour donner une identité distinctive au site.' },
+      { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'], hint: 'Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.' },
+      { title: 'Éléments 3D interactifs', values: ['absent', 'absent', 'Si pertinent'], hint: 'Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. La création du modèle et les éléments supplémentaires sont chiffrés séparément.' },
+      { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'], hint: 'Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.' },
+      { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'], hint: 'Un suivi plus poussé pour préciser les choix visuels, les fonctions et les ajustements de votre projet.' },
+      { title: 'Étude des demandes sur mesure', values: ['absent', 'absent', 'included'], hint: 'Vos besoins spécifiques sont étudiés pour définir les solutions possibles et leur prix avant le démarrage.' },
+    ],
+  },
 ]
 
 function ComparisonCell({ status }: { status: ComparisonStatus }) {
@@ -44,7 +57,7 @@ function ComparisonCell({ status }: { status: ComparisonStatus }) {
   return <span className="comparison-status">{status}</span>
 }
 
-function ComparisonReveal({ children, collapsed }: { children: ReactNode; collapsed?: boolean }) {
+function ComparisonReveal({ children, collapsed }: { children: ReactNode; collapsed: boolean }) {
   return (
     <div className="comparison-detail-reveal" aria-hidden={collapsed}>
       <div className="comparison-detail-reveal__inner">{children}</div>
@@ -89,48 +102,26 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
               ))}
             </tr>
           </thead>
-          <tbody>
-            {comparisonRows.map((row) => (
-              <tr key={row.title}>
-                <th scope="row">
-                  {row.title}
-                  {row.hint ? (
+          {comparisonSections.map((section) => (
+            <tbody key={section.title} className="comparison-section" aria-label={section.title}>
+              {section.rows.map((row, rowIndex) => (
+                <tr key={row.title}>
+                  <th scope="row">
+                    {rowIndex === 0 ? <span className="comparison-section-label">{section.title}</span> : null}
+                    {row.title}
                     <ComparisonReveal collapsed={!details}>
                       <span className="comparison-row-hint">{row.hint}</span>
                     </ComparisonReveal>
-                  ) : null}
-                </th>
-                {row.values.map((value, index) => (
-                  <td key={publicOffers[index].id}>
-                    <ComparisonCell status={value} />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-          <tbody id={`${id}-details`} className="comparison-detail-rows" aria-hidden={!details}>
-            {comparisonDetails.map((row) => (
-              <tr key={row.title}>
-                <th scope="row">
-                  <ComparisonReveal>
-                    <div className="comparison-detail-cell">
-                      {row.title}
-                      {row.hint ? <span className="comparison-row-hint">{row.hint}</span> : null}
-                    </div>
-                  </ComparisonReveal>
-                </th>
-                {row.values.map((value, index) => (
-                  <td key={publicOffers[index].id}>
-                    <ComparisonReveal>
-                      <div className="comparison-detail-cell">
-                        <ComparisonCell status={value} />
-                      </div>
-                    </ComparisonReveal>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
+                  </th>
+                  {row.values.map((value, index) => (
+                    <td key={publicOffers[index].id}>
+                      <ComparisonCell status={value} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))}
         </table>
       </div>
       <p className="comparison-mobile-hint">
@@ -140,7 +131,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
         type="button"
         className="comparison-details-toggle"
         aria-expanded={details}
-        aria-controls={`${id}-details`}
+        aria-controls={`${id}-table`}
         onClick={() => setDetails((open) => !open)}
       >
         {details ? 'Masquer les détails' : 'Afficher plus de détails'}

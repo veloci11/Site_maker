@@ -345,12 +345,17 @@ test('capped language, CMS and import lots never expand or multiply with page qu
   for (const offerId of ['connecte', 'immersif']) {
     const base = normalizeConfiguration({ offerId });
     assert.equal(getOptionScope(base, 'managed-content'), null);
-    const addedPages = withExtraPageCount(base, 2);
-    const cms = quoteConfiguration(addedPages).lines.find(line => line.key === 'managed-content');
+    const addedPages = withExtraPageCount(withOption(base, 'additional-language', true), 2);
+    const { lines } = quoteConfiguration(addedPages);
+    const cms = lines.find(line => line.key === 'managed-content');
     assert.equal(cms.included, true);
     assert.equal(cms.amountCents, 0);
     assert.doesNotMatch(cms.scope, /5 pages/);
     assert.match(cms.scope, /pages supplémentaires.*à confirmer/);
+    const language = lines.find(line => line.key === 'additional-language');
+    assert.equal(language.amountCents, 10000);
+    assert.match(language.scope, /jusqu’à 6 pages.*au-delà de 6 pages/);
+    assert.match(getOptionScope(base, 'language-en'), /5 pages/);
   }
 });
 

@@ -5,7 +5,7 @@
 .configurator-topline a:hover { color:#111; }
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
 .configurator-card-column { position:sticky; top:min(112px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
-.selected-plan { --plan-texture-height:580px; --plan-min-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; min-height:580px; padding:32px; border-radius:24px; color:#fff; }
+.selected-plan { --plan-texture-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
 .selected-plan__copy { display:flex; flex:1; flex-direction:column; min-width:0; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
@@ -47,8 +47,7 @@
 .selected-plan__change > svg { transition:transform 120ms ease; }
 .selected-plan__change[data-state="open"] > svg { transform:rotate(180deg); }
 .selected-plan h1 { color:inherit; font-size:clamp(40px,4.5vw,64px); font-weight:500; letter-spacing:-.055em; line-height:1.05; margin:0 0 18px; text-shadow:none; }
-.selected-plan__description { max-width:360px; font-size:16px; line-height:1.55; color:rgb(255 255 255 / .95); }
-.selected-plan__features { display:grid; gap:12px; margin:32px 0 36px; padding:0; list-style:none; font-size:15px; }
+.selected-plan__features { display:grid; gap:12px; margin:0 0 28px; padding:0; list-style:none; font-size:15px; }
 .selected-plan__features li { display:flex; align-items:center; gap:10px; }
 .selected-plan__features svg { flex:none; }
 .selected-plan__bottom { margin-top:auto; }
@@ -151,39 +150,31 @@
 .configurator-success__actions { margin-top:32px; display:flex; align-items:center; flex-wrap:wrap; gap:20px; }
 .configurator-mobile-bar { display:none; }
 @media(min-width:1000px) and (max-height:780px) {
- .selected-plan { --plan-texture-height:530px; --plan-min-height:530px; --plan-padding:26px; min-height:530px; padding:26px; }
+ .selected-plan { --plan-texture-height:530px; --plan-padding:26px; padding:26px; }
  .selected-plan__heading { margin-bottom:18px; }
- .selected-plan__features { margin:22px 0 26px; gap:10px; }
- .selected-plan__description { font-size:14px; }
+ .selected-plan__features { margin-bottom:26px; gap:10px; }
  .selected-plan h1 { font-size:50px; }
  .selected-plan__total > strong { font-size:38px; }
 }
 @media(max-width:999px) {
  .configurator-grid { gap:32px; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); }
- .selected-plan { --plan-texture-height:540px; --plan-min-height:540px; --plan-padding:24px; padding:24px; min-height:540px; }
+ .selected-plan { --plan-texture-height:540px; --plan-padding:24px; padding:24px; }
  .selected-plan h1 { font-size:42px; }
- .selected-plan__description { font-size:14px; }
  .configurator-choice { grid-template-columns:18px minmax(0,1fr); padding:16px; gap:10px; }
  .configurator-choice__price { grid-column:2; }
  .configurator-choice__copy > span { font-size:12px; }
  .configurator-next { gap:12px; }
  .configurator-next > span { max-width:none; }
 }
-@media(min-width:761px) {
- .selected-plan { min-height:min(var(--plan-min-height),calc(100dvh - 180px)); }
- /* Typography and spacing never depend on the selected count. Only the
-    summary grows; explicit slots and natural page scrolling keep it usable. */
-}
 @media(max-width:760px) {
  .configurator-page { padding-top:12px; padding-bottom:108px; }
  .configurator-grid { grid-template-columns:1fr; gap:34px; }
  .configurator-card-column { position:static; }
  .configurator-topline { font-size:12px; margin-bottom:18px; }
- .selected-plan { --plan-texture-height:500px; min-height:0; border-radius:20px; padding:24px; }
+ .selected-plan { --plan-texture-height:500px; border-radius:20px; padding:24px; }
  .selected-plan__heading { margin-bottom:20px; }
  .selected-plan h1 { font-size:44px; margin-bottom:12px; }
- .selected-plan__description { max-width:380px; font-size:14px; }
- .selected-plan__features { margin:22px 0; gap:9px; font-size:13px; }
+ .selected-plan__features { margin-bottom:22px; gap:9px; font-size:13px; }
  .selected-plan__total { margin:8px 0 0; }
  .selected-plan__total > strong { font-size:34px; }
  .selected-plan__total > span { font-size:12px; }

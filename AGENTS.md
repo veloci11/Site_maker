@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Langue, comparatif et carte de configuration — 7 novembre 2026
+
+L’option Langue supplémentaire à 100 € couvre cinq pages sur Vitrine et six sur Business et Premium / 3D avec les textes traduits fournis. Le lot reste borné au-delà de cette limite. Réutiliser le périmètre partagé dans les libellés, les estimations et les nouveaux dossiers. Les instantanés antérieurs gardent leurs conditions.
+
+Le comparatif présente les fonctions dans l’ordre Vitrine, Business, Premium / 3D. Les descriptions détaillées se déplient dans cet ordre. La carte du configurateur affiche ses points clés, ses options et son prix sans le paragraphe descriptif. Sa hauteur suit le contenu et la texture conserve son échelle.
+
 ## Robustesse, pages et marketing — 6 novembre 2026
 
 Les deux chemins d’échec sont corrigés : frontière React Router française pour les routes différées et délai total de 30 s pour le formulaire (en-têtes et JSON), sans perte de saisie ni changement de requestId lors d’une reprise identique. Aucun rechargement automatique.

@@ -154,7 +154,7 @@ const analyticsDetails: Question = {
 const languageDetails: Question = {
   id: 'languageDetails', label: 'Quelles langues et quelles pages faut-il prévoir ?', type: 'textarea',
   showForAnyOption: ['language-en', 'additional-language'],
-  hint: 'Précisez la langue souhaitée, les pages concernées et si les traductions sont disponibles. L’option couvre une langue supplémentaire, au choix, jusqu’à cinq pages avec les traductions fournies.',
+  hint: 'Précisez la langue et les pages concernées. Vous fournissez les textes traduits. Votre configuration indique le nombre de pages couvertes.',
 }
 const localSeoDetails: Question = {
   id: 'localSeoDetails', label: 'Quelle zone d’activité et quels établissements souhaitez-vous présenter ?', type: 'textarea',
