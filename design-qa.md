@@ -1,3 +1,9 @@
+# Défilement de la navigation publié le 7 novembre 2026
+
+La barre masquait 64 px de la carte Business avec une option sélectionnée dans une fenêtre de 1 280 × 560 px. La version publiée place la barre dans le flux et le recouvrement mesuré est de 0 px. Vérifications du comparatif et du menu sur ordinateur, du passage au formulaire à 390 px et de la largeur à 320 px. Aucun avertissement ou erreur de console observé.
+
+L’aperçu a confirmé le retour au même niveau de la carte sur l’accueil. Le raccord protège les 96 px du header à l’ouverture du forfait et libère toute la hauteur au retour vers l’accueil déjà défilé. [Mesures et capture](docs/qa/navigation-2026-11-07/).
+
 # Carte et comparatif publiés le 7 novembre 2026
 
 La carte Business de base mesure 425 px en ligne à 1 280 px de largeur, contre 589 px avant retrait du paragraphe et de la hauteur minimale. La texture conserve son échelle et le récapitulatif grandit avec les choix. Le comparatif affiche 5 lignes dans le groupe Vitrine, 4 dans Business et 6 dans Premium / 3D. Le bouton développe les 15 explications dans cet ordre.

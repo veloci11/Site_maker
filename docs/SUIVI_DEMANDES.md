@@ -1,3 +1,9 @@
+# Défilement de la navigation publié le 7 novembre 2026
+
+La barre publique défile avec la page. Les ancres disposent d’un retrait de 24 px et la carte conserve son ancrage sur ordinateur. L’animation utilise la position de la barre au moment du changement de page.
+
+Révision `408754b` publiée et contrôlée. Le recouvrement de la carte est passé de 64 à 0 px dans le scénario vérifié. Le menu et le formulaire sont utilisables à 390 px. La page tient dans sa largeur à 320 px. TypeScript, build et 268 tests passent. [Contrôles publics](qa/navigation-2026-11-07/).
+
 # Langue, comparatif et carte publiés le 7 novembre 2026
 
 L’option Langue supplémentaire à 100 € couvre cinq pages sur Vitrine et six sur Business et Premium / 3D, avec les textes traduits fournis. Le même périmètre apparaît dans le configurateur, la FAQ et les nouvelles estimations. Le comparatif présente les inclusions Vitrine, puis Business, puis Premium / 3D. La carte du configurateur affiche les points clés, les choix et le prix à la hauteur de leur contenu.

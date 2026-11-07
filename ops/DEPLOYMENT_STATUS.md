@@ -5,6 +5,18 @@ Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `408754b8a2b0eb179d683c2bd73c294a9ca397e9` sur `main`
+- Release `/home/mathis/site-maker/releases/20261107T191513Z-408754b8a2b0`
+- Client `/assets/index-dx-m2Qxf.js`, SHA-256 `7af562fb07b255b6aae681628fec7c81078ba7cca35d397d3b1fa87b6d71920e`
+- Archive vérifiée de 13 979 694 octets, SHA-256 `7980ce0fa34c05c7eac865004dda4d4a803f3284597aeb3a27bd4ef406ffc5d4`
+
+La navigation publique défile avec la page. La carte du configurateur conserve son ancrage sur ordinateur et les animations protègent la portion visible du menu. TypeScript, build et 268 tests passent. Sauvegarde vérifiée avant la bascule et contrôle de santé réussi. Le tunnel conserve son processus.
+
+Le contrôle public a reproduit le défilement d’une fiche Business dans une fenêtre de 1 280 × 560 px. La barre qui masquait 64 px de la carte quitte désormais l’écran. Le comparatif, le menu mobile et l’ouverture du formulaire ont été contrôlés. [Mesures et capture](../docs/qa/navigation-2026-11-07/).
+
+## Langue, comparatif et carte publiés le 7 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `3e543b272f921aeaeec6e3d9f6147258ce4523b0` sur `main`
 - Release `/home/mathis/site-maker/releases/20261107T185917Z-3e543b272f92`
 - Client `/assets/index-DgwnpVUQ.js`, SHA-256 `2ee2a6e836926e0ebb613d0562692bdfbf402a8f4c6fb3a0eca3b0778525039a`

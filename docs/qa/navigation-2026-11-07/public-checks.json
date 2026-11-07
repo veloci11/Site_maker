@@ -1,0 +1,121 @@
+{
+  "entry": "/assets/index-dx-m2Qxf.js",
+  "before": {
+    "card": [
+      -12,
+      535
+    ],
+    "covered": 64,
+    "header": [
+      20,
+      84
+    ],
+    "headerPosition": "sticky",
+    "scrollY": 407,
+    "width": [
+      1265,
+      1265
+    ]
+  },
+  "desktop": {
+    "card": [
+      -3,
+      535
+    ],
+    "covered": 0,
+    "header": [
+      -517,
+      -453
+    ],
+    "headerPosition": "relative",
+    "scrollY": 537,
+    "width": [
+      1265,
+      1265
+    ]
+  },
+  "comparatif": {
+    "card": null,
+    "covered": null,
+    "header": [
+      -344,
+      -280
+    ],
+    "headerPosition": "relative",
+    "scrollY": 364,
+    "width": [
+      1265,
+      1265
+    ]
+  },
+  "mobile390": {
+    "card": [
+      -480,
+      -21
+    ],
+    "covered": 0,
+    "header": [
+      -614,
+      -552
+    ],
+    "headerPosition": "relative",
+    "scrollY": 630,
+    "width": [
+      375,
+      375
+    ]
+  },
+  "mobile320": {
+    "card": [
+      -480,
+      79
+    ],
+    "covered": 0,
+    "header": [
+      -614,
+      -554
+    ],
+    "headerPosition": "relative",
+    "scrollY": 630,
+    "width": [
+      305,
+      305
+    ]
+  },
+  "mobileFocus": {
+    "active": true,
+    "bottom": 84,
+    "top": 48
+  },
+  "localReturn": {
+    "before": {
+      "cardTop": 240,
+      "point": [
+        633,
+        278
+      ],
+      "y": 450
+    },
+    "after": {
+      "cardTop": 240,
+      "point": [
+        633,
+        278
+      ],
+      "y": 450
+    },
+    "opening": {
+      "clip": "96px",
+      "headerBottom": 96,
+      "phase": "incoming",
+      "scroll": 0
+    },
+    "closing": {
+      "clip": "0px",
+      "headerBottom": -354,
+      "phase": "incoming",
+      "scroll": 450
+    }
+  },
+  "console": []
+}
