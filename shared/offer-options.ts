@@ -73,22 +73,9 @@ export function prunePublicConfiguration(input: unknown): Configuration {
   return configuration
 }
 
-/** Carry chosen additions across offers without turning old inclusions into fees. */
+/** Keep choices on the same offer and start at the base when changing offers. */
 export function changePublicOffer(input: Configuration, offerId: OfferId): Configuration {
   const previous = normalizeConfiguration(input)
   if (previous.offerId === offerId) return prunePublicConfiguration(previous)
-  return prunePublicConfiguration({
-    ...previous,
-    offerId,
-    mobile: previous.mobile && !isOptionIncluded(previous, 'mobile'),
-    managedContent: previous.managedContent && !isOptionIncluded(previous, 'managed-content'),
-    scene3d: previous.scene3d && !isOptionIncluded(previous, 'scene-3d'),
-    deployment: previous.deployment && !isOptionIncluded(previous, 'deployment'),
-    extras: previous.extras.filter(id =>
-      !isOptionIncluded(previous, id) &&
-      // Outside Premium, this selects the first integration. Premium already
-      // includes it; keeping the choice would silently request a second element.
-      !(id === 'extra-scene-3d' && offerId === 'immersif' && previous.offerId !== 'immersif'),
-    ),
-  })
+  return normalizeConfiguration({ offerId })
 }

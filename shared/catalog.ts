@@ -102,7 +102,7 @@ export const offers = [
     headline: 'Votre site évolue avec votre activité.',
     description:
       'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
-    features: ['Tout Vitrine, sur 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques'],
+    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -111,8 +111,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout Business sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D si elle sert votre projet. Vos demandes sur mesure sont étudiées avant devis.',
-    features: ['Tout Business, sur 1 à 10 pages', 'Animations avancées et 3D si utile', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
+    description: 'Tout le forfait Business est inclus sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D si elle sert votre projet. Vos demandes sur mesure sont étudiées avant devis.',
+    features: ['Tout le forfait Business inclus · 1 à 10 pages', 'Animations avancées et 3D si utile', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -470,7 +470,7 @@ export const optionDefinitions = [
   {
     id: 'blog',
     title: 'Blog prêt à publier',
-    description: 'Une rubrique avec une interface pour publier vos articles et l’intégration de 3 articles fournis. La gestion du blog est incluse ; l’option Modifier mes contenus concerne les autres pages du site.',
+    description: 'Nous installons une rubrique Blog avec son éditeur. Vous rédigez, modifiez et publiez vos articles depuis votre site. Le CMS des autres pages est inclus dès Business ou disponible en option sur Vitrine.',
     billing: 'once',
     group: 'content',
   },

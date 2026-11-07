@@ -53,7 +53,7 @@ Les douze options ponctuelles conservées sont les suivantes ; leur disponibilit
 | Espace membres | 300–600 € | Authentification et profil simple |
 | Liens de paiement | 100 € | 1 prestataire, jusqu’à 3 liens |
 | Boutique avec panier et paiement | 600–1 100 € | Boutique native, 10 produits simples |
-| Blog prêt à publier | 150 € | 1 rubrique, 3 articles fournis, éditeur du blog |
+| Blog prêt à publier | 150 € | 1 rubrique et son éditeur. Le client rédige et publie ses articles. |
 | Ajouter une page | 60–120 € | 1 page sur modèle existant |
 | Reprendre mon ancien contenu | 100–250 € | Jusqu’à 5 pages et 15 médias. Compris dans Premium / 3D. |
 | Créer mon modèle 3D | À partir de 150 € | 1 objet simple, 1 révision |
@@ -113,7 +113,7 @@ Arrêter la prévisualisation avec Ctrl+C. Un résultat local ne modifie ni GitH
 
 Les rubriques d’options dans `src/pages/configurator/index.tsx` utilisent `Accordion type="multiple"`. Le résumé de chaque rubrique fermée est calculé depuis `isOptionSelected` et `isOptionIncluded` ; ne pas conserver une seconde liste de choix dans un état React. La galerie affiche un seul badge par référence. Badges et filtres récupèrent la classe `pricing-card--${offer.variant}` du catalogue et partagent un pseudo-élément texturé dans `src/pages/public.css` ; les variables de couleur et de cadrage viennent de `src/styles.css`, comme pour les cartes. Les tags secondaires ne modifient jamais le filtre public ; « Projet archivé » est écrit dans la description.
 
-Le choix de forfait dans `src/pages/configurator/index.tsx` réutilise `DropdownMenu` et le style `.public-offers-menu` du header. Les trois choix viennent de `publicOffers`. `changePublicOffer` dans `shared/offer-options.ts` conserve les options choisies compatibles, mais retire les inclusions de l’ancien forfait avant de normaliser le nouveau. Ainsi, passer de Business ou Premium / 3D à Vitrine ne sélectionne pas automatiquement un CMS payant. `prunePublicConfiguration` ne concerne pas les anciens dossiers privés. Le dialogue central est retiré. Le focus de `.nav-offers-trigger` se voit par son trait noir de 2 px ; ne pas supprimer la règle globale de focus pour tous les autres contrôles.
+Le choix de forfait dans `src/pages/configurator/index.tsx` réutilise `DropdownMenu` et le style `.public-offers-menu` du header. Les trois choix viennent de `publicOffers`. `changePublicOffer` dans `shared/offer-options.ts` repart du forfait de base lors d’un changement et conserve les choix sur le même forfait. « Réinitialiser les options » repart du forfait de base à la demande. `prunePublicConfiguration` ne concerne pas les anciens dossiers privés. Le dialogue central est retiré. Le focus de `.nav-offers-trigger` se voit par son trait noir de 2 px ; ne pas supprimer la règle globale de focus pour tous les autres contrôles.
 
 La grande carte des trois forfaits est partagée dans `src/components/layout/SelectedPlanCard.tsx`. Le configurateur transmet sa fonction `changeOffer` ; le menu ne propose que les offres publiques. La matière, le menu translucide et les dimensions se règlent dans `src/components/layout/project.css`. Après Continuer, la carte et ses options restent à gauche, et le formulaire court apparaît à droite ; sur mobile ils restent dans le flux. Ne pas réintroduire de questionnaire plein écran ni de bouton Continuer en doublon dans la carte.
 

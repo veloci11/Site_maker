@@ -211,6 +211,13 @@ export function ConfiguratorPage() {
     setConfiguration(editingId ? next : prunePublicConfiguration(next))
     setError('')
   }
+  function resetOptions() {
+    optionReflow.capture()
+    setConfiguration(normalizeConfiguration({ offerId: configuration.offerId }))
+    setSelectionOrder([])
+    setError('')
+    optionsHeading.current?.focus({ preventScroll: true })
+  }
   function changeOffer(offerId: OfferId) {
     if (offerId === configuration.offerId) return
     if (!editingId) {
@@ -326,11 +333,19 @@ export function ConfiguratorPage() {
               className="selected-plan__selection"
               aria-label="Options choisies"
               aria-hidden={selected.length === 0}
+              inert={selected.length === 0}
               data-open={selected.length > 0}
             >
               <div className="selected-plan__selection-clip">
                 <div className="selected-plan__selection-content">
-                  <p>Options choisies</p>
+                  <div className="selected-plan__selection-heading">
+                    <p>Options choisies</p>
+                    {!editingId && stage === 'options' ? (
+                      <button type="button" className="selected-plan__reset" onClick={resetOptions} disabled={sending}>
+                        Réinitialiser les options
+                      </button>
+                    ) : null}
+                  </div>
                   <div className="selected-plan__options-frame" ref={optionReflow.frameRef}>
                     <ul ref={optionReflow.listRef}>
                       {[...availableOptions].sort((a, b) =>
@@ -476,8 +491,10 @@ export function ConfiguratorPage() {
                           {options.map((option) => {
                             const included = isOptionIncluded(configuration, option.id)
                             const checked = isOptionSelected(configuration, option.id)
+                            const extraPage = option.id === 'extra-pages'
+                            const showQuantity = extraPage && checked
                             return (
-                              <div key={option.id} className="configurator-choice-item">
+                              <div key={option.id} className="configurator-choice-item" data-quantity={showQuantity}>
                                 <label
                                   className={`configurator-choice${included ? ' configurator-choice--included' : ''}`}
                                   data-selected={checked}
@@ -498,31 +515,29 @@ export function ConfiguratorPage() {
                                   </span>
                                   <span className="configurator-choice__price">
                                     {optionPrice(option.id)}
+                                    {extraPage ? <small>par page</small> : null}
                                   </span>
                                 </label>
-                                {option.id === 'extra-pages' && checked ? (
-                                  <div className="configurator-quantity">
-                                    <label htmlFor="extra-page-count">Nombre de pages supplémentaires</label>
-                                    <input
-                                      id="extra-page-count"
-                                      type="number"
-                                      className="input"
-                                      min={1}
-                                      max={MAX_EXTRA_PAGE_COUNT}
-                                      step={1}
-                                      value={configuration.extraPageCount ?? 1}
-                                      disabled={sending}
-                                      aria-describedby="extra-page-count-help"
-                                      onChange={(event) => {
-                                        const count = event.currentTarget.valueAsNumber
-                                        if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
-                                        optionReflow.capture()
-                                        setConfiguration(withExtraPageCount(configuration, count))
-                                        setError('')
-                                      }}
-                                    />
-                                    <p id="extra-page-count-help">En plus des pages de votre forfait. {formatOptionPrice('extra-pages', pricing)} par page, dans le design de votre site.</p>
-                                  </div>
+                                {showQuantity ? (
+                                  <input
+                                    id="extra-page-count"
+                                    type="number"
+                                    className="input configurator-choice__quantity"
+                                    min={1}
+                                    max={MAX_EXTRA_PAGE_COUNT}
+                                    step={1}
+                                    value={configuration.extraPageCount ?? 1}
+                                    disabled={sending}
+                                    aria-label="Nombre de pages supplémentaires"
+                                    aria-describedby={`description-${option.id}`}
+                                    onChange={(event) => {
+                                      const count = event.currentTarget.valueAsNumber
+                                      if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
+                                      optionReflow.capture()
+                                      setConfiguration(withExtraPageCount(configuration, count))
+                                      setError('')
+                                    }}
+                                  />
                                 ) : null}
                               </div>
                             )

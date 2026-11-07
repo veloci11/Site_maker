@@ -207,7 +207,7 @@ test('former Business booking inclusions migrate once without losing other paid 
       for (const target of ['vitrine', 'connecte', 'immersif']) {
         const changed = changePublicOffer(current, target)
         assert.equal(changed.extras.includes('booking'), false, target)
-        assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + 10000 + 60000 + retainedAccountsPrice)
+        assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + (target === 'connecte' ? 70000 + retainedAccountsPrice : 0))
       }
       assert.equal(localStorage.getItem('studio.project-draft.v1'), raw, 'public reading never rewrites the historical draft')
       assert.equal(readDraft().configuration.extras.includes('booking'), true, 'private restoration still reads the original selection')

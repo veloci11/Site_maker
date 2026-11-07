@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Options et changement de forfait — 7 novembre 2026
+
+Business affiche « Tout le forfait Vitrine inclus » et Premium / 3D « Tout le forfait Business inclus ». L’option Blog comprend la rubrique et son éditeur. Le client rédige et publie ses articles. Le sélecteur de quantité des pages supplémentaires reste dans la même case que le prix unitaire. « Réinitialiser les options » efface les ajouts dans le configurateur public. Un changement de forfait repart de ses inclusions de base, avec les rubriques d’options dans leur état initial. Sur un même forfait, le brouillon public conserve ses choix. Les dossiers privés gardent leur parcours actuel.
+
 ## Forfaits cumulatifs et devis à périmètre égal — 7 novembre 2026
 
 Business reprend Vitrine avec 1 à 6 pages. Premium / 3D reprend Business avec 1 à 10 pages et inclut la reprise de 5 pages et 15 médias au maximum. Cette reprise reste une option à 100–250 € sur Vitrine et Business. Lors d’un changement de forfait, la reprise incluse ne redevient pas payante sans choix explicite. Retirer la direction artistique des arguments publics. Employer « Inscription à la newsletter ». Afficher les limites près de chaque option et conserver le périmètre dans les estimations. Sous les prix, préciser qu’ils sont donnés à titre indicatif et qu’un expert confirme le devis après étude de la demande.

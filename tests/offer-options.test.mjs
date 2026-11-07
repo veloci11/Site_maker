@@ -51,13 +51,13 @@ test('unapproved additions are pruned without mutating the source configuration'
   assert.deepEqual(config, snapshot);
 });
 
-test('switching offers preserves compatible choices and removes functions not included on the new offer', () => {
+test('switching offers clears the choices and uses the inclusions of the new offer', () => {
   const connected = prunePublicConfiguration({ offerId: 'connecte', language: 'fr-en', extras: ['user-accounts', 'blog', 'hosting-monthly'] });
   const vitrine = changePublicOffer(connected, 'vitrine');
-  for (const id of ['user-accounts', 'blog', 'hosting-monthly']) assert.equal(isOptionSelected(vitrine, id), true);
+  for (const id of ['user-accounts', 'blog', 'hosting-monthly']) assert.equal(isOptionSelected(vitrine, id), false);
   for (const id of ['booking', 'advanced-forms', 'portfolio-gallery', 'local-seo']) assert.equal(isOptionSelected(vitrine, id), false);
   assert.equal(vitrine.language, 'fr');
-  assert.equal(isOptionSelected(vitrine, 'additional-language'), true);
+  assert.equal(isOptionSelected(vitrine, 'additional-language'), false);
   assert.equal(vitrine.managedContent, false);
   assert.equal(isOptionSelected(vitrine, 'analytics'), false);
   assert.ok(connected.extras.includes('portfolio-gallery'));
@@ -102,7 +102,7 @@ test('public helpers keep historical catalogue identifiers and reject malformed 
     assert.throws(() => prunePublicConfiguration(value));
 });
 
-test('offer changes retain chosen shop and language without billing prior included CMS or analytics', () => {
+test('offer changes clear chosen shop and language without billing prior included CMS or analytics', () => {
   for (const source of ['connecte', 'immersif']) {
     const original = prunePublicConfiguration({ offerId: source, language: 'fr-en', extras: ['online-store', 'serenity-monthly'] });
     const snapshot = structuredClone(original);
@@ -111,11 +111,11 @@ test('offer changes retain chosen shop and language without billing prior includ
     assert.equal(isOptionSelected(vitrine, 'analytics'), false);
     assert.equal(vitrine.scene3d, false);
     assert.equal(vitrine.language, 'fr');
-    assert.equal(isOptionSelected(vitrine, 'additional-language'), true);
-    assert.equal(isOptionSelected(vitrine, 'online-store'), true);
-    assert.equal(isOptionIncluded(vitrine, 'online-payment'), true);
-    assert.equal(quoteConfiguration(vitrine).totalCents, 159000);
-    assert.equal(quoteConfiguration(vitrine).monthlyTotalCents, 6900);
+    assert.equal(isOptionSelected(vitrine, 'additional-language'), false);
+    assert.equal(isOptionSelected(vitrine, 'online-store'), false);
+    assert.equal(isOptionIncluded(vitrine, 'online-payment'), false);
+    assert.equal(quoteConfiguration(vitrine).totalCents, 89000);
+    assert.equal(quoteConfiguration(vitrine).monthlyTotalCents, 0);
     assert.deepEqual(original, snapshot);
   }
   const vitrine = prunePublicConfiguration({ offerId: 'vitrine', managedContent: true, extras: ['analytics'] });
@@ -136,15 +136,15 @@ test('upgrading to Premium includes content import and the first 3D integration 
     assert.equal(isOptionIncluded(premium, 'content-import'), true);
     assert.equal(isOptionSelected(changePublicOffer(premium, source), 'content-import'), false, 'an included import never becomes a paid choice on downgrade');
     assert.equal(isOptionSelected(premium, 'extra-scene-3d'), false, 'a second integration must be chosen explicitly');
-    for (const id of ['custom-3d', 'blog', 'serenity-monthly']) assert.equal(isOptionSelected(premium, id), true, id);
+    for (const id of ['custom-3d', 'blog', 'serenity-monthly']) assert.equal(isOptionSelected(premium, id), false, id);
     assert.equal(premium.language, 'fr');
-    assert.equal(isOptionSelected(premium, 'additional-language'), true);
-    assert.equal(quoteConfiguration(premium).totalCents, 289900);
-    assert.equal(quoteConfiguration(premium).monthlyTotalCents, 6900);
+    assert.equal(isOptionSelected(premium, 'additional-language'), false);
+    assert.equal(quoteConfiguration(premium).totalCents, 249900);
+    assert.equal(quoteConfiguration(premium).monthlyTotalCents, 0);
     assert.deepEqual(previous, snapshot);
 
     const secondElement = withOption(premium, 'extra-scene-3d', true);
-    assert.equal(quoteConfiguration(secondElement).totalCents, 314900, 'a deliberately added second element costs the quoted minimum');
+    assert.equal(quoteConfiguration(secondElement).totalCents, 274900, 'a deliberately added second element costs the quoted minimum');
     assert.equal(isOptionSelected(changePublicOffer(secondElement, 'immersif'), 'extra-scene-3d'), true, 'staying on Premium retains the explicit second element');
   }
 });
@@ -201,17 +201,19 @@ test('public pruning removes retired advanced forms, retains explicit booking an
   }
 });
 
-test('all public offer transitions retain paid choices without charging formerly included capabilities', () => {
+test('all public offer transitions start at the new base and retain choices on the current offer', () => {
   for (const source of PUBLIC_OFFER_IDS) {
     const original = prunePublicConfiguration({ offerId: source, extras: ['additional-language', 'user-accounts', 'booking', 'online-store', 'serenity-monthly'] });
     const before = structuredClone(original);
     for (const target of PUBLIC_OFFER_IDS) {
       const changed = changePublicOffer(original, target);
       const quote = quoteConfiguration(changed);
-      assert.equal(quote.totalCents, defaultPricing.base[target] + 10000 + 30000 + 9000 + 60000);
-      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + 10000 + 60000 + 18000 + 110000);
-      assert.equal(quote.monthlyTotalCents, 6900);
-      assert.equal(isOptionSelected(changed, 'booking'), true);
+      const sameOffer = source === target;
+      assert.deepEqual(changed, sameOffer ? original : normalizeConfiguration({ offerId: target }));
+      assert.equal(quote.totalCents, defaultPricing.base[target] + (sameOffer ? 109000 : 0));
+      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + (sameOffer ? 198000 : 0));
+      assert.equal(quote.monthlyTotalCents, sameOffer ? 6900 : 0);
+      assert.equal(isOptionSelected(changed, 'booking'), sameOffer);
       assert.equal(isOptionIncluded(changed, 'booking'), false);
       assert.deepEqual(getUnavailableOptions(changed), []);
       if (target === 'vitrine') {
@@ -222,14 +224,15 @@ test('all public offer transitions retain paid choices without charging formerly
   }
 });
 
-test('all public offer changes preserve the chosen additional-page quantity', () => {
+test('additional-page quantities reset only when changing to a different offer', () => {
   for (const source of PUBLIC_OFFER_IDS) {
     const previous = prunePublicConfiguration({ offerId: source, extras: ['extra-pages', 'additional-language'], extraPageCount: 4 });
     for (const target of PUBLIC_OFFER_IDS) {
       const changed = changePublicOffer(previous, target);
-      assert.equal(changed.extraPageCount, 4);
-      assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + 24000 + 10000);
-      assert.equal(quoteConfiguration(changed).maximumTotalCents, defaultPricing.base[target] + 48000 + 10000);
+      const sameOffer = source === target;
+      assert.equal(changed.extraPageCount, sameOffer ? 4 : undefined);
+      assert.equal(quoteConfiguration(changed).totalCents, defaultPricing.base[target] + (sameOffer ? 34000 : 0));
+      assert.equal(quoteConfiguration(changed).maximumTotalCents, defaultPricing.base[target] + (sameOffer ? 58000 : 0));
       assert.deepEqual(prunePublicConfiguration(changed), changed);
     }
   }
