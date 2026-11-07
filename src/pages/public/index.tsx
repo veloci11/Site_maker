@@ -20,6 +20,7 @@ import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/l
 import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
 import { didRestorePlanScroll } from '../../lib/plan-return'
+import { priceEstimateNote } from '../../content/configurator-copy'
 import { FaqList } from './FaqList'
 import { OfferComparison } from './OfferComparison'
 import { configureHref, startingPrice, usePricing } from './pricing'
@@ -123,6 +124,7 @@ export function HomePage() {
             </Reveal>
           ))}
         </div>
+        <p className="pricing-estimate-note">{priceEstimateNote}</p>
       </section>
       <section
         className="container home-method"
@@ -206,6 +208,7 @@ export function OffersPage() {
       />
       <section className="container public-comparison" aria-label="Comparaison des forfaits">
         <OfferComparison pricing={pricing} id="forfaits-comparison" />
+        <p className="pricing-estimate-note">{priceEstimateNote}</p>
       </section>
     </>
   )

@@ -39,7 +39,7 @@ La FAQ actuelle répond aux frais après création, aux contenus, aux modificati
 
 ## Prix et inclusions
 
-Les forfaits affichent « À partir de » : Vitrine 890 € (site personnalisé de 1 à 3 pages), Business 1 490 € (1 à 6 pages, CMS inclus au premier plan, SEO local, galerie et statistiques), Premium / 3D 2 499 € (tout Business sur 1 à 10 pages, direction artistique, animations/3D pertinente, performances et demandes sur mesure étudiées). Badge Business : « Populaire ». Les trois incluent responsive et mise en production. Réservation générique en option 90–180 € sur les trois, sans marque citée. Ne pas réintroduire template ou formulaire avancé dans le public.
+Les forfaits affichent un prix de départ donné à titre indicatif. Vitrine démarre à 890 € pour 1 à 3 pages. Business reprend Vitrine à 1 490 € sur 1 à 6 pages avec le CMS, le SEO local, les rubriques et les statistiques. Premium / 3D reprend Business à 2 499 € sur 1 à 10 pages avec la reprise de contenus, les animations avancées, la 3D si pertinente et l’étude des demandes sur mesure. Le badge Business est « Populaire ». Les trois comprennent l’adaptation aux écrans et la mise en ligne. La prise de rendez-vous reste une option à 90–180 €.
 
 Les tarifs actifs se règlent dans l’administration privée, rubrique tarifs. Ils sont persistés côté serveur, en centimes ; `server/orders.mjs` les lit et `shared/catalog.ts` calcule les totaux. `defaultPricing` contient les montants approuvés. Il est utilisé sans réécriture si aucun réglage n’existe ou si l’ancien catalogue EUR `draft-vN` était entièrement à null. Les tarifs administratifs déjà enregistrés restent prioritaires : modifier cette constante ne les remplace pas. Leurs valeurs null explicites et leurs nouvelles clés absentes restent inconnues. `null` signifie « prix à définir », et non gratuit.
 
@@ -55,10 +55,10 @@ Les douze options ponctuelles conservées sont les suivantes ; leur disponibilit
 | Boutique avec panier et paiement | 600–1 100 € | Boutique native, 10 produits simples |
 | Blog prêt à publier | 150 € | 1 rubrique, 3 articles fournis, éditeur du blog |
 | Ajouter une page | 60–120 € | 1 page sur modèle existant |
-| Reprendre mon ancien contenu | 100–250 € | Jusqu’à 5 pages et 15 médias |
+| Reprendre mon ancien contenu | 100–250 € | Jusqu’à 5 pages et 15 médias. Compris dans Premium / 3D. |
 | Créer mon modèle 3D | À partir de 150 € | 1 objet simple, 1 révision |
 | Suivre mes visites | 60 € | Visites et 1 événement ; compris dans Business |
-| Collecter les inscriptions e-mail | À partir de 90 € | 1 formulaire, 2 champs, 1 liste |
+| Inscription à la newsletter | À partir de 90 € | 1 formulaire, 2 champs, 1 liste |
 
 Les trois plans mensuels sont **Hébergement 19 €/mois** (hébergement, SSL, surveillance), **Maintenance 39 €/mois** (hébergement, mises à jour, sauvegardes et petites modifications) et **Sérénité 69 €/mois** (Maintenance, 1 heure de modifications par mois et support prioritaire). Ils sont facultatifs et exclusifs : `withOption` remplace le plan précédent, sans cumuler leurs prix.
 

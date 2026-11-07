@@ -18,6 +18,7 @@
 .home-section-heading h2 { font-size: 36px; line-height: 1.15; font-weight: 600; letter-spacing: -.045em; }
 .home-section-heading > .text-link { flex-shrink: 0; font-size: 13px; }
 .home-offers .pricing-grid > .motion-reveal { height: 100%; }
+.pricing-estimate-note { max-width: 65ch; margin: 18px auto 0; color: var(--muted-foreground); font-size: 13px; line-height: 1.55; text-align: center; }
 .home-offers .pricing-card { height: 100%; }
 .home-method { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 40px; margin-top: 40px; padding-block: 32px; border-block: 1px solid var(--border); }
 .home-method__step { display: flex; align-items: flex-start; gap: 16px; }

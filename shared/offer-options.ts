@@ -26,7 +26,7 @@ export const PUBLIC_OPTIONS_BY_OFFER = {
   ],
   immersif: [
     'additional-language', 'user-accounts', 'booking', 'online-payment', 'online-store',
-    'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d',
+    'blog', 'extra-pages', 'custom-3d', 'extra-scene-3d',
     'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly',
   ],
   'sur-mesure': [],

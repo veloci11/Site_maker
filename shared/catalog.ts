@@ -102,7 +102,7 @@ export const offers = [
     headline: 'Votre site évolue avec votre activité.',
     description:
       'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
-    features: ['CMS inclus : modifiez textes et images', 'Site personnalisé de 1 à 6 pages', 'Référencement local et statistiques'],
+    features: ['Tout Vitrine, sur 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -111,8 +111,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout Business sur 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Distinguez votre marque avec une direction artistique et des interactions pensées pour votre projet. Vos demandes sur mesure sont étudiées avant devis.',
-    features: ['Tout Business avec CMS, de 1 à 10 pages', 'Direction artistique et animations avancées', '3D si pertinente, performances soignées', 'Demandes sur mesure étudiées'],
+    description: 'Tout Business sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D si elle sert votre projet. Vos demandes sur mesure sont étudiées avant devis.',
+    features: ['Tout Business, sur 1 à 10 pages', 'Animations avancées et 3D si utile', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -296,7 +296,7 @@ export const faqs = [
   {
     question: "J’ai déjà un site : peut-on reprendre mes contenus ?",
     answer:
-      "Indiquez l’adresse de votre site et les textes, images ou rubriques à conserver. Nous examinons ce qui peut être réutilisé dans le nouveau projet. L’option de reprise concerne jusqu’à cinq pages et quinze médias ; elle ne comprend pas la réécriture ni la création de nouvelles pages. La compatibilité technique et le volume à reprendre sont confirmés avant le démarrage.",
+      "Indiquez l’adresse de votre site et les textes, images ou rubriques à conserver. La reprise est comprise dans Premium / 3D et disponible en option avec Vitrine et Business. Elle couvre la réintégration de cinq pages et quinze médias au maximum. Les volumes plus importants, la réécriture et la création de nouvelles pages sont chiffrés séparément.",
     category: "Site existant",
   },
   {
@@ -314,7 +314,7 @@ export const faqs = [
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine convient pour présenter votre activité sur un site personnalisé de 1 à 3 pages. Business comprend 1 à 6 pages et un CMS pour modifier vos textes et images vous-même, avec référencement local et statistiques. Premium / 3D reprend tout Business sur 1 à 10 pages, avec direction artistique, animations et interactions avancées, et l’étude de vos demandes sur mesure. L’option « Ajouter une page » est estimée entre 60 et 120 € par page, selon la quantité choisie ; les fonctions des pages ajoutées sont à confirmer. La prise de rendez-vous en ligne reste une option dans les trois forfaits. Nos développeurs vérifient votre besoin avant de confirmer le choix.",
+      "Vitrine présente votre activité sur un site personnalisé de 1 à 3 pages. Business reprend Vitrine sur 1 à 6 pages, avec un CMS pour modifier vos textes et images, le référencement local et les statistiques. Premium / 3D reprend Business sur 1 à 10 pages et ajoute les animations avancées, la reprise de vos contenus existants et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits. Nous vérifions vos besoins avant de confirmer le devis.",
     category: "Choix du forfait",
   },
   {
@@ -338,7 +338,7 @@ export const faqs = [
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Premium / 3D reprend toutes les fonctions Business, dont l’espace de gestion (CMS) pour modifier vos textes et images vous-même, le référencement local et les statistiques, et porte le site à 1 à 10 pages. Il ajoute une direction artistique personnalisée, des animations et interactions avancées, un travail renforcé sur le chargement et la fluidité du site, ainsi qu’un accompagnement renforcé. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. La 3D est utilisée lorsqu’elle sert la présentation ; la création du modèle reste une option distincte.",
+      "Premium / 3D reprend Business sur 1 à 10 pages. Il ajoute la reprise de vos contenus existants, des animations et interactions avancées, un travail renforcé sur la fluidité du site et un accompagnement plus poussé. La 3D est intégrée lorsqu’elle sert la présentation. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
     category: "Fonctionnalités",
   },
   {
@@ -356,7 +356,7 @@ export const faqs = [
   {
     question: "La 3D est-elle indispensable dans Premium / 3D ?",
     answer:
-      "Non. Premium / 3D reprend tout Business et ajoute une direction artistique et des interactions adaptées à votre projet. Un élément 3D est intégré lorsqu’il apporte un intérêt réel à la présentation. Vous fournissez le modèle à intégrer ; sa création est une prestation distincte, à partir de 150 € pour un objet simple. Une intégration supplémentaire peut aussi être ajoutée selon le périmètre indiqué dans les options.",
+      "L’intégration 3D est prévue si elle aide à présenter votre activité ou un produit. Les animations et interactions sont adaptées à votre projet. Vous pouvez fournir un modèle ou demander la création d’un objet simple à partir de 150 €. L’ajout d’un autre élément est disponible en option.",
     category: "Design et 3D",
   },
   {
@@ -406,7 +406,7 @@ export const optionDefinitions = [
   {
     id: 'managed-content',
     title: 'Modifier mes contenus (CMS)',
-    description: 'Un espace de gestion pour modifier vous-même les textes et images de 5 pages maximum. La gestion des articles du blog reste comprise dans l’option Blog.',
+    description: 'Modifiez vous-même les textes et images de 5 pages maximum. Au-delà, le complément est chiffré sur devis. L’option Blog comprend la gestion de ses articles.',
     billing: 'once',
     group: 'essentials',
   },
@@ -484,7 +484,7 @@ export const optionDefinitions = [
   {
     id: 'extra-pages',
     title: 'Ajouter une page',
-    description: 'Des pages supplémentaires dans le design de votre site, avec vos textes et images. Le prix par page est multiplié par la quantité choisie. Les fonctions et le périmètre sont confirmés avant le démarrage.',
+    description: 'Une page de plus dans le design de votre site, avec vos textes et images. Précisez si vous souhaitez la gérer avec le CMS ou lui ajouter d’autres fonctions pour que nous puissions les chiffrer.',
     billing: 'once',
     group: 'content',
   },
@@ -498,7 +498,7 @@ export const optionDefinitions = [
   {
     id: 'content-import',
     title: 'Reprendre mon ancien contenu',
-    description: 'Reprise de 5 pages et 15 médias maximum depuis votre site existant, avec vos droits d’utilisation. Nettoyage et réintégration simples ; réécriture et création de nouvelles pages exclues.',
+    description: 'Nous réintégrons les contenus de votre site existant, jusqu’à 5 pages et 15 médias que vous êtes autorisé à utiliser. Au-delà de ce volume, le complément est chiffré sur devis.',
     billing: 'once',
     group: 'content',
   },
@@ -526,14 +526,14 @@ export const optionDefinitions = [
   {
     id: 'analytics',
     title: 'Suivre mes visites',
-    description: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu. L’abonnement éventuel à cet outil reste séparé.',
+    description: 'Nous configurons Google Analytics 4 ou un outil adapté à votre site pour suivre les visites et une action utile, comme l’envoi du formulaire. Les frais éventuels de l’outil sont précisés dans le devis.',
     billing: 'once',
     group: 'visibility',
   },
   {
     id: 'newsletter',
-    title: 'Collecter les inscriptions e-mail',
-    description: 'Un formulaire de 2 champs relié à une liste de votre outil d’envoi, avec confirmation adaptée. Abonnement de l’outil, création des campagnes et envoi des e-mails exclus.',
+    title: 'Inscription à la newsletter',
+    description: 'Un formulaire de 2 champs pour que vos visiteurs s’inscrivent à votre newsletter. Nous le relions à une liste de votre outil d’envoi. L’abonnement à l’outil et les campagnes sont gérés séparément.',
     billing: 'once',
     group: 'visibility',
   },
@@ -690,7 +690,7 @@ export function isOptionIncluded(configuration: Configuration, id: OptionId): bo
       (configuration.offerId === 'connecte' || configuration.offerId === 'immersif')) ||
     ((configuration.offerId === 'connecte' || configuration.offerId === 'immersif') &&
       (['portfolio-gallery', 'analytics', 'local-seo'] as OptionId[]).includes(id)) ||
-    (id === 'scene-3d' && configuration.offerId === 'immersif') ||
+    ((id === 'scene-3d' || id === 'content-import') && configuration.offerId === 'immersif') ||
     ((id === 'product-catalog' || id === 'online-payment') &&
       configuration.extras.includes('online-store'))
   )
@@ -762,10 +762,11 @@ export function withExtraPageCount(configuration: Configuration, count: number):
 }
 export function getOptionDescription(offerId: OfferId, option: (typeof optionDefinitions)[number]): string {
   return option.id === 'additional-language'
-    ? `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description}`
+    ? `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description} Au-delà de ce périmètre, le complément est chiffré sur devis.`
     : option.description
 }
 export function getOptionScope(configuration: Configuration, id: OptionId): string | null {
+  if (id === 'content-import') return 'Reprise de 5 pages et 15 médias maximum.'
   if (isOptionIncluded(configuration, id))
     return id === 'managed-content' && configuration.extras.includes('extra-pages')
       ? 'Gestion des contenus des pages prévues dans le forfait.' : null
@@ -780,8 +781,6 @@ export function getOptionScope(configuration: Configuration, id: OptionId): stri
       return `Une langue, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[configuration.offerId]} pages, traductions fournies.`
     case 'managed-content':
       return 'Gestion des textes et images de 5 pages maximum.'
-    case 'content-import':
-      return 'Reprise de 5 pages et 15 médias maximum.'
     default:
       return null
   }
@@ -800,13 +799,6 @@ function optionScopeDetail(configuration: Configuration, id: OptionId): string |
   if (id === 'content-import')
     return `${scope} Au-delà de l’une de ces limites, un devis complémentaire est nécessaire.`
   return scope
-}
-export function getConfigurationScopeNotes(configuration: Configuration): string[] {
-  return optionDefinitions.flatMap(option => {
-    if (!isOptionSelected(configuration, option.id)) return []
-    const scope = optionScopeDetail(configuration, option.id)
-    return scope ? [`${option.title} : ${scope}`] : []
-  })
 }
 export function quoteConfiguration(input: Configuration, pricing: Pricing = defaultPricing): Quote {
   const config = normalizeConfiguration(input)

@@ -22,14 +22,14 @@ const comparisonSections: readonly { title: string; rows: readonly ComparisonRow
     rows: [
       { title: 'CMS pour modifier vos textes et images', values: ['absent', 'included', 'included'], hint: 'Un espace de gestion pour mettre à jour les contenus des pages de votre forfait.' },
       { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
-      { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez les visites et une action utile, comme une demande de contact, avec des réglages adaptés à l’outil retenu.' },
+      { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez vos visites et une action utile, comme l’envoi du formulaire, avec Google Analytics 4 ou un outil adapté à votre site.' },
       { title: 'Rubriques réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Des rubriques dédiées pour montrer votre travail, présenter vos tarifs et donner la parole à vos clients.' },
     ],
   },
   {
-    title: 'Inclus avec Premium / 3D',
+    title: 'Les plus de Premium / 3D',
     rows: [
-      { title: 'Direction artistique personnalisée', values: ['absent', 'absent', 'included'], hint: 'La composition, l’univers graphique et les interactions sont pensés ensemble pour donner une identité distinctive au site.' },
+      { title: 'Reprise de vos anciens contenus', values: ['absent', 'absent', 'included'], hint: 'Nous réintégrons jusqu’à 5 pages et 15 médias de votre ancien site. Au-delà, le complément est chiffré sur devis.' },
       { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'], hint: 'Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.' },
       { title: 'Éléments 3D interactifs', values: ['absent', 'absent', 'Si pertinent'], hint: 'Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. La création du modèle et les éléments supplémentaires sont chiffrés séparément.' },
       { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'], hint: 'Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.' },

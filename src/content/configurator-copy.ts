@@ -1,13 +1,15 @@
 import type { OfferId } from '../../shared/catalog'
 
+export const priceEstimateNote = 'Le prix est donné à titre indicatif. Un expert étudie votre projet avant de confirmer le devis. Précisez vos besoins et vos demandes particulières dans votre message.'
+
 // Explain the approved scope before the visitor chooses paid additions.
 export const includedGuidance: Record<OfferId, string> = {
   vitrine:
-    'Votre activité, vos services et vos coordonnées réunis dans un site personnalisé de 1 à 3 pages : l’essentiel pour être présenté clairement et recevoir des demandes. Mobile, tablette et ordinateur, formulaire de contact, référencement technique de base et mise en ligne sont compris. Vous fournissez les textes et les images. Besoin de plus de pages et de mises à jour autonomes ? Business comprend 1 à 6 pages, un espace de gestion (CMS), le référencement local et les statistiques de visites.',
+    'Présentez votre activité, vos services et vos coordonnées sur un site de 1 à 3 pages adapté aux mobiles, tablettes et ordinateurs. Vous fournissez les textes et les images. Le formulaire de contact, le référencement technique de base et la mise en ligne sont compris.',
   connecte:
-    'Gardez la main sur votre site : l’espace de gestion (CMS) vous permet de modifier vos textes et images vous-même. De 1 à 6 pages pour détailler vos services, avec des rubriques pour vos réalisations, tarifs et avis clients. Le référencement local de base aide à présenter votre activité dans sa zone géographique ; les statistiques vous aident à suivre les visites. Tout Vitrine est compris, de l’adaptation aux écrans à la mise en ligne.',
+    'Tout le forfait Vitrine est compris, avec 1 à 6 pages et des rubriques pour vos réalisations, vos tarifs et vos avis clients. Le CMS vous permet de modifier vos textes et images. Le référencement local et les statistiques de visites sont inclus.',
   immersif:
-    'Toutes les fonctions Business sont comprises dans un site de 1 à 10 pages, avec un espace de gestion (CMS) pour modifier vos textes et images vous-même. Premium ajoute une direction artistique personnalisée, des animations et interactions avancées, et la 3D si elle sert votre projet, avec un travail renforcé sur la fluidité du site et l’accompagnement. Vos demandes sur mesure sont étudiées et chiffrées selon le périmètre avant le démarrage. Vous fournissez le modèle 3D ; sa création ou un élément supplémentaire se choisissent ci-dessous.',
+    'Tout le forfait Business est compris, avec 1 à 10 pages, des animations avancées et un travail renforcé sur la fluidité du site. Si vous avez déjà un site, nous réintégrons jusqu’à 5 pages et 15 médias. L’intégration d’un modèle fourni est comprise si la 3D sert votre projet. Nous étudions vos demandes sur mesure avant le devis.',
   'sur-mesure':
     'Le périmètre et les fonctions de ce dossier historique restent définis par son devis.',
 }

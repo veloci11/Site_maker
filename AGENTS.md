@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Forfaits cumulatifs et devis à périmètre égal — 7 novembre 2026
+
+Business reprend Vitrine avec 1 à 6 pages. Premium / 3D reprend Business avec 1 à 10 pages et inclut la reprise de 5 pages et 15 médias au maximum. Cette reprise reste une option à 100–250 € sur Vitrine et Business. Lors d’un changement de forfait, la reprise incluse ne redevient pas payante sans choix explicite. Retirer la direction artistique des arguments publics. Employer « Inscription à la newsletter ». Afficher les limites près de chaque option et conserver le périmètre dans les estimations. Sous les prix, préciser qu’ils sont donnés à titre indicatif et qu’un expert confirme le devis après étude de la demande.
+
+Le forfait doit coûter moins cher qu’un devis à la carte pour les mêmes prestations. Pour établir ce devis, compter le CMS sur toutes les pages concernées, le référencement local et les rubriques Business, ainsi que les animations avancées, la fluidité et l’accompagnement Premium. Les pages et l’intégration 3D simple seules ne couvrent pas ces prestations. Les chiffrer dans le devis et comparer les deux montants sur le même périmètre avant de proposer une formule. Les prix des forfaits et des options déjà tarifées restent ceux validés.
+
 ## Défilement de la navigation — 7 novembre 2026
 
 La barre de navigation publique défile avec la page pour libérer le contenu. Sur ordinateur, la carte du configurateur reste ancrée avec un retrait de 24 px quand sa hauteur le permet. Le raccord animé réserve la portion visible du header au moment de la navigation.

@@ -4,7 +4,7 @@ import {
   normalizeConfiguration, quoteConfiguration, defaultPricing, EXTRA_OPTION_IDS,
   offers, publicOffers, examples, faqs, optionDefinitions, optionGroups, isOptionIncluded,
   isOptionSelected, withOption, formatOptionPrice, formatQuoteTotal, formatQuoteLine, getOffer, MONTHLY_PLAN_IDS,
-  withExtraPageCount, MAX_EXTRA_PAGE_COUNT, getOptionScope, getConfigurationScopeNotes,
+  withExtraPageCount, MAX_EXTRA_PAGE_COUNT, getOptionScope,
 } from '../shared/catalog.ts';
 
 const billable = quote => quote.lines.filter(line => !line.included);
@@ -245,11 +245,12 @@ test('Premium includes every Business capability and adds its visual experience 
   assert.equal(quote.totalCents, 249900);
   assert.equal(quote.maximumTotalCents, 249900);
   assert.equal(quote.estimated, true);
-  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d']) {
+  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d', 'content-import']) {
     const line = quote.lines.find(line => line.key === id);
     assert.equal(line.included, true, id);
     assert.equal(line.amountCents, 0, id);
   }
+  assert.match(quote.lines.find(line => line.key === 'content-import').scope, /5 pages et 15 médias/);
   assert.match(getOffer('immersif').features.join(' '), /Tout Business.*10 pages/);
 });
 
@@ -263,7 +264,7 @@ test('booking and historical advanced forms are not included in any new public b
     }
   }
   const text = JSON.stringify({ offers: publicOffers, faqs });
-  assert.doesNotMatch(text, /template|Doctolib|formulaire avancé|offre principale/i);
+  assert.doesNotMatch(text, /template|Doctolib|formulaire avancé|offre principale|direction artistique/i);
   assert.ok(faqs.some(faq => faq.question === 'Qu’apporte Premium / 3D par rapport à Business ?'));
 });
 
@@ -341,7 +342,6 @@ test('capped language, CMS and import lots never expand or multiply with page qu
   }
   assert.match(getOptionScope(config, 'content-import'), /15 médias/);
   assert.doesNotMatch(getOptionScope(config, 'additional-language'), /devis complémentaire/, 'cards receive the compact scope');
-  assert.ok(getConfigurationScopeNotes(config).some(note => /Langue supplémentaire.*devis complémentaire/.test(note)));
   for (const offerId of ['connecte', 'immersif']) {
     const base = normalizeConfiguration({ offerId });
     assert.equal(getOptionScope(base, 'managed-content'), null);

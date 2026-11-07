@@ -6,7 +6,6 @@ import {
   formatMoney,
   formatQuoteTotal,
   formatQuoteLine,
-  getConfigurationScopeNotes,
   getOptionDescription,
   getOptionScope,
   MAX_EXTRA_PAGE_COUNT,
@@ -54,7 +53,7 @@ import {
   writeDraft,
   type ProjectDraft,
 } from '../../lib/draft'
-import { includedGuidance } from '../../content/configurator-copy'
+import { includedGuidance, priceEstimateNote } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
@@ -129,7 +128,6 @@ export function ConfiguratorPage() {
   const offer = getOffer(configuration.offerId)!
   const quote = quoteConfiguration(configuration, pricing)
   const selected = quote.lines.filter((line) => line.key !== 'base' && !line.included)
-  const scopeNotes = getConfigurationScopeNotes(configuration)
   // Presentation order follows the choices, independently of quote/catalogue
   // order. Existing configurations start in their canonical catalogue order.
   const [selectionOrder, setSelectionOrder] = useState<string[]>([])
@@ -392,6 +390,7 @@ export function ConfiguratorPage() {
                   : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
               </small>
             </div>
+            {!editingId ? <p className="selected-plan__estimate">{priceEstimateNote}</p> : null}
             {stage === 'success' ? (
               <div className="selected-plan__confirmation">
                 <Check size={18} aria-hidden="true" />
@@ -534,17 +533,9 @@ export function ConfiguratorPage() {
                   )
                 })}
               </Accordion>
-              {scopeNotes.length > 0 ? (
-                <aside className="configurator-scope" aria-label="Périmètre des options choisies">
-                  <strong>Les pages couvertes par vos options</strong>
-                  <ul>{scopeNotes.map(note => <li key={note}>{note}</li>)}</ul>
-                </aside>
+              {editingId && quote.estimated ? (
+                <p className="configurator-notice">{quoteEstimateNotice(quote)}</p>
               ) : null}
-              <p className="configurator-notice">
-                {quote.estimated ? `${quoteEstimateNotice(quote)} ` : ''}
-                Votre sélection sert à préparer le devis. Le périmètre, les montants et les frais
-                des outils externes sont confirmés avant le démarrage.
-              </p>
               {pricingError ? (
                 <p className="configurator-notice" role="status">
                   Les tarifs sont temporairement indisponibles. Vous pouvez nous transmettre vos

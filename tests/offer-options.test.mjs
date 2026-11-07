@@ -123,16 +123,18 @@ test('offer changes retain chosen shop and language without billing prior includ
   assert.equal(quoteConfiguration(changePublicOffer(vitrine, 'connecte')).totalCents, 149000, 'new inclusions replace paid choices');
 });
 
-test('upgrading to Premium includes the first 3D integration without requesting or charging a second', () => {
+test('upgrading to Premium includes content import and the first 3D integration without a duplicate charge', () => {
   for (const source of ['vitrine', 'connecte']) {
     const previous = prunePublicConfiguration({
       offerId: source,
       language: 'fr-en',
-      extras: ['extra-scene-3d', 'custom-3d', 'blog', 'serenity-monthly'],
+      extras: ['extra-scene-3d', 'content-import', 'custom-3d', 'blog', 'serenity-monthly'],
     });
     const snapshot = structuredClone(previous);
     const premium = changePublicOffer(previous, 'immersif');
     assert.equal(isOptionIncluded(premium, 'scene-3d'), true, 'the first integration belongs to the Premium base');
+    assert.equal(isOptionIncluded(premium, 'content-import'), true);
+    assert.equal(isOptionSelected(changePublicOffer(premium, source), 'content-import'), false, 'an included import never becomes a paid choice on downgrade');
     assert.equal(isOptionSelected(premium, 'extra-scene-3d'), false, 'a second integration must be chosen explicitly');
     for (const id of ['custom-3d', 'blog', 'serenity-monthly']) assert.equal(isOptionSelected(premium, id), true, id);
     assert.equal(premium.language, 'fr');
