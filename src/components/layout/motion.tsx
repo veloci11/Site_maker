@@ -89,6 +89,9 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
 
   useLayoutEffect(() => {
     if (!id || !phase || !nextHref || !variant || !page.current) return
+    const headerBottom = document.querySelector('.public-header-wrap')?.getBoundingClientRect().bottom ?? 0
+    const rootStyle = document.documentElement.style
+    rootStyle.setProperty('--plan-motion-header', `${Math.max(0, headerBottom)}px`)
     if (phase === 'outgoing') {
       // Router sets this context after blockers and route modules are resolved,
       // synchronously before its old snapshot. Read geometry at that exact point.
@@ -106,6 +109,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
       // context must not restart the ordinary page entrance underneath it.
       setPlanArrivalKey(location.key)
     }
+    return () => { rootStyle.removeProperty('--plan-motion-header') }
   }, [id, phase, nextHref, variant, location.key])
 
   const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' ? {

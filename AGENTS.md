@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Défilement de la navigation — 7 novembre 2026
+
+La barre de navigation publique défile avec la page pour libérer le contenu. Sur ordinateur, la carte du configurateur reste ancrée avec un retrait de 24 px quand sa hauteur le permet. Le raccord animé réserve la portion visible du header au moment de la navigation.
+
 ## Langue, comparatif et carte de configuration — 7 novembre 2026
 
 L’option Langue supplémentaire à 100 € couvre cinq pages sur Vitrine et six sur Business et Premium / 3D avec les textes traduits fournis. Le lot reste borné au-delà de cette limite. Réutiliser le périmètre partagé dans les libellés, les estimations et les nouveaux dossiers. Les instantanés antérieurs gardent leurs conditions.

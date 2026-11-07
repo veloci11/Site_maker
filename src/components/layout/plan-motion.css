@@ -18,8 +18,8 @@
   --plan-page-exit-x: 0px;
 }
 
-/* The pseudo tree is above normal stacking contexts. Clip the whole tree to
-   protect the live sticky header even when the old listing is far scrolled. */
+/* The pseudo tree sits above the page. Leave room for the visible part of the
+   live header, measured when a plan transition captures each page. */
 :root:has(.public-shell)::view-transition {
   pointer-events: none;
   clip-path: inset(var(--plan-motion-header) 0 0);
