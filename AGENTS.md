@@ -1,8 +1,12 @@
 # studio — décisions et consignes actuelles
 
+## Zone « Continuer » — 8 novembre 2026
+
+Retirer le texte de recommandation placé sous « Continuer » sur ordinateur et dans la barre mobile. Le prix indicatif, la description des besoins et le conseil de l’expert tiennent sur trois lignes sous le prix de la carte du configurateur.
+
 ## Survol, traduction et estimation — 7 novembre 2026
 
-Le bouton « Configurer » révèle son morceau d’image au survol du bouton. Le haut de carte et le bouton partagent la même image. La carte entière reste un lien et garde son retour au clavier. Premium / 3D affiche la 3D interactive comme incluse pour l’intégration d’un modèle fourni. La traduction de la langue supplémentaire est réalisée par l’équipe, avec les mêmes limites de pages. Les descriptions de paiement et de boutique expliquent leur usage. La sélection de la boutique replie le choix « Liens de paiement » avec une animation et retire immédiatement son supplément. Sous « Continuer », l’expert propose le forfait adapté, y compris une formule moins chère si elle suffit.
+Le bouton « Configurer » révèle son morceau d’image au survol du bouton. Le haut de carte et le bouton partagent la même image. La carte entière reste un lien et garde son retour au clavier. Premium / 3D affiche la 3D interactive comme incluse pour l’intégration d’un modèle fourni. La traduction de la langue supplémentaire est réalisée par l’équipe, avec les mêmes limites de pages. Les descriptions de paiement et de boutique expliquent leur usage. La sélection de la boutique replie le choix « Liens de paiement » avec une animation et retire immédiatement son supplément.
 
 Dans le configurateur public, une option à prix de départ peut être comptée à ce prix pour montrer la variation des options à deux bornes. Indiquer ce calcul à côté du total. Les estimations enregistrées conservent l’absence de plafond réel. Si la sélection ne comporte aucune variation chiffrée, afficher son prix de départ.
 

@@ -53,7 +53,7 @@ import {
   writeDraft,
   type ProjectDraft,
 } from '../../lib/draft'
-import { includedGuidance, offerReviewNote, priceEstimateNote, startingOptionsNote } from '../../content/configurator-copy'
+import { includedGuidance, planEstimateNote, startingOptionsNote } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
@@ -420,7 +420,7 @@ export function ConfiguratorPage() {
                   : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
               </small>
             </div>
-            {!editingId ? <p className="selected-plan__estimate">{priceEstimateNote}</p> : null}
+            {!editingId ? <p className="selected-plan__estimate">{planEstimateNote}</p> : null}
             {stage === 'success' ? (
               <div className="selected-plan__confirmation">
                 <Check size={18} aria-hidden="true" />
@@ -584,7 +584,6 @@ export function ConfiguratorPage() {
                   {editingId ? 'Enregistrer mes choix' : 'Continuer'}
                   <ArrowRight size={17} aria-hidden="true" />
                 </Button>
-                {!editingId ? <p className="configurator-next__reassurance">{offerReviewNote}</p> : null}
               </div>
             </>
           ) : null}
@@ -664,7 +663,6 @@ export function ConfiguratorPage() {
             {editingId ? 'Enregistrer' : 'Continuer'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
-          {!editingId ? <p className="configurator-next__reassurance">{offerReviewNote}</p> : null}
         </div>
       ) : null}
     </section>
