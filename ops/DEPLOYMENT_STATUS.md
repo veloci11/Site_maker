@@ -1,8 +1,18 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 8 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/`
+- Révision `513b18cb28e2996376bfe4dd1f73566bb0b98b59` sur `main`
+- Release `/home/mathis/site-maker/releases/20261108T213632Z-513b18cb28e2`
+- Client `/assets/index-CCVI7Hbo.js`, SHA-256 `a263d2987d864fceaefbddf3a5eaef1541decde3c40d322472b7c032bc95a0e7`
+- Archive vérifiée de 13 981 488 octets, SHA-256 `e1dc2f99e6bd9943a9066691f83b2fd065c7d12179426cd0bc18b88b817e29c3`
+
+Le texte de prix indicatif et de conseil tient sur trois lignes sous le prix dans les trois configurateurs à 320 px. « Continuer » ouvre le formulaire et la zone sous le bouton est libre. Vérification en HTTPS à 320 et 1 280 px. TypeScript, build et 269 tests passent. Sauvegarde, santé et tarifs vérifiés avant et après la bascule.
+
+## Survol, options et estimation publiés le 7 novembre
 
 - URL `https://gilmathis.com/`
 - Révision `5f8893631306296c41e64c0180e7f94e3655e2d5` sur `main`

@@ -1,3 +1,7 @@
+# Mention de prix sur trois lignes publiée le 8 novembre 2026
+
+La carte du configurateur affiche le prix indicatif, invite à décrire les besoins et propose le conseil de l’expert en trois lignes. Le texte sous « Continuer » est retiré. Révision `513b18c` vérifiée en HTTPS à 320 et 1 280 px. Les 269 tests passent.
+
 # Survol, options et estimation publiés le 7 novembre 2026
 
 Le bouton « Configurer » révèle l’image au survol du bouton. Les deux zones ouvrent le forfait. Premium affiche la 3D interactive et la langue supplémentaire comprend la traduction par l’équipe. Les descriptions des options connexes sont simplifiées. La boutique replie la ligne des liens de paiement, dont le supplément est retiré immédiatement. Sous « Continuer », un message indique qu’un expert peut recommander une formule moins chère si elle convient au projet.

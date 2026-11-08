@@ -1,3 +1,7 @@
+# Note du configurateur publiée le 8 novembre 2026
+
+Trois lignes mesurées à 320 px sur Vitrine, Business et Premium / 3D et à 1 280 px sur Premium. La zone d’action contient « Continuer », qui ouvre le formulaire. Aucun débordement horizontal ni avertissement de console observé pendant le contrôle public.
+
 # Survol et options publiés le 7 novembre 2026
 
 Au survol du haut de carte, l’opacité du dégradé du bouton est à 0. Elle passe à 1 sur le bouton. Le bouton ouvre Business et le haut de carte ouvre Premium. Le focus de 3 px et l’ouverture au clavier ont été vérifiés en prévisualisation.
