@@ -1,3 +1,7 @@
+# Paragraphe de prix publié le 8 novembre 2026
+
+Les trois cartes rendent la note en un paragraphe de trois lignes à 320 px. Premium l’affiche sur deux lignes à 1 280 px. Aucun saut de ligne forcé ni débordement horizontal observé. Console publique sans erreur ni avertissement pendant le contrôle.
+
 # Note du configurateur publiée le 8 novembre 2026
 
 Trois lignes mesurées à 320 px sur Vitrine, Business et Premium / 3D et à 1 280 px sur Premium. La zone d’action contient « Continuer », qui ouvre le formulaire. Aucun débordement horizontal ni avertissement de console observé pendant le contrôle public.

@@ -1,3 +1,7 @@
+# Paragraphe sous le prix publié le 8 novembre 2026
+
+La carte affiche le prix indicatif et invite le client à préciser ses besoins et demandes particulières pour être guidé par l’expert. Le paragraphe suit la largeur de la carte. Révision `03e7a8f` vérifiée en HTTPS à 320 et 1 280 px. Les 269 tests passent.
+
 # Mention de prix sur trois lignes publiée le 8 novembre 2026
 
 La carte du configurateur affiche le prix indicatif, invite à décrire les besoins et propose le conseil de l’expert en trois lignes. Le texte sous « Continuer » est retiré. Révision `513b18c` vérifiée en HTTPS à 320 et 1 280 px. Les 269 tests passent.
