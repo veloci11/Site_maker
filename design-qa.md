@@ -1,3 +1,7 @@
+# Prise de contact sur la carte publiée le 8 novembre 2026
+
+Le paragraphe tient sur trois lignes à 320 px sur les trois forfaits et sur deux à 1 280 px sur Premium. Il se répartit sans saut forcé. Aucun débordement ni avertissement de console observé pendant le contrôle public.
+
 # Paragraphe de prix publié le 8 novembre 2026
 
 Les trois cartes rendent la note en un paragraphe de trois lignes à 320 px. Premium l’affiche sur deux lignes à 1 280 px. Aucun saut de ligne forcé ni débordement horizontal observé. Console publique sans erreur ni avertissement pendant le contrôle.

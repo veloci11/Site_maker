@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 8 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `dc4a18d733763647099677bb66a910a1c5e2a00c` sur `main`
+- Release `/home/mathis/site-maker/releases/20261108T214836Z-dc4a18d73376`
+- Client `/assets/index-DUQ2t6Py.js`, SHA-256 `216017596a5906f5b138d78c8bbc04414c633d81ebfc0f9585f79320fe8f72c9`
+- Archive vérifiée de 13 982 638 octets, SHA-256 `48bbf39b2940e7d6c695558a218d70e3502e94636777fa2b28e046929398ce8c`
+
+La note sous le prix précise qu’un expert contactera le client pour adapter l’offre. Vérifiée en HTTPS sur trois lignes à 320 px pour chaque forfait et deux lignes à 1 280 px. Les 269 tests passent. Sauvegarde, santé et tarifs vérifiés.
+
+## Paragraphe sous le prix publié le 8 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `03e7a8f9e0ae8c489bd4ff8c3a0bc13b7d310ad5` sur `main`
 - Release `/home/mathis/site-maker/releases/20261108T214214Z-03e7a8f9e0ae`
 - Client `/assets/index-YKVi2hVl.js`, SHA-256 `34173d520e56ccf9319118a73b9ebe0ec5c1ae3a0b8c992583e8159a7a9a58c6`
