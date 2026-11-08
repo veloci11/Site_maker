@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Survol, traduction et estimation — 7 novembre 2026
+
+Le bouton « Configurer » révèle son morceau d’image au survol du bouton. Le haut de carte et le bouton partagent la même image. La carte entière reste un lien et garde son retour au clavier. Premium / 3D affiche la 3D interactive comme incluse pour l’intégration d’un modèle fourni. La traduction de la langue supplémentaire est réalisée par l’équipe, avec les mêmes limites de pages. Les descriptions de paiement et de boutique expliquent leur usage. La sélection de la boutique replie le choix « Liens de paiement » avec une animation et retire immédiatement son supplément. Sous « Continuer », l’expert propose le forfait adapté, y compris une formule moins chère si elle suffit.
+
+Dans le configurateur public, une option à prix de départ peut être comptée à ce prix pour montrer la variation des options à deux bornes. Indiquer ce calcul à côté du total. Les estimations enregistrées conservent l’absence de plafond réel. Si la sélection ne comporte aucune variation chiffrée, afficher son prix de départ.
+
 ## Options et changement de forfait — 7 novembre 2026
 
 Business affiche « Tout le forfait Vitrine inclus » et Premium / 3D « Tout le forfait Business inclus ». L’option Blog comprend la rubrique et son éditeur. Le client rédige et publie ses articles. Le sélecteur de quantité des pages supplémentaires reste dans la même case que le prix unitaire. « Réinitialiser les options » efface les ajouts dans le configurateur public. Un changement de forfait repart de ses inclusions de base, avec les rubriques d’options dans leur état initial. Sur un même forfait, le brouillon public conserve ses choix. Les dossiers privés gardent leur parcours actuel.

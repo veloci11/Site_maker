@@ -39,7 +39,7 @@ La FAQ actuelle répond aux frais après création, aux contenus, aux modificati
 
 ## Prix et inclusions
 
-Les forfaits affichent un prix de départ donné à titre indicatif. Vitrine démarre à 890 € pour 1 à 3 pages. Business reprend Vitrine à 1 490 € sur 1 à 6 pages avec le CMS, le SEO local, les rubriques et les statistiques. Premium / 3D reprend Business à 2 499 € sur 1 à 10 pages avec la reprise de contenus, les animations avancées, la 3D si pertinente et l’étude des demandes sur mesure. Le badge Business est « Populaire ». Les trois comprennent l’adaptation aux écrans et la mise en ligne. La prise de rendez-vous reste une option à 90–180 €.
+Les forfaits affichent un prix de départ donné à titre indicatif. Vitrine démarre à 890 € pour 1 à 3 pages. Business reprend Vitrine à 1 490 € sur 1 à 6 pages avec le CMS, le SEO local, les rubriques et les statistiques. Premium / 3D reprend Business à 2 499 € sur 1 à 10 pages avec la reprise de contenus, les animations avancées, une intégration 3D interactive et l’étude des demandes sur mesure. Le badge Business est « Populaire ». Les trois comprennent l’adaptation aux écrans et la mise en ligne. La prise de rendez-vous reste une option à 90–180 €.
 
 Les tarifs actifs se règlent dans l’administration privée, rubrique tarifs. Ils sont persistés côté serveur, en centimes ; `server/orders.mjs` les lit et `shared/catalog.ts` calcule les totaux. `defaultPricing` contient les montants approuvés. Il est utilisé sans réécriture si aucun réglage n’existe ou si l’ancien catalogue EUR `draft-vN` était entièrement à null. Les tarifs administratifs déjà enregistrés restent prioritaires : modifier cette constante ne les remplace pas. Leurs valeurs null explicites et leurs nouvelles clés absentes restent inconnues. `null` signifie « prix à définir », et non gratuit.
 
@@ -47,11 +47,11 @@ Les douze options ponctuelles conservées sont les suivantes ; leur disponibilit
 
 | Option | Prix approuvé | Périmètre de référence |
 | --- | --- | --- |
-| Langue supplémentaire | 100 € | 1 langue au choix, jusqu’à 5 pages sur Vitrine ou 6 sur Business et Premium / 3D, textes traduits fournis |
+| Langue supplémentaire | 100 € | Traduction et intégration par l’équipe pour 1 langue au choix. Jusqu’à 5 pages sur Vitrine ou 6 sur Business et Premium / 3D. |
 | Modifier mes contenus | 300 € | CMS simple pour 5 pages de Vitrine ; inclus dans Business et Premium / 3D |
 | Ajouter un élément 3D | 250–600 € | 1 modèle fourni, intégré sur 1 page |
 | Espace membres | 300–600 € | Authentification et profil simple |
-| Liens de paiement | 100 € | 1 prestataire, jusqu’à 3 liens |
+| Liens de paiement | 100 € | Configuration du prestataire et intégration de liens de paiement. Périmètre précisé au devis. |
 | Boutique avec panier et paiement | 600–1 100 € | Boutique native, 10 produits simples |
 | Blog prêt à publier | 150 € | 1 rubrique et son éditeur. Le client rédige et publie ses articles. |
 | Ajouter une page | 60–120 € | 1 page sur modèle existant |

@@ -111,8 +111,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout le forfait Business est inclus sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D si elle sert votre projet. Vos demandes sur mesure sont étudiées avant devis.',
-    features: ['Tout le forfait Business inclus · 1 à 10 pages', 'Animations avancées et 3D si utile', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
+    description: 'Tout le forfait Business est inclus sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D interactive. Vos demandes sur mesure sont étudiées avant devis.',
+    features: ['Tout le forfait Business inclus · 1 à 10 pages', 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -338,25 +338,25 @@ export const faqs = [
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Premium / 3D reprend Business sur 1 à 10 pages. Il ajoute la reprise de vos contenus existants, des animations et interactions avancées, un travail renforcé sur la fluidité du site et un accompagnement plus poussé. La 3D est intégrée lorsqu’elle sert la présentation. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
+      "Premium / 3D reprend Business sur 1 à 10 pages. Il ajoute la reprise de vos contenus, des animations avancées, l’intégration d’un modèle 3D interactif, un travail renforcé sur la fluidité et un accompagnement plus poussé. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
     category: "Fonctionnalités",
   },
   {
     question: "Puis-je proposer mon site dans une autre langue ?",
     answer:
-      `Oui. L’option à 100 € ajoute une langue, navigation comprise, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.vitrine} pages avec Vitrine et ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.connecte} avec Business ou Premium / 3D. Vous fournissez les textes traduits. Indiquez la langue et les pages concernées dans votre message. Un devis complémentaire est nécessaire pour dépasser cette limite ou ajouter plusieurs langues.`,
+      `Oui. Nous traduisons vos textes et intégrons une langue supplémentaire, navigation comprise. L’option à 100 € couvre jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.vitrine} pages avec Vitrine et ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.connecte} avec Business ou Premium / 3D. Indiquez la langue souhaitée et les pages concernées. Au-delà de ces limites, le complément est chiffré sur devis.`,
     category: "Contenus",
   },
   {
     question: "Ai-je besoin de liens de paiement ou d’une boutique ?",
     answer:
-      "Les liens de paiement à 100 € conviennent pour encaisser une prestation ou un produit, avec un prestataire et jusqu’à trois liens, sans panier. La boutique à 600–1 100 € ajoute un catalogue, un panier, le paiement et la gestion de dix produits simples. Les frais du prestataire de paiement restent séparés. Les règles de livraison et de taxes à configurer sont précisées avant le démarrage.",
+      "Les liens de paiement à 100 € permettent d’encaisser directement le prix d’un produit ou d’une prestation via un lien. La boutique à 600–1 100 € permet de vendre depuis un catalogue avec panier et de gérer jusqu’à dix produits simples. Nous précisons les modalités de livraison, les taxes et les frais du prestataire dans le devis.",
     category: "Fonctionnalités",
   },
   {
-    question: "La 3D est-elle indispensable dans Premium / 3D ?",
+    question: "Qu’inclut la 3D dans le forfait Premium / 3D ?",
     answer:
-      "L’intégration 3D est prévue si elle aide à présenter votre activité ou un produit. Les animations et interactions sont adaptées à votre projet. Vous pouvez fournir un modèle ou demander la création d’un objet simple à partir de 150 €. L’ajout d’un autre élément est disponible en option.",
+      "Le forfait comprend l’intégration d’un modèle 3D fourni avec des interactions adaptées à votre site. La création d’un objet simple est proposée à partir de 150 €. L’intégration d’un élément supplémentaire est disponible en option.",
     category: "Design et 3D",
   },
   {
@@ -399,14 +399,14 @@ export const optionDefinitions = [
   {
     id: 'additional-language',
     title: 'Langue supplémentaire',
-    description: 'Une langue supplémentaire, navigation comprise. Vous fournissez les textes traduits et indiquez la langue dans votre message.',
+    description: 'Nous traduisons vos textes et intégrons la langue au site, navigation comprise. Indiquez la langue souhaitée dans votre message.',
     billing: 'once',
     group: 'essentials',
   },
   {
     id: 'managed-content',
     title: 'Modifier mes contenus (CMS)',
-    description: 'Modifiez vous-même les textes et images de 5 pages maximum. Au-delà, le complément est chiffré sur devis. L’option Blog comprend la gestion de ses articles.',
+    description: 'Modifiez vous-même les textes et images de 5 pages maximum. Au-delà, le complément est chiffré sur devis.',
     billing: 'once',
     group: 'essentials',
   },
@@ -449,14 +449,14 @@ export const optionDefinitions = [
   {
     id: 'online-payment',
     title: 'Liens de paiement',
-    description: 'Un prestataire de paiement et jusqu’à 3 liens pour encaisser une prestation ou un produit, sans panier. Déjà compris si vous choisissez la boutique ; frais du prestataire séparés.',
+    description: 'Encaissez directement le prix d’un produit ou d’une prestation via un lien. Nous configurons le prestataire et intégrons les liens au site. Les frais du prestataire sont précisés dans le devis.',
     billing: 'once',
     group: 'features',
   },
   {
     id: 'online-store',
     title: 'Boutique avec panier et paiement',
-    description: 'Une boutique native avec catalogue, panier, paiement et gestion de 10 produits simples. Les liens de paiement et la gestion des produits ne sont pas facturés une seconde fois. Livraison, taxes et frais du prestataire à préciser.',
+    description: 'Vos clients choisissent leurs produits et paient sur votre site. Vous disposez d’un catalogue et d’un espace pour gérer jusqu’à 10 produits simples. Nous précisons la livraison, les taxes et les frais du prestataire dans le devis.',
     billing: 'once',
     group: 'features',
   },
@@ -470,7 +470,7 @@ export const optionDefinitions = [
   {
     id: 'blog',
     title: 'Blog prêt à publier',
-    description: 'Nous installons une rubrique Blog avec son éditeur. Vous rédigez, modifiez et publiez vos articles depuis votre site. Le CMS des autres pages est inclus dès Business ou disponible en option sur Vitrine.',
+    description: 'Nous installons une rubrique Blog avec son éditeur. Vous rédigez, modifiez et publiez vos articles depuis votre site.',
     billing: 'once',
     group: 'content',
   },
@@ -505,14 +505,14 @@ export const optionDefinitions = [
   {
     id: 'custom-3d',
     title: 'Créer mon modèle 3D',
-    description: 'Création d’un objet 3D simple avec une révision. Le modèle et son intégration sont deux prestations distinctes : la première intégration est comprise dans Premium / 3D. Pour Vitrine et Business, l’intégration se choisit séparément avec Ajouter un élément 3D, de 250 à 600 €. Aucune intégration payante n’est ajoutée automatiquement.',
+    description: 'Nous créons un modèle 3D simple avec une révision. L’intégration du modèle sur le site est une prestation distincte.',
     billing: 'once',
     group: 'content',
   },
   {
     id: 'extra-scene-3d',
     title: 'Ajouter un élément 3D',
-    description: 'Intégration d’un modèle fourni sur une page, avec interactions simples et optimisation. Dans Premium / 3D, cette option ajoute un élément au-delà de la première intégration. Si vous ne disposez pas du modèle, sa création est une option distincte.',
+    description: 'Nous intégrons un modèle 3D fourni sur une page, avec des interactions simples et un chargement optimisé.',
     billing: 'once',
     group: 'content',
   },
@@ -761,9 +761,11 @@ export function withExtraPageCount(configuration: Configuration, count: number):
   })
 }
 export function getOptionDescription(offerId: OfferId, option: (typeof optionDefinitions)[number]): string {
-  return option.id === 'additional-language'
-    ? `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description} Au-delà de ce périmètre, le complément est chiffré sur devis.`
-    : option.description
+  if (option.id === 'additional-language')
+    return `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description} Au-delà de ce périmètre, le complément est chiffré sur devis.`
+  if (option.id === 'extra-scene-3d' && offerId === 'immersif')
+    return `${option.description} Cette option ajoute un élément 3D supplémentaire.`
+  return option.description
 }
 export function getOptionScope(configuration: Configuration, id: OptionId): string | null {
   if (id === 'content-import') return 'Reprise de 5 pages et 15 médias maximum.'
@@ -778,7 +780,7 @@ export function getOptionScope(configuration: Configuration, id: OptionId): stri
     case 'language-en':
       return 'Une langue, jusqu’à 5 pages, traductions fournies.'
     case 'additional-language':
-      return `Une langue, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[configuration.offerId]} pages, traductions fournies.`
+      return `Une langue, jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[configuration.offerId]} pages. Traduction et intégration par notre équipe.`
     case 'managed-content':
       return 'Gestion des textes et images de 5 pages maximum.'
     default:

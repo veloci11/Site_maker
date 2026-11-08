@@ -1,12 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultPricing, OFFER_IDS, optionDefinitions } from '../shared/catalog.ts';
+import { defaultPricing, normalizeConfiguration, OFFER_IDS, optionDefinitions, quoteConfiguration } from '../shared/catalog.ts';
 import { ApiError } from '../src/lib/api.ts';
-import { readCataloguePricing } from '../src/lib/pricing.ts';
+import { formatPublicCreationEstimate, readCataloguePricing } from '../src/lib/pricing.ts';
 
 const response = () => ({ pricing: structuredClone(defaultPricing) });
 const invalid = value => assert.throws(() => readCataloguePricing(value), error =>
   error instanceof ApiError && error.code === 'INVALID_CATALOGUE');
+
+test('the configurator retains known ranges when an option has a starting price', () => {
+  const estimate = extras => quoteConfiguration(normalizeConfiguration({ offerId: 'immersif', extras }));
+  const mixed = estimate(['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
+  const mixedDisplay = formatPublicCreationEstimate(mixed);
+  assert.match(mixedDisplay.label, /^2\s899\s€–3\s249\s€$/);
+  assert.equal(mixedDisplay.usesStartingPrices, true);
+  assert.equal(mixed.maximumTotalCents, null, 'the display does not set a ceiling in the saved quote');
+
+  const bounded = formatPublicCreationEstimate(estimate(['extra-scene-3d']));
+  assert.match(bounded.label, /^2\s749\s€–3\s099\s€$/);
+  assert.equal(bounded.usesStartingPrices, false);
+
+  const openEnded = formatPublicCreationEstimate(estimate(['custom-3d']));
+  assert.match(openEnded.label, /^À partir de 2\s649\s€$/);
+  assert.equal(openEnded.usesStartingPrices, false);
+});
 
 test('a complete approved catalogue and server-supported currencies remain valid', () => {
   for (const currency of ['EUR', 'CHF']) {

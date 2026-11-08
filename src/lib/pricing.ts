@@ -1,4 +1,4 @@
-import { OFFER_IDS, optionDefinitions, type Pricing } from '../../shared/catalog.ts'
+import { OFFER_IDS, formatQuoteLine, formatQuoteTotal, optionDefinitions, type Pricing, type Quote } from '../../shared/catalog.ts'
 import { ApiError } from './api.ts'
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -31,4 +31,24 @@ export function readCataloguePricing(response: unknown): Pricing {
 
 function invalidCatalogue() {
   return new ApiError('Les tarifs reçus ne sont pas valides. Réessayez dans un instant.', 200, 'INVALID_CATALOGUE')
+}
+
+/** Show known variation at the starting prices of open-ended options. The quote retains its own bounds. */
+export function formatPublicCreationEstimate(quote: Quote) {
+  const { totalCents, maximumTotalCents, currency } = quote
+  if (totalCents !== null && maximumTotalCents === null) {
+    const referenceUpper = quote.lines.reduce((sum, line) =>
+      line.billing === 'once' ? sum + (line.maximumCents ?? line.amountCents ?? 0) : sum, 0)
+    if (referenceUpper > totalCents) {
+      return {
+        label: formatQuoteLine({ amountCents: totalCents, maximumCents: referenceUpper }, currency),
+        usesStartingPrices: true,
+      }
+    }
+  }
+  const label = formatQuoteTotal(quote)
+  return {
+    label: totalCents !== null && !quote.estimated ? `À partir de ${label}` : label,
+    usesStartingPrices: false,
+  }
 }

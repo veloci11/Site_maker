@@ -4,7 +4,7 @@ import { publicOffers, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 
-type ComparisonStatus = 'included' | 'absent' | '1 à 3' | '1 à 6' | '1 à 10' | 'Si pertinent'
+type ComparisonStatus = 'included' | 'absent' | '1 à 3' | '1 à 6' | '1 à 10'
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint: string }
 const comparisonSections: readonly { title: string; rows: readonly ComparisonRow[] }[] = [
   {
@@ -31,7 +31,7 @@ const comparisonSections: readonly { title: string; rows: readonly ComparisonRow
     rows: [
       { title: 'Reprise de vos anciens contenus', values: ['absent', 'absent', 'included'], hint: 'Nous réintégrons jusqu’à 5 pages et 15 médias de votre ancien site. Au-delà, le complément est chiffré sur devis.' },
       { title: 'Animations avancées et interactions', values: ['absent', 'absent', 'included'], hint: 'Des éléments qui s’animent au défilement ou réagissent aux actions du visiteur, selon les besoins de votre présentation.' },
-      { title: 'Éléments 3D interactifs', values: ['absent', 'absent', 'Si pertinent'], hint: 'Intégration d’un modèle 3D fourni lorsqu’il aide à présenter votre activité ou un produit. La création du modèle et les éléments supplémentaires sont chiffrés séparément.' },
+      { title: 'Intégration d’un élément 3D interactif', values: ['absent', 'absent', 'included'], hint: 'Intégration d’un modèle 3D fourni avec des interactions adaptées. La création du modèle et les éléments supplémentaires sont chiffrés séparément.' },
       { title: 'Optimisation des performances renforcée', values: ['absent', 'absent', 'included'], hint: 'Un travail approfondi sur le chargement et la fluidité du site, notamment en présence d’animations ou de 3D.' },
       { title: 'Accompagnement renforcé', values: ['absent', 'absent', 'included'], hint: 'Un suivi plus poussé pour préciser les choix visuels, les fonctions et les ajustements de votre projet.' },
       { title: 'Étude des demandes sur mesure', values: ['absent', 'absent', 'included'], hint: 'Vos besoins spécifiques sont étudiés pour définir les solutions possibles et leur prix avant le démarrage.' },

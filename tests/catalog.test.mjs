@@ -341,6 +341,7 @@ test('capped language, CMS and import lots never expand or multiply with page qu
     assert.match(line.scope, /devis complémentaire/);
   }
   assert.match(getOptionScope(config, 'content-import'), /15 médias/);
+  assert.match(getOptionScope(config, 'additional-language'), /Traduction et intégration par notre équipe/);
   assert.doesNotMatch(getOptionScope(config, 'additional-language'), /devis complémentaire/, 'cards receive the compact scope');
   for (const offerId of ['connecte', 'immersif']) {
     const base = normalizeConfiguration({ offerId });
@@ -355,6 +356,7 @@ test('capped language, CMS and import lots never expand or multiply with page qu
     const language = lines.find(line => line.key === 'additional-language');
     assert.equal(language.amountCents, 10000);
     assert.match(language.scope, /jusqu’à 6 pages.*au-delà de 6 pages/);
+    assert.match(language.scope, /Traduction et intégration par notre équipe/);
     assert.match(getOptionScope(base, 'language-en'), /5 pages/);
   }
 });

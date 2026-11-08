@@ -1,6 +1,8 @@
 import type { OfferId } from '../../shared/catalog'
 
 export const priceEstimateNote = 'Le prix est donné à titre indicatif. Un expert étudie votre projet avant de confirmer le devis. Précisez vos besoins et vos demandes particulières dans votre message.'
+export const offerReviewNote = 'Un expert vous recommande le forfait adapté à votre projet, même s’il coûte moins cher.'
+export const startingOptionsNote = 'Options sur devis au prix de départ.'
 
 // Explain the approved scope before the visitor chooses paid additions.
 export const includedGuidance: Record<OfferId, string> = {
@@ -9,7 +11,7 @@ export const includedGuidance: Record<OfferId, string> = {
   connecte:
     'Tout le forfait Vitrine est inclus dans Business. Vous disposez de 1 à 6 pages et de rubriques pour vos réalisations, vos tarifs et vos avis clients. Le CMS vous permet de modifier vos textes et images. Le référencement local et les statistiques de visites sont inclus.',
   immersif:
-    'Tout le forfait Business est inclus dans Premium / 3D. Vous disposez de 1 à 10 pages, d’animations avancées et d’un travail renforcé sur la fluidité du site. Si vous avez déjà un site, nous réintégrons jusqu’à 5 pages et 15 médias. L’intégration d’un modèle fourni est comprise si la 3D sert votre projet. Nous étudions vos demandes sur mesure avant le devis.',
+    'Tout le forfait Business est inclus dans Premium / 3D. Vous disposez de 1 à 10 pages, d’animations avancées et de l’intégration interactive d’un modèle 3D fourni. Nous soignons la fluidité du site, reprenons jusqu’à 5 pages et 15 médias de votre ancien site et étudions vos demandes sur mesure avant le devis.',
   'sur-mesure':
     'Le périmètre et les fonctions de ce dossier historique restent définis par son devis.',
 }

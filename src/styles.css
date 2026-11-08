@@ -344,8 +344,7 @@ ul, ol { padding-left: 1.25rem; }
 }
 .plan-cta:focus-visible::before,
 .plan-cta:active::before,
-.pricing-card:focus-visible .plan-cta::before,
-.pricing-card:active .plan-cta::before {
+.pricing-card:focus-visible .plan-cta::before {
   opacity: 1;
 }
 @media (hover: hover) {
@@ -423,11 +422,12 @@ ul, ol { padding-left: 1.25rem; }
 .pricing-card__cta::before,
 .pricing-card__cta::after { top:calc(-1 * var(--card-cta-offset,0px)); }
 .pricing-card__cta::before { transition:opacity 300ms cubic-bezier(.4,0,.2,1); }
-.pricing-card:is(:focus-visible,:active) :is(.pricing-card__surface,.pricing-card__cta)::before,
-.pricing-card:is(:focus-visible,:active) :is(.pricing-card__surface,.pricing-card__cta)::after { opacity:1; }
+.pricing-card:active .pricing-card__surface::before,
+.pricing-card:active .pricing-card__surface::after,
+.pricing-card:focus-visible .pricing-card__cta::after,
+.pricing-card__cta:active::after { opacity:1; }
 @media (hover:hover) {
-  .pricing-card:hover .pricing-card__cta::before,
-  .pricing-card:hover .pricing-card__cta::after { opacity:1; }
+  .pricing-card__cta:hover::after { opacity:1; }
 }
 .pricing-card__features { display: grid; align-content: start; gap: 15px; margin: 0; padding: 24px 10px 18px; list-style: none; color: #434149; font-size: 15px; line-height: 1.45; }
 .pricing-card__features li { display: flex; align-items: flex-start; gap: 10px; }

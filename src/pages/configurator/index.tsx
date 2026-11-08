@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
@@ -43,7 +43,7 @@ import {
 } from '../../components/inquiries/ProjectBriefForm'
 import { useAuth } from '../../lib/auth'
 import { api, errorMessage } from '../../lib/api'
-import { readCataloguePricing } from '../../lib/pricing'
+import { formatPublicCreationEstimate, readCataloguePricing } from '../../lib/pricing'
 import { useProject } from '../../lib/project'
 import {
   clearDraft,
@@ -53,7 +53,7 @@ import {
   writeDraft,
   type ProjectDraft,
 } from '../../lib/draft'
-import { includedGuidance, priceEstimateNote } from '../../content/configurator-copy'
+import { includedGuidance, offerReviewNote, priceEstimateNote, startingOptionsNote } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
@@ -116,6 +116,7 @@ export function ConfiguratorPage() {
   const contactHeading = useRef<HTMLHeadingElement>(null)
   const optionsHeading = useRef<HTMLHeadingElement>(null)
   const successHeading = useRef<HTMLHeadingElement>(null)
+  const mobileBarRef = useRef<HTMLDivElement>(null)
   const editingId = params.get('projet') || params.get('projectId')
   const [loadedProjectKey, setLoadedProjectKey] = useState('')
   const [projectError, setProjectError] = useState('')
@@ -142,9 +143,9 @@ export function ConfiguratorPage() {
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
-  const totalLabel = !editingId && quote.totalCents !== null && !quote.estimated
-    ? `À partir de ${formatQuoteTotal(quote)}`
-    : formatQuoteTotal(quote)
+  const { label: totalLabel, usesStartingPrices } = editingId
+    ? { label: formatQuoteTotal(quote), usesStartingPrices: false }
+    : formatPublicCreationEstimate(quote)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
   const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
   const visibleOptions = editingId ? optionDefinitions : getPublicOptions(configuration)
@@ -155,6 +156,19 @@ export function ConfiguratorPage() {
   useEffect(() => {
     document.title = `${title} · studio`
   }, [title])
+  useLayoutEffect(() => {
+    const bar = mobileBarRef.current
+    const shell = bar?.closest<HTMLElement>('.public-shell')
+    if (!bar || !shell) return
+    const measure = () => shell.style.setProperty('--configurator-bar-space', `${Math.ceil(bar.getBoundingClientRect().height) + 12}px`)
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(bar)
+    return () => {
+      observer.disconnect()
+      shell.style.removeProperty('--configurator-bar-space')
+    }
+  }, [stage, editingLoaded])
   useEffect(() => {
     if (!routeOffer || editingId) return
     setConfiguration((current) => changePublicOffer(current, routeOffer.id))
@@ -278,8 +292,8 @@ export function ConfiguratorPage() {
     setStage('success')
     requestAnimationFrame(() => revealSection(successHeading.current))
   }
-  const optionPrice = (id: OptionId) => {
-    if (isOptionIncluded(configuration, id))
+  const optionPrice = (id: OptionId, included: boolean) => {
+    if (included)
       return configuration.extras.includes('online-store') &&
         (id === 'product-catalog' || id === 'online-payment')
         ? 'Dans la boutique'
@@ -394,6 +408,7 @@ export function ConfiguratorPage() {
             <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
               <span>{custom ? 'Votre projet' : quote.estimated ? 'Estimation de création' : 'Création du site'}</span>
               <strong key={totalLabel}>{totalLabel}</strong>
+              {usesStartingPrices ? <small>{startingOptionsNote}</small> : null}
               <div className="selected-plan__monthly" data-open={monthly} aria-hidden={!monthly}>
                 <p key={quote.monthlyTotalCents}>
                   + {formatMoney(quote.monthlyTotalCents, quote.currency)} <span>/ mois</span>
@@ -451,9 +466,9 @@ export function ConfiguratorPage() {
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {
-                  const options = visibleOptions.filter((option) => option.group === group.id)
-                  const selectedOptions = options.filter((option) =>
-                    isOptionSelected(configuration, option.id),
+                  const options = availableOptions.filter((option) => option.group === group.id)
+                  const selectedOptions = visibleOptions.filter((option) =>
+                    option.group === group.id && isOptionSelected(configuration, option.id),
                   )
                   return (
                     <AccordionItem value={group.id} key={group.id} className="configurator-group">
@@ -490,13 +505,15 @@ export function ConfiguratorPage() {
                         <div className="configurator-choice-list">
                           {options.map((option) => {
                             const included = isOptionIncluded(configuration, option.id)
-                            const checked = isOptionSelected(configuration, option.id)
+                            const animatesVisibility = !editingId && option.id === 'online-payment'
+                            const hidden = animatesVisibility && included
+                            const checked = !hidden && isOptionSelected(configuration, option.id)
                             const extraPage = option.id === 'extra-pages'
                             const showQuantity = extraPage && checked
-                            return (
+                            const choice = (
                               <div key={option.id} className="configurator-choice-item" data-quantity={showQuantity}>
                                 <label
-                                  className={`configurator-choice${included ? ' configurator-choice--included' : ''}`}
+                                  className={`configurator-choice${included && !hidden ? ' configurator-choice--included' : ''}`}
                                   data-selected={checked}
                                   htmlFor={`option-${option.id}`}
                                 >
@@ -514,7 +531,7 @@ export function ConfiguratorPage() {
                                     <span id={`description-${option.id}`}>{getOptionDescription(offer.id, option)}</span>
                                   </span>
                                   <span className="configurator-choice__price">
-                                    {optionPrice(option.id)}
+                                    {optionPrice(option.id, included && !hidden)}
                                     {extraPage ? <small>par page</small> : null}
                                   </span>
                                 </label>
@@ -541,6 +558,11 @@ export function ConfiguratorPage() {
                                 ) : null}
                               </div>
                             )
+                            return animatesVisibility ? (
+                              <div key={option.id} className="configurator-choice-visibility" data-visible={!hidden} inert={hidden} aria-hidden={hidden}>
+                                <div className="configurator-choice-visibility__clip">{choice}</div>
+                              </div>
+                            ) : choice
                           })}
                         </div>
                       </AccordionContent>
@@ -562,6 +584,7 @@ export function ConfiguratorPage() {
                   {editingId ? 'Enregistrer mes choix' : 'Continuer'}
                   <ArrowRight size={17} aria-hidden="true" />
                 </Button>
+                {!editingId ? <p className="configurator-next__reassurance">{offerReviewNote}</p> : null}
               </div>
             </>
           ) : null}
@@ -628,10 +651,11 @@ export function ConfiguratorPage() {
         </div>
       </div>
       {stage === 'options' ? (
-        <div className="configurator-mobile-bar">
+        <div ref={mobileBarRef} className="configurator-mobile-bar">
           <div>
             <span>{offer.title}</span>
             <strong>{totalLabel}</strong>
+            {usesStartingPrices ? <small>{startingOptionsNote}</small> : null}
             {monthly ? (
               <small>+ {formatMoney(quote.monthlyTotalCents, quote.currency)} / mois</small>
             ) : null}
@@ -640,6 +664,7 @@ export function ConfiguratorPage() {
             {editingId ? 'Enregistrer' : 'Continuer'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
+          {!editingId ? <p className="configurator-next__reassurance">{offerReviewNote}</p> : null}
         </div>
       ) : null}
     </section>
