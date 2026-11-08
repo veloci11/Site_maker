@@ -1,3 +1,9 @@
+# Survol, options et estimation publiés le 7 novembre 2026
+
+Le bouton « Configurer » révèle l’image au survol du bouton. Les deux zones ouvrent le forfait. Premium affiche la 3D interactive et la langue supplémentaire comprend la traduction par l’équipe. Les descriptions des options connexes sont simplifiées. La boutique replie la ligne des liens de paiement, dont le supplément est retiré immédiatement. Sous « Continuer », un message indique qu’un expert peut recommander une formule moins chère si elle convient au projet.
+
+Premium avec un élément 3D supplémentaire et la création du modèle affiche 2 899–3 249 €. La fourchette compte le modèle à son prix de départ de 150 €, avec mention à côté du total. Le devis garde son plafond ouvert. Révision `5f88936` publiée et vérifiée à 1 280 et 320 px. Les 269 tests passent.
+
 # Réinitialisation des options publiée le 7 novembre 2026
 
 Les cartes explicitent les inclusions de Vitrine dans Business et de Business dans Premium. Le blog comprend une rubrique et un éditeur pour les articles du client. Le nombre de pages supplémentaires se règle dans la même case que le prix par page. Le bouton réinitialise les options et le changement de forfait revient au nouveau forfait de base avec les rubriques dans leur état initial.

@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 7 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `5f8893631306296c41e64c0180e7f94e3655e2d5` sur `main`
+- Release `/home/mathis/site-maker/releases/20261108T004909Z-5f8893631306`
+- Client `/assets/index-CTr1c1Ej.js`, SHA-256 `b2221cf37ea373a508efd0c04de911e1e0ac3646bfdd6c002ec79b17f2f0b4c3`
+- Archive vérifiée de 13 984 669 octets, SHA-256 `459b584aad6aaf1d0058784f04ad9e70751b1dc269f93dc04f009403f7845866`
+
+Survol du bouton, 3D incluse, traduction, repli des liens de paiement, estimation et message sous « Continuer » vérifiés en HTTPS à 1 280 et 320 px. TypeScript, build et 269 tests passent. Sauvegarde vérifiée avant bascule, origine saine et prix préservés. Le tunnel conserve son processus.
+
+## Réinitialisation des options publiée le 7 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `6aae31ce43c10db5f4ffb204dae8fdfc76c9e874` sur `main`
 - Release `/home/mathis/site-maker/releases/20261107T200957Z-6aae31ce43c1`
 - Client `/assets/index-A-fLsKiO.js`, SHA-256 `3c9d22b82066ee5d4e168d183ea6b4639d0f6c29c91358acc82acd0ceb99d895`

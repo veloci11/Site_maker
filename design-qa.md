@@ -1,3 +1,9 @@
+# Survol et options publiés le 7 novembre 2026
+
+Au survol du haut de carte, l’opacité du dégradé du bouton est à 0. Elle passe à 1 sur le bouton. Le bouton ouvre Business et le haut de carte ouvre Premium. Le focus de 3 px et l’ouverture au clavier ont été vérifiés en prévisualisation.
+
+En sélectionnant la boutique, la ligne des liens de paiement est désactivée et se replie en 360 ms. L’estimation exclut immédiatement son supplément. À 320 px, le total Premium mixte affiche 2 899–3 249 € et sa base de calcul. Le message est sous « Continuer ». La barre occupe 119 px et la page en réserve 131 dans ce scénario. Le comparatif marque l’intégration 3D incluse et la FAQ attribue la traduction à l’équipe. Aucun débordement ni avertissement de console pendant le parcours public vérifié.
+
 # Remise à zéro et quantité de pages publiées le 7 novembre 2026
 
 À 1 280 et 320 px, le sélecteur de quantité est dans la case « Ajouter une page », aligné avec le prix unitaire. L’option Blog décrit l’éditeur et les articles rédigés par le client. La remise à zéro efface les quantités, les options et le mensuel. Au changement de forfait, seul « Votre site » est ouvert. Une actualisation du même forfait restaure ses choix. Aucun débordement horizontal ni avertissement de console observé.
