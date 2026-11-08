@@ -2,7 +2,7 @@
 
 ## Zone « Continuer » — 8 novembre 2026
 
-Retirer le texte de recommandation placé sous « Continuer » sur ordinateur et dans la barre mobile. Sous le prix de la carte du configurateur, regrouper le prix indicatif, les besoins à préciser et le conseil de l’expert dans un paragraphe de trois lignes maximum, sans saut de ligne forcé ni mention de devis.
+Retirer le texte de recommandation placé sous « Continuer » sur ordinateur et dans la barre mobile. Sous le prix de la carte du configurateur, préciser que le prix est indicatif et qu’un expert contactera le client pour adapter l’offre à ses besoins. Présenter l’information dans un paragraphe de trois lignes maximum, sans saut de ligne forcé ni mention de devis.
 
 ## Survol, traduction et estimation — 7 novembre 2026
 

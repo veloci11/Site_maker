@@ -1,7 +1,7 @@
 import type { OfferId } from '../../shared/catalog'
 
 export const priceEstimateNote = 'Le prix est donné à titre indicatif. Un expert étudie votre projet avant de confirmer le devis. Précisez vos besoins et vos demandes particulières dans votre message.'
-export const planEstimateNote = 'Prix à titre indicatif. Précisez vos besoins et vos demandes particulières pour que notre expert vous guide.'
+export const planEstimateNote = 'Prix à titre indicatif. Précisez vos besoins et vos demandes. Un expert vous contactera pour adapter l’offre.'
 export const startingOptionsNote = 'Options sur devis au prix de départ.'
 
 // Explain the approved scope before the visitor chooses paid additions.
