@@ -284,13 +284,13 @@ export const faqs = [
   {
     question: "Puis-je garder mon nom de domaine et mon hébergement ?",
     answer:
-      "Oui, lorsque les services existants sont compatibles avec le nouveau site. Indiquez le nom de domaine et l’hébergeur dans votre message : nous vérifions ce qui peut être conservé et les éventuels changements nécessaires. Le domaine, l’hébergement et les adresses e-mail peuvent relever de services différents ; précisez aussi si vous utilisez une messagerie professionnelle liée à ce domaine. Aucun mot de passe n’est à envoyer dans le formulaire.",
+      "Oui, lorsque les services existants sont compatibles avec le nouveau site. Indiquez le nom de domaine et l’hébergeur dans votre message : nous vérifions ce qui peut être conservé et les éventuels changements nécessaires. Le domaine, l’hébergement et les adresses e-mail peuvent relever de services différents ; précisez aussi si vous utilisez une messagerie professionnelle liée à ce domaine.",
     category: "Mise en ligne",
   },
   {
     question: "Une adresse e-mail professionnelle est-elle comprise ?",
     answer:
-      "Business et Premium / 3D comprennent la mise en place d’une boîte e-mail sur votre nom de domaine et son raccordement au formulaire du site. L’abonnement éventuel à la messagerie reste séparé. La reprise de vos anciens messages est chiffrée sur devis.",
+      "Business et Premium / 3D comprennent la mise en place d’une boîte e-mail sur votre nom de domaine et son raccordement au formulaire du site. L’abonnement éventuel à la messagerie reste séparé.",
     category: "Mise en ligne",
   },
   {
@@ -302,7 +302,7 @@ export const faqs = [
   {
     question: "J’ai déjà un site : peut-on reprendre mes contenus ?",
     answer:
-      "Indiquez l’adresse de votre site et les textes, images ou rubriques à conserver. La reprise est comprise dans Premium / 3D et disponible en option avec Vitrine et Business. Elle couvre la réintégration de cinq pages et quinze médias au maximum. Les volumes plus importants, la réécriture et la création de nouvelles pages sont chiffrés séparément.",
+      "Indiquez-nous l’adresse de votre site actuel. Nous vous recontacterons pour voir ensemble quels contenus reprendre. La reprise est comprise dans Premium / 3D et disponible en option avec Vitrine et Business.",
     category: "Site existant",
   },
   {
