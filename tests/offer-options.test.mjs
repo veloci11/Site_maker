@@ -40,6 +40,25 @@ test('all highlighted additions remain available or included as appropriate', ()
   assert.equal(isOptionIncluded(prunePublicConfiguration({ offerId: 'connecte' }), 'analytics'), true);
 });
 
+test('professional email is included only on Business and Premium and cannot be purchased separately', () => {
+  assert.ok(!Object.hasOwn(defaultPricing.options, 'professional-email'));
+  assert.throws(() => normalizeConfiguration({ offerId: 'vitrine', extras: ['professional-email'] }), /Vérifiez les fonctionnalités/);
+
+  for (const offerId of [...PUBLIC_OFFER_IDS, 'sur-mesure']) {
+    assert.ok(!publicIds(offerId).includes('professional-email'), offerId);
+    const quote = quoteConfiguration(prunePublicConfiguration({ offerId }));
+    const setup = quote.lines.find(line => line.key === 'professional-email');
+    if (offerId === 'connecte' || offerId === 'immersif') {
+      assert.equal(setup.included, true);
+      assert.equal(setup.amountCents, 0);
+    } else {
+      assert.equal(setup, undefined);
+    }
+    assert.equal(quote.totalCents, defaultPricing.base[offerId]);
+    assert.equal(quote.monthlyTotalCents, 0);
+  }
+});
+
 test('unapproved additions are pruned without mutating the source configuration', () => {
   const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['member-roles', 'booking', 'newsletter', 'backups-monthly', 'content-import'] });
   const snapshot = structuredClone(config);

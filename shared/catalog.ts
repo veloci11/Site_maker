@@ -102,7 +102,7 @@ export const offers = [
     headline: 'Votre site évolue avec votre activité.',
     description:
       'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
-    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques'],
+    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques', 'Mise en place d’un e-mail professionnel'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -285,6 +285,12 @@ export const faqs = [
     question: "Puis-je garder mon nom de domaine et mon hébergement ?",
     answer:
       "Oui, lorsque les services existants sont compatibles avec le nouveau site. Indiquez le nom de domaine et l’hébergeur dans votre message : nous vérifions ce qui peut être conservé et les éventuels changements nécessaires. Le domaine, l’hébergement et les adresses e-mail peuvent relever de services différents ; précisez aussi si vous utilisez une messagerie professionnelle liée à ce domaine. Aucun mot de passe n’est à envoyer dans le formulaire.",
+    category: "Mise en ligne",
+  },
+  {
+    question: "Une adresse e-mail professionnelle est-elle comprise ?",
+    answer:
+      "Business et Premium / 3D comprennent la mise en place d’une boîte e-mail sur votre nom de domaine et son raccordement au formulaire du site. L’abonnement éventuel à la messagerie reste séparé. La reprise de vos anciens messages est chiffrée sur devis.",
     category: "Mise en ligne",
   },
   {
@@ -820,6 +826,17 @@ export function quoteConfiguration(input: Configuration, pricing: Pricing = defa
       billing: 'once',
     },
   ]
+  if (config.offerId === 'connecte' || config.offerId === 'immersif') {
+    lines.push({
+      key: 'professional-email',
+      label: 'Adresse e-mail professionnelle',
+      amountCents: 0,
+      maximumCents: 0,
+      included: true,
+      billing: 'once',
+      scope: 'Une boîte sur votre domaine, reliée au formulaire. Abonnement de messagerie séparé.',
+    })
+  }
   for (const option of optionDefinitions) {
     if (!isOptionSelected(config, option.id)) continue
     const included = isOptionIncluded(config, option.id)
