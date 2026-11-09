@@ -266,7 +266,7 @@ export const faqs = [
   {
     question: "Quels frais dois-je prévoir après la création du site ?",
     answer:
-      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Le nom de domaine, les éventuels abonnements aux outils externes et les frais du prestataire de paiement sont séparés. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
+      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
     category: "Budget et suivi",
   },
   {
