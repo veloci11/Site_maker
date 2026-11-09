@@ -1,3 +1,7 @@
+# Réponse sur les frais après création publiée le 9 novembre 2026
+
+La réponse mise à jour s’ouvre dans la FAQ à 1 280 px et sur l’accueil à 320 px. Texte, prix mensuels et absence de débordement vérifiés en HTTPS. La console ne signale aucune erreur pendant le contrôle.
+
 # Textes de suivi et lien Addiction Agency publiés le 9 novembre 2026
 
 À 1 280 px, les options mensuelles affichent les descriptions courtes et les trois tarifs. À 320 px, le configurateur sélectionne Maintenance à 39 €/mois et la FAQ décrit les trois niveaux de suivi. Les liens de la carte Addiction Agency pointent vers l’accueil de l’agence dans un nouvel onglet aux deux largeurs. Aucun débordement horizontal ni erreur de console relevé pendant ces contrôles. Le viewport a été restauré.

@@ -1,3 +1,7 @@
+# Réponse sur les frais après création publiée le 9 novembre 2026
+
+La mention du nom de domaine, des abonnements externes et des frais du prestataire de paiement a été retirée de la réponse sur les frais après création. Révision `65380cb` vérifiée dans la FAQ à 1 280 px et sur l’accueil à 320 px. Les 270 tests passent.
+
 # Textes de suivi et lien Addiction Agency publiés le 9 novembre 2026
 
 Les descriptions de Maintenance et Sérénité et leur réponse de FAQ présentent les prestations comprises. La carte Addiction Agency ouvre `https://addiction-agency.com/`. Révision `88e0cd8` vérifiée en HTTPS sur ordinateur et mobile. Les tarifs de suivi restent à 19, 39 et 69 €/mois. Les 270 tests passent.

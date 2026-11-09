@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 9 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `65380cbb02ee058e478a5a40b8166df1712365e3` sur `main`
+- Release `/home/mathis/site-maker/releases/20261109T061021Z-65380cbb02ee`
+- Client `/assets/index-CWLzfs5e.js`, SHA-256 `79cd61f2d23c04766e991e08e0501a3e00326eb2b7baf5682704df83f8769e96`
+- Archive vérifiée de 13 980 156 octets, SHA-256 `d69ebe9763303ae7ab16a143c6d99c897c1969306512d90f13e72903717afd93`
+
+Réponse sur les frais après création vérifiée dans la FAQ à 1 280 px et sur l’accueil à 320 px. Sauvegarde, santé d’origine et catalogue vérifiés. Les 270 tests passent.
+
+## Textes de suivi et lien Addiction Agency publiés le 9 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `88e0cd837f574c821e322cecc75258081eed1b60` sur `main`
 - Release `/home/mathis/site-maker/releases/20261109T060211Z-88e0cd837f57`
 - Client `/assets/index-DbD6GyyV.js`, SHA-256 `b34a8b0fb20c00a8fc284a006456710fc5b6dbc7e59c568ba41fdba27505793e`
