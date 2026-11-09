@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 8 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `29bb86deab13cb5eb48e88eef3bd32834df04cca` sur `main`
+- Release `/home/mathis/site-maker/releases/20261109T052452Z-29bb86deab13`
+- Client `/assets/index-mobKKB8j.js`, SHA-256 `7bb349d430e5ea6e62c8d71ed87a95c020c6b89ab5bc466a7090a80db8e0e0a4`
+- Archive vérifiée de 13 981 715 octets, SHA-256 `65cc1f448deb65b0a3f3541650d8a4597823066b92be2eec2f007ec4fd8fa218`
+
+La mise en place de l’adresse professionnelle est comprise dans Business et Premium / 3D. Le devis l’affiche à 0 € et le configurateur Vitrine ne la propose pas. Tarifs, reprise Premium, santé et tunnel vérifiés après sauvegarde. Comparatif et configurateur contrôlés en HTTPS à 320 et 1 280 px, FAQ vérifiée et console sans erreur. Les 270 tests passent.
+
+## Prise de contact de l’expert publiée le 8 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `dc4a18d733763647099677bb66a910a1c5e2a00c` sur `main`
 - Release `/home/mathis/site-maker/releases/20261108T214836Z-dc4a18d73376`
 - Client `/assets/index-DUQ2t6Py.js`, SHA-256 `216017596a5906f5b138d78c8bbc04414c633d81ebfc0f9585f79320fe8f72c9`

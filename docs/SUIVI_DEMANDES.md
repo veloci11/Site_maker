@@ -1,3 +1,7 @@
+# Adresse e-mail professionnelle publiée le 8 novembre 2026
+
+La mise en place d’une boîte sur le domaine du client et son raccordement au formulaire sont compris dans Business et Premium / 3D, avec le service de messagerie séparé. Vitrine ne propose pas cette option. La révision `29bb86d` a été vérifiée en HTTPS sur ordinateur et mobile, et les 270 tests passent.
+
 # Prise de contact de l’expert publiée le 8 novembre 2026
 
 La note indique que l’expert contactera le client pour adapter l’offre à ses besoins. Révision `dc4a18d` vérifiée en HTTPS sur trois lignes à 320 px et deux à 1 280 px. Les 269 tests passent.

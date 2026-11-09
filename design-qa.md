@@ -1,3 +1,7 @@
+# Adresse e-mail professionnelle publiée le 8 novembre 2026
+
+Le comparatif en HTTPS affiche l’adresse pro incluse dans Business et Premium / 3D à 320 et 1 280 px. Vitrine reste à 890 € sans cette option dans « Mise en ligne et suivi ». La FAQ distingue la mise en place comprise et l’abonnement de messagerie séparé. Aucun débordement de la page Vitrine ni erreur de console observés. Le viewport a été restauré.
+
 # Prise de contact sur la carte publiée le 8 novembre 2026
 
 Le paragraphe tient sur trois lignes à 320 px sur les trois forfaits et sur deux à 1 280 px sur Premium. Il se répartit sans saut forcé. Aucun débordement ni avertissement de console observé pendant le contrôle public.
