@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 8 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `693aca595f85725dcf81f394e9aa529ca3c8c8db` sur `main`
+- Release `/home/mathis/site-maker/releases/20261109T053618Z-693aca595f85`
+- Client `/assets/index-rRqkBTUm.js`, SHA-256 `73659a32b40214df37ef3b0683badd54d8eeaf46002ce072403666fac01dc636`
+- Archive vérifiée de 13 982 175 octets, SHA-256 `74fd0517266f0ba487008ddc7cebec3e8656877d8e46bc5869a9a753010cf932`
+
+Premium / 3D démarre à 2 490 €. Le CMS et l’espace membres ne sont plus des choix Vitrine. Le CMS est compris dès Business et l’espace membres reste disponible en option dès Business. Les trois étapes de l’accueil et le libellé CMS ont été reformulés. Sauvegarde, santé, tunnel et tarifs vérifiés. Accueil, configurateurs, comparatif et FAQ contrôlés en HTTPS à 320 et 1 280 px. Les 270 tests passent.
+
+## Adresse e-mail professionnelle publiée le 8 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `29bb86deab13cb5eb48e88eef3bd32834df04cca` sur `main`
 - Release `/home/mathis/site-maker/releases/20261109T052452Z-29bb86deab13`
 - Client `/assets/index-mobKKB8j.js`, SHA-256 `7bb349d430e5ea6e62c8d71ed87a95c020c6b89ab5bc466a7090a80db8e0e0a4`

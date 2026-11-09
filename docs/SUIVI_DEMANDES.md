@@ -1,3 +1,7 @@
+# Offres et étapes de l’accueil publiées le 8 novembre 2026
+
+Premium / 3D démarre à 2 490 €. Business affiche « CMS pour gérer vos textes et images » et l’espace membres est disponible en option dès Business. Les deux choix ont été retirés du parcours public Vitrine et de la reprise de ses brouillons. L’accueil explique le choix du forfait, l’envoi du projet et l’échange avec un développeur avant le démarrage. Révision `693aca5` vérifiée en HTTPS sur ordinateur et mobile. Les 270 tests passent.
+
 # Adresse e-mail professionnelle publiée le 8 novembre 2026
 
 La mise en place d’une boîte sur le domaine du client et son raccordement au formulaire sont compris dans Business et Premium / 3D, avec le service de messagerie séparé. Vitrine ne propose pas cette option. La révision `29bb86d` a été vérifiée en HTTPS sur ordinateur et mobile, et les 270 tests passent.

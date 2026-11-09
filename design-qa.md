@@ -1,3 +1,7 @@
+# Offres et étapes de l’accueil publiées le 8 novembre 2026
+
+À 320 et 1 280 px en HTTPS, l’accueil affiche « Composez votre site », « Parlez-nous de votre projet » et « Validons les détails » sans débordement de page. Vitrine n’affiche ni CMS ni espace membres, Business affiche « CMS pour gérer vos textes et images » et propose l’espace membres, et Premium / 3D affiche 2 490 €. Comparatif et FAQ cohérents, console sans erreur. Le viewport a été restauré.
+
 # Adresse e-mail professionnelle publiée le 8 novembre 2026
 
 Le comparatif en HTTPS affiche l’adresse pro incluse dans Business et Premium / 3D à 320 et 1 280 px. Vitrine reste à 890 € sans cette option dans « Mise en ligne et suivi ». La FAQ distingue la mise en place comprise et l’abonnement de messagerie séparé. Aucun débordement de la page Vitrine ni erreur de console observés. Le viewport a été restauré.
