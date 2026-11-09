@@ -1,8 +1,18 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 8 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 9 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/`
+- Révision `88e0cd837f574c821e322cecc75258081eed1b60` sur `main`
+- Release `/home/mathis/site-maker/releases/20261109T060211Z-88e0cd837f57`
+- Client `/assets/index-DbD6GyyV.js`, SHA-256 `b34a8b0fb20c00a8fc284a006456710fc5b6dbc7e59c568ba41fdba27505793e`
+- Archive vérifiée de 13 988 612 octets, SHA-256 `805828a57968711b3995c7e560c3dabd6ee31e4b01b9f67d7fa43967c03df6fc`
+
+Descriptions de Maintenance et Sérénité et FAQ simplifiées. Les quatre liens de la carte Addiction Agency pointent vers l’accueil du site. Sauvegarde et santé d’origine vérifiées. Le contrôle du catalogue confirme les deux descriptions modifiées et les mêmes prix. Vérification HTTPS à 1 280 et 320 px. Les 270 tests passent.
+
+## Offres et étapes de l’accueil publiées le 8 novembre
 
 - URL `https://gilmathis.com/`
 - Révision `693aca595f85725dcf81f394e9aa529ca3c8c8db` sur `main`

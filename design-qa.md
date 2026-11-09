@@ -1,3 +1,7 @@
+# Textes de suivi et lien Addiction Agency publiés le 9 novembre 2026
+
+À 1 280 px, les options mensuelles affichent les descriptions courtes et les trois tarifs. À 320 px, le configurateur sélectionne Maintenance à 39 €/mois et la FAQ décrit les trois niveaux de suivi. Les liens de la carte Addiction Agency pointent vers l’accueil de l’agence dans un nouvel onglet aux deux largeurs. Aucun débordement horizontal ni erreur de console relevé pendant ces contrôles. Le viewport a été restauré.
+
 # Offres et étapes de l’accueil publiées le 8 novembre 2026
 
 À 320 et 1 280 px en HTTPS, l’accueil affiche « Composez votre site », « Parlez-nous de votre projet » et « Validons les détails » sans débordement de page. Vitrine n’affiche ni CMS ni espace membres, Business affiche « CMS pour gérer vos textes et images » et propose l’espace membres, et Premium / 3D affiche 2 490 €. Comparatif et FAQ cohérents, console sans erreur. Le viewport a été restauré.

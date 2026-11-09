@@ -1,3 +1,7 @@
+# Textes de suivi et lien Addiction Agency publiés le 9 novembre 2026
+
+Les descriptions de Maintenance et Sérénité et leur réponse de FAQ présentent les prestations comprises. La carte Addiction Agency ouvre `https://addiction-agency.com/`. Révision `88e0cd8` vérifiée en HTTPS sur ordinateur et mobile. Les tarifs de suivi restent à 19, 39 et 69 €/mois. Les 270 tests passent.
+
 # Offres et étapes de l’accueil publiées le 8 novembre 2026
 
 Premium / 3D démarre à 2 490 €. Business affiche « CMS pour gérer vos textes et images » et l’espace membres est disponible en option dès Business. Les deux choix ont été retirés du parcours public Vitrine et de la reprise de ses brouillons. L’accueil explique le choix du forfait, l’envoi du projet et l’échange avec un développeur avant le démarrage. Révision `693aca5` vérifiée en HTTPS sur ordinateur et mobile. Les 270 tests passent.
