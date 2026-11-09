@@ -1,3 +1,7 @@
+# FAQ simplifiée le 9 novembre 2026
+
+Huit réponses ont été retouchées. La FAQ invite à échanger sur les contenus à reprendre, sur le regroupement de petites pages et sur le modèle 3D avec le modélisateur. Les réponses sur la langue supplémentaire, le paiement, la 3D et les rendez-vous décrivent les prestations. Les deux lots `7281f15` et `d1e203f` sont publiés. La version finale a été vérifiée en HTTPS à 320 et 1 280 px. Les 270 tests passent.
+
 # Réponse sur les frais après création publiée le 9 novembre 2026
 
 La mention du nom de domaine, des abonnements externes et des frais du prestataire de paiement a été retirée de la réponse sur les frais après création. Révision `65380cb` vérifiée dans la FAQ à 1 280 px et sur l’accueil à 320 px. Les 270 tests passent.

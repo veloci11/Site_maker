@@ -1,3 +1,7 @@
+# FAQ simplifiée le 9 novembre 2026
+
+Les huit réponses retouchées s’ouvrent et affichent le texte attendu à 320 et 1 280 px sur la FAQ publique. Aucun débordement horizontal ni erreur de console relevé pendant le contrôle.
+
 # Réponse sur les frais après création publiée le 9 novembre 2026
 
 La réponse mise à jour s’ouvre dans la FAQ à 1 280 px et sur l’accueil à 320 px. Texte, prix mensuels et absence de débordement vérifiés en HTTPS. La console ne signale aucune erreur pendant le contrôle.

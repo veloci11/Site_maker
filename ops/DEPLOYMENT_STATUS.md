@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 9 novembre 2026 sur o
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `d1e203f4ff8f6f7cb431aa72159ebf6646e984db` sur `main`
+- Release `/home/mathis/site-maker/releases/20261109T062000Z-d1e203f4ff8f`
+- Client `/assets/index-CZ817RAY.js`, SHA-256 `5da9bff85c0ff1a0c219f17895df43231de08fb5da7f8cb57577489fda4bfd8d`
+- Archive vérifiée de 13 985 307 octets, SHA-256 `a96d5d385613b5022046b183d68cc71c016178537ac6ed919b533945ba402301`
+
+Huit réponses de la FAQ vérifiées en HTTPS à 320 et 1 280 px. La première série de trois réponses a été publiée et vérifiée sur `7281f15` avant la livraison de la version finale. Sauvegarde, santé d’origine et catalogue vérifiés. Les 270 tests passent.
+
+## Réponse sur les frais après création publiée le 9 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `65380cbb02ee058e478a5a40b8166df1712365e3` sur `main`
 - Release `/home/mathis/site-maker/releases/20261109T061021Z-65380cbb02ee`
 - Client `/assets/index-CWLzfs5e.js`, SHA-256 `79cd61f2d23c04766e991e08e0501a3e00326eb2b7baf5682704df83f8769e96`
