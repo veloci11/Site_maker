@@ -11,7 +11,7 @@ const billable = quote => quote.lines.filter(line => !line.included);
 
 test('three public offers have approved names, prices and matching gallery references', () => {
   assert.deepEqual(publicOffers.map(offer => offer.title), ['Vitrine', 'Business', 'Premium / 3D']);
-  assert.deepEqual(publicOffers.map(offer => defaultPricing.base[offer.id]), [89000, 149000, 249900]);
+  assert.deepEqual(publicOffers.map(offer => defaultPricing.base[offer.id]), [89000, 149000, 249000]);
   for (const offer of publicOffers) {
     const example = examples.find(item => item.id === offer.exampleId);
     assert.ok(example, offer.id);
@@ -62,11 +62,11 @@ test('Premium distinguishes included integration, extra integration and model cr
   assert.equal(isOptionIncluded(base, 'scene-3d'), true);
   assert.equal(isOptionIncluded(base, 'managed-content'), true);
   const extra = quoteConfiguration(withOption(base, 'extra-scene-3d', true));
-  assert.equal(extra.totalCents, 274900);
+  assert.equal(extra.totalCents, 274000);
   assert.equal(extra.lines.find(line => line.key === 'scene-3d').amountCents, 0);
   assert.equal(extra.lines.find(line => line.key === 'extra-scene-3d').amountCents, 25000);
   const model = quoteConfiguration(withOption(base, 'custom-3d', true));
-  assert.equal(model.totalCents, 264900);
+  assert.equal(model.totalCents, 264000);
   assert.equal(model.lines.some(line => line.key === 'extra-scene-3d'), false, 'creating a model does not silently add another paid integration');
 });
 
@@ -242,8 +242,8 @@ test('Premium includes every Business capability and adds its visual experience 
     }
   }
   const quote = quoteConfiguration(premium);
-  assert.equal(quote.totalCents, 249900);
-  assert.equal(quote.maximumTotalCents, 249900);
+  assert.equal(quote.totalCents, 249000);
+  assert.equal(quote.maximumTotalCents, 249000);
   assert.equal(quote.estimated, true);
   for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d', 'content-import']) {
     const line = quote.lines.find(line => line.key === id);

@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Prix Premium et fonctions à partir de Business — 8 novembre 2026
+
+Premium / 3D démarre à 2 490 €. Le CMS est compris dans Business et Premium / 3D, et l’espace membres est une option réservée à ces deux forfaits. Sur Business, utiliser « CMS pour gérer vos textes et images ». Vitrine propose son formulaire de contact, avec les autres options validées. Les anciens brouillons publics Vitrine retirent ces deux choix à la reprise. Les configurations et devis privés historiques sont conservés.
+
+L’accueil explique en trois étapes comment composer son site, envoyer sa demande avec les choix, puis confirmer les prestations, le prix et le calendrier avec un développeur.
+
 ## Adresse e-mail professionnelle — 8 novembre 2026
 
 La mise en place d’une boîte sur le domaine du client et son raccordement au formulaire sont réservés à Business et Premium / 3D, où la prestation est comprise. L’abonnement éventuel à la messagerie est séparé et la reprise d’anciens messages est sur devis.

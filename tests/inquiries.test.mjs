@@ -196,6 +196,11 @@ test('prices, unknown configuration, invalid fields and missing request referenc
   for (const extra of [{ quote: { totalCents: 1 } }, { to: 'victim@example.test' }, { configuration: { offerId: 'vitrine', totalCents: 1 } }, { configuration: { offerId: 'vitrine', mobile: 'false' } }, { configuration: { offerId: 'vitrine', extras: ['invented-option'] } }, { configuration: [] }, { requestId: 'invalid-id' }, { requestId: undefined }, { firstName: '' }, { email: 'client@example.test\r\nBcc: victim@example.test' }, { message: 'x'.repeat(10001) }, { company: 'x'.repeat(161) }, { subject: 'x'.repeat(161) }, { website: {} }]) {
     assert.equal((await f.post(configuredRequest(extra))).status, 400);
   }
+  for (const choice of [{ managedContent: true }, { extras: ['user-accounts'] }]) {
+    const rejected = await f.post(configuredRequest({ configuration: { offerId: 'vitrine', ...choice } }));
+    assert.equal(rejected.status, 400);
+    assert.match(rejected.body.fields.configuration, /Certaines options/);
+  }
   assert.equal((await f.post({ ...legacyRequest(), message: 'court' })).status, 400);
   assert.equal(inquiryCount(), 0);
 });

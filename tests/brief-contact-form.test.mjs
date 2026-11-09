@@ -81,7 +81,7 @@ test('all three offers and contact submit the short form through the real API wi
   let replay;
   for (const requestType of ['vitrine', 'connecte', 'immersif', 'contact']) {
     const payload = validInquiry(requestType, { briefFormat: 'contact', brief: { message: `Projet ${requestType}.` } });
-    if (requestType === 'vitrine') payload.configuration.extras = ['user-accounts'];
+    if (requestType === 'vitrine') payload.configuration.extras = ['booking'];
     if (requestType === 'connecte') payload.configuration.extras = ['additional-language'];
     const response = await post(payload);
     assert.equal(response.status, 201, JSON.stringify(response.body));
@@ -97,10 +97,10 @@ test('all three offers and contact submit the short form through the real API wi
     assert.deepEqual(inquiry.brief, payload.brief);
     if (requestType === 'vitrine') {
       assert.equal(inquiry.quote.estimated, true);
-      assert.equal(inquiry.quote.totalCents, 119000);
-      assert.equal(inquiry.quote.maximumTotalCents, 149000);
-      assert.match(row.message, /Création : 1\s190\s€–1\s490\s€/);
-      assert.match(row.message, /Espace membres : 300\s€–600\s€/);
+      assert.equal(inquiry.quote.totalCents, 98000);
+      assert.equal(inquiry.quote.maximumTotalCents, 107000);
+      assert.match(row.message, /Création : 980\s€–1\s070\s€/);
+      assert.match(row.message, /Prise de rendez-vous en ligne : 90\s€–180\s€/);
       assert.match(row.message, /Fourchette indicative/);
     }
     if (requestType === 'connecte') {

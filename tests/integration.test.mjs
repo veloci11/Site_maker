@@ -54,7 +54,7 @@ function owned(route, options = {}) { return request(`/api/projects/${project.id
 test('public catalogue, quote and inquiry stay accessible before protected routers; origin checks apply', async () => {
   const catalogue = await request('/api/catalogue');
   assert.equal(catalogue.status, 200); assert.equal(catalogue.body.paymentAvailable, false);
-  assert.deepEqual(catalogue.body.pricing.base, { vitrine: 89000, connecte: 149000, immersif: 249900, 'sur-mesure': null });
+  assert.deepEqual(catalogue.body.pricing.base, { vitrine: 89000, connecte: 149000, immersif: 249000, 'sur-mesure': null });
   assert.equal(catalogue.headers.get('cache-control'), 'no-store');
   const configuration = { offerId: 'vitrine', language: 'fr', managedContent: false, scene3d: false };
   const quote = await request('/api/quote', { method: 'POST', body: { configuration } });

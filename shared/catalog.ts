@@ -102,7 +102,7 @@ export const offers = [
     headline: 'Votre site évolue avec votre activité.',
     description:
       'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
-    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS inclus pour gérer textes et images', 'Référencement local et statistiques', 'Mise en place d’un e-mail professionnel'],
+    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS pour gérer vos textes et images', 'Référencement local et statistiques', 'Mise en place d’un e-mail professionnel'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -278,7 +278,7 @@ export const faqs = [
   {
     question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
-      "Oui. Le CMS inclus dans Business et Premium / 3D est votre espace de gestion : il permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Pour Vitrine, l’option « Modifier mes contenus (CMS) » à 300 € couvre cinq pages maximum ; au-delà, un devis complémentaire est nécessaire. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
+      "Oui, avec Business ou Premium / 3D. Le CMS inclus vous permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
     category: "Après la livraison",
   },
   {
@@ -320,7 +320,7 @@ export const faqs = [
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine présente votre activité sur un site personnalisé de 1 à 3 pages. Business reprend Vitrine sur 1 à 6 pages, avec un CMS pour modifier vos textes et images, le référencement local et les statistiques. Premium / 3D reprend Business sur 1 à 10 pages et ajoute les animations avancées, la reprise de vos contenus existants et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits. Nous vérifions vos besoins avant de confirmer le devis.",
+      "Vitrine présente votre activité sur un site personnalisé de 1 à 3 pages. Business reprend Vitrine sur 1 à 6 pages, avec un CMS pour modifier vos textes et images, le référencement local et les statistiques. L’espace membres est disponible en option à partir de Business. Premium / 3D reprend Business sur 1 à 10 pages et ajoute les animations avancées, la reprise de vos contenus existants et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits. Nous vérifions vos besoins avant de confirmer le devis.",
     category: "Choix du forfait",
   },
   {
@@ -611,7 +611,7 @@ export const MONTHLY_PLAN_IDS = ['hosting-monthly', 'maintenance-monthly', 'sere
 export const defaultPricing: Pricing = {
   version: 'public-2026-11-06-booking-v2',
   currency: 'EUR',
-  base: { vitrine: 89_000, connecte: 149_000, immersif: 249_900, 'sur-mesure': null },
+  base: { vitrine: 89_000, connecte: 149_000, immersif: 249_000, 'sur-mesure': null },
   options: {
     ...Object.fromEntries(optionDefinitions.map((option) => [option.id, null])),
     'language-en': 10_000,
@@ -769,6 +769,8 @@ export function withExtraPageCount(configuration: Configuration, count: number):
 export function getOptionDescription(offerId: OfferId, option: (typeof optionDefinitions)[number]): string {
   if (option.id === 'additional-language')
     return `Jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT[offerId]} pages. ${option.description} Au-delà de ce périmètre, le complément est chiffré sur devis.`
+  if (option.id === 'extra-pages' && offerId === 'vitrine')
+    return 'Une page de plus dans le design de votre site, avec vos textes et images.'
   if (option.id === 'extra-scene-3d' && offerId === 'immersif')
     return `${option.description} Cette option ajoute un élément 3D supplémentaire.`
   return option.description

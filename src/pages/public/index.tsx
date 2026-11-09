@@ -133,16 +133,16 @@ export function HomePage() {
       >
         {[
           [
-            'Choisissez vos fonctions',
-            'Comparez ce qui est compris et ajoutez les fonctions utiles à votre activité.',
+            'Composez votre site',
+            'Choisissez un forfait et ajoutez les fonctions dont votre activité a besoin.',
           ],
           [
-            'Décrivez votre projet',
-            'Laissez vos coordonnées et un court message. Votre forfait et vos options accompagnent la demande.',
+            'Parlez-nous de votre projet',
+            'En quelques lignes, dites-nous ce que vous attendez de votre site. Votre sélection accompagne votre demande.',
           ],
           [
-            'Préparons votre site',
-            'Nous reprenons votre demande avec vous pour confirmer le forfait et les choix avant de démarrer.',
+            'Validons les détails',
+            'Un développeur vous contacte pour confirmer les prestations, le prix et le calendrier avant de lancer la création.',
           ],
         ].map(([title, text], index) => (
           <Reveal className="home-method__step" key={title} delay={index * 80}>

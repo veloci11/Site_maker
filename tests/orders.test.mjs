@@ -52,7 +52,7 @@ async function setPricing(value = configuredPricing) { return request('/admin/pr
 
 test('published default prices are available but a saved dossier cannot masquerade as a payment', async () => {
   assert.deepEqual(getPricing(), defaultPricing);
-  assert.deepEqual(getPricing().base, { vitrine: 89000, connecte: 149000, immersif: 249900, 'sur-mesure': null });
+  assert.deepEqual(getPricing().base, { vitrine: 89000, connecte: 149000, immersif: 249000, 'sur-mesure': null });
   assert.equal(getDb().prepare("SELECT value FROM studio_settings WHERE key = 'pricing'").get(), undefined, 'reading defaults must not create an admin price document');
   assert.equal(getPaymentAvailability().enabled, false);
   const project = await create();

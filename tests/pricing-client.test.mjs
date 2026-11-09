@@ -12,16 +12,16 @@ test('the configurator retains known ranges when an option has a starting price'
   const estimate = extras => quoteConfiguration(normalizeConfiguration({ offerId: 'immersif', extras }));
   const mixed = estimate(['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
   const mixedDisplay = formatPublicCreationEstimate(mixed);
-  assert.match(mixedDisplay.label, /^2\s899\s€–3\s249\s€$/);
+  assert.match(mixedDisplay.label, /^2\s890\s€–3\s240\s€$/);
   assert.equal(mixedDisplay.usesStartingPrices, true);
   assert.equal(mixed.maximumTotalCents, null, 'the display does not set a ceiling in the saved quote');
 
   const bounded = formatPublicCreationEstimate(estimate(['extra-scene-3d']));
-  assert.match(bounded.label, /^2\s749\s€–3\s099\s€$/);
+  assert.match(bounded.label, /^2\s740\s€–3\s090\s€$/);
   assert.equal(bounded.usesStartingPrices, false);
 
   const openEnded = formatPublicCreationEstimate(estimate(['custom-3d']));
-  assert.match(openEnded.label, /^À partir de 2\s649\s€$/);
+  assert.match(openEnded.label, /^À partir de 2\s640\s€$/);
   assert.equal(openEnded.usesStartingPrices, false);
 });
 

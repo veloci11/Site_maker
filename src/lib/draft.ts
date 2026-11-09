@@ -1,4 +1,5 @@
 import { normalizeConfiguration, type Configuration } from '../../shared/catalog.ts'
+import { prunePublicConfiguration } from '../../shared/offer-options.ts'
 
 const KEY = 'studio.project-draft.v1'
 const MAX_AGE = 30 * 24 * 60 * 60 * 1000
@@ -31,6 +32,7 @@ export function readDraft(): ProjectDraft | null {
 export function readPublicDraftConfiguration(): Configuration | null {
   const draft = readDraft()
   if (!draft) return null
+  if (draft.configuration.offerId === 'vitrine') return prunePublicConfiguration(draft.configuration)
   if (draft.catalogueVersion === CATALOGUE_VERSION || draft.configuration.offerId !== 'connecte') return draft.configuration
   // Unversioned Connecté drafts had included accounts. The previous public
   // catalogue made accounts optional but still included booking in Business.

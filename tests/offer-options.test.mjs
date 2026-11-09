@@ -4,7 +4,7 @@ import { PUBLIC_OFFER_IDS, defaultPricing, optionDefinitions, normalizeConfigura
 import { PUBLIC_OPTIONS_BY_OFFER, changePublicOffer, getPublicOptions, getUnavailableOptions, prunePublicConfiguration } from '../shared/offer-options.ts';
 
 const publicIds = id => getPublicOptions(id).map(option => option.id);
-const approved = ['additional-language', 'managed-content', 'user-accounts', 'booking', 'online-payment', 'online-store', 'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d', 'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly'];
+const approved = ['additional-language', 'user-accounts', 'booking', 'online-payment', 'online-store', 'blog', 'extra-pages', 'content-import', 'custom-3d', 'extra-scene-3d', 'analytics', 'newsletter', 'hosting-monthly', 'maintenance-monthly', 'serenity-monthly'];
 
 test('public menus expose only the selected additions and three monthly plans in catalogue order', () => {
   for (const offerId of PUBLIC_OFFER_IDS) {
@@ -19,14 +19,16 @@ test('public menus expose only the selected additions and three monthly plans in
   assert.deepEqual(publicIds('sur-mesure'), []);
 });
 
-test('included responsive and launch cannot become paid choices; CMS is only offered on Vitrine', () => {
+test('CMS and member areas start with Business; responsive and launch are always included', () => {
   for (const offerId of PUBLIC_OFFER_IDS) {
     const config = prunePublicConfiguration({ offerId });
     assert.equal(config.mobile, true);
     assert.equal(config.deployment, true);
     assert.ok(!publicIds(offerId).includes('mobile'));
     assert.ok(!publicIds(offerId).includes('deployment'));
-    assert.equal(publicIds(offerId).includes('managed-content'), offerId === 'vitrine');
+    assert.ok(!publicIds(offerId).includes('managed-content'));
+    assert.equal(config.managedContent, offerId !== 'vitrine');
+    assert.equal(publicIds(offerId).includes('user-accounts'), offerId !== 'vitrine');
     assert.deepEqual(getUnavailableOptions(config), []);
   }
 });
@@ -34,7 +36,10 @@ test('included responsive and launch cannot become paid choices; CMS is only off
 test('all highlighted additions remain available or included as appropriate', () => {
   for (const offerId of PUBLIC_OFFER_IDS) {
     const config = prunePublicConfiguration({ offerId });
-    for (const id of approved) assert.ok(publicIds(offerId).includes(id) || isOptionIncluded(config, id), `${offerId}/${id}`);
+    for (const id of approved) {
+      const availableOrIncluded = publicIds(offerId).includes(id) || isOptionIncluded(config, id);
+      assert.equal(availableOrIncluded, offerId !== 'vitrine' || id !== 'user-accounts', `${offerId}/${id}`);
+    }
   }
   assert.equal(publicIds('connecte').includes('analytics'), false);
   assert.equal(isOptionIncluded(prunePublicConfiguration({ offerId: 'connecte' }), 'analytics'), true);
@@ -60,11 +65,12 @@ test('professional email is included only on Business and Premium and cannot be 
 });
 
 test('unapproved additions are pruned without mutating the source configuration', () => {
-  const config = normalizeConfiguration({ offerId: 'vitrine', extras: ['member-roles', 'booking', 'newsletter', 'backups-monthly', 'content-import'] });
+  const config = normalizeConfiguration({ offerId: 'vitrine', managedContent: true, extras: ['member-roles', 'booking', 'newsletter', 'backups-monthly', 'content-import'] });
   const snapshot = structuredClone(config);
-  assert.deepEqual(getUnavailableOptions(config), ['member-roles', 'backups-monthly']);
+  assert.deepEqual(getUnavailableOptions(config), ['managed-content', 'user-accounts', 'member-roles', 'backups-monthly']);
   const pruned = prunePublicConfiguration(config);
-  assert.deepEqual(pruned.extras, ['user-accounts', 'booking', 'newsletter', 'content-import']);
+  assert.equal(pruned.managedContent, false);
+  assert.deepEqual(pruned.extras, ['booking', 'newsletter', 'content-import']);
   assert.deepEqual(getUnavailableOptions(pruned), []);
   assert.deepEqual(prunePublicConfiguration(pruned), pruned);
   assert.deepEqual(config, snapshot);
@@ -109,7 +115,7 @@ test('public choices hide every included feature, including payment covered by t
     assert.ok(getPublicOptions(withoutShop).some(option => option.id === 'online-payment'), 'standalone payment returns as an available choice');
     assert.equal(isOptionSelected(withoutShop, 'online-payment'), false, 'removing a bundle never silently selects a paid standalone option');
     assert.equal(quoteConfiguration(withoutShop).totalCents, defaultPricing.base[offerId]);
-    assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'managed-content'), offerId === 'vitrine');
+    assert.ok(!getPublicOptions(withoutShop).some(option => option.id === 'managed-content'));
     assert.equal(getPublicOptions(withoutShop).some(option => option.id === 'analytics'), offerId === 'vitrine');
   }
 });
@@ -158,12 +164,12 @@ test('upgrading to Premium includes content import and the first 3D integration 
     for (const id of ['custom-3d', 'blog', 'serenity-monthly']) assert.equal(isOptionSelected(premium, id), false, id);
     assert.equal(premium.language, 'fr');
     assert.equal(isOptionSelected(premium, 'additional-language'), false);
-    assert.equal(quoteConfiguration(premium).totalCents, 249900);
+    assert.equal(quoteConfiguration(premium).totalCents, 249000);
     assert.equal(quoteConfiguration(premium).monthlyTotalCents, 0);
     assert.deepEqual(previous, snapshot);
 
     const secondElement = withOption(premium, 'extra-scene-3d', true);
-    assert.equal(quoteConfiguration(secondElement).totalCents, 274900, 'a deliberately added second element costs the quoted minimum');
+    assert.equal(quoteConfiguration(secondElement).totalCents, 274000, 'a deliberately added second element costs the quoted minimum');
     assert.equal(isOptionSelected(changePublicOffer(secondElement, 'immersif'), 'extra-scene-3d'), true, 'staying on Premium retains the explicit second element');
   }
 });
@@ -229,8 +235,10 @@ test('all public offer transitions start at the new base and retain choices on t
       const quote = quoteConfiguration(changed);
       const sameOffer = source === target;
       assert.deepEqual(changed, sameOffer ? original : normalizeConfiguration({ offerId: target }));
-      assert.equal(quote.totalCents, defaultPricing.base[target] + (sameOffer ? 109000 : 0));
-      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + (sameOffer ? 198000 : 0));
+      const additionsMin = target === 'vitrine' ? 79000 : 109000;
+      const additionsMax = target === 'vitrine' ? 138000 : 198000;
+      assert.equal(quote.totalCents, defaultPricing.base[target] + (sameOffer ? additionsMin : 0));
+      assert.equal(quote.maximumTotalCents, defaultPricing.base[target] + (sameOffer ? additionsMax : 0));
       assert.equal(quote.monthlyTotalCents, sameOffer ? 6900 : 0);
       assert.equal(isOptionSelected(changed, 'booking'), sameOffer);
       assert.equal(isOptionIncluded(changed, 'booking'), false);

@@ -153,9 +153,13 @@ test('old public Connecté drafts do not turn included accounts into a paid Busi
     assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'an explicit new paid selection survives reload')
     assert.equal(quoteConfiguration(readPublicDraftConfiguration()).totalCents, 179000)
 
-    legacy.configuration = { offerId: 'vitrine', extras: ['user-accounts'] }
+    legacy.configuration = { offerId: 'vitrine', managedContent: true, extras: ['user-accounts', 'blog'] }
     localStorage.setItem('studio.project-draft.v1', JSON.stringify(legacy))
-    assert.equal(readPublicDraftConfiguration().extras.includes('user-accounts'), true, 'accounts were already a paid choice in Vitrine')
+    const restoredVitrine = readPublicDraftConfiguration()
+    assert.equal(restoredVitrine.managedContent, false)
+    assert.deepEqual(restoredVitrine.extras, ['blog'])
+    assert.equal(readDraft().configuration.managedContent, true)
+    assert.deepEqual(readDraft().configuration.extras, ['user-accounts', 'blog'])
   } finally {
     if (previousWindow === undefined) delete globalThis.window
     else globalThis.window = previousWindow
@@ -239,8 +243,10 @@ test('historical booking selections outside Business remain explicit paid choice
           ...(catalogueVersion ? { catalogueVersion } : {}),
           configuration: { offerId, extras: ['booking', 'user-accounts'] },
         }))
-        assert.deepEqual(readPublicDraftConfiguration(), readDraft().configuration)
-        assert.equal(readPublicDraftConfiguration().extras.includes('booking'), true)
+        const current = readPublicDraftConfiguration()
+        assert.equal(current.extras.includes('booking'), true)
+        assert.equal(current.extras.includes('user-accounts'), offerId !== 'vitrine')
+        assert.equal(readDraft().configuration.extras.includes('user-accounts'), true)
       }
     }
   } finally {
