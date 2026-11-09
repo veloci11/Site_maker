@@ -204,7 +204,7 @@ export const examples: readonly SiteExample[] = [
     category: 'Premium / 3D',
     offerId: 'immersif',
     image: '/assets/examples/addiction-agency.webp',
-    url: 'https://addiction-agency.com/agence',
+    url: 'https://addiction-agency.com/',
     sourceUrl: 'https://addiction-agency.com/',
     creator: 'Addiction Agency',
     description: 'Présenter une agence créative et son univers.',
@@ -338,7 +338,7 @@ export const faqs = [
   {
     question: "Quelle différence entre Hébergement, Maintenance et Sérénité ?",
     answer:
-      "Hébergement à 19 €/mois couvre l’hébergement, le certificat SSL et la surveillance de disponibilité. Maintenance à 39 €/mois ajoute les mises à jour, les sauvegardes et de petites modifications de contenus existants, dont le périmètre est précisé avant activation. Les nouvelles pages et fonctionnalités sont chiffrées séparément. Sérénité à 69 €/mois comprend Maintenance, une heure de modifications par mois et un support prioritaire. Les demandes au-delà de cette heure sont chiffrées séparément.",
+      "Hébergement à 19 €/mois couvre l’hébergement, le certificat SSL et la surveillance de disponibilité. Maintenance à 39 €/mois ajoute les mises à jour, les sauvegardes et de petites modifications de contenus existants. Sérénité à 69 €/mois comprend Maintenance, une heure de modifications par mois et un support prioritaire.",
     category: "Budget et suivi",
   },
   {
@@ -568,14 +568,14 @@ export const optionDefinitions = [
   {
     id: 'maintenance-monthly',
     title: 'Maintenance',
-    description: 'Hébergement, mises à jour, sauvegardes et petites modifications de contenus existants. Périmètre défini avant activation ; nouvelles pages et fonctionnalités chiffrées séparément.',
+    description: 'Hébergement, mises à jour, sauvegardes et petites modifications de contenus existants.',
     billing: 'monthly',
     group: 'launch',
   },
   {
     id: 'serenity-monthly',
     title: 'Sérénité',
-    description: 'Tous les services de Maintenance, plus 1 heure de modifications par mois et un support prioritaire. Les demandes dépassant cette heure sont chiffrées séparément.',
+    description: 'Tous les services de Maintenance, plus 1 heure de modifications par mois et un support prioritaire.',
     billing: 'monthly',
     group: 'launch',
   },
