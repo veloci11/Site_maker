@@ -326,7 +326,7 @@ export const faqs = [
   {
     question: "Comment sont comptées les pages supplémentaires et les options ?",
     answer:
-      "Vitrine prévoit 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Chaque page supplémentaire dans le design de votre site et avec vos contenus est estimée entre 60 et 120 €. Deux pages ajoutent donc 120 à 240 € à l’estimation. La reprise de contenus couvre jusqu’à cinq pages et quinze médias. Le configurateur indique le nombre de pages couvertes par l’option de langue. Précisez les pages concernées dans votre message pour que nous puissions chiffrer les éventuels compléments.",
+      "Vitrine comprend 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Le configurateur affiche une fourchette indicative de 60 à 120 € par page supplémentaire et précise ce que couvre chaque option. Le prix dépend de la taille de la page et du travail nécessaire. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet. Dites-nous ce que vous souhaitez présenter et nous verrons ensemble comment organiser vos pages.",
     category: "Budget et suivi",
   },
   {
@@ -350,25 +350,25 @@ export const faqs = [
   {
     question: "Puis-je proposer mon site dans une autre langue ?",
     answer:
-      `Oui. Nous traduisons vos textes et intégrons une langue supplémentaire, navigation comprise. L’option à 100 € couvre jusqu’à ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.vitrine} pages avec Vitrine et ${ADDITIONAL_LANGUAGE_PAGE_LIMIT.connecte} avec Business ou Premium / 3D. Indiquez la langue souhaitée et les pages concernées. Au-delà de ces limites, le complément est chiffré sur devis.`,
+      "Oui. Nous traduisons vos textes et intégrons une langue supplémentaire, navigation comprise. Indiquez la langue souhaitée et les pages concernées.",
     category: "Contenus",
   },
   {
     question: "Ai-je besoin de liens de paiement ou d’une boutique ?",
     answer:
-      "Les liens de paiement à 100 € permettent d’encaisser directement le prix d’un produit ou d’une prestation via un lien. La boutique à 600–1 100 € permet de vendre depuis un catalogue avec panier et de gérer jusqu’à dix produits simples. Nous précisons les modalités de livraison, les taxes et les frais du prestataire dans le devis.",
+      "Envoyez un lien de paiement à vos clients pour qu’ils puissent régler une prestation ou une commande en ligne. Avec une boutique, ils parcourent votre catalogue, ajoutent des produits à leur panier et paient directement sur votre site. Vous pouvez y gérer jusqu’à dix produits simples.",
     category: "Fonctionnalités",
   },
   {
     question: "Qu’inclut la 3D dans le forfait Premium / 3D ?",
     answer:
-      "Le forfait comprend l’intégration d’un modèle 3D fourni avec des interactions adaptées à votre site. La création d’un objet simple est proposée à partir de 150 €. L’intégration d’un élément supplémentaire est disponible en option.",
+      "Le forfait comprend l’intégration d’un modèle 3D que vous nous fournissez. Notre modélisateur verra avec vous comment présenter le modèle et quelles interactions proposer à vos visiteurs. Vous pouvez aussi demander la création d’un modèle ou l’ajout d’un élément 3D.",
     category: "Design et 3D",
   },
   {
     question: "Peut-on prendre rendez-vous directement depuis mon site ?",
     answer:
-      "Oui. L’option « Prise de rendez-vous en ligne », disponible dans les trois forfaits, permet à vos visiteurs de choisir un créneau avec un outil compatible. La configuration, l’intégration autorisée et les tests sont estimés entre 90 et 180 € pour un outil. Son abonnement éventuel reste séparé. Un simple lien ne nécessite pas cette prestation ; un système développé spécialement ou une connexion particulière demande une étude distincte.",
+      "Oui. La prise de rendez-vous en ligne est disponible en option avec les trois forfaits. Vos visiteurs peuvent choisir un créneau depuis votre site. Si vous utilisez déjà un outil de réservation, dites-le-nous et nous verrons ensemble comment l’intégrer.",
     category: "Fonctionnalités",
   },
   {
