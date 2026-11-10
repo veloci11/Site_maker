@@ -1,8 +1,18 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 9 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/`
+- Révision `8ff63f395d49d9268183500f155982c48a5bbd4a` sur `main`
+- Release `/home/mathis/site-maker/releases/20261110T234139Z-8ff63f395d49`
+- Client `/assets/index-DvkFI2wn.js`, SHA-256 `62316d588818b17a49a4ed0c61f0cdb5c165ed88b941027b6977cb521c77706e`
+- Archive vérifiée de 13 981 108 octets, SHA-256 `29328d4eecebfae7cb3bc74e1aa3ea5141ed07beefe890e1aefc3a25c36b3f7a`
+
+Sauvegarde vérifiée avant la bascule. L’origine sert la révision attendue et le catalogue conserve les tarifs, options et identifiants. Parcours publics vérifiés en HTTPS à 320 et 1 280 px. Carte Premium également inspectée à 1 440 px en densité 2. Les 270 tests passent.
+
+## FAQ révisée publiée le 9 novembre
 
 - URL `https://gilmathis.com/`
 - Révision `d1e203f4ff8f6f7cb431aa72159ebf6646e984db` sur `main`

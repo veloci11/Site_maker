@@ -1,3 +1,11 @@
+# Retours UX vérifiés en ligne le 10 novembre 2026
+
+La page publique sert le client de la révision `8ff63f3`. En HTTPS, l’accueil est aligné à gauche, le groupe de navigation est centré sur ordinateur et la FAQ est accessible aussi depuis le menu mobile. L’ancre « Comment ça se passe » mène aux trois étapes. Les deux réponses FAQ affichent leurs listes.
+
+Les en-têtes du comparatif restent visibles à 1 280 px. À 320 px, la colonne Fonctions reste ancrée pendant le défilement vertical et horizontal. Les boutons des trois forfaits restent entièrement visibles en tabulant dans les deux sens. Vitrine affiche « Environ 1 130 € » pour rendez-vous et blog dans la carte et la barre mobile. Une seule rubrique est ouverte. Les choix restent visibles en allant au formulaire puis en revenant aux options. La remise à zéro rétablit le prix de départ.
+
+Le dégradé Premium a été inspecté au survol de la carte et du bouton, au focus, après navigation et au chargement direct. Aucune bande observée dans le navigateur intégré à 320 ou 1 280 px, ni à 1 440 px avec densité 2 dans le configurateur. Le navigateur qui a produit la capture d’origine n’a pas été identifié. Aucune erreur de console dans les scénarios vérifiés. Les demandes de test se sont arrêtées à l’ouverture du formulaire.
+
 # Retours UX vérifiés localement le 10 novembre 2026
 
 À 1 280 px, l’en-tête du comparatif reste en haut de la fenêtre pendant le défilement de la page. À 320 px, les en-têtes et la colonne Fonctions restent visibles pendant le défilement du tableau dans les deux axes. La colonne Premium / 3D est entièrement accessible et la page ne déborde pas en largeur.

@@ -1,8 +1,8 @@
-# Retours UX appliqués localement le 10 novembre 2026
+# Retours UX publiés le 10 novembre 2026
 
 En-tête du comparatif visible au défilement, rubriques d’options exclusives et montant indicatif unique dans le configurateur public. Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6 et Premium / 3D un périmètre adapté au projet. Le rendu des textures dissocie le retournement de l’image et le filtre de couleur. L’accueil présente les étapes dans un bloc dédié et la FAQ rejoint la navigation principale.
 
-Vérifié localement à 320 et 1 280 px. Contrôles TypeScript, build et 270 tests réussis. Déploiement en attente.
+La revue a également corrigé un bouton du comparatif qui pouvait passer sous la colonne « Fonctions » en revenant au clavier sur mobile. Révision `8ff63f3` publiée et vérifiée en HTTPS à 320 et 1 280 px. Contrôles TypeScript, build et 270 tests réussis.
 
 # FAQ simplifiée le 9 novembre 2026
 
