@@ -81,7 +81,7 @@
   transition:none;
 }
 
-.motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface::before,
+.motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface > .pricing-card__texture,
 .motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface::after {
   opacity:1;
   transition:none;

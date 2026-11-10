@@ -11,12 +11,12 @@
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
 .selected-plan__texture {
   position:absolute; top:0; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
+  filter:hue-rotate(var(--card-hue)) saturate(var(--card-saturation, 1.04)) brightness(var(--card-brightness, 1));
 }
 .selected-plan__texture::before {
   content:""; position:absolute; inset:0; z-index:-2;
   background:url('/assets/textures/grain-plasma-master.webp') var(--plasma-position) / cover no-repeat;
   background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-master.webp') 2x),url('/assets/textures/grain-plasma-card.webp');
-  filter:hue-rotate(var(--card-hue)) saturate(var(--card-saturation, 1.04)) brightness(var(--card-brightness, 1));
   transform:scale(var(--card-scale-x),var(--card-scale-y));
 }
 .selected-plan__texture::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .04),rgb(12 9 28 / .04) 45%,rgb(12 9 28 / .2)); }

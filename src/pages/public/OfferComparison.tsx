@@ -1,16 +1,16 @@
 import { useState, type ReactNode } from 'react'
 import { ArrowRight, Check, ChevronDown } from 'lucide-react'
-import { publicOffers, type Pricing } from '../../../shared/catalog'
+import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 
-type ComparisonStatus = 'included' | 'absent' | '1 à 3' | '1 à 6' | '1 à 10'
+type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint: string }
 const comparisonSections: readonly { title: string; rows: readonly ComparisonRow[] }[] = [
   {
     title: 'Inclus dès Vitrine',
     rows: [
-      { title: 'Nombre de pages', values: ['1 à 3', '1 à 6', '1 à 10'], hint: 'Le nombre de pages prévu pour présenter votre activité, vos services et vos informations pratiques.' },
+      { title: 'Nombre de pages', values: publicOffers.map((offer) => publicPageCounts[offer.id]), hint: 'Pour Premium / 3D, le nombre de pages est défini selon les contenus, les animations et la 3D du projet.' },
       { title: 'Mobile, tablette et ordinateur', values: ['included', 'included', 'included'], hint: 'La mise en page, les textes et les interactions s’adaptent à la taille de l’écran du visiteur.' },
       { title: 'Formulaire de contact', values: ['included', 'included', 'included'], hint: 'Vos visiteurs peuvent vous envoyer une demande directement depuis votre site.' },
       { title: 'Bases du référencement technique', values: ['included', 'included', 'included'], hint: 'Des réglages techniques de base pour aider les moteurs de recherche à lire et comprendre vos pages.' },
@@ -70,11 +70,14 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
   const [details, setDetails] = useState(false)
   return (
     <div className="offer-comparison" data-details-open={details}>
+      <p className="comparison-mobile-hint">
+        Faites défiler le tableau pour comparer les forfaits <ArrowRight size={14} aria-hidden="true" />
+      </p>
       <div
-        className="table-scroll comparison-scroll"
+        className="comparison-scroll"
         tabIndex={0}
         role="region"
-        aria-label="Comparatif des trois forfaits, défilement horizontal sur petit écran"
+        aria-label="Comparatif des trois forfaits"
       >
         <table id={`${id}-table`} className="comparison-table">
           <caption className="public-sr-only">
@@ -95,6 +98,11 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                       to={configureHref(offer.id)}
                       viewTransition={canAnimatePlanNavigation()}
                       aria-label={`Configurer le forfait ${offer.title}`}
+                      onFocus={(event) => {
+                        const link = event.currentTarget
+                        if (!link.matches(':focus-visible')) return
+                        link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' })
+                      }}
                     >
                       Configurer
                     </Link>
@@ -125,9 +133,6 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
           ))}
         </table>
       </div>
-      <p className="comparison-mobile-hint">
-        Faites défiler pour comparer les forfaits <ArrowRight size={14} aria-hidden="true" />
-      </p>
       <button
         type="button"
         className="comparison-details-toggle"

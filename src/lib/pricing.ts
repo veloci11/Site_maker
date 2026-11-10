@@ -1,4 +1,4 @@
-import { OFFER_IDS, formatQuoteLine, formatQuoteTotal, optionDefinitions, type Pricing, type Quote } from '../../shared/catalog.ts'
+import { OFFER_IDS, formatMoney, formatQuoteTotal, optionDefinitions, type Pricing, type Quote } from '../../shared/catalog.ts'
 import { ApiError } from './api.ts'
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -33,22 +33,13 @@ function invalidCatalogue() {
   return new ApiError('Les tarifs reçus ne sont pas valides. Réessayez dans un instant.', 200, 'INVALID_CATALOGUE')
 }
 
-/** Show known variation at the starting prices of open-ended options. The quote retains its own bounds. */
-export function formatPublicCreationEstimate(quote: Quote) {
+/** Use the lower bound for the public estimate. Saved quotes retain both bounds. */
+export function formatPublicCreationEstimate(quote: Quote): string {
   const { totalCents, maximumTotalCents, currency } = quote
-  if (totalCents !== null && maximumTotalCents === null) {
-    const referenceUpper = quote.lines.reduce((sum, line) =>
-      line.billing === 'once' ? sum + (line.maximumCents ?? line.amountCents ?? 0) : sum, 0)
-    if (referenceUpper > totalCents) {
-      return {
-        label: formatQuoteLine({ amountCents: totalCents, maximumCents: referenceUpper }, currency),
-        usesStartingPrices: true,
-      }
-    }
-  }
-  const label = formatQuoteTotal(quote)
-  return {
-    label: totalCents !== null && !quote.estimated ? `À partir de ${label}` : label,
-    usesStartingPrices: false,
-  }
+  if (totalCents === null) return formatQuoteTotal(quote)
+  const hasCreationOptions = quote.lines.some((line) =>
+    line.key !== 'base' && line.billing === 'once' && !line.included,
+  )
+  const prefix = hasCreationOptions && maximumTotalCents != null ? 'Environ' : 'À partir de'
+  return `${prefix} ${formatMoney(totalCents, currency)}`
 }

@@ -8,21 +8,22 @@ const response = () => ({ pricing: structuredClone(defaultPricing) });
 const invalid = value => assert.throws(() => readCataloguePricing(value), error =>
   error instanceof ApiError && error.code === 'INVALID_CATALOGUE');
 
-test('the configurator retains known ranges when an option has a starting price', () => {
-  const estimate = extras => quoteConfiguration(normalizeConfiguration({ offerId: 'immersif', extras }));
-  const mixed = estimate(['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
-  const mixedDisplay = formatPublicCreationEstimate(mixed);
-  assert.match(mixedDisplay.label, /^2\s890\s€–3\s240\s€$/);
-  assert.equal(mixedDisplay.usesStartingPrices, true);
-  assert.equal(mixed.maximumTotalCents, null, 'the display does not set a ceiling in the saved quote');
+test('the public configurator shows one amount and keeps the underlying quote bounds', () => {
+  const estimate = (offerId, extras) => quoteConfiguration(normalizeConfiguration({ offerId, extras }));
+  const bounded = estimate('vitrine', ['booking', 'blog']);
+  assert.match(formatPublicCreationEstimate(bounded), /^Environ 1\s130\s€$/);
+  assert.equal(bounded.maximumTotalCents, 122000);
 
-  const bounded = formatPublicCreationEstimate(estimate(['extra-scene-3d']));
-  assert.match(bounded.label, /^2\s740\s€–3\s090\s€$/);
-  assert.equal(bounded.usesStartingPrices, false);
+  const fixed = estimate('vitrine', ['blog']);
+  assert.match(formatPublicCreationEstimate(fixed), /^Environ 1\s040\s€$/);
 
-  const openEnded = formatPublicCreationEstimate(estimate(['custom-3d']));
-  assert.match(openEnded.label, /^À partir de 2\s640\s€$/);
-  assert.equal(openEnded.usesStartingPrices, false);
+  const mixed = estimate('immersif', ['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
+  assert.match(formatPublicCreationEstimate(mixed), /^À partir de 2\s890\s€$/);
+  assert.equal(mixed.maximumTotalCents, null);
+
+  const base = estimate('immersif', ['hosting-monthly']);
+  assert.match(formatPublicCreationEstimate(base), /^À partir de 2\s490\s€$/);
+  assert.match(formatPublicCreationEstimate(estimate('sur-mesure', [])), /^Sur devis$/);
 });
 
 test('a complete approved catalogue and server-supported currencies remain valid', () => {

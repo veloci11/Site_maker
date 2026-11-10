@@ -5,7 +5,7 @@ export function FaqList({
   items,
   prefix = 'faq',
 }: {
-  items: readonly { question: string; answer: string }[]
+  items: readonly { question: string; answer: string; items?: readonly string[] }[]
   prefix?: string
 }) {
   const [openItem, setOpenItem] = useState('')
@@ -19,7 +19,14 @@ export function FaqList({
             aria-hidden={openItem !== `${prefix}-${index}`}
             inert={openItem !== `${prefix}-${index}`}
           >
-            <div className="public-faq-answer"><p>{item.answer}</p></div>
+            <div className="public-faq-answer">
+              <p>{item.answer}</p>
+              {item.items ? (
+                <ul>
+                  {item.items.map((text) => <li key={text}>{text}</li>)}
+                </ul>
+              ) : null}
+            </div>
           </AccordionContent>
         </AccordionItem>
       ))}

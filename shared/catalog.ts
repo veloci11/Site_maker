@@ -83,6 +83,12 @@ export type Quote = {
   estimateBasis?: 'scope'
 }
 
+export const publicPageCounts = {
+  vitrine: 'Jusqu’à 3 pages',
+  connecte: 'Jusqu’à 6 pages',
+  immersif: 'Selon le projet',
+} as const
+
 export const offers = [
   {
     id: 'vitrine',
@@ -90,8 +96,8 @@ export const offers = [
     title: 'Vitrine',
     headline: 'Votre activité, en ligne.',
     description:
-      'Présentez clairement votre activité, vos services et vos coordonnées sur 1 à 3 pages personnalisées. Un point de contact accessible sur mobile comme sur ordinateur.',
-    features: ['Site personnalisé de 1 à 3 pages', 'Mobile, tablette et ordinateur', 'Contact, référencement de base, mise en ligne'],
+      'Présentez clairement votre activité, vos services et vos coordonnées sur un site personnalisé de trois pages maximum. Un point de contact accessible sur mobile comme sur ordinateur.',
+    features: [`Site personnalisé · ${publicPageCounts.vitrine.toLowerCase()}`, 'Mobile, tablette et ordinateur', 'Contact, référencement de base, mise en ligne'],
     exampleId: 'domteknika',
     variant: 'vitrine',
   },
@@ -101,8 +107,8 @@ export const offers = [
     title: 'Business',
     headline: 'Votre site évolue avec votre activité.',
     description:
-      'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). De 1 à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
-    features: ['Tout le forfait Vitrine inclus · 1 à 6 pages', 'CMS pour gérer vos textes et images', 'Référencement local et statistiques', 'Mise en place d’un e-mail professionnel'],
+      'Gardez la main sur vos textes et images grâce à votre espace de gestion (CMS). Jusqu’à 6 pages personnalisées pour détailler vos services, avec référencement local de base et statistiques pour suivre les visites.',
+    features: [`Tout le forfait Vitrine inclus · ${publicPageCounts.connecte.toLowerCase()}`, 'CMS pour gérer vos textes et images', 'Référencement local et statistiques', 'Mise en place d’un e-mail professionnel'],
     exampleId: 'lactel',
     variant: 'connecte',
   },
@@ -111,8 +117,8 @@ export const offers = [
     slug: 'immersif-3d',
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
-    description: 'Tout le forfait Business est inclus sur 1 à 10 pages, avec la reprise de vos contenus existants, des animations avancées et la 3D interactive. Vos demandes sur mesure sont étudiées avant devis.',
-    features: ['Tout le forfait Business inclus · 1 à 10 pages', 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
+    description: 'Tout le forfait Business est inclus, avec la reprise de vos contenus existants, des animations avancées et la 3D interactive. Le nombre de pages et les demandes sur mesure sont étudiés selon votre projet.',
+    features: [`Tout le forfait Business inclus · pages ${publicPageCounts.immersif.toLowerCase()}`, 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },
@@ -129,7 +135,9 @@ export const offers = [
   },
 ] as const
 /** The fourth definition remains available to historical private dossiers only. */
-export const publicOffers = offers.filter((offer) => isPublicOffer(offer.id))
+export const publicOffers = offers.filter(
+  (offer): offer is Extract<(typeof offers)[number], { id: PublicOfferId }> => isPublicOffer(offer.id),
+)
 export function getOffer(idOrSlug: unknown) {
   return offers.find((offer) => offer.id === idOrSlug || offer.slug === idOrSlug)
 }
@@ -262,11 +270,21 @@ export const examples: readonly SiteExample[] = [
   },
 ] as const
 
-export const faqs = [
+export const faqs: readonly {
+  question: string
+  answer: string
+  items?: readonly string[]
+  category: string
+}[] = [
   {
     question: "Quels frais dois-je prévoir après la création du site ?",
     answer:
-      "La mise en production est comprise dans les trois forfaits. Le suivi mensuel est facultatif : Hébergement à 19 €/mois, Maintenance à 39 €/mois ou Sérénité à 69 €/mois. Ces formules ne se cumulent pas. Nous précisons les coûts nécessaires à votre projet avant le démarrage.",
+      "La mise en ligne est comprise dans les trois forfaits. Pour la suite, vous pouvez choisir une formule mensuelle facultative.",
+    items: [
+      "Hébergement à 19 €/mois",
+      "Maintenance à 39 €/mois",
+      "Sérénité à 69 €/mois",
+    ],
     category: "Budget et suivi",
   },
   {
@@ -320,13 +338,18 @@ export const faqs = [
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Vitrine présente votre activité sur un site personnalisé de 1 à 3 pages. Business reprend Vitrine sur 1 à 6 pages, avec un CMS pour modifier vos textes et images, le référencement local et les statistiques. L’espace membres est disponible en option à partir de Business. Premium / 3D reprend Business sur 1 à 10 pages et ajoute les animations avancées, la reprise de vos contenus existants et l’étude de vos demandes sur mesure. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits. Nous vérifions vos besoins avant de confirmer le devis.",
+      "Nous vérifions vos besoins avec vous avant de confirmer le devis. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits.",
+    items: [
+      "Vitrine présente votre activité sur un site personnalisé de 3 pages maximum.",
+      "Business reprend Vitrine avec jusqu’à 6 pages, un CMS pour modifier vos textes et images, le référencement local et les statistiques. Vous pouvez ajouter un espace membres.",
+      "Premium / 3D reprend Business et ajoute les animations avancées, la 3D interactive et la reprise de vos contenus. Le nombre de pages dépend du projet.",
+    ],
     category: "Choix du forfait",
   },
   {
     question: "Comment sont comptées les pages supplémentaires et les options ?",
     answer:
-      "Vitrine comprend 1 à 3 pages, Business 1 à 6 et Premium / 3D 1 à 10. Le configurateur affiche une fourchette indicative de 60 à 120 € par page supplémentaire et précise ce que couvre chaque option. Le prix dépend de la taille de la page et du travail nécessaire. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet. Dites-nous ce que vous souhaitez présenter et nous verrons ensemble comment organiser vos pages.",
+      "Vitrine comprend jusqu’à 3 pages et Business jusqu’à 6. Pour Premium / 3D, nous définissons le nombre de pages selon les contenus, les animations et la 3D de votre projet. Le configurateur indique le tarif et le périmètre de chaque option. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet.",
     category: "Budget et suivi",
   },
   {
@@ -344,7 +367,7 @@ export const faqs = [
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
-      "Premium / 3D reprend Business sur 1 à 10 pages. Il ajoute la reprise de vos contenus, des animations avancées, l’intégration d’un modèle 3D interactif, un travail renforcé sur la fluidité et un accompagnement plus poussé. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
+      "Premium / 3D reprend Business et ajoute la reprise de vos contenus, des animations avancées, l’intégration d’un modèle 3D interactif et un travail renforcé sur la fluidité. Nous définissons avec vous le nombre de pages et les interactions. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
     category: "Fonctionnalités",
   },
   {

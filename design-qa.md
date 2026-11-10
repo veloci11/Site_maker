@@ -1,3 +1,11 @@
+# Retours UX vérifiés localement le 10 novembre 2026
+
+À 1 280 px, l’en-tête du comparatif reste en haut de la fenêtre pendant le défilement de la page. À 320 px, les en-têtes et la colonne Fonctions restent visibles pendant le défilement du tableau dans les deux axes. La colonne Premium / 3D est entièrement accessible et la page ne déborde pas en largeur.
+
+Vitrine avec rendez-vous et blog affiche « Environ 1 130 € » dans la carte et la barre mobile. L’ouverture au clavier d’une rubrique ferme la précédente et les choix sont conservés. « Continuer » mène au formulaire sur mobile. Les listes FAQ, l’alignement de l’accueil et l’ordre des trois étapes ont été vérifiés.
+
+Le dégradé Premium / 3D couvre la carte et le bouton au focus clavier sur l’accueil et la grande carte du configurateur à 320 et 1 280 px dans le navigateur intégré. La bande de la capture d’origine n’était pas reproductible dans cette session. Aucune erreur ni alerte de console dans le contrôle effectué sur un nouvel onglet.
+
 # FAQ simplifiée le 9 novembre 2026
 
 Les huit réponses retouchées s’ouvrent et affichent le texte attendu à 320 et 1 280 px sur la FAQ publique. Aucun débordement horizontal ni erreur de console relevé pendant le contrôle.

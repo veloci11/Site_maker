@@ -32,7 +32,6 @@ function navigationClassName(baseClass: string) {
 }
 
 const desktopNavClassName = navigationClassName('nav-link')
-const headerFaqClassName = navigationClassName('header-faq nav-link')
 const mobileNavClassName = navigationClassName('mobile-nav-heading')
 const mobileOfferClassName = navigationClassName('mobile-offer-link')
 
@@ -91,11 +90,11 @@ export function PublicHeader() {
           <NavLink to="/exemples" viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
             Exemples de sites
           </NavLink>
-        </nav>
-        <div className="header-actions">
-          <NavLink to="/faq" viewTransition={canAnimatePlanNavigation()} className={headerFaqClassName}>
+          <NavLink to="/faq" viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
             FAQ
           </NavLink>
+        </nav>
+        <div className="header-actions">
           <Link className="header-login" to="/contact" viewTransition={canAnimatePlanNavigation()}>
             Nous contacter
             <ArrowRight size={15} aria-hidden="true" />

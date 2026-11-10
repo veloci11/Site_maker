@@ -251,7 +251,7 @@ test('Premium includes every Business capability and adds its visual experience 
     assert.equal(line.amountCents, 0, id);
   }
   assert.match(quote.lines.find(line => line.key === 'content-import').scope, /5 pages et 15 médias/);
-  assert.match(getOffer('immersif').features.join(' '), /Tout le forfait Business inclus.*10 pages/);
+  assert.match(getOffer('immersif').features.join(' '), /Tout le forfait Business inclus.*pages selon le projet/);
 });
 
 test('booking and historical advanced forms are not included in any new public base', () => {

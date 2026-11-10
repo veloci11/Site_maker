@@ -129,30 +129,33 @@ export function HomePage() {
       <section
         className="container home-method"
         id="fonctionnement"
-        aria-label="Les étapes de votre projet"
+        aria-labelledby="home-method-title"
       >
-        {[
-          [
-            'Composez votre site',
-            'Choisissez un forfait et ajoutez les fonctions dont votre activité a besoin.',
-          ],
-          [
-            'Parlez-nous de votre projet',
-            'En quelques lignes, dites-nous ce que vous attendez de votre site. Votre sélection accompagne votre demande.',
-          ],
-          [
-            'Validons les détails',
-            'Un développeur vous contacte pour confirmer les prestations, le prix et le calendrier avant de lancer la création.',
-          ],
-        ].map(([title, text], index) => (
-          <Reveal className="home-method__step" key={title} delay={index * 80}>
-            <span className="home-method__number">0{index + 1}</span>
-            <div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
-          </Reveal>
-        ))}
+        <h2 id="home-method-title">Comment ça se passe</h2>
+        <ol className="home-method__steps" role="list">
+          {[
+            [
+              'Composez votre site',
+              'Choisissez un forfait et ajoutez les fonctions dont vous avez besoin.',
+            ],
+            [
+              'Décrivez votre projet',
+              'Dites-nous en quelques lignes ce que vous attendez de votre site. Vos choix sont joints à la demande.',
+            ],
+            [
+              'Validez les détails',
+              'Un développeur vous contacte pour confirmer les prestations, le prix et le calendrier avant le démarrage.',
+            ],
+          ].map(([title, text], index) => (
+            <li className="home-method__step" key={title}>
+              <span className="home-method__number" aria-hidden="true">{index + 1}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
       <section className="container home-assurance" aria-label="Sécurité et protection des données">
         <div className="home-assurance__item">

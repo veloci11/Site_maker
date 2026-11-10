@@ -99,6 +99,7 @@ export function PricingCard({
     >
       <div ref={topRef} className="pricing-card__top" style={thumbnailTransition}>
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
+          <span className="pricing-card__texture" />
           <span className="pricing-card__grain" />
         </span>
         {featured ? <span className="pricing-card__featured">Populaire</span> : null}
@@ -106,6 +107,7 @@ export function PricingCard({
         <p className="pricing-card__price">{priceLabel}</p>
       </div>
       <span ref={ctaRef} className="plan-cta pricing-card__cta" aria-hidden="true">
+        <span className="pricing-card__texture" />
         {actionLabel}
       </span>
       <ul className="pricing-card__features">

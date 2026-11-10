@@ -1,3 +1,9 @@
+# Retours UX appliqués localement le 10 novembre 2026
+
+En-tête du comparatif visible au défilement, rubriques d’options exclusives et montant indicatif unique dans le configurateur public. Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6 et Premium / 3D un périmètre adapté au projet. Le rendu des textures dissocie le retournement de l’image et le filtre de couleur. L’accueil présente les étapes dans un bloc dédié et la FAQ rejoint la navigation principale.
+
+Vérifié localement à 320 et 1 280 px. Contrôles TypeScript, build et 270 tests réussis. Déploiement en attente.
+
 # FAQ simplifiée le 9 novembre 2026
 
 Huit réponses ont été retouchées. La FAQ invite à échanger sur les contenus à reprendre, sur le regroupement de petites pages et sur le modèle 3D avec le modélisateur. Les réponses sur la langue supplémentaire, le paiement, la 3D et les rendez-vous décrivent les prestations. Les deux lots `7281f15` et `d1e203f` sont publiés. La version finale a été vérifiée en HTTPS à 320 et 1 280 px. Les 270 tests passent.

@@ -53,7 +53,7 @@ import {
   writeDraft,
   type ProjectDraft,
 } from '../../lib/draft'
-import { includedGuidance, planEstimateNote, startingOptionsNote } from '../../content/configurator-copy'
+import { includedGuidance, planEstimateNote } from '../../content/configurator-copy'
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
@@ -143,9 +143,7 @@ export function ConfiguratorPage() {
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
-  const { label: totalLabel, usesStartingPrices } = editingId
-    ? { label: formatQuoteTotal(quote), usesStartingPrices: false }
-    : formatPublicCreationEstimate(quote)
+  const totalLabel = editingId ? formatQuoteTotal(quote) : formatPublicCreationEstimate(quote)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
   const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
   const visibleOptions = editingId ? optionDefinitions : getPublicOptions(configuration)
@@ -408,7 +406,6 @@ export function ConfiguratorPage() {
             <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
               <span>{custom ? 'Votre projet' : quote.estimated ? 'Estimation de création' : 'Création du site'}</span>
               <strong key={totalLabel}>{totalLabel}</strong>
-              {usesStartingPrices ? <small>{startingOptionsNote}</small> : null}
               <div className="selected-plan__monthly" data-open={monthly} aria-hidden={!monthly}>
                 <p key={quote.monthlyTotalCents}>
                   + {formatMoney(quote.monthlyTotalCents, quote.currency)} <span>/ mois</span>
@@ -460,9 +457,14 @@ export function ConfiguratorPage() {
                 <p>{includedGuidance[offer.id]}</p>
               </header>
               <Accordion
-                type="multiple"
-                value={openGroups}
-                onValueChange={setOpenGroups}
+                {...(editingId
+                  ? { type: 'multiple', value: openGroups, onValueChange: setOpenGroups }
+                  : {
+                    type: 'single',
+                    collapsible: true,
+                    value: openGroups[0] ?? '',
+                    onValueChange: (value: string) => setOpenGroups(value ? [value] : []),
+                  })}
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {
@@ -654,7 +656,6 @@ export function ConfiguratorPage() {
           <div>
             <span>{offer.title}</span>
             <strong>{totalLabel}</strong>
-            {usesStartingPrices ? <small>{startingOptionsNote}</small> : null}
             {monthly ? (
               <small>+ {formatMoney(quote.monthlyTotalCents, quote.currency)} / mois</small>
             ) : null}

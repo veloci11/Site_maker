@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Retours sur les forfaits et l’accueil — 10 novembre 2026
+
+Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.
+
+Dans le configurateur public, une seule rubrique d’options peut être ouverte à la fois. Avec des options de création dont le prix est borné, « Environ » affiche le montant calculé à partir des bornes basses. La formule de base et les estimations avec des options sans plafond chiffré affichent « À partir de ». Les tarifs détaillés des options, le calcul des devis et les dossiers privés gardent leur format.
+
+L’introduction de l’accueil est alignée à gauche. Les trois étapes ont leur bloc dédié, séparé des engagements de sécurité et de protection des données. La FAQ rejoint la navigation principale sur ordinateur. Les réponses sur les frais récurrents et le choix du forfait présentent leurs formules en liste.
+
 ## Prix Premium et fonctions à partir de Business — 8 novembre 2026
 
 Premium / 3D démarre à 2 490 €. Le CMS est compris dans Business et Premium / 3D, et l’espace membres est une option réservée à ces deux forfaits. Sur Business, utiliser « CMS pour gérer vos textes et images ». Vitrine propose son formulaire de contact, avec les autres options validées. Les anciens brouillons publics Vitrine retirent ces deux choix à la reprise. Les configurations et devis privés historiques sont conservés.
