@@ -33,13 +33,11 @@ function invalidCatalogue() {
   return new ApiError('Les tarifs reçus ne sont pas valides. Réessayez dans un instant.', 200, 'INVALID_CATALOGUE')
 }
 
-/** Use the lower bound for the public estimate. Saved quotes retain both bounds. */
+/** Show an estimate as soon as the visitor selects an option. */
 export function formatPublicCreationEstimate(quote: Quote): string {
-  const { totalCents, maximumTotalCents, currency } = quote
+  const { totalCents, currency } = quote
   if (totalCents === null) return formatQuoteTotal(quote)
-  const hasCreationOptions = quote.lines.some((line) =>
-    line.key !== 'base' && line.billing === 'once' && !line.included,
-  )
-  const prefix = hasCreationOptions && maximumTotalCents != null ? 'Environ' : 'À partir de'
+  const hasOptions = quote.lines.some((line) => line.key !== 'base' && !line.included)
+  const prefix = hasOptions ? 'Environ' : 'À partir de'
   return `${prefix} ${formatMoney(totalCents, currency)}`
 }

@@ -4,7 +4,7 @@
 
 Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.
 
-Dans le configurateur public, une seule rubrique d’options peut être ouverte à la fois. Avec des options de création dont le prix est borné, « Environ » affiche le montant calculé à partir des bornes basses. La formule de base et les estimations avec des options sans plafond chiffré affichent « À partir de ». Les tarifs détaillés des options, le calcul des devis et les dossiers privés gardent leur format.
+Dans le configurateur public, une seule rubrique d’options peut être ouverte à la fois. Dès qu’une option est sélectionnée, le total de création affiche « Environ » et un montant calculé à partir des tarifs de base, y compris avec une option mensuelle ou sans plafond chiffré. Seul le forfait de base affiche « À partir de ». Un total non chiffrable affiche « Sur devis ». Les tarifs détaillés des options, le calcul des devis et les dossiers privés gardent leur format.
 
 L’introduction de l’accueil est alignée à gauche. Les trois étapes ont leur bloc dédié, séparé des engagements de sécurité et de protection des données. La FAQ rejoint la navigation principale sur ordinateur. Les réponses sur les frais récurrents et le choix du forfait présentent leurs formules en liste.
 

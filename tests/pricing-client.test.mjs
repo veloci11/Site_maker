@@ -18,11 +18,14 @@ test('the public configurator shows one amount and keeps the underlying quote bo
   assert.match(formatPublicCreationEstimate(fixed), /^Environ 1\s040\s€$/);
 
   const mixed = estimate('immersif', ['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
-  assert.match(formatPublicCreationEstimate(mixed), /^À partir de 2\s890\s€$/);
+  assert.match(formatPublicCreationEstimate(mixed), /^Environ 2\s890\s€$/);
   assert.equal(mixed.maximumTotalCents, null);
 
-  const base = estimate('immersif', ['hosting-monthly']);
-  assert.match(formatPublicCreationEstimate(base), /^À partir de 2\s490\s€$/);
+  const monthly = estimate('immersif', ['hosting-monthly']);
+  assert.match(formatPublicCreationEstimate(monthly), /^Environ 2\s490\s€$/);
+  assert.equal(monthly.monthlyTotalCents, 1900);
+
+  assert.match(formatPublicCreationEstimate(estimate('immersif', [])), /^À partir de 2\s490\s€$/);
   assert.match(formatPublicCreationEstimate(estimate('sur-mesure', [])), /^Sur devis$/);
 });
 
