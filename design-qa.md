@@ -1,3 +1,9 @@
+# Navigation, rubriques et estimation vérifiées le 10 novembre 2026
+
+Dans le navigateur intégré en HTTPS à 1 280 et 320 px, la navigation reste au sommet de la fenêtre jusqu’au pied de page. Le conteneur du menu est transparent et le tiroir mobile s’ouvre en bas de page. L’en-tête du comparatif s’ancre sous le menu à 1 280 px et dans sa zone de défilement à 320 px. Les détails restent sous le tableau. Aucune alerte ou erreur de console relevée pendant ces contrôles.
+
+Les deux sens de l’animation présentent des hauteurs et opacités intermédiaires sur 620 ms. La rubrique fermée revient à une hauteur nulle. Les onze choix Vitrine reproduits en local affichent « Environ 3 115 € » et « + 69 € / mois » dans le résumé et le rappel de prix. Les 270 tests passent.
+
 # Navigation et comparatif vérifiés le 10 novembre 2026
 
 À 320 et 1 280 px, le menu défile avec la page. Les menus Forfaits affichent Vitrine, Business et Premium / 3D. Le bouton des détails se trouve sous le tableau sur toute sa largeur et ouvre puis referme les descriptions. Les en-têtes du tableau s’ancrent pendant sa lecture. La console ne remonte aucune erreur pendant les contrôles en HTTPS.

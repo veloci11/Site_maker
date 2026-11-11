@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `7dd22835feb1a32db7042871e4327e8a95ed5368` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T004211Z-7dd22835feb1`
+- Client `/assets/index-VxwN5bQ0.js`, SHA-256 `b7824207f1d4e3a068a02d30e0a069c3640d75a6f7918559a66c707193acb495`
+- Archive vérifiée de 13 983 122 octets, SHA-256 `3a613eb9d3840fcdf293287cee7ccb22015bde64c37d9c847e5c2a9f7a96f6ab`
+
+La navigation flottante garde son conteneur transparent jusqu’au pied de page. Les rubriques du configurateur s’animent dans les deux sens en 620 ms. Le total indicatif prend le milieu des fourchettes et affiche le mensuel à part. Sauvegarde, santé d’origine et catalogue vérifiés. Les contrôles en HTTPS à 320 et 1 280 px et les 270 tests passent.
+
+## Navigation et bouton des détails corrigés le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `eb698772cc29ac251663c7ce6bfcf6b2789463e7` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T001834Z-eb698772cc29`
 - Client `/assets/index-BTRzZMIR.js`, SHA-256 `21f70d9c077f0e2a10529d5c7b5e49f135c8e170bcac55594813abce4658df90`
