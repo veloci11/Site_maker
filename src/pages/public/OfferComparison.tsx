@@ -81,32 +81,20 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
 
   return (
     <div className="offer-comparison" data-details-open={details}>
-      <div className="comparison-toolbar">
-        <button
-          type="button"
-          className="comparison-details-toggle"
-          aria-expanded={details}
-          aria-controls={`${id}-table`}
-          onClick={() => setDetails((open) => !open)}
-        >
-          {details ? 'Masquer les détails' : 'Afficher plus de détails'}
-          <ChevronDown size={18} aria-hidden="true" />
-        </button>
-        <div className="comparison-column-picker">
-          <p>Choisissez une colonne ou faites glisser le tableau horizontalement.</p>
-          <div role="group" aria-label="Colonnes du comparatif">
-            {publicOffers.map((offer, index) => (
-              <button
-                key={offer.id}
-                type="button"
-                aria-label={`Afficher la colonne ${offer.title}`}
-                aria-controls={`${id}-table`}
-                onClick={() => showOfferColumn(index)}
-              >
-                {offer.title}
-              </button>
-            ))}
-          </div>
+      <div className="comparison-column-picker">
+        <p>Choisissez une colonne ou faites glisser le tableau horizontalement.</p>
+        <div role="group" aria-label="Colonnes du comparatif">
+          {publicOffers.map((offer, index) => (
+            <button
+              key={offer.id}
+              type="button"
+              aria-label={`Afficher la colonne ${offer.title}`}
+              aria-controls={`${id}-table`}
+              onClick={() => showOfferColumn(index)}
+            >
+              {offer.title}
+            </button>
+          ))}
         </div>
       </div>
       <div
@@ -170,6 +158,16 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
           ))}
         </table>
       </div>
+      <button
+        type="button"
+        className="comparison-details-toggle"
+        aria-expanded={details}
+        aria-controls={`${id}-table`}
+        onClick={() => setDetails((open) => !open)}
+      >
+        {details ? 'Masquer les détails' : 'Afficher plus de détails'}
+        <ChevronDown size={18} aria-hidden="true" />
+      </button>
     </div>
   )
 }

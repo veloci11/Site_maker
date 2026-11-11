@@ -70,14 +70,15 @@
   .public-faq-list .accordion-content { transition:none; }
 }
 .public-comparison { padding-top: 8px; }
-.comparison-toolbar { display: grid; justify-items: end; gap: 12px; margin-bottom: 12px; }
 .comparison-details-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 44px;
-  padding: 10px 16px;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 16px;
+  padding: 14px 20px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--paper);
@@ -112,7 +113,7 @@
 .comparison-scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--background); font-size: 13px; }
 .comparison-table th { font-weight: 400; text-align: left; }
-.comparison-table thead th { position: sticky; top: var(--public-header-height); z-index: 2; width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
+.comparison-table thead th { position: sticky; top: 0; z-index: 2; width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
 .comparison-table thead th:first-child { width: 30%; padding-left: 24px; border-left: 0; vertical-align: bottom; font-size: 16px; line-height: 1.4; letter-spacing: -.025em; }
 .comparison-offer { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .comparison-offer h3 { font-size: 20px; letter-spacing: -.04em; white-space: nowrap; }
@@ -352,7 +353,6 @@
     table-layout: fixed;
   }
   .comparison-table thead th {
-    top: 0;
     padding: 10px;
     width: auto;
   }
@@ -375,9 +375,7 @@
   }
 }
 @media (max-width: 540px) {
-  .comparison-toolbar { justify-items: stretch; }
-  .comparison-details-toggle { justify-self: start; }
-  .comparison-column-picker { display: grid; gap: 8px; }
+  .comparison-column-picker { display: grid; gap: 8px; margin-bottom: 12px; }
   .comparison-column-picker p { color: var(--muted-foreground); font-size: 12px; }
   .comparison-column-picker > div { display: flex; flex-wrap: wrap; gap: 6px; }
   .comparison-column-picker button {

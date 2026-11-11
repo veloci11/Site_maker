@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { publicOffers } from '../../../shared/catalog'
@@ -14,7 +14,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { cn } from '../../lib/utils'
@@ -38,8 +37,6 @@ const mobileOfferClassName = navigationClassName('mobile-offer-link')
 
 export function PublicHeader() {
   const location = useLocation()
-  const headerStart = useRef<HTMLSpanElement>(null)
-  const [stuck, setStuck] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [offersOpen, setOffersOpen] = useState(false)
   const offerActive = location.pathname.startsWith('/forfaits')
@@ -48,16 +45,9 @@ export function PublicHeader() {
     setMobileOpen(false)
     setOffersOpen(false)
   }, [location.key])
-  useEffect(() => {
-    if (!headerStart.current) return
-    const observer = new IntersectionObserver(([entry]) => setStuck(!entry.isIntersecting))
-    observer.observe(headerStart.current)
-    return () => observer.disconnect()
-  }, [])
 
-  return <>
-    <span ref={headerStart} className="public-header-start" aria-hidden="true" />
-    <div className="public-header-wrap" data-stuck={stuck}>
+  return (
+    <div className="public-header-wrap">
       <header className="site-header">
         <Link className="wordmark" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="studio — accueil">
           studio
@@ -82,13 +72,6 @@ export function PublicHeader() {
               sideOffset={10}
               collisionPadding={16}
             >
-              <DropdownMenuItem asChild>
-                <NavLink to="/forfaits" end viewTransition={canAnimatePlanNavigation()}>
-                  Comparer les forfaits
-                  <ArrowRight size={14} aria-hidden="true" />
-                </NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
               {offerLinks.map((offer) => (
                 <DropdownMenuItem key={offer.href} asChild>
                   <Link
@@ -142,10 +125,6 @@ export function PublicHeader() {
                     <ChevronDown className="mobile-offers-chevron" size={20} aria-hidden="true" />
                   </summary>
                   <div className="mobile-offers-submenu">
-                    <NavLink to="/forfaits" end viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
-                      Comparer les forfaits
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </NavLink>
                     {offerLinks.map((offer) => (
                       <NavLink key={offer.href} to={offer.href} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
                         {offer.title}
@@ -172,7 +151,7 @@ export function PublicHeader() {
         </div>
       </header>
     </div>
-  </>
+  )
 }
 
 export function PublicFooter() {

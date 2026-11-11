@@ -171,11 +171,9 @@ export function ConfiguratorPage() {
   useEffect(() => {
     const estimate = estimateRef.current
     if (!estimate || editingId || stage !== 'options') return
-    const header = document.querySelector('.public-header-wrap')
-    const headerHeight = Math.ceil(header?.getBoundingClientRect().height ?? 0)
     const observer = new IntersectionObserver(([entry]) => {
       setEstimateOutsideViewport(entry.intersectionRatio < 0.95)
-    }, { rootMargin: `-${headerHeight}px 0px 0px 0px`, threshold: 0.95 })
+    }, { threshold: 0.95 })
     observer.observe(estimate)
     return () => observer.disconnect()
   }, [editingId, editingLoaded, stage])
@@ -536,8 +534,7 @@ export function ConfiguratorPage() {
                             trigger?.getAttribute('aria-controls') !== event.currentTarget.id
                           ) return
                           openingGroup.current = null
-                          const headerBottom = document.querySelector('.public-header-wrap')?.getBoundingClientRect().bottom ?? 0
-                          if (trigger.getBoundingClientRect().top < headerBottom) {
+                          if (trigger.getBoundingClientRect().top < 0) {
                             trigger.scrollIntoView({ block: 'start' })
                           }
                         }}
