@@ -71,29 +71,38 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
-    if (CSS.supports('animation-timeline: view(block 1px 0px)') && CSS.supports('animation-range: exit-crossing')) return
-
     const scroller = scrollRef.current
-    const header = document.querySelector('.public-header-wrap')
-    if (!scroller || !header) return
+    const navigation = document.querySelector('.public-header-wrap')
+    const heading = scroller?.querySelector('thead')
+    if (!scroller || !navigation || !heading) return
+    const sections = Array.from(scroller.querySelectorAll('tbody'))
 
     const clipAtHeader = () => {
-      const overlap = header.getBoundingClientRect().bottom - scroller.getBoundingClientRect().top
+      const overlap = Math.ceil(navigation.getBoundingClientRect().bottom - scroller.getBoundingClientRect().top)
+      const headingBottom = heading.getBoundingClientRect().bottom
+      const sectionClips = sections.map((section) => Math.max(0, Math.ceil(headingBottom - section.getBoundingClientRect().top)))
       if (overlap > 0) scroller.style.setProperty('--comparison-clip-top', `${overlap}px`)
       else scroller.style.removeProperty('--comparison-clip-top')
+      sections.forEach((section, index) => section.style.setProperty('--comparison-rows-clip-top', `${sectionClips[index]}px`))
     }
 
     clipAtHeader()
     const observer = new ResizeObserver(clipAtHeader)
     observer.observe(scroller)
-    observer.observe(header)
+    observer.observe(navigation)
+    observer.observe(heading)
+    scroller.addEventListener('scroll', clipAtHeader, { passive: true })
     window.addEventListener('scroll', clipAtHeader, { passive: true })
     window.addEventListener('resize', clipAtHeader)
+    window.addEventListener('animationend', clipAtHeader)
     return () => {
       observer.disconnect()
+      scroller.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('resize', clipAtHeader)
+      window.removeEventListener('animationend', clipAtHeader)
       scroller.style.removeProperty('--comparison-clip-top')
+      sections.forEach((section) => section.style.removeProperty('--comparison-rows-clip-top'))
     }
   }, [])
 

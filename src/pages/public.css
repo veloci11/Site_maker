@@ -111,22 +111,10 @@
 .comparison-detail-reveal__inner { min-height: 0; overflow: hidden; }
 .comparison-scroll { border: 1px solid var(--border); border-radius: 14px; overflow: clip; clip-path: inset(var(--comparison-clip-top, -5px) -5px -5px); }
 .comparison-scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
-@supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
-  .comparison-scroll {
-    animation: comparison-clip-at-header linear forwards;
-    /* Track the current scroll position even when reduced motion is enabled. */
-    animation-duration: auto !important;
-    animation-timeline: view(block var(--public-header-height) 0px);
-    animation-range: exit-crossing;
-  }
-  @keyframes comparison-clip-at-header {
-    from { clip-path: inset(0 -5px -5px); }
-    to { clip-path: inset(100% -5px -5px); }
-  }
-}
 .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--background); font-size: 13px; }
 .comparison-table th { font-weight: 400; text-align: left; }
-.comparison-table thead th { position: sticky; top: var(--public-header-height); z-index: 2; width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
+.comparison-table thead { position: sticky; top: var(--public-header-height); z-index: 2; background: var(--paper); }
+.comparison-table thead th { width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
 .comparison-table thead th:first-child { width: 30%; padding-left: 24px; border-left: 0; vertical-align: bottom; font-size: 16px; line-height: 1.4; letter-spacing: -.025em; }
 .comparison-offer { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .comparison-offer h3 { font-size: 20px; letter-spacing: -.04em; white-space: nowrap; }
@@ -135,6 +123,7 @@
 .comparison-table tbody td,.comparison-table tbody th { padding: 13px 20px; border-top: 1px solid var(--border); vertical-align: middle; }
 .comparison-table tbody th { font-size: 13px; line-height: 1.4; }
 .comparison-table tbody td { text-align: center; border-left: 1px solid var(--border); }
+.comparison-section { clip-path: inset(var(--comparison-rows-clip-top, 0px) 0 0); }
 .comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
 .comparison-section tr:first-child > * { background: var(--paper); }
 @media (hover: hover) {
@@ -365,12 +354,13 @@
     width: max(100%, 486px);
     table-layout: fixed;
   }
+  .comparison-table thead { top: 0; }
   .comparison-table thead th {
-    top: 0;
     padding: 10px;
     width: auto;
   }
   .comparison-table thead th:first-child {
+    position: sticky;
     left: 0;
     z-index: 3;
     width: var(--comparison-label-width);
