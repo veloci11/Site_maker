@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { publicOffers } from '../../../shared/catalog'
@@ -38,6 +38,8 @@ const mobileOfferClassName = navigationClassName('mobile-offer-link')
 
 export function PublicHeader() {
   const location = useLocation()
+  const headerStart = useRef<HTMLSpanElement>(null)
+  const [stuck, setStuck] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [offersOpen, setOffersOpen] = useState(false)
   const offerActive = location.pathname.startsWith('/forfaits')
@@ -46,9 +48,16 @@ export function PublicHeader() {
     setMobileOpen(false)
     setOffersOpen(false)
   }, [location.key])
+  useEffect(() => {
+    if (!headerStart.current) return
+    const observer = new IntersectionObserver(([entry]) => setStuck(!entry.isIntersecting))
+    observer.observe(headerStart.current)
+    return () => observer.disconnect()
+  }, [])
 
-  return (
-    <div className="public-header-wrap">
+  return <>
+    <span ref={headerStart} className="public-header-start" aria-hidden="true" />
+    <div className="public-header-wrap" data-stuck={stuck}>
       <header className="site-header">
         <Link className="wordmark" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="studio — accueil">
           studio
@@ -163,7 +172,7 @@ export function PublicHeader() {
         </div>
       </header>
     </div>
-  )
+  </>
 }
 
 export function PublicFooter() {

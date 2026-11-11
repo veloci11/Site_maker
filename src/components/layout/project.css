@@ -4,7 +4,7 @@
 .configurator-topline a { display:inline-flex; align-items:center; gap:8px; min-height:32px; }
 .configurator-topline a:hover { color:#111; }
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
-.configurator-card-column { position:sticky; top:min(24px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
+.configurator-card-column { position:sticky; top:min(calc(var(--public-header-height) + 16px),calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
 .selected-plan { --plan-texture-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
 .selected-plan__copy { display:flex; flex:1; flex-direction:column; min-width:0; }

@@ -2,6 +2,8 @@
 
 ## Ergonomie du configurateur et du comparatif
 
+La barre de navigation publique reste visible pendant le défilement sur ordinateur et mobile. L’en-tête du comparatif se fixe sous la navigation sur ordinateur et dans le tableau sur mobile. Les ancres réservent la hauteur de la barre.
+
 La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment progressivement, et les options fermées restent hors de la navigation clavier. Dans le comparatif, les détails se commandent avant le tableau. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante. Les menus Forfaits donnent accès au comparatif.
 
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
