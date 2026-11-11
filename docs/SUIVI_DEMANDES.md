@@ -1,3 +1,7 @@
+# En-tête complet du comparatif fixé le 10 novembre 2026
+
+L’en-tête du tableau est fixé en bloc et les lignes disparaissent à son bord inférieur pendant le défilement. Le masquage est calculé sur la position réelle de l’en-tête. La révision `c711885` est publiée et vérifiée en HTTPS à 1 280 et 320 px.
+
 # Défilement du comparatif corrigé le 10 novembre 2026
 
 Les lignes et bordures du comparatif disparaissent au bord inférieur de la navigation flottante. L’en-tête des forfaits suit le défilement et ses boutons restent accessibles. La révision `3d9cb35` est publiée et vérifiée en HTTPS à 1 280 et 320 px.

@@ -1,3 +1,9 @@
+# En-tête complet du tableau vérifié le 10 novembre 2026
+
+Sur la page Forfaits en HTTPS à 1 280 px, l’en-tête garde sa position à 96 px pendant le défilement de 480 à 656 px. Les lignes sont rognées à son bord inférieur, fixé à 235 px. Le contrôle des zones de l’en-tête et du menu ne détecte aucune cellule du corps du tableau à ces endroits. Les détails ouverts suivent la même limite.
+
+À 320 px, le défilement interne jusqu’aux dernières lignes garde l’en-tête et la colonne Fonctions visibles. Le raccourci Premium affiche toute sa colonne. Le contrôle local de l’accueil confirme aussi le suivi et le clic Configurer. Les 270 tests passent.
+
 # Masquage du comparatif vérifié le 10 novembre 2026
 
 À 1 280 px sur l’accueil public, les lignes et bordures disparaissent au bord inférieur de la navigation. L’en-tête et les trois boutons restent visibles. À 320 px sur la page Forfaits, l’en-tête et la colonne Fonctions restent ancrés dans la zone du tableau, le raccourci Premium aligne la colonne et les lignes disparaissent sous le menu lors du défilement de la page.

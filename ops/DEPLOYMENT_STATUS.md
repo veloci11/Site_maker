@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `c7118859f8b59b3b2378993e7acb5f0614222807` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T011342Z-c7118859f8b5`
+- Client `/assets/index-6rJL5K2W.js`, SHA-256 `cf0ce18c818def6d02258e40339247edf3f8d4f99408d5f92dfdbab3f4e989df`
+- Archive vérifiée de 13 981 225 octets, SHA-256 `ebc24600932f28970a9626fbf5fd9ab022220e1746c5fc96be8516313adc2634`
+
+L’en-tête complet du comparatif reste ancré pendant la lecture. Les lignes se masquent à son bord inférieur. La vérification publique couvre le tableau et les détails à 1 280 px, puis le défilement du tableau à 320 px. Sauvegarde, santé de l’origine et catalogue vérifiés. Les 270 tests passent.
+
+## Masquage du cadre du comparatif publié le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `3d9cb35abf8ec0cbeb54655a9f87eca840294cf6` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T005421Z-3d9cb35abf8e`
 - Client `/assets/index-BSYmK8F3.js`, SHA-256 `f14f4e8c6511177e07ff748bfde4d509351ad2f5488aeaa9359c255c12f30b90`
