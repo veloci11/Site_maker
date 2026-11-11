@@ -1,3 +1,11 @@
+# Tableau et retours recentrés publiés le 11 novembre 2026
+
+La correction du tableau auparavant conservée en local est publiée. Le cadre et l’en-tête sticky ne sont plus découpés par un masquage d’ancêtre ; le corps et la ligne interne de l’en-tête portent le masquage. Les bordures et coins supérieurs restent sur les cellules pendant la remontée.
+
+Le retour depuis une carte ou un bouton du comparatif rejoint les offres sous la navigation, comme après un choix dans la barre. Même comportement avec Retour du navigateur et « Tous les forfaits ». La restauration ne conserve plus la position d’une carte partiellement cachée. Trois tests couvrent les chemins animés, sans animation, après changement de forfait et depuis le comparatif.
+
+Révision `6195cb1` publiée et contrôlée en HTTPS à 1 280 × 700 et sur mobile à 390/320 px. Les 273 tests passent. Aucun formulaire envoyé. Serveur local arrêté, ports 4173 et 4174 libres.
+
 # Carte plus aérée, commune aux deux modes, le 11 novembre 2026
 
 La présentation intermédiaire s’applique en plein écran comme en fenêtre. La hauteur ne déclenche plus de changement de densité ni la disparition des inclusions. Les espacements, titre et prix sont plus grands que dans la première version compacte. Sous 1 200 px de largeur, la carte reste au-dessus des options. Sur une fenêtre basse, son contenu suit le défilement normal sans barre interne.

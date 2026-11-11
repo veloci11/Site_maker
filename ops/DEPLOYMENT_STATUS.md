@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `6195cb142415d0ae5b1c8df24ecb42c18a2e9b30` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T062206Z-6195cb142415`
+- Client `/assets/index-11r4uc2l.js`, SHA-256 `e5330aa8c8bcf64a23475973629ef78b79dc651d6fd30e53451b8d9efec275c0`
+- Archive vérifiée de 13 981 574 octets, SHA-256 `4501314272641fe9592723aadcb1fc3166b816c897686cda16a137330f12cf91`
+
+La reprise du comparatif auparavant gardée en local est désormais publiée, à la demande du 11 novembre. Le retour depuis les cartes, le comparatif et la navigation utilise le même recentrage vers les offres. Contrôle HTTPS sur ordinateur et mobile ; 273 tests passent. Sauvegarde privée, santé et catalogue vérifiés. Le serveur local est arrêté et les ports 4173/4174 sont libres.
+
+## Carte aérée publiée le 11 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `ae40bafa0d056c5c0e84a72402177ec329bf39c7` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T060811Z-ae40bafa0d05`
 - Client `/assets/index-DRDi_nsE.js`, SHA-256 `2ebd8819feccd68eb7f0d80ada31d424b48a5af4f1243dab9d33c251a26d56d6`

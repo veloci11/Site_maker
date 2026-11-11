@@ -1,3 +1,13 @@
+# Tableau et retour aux offres vérifiés en ligne — 11 novembre 2026
+
+La correction précédemment locale est maintenant publiée dans `6195cb1`, client `index-11r4uc2l.js`. Sur l’accueil en HTTPS à 1 280 × 700, sortie complète du comparatif puis remontée lente de 2 476 à 1 846 px par pas de 70 px : l’en-tête reste à 96 px, bordure supérieure 1 px et arrondis 14 px conservés. Le cadre et le `thead` n’ont aucun clip. Les détails ouverts, une nouvelle sortie complète et une remontée rapide retrouvent également l’en-tête à 96 px. Preuve native `../outputs/audit-ergonomie-2026-11-10/26-tableau-remontee-public.jpg` et relevés JSON voisins.
+
+Les retours publics depuis le comparatif, une carte et le menu en bas de page ont été contrôlés après chargement effectif du forfait. Retour du navigateur et « Tous les forfaits » affichent les offres sous la navigation au lieu de conserver l’ancienne position. À 1 280 px, le titre des offres apparaît vers 126–129 px, sous le header de 96 px. À 390 px, le retour depuis Premium présente ce titre à 106 px sous le header de 88 px. Capture `27-retour-forfaits-public.jpg` dans le même dossier.
+
+À 320 × 740 en HTTPS, le scrollport du tableau atteint 855,5 px de défilement interne et garde son en-tête à 1 px du bord du cadre. Le raccourci Premium affiche sa colonne entière, sans débordement horizontal de la page. Capture `28-comparatif-mobile-public.jpg`. Aucune erreur de console observée. Le brouillon public est revenu à Vitrine de base à 890 €, sans sélection ajoutée ni formulaire soumis. Viewport restauré, onglet fermé, serveur local arrêté et ports 4173/4174 libres.
+
+TypeScript, build et 273 tests passent, dont trois régressions de navigation. Les cas sans animation et après changement de forfait sont couverts par ces tests ; aucune émulation de mouvement réduit dans le contrôle public de ce lot. Les rapports historiques ci-dessous sur la correction non publiée sont remplacés par cette livraison.
+
 # Carte aérée et reprise locale du tableau — 11 novembre 2026
 
 La révision publique `ae40baf` sert `index-DRDi_nsE.js`. Avec les onze options de référence, la carte Vitrine mesure exactement 791,875 px de haut à 1 280 × 700 et à 1 280 × 1 100 : titre 44 px, padding 24,035 px, options 13 px avec 10 px entre les lignes. Les inclusions restent présentes. La hauteur n’active aucun mode compact ; la carte plus haute qu’une fenêtre basse reste accessible par le défilement normal. Le total reste « Environ 3 115 € » et « + 19 € / mois ». Capture publique : `../outputs/audit-ergonomie-2026-11-10/25-carte-aeree-public.jpg`.
