@@ -88,7 +88,7 @@ export function PricingCard({
       to={destination}
       viewTransition={canAnimatePlanNavigation()}
       className={cn('pricing-card', `pricing-card--${color}`, className)}
-      aria-label={`${actionLabel}. ${priceLabel}`}
+      aria-label={`${actionLabel}${actionLabel === 'Configurer' ? ` ${title}` : ''}. ${priceLabel}`}
       onPointerEnter={prepareDestination}
       onFocus={prepareDestination}
     >

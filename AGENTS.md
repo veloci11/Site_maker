@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Netteté et libellés des cartes — 11 novembre 2026
+
+Les trois boutons sous les forfaits affichent seulement « Configurer ». Le nom accessible du lien garde le forfait et son prix pour distinguer les destinations.
+
+Utiliser le master original sans perte 1536 × 1024 dans les aperçus dès 1,5 dppx, au-delà de 495 px de largeur de carte, au survol/focus et pendant une capture de transition. Conserver l’export léger en secours et les mêmes coordonnées d’image. Les prolongements haute densité gardent leurs originaux et leurs petits exports de secours. Ne pas présenter un fichier agrandi ou régénéré à la même taille comme une augmentation native de résolution. L’essai imagegen du 11 novembre n’est pas publié : pas de gain de dimensions et grain altéré.
+
 ## Continuité de l’image des forfaits — 11 novembre 2026
 
 La petite carte, le bouton du comparatif et la grande carte partagent un même cadrage proportionnel à leur largeur, les mêmes miroirs et les mêmes traitements de couleur. Business conserve notamment son vert en haut à droite. L’image grandit sans étirement indépendant des axes pendant le raccord natif ; les textes restent sur leurs calques distincts. Le bitmap à la plus grande largeur intrinsèque reste au-dessus pour conserver la définition dans les deux sens. Cette demande remplace l’échelle fixe de l’image pendant l’agrandissement décrite plus bas.

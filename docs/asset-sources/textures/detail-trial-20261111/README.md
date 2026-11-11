@@ -1,0 +1,9 @@
+# Essai de définition — 11 novembre 2026
+
+Outil : imagegen intégré, édition de `../grain-plasma-v2.png`. Candidat : `grain-plasma-detail-trial.png`, conservé hors des assets servis. Le résultat fait 1536 × 1024 malgré une demande de 3072 × 2048. Il remplace le grain photographique par des formes filiformes et déplace légèrement les champs de couleur. **Non publié** : aucune augmentation native de résolution, fidélité insuffisante pour le raccord validé.
+
+Prompt exact :
+
+> Use case: precise-object-edit. Input image is the EDIT TARGET, an existing approved website texture, not a style reference. Improve native resolved detail only and deliver a 3072 x 2048 image in exactly the same 3:2 landscape frame. Preserve the exact color field composition and placement: blue upper left, dark navy upper right, vermilion/red below with the same diagonal orange ribbon. Every boundary, curve, patch size and color must register exactly with the input when overlaid at equal dimensions. No rearrangement, mirroring, crop, zoom, new blobs or altered hues. Retain the fine stochastic photographic film-grain character but resolve it cleanly for Retina-sized website cards: sharply resolved tiny independent speckles, not enlarged fuzzy noise, not worms, curls, veins, cells or scratches. This must still look like the EXACT same image at higher definition, not a restyle. No text, objects, logo, border or watermark. Opaque full bleed. Requested native output resolution: 3072 pixels wide by 2048 pixels high.
+
+Amélioration retenue : utiliser l’original sans perte 1536 px pour les aperçus haute densité, les grandes cartes de présentation et les surfaces en interaction/capture. Garder l’export léger en secours et les coordonnées de peinture identiques. Aucun suréchantillonnage présenté comme de nouveaux détails natifs.

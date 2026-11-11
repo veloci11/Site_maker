@@ -118,7 +118,7 @@ export function HomePage() {
                 features={offer.features}
                 href={configureHref(offer.id)}
                 variant={offer.variant}
-                cta={`Configurer ${offer.title}`}
+                cta="Configurer"
                 featured={offer.id === 'connecte'}
               />
             </Reveal>

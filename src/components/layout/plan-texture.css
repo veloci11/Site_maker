@@ -71,6 +71,22 @@
 .plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp'); }
 :is(.pricing-card--custom,.pricing-card--immersif,.pricing-card--refonte) .plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp'); }
 @container (width < 330px) { .plan-texture--preview .plan-texture__continuation { display:block; } }
+/* A 155%-wide paint plane needs the lossless original above 495 CSS px,
+   on high-density screens, and before its snapshot is enlarged. Keep the
+   small export underneath so a fast click never captures an empty surface. */
+@container (width > 495px) {
+  .plan-texture--preview .plan-texture__master { background-image:url('/assets/textures/grain-plasma-master.webp'),url('/assets/textures/grain-plasma-card.webp'); }
+}
+@media (min-resolution:1.5dppx) {
+  .plan-texture--preview .plan-texture__master { background-image:url('/assets/textures/grain-plasma-master.webp'),url('/assets/textures/grain-plasma-card.webp'); }
+  .plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation.webp'),url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp'); }
+  :is(.pricing-card--custom,.pricing-card--immersif,.pricing-card--refonte) .plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top.webp'),url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp'); }
+}
+.pricing-card:is(:hover,:focus-visible) .plan-texture--preview .plan-texture__master,
+.comparison-cta:is(:hover,:focus-visible) .plan-texture--preview .plan-texture__master,
+.motion-page--plan-transitioning .plan-texture--preview .plan-texture__master {
+  background-image:url('/assets/textures/grain-plasma-master.webp'),url('/assets/textures/grain-plasma-card.webp');
+}
 .pricing-card--immersif .plan-texture { background:#090719; }
 .plan-texture__paint::after {
   content:"";
