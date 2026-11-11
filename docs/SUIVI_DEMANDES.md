@@ -1,3 +1,7 @@
+# Reprise du cadre du comparatif le 10 novembre 2026
+
+Le contour supérieur est porté directement par les cellules de l’en-tête. Le cadre se ferme à la dernière ligne pendant le passage vers la FAQ. Le défilement a été contrôlé dans les deux sens, avec les détails ouverts, sur ordinateur et mobile. Révision `4271b3d` publiée et vérifiée en HTTPS.
+
 # Contour arrondi de l’en-tête fixé le 10 novembre 2026
 
 La bordure supérieure et les coins arrondis suivent l’en-tête du comparatif pendant le défilement. Révision `6e224d7` publiée et vérifiée en HTTPS sur ordinateur et mobile.

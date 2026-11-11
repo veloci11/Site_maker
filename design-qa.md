@@ -1,3 +1,9 @@
+# Jonctions du cadre vérifiées le 10 novembre 2026
+
+Le défilement réel dans le navigateur intégré a été contrôlé à l’entrée du comparatif, au milieu, près de la dernière ligne et lors de la remontée. À 1 280 px en HTTPS, les coins supérieurs suivent les cellules de l’en-tête à 96 px pendant la lecture, puis leur mouvement à la sortie du tableau. Les colonnes de l’en-tête et du corps sont alignées. La bordure basse reste visible à la dernière ligne. Les détails ouverts suivent les mêmes limites.
+
+Le viewport du navigateur a été réglé avec sa capacité dédiée. À 800 px en local et à 320 px en HTTPS, les contrôles du tableau et ses bordures sont accessibles. Sur mobile, le défilement interne atteint les dernières lignes avec l’en-tête visible et la colonne Premium entièrement accessible. Les 270 tests passent.
+
 # Bordure supérieure et arrondis vérifiés le 10 novembre 2026
 
 À 1 280 px en HTTPS, l’en-tête reste à 96 px pendant le défilement de 490 à 644 px. Sa bordure supérieure et ses arrondis de 14 px suivent la même position. Les coins masquent le tableau et révèlent le fond de la page. Les détails ouverts et le retour en haut du tableau ont également été contrôlés en local.

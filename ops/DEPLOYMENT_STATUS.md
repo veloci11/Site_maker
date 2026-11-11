@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `4271b3d8b399619796b539ebb669d24e2b3b0a4e` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T031622Z-4271b3d8b399`
+- Client `/assets/index-D6kgoMuN.js`, SHA-256 `b35d723b5b4bb7b30643d63dfcd2d0d1d4a4d38466d0a4f7ed7e7c60b1dad451`
+- Archive vérifiée de 13 980 801 octets, SHA-256 `6c3064d8bef9e9eb38c17ac9e86bfa46a6298f7662d7e5ae302b1a55bc2a6e48`
+
+Les bordures et les coins supérieurs appartiennent aux cellules de l’en-tête du comparatif. La bordure basse ferme le cadre à la dernière ligne. Parcours vérifié en HTTPS avec défilement réel, à 1 280, 800 et 320 px en local puis à 1 280 et 320 px en public. Sauvegarde, santé de l’origine et catalogue vérifiés. Les 270 tests passent.
+
+## Premier contour arrondi publié le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `6e224d7b2ad2e77c8c28471cc49b2fa712e32145` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T025659Z-6e224d7b2ad2`
 - Client `/assets/index-UDndeRW6.js`, SHA-256 `e408cc4ee6482847c687b89c4c3561037f085a0c9050389f724adbcf95408948`
