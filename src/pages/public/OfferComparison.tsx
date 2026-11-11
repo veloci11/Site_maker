@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from 'react'
-import { ArrowRight, Check, ChevronDown } from 'lucide-react'
+import { useRef, useState, type ReactNode } from 'react'
+import { Check, ChevronDown } from 'lucide-react'
 import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
@@ -68,12 +68,49 @@ function ComparisonReveal({ children, collapsed }: { children: ReactNode; collap
 
 export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  function showOfferColumn(index: number) {
+    const scroller = scrollRef.current
+    const headings = scroller?.querySelectorAll('thead th')
+    const labelColumn = headings?.[0]
+    const offerColumn = headings?.[index + 1]
+    if (!scroller || !labelColumn || !offerColumn) return
+    scroller.scrollBy({ left: offerColumn.getBoundingClientRect().left - labelColumn.getBoundingClientRect().right })
+  }
+
   return (
     <div className="offer-comparison" data-details-open={details}>
-      <p className="comparison-mobile-hint">
-        Faites défiler le tableau pour comparer les forfaits <ArrowRight size={14} aria-hidden="true" />
-      </p>
+      <div className="comparison-toolbar">
+        <button
+          type="button"
+          className="comparison-details-toggle"
+          aria-expanded={details}
+          aria-controls={`${id}-table`}
+          onClick={() => setDetails((open) => !open)}
+        >
+          {details ? 'Masquer les détails' : 'Afficher plus de détails'}
+          <ChevronDown size={18} aria-hidden="true" />
+        </button>
+        <div className="comparison-column-picker">
+          <p>Choisissez une colonne ou faites glisser le tableau horizontalement.</p>
+          <div role="group" aria-label="Colonnes du comparatif">
+            {publicOffers.map((offer, index) => (
+              <button
+                key={offer.id}
+                type="button"
+                aria-label={`Afficher la colonne ${offer.title}`}
+                aria-controls={`${id}-table`}
+                onClick={() => showOfferColumn(index)}
+              >
+                {offer.title}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
       <div
+        ref={scrollRef}
         className="comparison-scroll"
         tabIndex={0}
         role="region"
@@ -133,16 +170,6 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
           ))}
         </table>
       </div>
-      <button
-        type="button"
-        className="comparison-details-toggle"
-        aria-expanded={details}
-        aria-controls={`${id}-table`}
-        onClick={() => setDetails((open) => !open)}
-      >
-        {details ? 'Masquer les détails' : 'Afficher plus de détails'}
-        <ChevronDown size={18} aria-hidden="true" />
-      </button>
     </div>
   )
 }

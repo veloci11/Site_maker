@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Ergonomie du configurateur et du comparatif
+
+La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment progressivement, et les options fermées restent hors de la navigation clavier. Dans le comparatif, les détails se commandent avant le tableau. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante. Les menus Forfaits donnent accès au comparatif.
+
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
 
 Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.

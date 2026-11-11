@@ -14,6 +14,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import { cn } from '../../lib/utils'
@@ -72,6 +73,13 @@ export function PublicHeader() {
               sideOffset={10}
               collisionPadding={16}
             >
+              <DropdownMenuItem asChild>
+                <NavLink to="/forfaits" end viewTransition={canAnimatePlanNavigation()}>
+                  Comparer les forfaits
+                  <ArrowRight size={14} aria-hidden="true" />
+                </NavLink>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
               {offerLinks.map((offer) => (
                 <DropdownMenuItem key={offer.href} asChild>
                   <Link
@@ -125,6 +133,10 @@ export function PublicHeader() {
                     <ChevronDown className="mobile-offers-chevron" size={20} aria-hidden="true" />
                   </summary>
                   <div className="mobile-offers-submenu">
+                    <NavLink to="/forfaits" end viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
+                      Comparer les forfaits
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </NavLink>
                     {offerLinks.map((offer) => (
                       <NavLink key={offer.href} to={offer.href} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
                         {offer.title}

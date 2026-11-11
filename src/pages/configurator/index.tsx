@@ -94,6 +94,17 @@ function revealSection(element: HTMLElement | null) {
 
 export function ForfaitConfiguratorPage() {
   const location = useLocation()
+  const { slug } = useParams()
+  if (slug && !getOffer(slug)) {
+    return (
+      <section className="container page-section">
+        <h1 className="page-heading">Ce forfait n’existe pas.</h1>
+        <Button asChild>
+          <Link to="/forfaits">Voir les forfaits</Link>
+        </Button>
+      </section>
+    )
+  }
   return <ConfiguratorPage key={location.key} />
 }
 export function ConfiguratorPage() {
@@ -116,6 +127,9 @@ export function ConfiguratorPage() {
   const contactHeading = useRef<HTMLHeadingElement>(null)
   const optionsHeading = useRef<HTMLHeadingElement>(null)
   const successHeading = useRef<HTMLHeadingElement>(null)
+  const openingGroup = useRef<HTMLButtonElement>(null)
+  const estimateRef = useRef<HTMLDivElement>(null)
+  const [estimateOutsideViewport, setEstimateOutsideViewport] = useState(false)
   const mobileBarRef = useRef<HTMLDivElement>(null)
   const editingId = params.get('projet') || params.get('projectId')
   const [loadedProjectKey, setLoadedProjectKey] = useState('')
@@ -154,17 +168,26 @@ export function ConfiguratorPage() {
   useEffect(() => {
     document.title = `${title} · studio`
   }, [title])
+  useEffect(() => {
+    const estimate = estimateRef.current
+    if (!estimate || editingId || stage !== 'options') return
+    const observer = new IntersectionObserver(([entry]) => {
+      setEstimateOutsideViewport(entry.intersectionRatio < 0.95)
+    }, { threshold: 0.95 })
+    observer.observe(estimate)
+    return () => observer.disconnect()
+  }, [editingId, editingLoaded, stage])
   useLayoutEffect(() => {
     const bar = mobileBarRef.current
-    const shell = bar?.closest<HTMLElement>('.public-shell')
-    if (!bar || !shell) return
-    const measure = () => shell.style.setProperty('--configurator-bar-space', `${Math.ceil(bar.getBoundingClientRect().height) + 12}px`)
+    if (!bar) return
+    const viewport = document.documentElement
+    const measure = () => viewport.style.setProperty('--configurator-bar-space', `${Math.ceil(bar.getBoundingClientRect().height) + 12}px`)
     measure()
     const observer = new ResizeObserver(measure)
     observer.observe(bar)
     return () => {
       observer.disconnect()
-      shell.style.removeProperty('--configurator-bar-space')
+      viewport.style.removeProperty('--configurator-bar-space')
     }
   }, [stage, editingLoaded])
   useEffect(() => {
@@ -299,15 +322,6 @@ export function ConfiguratorPage() {
     return `+ ${formatOptionPrice(id, pricing)}`
   }
 
-  if (slug && !routeOffer)
-    return (
-      <section className="container page-section">
-        <h1 className="page-heading">Ce forfait n’existe pas.</h1>
-        <Button asChild>
-          <Link to="/forfaits">Voir les forfaits</Link>
-        </Button>
-      </section>
-    )
   if (!editingLoaded)
     return (
       <section className="container page-section">
@@ -403,7 +417,7 @@ export function ConfiguratorPage() {
                 </div>
               </div>
             </section>
-            <div className="selected-plan__total" aria-live="polite" aria-atomic="true">
+            <div ref={estimateRef} className="selected-plan__total" aria-live="polite" aria-atomic="true">
               <span>{custom ? 'Votre projet' : quote.estimated ? 'Estimation de création' : 'Création du site'}</span>
               <strong key={totalLabel}>{totalLabel}</strong>
               <div className="selected-plan__monthly" data-open={monthly} aria-hidden={!monthly}>
@@ -468,13 +482,16 @@ export function ConfiguratorPage() {
                 className="configurator-groups"
               >
                 {visibleGroups.map((group, index) => {
+                  const isOpen = openGroups.includes(group.id)
                   const options = availableOptions.filter((option) => option.group === group.id)
                   const selectedOptions = visibleOptions.filter((option) =>
                     option.group === group.id && isOptionSelected(configuration, option.id),
                   )
                   return (
                     <AccordionItem value={group.id} key={group.id} className="configurator-group">
-                      <AccordionTrigger>
+                      <AccordionTrigger onClick={(event) => {
+                        openingGroup.current = isOpen ? null : event.currentTarget
+                      }}>
                         <span className="configurator-group__copy">
                           <span className="configurator-group__heading">
                             <span className="configurator-group__number">
@@ -488,84 +505,105 @@ export function ConfiguratorPage() {
                             ) : null}
                           </span>
                           {selectedOptions.length > 0 ? (
-                            <span className="configurator-group__summary">
-                              {selectedOptions
-                                .map((option) =>
-                                  isOptionIncluded(configuration, option.id)
-                                    ? `${option.title} (inclus)`
-                                    : option.id === 'extra-pages'
-                                      ? `${configuration.extraPageCount ?? 1} page${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''} supplémentaire${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''}`
-                                      : option.title,
-                                )
-                                .join(' · ')}
+                            <span className="configurator-group__summary" aria-hidden={isOpen}>
+                              <span>
+                                <span>
+                                  {selectedOptions
+                                    .map((option) =>
+                                      isOptionIncluded(configuration, option.id)
+                                        ? `${option.title} (inclus)`
+                                        : option.id === 'extra-pages'
+                                          ? `${configuration.extraPageCount ?? 1} page${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''} supplémentaire${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''}`
+                                          : option.title,
+                                    )
+                                    .join(' · ')}
+                                </span>
+                              </span>
                             </span>
                           ) : null}
                         </span>
                       </AccordionTrigger>
-                      <AccordionContent inert={!openGroups.includes(group.id)} aria-hidden={!openGroups.includes(group.id)}>
-                        {group.id === 'launch' ? <p className="configurator-notice">Choisissez une formule mensuelle facultative. Chaque formule remplace la précédente.</p> : null}
-                        <div className="configurator-choice-list">
-                          {options.map((option) => {
-                            const included = isOptionIncluded(configuration, option.id)
-                            const animatesVisibility = !editingId && option.id === 'online-payment'
-                            const hidden = animatesVisibility && included
-                            const checked = !hidden && isOptionSelected(configuration, option.id)
-                            const extraPage = option.id === 'extra-pages'
-                            const showQuantity = extraPage && checked
-                            const choice = (
-                              <div key={option.id} className="configurator-choice-item" data-quantity={showQuantity}>
-                                <label
-                                  className={`configurator-choice${included && !hidden ? ' configurator-choice--included' : ''}`}
-                                  data-selected={checked}
-                                  htmlFor={`option-${option.id}`}
-                                >
-                                  <Checkbox
-                                    id={`option-${option.id}`}
-                                    checked={checked}
-                                    disabled={included || sending}
-                                    onCheckedChange={(value) =>
-                                      changeOption(option.id, value === true)
-                                    }
-                                    aria-describedby={`description-${option.id}`}
-                                  />
-                                  <span className="configurator-choice__copy">
-                                    <strong>{option.title}</strong>
-                                    <span id={`description-${option.id}`}>{getOptionDescription(offer.id, option)}</span>
-                                  </span>
-                                  <span className="configurator-choice__price">
-                                    {optionPrice(option.id, included && !hidden)}
-                                    {extraPage ? <small>par page</small> : null}
-                                  </span>
-                                </label>
-                                {showQuantity ? (
-                                  <input
-                                    id="extra-page-count"
-                                    type="number"
-                                    className="input configurator-choice__quantity"
-                                    min={1}
-                                    max={MAX_EXTRA_PAGE_COUNT}
-                                    step={1}
-                                    value={configuration.extraPageCount ?? 1}
-                                    disabled={sending}
-                                    aria-label="Nombre de pages supplémentaires"
-                                    aria-describedby={`description-${option.id}`}
-                                    onChange={(event) => {
-                                      const count = event.currentTarget.valueAsNumber
-                                      if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
-                                      optionReflow.capture()
-                                      setConfiguration(withExtraPageCount(configuration, count))
-                                      setError('')
-                                    }}
-                                  />
-                                ) : null}
-                              </div>
-                            )
-                            return animatesVisibility ? (
-                              <div key={option.id} className="configurator-choice-visibility" data-visible={!hidden} inert={hidden} aria-hidden={hidden}>
-                                <div className="configurator-choice-visibility__clip">{choice}</div>
-                              </div>
-                            ) : choice
-                          })}
+                      <AccordionContent
+                        forceMount
+                        inert={!isOpen}
+                        aria-hidden={!isOpen}
+                        onTransitionEnd={(event) => {
+                          const trigger = openingGroup.current
+                          if (
+                            event.propertyName !== 'grid-template-rows' || !isOpen ||
+                            trigger?.getAttribute('aria-controls') !== event.currentTarget.id
+                          ) return
+                          openingGroup.current = null
+                          if (trigger.getBoundingClientRect().top < 0) {
+                            trigger.scrollIntoView({ block: 'start' })
+                          }
+                        }}
+                      >
+                        <div className="configurator-group__body">
+                          {group.id === 'launch' ? <p className="configurator-notice">Choisissez une formule mensuelle facultative. Chaque formule remplace la précédente.</p> : null}
+                          <div className="configurator-choice-list">
+                            {options.map((option) => {
+                              const included = isOptionIncluded(configuration, option.id)
+                              const animatesVisibility = !editingId && option.id === 'online-payment'
+                              const hidden = animatesVisibility && included
+                              const checked = !hidden && isOptionSelected(configuration, option.id)
+                              const extraPage = option.id === 'extra-pages'
+                              const showQuantity = extraPage && checked
+                              const choice = (
+                                <div key={option.id} className="configurator-choice-item" data-quantity={showQuantity}>
+                                  <label
+                                    className={`configurator-choice${included && !hidden ? ' configurator-choice--included' : ''}`}
+                                    data-selected={checked}
+                                    htmlFor={`option-${option.id}`}
+                                  >
+                                    <Checkbox
+                                      id={`option-${option.id}`}
+                                      checked={checked}
+                                      disabled={included || sending}
+                                      onCheckedChange={(value) =>
+                                        changeOption(option.id, value === true)
+                                      }
+                                      aria-describedby={`description-${option.id}`}
+                                    />
+                                    <span className="configurator-choice__copy">
+                                      <strong>{option.title}</strong>
+                                      <span id={`description-${option.id}`}>{getOptionDescription(offer.id, option)}</span>
+                                    </span>
+                                    <span className="configurator-choice__price">
+                                      {optionPrice(option.id, included && !hidden)}
+                                      {extraPage ? <small>par page</small> : null}
+                                    </span>
+                                  </label>
+                                  {showQuantity ? (
+                                    <input
+                                      id="extra-page-count"
+                                      type="number"
+                                      className="input configurator-choice__quantity"
+                                      min={1}
+                                      max={MAX_EXTRA_PAGE_COUNT}
+                                      step={1}
+                                      value={configuration.extraPageCount ?? 1}
+                                      disabled={sending}
+                                      aria-label="Nombre de pages supplémentaires"
+                                      aria-describedby={`description-${option.id}`}
+                                      onChange={(event) => {
+                                        const count = event.currentTarget.valueAsNumber
+                                        if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
+                                        optionReflow.capture()
+                                        setConfiguration(withExtraPageCount(configuration, count))
+                                        setError('')
+                                      }}
+                                    />
+                                  ) : null}
+                                </div>
+                              )
+                              return animatesVisibility ? (
+                                <div key={option.id} className="configurator-choice-visibility" data-visible={!hidden} inert={hidden} aria-hidden={hidden}>
+                                  <div className="configurator-choice-visibility__clip">{choice}</div>
+                                </div>
+                              ) : choice
+                            })}
+                          </div>
                         </div>
                       </AccordionContent>
                     </AccordionItem>
@@ -652,7 +690,7 @@ export function ConfiguratorPage() {
         </div>
       </div>
       {stage === 'options' ? (
-        <div ref={mobileBarRef} className="configurator-mobile-bar">
+        <div ref={mobileBarRef} className="configurator-price-bar" data-follow-estimate={!editingId && estimateOutsideViewport}>
           <div>
             <span>{offer.title}</span>
             <strong>{totalLabel}</strong>

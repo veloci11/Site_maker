@@ -70,15 +70,14 @@
   .public-faq-list .accordion-content { transition:none; }
 }
 .public-comparison { padding-top: 8px; }
+.comparison-toolbar { display: grid; justify-items: end; gap: 12px; margin-bottom: 12px; }
 .comparison-details-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 100%;
-  min-height: 52px;
-  margin-top: 16px;
-  padding: 14px 20px;
+  min-height: 44px;
+  padding: 10px 16px;
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--paper);
@@ -115,7 +114,7 @@
 .comparison-table th { font-weight: 400; text-align: left; }
 .comparison-table thead th { position: sticky; top: 0; z-index: 2; width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
 .comparison-table thead th:first-child { width: 30%; padding-left: 24px; border-left: 0; vertical-align: bottom; font-size: 16px; line-height: 1.4; letter-spacing: -.025em; }
-.comparison-offer { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.comparison-offer { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .comparison-offer h3 { font-size: 20px; letter-spacing: -.04em; white-space: nowrap; }
 .comparison-offer > p { font-size: 13px; color: var(--muted-foreground); line-height: 1.4; }
 .comparison-offer > .text-link { margin-top: 7px; min-height: 32px; font-size: 12px; }
@@ -123,6 +122,10 @@
 .comparison-table tbody th { font-size: 13px; line-height: 1.4; }
 .comparison-table tbody td { text-align: center; border-left: 1px solid var(--border); }
 .comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
+.comparison-section tr:first-child > * { background: var(--paper); }
+@media (hover: hover) {
+  .comparison-table tbody tr:hover > * { background: #f4f0f8; }
+}
 .comparison-section-label { display: block; margin-bottom: 4px; color: var(--muted-foreground); font-size: 11px; font-weight: 600; }
 .comparison-included { display: inline-flex; align-items: center; justify-content: center; }
 .comparison-status { color: var(--muted-foreground); font-size: 12px; }
@@ -265,7 +268,7 @@
 @media (max-width: 380px) { .home-hero__actions { flex-direction: column; align-items: flex-start; gap: 14px; } .home-hero__actions > .button { width: 100%; } }
 
 /* Public requests and reference gallery share the existing interface tokens. */
-.comparison-absent { color: #aaa5ad; font-size: 17px; line-height: 1; }
+.comparison-absent { color: var(--muted-foreground); font-size: 17px; line-height: 1; }
 .public-option-group + .public-option-group { margin-top: 48px; }
 .public-option-group > h2 { padding-bottom: 12px; border-bottom: 1px solid var(--border); font-size: 28px; }
 .public-custom-project { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.15fr); gap: 80px; align-items: start; }
@@ -330,9 +333,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .public-gallery-filters > button,.public-gallery-filter::before { transition: none; } }
 
-.comparison-mobile-hint {
-  display: none;
-}
+.comparison-column-picker { display: none; }
 .comparison-cta { margin-top: 4px; }
 @media (max-width: 960px) {
   .comparison-table thead th { padding-inline: 12px; }
@@ -366,20 +367,31 @@
   .comparison-offer > p { min-height: 2.8em; font-size: 12px; }
   .comparison-table tbody td,.comparison-table tbody th { padding: 10px; }
   .comparison-table tbody th { position: sticky; left: 0; z-index: 1; background: var(--background); font-size: 12px; box-shadow: 1px 0 var(--border); }
-  .comparison-mobile-hint {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 7px;
-    margin-bottom: 10px;
-    color: #756b7f;
-    font-size: 11px;
-  }
   .comparison-cta {
     gap: 6px;
     padding: 10px;
     font-size: 12px;
   }
+}
+@media (max-width: 540px) {
+  .comparison-toolbar { justify-items: stretch; }
+  .comparison-details-toggle { justify-self: start; }
+  .comparison-column-picker { display: grid; gap: 8px; }
+  .comparison-column-picker p { color: var(--muted-foreground); font-size: 12px; }
+  .comparison-column-picker > div { display: flex; flex-wrap: wrap; gap: 6px; }
+  .comparison-column-picker button {
+    min-height: 44px;
+    padding: 6px 11px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--background);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .comparison-column-picker button:hover { background: var(--muted); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .comparison-scroll { scroll-behavior: smooth; }
 }
 @media (prefers-reduced-motion: reduce) {
   .comparison-details-toggle,
