@@ -1,3 +1,9 @@
+# Mention de reprise simplifiée — 11 novembre 2026
+
+Révision publique `830b1ef`, client `index-zdnoD-Km.js`. La réponse « Qui prépare les textes et les photos ? » affiche « Une option de reprise de votre ancien site est également disponible. » sans les cinq pages/quinze médias ni la distinction de rédaction. Réponse ouverte et vérifiée à 1 280 × 900 et à 320 × 740 sans débordement horizontal. Capture `../outputs/audit-ergonomie-2026-11-10/34-faq-reprise-simplifiee-public.jpg`.
+
+TypeScript, build et 276 tests passent. Aucun formulaire soumis ni configuration modifiée. Viewport restauré, onglet fermé, localhost arrêté et ports 4173/4174 libres après cette vérification. Les limites métier du catalogue sont conservées ; cette livraison modifie uniquement la copie de FAQ.
+
 # Bouton du comparatif et FAQ détaillée — 11 novembre 2026
 
 Révision publique `9eb5048`, client `index-DzewHxyV.js`. Sur `/forfaits` à 1 280 × 700, clic sur Configurer Business : entrée `comparison`, surface native appariée, départ du bouton mesuré à 235,49 × 44 px. Douze relevés pendant l’agrandissement montrent notamment 237,81 × 46,95, 392,56 × 243,20 puis 522,29 × 407,73 px, avec matrice sans mise à l’échelle. Le cadre évolue et révèle les bitmaps à leur taille propre. Captures natives `../outputs/audit-ergonomie-2026-11-10/32-expansion-bouton-public-0.jpg` à `32-expansion-bouton-public-11.jpg` et relevés `32-expansion-bouton-public.json`.

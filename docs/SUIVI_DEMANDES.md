@@ -1,3 +1,7 @@
+# Mention de reprise simplifiée — 11 novembre 2026
+
+Dans « Qui prépare les textes et les photos ? », les limites de reprise et la distinction avec la rédaction sont remplacées par « Une option de reprise de votre ancien site est également disponible. ». Révision `830b1ef` publiée et vérifiée en HTTPS sur ordinateur et mobile. Les 276 tests passent. Localhost arrêté après contrôle local.
+
 # Essai d’agrandissement et FAQ détaillée — 11 novembre 2026
 
 Un clic sur Configurer dans le tableau agrandit sa surface vers la carte du forfait. Un clic sur une carte de base garde le départ depuis cette carte. Les images et les textes ne sont pas étirés, le clavier fonctionne et la préférence de mouvement réduit désactive l’effet.

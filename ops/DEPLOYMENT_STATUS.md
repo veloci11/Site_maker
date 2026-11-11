@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `830b1eff5bdf87fb9a1d3ebe376a60d1e639b9d8` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T072135Z-830b1eff5bdf`
+- Client `/assets/index-zdnoD-Km.js`, SHA-256 `5b27783b2887f0b42973d09887eb2675aeeb90222cb08accb6fb33673636f48e`
+- Archive vérifiée de 13 982 044 octets, SHA-256 `1a50d3fdbe865cb23d9e7db0a852768ddb64da0040190e053d04bf4a5a4ac021`
+
+La FAQ sur les textes et photos mentionne simplement l’option de reprise de l’ancien site. Contrôle HTTPS desktop/mobile, 276 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Localhost arrêté après contrôle local ; une nouvelle reprise visuelle peut redémarrer une prévisualisation temporaire.
+
+## Agrandissement et FAQ détaillée publiés le 11 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `9eb5048934f6be693b91151fcae187d3ee8e9910` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T071306Z-9eb5048934f6`
 - Client `/assets/index-DzewHxyV.js`, SHA-256 `3a3186292cc240b3d6fd00f80010cb0e27c6e2e0729ffa005898e82a0816c6b2`
