@@ -18,7 +18,18 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
 
 type Geometry = { id: string; surface: DOMRect; content?: DOMRect; heading?: DOMRect; anchor?: DOMRect }
 
-function surfaceGeometry(page: HTMLDivElement, variant: string): Omit<Geometry, 'id'> | null {
+function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: HTMLElement | null): Omit<Geometry, 'id'> | null {
+  const button = sourceElement?.closest<HTMLElement>('.comparison-cta')
+  const buttonSurface = button?.querySelector<HTMLElement>('.comparison-cta__surface')
+  const buttonLabel = button?.querySelector<HTMLElement>('.comparison-cta__label')
+  if (buttonSurface && buttonLabel && page.contains(buttonSurface)) {
+    const labelBounds = buttonLabel.getBoundingClientRect()
+    return {
+      surface: buttonSurface.getBoundingClientRect(),
+      content: labelBounds,
+      anchor: labelBounds,
+    }
+  }
   const surface = page.querySelector<HTMLElement>('.selected-plan__surface')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__surface`)
   if (!surface) return null
@@ -100,7 +111,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
         preserveScroll: intent?.preserveScroll,
         sourceElement: intent?.sourceElement,
       })
-      const measured = surfaceGeometry(page.current, variant)
+      const measured = surfaceGeometry(page.current, variant, intent?.sourceElement)
       outgoing.current = measured ? { id, ...measured } : null
       setGeometry(null, null)
     } else {
@@ -126,6 +137,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
       className={cn('motion-page', transitioning && 'motion-page--transitioning', planTransition && 'motion-page--plan-transitioning', planArrivalKey === location.key && 'motion-page--plan-arrived', className)}
       data-plan-motion-direction={planTransition?.direction}
       data-plan-motion-phase={phase}
+      data-plan-motion-entry={planTransition?.entry}
       style={{ ...style, ...motionStyle }}
       {...props}
     >

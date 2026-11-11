@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Agrandissement depuis le comparatif et FAQ — 11 novembre 2026
+
+Un clic sur « Configurer » dans le comparatif agrandit la surface de ce bouton vers la carte du forfait. Capturer uniquement sa surface et son libellé, sans créer de noms View Transition en doublon avec les cartes de l’accueil. Un clic sur une carte de base conserve le départ depuis cette carte. Géométrie native de 760 ms, images à échelle fixe, commandes utilisables et préférence de mouvement réduit conservées. Le retour continue de recentrer les offres.
+
+La première FAQ sur les frais après création détaille les trois formules : Hébergement 19 €/mois (site, SSL, disponibilité), Maintenance 39 €/mois (hébergement, mises à jour, sauvegardes et petites modifications de contenus existants), Sérénité 69 €/mois (Maintenance, une heure de modifications par mois et support prioritaire). Garder l’introduction sur la mise en ligne comprise et le suivi facultatif.
+
 ## Inclusions Business et Premium — 11 novembre 2026
 
 Retirer « Rubriques réalisations, tarifs et avis clients » du comparatif et de la présentation Business. La galerie de réalisations n’est plus une inclusion automatique des nouvelles configurations Business/Premium ; le CMS suffit pour les textes et images. L’ancien identifiant `portfolio-gallery` reste disponible uniquement pour lire les dossiers historiques qui le portaient déjà, sans le transformer en supplément payant. Les brouillons publics retirent cette ancienne inclusion sans perdre les autres choix. Aucun changement de prix ni retrait du CMS.

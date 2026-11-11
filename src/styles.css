@@ -328,7 +328,7 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: 24px; }
   white-space: nowrap;
   text-decoration: none;
 }
-.plan-cta::before {
+.plan-cta::before,.comparison-cta__texture {
   content: "";
   position: absolute;
   inset: 0;
@@ -346,11 +346,13 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: 24px; }
 }
 .plan-cta:focus-visible::before,
 .plan-cta:active::before,
+.plan-cta:focus-visible .comparison-cta__texture,
+.plan-cta:active .comparison-cta__texture,
 .pricing-card:focus-visible .plan-cta::before {
   opacity: 1;
 }
 @media (hover: hover) {
-  .plan-cta:hover::before { opacity: 1; }
+  .plan-cta:hover::before,.plan-cta:hover .comparison-cta__texture { opacity: 1; }
 }
 .pricing-card__top { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; min-height: 196px; gap: 44px; padding: 20px 16px; border-radius: 12px; color: #111; transition: color 150ms ease; }
 .pricing-card__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#f2efec; pointer-events:none; }

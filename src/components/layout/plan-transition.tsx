@@ -17,6 +17,7 @@ import { existingSiteOffers } from '../../content/existing-site'
 type PlanRoute = { href: string; variant: string }
 type MotionIntent = { href: string; sourceKey: string; preserveScroll: boolean; sourceElement?: HTMLElement | null }
 let navigationIntent: MotionIntent | null = null
+let acceptedAnimationIntent: MotionIntent | null = null
 let interruptionListeners = 0
 
 /** End the browser's snapshot, never navigation or a pending Router update. */
@@ -91,6 +92,7 @@ export type PlanNavigationTransition = {
   fromPlan: PlanRoute | null
   toPlan: PlanRoute | null
   nextHref: string
+  entry: 'card' | 'comparison'
 }
 
 /**
@@ -114,14 +116,18 @@ export function usePlanNavigationTransition(): PlanNavigationTransition | null {
       : fromPlan && isListing(nextLocation) ? 'close' : null
   if (!direction) return null
   if (fromPlan && toPlan && fromPlan.href === toPlan.href) return null
+  const phase = location.key === currentLocation.key ? 'outgoing' : 'incoming'
+  const nextHref = routeHref(nextLocation)
+  const intent = getPlanAnimationIntent(nextHref, currentLocation.key, phase)
   return {
     id: `${currentLocation.key}:${nextLocation.key}`,
     sourceKey: currentLocation.key,
     direction,
-    phase: location.key === currentLocation.key ? 'outgoing' : 'incoming',
+    phase,
     fromPlan,
     toPlan,
-    nextHref: routeHref(nextLocation),
+    nextHref,
+    entry: direction === 'open' && intent?.sourceElement?.matches('.comparison-cta') ? 'comparison' : 'card',
   }
 }
 
@@ -138,9 +144,22 @@ export function getPlanNavigationIntent(href: string, sourceKey?: string) {
   return intended.href === next.href ? navigationIntent : undefined
 }
 
+function getPlanAnimationIntent(href: string, sourceKey: string, phase: PlanNavigationTransition['phase']) {
+  const staged = getPlanNavigationIntent(href, sourceKey)
+  if (staged) return staged
+  const accepted = acceptedAnimationIntent
+  if (!accepted || accepted.sourceKey !== sourceKey) return undefined
+  // Keep the accepted source after the old page unmounts. A later browser
+  // Forward must not reuse a detached button as a fresh outgoing origin.
+  if (phase === 'outgoing' && !accepted.sourceElement?.isConnected) return undefined
+  return new URL(accepted.href, window.location.href).href === new URL(href, window.location.href).href
+    ? accepted : undefined
+}
+
 export function consumePlanNavigationIntent(href: string, sourceKey: string) {
-  const intent = getPlanNavigationIntent(href, sourceKey)
-  if (intent) navigationIntent = null
+  const intent = getPlanAnimationIntent(href, sourceKey, 'outgoing')
+  acceptedAnimationIntent = intent?.sourceElement?.matches('.comparison-cta') ? intent : null
+  if (navigationIntent === intent) navigationIntent = null
   return intent
 }
 
@@ -214,9 +233,11 @@ export function usePlanTransition(
   variant: string,
   href: string,
   part: 'surface' | 'content' | 'heading' | 'thumbnail' = 'surface',
+  source: 'card' | 'comparison' = 'card',
 ): CSSProperties {
   const transition = usePlanNavigationTransition()
-  const active = transition && [transition.fromPlan, transition.toPlan]
+  const fromComparison = transition?.direction === 'open' && transition.entry === 'comparison' && transition.phase === 'outgoing'
+  const active = (source === 'comparison' ? fromComparison : !fromComparison) && transition && [transition.fromPlan, transition.toPlan]
     .some((plan) => plan?.variant === variant && plan.href === href)
   const suffix = part === 'surface' ? '' : part === 'thumbnail' ? '-thumbnail-copy' : `-${part}`
   return {

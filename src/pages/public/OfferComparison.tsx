@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/catalog'
-import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
+import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
+import { preloadPlanImages } from '../../lib/plan-images'
 
 type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint: string }
@@ -62,6 +63,36 @@ function ComparisonReveal({ children, collapsed }: { children: ReactNode; collap
     <div className="comparison-detail-reveal" aria-hidden={collapsed}>
       <div className="comparison-detail-reveal__inner">{children}</div>
     </div>
+  )
+}
+
+function ComparisonConfigureButton({ offer }: { offer: (typeof publicOffers)[number] }) {
+  const href = configureHref(offer.id)
+  const surface = usePlanTransition(offer.variant, href, 'surface', 'comparison')
+  const label = usePlanTransition(offer.variant, href, 'thumbnail', 'comparison')
+  const prepare = () => {
+    preloadPlanImages(offer.variant)
+    void import('../configurator/index').catch(() => {})
+  }
+  return (
+    <Link
+      className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
+      to={href}
+      viewTransition={canAnimatePlanNavigation()}
+      aria-label={`Configurer le forfait ${offer.title}`}
+      onPointerEnter={prepare}
+      onFocus={(event) => {
+        prepare()
+        const link = event.currentTarget
+        if (!link.matches(':focus-visible')) return
+        link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' })
+      }}
+    >
+      <span className="comparison-cta__surface" style={surface} aria-hidden="true">
+        <span className="comparison-cta__texture" />
+      </span>
+      <span className="comparison-cta__label" style={label}>Configurer</span>
+    </Link>
   )
 }
 
@@ -182,19 +213,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                   <div className="comparison-offer">
                     <h3>{offer.title}</h3>
                     <p>{startingPrice(offer.id, pricing)}</p>
-                    <Link
-                      className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
-                      to={configureHref(offer.id)}
-                      viewTransition={canAnimatePlanNavigation()}
-                      aria-label={`Configurer le forfait ${offer.title}`}
-                      onFocus={(event) => {
-                        const link = event.currentTarget
-                        if (!link.matches(':focus-visible')) return
-                        link.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' })
-                      }}
-                    >
-                      Configurer
-                    </Link>
+                    <ComparisonConfigureButton offer={offer} />
                   </div>
                 </th>
               ))}

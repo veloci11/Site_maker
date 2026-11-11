@@ -281,9 +281,9 @@ export const faqs: readonly {
     answer:
       "La mise en ligne est comprise dans les trois forfaits. Pour la suite, vous pouvez choisir une formule mensuelle facultative.",
     items: [
-      "Hébergement à 19 €/mois",
-      "Maintenance à 39 €/mois",
-      "Sérénité à 69 €/mois",
+      "Hébergement à 19 €/mois comprend l’hébergement du site, le certificat SSL et la surveillance de sa disponibilité.",
+      "Maintenance à 39 €/mois comprend l’hébergement, les mises à jour, les sauvegardes et de petites modifications de contenus existants.",
+      "Sérénité à 69 €/mois comprend tous les services de Maintenance, plus une heure de modifications par mois et un support prioritaire.",
     ],
     category: "Budget et suivi",
   },

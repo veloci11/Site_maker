@@ -373,7 +373,10 @@
 @media (prefers-reduced-motion: reduce) { .public-gallery-filters > button,.public-gallery-filter::before { transition: none; } }
 
 .comparison-column-picker { display: none; }
-.comparison-cta { margin-top: 4px; }
+.comparison-cta { margin-top: 4px; background: transparent; }
+.plan-cta.comparison-cta::before { content: none; }
+.comparison-cta__surface { position: absolute; inset: 0; z-index: -1; isolation: isolate; overflow: hidden; border-radius: inherit; background: #111; pointer-events: none; }
+.comparison-cta__label { display: inline-block; }
 @media (max-width: 960px) {
   .comparison-table thead th { padding-inline: 12px; }
   .comparison-offer h3 { font-size: 17px; }

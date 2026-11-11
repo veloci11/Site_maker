@@ -4,8 +4,13 @@
   --plan-motion-duration: 760ms;
   --plan-motion-ease: cubic-bezier(.4, 0, .2, 1);
   --plan-motion-header: 96px;
+  --plan-motion-source-radius: 12px;
   --plan-page-enter-x: 28px;
   --plan-page-exit-x: -22px;
+}
+
+:root:has(.motion-page[data-plan-motion-direction="open"][data-plan-motion-entry="comparison"]) {
+  --plan-motion-source-radius: 22px;
 }
 
 :root:has(.motion-page[data-plan-motion-direction="close"]) {
@@ -267,7 +272,7 @@
 }
 
 @keyframes plan-motion-corners {
-  from { border-radius: 12px; }
+  from { border-radius: var(--plan-motion-source-radius); }
   to { border-radius: var(--plan-radius); }
 }
 
