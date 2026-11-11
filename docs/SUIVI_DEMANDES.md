@@ -1,3 +1,11 @@
+# Essai d’agrandissement et FAQ détaillée — 11 novembre 2026
+
+Un clic sur Configurer dans le tableau agrandit sa surface vers la carte du forfait. Un clic sur une carte de base garde le départ depuis cette carte. Les images et les textes ne sont pas étirés, le clavier fonctionne et la préférence de mouvement réduit désactive l’effet.
+
+La première réponse de FAQ détaille Hébergement 19 €/mois (site, SSL et disponibilité), Maintenance 39 €/mois (hébergement, mises à jour, sauvegardes et petites modifications de contenus existants), Sérénité 69 €/mois (Maintenance, une heure de modifications par mois et support prioritaire). La mise en ligne comprise et le caractère facultatif du suivi restent précisés.
+
+Révision `9eb5048` publiée et contrôlée en HTTPS sur ordinateur et mobile. Les 276 tests passent. Aucun formulaire envoyé ni option ajoutée. Localhost arrêté.
+
 # Retrait de la rubrique réalisations/tarifs/avis — 11 novembre 2026
 
 La ligne « Rubriques réalisations, tarifs et avis clients » et son explication sont retirées du comparatif. La présentation Business ne promet plus ces rubriques. Le CMS reste inclus dans Business et Premium / 3D.

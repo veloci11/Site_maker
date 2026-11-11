@@ -1,3 +1,13 @@
+# Bouton du comparatif et FAQ détaillée — 11 novembre 2026
+
+Révision publique `9eb5048`, client `index-DzewHxyV.js`. Sur `/forfaits` à 1 280 × 700, clic sur Configurer Business : entrée `comparison`, surface native appariée, départ du bouton mesuré à 235,49 × 44 px. Douze relevés pendant l’agrandissement montrent notamment 237,81 × 46,95, 392,56 × 243,20 puis 522,29 × 407,73 px, avec matrice sans mise à l’échelle. Le cadre évolue et révèle les bitmaps à leur taille propre. Captures natives `../outputs/audit-ergonomie-2026-11-10/32-expansion-bouton-public-0.jpg` à `32-expansion-bouton-public-11.jpg` et relevés `32-expansion-bouton-public.json`.
+
+En local, les trois forfaits, le clavier et le comparatif de l’accueil ont été contrôlés. Sur l’accueil, le bouton Premium de 234,52 × 44 px est bien la source, sans capture en doublon avec la carte Premium située plus haut. Un clic sur la carte Vitrine conserve une origine de 365 × 196 px ; ce comportement est également confirmé en HTTPS. Sur mobile, le bouton Vitrine de 105 × 44 px reste la source de l’agrandissement. Avec le mouvement réduit émulé localement, aucune transition de forfait n’est déclarée et la durée du groupe est de 0 s. Émulation réinitialisée.
+
+La première FAQ est ouverte et lue en HTTPS à 1 280 px puis 320 px. Les trois puces décrivent les services respectifs à 19/39/69 €/mois ; aucun débordement horizontal. Capture `33-faq-formules-detaillees-public.jpg` dans le même dossier. Aucune erreur de console observée. Aucun formulaire soumis ni option ajoutée ; brouillon public Vitrine de base à 890 €. Viewport restauré et onglet fermé. Localhost arrêté, ports 4173/4174 libres. TypeScript, build et 276 tests passent.
+
+Revue React : petit composant de bouton extrait pour conserver l’ordre des hooks, un seul élément décoratif apparié au clic, libellé accessible et lien conservés, préchargement sur survol/focus sans attendre au clic, aucun nouvel écouteur global en doublon ni boucle d’animation JS. Les raccourcis de colonne et le calcul des prix restent inchangés.
+
 # Rubrique retirée, CMS conservé — 11 novembre 2026
 
 Révision publique `5601f8b`, client `index-DunDBleH.js`. À 1 280 × 700 en HTTPS, le comparatif ouvert contient 15 lignes, sans la rubrique réalisations/tarifs/avis ni sa description. La ligne CMS reste comprise dans Business et Premium / 3D. Capture `../outputs/audit-ergonomie-2026-11-10/30-comparatif-cms-sans-rubriques-public.jpg`.

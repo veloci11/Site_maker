@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `9eb5048934f6be693b91151fcae187d3ee8e9910` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T071306Z-9eb5048934f6`
+- Client `/assets/index-DzewHxyV.js`, SHA-256 `3a3186292cc240b3d6fd00f80010cb0e27c6e2e0729ffa005898e82a0816c6b2`
+- Archive vérifiée de 13 983 004 octets, SHA-256 `760b822d1fd705924134a62e89b3919128d747c1174adfa316a34c2376a98ce4`
+
+Le bouton Configurer du comparatif devient le point de départ de l’agrandissement vers la fiche. Les cartes de base gardent leur propre départ. La première FAQ détaille les trois formules mensuelles. Contrôle HTTPS desktop/mobile, 276 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Serveur local arrêté, ports 4173/4174 libres.
+
+## Retrait de la rubrique publié le 11 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `5601f8b5a60da388ecb5e9744bf485a8e191df56` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T064304Z-5601f8b5a60d`
 - Client `/assets/index-DunDBleH.js`, SHA-256 `a1789f6505206bed1bc9eb9e7d1d403e86197c7ec5ea7dbfe90af25af52ae0d0`
