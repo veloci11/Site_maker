@@ -1,3 +1,9 @@
+# Même image pendant l’agrandissement — 11 novembre 2026
+
+Les trois forfaits partagent leur cadrage entre petite carte, bouton du comparatif et grande carte. Business garde notamment le vert en haut à droite. Correction du miroir ignoré sur la grande carte, des recadrages et du traitement de couleur divergents. L’image s’agrandit proportionnellement pendant la transition ; l’ajout d’options ne la redimensionne pas à largeur constante. Les originaux sont conservés. Les textes gardent leur propre calque net.
+
+Le Retour du navigateur normalise aussi le sens des extrémités fournies par React Router pour conserver le raccord natif, sans fondu parasite. Le recentrage sur les offres est conservé. Révision `dd28af2` publiée et vérifiée en HTTPS sur ordinateur, grand écran et mobile. Les 284 tests passent, dont huit nouveaux sur les trajets de navigation. FAQ simplifiée toujours présente. Captures et mesures dans `../outputs/audit-ergonomie-2026-11-10/` (45 à 49). Localhost arrêté après validation.
+
 # Mention de reprise simplifiée — 11 novembre 2026
 
 Dans « Qui prépare les textes et les photos ? », les limites de reprise et la distinction avec la rédaction sont remplacées par « Une option de reprise de votre ancien site est également disponible. ». Révision `830b1ef` publiée et vérifiée en HTTPS sur ordinateur et mobile. Les 276 tests passent. Localhost arrêté après contrôle local.

@@ -5,12 +5,14 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
-- Révision `830b1eff5bdf87fb9a1d3ebe376a60d1e639b9d8` sur `main`
-- Release `/home/mathis/site-maker/releases/20261111T072135Z-830b1eff5bdf`
-- Client `/assets/index-zdnoD-Km.js`, SHA-256 `5b27783b2887f0b42973d09887eb2675aeeb90222cb08accb6fb33673636f48e`
-- Archive vérifiée de 13 982 044 octets, SHA-256 `1a50d3fdbe865cb23d9e7db0a852768ddb64da0040190e053d04bf4a5a4ac021`
+- Révision `dd28af28784e5f6e541cae516784e84417636ee0` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T081528Z-dd28af28784e`
+- Client `/assets/index-mPm5tT9H.js`, SHA-256 `f1bd77261bf3a5dee0b65471e02f215cc96c19000dff4b5e540e3c6970afb032`
+- Archive vérifiée de 13 983 962 octets, SHA-256 `8e01fa9be4bc13d865d051a2ef2eb0f114b77dc14178226d902f883475f60f57`
 
-La FAQ sur les textes et photos mentionne simplement l’option de reprise de l’ancien site. Contrôle HTTPS desktop/mobile, 276 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Localhost arrêté après contrôle local ; une nouvelle reprise visuelle peut redémarrer une prévisualisation temporaire.
+Les aperçus et grandes cartes partagent le même cadrage et les mêmes miroirs, y compris le vert en haut à droite de Business. Le raccord natif agrandit l’image proportionnellement et conserve les textes nets. Le sens des transitions Retour/Suivant est normalisé depuis la destination acceptée du routeur. La FAQ sur les textes et photos garde sa mention simple de reprise de l’ancien site.
+
+Contrôles HTTPS à 1 280, 1 600 et 320 px, 284 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Captures `45-business-petite-carte-public.jpg`, `46-business-grande-carte-public.jpg`, `48-vitrine-mobile-public.jpg` et relevés `47-continuite-public.json`, `49-autres-cadrages-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Viewport réinitialisé, onglet fermé. Localhost arrêté, ports 4173/4174 libres.
 
 ## Agrandissement et FAQ détaillée publiés le 11 novembre
 
