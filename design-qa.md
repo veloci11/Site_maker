@@ -1,3 +1,11 @@
+# Ergonomie et navigation fixe vérifiées en ligne le 10 novembre 2026
+
+Le configurateur Vitrine affiche « Environ 2 540 € » et « + 39 € / mois » pour les onze options de la capture. Sur écran de bureau bas, le rappel du prix apparaît quand le total principal sort de l’écran. En revenant vers le bas de la carte, le montant principal redevient visible. À 320 px, la barre reste fixe et une option mensuelle seule donne « Environ 890 € » avec le montant mensuel séparé.
+
+Le panneau animé se ferme progressivement et devient inerte. À 320 px, le titre d’une rubrique longue revient sous le menu quand le panneau précédent le pousse hors de la fenêtre. Le lien invalide avec `?nouveau=1` préserve les onze options en local.
+
+À 1 280 px, le menu est fixé à 0 px et les en-têtes du comparatif à 96 px pendant le défilement. À 320 px, le menu ouvre son tiroir en bas de page et le raccourci Premium affiche toute la colonne. La galerie affiche neuf références sans le paragraphe retiré. Aucune erreur de console dans le parcours public vérifié.
+
 # Retours UX vérifiés en ligne le 10 novembre 2026
 
 La page publique sert le client de la révision `8ff63f3`. En HTTPS, l’accueil est aligné à gauche, le groupe de navigation est centré sur ordinateur et la FAQ est accessible aussi depuis le menu mobile. L’ancre « Comment ça se passe » mène aux trois étapes. Les deux réponses FAQ affichent leurs listes.

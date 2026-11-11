@@ -1,3 +1,9 @@
+# Ergonomie et navigation fixe publiées le 10 novembre 2026
+
+Le configurateur affiche « Environ » après la sélection d’une option, garde le prix visible lors du défilement et anime les rubriques dans les deux sens. La galerie retire le paragraphe demandé. Les commandes du comparatif précèdent le tableau et les raccourcis mobiles défilent jusqu’au forfait voulu. Un lien de forfait invalide préserve le brouillon. La navigation reste visible sur mobile et ordinateur.
+
+Révisions `cfd8f27` et `1ff76cf` publiées. La dernière version a été vérifiée en HTTPS à 320 et 1 280 px. Les 270 tests passent.
+
 # Retours UX publiés le 10 novembre 2026
 
 En-tête du comparatif visible au défilement, rubriques d’options exclusives et montant indicatif unique dans le configurateur public. Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6 et Premium / 3D un périmètre adapté au projet. Le rendu des textures dissocie le retournement de l’image et le filtre de couleur. L’accueil présente les étapes dans un bloc dédié et la FAQ rejoint la navigation principale.

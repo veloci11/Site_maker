@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `1ff76cf100e0c72776daef94cdd41e0eca00ae7f` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T000939Z-1ff76cf100e0`
+- Client `/assets/index-DWI5GL-j.js`, SHA-256 `5979453ab4e03f7e1af8b69b4fe68310189421292d10adf6976ac38594d8986d`
+- Archive vérifiée de 13 982 779 octets, SHA-256 `55d5b5c0521ed638b0003668717c5b01245c038e558a1fc5c1366e530c39cb52`
+
+Le lot `cfd8f27` a publié les ajustements du configurateur, du comparatif et des exemples. `1ff76cf` a rétabli la navigation fixe. Sauvegarde, santé d’origine et catalogue vérifiés aux deux bascules. Version finale vérifiée en HTTPS à 320 et 1 280 px. Les 270 tests passent.
+
+## Premier lot de retours UX publié le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `8ff63f395d49d9268183500f155982c48a5bbd4a` sur `main`
 - Release `/home/mathis/site-maker/releases/20261110T234139Z-8ff63f395d49`
 - Client `/assets/index-DvkFI2wn.js`, SHA-256 `62316d588818b17a49a4ed0c61f0cdb5c165ed88b941027b6977cb521c77706e`
