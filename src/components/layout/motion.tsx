@@ -48,6 +48,7 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
 
 function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null) {
   document.documentElement.dataset.planMotionShared = String(Boolean(old && next))
+  document.documentElement.dataset.planMotionSurfaceTop = old && next && old.surface.width > next.surface.width ? 'old' : 'new'
   const style = document.documentElement.style
   const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
   const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0

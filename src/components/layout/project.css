@@ -5,38 +5,11 @@
 .configurator-topline a:hover { color:#111; }
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
 .configurator-card-column { position:sticky; top:min(calc(var(--public-header-height) + 16px),calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
-.selected-plan { --plan-texture-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:32px; border-radius:24px; color:#fff; }
+.selected-plan { --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
 .selected-plan__copy { display:flex; flex:1; flex-direction:column; min-width:0; }
 .selected-plan__surface { position:absolute; inset:0; z-index:-1; isolation:isolate; overflow:hidden; border-radius:inherit; background:#302149; pointer-events:none; }
-.selected-plan__texture {
-  position:absolute; top:0; left:0; right:0; height:var(--plan-texture-height); isolation:isolate; overflow:hidden;
-  filter:hue-rotate(var(--card-hue)) saturate(var(--card-saturation, 1.04)) brightness(var(--card-brightness, 1));
-}
-.selected-plan__texture::before {
-  content:""; position:absolute; inset:0; z-index:-2;
-  background:url('/assets/textures/grain-plasma-master.webp') var(--plasma-position) / cover no-repeat;
-  background-image:image-set(url('/assets/textures/grain-plasma-card.webp') 1x,url('/assets/textures/grain-plasma-master.webp') 2x),url('/assets/textures/grain-plasma-card.webp');
-  transform:scale(var(--card-scale-x),var(--card-scale-y));
-}
-.selected-plan__texture::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgb(12 9 28 / .04),rgb(12 9 28 / .04) 45%,rgb(12 9 28 / .2)); }
-/* Keep the original upper master at its exact fixed scale. The lower canvas
-   is native-resolution outpainting, never a reflected or repeated copy. */
-.selected-plan__texture--continuation { top:var(--plan-texture-height); height:calc(var(--plan-texture-height) * 2); }
-.selected-plan__texture--continuation::before {
-  background-image:url('/assets/textures/grain-plasma-vitrine-continuation.webp');
-  background-image:image-set(url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp') 1x,url('/assets/textures/grain-plasma-vitrine-continuation.webp') 2x);
-}
-.selected-plan__texture--continuation::after { background:rgb(12 9 28 / .2); }
-:is(.pricing-card--custom, .pricing-card--immersif) .selected-plan__texture--continuation { height:var(--plan-texture-height); }
-:is(.pricing-card--custom, .pricing-card--immersif) .selected-plan__texture--continuation::before {
-  background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top.webp');
-  background-image:image-set(url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp') 1x,url('/assets/textures/grain-plasma-vitrine-continuation-top.webp') 2x);
-}
-/* Continue tall Premium selections into the same dark tone without a hard edge
-   after the finite outpaint. The original texture stays at its fixed scale. */
 .pricing-card--immersif .selected-plan__surface { background:#090719; }
-.pricing-card--immersif .selected-plan__texture--continuation { mask-image:linear-gradient(#000 calc(100% - 100px),transparent); }
 .selected-plan__heading-frame { position:relative; margin-bottom:26px; }
 .selected-plan__heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
 .selected-plan__heading-frame > .selected-plan__change { position:absolute; top:0; right:0; }
@@ -209,7 +182,7 @@
  .configurator-price-bar .button { display:none; }
 }
 @media(min-width:1000px) and (max-height:780px) {
- .selected-plan { --plan-texture-height:530px; --plan-padding:26px; padding:26px; }
+ .selected-plan { --plan-padding:26px; padding:26px; }
  .selected-plan__heading { margin-bottom:18px; }
  .selected-plan__features { margin-bottom:26px; gap:10px; }
  .selected-plan h1 { font-size:50px; }
@@ -217,7 +190,7 @@
 }
 /* One comfortable summary on desktop, regardless of window height or mode. */
 @media(width > 760px) {
- .public-shell .selected-plan { --plan-padding:clamp(24px,1.9vw,28px); --plan-texture-height:580px; padding:var(--plan-padding); }
+ .public-shell .selected-plan { --plan-padding:clamp(24px,1.9vw,28px); padding:var(--plan-padding); }
  .public-shell .selected-plan__heading-frame { margin-bottom:20px; }
  .public-shell .selected-plan__heading { margin-bottom:0; }
  .public-shell .selected-plan h1 { font-size:clamp(44px,3.4vw,48px); margin-bottom:16px; }
@@ -239,7 +212,7 @@
 }
 @media(max-width:999px) {
  .configurator-grid { gap:32px; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); }
- .selected-plan { --plan-texture-height:540px; --plan-padding:24px; padding:24px; }
+ .selected-plan { --plan-padding:24px; padding:24px; }
  .selected-plan h1 { font-size:42px; }
  .configurator-choice { grid-template-columns:18px minmax(0,1fr); padding:16px; gap:10px; }
  .configurator-choice__price { grid-column:2; }
@@ -250,7 +223,7 @@
  .configurator-grid { grid-template-columns:1fr; gap:34px; }
  .configurator-card-column { position:static; }
  .configurator-topline { font-size:12px; margin-bottom:18px; }
- .selected-plan { --plan-texture-height:500px; border-radius:20px; padding:24px; }
+ .selected-plan { border-radius:20px; padding:24px; }
  .selected-plan__heading { margin-bottom:20px; }
  .selected-plan h1 { font-size:44px; margin-bottom:12px; }
  .selected-plan__features { margin-bottom:22px; gap:9px; font-size:13px; }

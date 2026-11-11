@@ -4,6 +4,7 @@ import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/ca
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 import { preloadPlanImages } from '../../lib/plan-images'
+import { PlanTexture } from '../../components/layout/PlanTexture'
 
 type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
 type ComparisonRow = { title: string; values: readonly ComparisonStatus[]; hint: string }
@@ -89,7 +90,7 @@ function ComparisonConfigureButton({ offer }: { offer: (typeof publicOffers)[num
       }}
     >
       <span className="comparison-cta__surface" style={surface} aria-hidden="true">
-        <span className="comparison-cta__texture" />
+        <PlanTexture preview extend={false} className="comparison-cta__texture" />
       </span>
       <span className="comparison-cta__label" style={label}>Configurer</span>
     </Link>

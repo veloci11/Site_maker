@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 import './project.css'
+import { PlanTexture } from './PlanTexture'
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from './plan-transition'
 
 type Plan = (typeof offers)[number] | (typeof existingSiteOffers)[number]
@@ -52,8 +53,7 @@ export function SelectedPlanCard({
   return (
     <div ref={cardRef} className={`selected-plan pricing-card--${variant}`}>
       <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
-        <span className="selected-plan__texture" />
-        {'slug' in plan ? <span className="selected-plan__texture selected-plan__texture--continuation" /> : null}
+        <PlanTexture extend={'slug' in plan} />
       </span>
       <div className="selected-plan__content" role="region" aria-label="Détails du forfait et options choisies">
         <div className="selected-plan__heading-frame">

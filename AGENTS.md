@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Continuité de l’image des forfaits — 11 novembre 2026
+
+La petite carte, le bouton du comparatif et la grande carte partagent un même cadrage proportionnel à leur largeur, les mêmes miroirs et les mêmes traitements de couleur. Business conserve notamment son vert en haut à droite. L’image grandit sans étirement indépendant des axes pendant le raccord natif ; les textes restent sur leurs calques distincts. Le bitmap à la plus grande largeur intrinsèque reste au-dessus pour conserver la définition dans les deux sens. Cette demande remplace l’échelle fixe de l’image pendant l’agrandissement décrite plus bas.
+
+Une fois la carte ouverte, l’ajout d’options révèle davantage de fond sans changer l’échelle de l’image à largeur constante. Conserver les fichiers existants, les aperçus légers au repos et leur secours sous le master HD, le prolongement sans couture et son masque porté par un conteneur non retourné. Les cartes Évolution et Refonte ne reçoivent pas de prolongement supplémentaire. Ne pas changer les prix, le comparatif sticky, le recentrage au retour ni les commandes accessibles.
+
+Au Retour du navigateur, React Router peut réutiliser les extrémités de transition dans l’ordre du trajet initial. Normaliser leur sens avec la destination déjà acceptée dans l’état du routeur avant de calculer la phase et la géométrie. Le retour doit employer le même raccord opaque et net que l’ouverture, sans retomber sur un fondu faute de paire.
+
 ## Agrandissement depuis le comparatif et FAQ — 11 novembre 2026
 
 Un clic sur « Configurer » dans le comparatif agrandit la surface de ce bouton vers la carte du forfait. Capturer uniquement sa surface et son libellé, sans créer de noms View Transition en doublon avec les cartes de l’accueil. Un clic sur une carte de base conserve le départ depuis cette carte. Géométrie native de 760 ms, images à échelle fixe, commandes utilisables et préférence de mouvement réduit conservées. Le retour continue de recentrer les offres.

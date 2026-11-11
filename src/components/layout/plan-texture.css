@@ -1,0 +1,82 @@
+/* All frames crop one width-based canvas. Height changes reveal more paint,
+   without recropping the image or moving its landmarks to another corner. */
+.plan-texture {
+  position:absolute;
+  inset:0;
+  display:block;
+  overflow:hidden;
+  isolation:isolate;
+  container-type:inline-size;
+  background:#302149;
+  pointer-events:none;
+}
+.plan-texture::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:url('/assets/textures/card-grain.webp') repeat;
+  background-size:128px 128px;
+  mix-blend-mode:soft-light;
+  opacity:.2;
+}
+.plan-texture__paint {
+  --texture-canvas-height:calc(100cqw / 1.45);
+  --texture-image-height:calc(155cqw * 2 / 3);
+  --texture-focus-x:calc((1 - var(--card-scale-x,1)) / 2 + var(--plasma-x,.2) * var(--card-scale-x,1));
+  --texture-focus-y:calc((1 - var(--card-scale-y,1)) / 2 + var(--plasma-y,.2) * var(--card-scale-y,1));
+  --texture-left:calc(-55cqw * var(--texture-focus-x));
+  --texture-top:calc((var(--texture-canvas-height) - var(--texture-image-height)) * var(--texture-focus-y));
+  position:absolute;
+  inset:0;
+  isolation:isolate;
+  filter:hue-rotate(var(--card-hue,0deg)) saturate(var(--card-saturation,1.04)) brightness(var(--card-surface-brightness,.94));
+}
+.plan-texture__master,.plan-texture__continuation {
+  position:absolute;
+  left:var(--texture-left);
+  width:155cqw;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+}
+.plan-texture__master {
+  z-index:-2;
+  top:var(--texture-top);
+  height:var(--texture-image-height);
+  background-image:url('/assets/textures/grain-plasma-master.webp'),url('/assets/textures/grain-plasma-card.webp');
+  transform:scale(var(--card-scale-x,1),var(--card-scale-y,1));
+}
+.plan-texture__continuation {
+  z-index:-1;
+  top:calc(var(--texture-top) + var(--texture-image-height));
+  height:calc(var(--texture-image-height) * 2);
+  mask-image:linear-gradient(#000 calc(100% - var(--texture-image-height) / 6),transparent);
+}
+.plan-texture__continuation::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url('/assets/textures/grain-plasma-vitrine-continuation.webp'),url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp');
+  background-size:100% 100%;
+  transform:scale(var(--card-scale-x,1),var(--card-scale-y,1));
+}
+:is(.pricing-card--custom,.pricing-card--immersif,.pricing-card--refonte) .plan-texture__continuation {
+  height:var(--texture-image-height);
+}
+:is(.pricing-card--custom,.pricing-card--immersif,.pricing-card--refonte) .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top.webp'),url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp'); }
+/* Small resting previews keep the lightweight exports. Intent preloads the
+   original before a plan opens; its native snapshot stays above the preview. */
+.plan-texture--preview .plan-texture__master { background-image:url('/assets/textures/grain-plasma-card.webp'); }
+.plan-texture--preview .plan-texture__continuation { display:none; }
+.plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-1x.webp'); }
+:is(.pricing-card--custom,.pricing-card--immersif,.pricing-card--refonte) .plan-texture--preview .plan-texture__continuation::before { background-image:url('/assets/textures/grain-plasma-vitrine-continuation-top-1x.webp'); }
+@container (width < 330px) { .plan-texture--preview .plan-texture__continuation { display:block; } }
+.pricing-card--immersif .plan-texture { background:#090719; }
+.plan-texture__paint::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom,rgb(0 0 0 / .12),transparent 35%,rgb(0 0 0 / .2)) 0 0 / 100% var(--texture-canvas-height) no-repeat,
+    linear-gradient(rgb(0 0 0 / .2),rgb(0 0 0 / .2)) 0 var(--texture-canvas-height) / 100% 100% no-repeat;
+}

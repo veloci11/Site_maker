@@ -2,6 +2,7 @@ import { forwardRef, useCallback, useContext, useLayoutEffect, type CSSPropertie
 import {
   Link,
   NavLink,
+  UNSAFE_DataRouterContext,
   UNSAFE_ViewTransitionContext,
   useLocation,
   useNavigate,
@@ -13,6 +14,7 @@ import {
 } from 'react-router-dom'
 import { offers } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
+import { normalizePlanTransitionLocations } from '../../lib/plan-transition-locations'
 
 type PlanRoute = { href: string; variant: string }
 type MotionIntent = { href: string; sourceKey: string; preserveScroll: boolean; sourceElement?: HTMLElement | null }
@@ -103,11 +105,16 @@ export type PlanNavigationTransition = {
  */
 export function usePlanNavigationTransition(): PlanNavigationTransition | null {
   const context = useContext(UNSAFE_ViewTransitionContext)
+  const router = useContext(UNSAFE_DataRouterContext)?.router
   const location = useLocation()
   usePlanMotionInterruption(Boolean(context?.isTransitioning))
   if (!context?.isTransitioning || !canAnimatePlanNavigation()) return null
-  const { currentLocation, nextLocation } = context
-  if (!currentLocation || !nextLocation || currentLocation.key === nextLocation.key) return null
+  if (!router || !context.currentLocation || !context.nextLocation) return null
+  // Router reuses the original endpoint order for a reverse POP. Its state is
+  // already at the accepted destination before the outgoing DOM is captured.
+  const endpoints = normalizePlanTransitionLocations(context.currentLocation, context.nextLocation, router.state.location.key)
+  if (!endpoints) return null
+  const { fromLocation: currentLocation, toLocation: nextLocation } = endpoints
   if (location.key !== currentLocation.key && location.key !== nextLocation.key) return null
   const fromPlan = planRoute(currentLocation)
   const toPlan = planRoute(nextLocation)

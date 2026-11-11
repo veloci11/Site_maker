@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { Check } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { preloadPlanImages } from '../../lib/plan-images'
+import { PlanTexture } from './PlanTexture'
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from './plan-transition'
 
 export interface PricingCardProps {
@@ -64,14 +65,8 @@ export function PricingCard({
       const ctaRect = cta.getBoundingClientRect()
       const offset = ctaRect.top - topRect.top
       const height = offset + ctaRect.height
-      const imageHeight = height * 1.45
-      const style = getComputedStyle(card)
-      const [positionX = '20%', positionY = '20%'] = style.getPropertyValue('--plasma-position').trim().split(/\s+/)
-      const imageY = (height - imageHeight) * (parseFloat(positionY) / 100)
       const properties = {
         '--card-canvas-height': `${height}px`,
-        '--card-image-height': `${imageHeight}px`,
-        '--card-canvas-position': `${positionX} ${imageY}px`,
         '--card-cta-offset': `${offset}px`,
       }
       for (const [property, value] of Object.entries(properties))
@@ -99,7 +94,7 @@ export function PricingCard({
     >
       <div ref={topRef} className="pricing-card__top" style={thumbnailTransition}>
         <span className="pricing-card__surface" style={surfaceTransition} aria-hidden="true">
-          <span className="pricing-card__texture" />
+          <PlanTexture preview className="pricing-card__texture" />
           <span className="pricing-card__grain" />
         </span>
         {featured ? <span className="pricing-card__featured">Populaire</span> : null}
@@ -107,7 +102,7 @@ export function PricingCard({
         <p className="pricing-card__price">{priceLabel}</p>
       </div>
       <span ref={ctaRef} className="plan-cta pricing-card__cta" aria-hidden="true">
-        <span className="pricing-card__texture" />
+        <PlanTexture preview className="pricing-card__texture" />
         {actionLabel}
       </span>
       <ul className="pricing-card__features">

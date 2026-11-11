@@ -87,7 +87,7 @@
 }
 
 .motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface > .pricing-card__texture,
-.motion-page.motion-page--plan-transitioning .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) .pricing-card__surface::after {
+.motion-page.motion-page--plan-transitioning .comparison-cta__surface[style*="view-transition-name:"] > .comparison-cta__texture {
   opacity:1;
   transition:none;
 }
@@ -117,8 +117,8 @@
     plan-motion-slide var(--plan-motion-duration) var(--plan-motion-ease) reverse both;
 }
 
-/* Only the decorative frame changes dimensions. Each captured image keeps
-   its own pixel scale, revealed/cropped through that moving frame. */
+/* The frame changes dimensions while its decorative bitmaps scale uniformly
+   with width. Text layers keep their own sharp, unscaled captures. */
 :root::view-transition-group(.plan-surface) {
   animation-duration: var(--plan-motion-duration);
   animation-timing-function: var(--plan-motion-ease);
@@ -143,8 +143,7 @@
 :root::view-transition-old(.plan-surface),
 :root::view-transition-new(.plan-surface) {
   width: 100%;
-  height: 100%;
-  object-fit: none;
+  height: auto;
   object-position: left top;
   mix-blend-mode: normal;
 }
@@ -159,22 +158,19 @@
   animation:plan-motion-fade 500ms ease-out both;
 }
 
-:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="open"])::view-transition-new(.plan-surface) {
-  animation: none;
-}
-
-:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="close"])::view-transition-new(.plan-surface) {
-  z-index:1;
-  animation:plan-motion-fade 360ms ease-out 400ms both;
-}
-
-/* Always keep an opaque full-size bitmap underneath the crossfade. The old
-   large image fills a closing frame until the final small image covers it;
-   the new large image fills an opening frame from its very first pixel. */
-:root[data-plan-motion-shared="true"]:has(.motion-page[data-plan-motion-direction="close"])::view-transition-old(.plan-surface) {
+/* Both snapshots paint the same coordinates at every width. Keep both opaque:
+   the taller ratio fills the moving frame, while the snapshot with the larger
+   intrinsic width stays above it to preserve definition in both directions. */
+:root[data-plan-motion-shared="true"]:has(.motion-page:is([data-plan-motion-direction="open"],[data-plan-motion-direction="close"]))::view-transition-old(.plan-surface) {
   z-index:0;
   animation:none;
 }
+:root[data-plan-motion-shared="true"]:has(.motion-page:is([data-plan-motion-direction="open"],[data-plan-motion-direction="close"]))::view-transition-new(.plan-surface) {
+  z-index:1;
+  animation:none;
+}
+:root[data-plan-motion-shared="true"][data-plan-motion-surface-top="old"]:has(.motion-page:is([data-plan-motion-direction="open"],[data-plan-motion-direction="close"]))::view-transition-old(.plan-surface) { z-index:1; }
+:root[data-plan-motion-shared="true"][data-plan-motion-surface-top="old"]:has(.motion-page:is([data-plan-motion-direction="open"],[data-plan-motion-direction="close"]))::view-transition-new(.plan-surface) { z-index:0; }
 
 /* The copy follows the moving surface without scaling either heading raster. */
 :root::view-transition-group(.plan-content),
