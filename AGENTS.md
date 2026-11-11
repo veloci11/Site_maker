@@ -6,6 +6,8 @@ Un clic sur « Configurer » dans le comparatif agrandit la surface de ce bouton
 
 La première FAQ sur les frais après création détaille les trois formules : Hébergement 19 €/mois (site, SSL, disponibilité), Maintenance 39 €/mois (hébergement, mises à jour, sauvegardes et petites modifications de contenus existants), Sérénité 69 €/mois (Maintenance, une heure de modifications par mois et support prioritaire). Garder l’introduction sur la mise en ligne comprise et le suivi facultatif.
 
+Dans « Qui prépare les textes et les photos ? », remplacer les limites de la reprise et la distinction de rédaction par « Une option de reprise de votre ancien site est également disponible. ». Cette retouche concerne la réponse de FAQ ; les périmètres de l’option dans le catalogue restent inchangés.
+
 ## Inclusions Business et Premium — 11 novembre 2026
 
 Retirer « Rubriques réalisations, tarifs et avis clients » du comparatif et de la présentation Business. La galerie de réalisations n’est plus une inclusion automatique des nouvelles configurations Business/Premium ; le CMS suffit pour les textes et images. L’ancien identifiant `portfolio-gallery` reste disponible uniquement pour lire les dossiers historiques qui le portaient déjà, sans le transformer en supplément payant. Les brouillons publics retirent cette ancienne inclusion sans perdre les autres choix. Aucun changement de prix ni retrait du CMS.

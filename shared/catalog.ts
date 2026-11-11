@@ -290,7 +290,7 @@ export const faqs: readonly {
   {
     question: "Qui prépare les textes et les photos ?",
     answer:
-      "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Si vous avez déjà un site, l’option de reprise couvre jusqu’à cinq pages et quinze médias ; la réécriture et la création de nouveaux contenus restent distinctes.",
+      "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Une option de reprise de votre ancien site est également disponible.",
     category: "Contenus",
   },
   {
