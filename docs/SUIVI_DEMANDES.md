@@ -1,3 +1,7 @@
+# Navigation et bouton des détails corrigés le 10 novembre 2026
+
+La navigation défile avec la page sur ordinateur et mobile. L’entrée « Comparer les forfaits » est retirée du menu Forfaits. Le bouton « Afficher plus de détails » retrouve son emplacement et sa largeur sous le tableau. Révision `eb69877` publiée et vérifiée en HTTPS à 320 et 1 280 px.
+
 # Ergonomie et navigation fixe publiées le 10 novembre 2026
 
 Le configurateur affiche « Environ » après la sélection d’une option, garde le prix visible lors du défilement et anime les rubriques dans les deux sens. La galerie retire le paragraphe demandé. Les commandes du comparatif précèdent le tableau et les raccourcis mobiles défilent jusqu’au forfait voulu. Un lien de forfait invalide préserve le brouillon. La navigation reste visible sur mobile et ordinateur.

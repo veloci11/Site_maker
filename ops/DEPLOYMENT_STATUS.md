@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `eb698772cc29ac251663c7ce6bfcf6b2789463e7` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T001834Z-eb698772cc29`
+- Client `/assets/index-BTRzZMIR.js`, SHA-256 `21f70d9c077f0e2a10529d5c7b5e49f135c8e170bcac55594813abce4658df90`
+- Archive vérifiée de 13 981 576 octets, SHA-256 `f39de2038d4706e84bc1741e3614ce838df5d39ab2f12844b293c08cf644e709`
+
+La navigation défile avec la page. Le menu Forfaits présente les trois offres. Le bouton des détails occupe toute la largeur sous le tableau. Version vérifiée à 320 et 1 280 px en HTTPS. Les 270 tests passent.
+
+## Ergonomie et navigation fixe publiées le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `1ff76cf100e0c72776daef94cdd41e0eca00ae7f` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T000939Z-1ff76cf100e0`
 - Client `/assets/index-DWI5GL-j.js`, SHA-256 `5979453ab4e03f7e1af8b69b4fe68310189421292d10adf6976ac38594d8986d`

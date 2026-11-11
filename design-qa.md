@@ -1,3 +1,7 @@
+# Navigation et comparatif vérifiés le 10 novembre 2026
+
+À 320 et 1 280 px, le menu défile avec la page. Les menus Forfaits affichent Vitrine, Business et Premium / 3D. Le bouton des détails se trouve sous le tableau sur toute sa largeur et ouvre puis referme les descriptions. Les en-têtes du tableau s’ancrent pendant sa lecture. La console ne remonte aucune erreur pendant les contrôles en HTTPS.
+
 # Ergonomie et navigation fixe vérifiées en ligne le 10 novembre 2026
 
 Le configurateur Vitrine affiche « Environ 2 540 € » et « + 39 € / mois » pour les onze options de la capture. Sur écran de bureau bas, le rappel du prix apparaît quand le total principal sort de l’écran. En revenant vers le bas de la carte, le montant principal redevient visible. À 320 px, la barre reste fixe et une option mensuelle seule donne « Environ 890 € » avec le montant mensuel séparé.
