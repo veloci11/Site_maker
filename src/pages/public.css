@@ -123,8 +123,7 @@
 .comparison-table tbody td,.comparison-table tbody th { padding: 13px 20px; border-top: 1px solid var(--border); vertical-align: middle; }
 .comparison-table tbody th { font-size: 13px; line-height: 1.4; }
 .comparison-table tbody td { text-align: center; border-left: 1px solid var(--border); }
-.comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
-.comparison-section tr:first-child > * { background: var(--paper); }
+.comparison-table tbody tr > * { background: var(--background); }
 @media (width > 760px) {
   .comparison-scroll { border: 0; overflow: visible; }
   /* Never clip the sticky element or an ancestor: only its non-sticky row. */
@@ -133,7 +132,6 @@
   .comparison-table thead th { border-top: 1px solid var(--border); }
   .comparison-table thead th:first-child { border-left: 1px solid var(--border); border-top-left-radius: 14px; }
   .comparison-table thead th:last-child { border-right: 1px solid var(--border); border-top-right-radius: 14px; }
-  .comparison-table tbody tr > * { background: var(--background); }
   .comparison-table tbody th { border-left: 1px solid var(--border); }
   .comparison-table tbody td:last-child { border-right: 1px solid var(--border); }
   .comparison-section:last-child tr:last-child > * { border-bottom: 1px solid var(--border); }
@@ -166,9 +164,6 @@
       to { clip-path: inset(100% 0 0); }
     }
   }
-}
-@media (hover: hover) {
-  .comparison-table tbody tr:hover > * { background: #f4f0f8; }
 }
 .comparison-section-label { display: block; margin-bottom: 4px; color: var(--muted-foreground); font-size: 11px; font-weight: 600; }
 .comparison-included { display: inline-flex; align-items: center; justify-content: center; }
