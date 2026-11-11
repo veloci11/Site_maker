@@ -1,3 +1,11 @@
+# Carte adaptée aux fenêtres réduites le 10 novembre 2026
+
+La carte se compacte selon la hauteur de la fenêtre sur ordinateur. Elle conserve le titre, les options choisies et leurs prix, le total et le suivi mensuel. Les descriptions détaillées restent dans les choix à droite. Sous 1 200 px de largeur, la carte passe au-dessus des options.
+
+Révision `8c06298` publiée et vérifiée en HTTPS avec les onze options de la capture à 1 200 × 700 : carte entière visible, sans défilement interne. Disposition empilée contrôlée à 1 100 × 700 et sur mobile à 320 × 740. Les 270 tests passent.
+
+À la demande explicite de Mathis, la nouvelle reprise de la bordure du comparatif en scroll vers le haut n’a pas été publiée. Elle reste en local, et le défaut public reste à traiter.
+
 # Défilement, configurateur et libellés publiés le 10 novembre 2026
 
 Le masquage du comparatif suit le défilement natif dans les navigateurs compatibles pour garder sa bordure supérieure à la remontée. La carte du configurateur suit 128 px plus bas et s’arrête à 24 px du pied de page. Le menu défile avec les pages de configuration. La durée des rubriques d’options passe à 372 ms.

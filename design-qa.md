@@ -1,3 +1,11 @@
+# Carte responsive vérifiée en HTTPS le 10 novembre 2026
+
+Révision publiée `8c06298`, client `index-CVKs8o1o.js`. Les onze options de la capture, avec Hébergement, affichent « Environ 3 115 € » et « + 19 € / mois ». À 1 200 × 700 dans le navigateur intégré, la carte fait 557,40 px de haut et reste entièrement visible entre 17,66 et 575,06 px en bas du configurateur. Hauteur interne identique à sa hauteur visible : aucune barre de défilement interne. Preuve : `../outputs/audit-ergonomie-2026-11-10/21-carte-fenetre-reduite.jpg`.
+
+En fenêtre basse, le résumé conserve les intitulés et prix ; ses descriptions de périmètre se consultent dans les choix à droite. Sous 760 px de hauteur sur ordinateur, les inclusions secondaires sont également retirées du résumé compact. À 1 100 × 700, la carte est dans le flux au-dessus des options, sans débordement horizontal. À 320 × 740, même disposition, inclusions visibles et barre de prix fixée au bord inférieur de la fenêtre. Le brouillon public, initialement vide, a été remis à zéro après vérification. Aucun formulaire soumis. Viewport restauré, onglet de contrôle fermé et serveur local arrêté. TypeScript, build et 270 tests passent.
+
+La remontée du comparatif reste un défaut signalé par Mathis malgré les contrôles historiques ci-dessous. Une nouvelle correction locale retire le masquage animé autour de l’en-tête, mais Mathis a expressément demandé de ne pas la publier. Le patch `.data/held-comparison-scroll-up.patch` et les modifications locales correspondantes sont exclus de la release `8c06298` ; aucune validation publique de cette correction n’est revendiquée.
+
 # Remontée du comparatif et derniers retours vérifiés le 10 novembre 2026
 
 Sur la version finale en HTTPS, le comparatif utilise les timelines natives et garde son en-tête à 96 px en remontant de 480 à 240 px de défilement. En local, les allers-retours à 240, 208 puis 240 px donnent le même masquage dans les deux sens. Les détails, la réduction du mouvement et le défilement interne mobile ont été contrôlés.

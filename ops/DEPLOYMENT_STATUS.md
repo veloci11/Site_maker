@@ -5,6 +5,18 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `8c06298727348c323232a2e9c0fe3fc9e7b835ca` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T052204Z-8c0629872734`
+- Client `/assets/index-CVKs8o1o.js`, SHA-256 `cd305e23e521a5900f318aa898cde59d258090745cae4fee358ba7f9fab4a0b8`
+- Archive vérifiée de 13 982 588 octets, SHA-256 `0e83c1db5b43a996e488ef9fbdc9fa82cb15a8a8155cedc3483344b7300270e2`
+
+Ce lot adapte uniquement la carte du configurateur aux fenêtres basses et étroites. Contrôle HTTPS avec onze options à 1 200 × 700, puis disposition empilée à 1 100 × 700 et 320 × 740. Les 270 tests passent. Sauvegarde, santé de l’origine et catalogue vérifiés avant/après publication.
+
+Mathis a demandé de ne pas publier la nouvelle reprise de la bordure du comparatif en remontant. Ces modifications restent dans l’arbre de travail et dans `.data/held-comparison-scroll-up.patch`, hors de cette release. Le défaut signalé sur le comparatif reste donc ouvert en production.
+
+## Défilement et libellés publiés le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `f2d2a2a798de86d8bce6a518f70d421bdac19537` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T043737Z-f2d2a2a798de`
 - Client `/assets/index-Cjg3QUFs.js`, SHA-256 `41a4687a8fa9a04d3cbe41137f442034354950134551effcad3a917940f769e1`
