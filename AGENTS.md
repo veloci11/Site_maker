@@ -8,6 +8,10 @@ La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le
 
 Un forfait ouvert depuis le menu revient à la section des offres avec le bouton Retour du navigateur. Le menu mobile se ferme au choix du forfait. Le lien et le titre « Les étapes du projet » mènent à `#fonctionnement`. La première inclusion Premium affiche « Business inclus · pages à définir » sur une ligne, avec une taille adaptée aux petits écrans.
 
+La carte de configuration s’adapte à la hauteur de la fenêtre. Sur ordinateur, elle se compacte sous 1 050 px de hauteur et privilégie les intitulés et prix des options. Sous 760 px de hauteur, les inclusions secondaires de la carte se consultent dans les sections du site. Sous 1 200 px de largeur, la carte passe au-dessus des options.
+
+À la demande de Mathis du 10 novembre, la reprise du masquage du comparatif reste en local. Son patch est conservé dans `.data/held-comparison-scroll-up.patch`. Ce lot publie uniquement l’adaptation de la carte.
+
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
 
 Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.
