@@ -215,21 +215,21 @@
  .selected-plan h1 { font-size:50px; }
  .selected-plan__total > strong { font-size:38px; }
 }
-@media(min-width:1200px) and (max-height:1050px) {
- .public-shell .selected-plan { --plan-padding:20px; padding:20px; }
- .public-shell .configurator-card-column > .selected-plan { top:max(0px,min(24px,calc(100dvh - var(--selected-plan-height,580px) - 24px))); }
- .public-shell .selected-plan__heading-frame { margin-bottom:16px; }
+/* One comfortable summary on desktop, regardless of window height or mode. */
+@media(width > 760px) {
+ .public-shell .selected-plan { --plan-padding:clamp(24px,1.9vw,28px); --plan-texture-height:580px; padding:var(--plan-padding); }
+ .public-shell .selected-plan__heading-frame { margin-bottom:20px; }
  .public-shell .selected-plan__heading { margin-bottom:0; }
- .public-shell .selected-plan h1 { font-size:40px; margin-bottom:10px; }
- .public-shell .selected-plan__features { font-size:13px; gap:6px; margin-bottom:18px; }
- .public-shell .selected-plan__selection-content { padding:14px 0 10px; }
- .public-shell .selected-plan__selection-heading { margin-bottom:8px; }
- .public-shell .selected-plan__reset { min-height:26px; }
- .public-shell .selected-plan__option-content { font-size:12px; line-height:1.4; padding-bottom:6px; }
+ .public-shell .selected-plan h1 { font-size:clamp(44px,3.4vw,48px); margin-bottom:16px; }
+ .public-shell .selected-plan__features { font-size:14px; gap:9px; margin-bottom:24px; }
+ .public-shell .selected-plan__selection-content { padding:18px 0 12px; }
+ .public-shell .selected-plan__selection-heading { margin-bottom:12px; }
+ .public-shell .selected-plan__reset { min-height:30px; }
+ .public-shell .selected-plan__option-content { font-size:13px; line-height:1.5; padding-bottom:10px; }
  .public-shell .selected-plan__option-content > span > small { display:none; }
- .public-shell .selected-plan__total { gap:4px; margin-bottom:16px; }
- .public-shell .selected-plan__total > strong { font-size:38px; }
- .public-shell .selected-plan__estimate { font-size:11px; }
+ .public-shell .selected-plan__total { gap:6px; margin-bottom:22px; }
+ .public-shell .selected-plan__total > strong { font-size:42px; }
+ .public-shell .selected-plan__estimate { font-size:12px; }
 }
 @media(max-width:1199px) {
  .public-shell .configurator-grid { grid-template-columns:1fr; margin-bottom:0; }
@@ -244,13 +244,6 @@
  .configurator-choice { grid-template-columns:18px minmax(0,1fr); padding:16px; gap:10px; }
  .configurator-choice__price { grid-column:2; }
  .configurator-choice__copy > span { font-size:12px; }
-}
-@media(min-width:1200px) and (max-height:760px) {
- .public-shell .selected-plan { --plan-padding:16px; padding:16px; }
- .public-shell .selected-plan__features { display:none; }
- .public-shell .selected-plan__heading-frame { margin-bottom:12px; }
- .public-shell .selected-plan h1 { font-size:34px; }
- .public-shell .selected-plan__total > strong { font-size:34px; }
 }
 @media(max-width:760px) {
  .configurator-page { padding-top:12px; padding-bottom:108px; }

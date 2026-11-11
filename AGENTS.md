@@ -8,7 +8,7 @@ La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le
 
 Un forfait ouvert depuis le menu revient à la section des offres avec le bouton Retour du navigateur. Le menu mobile se ferme au choix du forfait. Le lien et le titre « Les étapes du projet » mènent à `#fonctionnement`. La première inclusion Premium affiche « Business inclus · pages à définir » sur une ligne, avec une taille adaptée aux petits écrans.
 
-La carte de configuration s’adapte à la hauteur de la fenêtre. Sur ordinateur, elle se compacte sous 1 050 px de hauteur et privilégie les intitulés et prix des options. Sous 760 px de hauteur, les inclusions secondaires de la carte se consultent dans les sections du site. Sous 1 200 px de largeur, la carte passe au-dessus des options.
+La carte de configuration garde une présentation intermédiaire et aérée sur ordinateur, identique en plein écran et en fenêtre. La hauteur du viewport ne change ni sa densité ni ses inclusions. Les intitulés et prix des options restent dans le résumé ; les descriptions détaillées sont dans les choix à droite. La carte suit le défilement normal sans barre interne. Sous 1 200 px de largeur, elle passe au-dessus des options.
 
 À la demande de Mathis du 10 novembre, la reprise du masquage du comparatif reste en local. Son patch est conservé dans `.data/held-comparison-scroll-up.patch`. Ce lot publie uniquement l’adaptation de la carte.
 
