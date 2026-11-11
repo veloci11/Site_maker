@@ -116,20 +116,6 @@
 .comparison-table thead { position: sticky; top: var(--public-header-height); z-index: 2; background: var(--paper); }
 .comparison-table thead th { width: 23.333%; padding: 16px 20px; vertical-align: top; background: var(--paper); border-left: 1px solid var(--border); box-shadow: 0 1px var(--border); }
 .comparison-table thead th:first-child { width: 30%; padding-left: 24px; border-left: 0; vertical-align: bottom; font-size: 16px; line-height: 1.4; letter-spacing: -.025em; }
-@media (width > 760px) {
-  .comparison-scroll[data-sticky-header] { clip-path: inset(var(--comparison-clip-top) 0 0 round 14px); }
-  .comparison-scroll[data-sticky-header]:focus-visible { outline-offset: -3px; }
-  .comparison-scroll[data-sticky-header] thead::before {
-    content: "";
-    position: absolute;
-    inset: 0 -1px;
-    z-index: 4;
-    border: 1px solid var(--border);
-    border-bottom: 0;
-    border-radius: 14px 14px 0 0;
-    pointer-events: none;
-  }
-}
 .comparison-offer { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .comparison-offer h3 { font-size: 20px; letter-spacing: -.04em; white-space: nowrap; }
 .comparison-offer > p { font-size: 13px; color: var(--muted-foreground); line-height: 1.4; }
@@ -140,6 +126,18 @@
 .comparison-section { clip-path: inset(var(--comparison-rows-clip-top, 0px) 0 0); }
 .comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
 .comparison-section tr:first-child > * { background: var(--paper); }
+@media (width > 760px) {
+  .comparison-scroll { border-width: 0 0 1px; }
+  .comparison-table,.comparison-table thead { background: transparent; }
+  .comparison-table thead th { border-top: 1px solid var(--border); }
+  .comparison-table thead th:first-child { border-left: 1px solid var(--border); border-top-left-radius: 14px; }
+  .comparison-table thead th:last-child { border-right: 1px solid var(--border); border-top-right-radius: 14px; }
+  .comparison-table tbody tr > * { background: var(--background); }
+  .comparison-table tbody th { border-left: 1px solid var(--border); }
+  .comparison-table tbody td:last-child { border-right: 1px solid var(--border); }
+  .comparison-section:last-child tr:last-child th { border-bottom-left-radius: 14px; }
+  .comparison-section:last-child tr:last-child td:last-child { border-bottom-right-radius: 14px; }
+}
 @media (hover: hover) {
   .comparison-table tbody tr:hover > * { background: #f4f0f8; }
 }

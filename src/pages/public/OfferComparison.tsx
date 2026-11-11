@@ -83,7 +83,6 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
       const sectionClips = sections.map((section) => Math.max(0, Math.ceil(headingBottom - section.getBoundingClientRect().top)))
       if (overlap > 0) scroller.style.setProperty('--comparison-clip-top', `${overlap}px`)
       else scroller.style.removeProperty('--comparison-clip-top')
-      scroller.toggleAttribute('data-sticky-header', overlap > 0)
       sections.forEach((section, index) => section.style.setProperty('--comparison-rows-clip-top', `${sectionClips[index]}px`))
     }
 
@@ -103,7 +102,6 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
       window.removeEventListener('resize', clipAtHeader)
       window.removeEventListener('animationend', clipAtHeader)
       scroller.style.removeProperty('--comparison-clip-top')
-      scroller.removeAttribute('data-sticky-header')
       sections.forEach((section) => section.style.removeProperty('--comparison-rows-clip-top'))
     }
   }, [])
