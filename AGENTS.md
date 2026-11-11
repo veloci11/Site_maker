@@ -2,7 +2,7 @@
 
 ## Ergonomie du configurateur et du comparatif
 
-La barre de navigation reste visible au défilement sur ordinateur et mobile. Son conteneur est transparent autour du menu arrondi. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
+La barre de navigation reste visible au défilement sur ordinateur et mobile. Son conteneur est transparent autour du menu arrondi. Le comparatif est rogné au bord inférieur du conteneur pour que ses lignes ne remontent pas derrière le menu. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
 
 La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment en 620 ms, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
 

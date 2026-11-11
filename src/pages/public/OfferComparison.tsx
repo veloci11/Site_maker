@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react'
+import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/catalog'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
@@ -69,6 +69,33 @@ function ComparisonReveal({ children, collapsed }: { children: ReactNode; collap
 export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (CSS.supports('animation-timeline: view(block 1px 0px)') && CSS.supports('animation-range: exit-crossing')) return
+
+    const scroller = scrollRef.current
+    const header = document.querySelector('.public-header-wrap')
+    if (!scroller || !header) return
+
+    const clipAtHeader = () => {
+      const overlap = header.getBoundingClientRect().bottom - scroller.getBoundingClientRect().top
+      if (overlap > 0) scroller.style.setProperty('--comparison-clip-top', `${overlap}px`)
+      else scroller.style.removeProperty('--comparison-clip-top')
+    }
+
+    clipAtHeader()
+    const observer = new ResizeObserver(clipAtHeader)
+    observer.observe(scroller)
+    observer.observe(header)
+    window.addEventListener('scroll', clipAtHeader, { passive: true })
+    window.addEventListener('resize', clipAtHeader)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', clipAtHeader)
+      window.removeEventListener('resize', clipAtHeader)
+      scroller.style.removeProperty('--comparison-clip-top')
+    }
+  }, [])
 
   function showOfferColumn(index: number) {
     const scroller = scrollRef.current
