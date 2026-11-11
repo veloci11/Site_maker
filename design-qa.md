@@ -1,3 +1,9 @@
+# Lignes du comparatif uniformisées — 11 novembre 2026
+
+Révision publique `c6e1a70`, client `index-C3a_SDUY.js`. À 1 280 × 700, toutes les cellules du corps du tableau ont le même fond `rgb(255, 255, 255)` et une bordure supérieure de 1 px. Une ligne réellement survolée conserve ce fond blanc. Un aller-retour de défilement garde l’en-tête à 96 px et le cadre sans clip. Capture publique `../outputs/audit-ergonomie-2026-11-10/29-tableau-fond-uniforme-public.jpg`.
+
+À 320 × 740, mêmes fonds blancs et séparateurs de 1 px, scrollport interne conservé et défilement de 740 px atteint sans débordement horizontal de la page. Aucune erreur de console observée. Aucun formulaire soumis ni sélection modifiée. Viewport restauré et onglet fermé. TypeScript, build et 273 tests passent. Serveur local arrêté, ports 4173 et 4174 libres.
+
 # Tableau et retour aux offres vérifiés en ligne — 11 novembre 2026
 
 La correction précédemment locale est maintenant publiée dans `6195cb1`, client `index-11r4uc2l.js`. Sur l’accueil en HTTPS à 1 280 × 700, sortie complète du comparatif puis remontée lente de 2 476 à 1 846 px par pas de 70 px : l’en-tête reste à 96 px, bordure supérieure 1 px et arrondis 14 px conservés. Le cadre et le `thead` n’ont aucun clip. Les détails ouverts, une nouvelle sortie complète et une remontée rapide retrouvent également l’en-tête à 96 px. Preuve native `../outputs/audit-ergonomie-2026-11-10/26-tableau-remontee-public.jpg` et relevés JSON voisins.

@@ -1,3 +1,7 @@
+# Fond uniforme du tableau publié le 11 novembre 2026
+
+Les fonds différents en début de groupe et le survol violet sont retirés du corps du comparatif. Toutes les cellules restent blanches et les séparateurs ont la même épaisseur fine. Les libellés de groupes sont conservés. Révision `c6e1a70` publiée et contrôlée en HTTPS sur ordinateur et mobile. Les 273 tests passent ; localhost arrêté.
+
 # Tableau et retours recentrés publiés le 11 novembre 2026
 
 La correction du tableau auparavant conservée en local est publiée. Le cadre et l’en-tête sticky ne sont plus découpés par un masquage d’ancêtre ; le corps et la ligne interne de l’en-tête portent le masquage. Les bordures et coins supérieurs restent sur les cellules pendant la remontée.
