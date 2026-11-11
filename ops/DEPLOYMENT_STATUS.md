@@ -1,8 +1,18 @@
 # Déploiement de studio — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/`
+- Révision `ae40bafa0d056c5c0e84a72402177ec329bf39c7` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T060811Z-ae40bafa0d05`
+- Client `/assets/index-DRDi_nsE.js`, SHA-256 `2ebd8819feccd68eb7f0d80ada31d424b48a5af4f1243dab9d33c251a26d56d6`
+- Archive vérifiée de 13 983 080 octets, SHA-256 `9f9a9555b6367a08083f5b5c08e7422fd696b531ad3ebc419bd2fcad3e94932f`
+
+La carte publique utilise une présentation intermédiaire plus aérée, identique quelle que soit la hauteur de la fenêtre. Les inclusions ne disparaissent plus sur écran bas. Les 270 tests passent. Contrôle HTTPS à 1 280 × 700, 1 280 × 1 100 et 320 × 740 ; sauvegarde privée, santé et catalogue vérifiés. La reprise du comparatif reste locale et n’est pas dans cette release.
+
+## Carte compacte publiée le 10 novembre
 
 - URL `https://gilmathis.com/`
 - Révision `8c06298727348c323232a2e9c0fe3fc9e7b835ca` sur `main`

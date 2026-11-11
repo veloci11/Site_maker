@@ -1,3 +1,11 @@
+# Carte plus aérée, commune aux deux modes, le 11 novembre 2026
+
+La présentation intermédiaire s’applique en plein écran comme en fenêtre. La hauteur ne déclenche plus de changement de densité ni la disparition des inclusions. Les espacements, titre et prix sont plus grands que dans la première version compacte. Sous 1 200 px de largeur, la carte reste au-dessus des options. Sur une fenêtre basse, son contenu suit le défilement normal sans barre interne.
+
+Révision `ae40baf` publiée et contrôlée en HTTPS avec onze options : même carte à 1 280 × 700 et 1 280 × 1 100, puis vérification mobile à 320 × 740. Les 270 tests passent.
+
+En parallèle, la reprise locale du comparatif retire les découpes autour du cadre et de l’en-tête sticky. Le masquage natif agit sur la ligne interne de l’en-tête pour éviter un ancien rognage JS en remontant. Défilement local contrôlé en entrée, sortie et remontée, avec détails ouverts et fermés, puis sur mobile. Cette reprise n’est pas publiée, conformément à la consigne de Mathis.
+
 # Carte adaptée aux fenêtres réduites le 10 novembre 2026
 
 La carte se compacte selon la hauteur de la fenêtre sur ordinateur. Elle conserve le titre, les options choisies et leurs prix, le total et le suivi mensuel. Les descriptions détaillées restent dans les choix à droite. Sous 1 200 px de largeur, la carte passe au-dessus des options.
