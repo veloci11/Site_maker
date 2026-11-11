@@ -76,8 +76,11 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     const heading = scroller?.querySelector('thead')
     if (!scroller || !navigation || !heading) return
     const sections = Array.from(scroller.querySelectorAll('tbody'))
+    const nativeClipping = CSS.supports('animation-timeline: view(block 1px 0px)') && CSS.supports('animation-range: exit-crossing')
 
     const clipAtHeader = () => {
+      scroller.style.setProperty('--comparison-heading-height', `${heading.getBoundingClientRect().height}px`)
+      if (nativeClipping) return
       const overlap = navigation.getBoundingClientRect().bottom - scroller.getBoundingClientRect().top
       const headingBottom = heading.getBoundingClientRect().bottom
       const sectionClips = sections.map((section) => Math.max(0, Math.ceil(headingBottom - section.getBoundingClientRect().top)))
@@ -91,16 +94,19 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     observer.observe(scroller)
     observer.observe(navigation)
     observer.observe(heading)
-    scroller.addEventListener('scroll', clipAtHeader, { passive: true })
-    window.addEventListener('scroll', clipAtHeader, { passive: true })
-    window.addEventListener('resize', clipAtHeader)
-    window.addEventListener('animationend', clipAtHeader)
+    if (!nativeClipping) {
+      scroller.addEventListener('scroll', clipAtHeader, { passive: true })
+      window.addEventListener('scroll', clipAtHeader, { passive: true })
+      window.addEventListener('resize', clipAtHeader)
+      window.addEventListener('animationend', clipAtHeader)
+    }
     return () => {
       observer.disconnect()
       scroller.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('resize', clipAtHeader)
       window.removeEventListener('animationend', clipAtHeader)
+      scroller.style.removeProperty('--comparison-heading-height')
       scroller.style.removeProperty('--comparison-clip-top')
       sections.forEach((section) => section.style.removeProperty('--comparison-rows-clip-top'))
     }

@@ -111,7 +111,7 @@
 .configurator-options { min-width:0; }
 .configurator-groups,.configurator-contact,.configurator-success { animation:plan-fade-in 280ms ease-out; }
 .configurator-group {
- --group-duration:620ms;
+ --group-duration:372ms;
  --group-ease:ease-in-out;
 }
 .configurator-group .accordion-content-root[data-state] { animation:none; }
@@ -187,6 +187,11 @@
 .configurator-price-bar strong { font-size:18px; font-weight:500; line-height:1.1; letter-spacing:-.03em; }
 .configurator-price-bar small { font-size:10px; }
 @media(width > 760px) {
+ .public-shell .configurator-grid { --configurator-follow-space:128px; margin-bottom:calc(-1 * var(--configurator-follow-space)); }
+ .public-shell .configurator-card-column { position:static; align-self:stretch; }
+ .public-shell .configurator-card-column::after { content:""; display:block; height:var(--configurator-follow-space); }
+ .public-shell .configurator-card-column > .selected-plan { position:sticky; top:min(24px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); }
+ .public-shell .configurator-options { padding-bottom:var(--configurator-follow-space); }
  .configurator-price-bar[data-follow-estimate="true"] {
   position:fixed;
   z-index:25;

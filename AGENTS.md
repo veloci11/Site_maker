@@ -2,9 +2,9 @@
 
 ## Ergonomie du configurateur et du comparatif
 
-La barre de navigation reste visible au défilement sur ordinateur et mobile. Son conteneur est transparent autour du menu arrondi. L’en-tête du comparatif reste ancré avec sa bordure supérieure et ses coins arrondis, portés par les cellules. Les lignes sont rognées à son bord inférieur dès qu’elles passent dessous. Le cadre du tableau est également rogné au bord inférieur de la navigation. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
+La barre de navigation reste visible au défilement sur les pages publiques hors configurateur. Dans le configurateur, elle défile avec la page. Son conteneur est transparent autour du menu arrondi. L’en-tête du comparatif reste ancré avec sa bordure supérieure et ses coins arrondis, portés par les cellules. Les lignes sont rognées à son bord inférieur dès qu’elles passent dessous. Le masquage suit le défilement natif quand le navigateur le permet. Le cadre du tableau est également rogné au bord inférieur de la navigation. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
 
-La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment en 620 ms, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
+La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. La carte suit jusqu’à 24 px du pied de page en utilisant l’espacement existant. Les rubriques s’ouvrent et se ferment en 372 ms, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
 
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
 

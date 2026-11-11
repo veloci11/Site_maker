@@ -126,6 +126,27 @@
 .comparison-section { clip-path: inset(var(--comparison-rows-clip-top, 0px) 0 0); }
 .comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
 .comparison-section tr:first-child > * { background: var(--paper); }
+@supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
+  .comparison-scroll,.comparison-section {
+    animation: comparison-scroll-clip linear forwards;
+    /* Keep clipping tied to the scroll position with reduced motion too. */
+    animation-duration: auto !important;
+    animation-range: exit-crossing;
+  }
+  .comparison-scroll { animation-timeline: view(block var(--public-header-height) 0px); }
+  .comparison-section {
+    animation-name: comparison-rows-clip;
+    animation-timeline: view(block calc(var(--public-header-height) + var(--comparison-heading-height)) 0px);
+  }
+  @keyframes comparison-scroll-clip {
+    from { clip-path: inset(0 -5px -5px); }
+    to { clip-path: inset(100% -5px -5px); }
+  }
+  @keyframes comparison-rows-clip {
+    from { clip-path: inset(0); }
+    to { clip-path: inset(100% 0 0); }
+  }
+}
 @media (width > 760px) {
   .comparison-scroll { border-width: 0 0 1px; }
   .comparison-table,.comparison-table thead { background: transparent; }
@@ -367,6 +388,9 @@
     table-layout: fixed;
   }
   .comparison-table thead { top: 0; }
+  @supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
+    .comparison-section { animation-timeline: view(block var(--comparison-heading-height) 0px); }
+  }
   .comparison-table thead th {
     padding: 10px;
     width: auto;
