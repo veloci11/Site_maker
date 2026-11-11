@@ -1,4 +1,4 @@
-Dernière clarification : chaque ligne du comparatif possède une description fonctionnelle, dépliée avec les détails. Ne pas y répéter les inclusions indiquées dans les colonnes. Intitulé : « Photos de réalisations, tarifs et avis clients ». Décrire concrètement le CMS et garder le vocabulaire compréhensible par un client.
+Dernière clarification : retirer la rubrique « réalisations, tarifs et avis clients » des offres publiques. Le CMS de Business et Premium / 3D reste inclus. Chaque ligne restante du comparatif possède une description fonctionnelle dépliée avec les détails, sans répéter les inclusions indiquées dans les colonnes.
 
 # Pages publiques
 

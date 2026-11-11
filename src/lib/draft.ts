@@ -32,13 +32,14 @@ export function readDraft(): ProjectDraft | null {
 export function readPublicDraftConfiguration(): Configuration | null {
   const draft = readDraft()
   if (!draft) return null
+  if (draft.configuration.offerId === 'sur-mesure') return draft.configuration
   if (draft.configuration.offerId === 'vitrine') return prunePublicConfiguration(draft.configuration)
-  if (draft.catalogueVersion === CATALOGUE_VERSION || draft.configuration.offerId !== 'connecte') return draft.configuration
+  if (draft.catalogueVersion === CATALOGUE_VERSION || draft.configuration.offerId !== 'connecte') return prunePublicConfiguration(draft.configuration)
   // Unversioned Connecté drafts had included accounts. The previous public
   // catalogue made accounts optional but still included booking in Business.
   // Remove only those former inclusions, without changing private restoration.
   const accountsWereIncluded = draft.catalogueVersion !== PREVIOUS_CATALOGUE_VERSION
-  return normalizeConfiguration({
+  return prunePublicConfiguration({
     ...draft.configuration,
     extras: draft.configuration.extras.filter(id =>
       id !== 'booking' && (!accountsWereIncluded || (id !== 'user-accounts' && id !== 'member-roles')),

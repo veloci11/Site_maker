@@ -685,7 +685,7 @@ export function normalizeConfiguration(input: unknown): Configuration {
       value.extraPageCount < 1 || value.extraPageCount > MAX_EXTRA_PAGE_COUNT))
     throw new Error(`Choisissez entre 1 et ${MAX_EXTRA_PAGE_COUNT} pages supplémentaires.`)
   if (offer.id === 'connecte' || offer.id === 'immersif') {
-    for (const id of ['portfolio-gallery', 'analytics', 'local-seo'] as const)
+    for (const id of ['analytics', 'local-seo'] as const)
       extras.add(id)
   }
   if (extras.has('member-roles')) extras.add('user-accounts')
@@ -718,7 +718,9 @@ export function isOptionIncluded(configuration: Configuration, id: OptionId): bo
     (id === 'managed-content' &&
       (configuration.offerId === 'connecte' || configuration.offerId === 'immersif')) ||
     ((configuration.offerId === 'connecte' || configuration.offerId === 'immersif') &&
-      (['portfolio-gallery', 'analytics', 'local-seo'] as OptionId[]).includes(id)) ||
+      ((['analytics', 'local-seo'] as OptionId[]).includes(id) ||
+        // Preserve the former inclusion only when a saved dossier carries it.
+        (id === 'portfolio-gallery' && configuration.extras.includes(id)))) ||
     ((id === 'scene-3d' || id === 'content-import') && configuration.offerId === 'immersif') ||
     ((id === 'product-catalog' || id === 'online-payment') &&
       configuration.extras.includes('online-store'))

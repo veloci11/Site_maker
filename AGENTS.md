@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Inclusions Business et Premium — 11 novembre 2026
+
+Retirer « Rubriques réalisations, tarifs et avis clients » du comparatif et de la présentation Business. La galerie de réalisations n’est plus une inclusion automatique des nouvelles configurations Business/Premium ; le CMS suffit pour les textes et images. L’ancien identifiant `portfolio-gallery` reste disponible uniquement pour lire les dossiers historiques qui le portaient déjà, sans le transformer en supplément payant. Les brouillons publics retirent cette ancienne inclusion sans perdre les autres choix. Aucun changement de prix ni retrait du CMS.
+
 ## Ergonomie du configurateur et du comparatif
 
 La barre de navigation reste visible au défilement sur les pages publiques hors configurateur. Dans le configurateur, elle défile avec la page. Son conteneur est transparent autour du menu arrondi. L’en-tête du comparatif reste ancré avec sa bordure supérieure et ses coins arrondis, portés par les cellules. Les lignes sont rognées à son bord inférieur dès qu’elles passent dessous. Sur ordinateur, aucun masquage ne doit découper le cadre ou le `thead` sticky ; seuls le corps et la ligne interne de l’en-tête sont rognés, avec les timelines natives quand le navigateur les permet. Sur mobile, conserver le scrollport et son en-tête natifs. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.

@@ -8,7 +8,7 @@ export const includedGuidance: Record<OfferId, string> = {
   vitrine:
     'Présentez votre activité, vos services et vos coordonnées sur un site de 3 pages maximum, adapté aux mobiles, tablettes et ordinateurs. Vous fournissez les textes et les images. Le formulaire de contact, le référencement technique de base et la mise en ligne sont compris. Le CMS et l’option Espace membres sont disponibles à partir de Business.',
   connecte:
-    'Tout le forfait Vitrine est inclus dans Business, avec jusqu’à 6 pages et des rubriques pour vos réalisations, vos tarifs et vos avis clients. Un CMS vous permet de gérer vos textes et images. Le référencement local, les statistiques et la mise en place d’une adresse e-mail professionnelle sont compris.',
+    'Tout le forfait Vitrine est inclus dans Business, avec jusqu’à 6 pages. Un CMS vous permet de gérer vos textes et images. Le référencement local, les statistiques et la mise en place d’une adresse e-mail professionnelle sont compris.',
   immersif:
     'Tout le forfait Business est inclus, avec des animations avancées et l’intégration interactive d’un modèle 3D fourni. Nous définissons le nombre de pages selon votre projet et reprenons jusqu’à 5 pages et 15 médias de votre ancien site.',
   'sur-mesure':

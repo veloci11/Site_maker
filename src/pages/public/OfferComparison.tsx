@@ -24,7 +24,6 @@ const comparisonSections: readonly { title: string; rows: readonly ComparisonRow
       { title: 'Mise en place d’une adresse e-mail professionnelle', values: ['absent', 'included', 'included'], hint: 'Une boîte e-mail sur votre domaine, reliée au formulaire de votre site. L’abonnement éventuel à la messagerie reste séparé.' },
       { title: 'Bases du référencement local', values: ['absent', 'included', 'included'], hint: 'Les informations de votre activité et de votre zone géographique sont prises en compte pour les recherches locales.' },
       { title: 'Statistiques de visites', values: ['absent', 'included', 'included'], hint: 'Suivez vos visites et une action utile, comme l’envoi du formulaire, avec Google Analytics 4 ou un outil adapté à votre site.' },
-      { title: 'Rubriques réalisations, tarifs et avis clients', values: ['absent', 'included', 'included'], hint: 'Des rubriques dédiées pour montrer votre travail, présenter vos tarifs et donner la parole à vos clients.' },
     ],
   },
   {

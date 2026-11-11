@@ -43,7 +43,7 @@ test('every public base includes responsive and launch without charging them aga
 
 test('Business includes its professional functions while accounts remain a paid addition', () => {
   const config = normalizeConfiguration({ offerId: 'connecte' });
-  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics']) {
+  for (const id of ['managed-content', 'local-seo', 'analytics']) {
     assert.equal(isOptionIncluded(config, id), true, id);
     assert.equal(isOptionSelected(config, id), true, id);
     assert.equal(quoteConfiguration(config).lines.find(line => line.key === id).amountCents, 0);
@@ -245,13 +245,30 @@ test('Premium includes every Business capability and adds its visual experience 
   assert.equal(quote.totalCents, 249000);
   assert.equal(quote.maximumTotalCents, 249000);
   assert.equal(quote.estimated, true);
-  for (const id of ['managed-content', 'portfolio-gallery', 'local-seo', 'analytics', 'scene-3d', 'content-import']) {
+  for (const id of ['managed-content', 'local-seo', 'analytics', 'scene-3d', 'content-import']) {
     const line = quote.lines.find(line => line.key === id);
     assert.equal(line.included, true, id);
     assert.equal(line.amountCents, 0, id);
   }
   assert.match(quote.lines.find(line => line.key === 'content-import').scope, /5 pages et 15 médias/);
   assert.match(getOffer('immersif').features.join(' '), /Business inclus · pages à définir/);
+});
+
+test('new Business and Premium retain CMS without gallery; saved gallery inclusions stay free', () => {
+  for (const offerId of ['connecte', 'immersif']) {
+    const fresh = normalizeConfiguration({ offerId });
+    assert.equal(isOptionIncluded(fresh, 'managed-content'), true);
+    assert.equal(isOptionIncluded(fresh, 'portfolio-gallery'), false);
+    assert.equal(isOptionSelected(fresh, 'portfolio-gallery'), false);
+    assert.ok(!quoteConfiguration(fresh).lines.some(line => line.key === 'portfolio-gallery'));
+
+    const historical = normalizeConfiguration({ offerId, extras: ['portfolio-gallery'] });
+    const quote = quoteConfiguration(historical);
+    assert.equal(quote.lines.find(line => line.key === 'portfolio-gallery').included, true);
+    assert.equal(quote.lines.find(line => line.key === 'portfolio-gallery').amountCents, 0);
+    assert.equal(quote.totalCents, defaultPricing.base[offerId]);
+    assert.ok(historical.extras.includes('portfolio-gallery'));
+  }
 });
 
 test('booking and historical advanced forms are not included in any new public base', () => {

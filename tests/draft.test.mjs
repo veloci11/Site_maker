@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { clearDraft, configurationKey, readDraft, readPublicDraftConfiguration, saveDraftProjectOnce, writeDraft } from '../src/lib/draft.ts'
-import { defaultPricing, quoteConfiguration, withOption } from '../shared/catalog.ts'
+import { defaultPricing, normalizeConfiguration, quoteConfiguration, withOption } from '../shared/catalog.ts'
 import { changePublicOffer } from '../shared/offer-options.ts'
 
 class MemoryStorage {
@@ -113,7 +113,7 @@ test('legacy drafts gain default fields without losing their saved project ident
     const restored = readDraft()
     assert.equal(restored.id, legacy.id); assert.deepEqual(restored.saved, legacy.saved)
     assert.equal(restored.configuration.mobile, true); assert.equal(restored.configuration.managedContent, true)
-    assert.deepEqual(restored.configuration.extras, ['portfolio-gallery', 'analytics', 'local-seo'])
+    assert.deepEqual(restored.configuration.extras, ['analytics', 'local-seo'])
     assert.equal(writeDraft(restored.configuration).id, legacy.id)
     assert.deepEqual(readDraft().saved, legacy.saved)
     legacy.configuration.offerId = 'vitrine'; delete legacy.saved
@@ -121,6 +121,27 @@ test('legacy drafts gain default fields without losing their saved project ident
     assert.equal(readDraft().configuration.mobile, true); assert.deepEqual(readDraft().configuration.extras, [])
     localStorage.setItem('studio.project-draft.v1', JSON.stringify({ ...legacy, configuration: { offerId: 'vitrine', extras: ['unknown-option'] } }))
     assert.equal(readDraft(), null, 'an invalid option cannot be silently applied from localStorage')
+  } finally {
+    if (previousWindow === undefined) delete globalThis.window
+    else globalThis.window = previousWindow
+  }
+})
+
+test('public restoration removes gallery inclusions while private restoration preserves them', () => {
+  const previousWindow = globalThis.window
+  const localStorage = new MemoryStorage(); globalThis.window = { localStorage }
+  try {
+    for (const offerId of ['connecte', 'immersif']) {
+      const draft = writeDraft(normalizeConfiguration({ offerId, extras: ['portfolio-gallery', 'blog', 'newsletter'] }))
+      const raw = localStorage.getItem('studio.project-draft.v1')
+      const current = readPublicDraftConfiguration()
+      assert.equal(current.extras.includes('portfolio-gallery'), false)
+      assert.equal(current.managedContent, true)
+      for (const id of ['blog', 'newsletter']) assert.equal(current.extras.includes(id), true)
+      assert.equal(quoteConfiguration(current).totalCents, quoteConfiguration(draft.configuration).totalCents)
+      assert.deepEqual(readDraft().configuration, draft.configuration)
+      assert.equal(localStorage.getItem('studio.project-draft.v1'), raw)
+    }
   } finally {
     if (previousWindow === undefined) delete globalThis.window
     else globalThis.window = previousWindow

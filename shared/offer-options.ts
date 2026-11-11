@@ -48,8 +48,9 @@ export function getUnavailableOptions(configuration: Configuration): OptionId[] 
     .filter(
       (option) =>
         isOptionSelected(configuration, option.id) &&
-        !isOptionIncluded(configuration, option.id) &&
-        !allowed.has(option.id),
+        !allowed.has(option.id) &&
+        // The retired gallery may still be included in historical dossiers.
+        (option.id === 'portfolio-gallery' || !isOptionIncluded(configuration, option.id)),
     )
     .map((option) => option.id)
 }

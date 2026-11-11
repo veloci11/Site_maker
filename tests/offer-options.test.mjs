@@ -85,7 +85,24 @@ test('switching offers clears the choices and uses the inclusions of the new off
   assert.equal(isOptionSelected(vitrine, 'additional-language'), false);
   assert.equal(vitrine.managedContent, false);
   assert.equal(isOptionSelected(vitrine, 'analytics'), false);
-  assert.ok(connected.extras.includes('portfolio-gallery'));
+  assert.ok(!connected.extras.includes('portfolio-gallery'));
+});
+
+test('public drafts remove the former gallery without changing saved configurations or paid choices', () => {
+  for (const offerId of ['connecte', 'immersif']) {
+    const historical = normalizeConfiguration({ offerId, extras: ['portfolio-gallery', 'blog', 'newsletter'] });
+    const snapshot = structuredClone(historical);
+    assert.deepEqual(getUnavailableOptions(historical), ['portfolio-gallery']);
+    const current = prunePublicConfiguration(historical);
+    assert.equal(isOptionSelected(current, 'portfolio-gallery'), false);
+    assert.equal(isOptionIncluded(current, 'managed-content'), true);
+    for (const id of ['blog', 'newsletter']) assert.equal(isOptionSelected(current, id), true);
+    assert.ok(!getPublicOptions(current).some(option => option.id === 'portfolio-gallery'));
+    assert.deepEqual(getUnavailableOptions(current), []);
+    assert.deepEqual(prunePublicConfiguration(current), current);
+    assert.equal(quoteConfiguration(current).totalCents, quoteConfiguration(historical).totalCents);
+    assert.deepEqual(historical, snapshot);
+  }
 });
 
 test('a selected shop makes payment included and keeps the server quote consistent', () => {
