@@ -8,7 +8,7 @@ type PlanRoute = { kind: 'plan'; id: PlanId }
 type ListingRoute = { kind: 'listing'; path: ListingPath; hasHash: boolean }
 type Route = PlanRoute | ListingRoute | null
 type Anchor = { selector: '.pricing-card' | '.comparison-cta'; viewportY: number }
-type ListingOrigin = { path: ListingPath; scroll: ScrollPosition; anchor: Anchor | null }
+type ListingOrigin = { path: ListingPath; scroll: ScrollPosition; anchor: Anchor | null; section?: 'offers' }
 type Page = { route: Route; key?: string; scroll: ScrollPosition }
 
 let committedPage: Page | null = null
@@ -57,6 +57,9 @@ function planAnchor(id: PlanId, selector: Anchor['selector']): HTMLElement | nul
 }
 
 function listingOrigin(path: ListingPath, id: PlanId, sourceElement?: HTMLElement | null): ListingOrigin {
+  // Header links return to the offers themselves, wherever the menu was opened.
+  if (sourceElement?.dataset.planReturn === 'offers')
+    return { path, scroll: scroll(), anchor: null, section: 'offers' }
   const clicked = sourceElement?.closest<HTMLElement>('.pricing-card, .comparison-cta')
   const element = clicked ?? planAnchor(id, '.pricing-card') ?? planAnchor(id, '.comparison-cta')
   return {
@@ -108,7 +111,7 @@ export function rememberPlanPageScroll(location: RouteLocation) {
 }
 
 /** Restore synchronously in a layout effect, before the incoming native snapshot. */
-export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { sourceKey: string; preserveScroll?: boolean }): boolean {
+export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { sourceKey: string; preserveScroll?: boolean; sourceElement?: HTMLElement | null }): boolean {
   const target = route(location)
   const navigation = prepared && sameRoute(prepared.target, target) ? prepared : null
   const source = navigation?.source ?? committedPage
@@ -116,7 +119,13 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
 
   // Normal links, reduced motion and browser Back use the last committed source.
   if (!navigation && source?.route?.kind === 'listing' && target?.kind === 'plan')
-    origin = { path: source.route.path, scroll: source.scroll, anchor: null }
+    origin = {
+      path: source.route.path,
+      scroll: source.scroll,
+      anchor: null,
+      section: source.key === acceptedIntent?.sourceKey && acceptedIntent?.sourceElement?.dataset.planReturn === 'offers'
+        ? 'offers' : undefined,
+    }
   else if (source?.route?.kind !== 'plan' && target?.kind !== 'plan')
     origin = null
   else if (source?.route?.kind !== 'listing' && source?.route?.kind !== 'plan')
@@ -126,7 +135,11 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
   if (source?.route?.kind === 'plan' && target?.kind === 'listing'
     && origin?.path === target.path && (!navigation || !target.hasHash)) {
     let top = origin.scroll.y
-    if (origin.anchor && activePlan) {
+    if (origin.section === 'offers') {
+      const section = document.querySelector<HTMLElement>(target.path === '/' ? '#forfaits' : '.public-comparison')
+      const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
+      if (section) top = window.scrollY + section.getBoundingClientRect().top - headerHeight
+    } else if (origin.anchor && activePlan) {
       const element = planAnchor(activePlan, origin.anchor.selector)
       if (element) top = window.scrollY + element.getBoundingClientRect().top - origin.anchor.viewportY
     }

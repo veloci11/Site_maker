@@ -93,7 +93,7 @@ export function HomePage() {
               </a>
             </Button>
             <a className="text-link" href="#fonctionnement">
-              Comment ça se passe
+              Les étapes du projet
             </a>
           </div>
           <p className="home-hero__reassurance">
@@ -131,7 +131,7 @@ export function HomePage() {
         id="fonctionnement"
         aria-labelledby="home-method-title"
       >
-        <h2 id="home-method-title">Comment ça se passe</h2>
+        <h2 id="home-method-title">Les étapes du projet</h2>
         <ol className="home-method__steps" role="list">
           {[
             [

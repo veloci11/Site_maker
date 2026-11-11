@@ -441,6 +441,7 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: 24px; }
 .pricing-card__features { display: grid; align-content: start; gap: 15px; margin: 0; padding: 24px 10px 18px; list-style: none; color: #434149; font-size: 15px; line-height: 1.45; }
 .pricing-card__features li { display: flex; align-items: flex-start; gap: 10px; }
 .pricing-card__features svg { color: #111; margin-top: 2px; }
+.pricing-card--immersif .pricing-card__features li:first-child > span { font-size:clamp(12px,calc(7.5vw - 12px),15px); white-space:nowrap; }
 
 /* Always-visible content, with a single 180ms route entrance and no scroll observers. */
 .motion-reveal { opacity: 1; transform: none; }

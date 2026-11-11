@@ -6,6 +6,8 @@ La barre de navigation reste visible au défilement sur les pages publiques hors
 
 La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. La carte suit jusqu’à 24 px du pied de page en utilisant l’espacement existant. Les rubriques s’ouvrent et se ferment en 372 ms, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
 
+Un forfait ouvert depuis le menu revient à la section des offres avec le bouton Retour du navigateur. Le menu mobile se ferme au choix du forfait. Le lien et le titre « Les étapes du projet » mènent à `#fonctionnement`. La première inclusion Premium affiche « Business inclus · pages à définir » sur une ligne, avec une taille adaptée aux petits écrans.
+
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
 
 Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.

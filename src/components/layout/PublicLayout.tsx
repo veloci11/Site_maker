@@ -76,6 +76,7 @@ export function PublicHeader() {
                 <DropdownMenuItem key={offer.href} asChild>
                   <Link
                     to={offer.href}
+                    data-plan-return="offers"
                     viewTransition={canAnimatePlanNavigation()}
                     className={`public-offer-link pricing-card--${offer.variant}`}
                     aria-current={location.pathname === offer.href ? 'page' : undefined}
@@ -126,7 +127,7 @@ export function PublicHeader() {
                   </summary>
                   <div className="mobile-offers-submenu">
                     {offerLinks.map((offer) => (
-                      <NavLink key={offer.href} to={offer.href} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
+                      <NavLink key={offer.href} to={offer.href} data-plan-return="offers" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
                         {offer.title}
                         <ArrowRight size={16} aria-hidden="true" />
                       </NavLink>

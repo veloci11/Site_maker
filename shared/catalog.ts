@@ -118,7 +118,7 @@ export const offers = [
     title: 'Premium / 3D',
     headline: 'Une présence visuelle distinctive.',
     description: 'Tout le forfait Business est inclus, avec la reprise de vos contenus existants, des animations avancées et la 3D interactive. Le nombre de pages et les demandes sur mesure sont étudiés selon votre projet.',
-    features: [`Tout le forfait Business inclus · pages ${publicPageCounts.immersif.toLowerCase()}`, 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
+    features: ['Business inclus · pages à définir', 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
     exampleId: 'tiny-heaven',
     variant: 'immersif',
   },

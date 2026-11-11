@@ -174,9 +174,13 @@ function useMotionLinkClick(props: LinkProps | NavLinkProps) {
       || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
       || (props.target && props.target !== '_self') || props.reloadDocument
       || event.currentTarget.hasAttribute('download')
-      || !props.viewTransition
       || (typeof props.to === 'string' && /^([a-z][a-z\d+.-]*:|\/\/)/i.test(props.to))) return
 
+    // Reduced-motion links still carry their source through the accepted route.
+    if (!props.viewTransition) {
+      stageNavigation(event.currentTarget.href, location.key, { preventScrollReset: props.preventScrollReset }, event.currentTarget)
+      return
+    }
     event.preventDefault()
     const interrupting = Boolean(context?.isTransitioning)
     if (interrupting) interruptPlanMotion()
