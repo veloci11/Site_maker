@@ -1,3 +1,9 @@
+# Bordure supérieure et arrondis vérifiés le 10 novembre 2026
+
+À 1 280 px en HTTPS, l’en-tête reste à 96 px pendant le défilement de 490 à 644 px. Sa bordure supérieure et ses arrondis de 14 px suivent la même position. Les coins masquent le tableau et révèlent le fond de la page. Les détails ouverts et le retour en haut du tableau ont également été contrôlés en local.
+
+À 320 px en HTTPS, le cadre garde ses arrondis pendant le défilement du tableau. La colonne Premium reste accessible et l’en-tête demeure ancré dans sa zone. Les 270 tests passent.
+
 # En-tête complet du tableau vérifié le 10 novembre 2026
 
 Sur la page Forfaits en HTTPS à 1 280 px, l’en-tête garde sa position à 96 px pendant le défilement de 480 à 656 px. Les lignes sont rognées à son bord inférieur, fixé à 235 px. Le contrôle des zones de l’en-tête et du menu ne détecte aucune cellule du corps du tableau à ces endroits. Les détails ouverts suivent la même limite.

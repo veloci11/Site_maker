@@ -1,3 +1,7 @@
+# Contour arrondi de l’en-tête fixé le 10 novembre 2026
+
+La bordure supérieure et les coins arrondis suivent l’en-tête du comparatif pendant le défilement. Révision `6e224d7` publiée et vérifiée en HTTPS sur ordinateur et mobile.
+
 # En-tête complet du comparatif fixé le 10 novembre 2026
 
 L’en-tête du tableau est fixé en bloc et les lignes disparaissent à son bord inférieur pendant le défilement. Le masquage est calculé sur la position réelle de l’en-tête. La révision `c711885` est publiée et vérifiée en HTTPS à 1 280 et 320 px.
