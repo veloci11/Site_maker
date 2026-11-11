@@ -4,7 +4,7 @@
 .configurator-topline a { display:inline-flex; align-items:center; gap:8px; min-height:32px; }
 .configurator-topline a:hover { color:#111; }
 .configurator-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.95fr); gap:clamp(36px,6vw,88px); align-items:start; }
-.configurator-card-column { position:sticky; top:min(24px,calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
+.configurator-card-column { position:sticky; top:min(calc(var(--public-header-height) + 16px),calc(100dvh - var(--selected-plan-height,580px) - 24px)); min-width:0; }
 .selected-plan { --plan-texture-height:580px; --plan-padding:32px; --option-duration:620ms; --option-ease:cubic-bezier(.25,.1,.25,1); position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; padding:32px; border-radius:24px; color:#fff; }
 .selected-plan__content { display:flex; flex:1; flex-direction:column; min-width:0; text-shadow:0 1px 3px rgb(5 4 15 / .65); }
 .selected-plan__copy { display:flex; flex:1; flex-direction:column; min-width:0; }
@@ -111,8 +111,8 @@
 .configurator-options { min-width:0; }
 .configurator-groups,.configurator-contact,.configurator-success { animation:plan-fade-in 280ms ease-out; }
 .configurator-group {
- --group-duration:360ms;
- --group-ease:cubic-bezier(.25,.75,.25,1);
+ --group-duration:620ms;
+ --group-ease:ease-in-out;
 }
 .configurator-group .accordion-content-root[data-state] { animation:none; }
 .configurator-group .accordion-content {
@@ -120,7 +120,7 @@
  grid-template-rows:0fr;
  padding:0;
  opacity:0;
- transition:grid-template-rows var(--group-duration) var(--group-ease), opacity 230ms ease;
+ transition:grid-template-rows var(--group-duration) var(--group-ease), opacity var(--group-duration) var(--group-ease);
 }
 .configurator-group .accordion-content-root[data-state="open"] > .accordion-content { grid-template-rows:1fr; opacity:1; }
 .configurator-group__body { min-height:0; overflow:hidden; padding-inline:4px; }
@@ -144,7 +144,7 @@
  line-height:1.6;
  letter-spacing:0;
  overflow-wrap:anywhere;
- transition:grid-template-rows var(--group-duration) var(--group-ease), opacity 230ms ease;
+ transition:grid-template-rows var(--group-duration) var(--group-ease), opacity var(--group-duration) var(--group-ease);
 }
 .configurator-group__summary > span { min-height:0; overflow:hidden; }
 .configurator-group__summary > span > span { display:block; padding-top:8px; }

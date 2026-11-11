@@ -2,15 +2,15 @@
 
 ## Ergonomie du configurateur et du comparatif
 
-La barre de navigation défile avec la page sur ordinateur et mobile. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
+La barre de navigation reste visible au défilement sur ordinateur et mobile. Son conteneur est transparent autour du menu arrondi. Le menu Forfaits présente les trois forfaits. Le lien « Comparer les forfaits » figure sur l’accueil et dans le pied de page. Le bouton « Afficher plus de détails » occupe toute la largeur sous le tableau.
 
-La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment progressivement, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
+La barre de prix mobile reste fixe. Sur ordinateur, un rappel compact reprend le montant quand l’estimation de la grande carte sort de l’écran pendant la configuration. Les rubriques s’ouvrent et se ferment en 620 ms, et les options fermées restent hors de la navigation clavier. Sur écran étroit, les boutons Vitrine, Business et Premium / 3D défilent jusqu’à la colonne correspondante.
 
 ## Retours sur les forfaits et l’accueil — 10 novembre 2026
 
 Vitrine affiche jusqu’à 3 pages, Business jusqu’à 6. Le nombre de pages de Premium / 3D est défini selon le projet. Le comparatif garde ses en-têtes visibles pendant le défilement. Sur mobile, le tableau défile dans sa zone avec les intitulés des lignes ancrés à gauche.
 
-Dans le configurateur public, une seule rubrique d’options peut être ouverte à la fois. Dès qu’une option est sélectionnée, le total de création affiche « Environ » et un montant calculé à partir des tarifs de base, y compris avec une option mensuelle ou sans plafond chiffré. Seul le forfait de base affiche « À partir de ». Un total non chiffrable affiche « Sur devis ». Les tarifs détaillés des options, le calcul des devis et les dossiers privés gardent leur format.
+Dans le configurateur public, une seule rubrique d’options peut être ouverte à la fois. Dès qu’une option est sélectionnée, le total de création affiche « Environ ». Il additionne le prix du forfait, le milieu des fourchettes des options ponctuelles et les tarifs affichés des options à prix fixe ou sans borne haute. Le suivi mensuel s’affiche séparément. Seul le forfait de base affiche « À partir de ». Un total non chiffrable affiche « Sur devis ». Les devis conservent leurs bornes.
 
 L’introduction de l’accueil est alignée à gauche. Les trois étapes ont leur bloc dédié, séparé des engagements de sécurité et de protection des données. La FAQ rejoint la navigation principale sur ordinateur. Les réponses sur les frais récurrents et le choix du forfait présentent leurs formules en liste.
 

@@ -8,18 +8,22 @@ const response = () => ({ pricing: structuredClone(defaultPricing) });
 const invalid = value => assert.throws(() => readCataloguePricing(value), error =>
   error instanceof ApiError && error.code === 'INVALID_CATALOGUE');
 
-test('the public configurator shows one amount and keeps the underlying quote bounds', () => {
+test('the public configurator estimates creation at the midpoint of each priced range', () => {
   const estimate = (offerId, extras) => quoteConfiguration(normalizeConfiguration({ offerId, extras }));
   const bounded = estimate('vitrine', ['booking', 'blog']);
-  assert.match(formatPublicCreationEstimate(bounded), /^Environ 1\s130\s€$/);
+  assert.match(formatPublicCreationEstimate(bounded), /^Environ 1\s175\s€$/);
+  assert.equal(bounded.totalCents, 113000);
   assert.equal(bounded.maximumTotalCents, 122000);
 
   const fixed = estimate('vitrine', ['blog']);
   assert.match(formatPublicCreationEstimate(fixed), /^Environ 1\s040\s€$/);
 
   const mixed = estimate('immersif', ['extra-scene-3d', 'custom-3d', 'hosting-monthly']);
-  assert.match(formatPublicCreationEstimate(mixed), /^Environ 2\s890\s€$/);
+  assert.match(formatPublicCreationEstimate(mixed), /^Environ 3\s065\s€$/);
   assert.equal(mixed.maximumTotalCents, null);
+
+  const pages = quoteConfiguration(normalizeConfiguration({ offerId: 'vitrine', extras: ['extra-pages'], extraPageCount: 3 }));
+  assert.match(formatPublicCreationEstimate(pages), /^Environ 1\s160\s€$/);
 
   const monthly = estimate('immersif', ['hosting-monthly']);
   assert.match(formatPublicCreationEstimate(monthly), /^Environ 2\s490\s€$/);

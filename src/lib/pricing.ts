@@ -33,11 +33,19 @@ function invalidCatalogue() {
   return new ApiError('Les tarifs reçus ne sont pas valides. Réessayez dans un instant.', 200, 'INVALID_CATALOGUE')
 }
 
-/** Show an estimate as soon as the visitor selects an option. */
+/** Estimate creation using the midpoint of each option with a published range. */
 export function formatPublicCreationEstimate(quote: Quote): string {
   const { totalCents, currency } = quote
   if (totalCents === null) return formatQuoteTotal(quote)
-  const hasOptions = quote.lines.some((line) => line.key !== 'base' && !line.included)
-  const prefix = hasOptions ? 'Environ' : 'À partir de'
-  return `${prefix} ${formatMoney(totalCents, currency)}`
+
+  const selectedOptions = quote.lines.filter((line) => line.key !== 'base' && !line.included)
+  if (selectedOptions.length === 0) return `À partir de ${formatMoney(totalCents, currency)}`
+
+  const estimateCents = selectedOptions.reduce((total, option) => {
+    const { billing, amountCents, maximumCents } = option
+    if (billing !== 'once' || amountCents == null || maximumCents == null) return total
+    return total + (maximumCents - amountCents) / 2
+  }, totalCents)
+
+  return `Environ ${formatMoney(Math.round(estimateCents), currency)}`
 }
