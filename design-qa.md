@@ -1,3 +1,11 @@
+# Rubrique retirée, CMS conservé — 11 novembre 2026
+
+Révision publique `5601f8b`, client `index-DunDBleH.js`. À 1 280 × 700 en HTTPS, le comparatif ouvert contient 15 lignes, sans la rubrique réalisations/tarifs/avis ni sa description. La ligne CMS reste comprise dans Business et Premium / 3D. Capture `../outputs/audit-ergonomie-2026-11-10/30-comparatif-cms-sans-rubriques-public.jpg`.
+
+Le configurateur Business présente jusqu’à six pages et le CMS sans promettre les rubriques retirées ; son prix de base reste à 1 490 €. Premium / 3D reste à 2 490 €. À 320 × 740, le comparatif contient les mêmes 15 lignes, conserve le CMS et ne déborde pas horizontalement. Aucune erreur de console observée. Aucun formulaire soumis ni option ajoutée. Brouillon public remis sur Vitrine de base à 890 €, viewport restauré et onglet fermé. Serveur local arrêté et ports 4173/4174 libres.
+
+TypeScript, build et 276 tests passent. Les régressions couvrent l’absence de galerie dans les nouvelles inclusions et devis, le retrait dans les brouillons publics sans perte des autres choix, ainsi que la lecture privée des anciennes configurations avec leur inclusion gratuite. Les nouveaux envois publics refusent cette ancienne option ; aucun instantané privé n’est réécrit.
+
 # Lignes du comparatif uniformisées — 11 novembre 2026
 
 Révision publique `c6e1a70`, client `index-C3a_SDUY.js`. À 1 280 × 700, toutes les cellules du corps du tableau ont le même fond `rgb(255, 255, 255)` et une bordure supérieure de 1 px. Une ligne réellement survolée conserve ce fond blanc. Un aller-retour de défilement garde l’en-tête à 96 px et le cadre sans clip. Capture publique `../outputs/audit-ergonomie-2026-11-10/29-tableau-fond-uniforme-public.jpg`.

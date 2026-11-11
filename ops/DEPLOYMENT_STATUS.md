@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `5601f8b5a60da388ecb5e9744bf485a8e191df56` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T064304Z-5601f8b5a60d`
+- Client `/assets/index-DunDBleH.js`, SHA-256 `a1789f6505206bed1bc9eb9e7d1d403e86197c7ec5ea7dbfe90af25af52ae0d0`
+- Archive vérifiée de 13 982 108 octets, SHA-256 `a8c9c943365af4ac0bcbfc2b5c95a1a703cdaea102d5d8b90dd03691bdde4379`
+
+La rubrique réalisations/tarifs/avis est retirée du comparatif, du texte Business et des inclusions des nouvelles configurations. CMS et prix inchangés ; anciens dossiers conservés. Contrôle HTTPS à 1 280 × 700 et 320 × 740, 276 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Localhost arrêté et ports 4173/4174 libres.
+
+## Lignes uniformes publiées le 11 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `c6e1a705bc7a5b02e2166acd8c2bf0f2e9f05879` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T063205Z-c6e1a705bc7a`
 - Client `/assets/index-C3a_SDUY.js`, SHA-256 `177f7bf1c79e64b19ed14eccaf958a5ef828b2ead851ed4f73846d3156ce2da9`

@@ -1,3 +1,9 @@
+# Retrait de la rubrique réalisations/tarifs/avis — 11 novembre 2026
+
+La ligne « Rubriques réalisations, tarifs et avis clients » et son explication sont retirées du comparatif. La présentation Business ne promet plus ces rubriques. Le CMS reste inclus dans Business et Premium / 3D.
+
+L’ancienne galerie n’est plus ajoutée aux nouvelles configurations et devis de ces offres. Les brouillons publics la retirent en conservant leurs autres choix ; les dossiers historiques qui la portaient gardent leur ancienne inclusion gratuite. Prix inchangés. Révision `5601f8b` publiée et contrôlée en HTTPS sur ordinateur et mobile. Les 276 tests passent. Localhost arrêté.
+
 # Fond uniforme du tableau publié le 11 novembre 2026
 
 Les fonds différents en début de groupe et le survol violet sont retirés du corps du comparatif. Toutes les cellules restent blanches et les séparateurs ont la même épaisseur fine. Les libellés de groupes sont conservés. Révision `c6e1a70` publiée et contrôlée en HTTPS sur ordinateur et mobile. Les 273 tests passent ; localhost arrêté.
