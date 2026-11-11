@@ -1,3 +1,7 @@
+# Défilement du comparatif corrigé le 10 novembre 2026
+
+Les lignes et bordures du comparatif disparaissent au bord inférieur de la navigation flottante. L’en-tête des forfaits suit le défilement et ses boutons restent accessibles. La révision `3d9cb35` est publiée et vérifiée en HTTPS à 1 280 et 320 px.
+
 # Navigation flottante, animation et estimation corrigées le 10 novembre 2026
 
 Le menu arrondi suit le défilement jusqu’au pied de page sur ordinateur et mobile, avec son conteneur transparent. L’ouverture et la fermeture des rubriques durent 620 ms. « Environ » additionne le milieu des fourchettes et le prix affiché pour les options fixes ou sans borne haute. Les onze choix de la capture donnent 3 115 € à la création et 69 €/mois. Révision `7dd2283` publiée et contrôlée en HTTPS à 320 et 1 280 px.

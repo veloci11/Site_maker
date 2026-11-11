@@ -1,3 +1,9 @@
+# Masquage du comparatif vérifié le 10 novembre 2026
+
+À 1 280 px sur l’accueil public, les lignes et bordures disparaissent au bord inférieur de la navigation. L’en-tête et les trois boutons restent visibles. À 320 px sur la page Forfaits, l’en-tête et la colonne Fonctions restent ancrés dans la zone du tableau, le raccourci Premium aligne la colonne et les lignes disparaissent sous le menu lors du défilement de la page.
+
+En local, le masquage a aussi été vérifié avec la réduction du mouvement et en forçant le repli prévu pour les navigateurs sans animation liée au défilement. Le clic sur Configurer ouvre le bon forfait. Les 270 tests passent.
+
 # Navigation, rubriques et estimation vérifiées le 10 novembre 2026
 
 Dans le navigateur intégré en HTTPS à 1 280 et 320 px, la navigation reste au sommet de la fenêtre jusqu’au pied de page. Le conteneur du menu est transparent et le tiroir mobile s’ouvre en bas de page. L’en-tête du comparatif s’ancre sous le menu à 1 280 px et dans sa zone de défilement à 320 px. Les détails restent sous le tableau. Aucune alerte ou erreur de console relevée pendant ces contrôles.

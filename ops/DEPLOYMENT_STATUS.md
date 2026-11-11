@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `3d9cb35abf8ec0cbeb54655a9f87eca840294cf6` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T005421Z-3d9cb35abf8e`
+- Client `/assets/index-BSYmK8F3.js`, SHA-256 `f14f4e8c6511177e07ff748bfde4d509351ad2f5488aeaa9359c255c12f30b90`
+- Archive vérifiée de 13 982 534 octets, SHA-256 `737270372c964fef5baeb4a30d7b46d584bcd8683525c77982beda98d2b64719`
+
+Le comparatif se masque au bord inférieur de la navigation transparente. Contrôles en HTTPS à 1 280 et 320 px, sauvegarde, santé de l’origine et catalogue vérifiés. Les 270 tests passent.
+
+## Navigation flottante, animation et estimation corrigées le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `7dd22835feb1a32db7042871e4327e8a95ed5368` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T004211Z-7dd22835feb1`
 - Client `/assets/index-VxwN5bQ0.js`, SHA-256 `b7824207f1d4e3a068a02d30e0a069c3640d75a6f7918559a66c707193acb495`
