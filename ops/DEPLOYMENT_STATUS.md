@@ -5,14 +5,14 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
-- Révision `dd28af28784e5f6e541cae516784e84417636ee0` sur `main`
-- Release `/home/mathis/site-maker/releases/20261111T081528Z-dd28af28784e`
-- Client `/assets/index-mPm5tT9H.js`, SHA-256 `f1bd77261bf3a5dee0b65471e02f215cc96c19000dff4b5e540e3c6970afb032`
-- Archive vérifiée de 13 983 962 octets, SHA-256 `8e01fa9be4bc13d865d051a2ef2eb0f114b77dc14178226d902f883475f60f57`
+- Révision `8db44f9befcfa9ea6eed7220b1f06ed18fdf6503` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T083108Z-8db44f9befcf`
+- Client `/assets/index-mj1vTA7w.js`, SHA-256 `218004213f23eeac961db827b058e22ff1d1daebbf825cad8940b4b07f1dd032`
+- Archive vérifiée de 13 983 647 octets, SHA-256 `32baeafa34c2d3639cdca20318b47dc11cc56528ea1ebd8bb239a593298d5d17`
 
-Les aperçus et grandes cartes partagent le même cadrage et les mêmes miroirs, y compris le vert en haut à droite de Business. Le raccord natif agrandit l’image proportionnellement et conserve les textes nets. Le sens des transitions Retour/Suivant est normalisé depuis la destination acceptée du routeur. La FAQ sur les textes et photos garde sa mention simple de reprise de l’ancien site.
+Les trois boutons affichent « Configurer ». Les aperçus haute densité, larges ou en interaction utilisent le master sans perte avec la petite source en secours. Les fichiers d’image restent identiques et la définition native du master reste 1536 × 1024 ; aucun gain 4K n’est annoncé. Les aperçus et grandes cartes gardent leur cadrage commun et les mêmes miroirs, y compris le vert en haut à droite de Business. Le sens des transitions Retour/Suivant reste normalisé. La FAQ sur les textes et photos garde sa mention simple de reprise de l’ancien site.
 
-Contrôles HTTPS à 1 280, 1 600 et 320 px, 284 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Captures `45-business-petite-carte-public.jpg`, `46-business-grande-carte-public.jpg`, `48-vitrine-mobile-public.jpg` et relevés `47-continuite-public.json`, `49-autres-cadrages-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Viewport réinitialisé, onglet fermé. Localhost arrêté, ports 4173/4174 libres.
+Contrôles HTTPS à 1 280 et 320 px, source HD vérifiée avec DPR 2 émulé à 1 600 px, 284 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Capture `52-configurer-hd-public.jpg`, relevés `53-qualite-hd-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Émulation DPR retirée, viewport réinitialisé, onglet fermé. Localhost arrêté, ports 4173/4174 libres.
 
 ## Agrandissement et FAQ détaillée publiés le 11 novembre
 

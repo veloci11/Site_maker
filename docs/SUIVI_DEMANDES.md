@@ -1,3 +1,9 @@
+# Netteté des aperçus et boutons — 11 novembre 2026
+
+Les trois boutons sous les offres affichent seulement « Configurer », avec le nom du forfait conservé pour les lecteurs d’écran. Les aperçus utilisent le master sans perte de 1536 px sur écran haute densité, sur les grandes cartes de présentation et au survol/focus/capture, au lieu de conserver systématiquement l’export compressé de 768 px. Le cadrage validé et les originaux restent inchangés. Le master de la grande carte reste limité à sa définition native ; le nouvel essai imagegen, sans gain de dimensions et moins fidèle, est écarté.
+
+Révision `8db44f9` publiée et vérifiée en HTTPS, sur ordinateur et mobile, avec contrôle de la source à DPR 2 émulé. Les 284 tests passent. Capture `../outputs/audit-ergonomie-2026-11-10/52-configurer-hd-public.jpg`. Localhost arrêté.
+
 # Même image pendant l’agrandissement — 11 novembre 2026
 
 Les trois forfaits partagent leur cadrage entre petite carte, bouton du comparatif et grande carte. Business garde notamment le vert en haut à droite. Correction du miroir ignoré sur la grande carte, des recadrages et du traitement de couleur divergents. L’image s’agrandit proportionnellement pendant la transition ; l’ajout d’options ne la redimensionne pas à largeur constante. Les originaux sont conservés. Les textes gardent leur propre calque net.
