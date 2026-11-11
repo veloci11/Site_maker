@@ -73,41 +73,64 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
   useLayoutEffect(() => {
     const scroller = scrollRef.current
     const navigation = document.querySelector('.public-header-wrap')
+    const table = scroller?.querySelector('table')
     const heading = scroller?.querySelector('thead')
-    if (!scroller || !navigation || !heading) return
+    if (!scroller || !navigation || !table || !heading) return
     const sections = Array.from(scroller.querySelectorAll('tbody'))
+    const desktop = window.matchMedia('(width > 760px)')
     const nativeClipping = CSS.supports('animation-timeline: view(block 1px 0px)') && CSS.supports('animation-range: exit-crossing')
+    let headingHeight = -1
+    let tableHeight = -1
+    let headingClip = ''
 
     const clipAtHeader = () => {
-      scroller.style.setProperty('--comparison-heading-height', `${heading.getBoundingClientRect().height}px`)
+      const headingBounds = heading.getBoundingClientRect()
+      const tableBounds = table.getBoundingClientRect()
+      if (headingHeight !== headingBounds.height) {
+        headingHeight = headingBounds.height
+        scroller.style.setProperty('--comparison-heading-height', `${headingHeight}px`)
+      }
+      if (tableHeight !== tableBounds.height) {
+        tableHeight = tableBounds.height
+        scroller.style.setProperty('--comparison-table-height', `${tableHeight}px`)
+      }
       if (nativeClipping) return
-      const overlap = navigation.getBoundingClientRect().bottom - scroller.getBoundingClientRect().top
-      const headingBottom = heading.getBoundingClientRect().bottom
-      const sectionClips = sections.map((section) => Math.max(0, Math.ceil(headingBottom - section.getBoundingClientRect().top)))
-      if (overlap > 0) scroller.style.setProperty('--comparison-clip-top', `${overlap}px`)
-      else scroller.style.removeProperty('--comparison-clip-top')
+
+      // Mobile uses its own scrollport; its opaque sticky heading masks the rows.
+      const navigationBottom = navigation.getBoundingClientRect().bottom
+      const overlap = desktop.matches ? Math.max(0, navigationBottom + headingHeight - tableBounds.bottom) : 0
+      const nextClip = overlap > 0 ? `inset(${overlap}px -1px -1px)` : 'none'
+      if (headingClip !== nextClip) {
+        headingClip = nextClip
+        heading.style.setProperty('--comparison-heading-clip', headingClip)
+      }
+      const sectionClips = sections.map((section) => desktop.matches
+        ? Math.max(0, Math.ceil(headingBounds.bottom - section.getBoundingClientRect().top))
+        : 0)
       sections.forEach((section, index) => section.style.setProperty('--comparison-rows-clip-top', `${sectionClips[index]}px`))
     }
 
     clipAtHeader()
     const observer = new ResizeObserver(clipAtHeader)
     observer.observe(scroller)
+    observer.observe(table)
     observer.observe(navigation)
     observer.observe(heading)
+    window.addEventListener('resize', clipAtHeader)
+    desktop.addEventListener('change', clipAtHeader)
     if (!nativeClipping) {
-      scroller.addEventListener('scroll', clipAtHeader, { passive: true })
       window.addEventListener('scroll', clipAtHeader, { passive: true })
-      window.addEventListener('resize', clipAtHeader)
       window.addEventListener('animationend', clipAtHeader)
     }
     return () => {
       observer.disconnect()
-      scroller.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('resize', clipAtHeader)
       window.removeEventListener('animationend', clipAtHeader)
+      desktop.removeEventListener('change', clipAtHeader)
       scroller.style.removeProperty('--comparison-heading-height')
-      scroller.style.removeProperty('--comparison-clip-top')
+      scroller.style.removeProperty('--comparison-table-height')
+      heading.style.removeProperty('--comparison-heading-clip')
       sections.forEach((section) => section.style.removeProperty('--comparison-rows-clip-top'))
     }
   }, [])

@@ -109,7 +109,7 @@
   transition-delay: 0s;
 }
 .comparison-detail-reveal__inner { min-height: 0; overflow: hidden; }
-.comparison-scroll { border: 1px solid var(--border); border-radius: 14px; overflow: clip; clip-path: inset(var(--comparison-clip-top, -5px) -5px -5px); }
+.comparison-scroll { border: 1px solid var(--border); border-radius: 14px; overflow: clip; }
 .comparison-scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 .comparison-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--background); font-size: 13px; }
 .comparison-table th { font-weight: 400; text-align: left; }
@@ -123,32 +123,12 @@
 .comparison-table tbody td,.comparison-table tbody th { padding: 13px 20px; border-top: 1px solid var(--border); vertical-align: middle; }
 .comparison-table tbody th { font-size: 13px; line-height: 1.4; }
 .comparison-table tbody td { text-align: center; border-left: 1px solid var(--border); }
-.comparison-section { clip-path: inset(var(--comparison-rows-clip-top, 0px) 0 0); }
 .comparison-section + .comparison-section tr:first-child > * { border-top-width: 2px; }
 .comparison-section tr:first-child > * { background: var(--paper); }
-@supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
-  .comparison-scroll,.comparison-section {
-    animation: comparison-scroll-clip linear forwards;
-    /* Keep clipping tied to the scroll position with reduced motion too. */
-    animation-duration: auto !important;
-    animation-range: exit-crossing;
-  }
-  .comparison-scroll { animation-timeline: view(block var(--public-header-height) 0px); }
-  .comparison-section {
-    animation-name: comparison-rows-clip;
-    animation-timeline: view(block calc(var(--public-header-height) + var(--comparison-heading-height)) 0px);
-  }
-  @keyframes comparison-scroll-clip {
-    from { clip-path: inset(0 -5px -5px); }
-    to { clip-path: inset(100% -5px -5px); }
-  }
-  @keyframes comparison-rows-clip {
-    from { clip-path: inset(0); }
-    to { clip-path: inset(100% 0 0); }
-  }
-}
 @media (width > 760px) {
-  .comparison-scroll { border-width: 0 0 1px; }
+  .comparison-scroll { border: 0; overflow: visible; }
+  /* Never clip the sticky element or an ancestor: only its non-sticky row. */
+  .comparison-table thead tr { clip-path: var(--comparison-heading-clip, none); }
   .comparison-table,.comparison-table thead { background: transparent; }
   .comparison-table thead th { border-top: 1px solid var(--border); }
   .comparison-table thead th:first-child { border-left: 1px solid var(--border); border-top-left-radius: 14px; }
@@ -156,8 +136,36 @@
   .comparison-table tbody tr > * { background: var(--background); }
   .comparison-table tbody th { border-left: 1px solid var(--border); }
   .comparison-table tbody td:last-child { border-right: 1px solid var(--border); }
+  .comparison-section:last-child tr:last-child > * { border-bottom: 1px solid var(--border); }
   .comparison-section:last-child tr:last-child th { border-bottom-left-radius: 14px; }
   .comparison-section:last-child tr:last-child td:last-child { border-bottom-right-radius: 14px; }
+  .comparison-section { clip-path: inset(var(--comparison-rows-clip-top, 0px) 0 0); }
+  @supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
+    .comparison-scroll {
+      view-timeline: --comparison-frame block;
+      view-timeline-inset: var(--public-header-height) 0px;
+    }
+    .comparison-table thead tr,.comparison-section {
+      animation: comparison-heading-clip linear forwards;
+      /* This is scroll masking, including when reduced motion is enabled. */
+      animation-duration: auto !important;
+      animation-range: exit-crossing;
+    }
+    .comparison-table thead tr { animation-timeline: --comparison-frame; }
+    .comparison-section {
+      animation-name: comparison-rows-clip;
+      animation-timeline: view(block calc(var(--public-header-height) + var(--comparison-heading-height)) 0px);
+    }
+    @keyframes comparison-heading-clip {
+      /* Keep the clip edge above the border until the table pushes its heading up. */
+      from { clip-path: inset(calc(var(--comparison-heading-height) - var(--comparison-table-height)) -1px -1px); }
+      to { clip-path: inset(var(--comparison-heading-height) -1px -1px); }
+    }
+    @keyframes comparison-rows-clip {
+      from { clip-path: inset(0); }
+      to { clip-path: inset(100% 0 0); }
+    }
+  }
 }
 @media (hover: hover) {
   .comparison-table tbody tr:hover > * { background: #f4f0f8; }
@@ -388,9 +396,6 @@
     table-layout: fixed;
   }
   .comparison-table thead { top: 0; }
-  @supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
-    .comparison-section { animation-timeline: view(block var(--comparison-heading-height) 0px); }
-  }
   .comparison-table thead th {
     padding: 10px;
     width: auto;

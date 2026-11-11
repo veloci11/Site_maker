@@ -7,13 +7,11 @@ type RouteLocation = { pathname: string; search?: string; hash?: string; key?: s
 type PlanRoute = { kind: 'plan'; id: PlanId }
 type ListingRoute = { kind: 'listing'; path: ListingPath; hasHash: boolean }
 type Route = PlanRoute | ListingRoute | null
-type Anchor = { selector: '.pricing-card' | '.comparison-cta'; viewportY: number }
-type ListingOrigin = { path: ListingPath; scroll: ScrollPosition; anchor: Anchor | null; section?: 'offers' }
+type ListingOrigin = { path: ListingPath; scroll: ScrollPosition }
 type Page = { route: Route; key?: string; scroll: ScrollPosition }
 
 let committedPage: Page | null = null
 let origin: ListingOrigin | null = null
-let activePlan: PlanId | null = null
 let prepared: { source: Page | null; target: Route; preserveScroll: boolean } | null = null
 let previousPageScroll: ScrollPosition | null = null
 let previousPageRect: PageRect | null = null
@@ -48,30 +46,6 @@ function scroll(): ScrollPosition {
   return { x: window.scrollX, y: window.scrollY }
 }
 
-function planAnchor(id: PlanId, selector: Anchor['selector']): HTMLElement | null {
-  return Array.from(document.querySelectorAll<HTMLAnchorElement>(`${selector}[href]`))
-    .find((element) => {
-      const target = hrefRoute(element.href)
-      return target?.kind === 'plan' && target.id === id
-    }) ?? null
-}
-
-function listingOrigin(path: ListingPath, id: PlanId, sourceElement?: HTMLElement | null): ListingOrigin {
-  // Header links return to the offers themselves, wherever the menu was opened.
-  if (sourceElement?.dataset.planReturn === 'offers')
-    return { path, scroll: scroll(), anchor: null, section: 'offers' }
-  const clicked = sourceElement?.closest<HTMLElement>('.pricing-card, .comparison-cta')
-  const element = clicked ?? planAnchor(id, '.pricing-card') ?? planAnchor(id, '.comparison-cta')
-  return {
-    path,
-    scroll: scroll(),
-    anchor: element ? {
-      selector: element.matches('.pricing-card') ? '.pricing-card' : '.comparison-cta',
-      viewportY: element.getBoundingClientRect().top,
-    } : null,
-  }
-}
-
 /** Call only once the router accepts a navigation, before its outgoing snapshot. */
 export function preparePlanNavigation(href: string, options: {
   preserveScroll?: boolean
@@ -86,7 +60,7 @@ export function preparePlanNavigation(href: string, options: {
   previousPageRect = rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null
 
   if (source?.route?.kind === 'listing' && target?.kind === 'plan')
-    origin = listingOrigin(source.route.path, target.id, options.sourceElement)
+    origin = { path: source.route.path, scroll: scroll() }
   else if (source?.route?.kind !== 'plan' || (target?.kind !== 'plan' && target?.kind !== 'listing'))
     origin = null
 }
@@ -122,9 +96,6 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
     origin = {
       path: source.route.path,
       scroll: source.scroll,
-      anchor: null,
-      section: source.key === acceptedIntent?.sourceKey && acceptedIntent?.sourceElement?.dataset.planReturn === 'offers'
-        ? 'offers' : undefined,
     }
   else if (source?.route?.kind !== 'plan' && target?.kind !== 'plan')
     origin = null
@@ -135,14 +106,11 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
   if (source?.route?.kind === 'plan' && target?.kind === 'listing'
     && origin?.path === target.path && (!navigation || !target.hasHash)) {
     let top = origin.scroll.y
-    if (origin.section === 'offers') {
-      const section = document.querySelector<HTMLElement>(target.path === '/' ? '#forfaits' : '.public-comparison')
-      const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
-      if (section) top = window.scrollY + section.getBoundingClientRect().top - headerHeight
-    } else if (origin.anchor && activePlan) {
-      const element = planAnchor(activePlan, origin.anchor.selector)
-      if (element) top = window.scrollY + element.getBoundingClientRect().top - origin.anchor.viewportY
-    }
+    // Every entry point returns to the offer overview, including cards clicked
+    // halfway down and comparison buttons. Never restore a partly hidden card.
+    const section = document.querySelector<HTMLElement>(target.path === '/' ? '#forfaits' : '.public-comparison')
+    const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
+    if (section) top = window.scrollY + section.getBoundingClientRect().top - headerHeight
     window.scrollTo({ left: origin.scroll.x, top: Math.max(0, top), behavior: 'instant' })
     restored = true
     restoredKey = location.key
@@ -151,15 +119,13 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
     restored = true
   }
 
-  if (target?.kind === 'plan') activePlan = target.id
-  else activePlan = null
   if (target?.kind !== 'plan') origin = null
   committedPage = { route: target, key: location.key, scroll: scroll() }
   prepared = null
   return restored
 }
 
-/** Home hash scrolling must not replace an exact restored card position. */
+/** Home hash scrolling must not replace the restored offer overview. */
 export function didRestorePlanScroll(location: Pick<RouteLocation, 'key'>): boolean {
   return restoredKey !== undefined && restoredKey === location.key
 }
