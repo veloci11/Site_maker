@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 10 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision `f2d2a2a798de86d8bce6a518f70d421bdac19537` sur `main`
+- Release `/home/mathis/site-maker/releases/20261111T043737Z-f2d2a2a798de`
+- Client `/assets/index-Cjg3QUFs.js`, SHA-256 `41a4687a8fa9a04d3cbe41137f442034354950134551effcad3a917940f769e1`
+- Archive vérifiée de 13 983 427 octets, SHA-256 `b5057586d699ad5b0d9f5bd5d7ad730b2fa149b8b20dd36672cf22d543bdf94f`
+
+Le lot `5c27c0f` a publié le masquage natif du comparatif et les réglages du configurateur. `f2d2a2a` ajoute le retour vers les offres depuis le menu et les nouveaux libellés. Sauvegardes, santé de l’origine et catalogue vérifiés aux deux publications. La version finale a été contrôlée en HTTPS à 320 et 1 280 px. Les 270 tests passent.
+
+## Cadre du comparatif repris le 10 novembre
+
+- URL `https://gilmathis.com/`
 - Révision `4271b3d8b399619796b539ebb669d24e2b3b0a4e` sur `main`
 - Release `/home/mathis/site-maker/releases/20261111T031622Z-4271b3d8b399`
 - Client `/assets/index-D6kgoMuN.js`, SHA-256 `b35d723b5b4bb7b30643d63dfcd2d0d1d4a4d38466d0a4f7ed7e7c60b1dad451`

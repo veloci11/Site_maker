@@ -1,3 +1,11 @@
+# Remontée du comparatif et derniers retours vérifiés le 10 novembre 2026
+
+Sur la version finale en HTTPS, le comparatif utilise les timelines natives et garde son en-tête à 96 px en remontant de 480 à 240 px de défilement. En local, les allers-retours à 240, 208 puis 240 px donnent le même masquage dans les deux sens. Les détails, la réduction du mouvement et le défilement interne mobile ont été contrôlés.
+
+Dans le configurateur public à 1 280 px, les six choix de la capture affichent 1 820 € et 39 €/mois. La carte se termine à 674,875 px et le pied de page commence à 698,875 px. Le menu est sorti de l’écran. La page garde sa hauteur et les rubriques utilisent 372 ms à l’ouverture comme à la fermeture. Le brouillon de test, initialement vide, a été remis à zéro.
+
+Un choix Business depuis le menu en bas de l’accueil puis Retour restaure le titre des offres sous le menu. Le retour mobile et la réduction du mouvement ont également été contrôlés en local. À 320 px en HTTPS, la première inclusion Premium tient sur une ligne et le lien de méthode affiche « Les étapes du projet ». Les 270 tests passent.
+
 # Jonctions du cadre vérifiées le 10 novembre 2026
 
 Le défilement réel dans le navigateur intégré a été contrôlé à l’entrée du comparatif, au milieu, près de la dernière ligne et lors de la remontée. À 1 280 px en HTTPS, les coins supérieurs suivent les cellules de l’en-tête à 96 px pendant la lecture, puis leur mouvement à la sortie du tableau. Les colonnes de l’en-tête et du corps sont alignées. La bordure basse reste visible à la dernière ligne. Les détails ouverts suivent les mêmes limites.

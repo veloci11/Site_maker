@@ -1,3 +1,9 @@
+# Défilement, configurateur et libellés publiés le 10 novembre 2026
+
+Le masquage du comparatif suit le défilement natif dans les navigateurs compatibles pour garder sa bordure supérieure à la remontée. La carte du configurateur suit 128 px plus bas et s’arrête à 24 px du pied de page. Le menu défile avec les pages de configuration. La durée des rubriques d’options passe à 372 ms.
+
+Après un forfait choisi dans le menu de l’accueil, Retour revient à la section des offres. Le menu mobile se ferme au choix du forfait. Le lien et le titre de la méthode affichent « Les étapes du projet ». La première inclusion Premium affiche « Business inclus · pages à définir » sur une ligne. Version finale `f2d2a2a` publiée et contrôlée en HTTPS.
+
 # Reprise du cadre du comparatif le 10 novembre 2026
 
 Le contour supérieur est porté directement par les cellules de l’en-tête. Le cadre se ferme à la dernière ligne pendant le passage vers la FAQ. Le défilement a été contrôlé dans les deux sens, avec les détails ouverts, sur ordinateur et mobile. Révision `4271b3d` publiée et vérifiée en HTTPS.
