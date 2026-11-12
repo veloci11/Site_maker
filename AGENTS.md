@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Dimensions de Changer et dépliage du menu — 11 novembre 2026
+
+Le bouton Changer et sa copie décorative native partagent une hauteur explicite de 32 px et une hauteur de ligne de 18 px. Ils gardent la même largeur, sans rétrécissement flex ni retour à la ligne. Ne pas laisser la différence de hauteur de ligne par défaut entre `span` et `button` provoquer un changement de taille à la fin du raccord de forfait.
+
+Animer le panneau lui-même en ouverture (240 ms) et fermeture (200 ms), avec dévoilement vertical et légère translation, sans mettre le texte à l’échelle. Radix conserve le contenu le temps de sa vraie animation de sortie. Si le menu est placé au-dessus du déclencheur, inverser le sens de dévoilement. Le déclencheur gère son propre basculement ; empêcher que le menu sortant traite un clic sur ce déclencheur comme une interaction extérieure et annule une réouverture rapide. Préserver `modal={false}`, les commandes clavier et le mouvement réduit. Ne pas retarder la navigation pour attendre une animation.
+
 ## Fonctionnalités et menu Changer — 11 novembre 2026
 
 Employer « fonctionnalité(s) » dans toute la copie visible pour les ajouts au forfait : résumé, compteur, réinitialisation, retour au choix, formulaire, FAQ, métadonnées, espace client et erreurs serveur. Reformuler naturellement les anciens « en option ». La catégorie auparavant appelée « Vos fonctionnalités » devient « Services en ligne » (rendez-vous, espace membres, paiements et boutique). Les prix et périmètres restent explicites. Conserver les identifiants techniques, routes, contrats API et données historiques.

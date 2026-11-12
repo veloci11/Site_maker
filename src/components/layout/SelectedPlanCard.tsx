@@ -28,6 +28,7 @@ export function SelectedPlanCard({
   onOfferChange,
 }: SelectedPlanCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const changeButtonRef = useRef<HTMLButtonElement>(null)
   const variant = 'variant' in plan ? plan.variant : plan.id
   const href = 'slug' in plan ? `/forfaits/${plan.slug}` : plan.href
   const surfaceTransition = usePlanTransition(variant, href)
@@ -67,7 +68,7 @@ export function SelectedPlanCard({
           </div>
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
-              <button type="button" className="selected-plan__change" disabled={disabled}>
+              <button ref={changeButtonRef} type="button" className="selected-plan__change" disabled={disabled}>
                 Changer <ChevronDown size={14} aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
@@ -75,6 +76,12 @@ export function SelectedPlanCard({
               align="end"
               className="public-offers-menu selected-plan-menu"
               aria-label="Changer de forfait"
+              onInteractOutside={(event) => {
+                const target = event.detail.originalEvent.target
+                // The trigger handles its own toggle. A departing menu stays
+                // mounted for its exit and must not dismiss a rapid reopening.
+                if (target instanceof Node && changeButtonRef.current?.contains(target)) event.preventDefault()
+              }}
             >
               {publicOffers.map((item) => {
                 const className = `public-offer-link pricing-card--${item.variant}`
