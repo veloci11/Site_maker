@@ -5,12 +5,17 @@ Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/` ; le domaine `pixelito.dev` n'est pas configuré dans cette livraison.
-- Révision applicative `4a4c026153dab705d6f0a961de8563b267e0cf4c` sur `main`
-- Release `/home/mathis/site-maker/releases/20261112T230705Z-4a4c026153da`
-- Client `/assets/index-Jy4dojsB.js`, SHA-256 `2f438c0729235d8098f6601a0e91fd6718993b3b252341ba52e5de02c049240f`
-- Archive vérifiée de 14 931 350 octets, SHA-256 `f8ce92fd74c0fe0588fb7554b348304e289d69fea3eb35aa00b4dfa5fe5bf91d`
+- Révision applicative `bb5dd070c84aca728ef68d744cbfc39c51b965a8` sur `main`
+- Release `/home/mathis/site-maker/releases/20261112T231505Z-bb5dd070c84a`
+- Client `/assets/index-Br8ZqEmO.js`, SHA-256 `b0fccdd1b33bbac16ae464d4e6e3225ba6ab2582fe060ffa266d0485cd2cbcd0`
+- Archive vérifiée de 14 964 062 octets, SHA-256 `7d78a6325d88ccc636df48111003baf10a653dc891e4779ada3231e6a41ffc3c`
 
-Le nom pixelito remplace studio dans la marque et les métadonnées. Le logo demandé est affiché dans la barre publique pour essai, avec l'image source inchangée ; le pied garde le mot-symbole. Vérification visuelle locale et HTTPS en bureau et à 320 px, menu mobile contrôlé localement ; 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés lors des deux bascules. Localhost arrêté, Tailscale remis dans son état arrêté initial.
+Le logo choisi avec le personnage orange remplace le précédent dans la barre publique ; l'image source est conservée à l'identique. Le personnage et sa traînée sont animés séparément du texte ; un dessin vectoriel léger reprend le personnage pendant les chargements des routes et du formulaire. Animation désactivée si mouvement réduit demandé. Rendu et animation contrôlés en local et en HTTPS sur ordinateur et mobile ; chargement ralenti vérifié localement puis formulaire affiché sans envoi. Les 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés. Localhost arrêté, Tailscale remis dans son état arrêté initial.
+
+## Version précédente — premier essai de logo pixelito
+
+- Révision applicative `4a4c026153dab705d6f0a961de8563b267e0cf4c`
+- Release `/home/mathis/site-maker/releases/20261112T230705Z-4a4c026153da`
 
 ## Version précédente — Changer et animation du menu
 

@@ -1,3 +1,7 @@
+# Pixelito animé — 12 novembre 2026
+
+Révision publique `bb5dd07`. Le logo orange choisi est affiché dans la barre publique ; son image source n'est pas modifiée. Le personnage monte et descend légèrement et sa traînée varie d'opacité sans déplacer le nom. Une version vectorielle légère est animée dans les chargements des routes et du formulaire. La préférence de mouvement réduit arrête les animations. Rendu public contrôlé sur ordinateur et à 320 px ; aucun débordement de la barre locale aux largeurs 320, 375, 380, 381, 390, 420, 421 et 500 px. Chargement ralenti du formulaire vérifié localement, puis formulaire affiché sans envoi. Build et 284 tests passent ; sauvegarde privée, catalogue et santé contrôlés. Localhost arrêté, Tailscale remis à son état initial.
+
 # Pixelito et essai de logo — 12 novembre 2026
 
 Le nom pixelito remplace l'ancienne marque dans les éléments publics, l'espace client et les métadonnées. Le logo sélectionné est affiché dans la barre de navigation publique pour essai ; le PNG source est conservé à l'identique, avec cadrage CSS. Lien d'accueil accessible conservé, rendu et menu vérifiés localement et rendu vérifié en HTTPS sur ordinateur et à 320 px. Le pied et le menu mobile interne conservent le mot-symbole texte.
