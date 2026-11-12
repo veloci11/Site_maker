@@ -5,16 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
-- Révision `b874327bb0b150e436e9fc4c55eb137f53316d66` sur `main`
-- Release `/home/mathis/site-maker/releases/20261112T042546Z-b874327bb0b1`
-- Client `/assets/index-CPErLZzs.js`, SHA-256 `79701f32a4b79863134e0737fb083b5c83d44452141247da09101a063c28c36a`
-- Archive vérifiée de 13 983 797 octets, SHA-256 `f47a5ddfaf9f2250e64c6153c0c918eba936b78929b74dbfae47891ae905314e`
+- Révision `1c5d757689656eefc6a2658d227830765bde9b38` sur `main`
+- Release `/home/mathis/site-maker/releases/20261112T054946Z-1c5d75768965`
+- Client `/assets/index-72Jt91dI.js`, SHA-256 `6cd1c8930c94a31a965068ba181fb386d9c25f942c281365fff2f08c4a8ccdaa`
+- Archive vérifiée de 13 983 935 octets, SHA-256 `88a8ddca895e23e262f403e83bdfa1af0d18babd5e58e68e506a9fb83e63bbb5`
 
-La copie visible utilise « fonctionnalités » pour les ajouts au forfait, y compris le résumé, le formulaire, les FAQ, les métadonnées et les erreurs. La rubrique du configurateur devient « Services en ligne ». Changer ouvre un menu non modal, avec fond/bordure et chevron animés, sans verrouiller le défilement ni déplacer la page. Les prix, images, contrats et routes restent identiques.
+Changer et sa copie native mesurent désormais tous deux 32 px de haut avec la même hauteur de ligne de 18 px. Le panneau se déplie en 240 ms et se replie en 200 ms, sans mettre le texte à l’échelle. Le déclencheur ne subit plus une fermeture concurrente par le menu sortant lors d’une réouverture rapide. Le menu reste non modal. Le vocabulaire « fonctionnalités » et la rubrique « Services en ligne » sont conservés.
 
-Contrôles HTTPS à 1 280 et 320 px, 284 tests passants. Avant/ouvert/fermé, mêmes positions et largeurs du header, de la carte et des choix ; aucune marge ni verrouillage ajouté au body. Sauvegarde privée, santé et catalogue vérifiés. Capture `55-fonctionnalites-changer-public.jpg`, relevés `54-changer-mesures-local.json` et `56-fonctionnalites-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Préférence de mouvement réduit retirée après test, viewport réinitialisé, onglets fermés. Localhost arrêté, ports 4173/4174 libres.
+Contrôles HTTPS à 1 280 et 320 px, 284 tests passants. Mesures pendant et après l’arrivée sur Business : bouton et copie 88,875 × 32 px. Même constat sur mobile et lors du choix de Premium. Sept échantillons publics de dépliage et neuf de repli confirment la vraie animation et le démontage en fin de sortie. Aucun verrouillage du body. Sauvegarde privée, santé et catalogue vérifiés. Capture `59-changer-menu-anime-public.jpg`, relevés `57-changer-animation-local.json` et `58-changer-animation-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Mouvement réduit retiré après test, viewport réinitialisé, onglet fermé. Localhost arrêté, ports 4173/4174 libres.
 
-La première tentative du 12 novembre UTC n’a pas atteint SSH : Tailscale était arrêté sur le poste. Reconnexion avec les paramètres existants (`accept-routes` conservé), puis publication réussie. Tailscale est remis à l’état arrêté initial après livraison ; le tunnel public de l’instance reste actif. Les noms de releases emploient UTC ; cette livraison correspond au 11 novembre au soir dans le fuseau du client.
+Tailscale était arrêté sur le poste. Connexion temporairement reprise avec les paramètres existants (`accept-routes` conservé), publication puis état arrêté initial restauré. Le tunnel public reste actif. Les noms de releases emploient UTC ; cette livraison correspond au 11 novembre au soir dans le fuseau du client.
 
 ## Agrandissement et FAQ détaillée publiés le 11 novembre
 

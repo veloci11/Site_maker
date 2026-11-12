@@ -1,3 +1,9 @@
+# Changer : taille fixe et menu animé — 11 novembre 2026
+
+La copie du bouton affichée pendant la transition était environ 3 px plus haute que le vrai bouton. Les deux mesurent désormais 88,875 × 32 px avec la même hauteur de ligne, y compris après le passage sur un autre forfait et sur mobile. Le panneau s’anime réellement à l’ouverture et à la fermeture (240/200 ms), sans étirer son texte. Le sens s’inverse quand le menu est placé au-dessus du bouton.
+
+La réouverture rapide est protégée contre le menu encore en sortie. Clics rapides, Escape, clic extérieur, choix de forfait et mouvement réduit vérifiés. Révision `1c5d757` publiée et contrôlée en HTTPS. Les 284 tests passent. Capture `../outputs/audit-ergonomie-2026-11-10/59-changer-menu-anime-public.jpg`, mesures 57 et 58. Localhost arrêté.
+
 # Fonctionnalités et menu Changer — 11 novembre 2026
 
 La copie visible parle de « fonctionnalités » : résumé, compteur, boutons, formulaire, FAQ, titres, SEO, espace client et erreurs. La catégorie auparavant « Vos fonctionnalités » devient « Services en ligne ». Les anciens « en option » sont reformulés, sans toucher aux prix ou périmètres. Les identifiants et routes techniques sont conservés.
