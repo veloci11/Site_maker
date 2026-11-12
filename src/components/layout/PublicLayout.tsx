@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
-import pixelitoNavigationLogo from '../../assets/pixelito-logo-navigation.png'
+import { PixelitoLoading, PixelitoLogo } from './PixelitoLogo'
 import { publicOffers } from '../../../shared/catalog'
 import {
   Sheet,
@@ -51,7 +51,7 @@ export function PublicHeader() {
     <div className="public-header-wrap">
       <header className="site-header">
         <Link className="wordmark navigation-logo" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
-          <img src={pixelitoNavigationLogo} width="2172" height="724" alt="" />
+          <PixelitoLogo />
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
@@ -182,11 +182,7 @@ export function PublicLayout() {
       <PublicHeader />
       <main id="main-content" className="public-main" tabIndex={-1}>
         <Suspense
-          fallback={
-            <div className="loading-state" role="status">
-              Chargement…
-            </div>
-          }
+          fallback={<PixelitoLoading />}
         >
           <PageTransition>
             <Outlet />

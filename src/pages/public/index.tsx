@@ -16,6 +16,7 @@ import {
 } from '../../../shared/catalog'
 import { getPublicOptions } from '../../../shared/offer-options'
 import { PricingCard } from '../../components/layout/PricingCard'
+import { PixelitoLoading } from '../../components/layout/PixelitoLogo'
 import { MotionLink as Link, canAnimatePlanNavigation } from '../../components/layout/plan-transition'
 import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
@@ -493,7 +494,7 @@ export function FaqPage() {
 
 function InquiryForm() {
   return (
-    <Suspense fallback={<p role="status">Chargement du formulaire…</p>}>
+    <Suspense fallback={<PixelitoLoading label="Chargement du formulaire…" />}>
       <ProjectBriefForm requestType="contact" configuration={null} />
     </Suspense>
   )

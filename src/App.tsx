@@ -23,6 +23,7 @@ import { AuthProvider, useAuth } from './lib/auth'
 import { ProjectProvider } from './lib/project'
 import { RouteMetadata } from './components/layout/RouteMetadata'
 import { PageRecovery } from './components/layout/PageRecovery'
+import { PixelitoLoading } from './components/layout/PixelitoLogo'
 import { rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
 import { discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
 
@@ -148,7 +149,7 @@ function ApplicationShell() {
         <ProjectProvider>
           <ScrollTop />
           <RouteMetadata />
-          <Suspense fallback={<div className="loading-state loading-state--page" role="status">Chargement…</div>}>
+          <Suspense fallback={<PixelitoLoading page />}>
             <Outlet />
           </Suspense>
         </ProjectProvider>
@@ -161,7 +162,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route
     element={<ApplicationShell />}
     errorElement={<PageRecovery />}
-    hydrateFallbackElement={<div className="loading-state loading-state--page" role="status">Chargement…</div>}
+    hydrateFallbackElement={<PixelitoLoading page />}
   >
     <Route element={<PublicLayout />}>
       <Route index lazy={loadPublicPage('HomePage')} />
