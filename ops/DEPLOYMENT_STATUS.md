@@ -5,14 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
-- Révision `8db44f9befcfa9ea6eed7220b1f06ed18fdf6503` sur `main`
-- Release `/home/mathis/site-maker/releases/20261111T083108Z-8db44f9befcf`
-- Client `/assets/index-mj1vTA7w.js`, SHA-256 `218004213f23eeac961db827b058e22ff1d1daebbf825cad8940b4b07f1dd032`
-- Archive vérifiée de 13 983 647 octets, SHA-256 `32baeafa34c2d3639cdca20318b47dc11cc56528ea1ebd8bb239a593298d5d17`
+- Révision `b874327bb0b150e436e9fc4c55eb137f53316d66` sur `main`
+- Release `/home/mathis/site-maker/releases/20261112T042546Z-b874327bb0b1`
+- Client `/assets/index-CPErLZzs.js`, SHA-256 `79701f32a4b79863134e0737fb083b5c83d44452141247da09101a063c28c36a`
+- Archive vérifiée de 13 983 797 octets, SHA-256 `f47a5ddfaf9f2250e64c6153c0c918eba936b78929b74dbfae47891ae905314e`
 
-Les trois boutons affichent « Configurer ». Les aperçus haute densité, larges ou en interaction utilisent le master sans perte avec la petite source en secours. Les fichiers d’image restent identiques et la définition native du master reste 1536 × 1024 ; aucun gain 4K n’est annoncé. Les aperçus et grandes cartes gardent leur cadrage commun et les mêmes miroirs, y compris le vert en haut à droite de Business. Le sens des transitions Retour/Suivant reste normalisé. La FAQ sur les textes et photos garde sa mention simple de reprise de l’ancien site.
+La copie visible utilise « fonctionnalités » pour les ajouts au forfait, y compris le résumé, le formulaire, les FAQ, les métadonnées et les erreurs. La rubrique du configurateur devient « Services en ligne ». Changer ouvre un menu non modal, avec fond/bordure et chevron animés, sans verrouiller le défilement ni déplacer la page. Les prix, images, contrats et routes restent identiques.
 
-Contrôles HTTPS à 1 280 et 320 px, source HD vérifiée avec DPR 2 émulé à 1 600 px, 284 tests passants. Sauvegarde privée, santé et catalogue vérifiés. Capture `52-configurer-hd-public.jpg`, relevés `53-qualite-hd-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Émulation DPR retirée, viewport réinitialisé, onglet fermé. Localhost arrêté, ports 4173/4174 libres.
+Contrôles HTTPS à 1 280 et 320 px, 284 tests passants. Avant/ouvert/fermé, mêmes positions et largeurs du header, de la carte et des choix ; aucune marge ni verrouillage ajouté au body. Sauvegarde privée, santé et catalogue vérifiés. Capture `55-fonctionnalites-changer-public.jpg`, relevés `54-changer-mesures-local.json` et `56-fonctionnalites-public.json` dans `../outputs/audit-ergonomie-2026-11-10/`. Préférence de mouvement réduit retirée après test, viewport réinitialisé, onglets fermés. Localhost arrêté, ports 4173/4174 libres.
+
+La première tentative du 12 novembre UTC n’a pas atteint SSH : Tailscale était arrêté sur le poste. Reconnexion avec les paramètres existants (`accept-routes` conservé), puis publication réussie. Tailscale est remis à l’état arrêté initial après livraison ; le tunnel public de l’instance reste actif. Les noms de releases emploient UTC ; cette livraison correspond au 11 novembre au soir dans le fuseau du client.
 
 ## Agrandissement et FAQ détaillée publiés le 11 novembre
 

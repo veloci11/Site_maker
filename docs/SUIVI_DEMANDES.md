@@ -1,3 +1,11 @@
+# Fonctionnalités et menu Changer — 11 novembre 2026
+
+La copie visible parle de « fonctionnalités » : résumé, compteur, boutons, formulaire, FAQ, titres, SEO, espace client et erreurs. La catégorie auparavant « Vos fonctionnalités » devient « Services en ligne ». Les anciens « en option » sont reformulés, sans toucher aux prix ou périmètres. Les identifiants et routes techniques sont conservés.
+
+Le décalage à l’ouverture de Changer provenait du verrouillage du défilement et de sa compensation de 15 px. Le menu non modal garde les positions et largeurs identiques à l’ouverture et à la fermeture, vérifiées sur ordinateur et mobile. Le fond/la bordure s’animent en 180 ms et le chevron en 220 ms, avec respect du mouvement réduit. Escape et le choix de forfait fonctionnent.
+
+Révision `b874327` publiée et contrôlée en HTTPS. Les 284 tests passent. Capture `../outputs/audit-ergonomie-2026-11-10/55-fonctionnalites-changer-public.jpg`, mesures 54 et 56. Localhost arrêté après validation.
+
 # Netteté des aperçus et boutons — 11 novembre 2026
 
 Les trois boutons sous les offres affichent seulement « Configurer », avec le nom du forfait conservé pour les lecteurs d’écran. Les aperçus utilisent le master sans perte de 1536 px sur écran haute densité, sur les grandes cartes de présentation et au survol/focus/capture, au lieu de conserver systématiquement l’export compressé de 768 px. Le cadrage validé et les originaux restent inchangés. Le master de la grande carte reste limité à sa définition native ; le nouvel essai imagegen, sans gain de dimensions et moins fidèle, est écarté.
