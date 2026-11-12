@@ -20,7 +20,7 @@ type ContentTab = 'activite' | 'textes' | 'fichiers'
 
 function Loading({ label = 'Ouverture de votre projet…' }: { label?: string }) { return <div className="loading-state" role="status"><Loader2 className="spin" size={22} aria-hidden="true" /><span>{label}</span></div> }
 function Notice({ children, error = false }: { children?: string | null; error?: boolean }) { if (!children) return null; return <p className={error ? 'field-error portal-notice' : 'portal-notice'} role={error ? 'alert' : 'status'}>{!error ? <Check size={17} aria-hidden="true" /> : null}{children}</p> }
-function EmptyProject() { return <section className="portal-empty-project"><p className="eyebrow">Mon projet</p><h1 className="page-heading">Tout commence par votre site.</h1><p className="page-subtitle">Choisissez une forfait et ajoutez les options utiles. Vous retrouverez votre sélection ici.</p><Button asChild><Link to="/configurateur">Composer mon site <ArrowRight size={17} aria-hidden="true" /></Link></Button></section> }
+function EmptyProject() { return <section className="portal-empty-project"><p className="eyebrow">Mon projet</p><h1 className="page-heading">Tout commence par votre site.</h1><p className="page-subtitle">Choisissez un forfait et ajoutez les fonctionnalités utiles. Vous retrouverez votre sélection ici.</p><Button asChild><Link to="/configurateur">Composer mon site <ArrowRight size={17} aria-hidden="true" /></Link></Button></section> }
 function ProjectError({ error, retry }: { error: string; retry: () => void }) { return <div className="empty-state"><p className="field-error" role="alert">{error}</p><Button variant="outline" onClick={retry}>Réessayer</Button></div> }
 function ProjectSelect() {
   const { projects, project, selectProject } = useProject()

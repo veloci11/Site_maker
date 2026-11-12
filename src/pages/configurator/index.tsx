@@ -357,7 +357,7 @@ export function ConfiguratorPage() {
           >
             <section
               className="selected-plan__selection"
-              aria-label="Options choisies"
+              aria-label="Fonctionnalités choisies"
               aria-hidden={selected.length === 0}
               inert={selected.length === 0}
               data-open={selected.length > 0}
@@ -365,10 +365,10 @@ export function ConfiguratorPage() {
               <div className="selected-plan__selection-clip">
                 <div className="selected-plan__selection-content">
                   <div className="selected-plan__selection-heading">
-                    <p>Options choisies</p>
+                    <p>Fonctionnalités choisies</p>
                     {!editingId && stage === 'options' ? (
                       <button type="button" className="selected-plan__reset" onClick={resetOptions} disabled={sending}>
-                        Réinitialiser les options
+                        Réinitialiser les fonctionnalités
                       </button>
                     ) : null}
                   </div>
@@ -428,7 +428,7 @@ export function ConfiguratorPage() {
               <small key={selected.length}>
                 {selected.length === 0
                   ? 'Forfait de base'
-                  : `${selected.length} option${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
+                  : `${selected.length} fonctionnalité${selected.length > 1 ? 's' : ''} sélectionnée${selected.length > 1 ? 's' : ''}`}
               </small>
             </div>
             {!editingId ? <p className="selected-plan__estimate">{planEstimateNote}</p> : null}
@@ -445,7 +445,7 @@ export function ConfiguratorPage() {
                 disabled={sending}
               >
                 <ArrowLeft size={17} aria-hidden="true" />
-                Modifier mes options
+                Modifier mes fonctionnalités
               </button>
             ) : editingId ? (
               <button
@@ -642,13 +642,13 @@ export function ConfiguratorPage() {
                     disabled={sending}
                   >
                     <ArrowLeft size={13} aria-hidden="true" />
-                    Mes options
+                    Mes fonctionnalités
                   </button>
                 </div>
                 <h2 ref={contactHeading} tabIndex={-1}>
                   Envoyez votre demande.
                 </h2>
-                <p>Laissez vos coordonnées et quelques mots sur votre projet. Votre forfait et vos options sont joints à la demande.</p>
+                <p>Laissez vos coordonnées et quelques mots sur votre projet. Votre forfait et vos fonctionnalités sont joints à la demande.</p>
               </header>
               <ProjectBriefForm
                 key={offer.id}

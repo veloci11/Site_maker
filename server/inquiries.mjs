@@ -101,8 +101,8 @@ function validate(input) {
     else {
       try {
         configuration = normalizeConfiguration(input.configuration);
-        if (getUnavailableOptions(configuration).length) fields.configuration = 'Certaines options ne correspondent pas à ce forfait. Vérifiez votre configuration.';
-      } catch { fields.configuration = 'Vérifiez le forfait et les options choisies.'; }
+        if (getUnavailableOptions(configuration).length) fields.configuration = 'Certaines fonctionnalités ne correspondent pas à ce forfait. Vérifiez votre configuration.';
+      } catch { fields.configuration = 'Vérifiez le forfait et les fonctionnalités choisies.'; }
     }
   } else if (input.configuration !== null) {
     fields.configuration = 'Cette demande doit être envoyée sans configuration de forfait.';

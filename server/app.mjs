@@ -36,7 +36,7 @@ export function createApp() {
   app.get('/api/catalogue', (_req, res) => res.json({ offers: publicOffers, options: optionDefinitions, pricing: getPricing(), paymentAvailable: getPaymentAvailability().enabled }));
   app.post('/api/quote', (req, res) => {
     try { res.json({ quote: quoteConfiguration(normalizeConfiguration(req.body?.configuration), getPricing()) }); }
-    catch { res.status(400).json({ error: 'Vérifiez le forfait et les options choisies.' }); }
+    catch { res.status(400).json({ error: 'Vérifiez le forfait et les fonctionnalités choisies.' }); }
   });
   app.use('/api/auth', authRouter);
   app.use('/api/projects', createProjectsRouter({ requireAuth }));

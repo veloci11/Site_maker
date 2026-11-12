@@ -55,7 +55,7 @@ export function SelectedPlanCard({
       <span className="selected-plan__surface" style={surfaceTransition} aria-hidden="true">
         <PlanTexture extend={'slug' in plan} />
       </span>
-      <div className="selected-plan__content" role="region" aria-label="Détails du forfait et options choisies">
+      <div className="selected-plan__content" role="region" aria-label="Détails du forfait et fonctionnalités choisies">
         <div className="selected-plan__heading-frame">
           <div className="selected-plan__heading" style={headingTransition}>
             <span className="selected-plan__eyebrow">Votre forfait</span>
@@ -65,7 +65,7 @@ export function SelectedPlanCard({
               Changer <ChevronDown size={14} aria-hidden="true" />
             </span>
           </div>
-          <DropdownMenu>
+          <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
               <button type="button" className="selected-plan__change" disabled={disabled}>
                 Changer <ChevronDown size={14} aria-hidden="true" />

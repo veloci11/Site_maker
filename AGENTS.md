@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Fonctionnalités et menu Changer — 11 novembre 2026
+
+Employer « fonctionnalité(s) » dans toute la copie visible pour les ajouts au forfait : résumé, compteur, réinitialisation, retour au choix, formulaire, FAQ, métadonnées, espace client et erreurs serveur. Reformuler naturellement les anciens « en option ». La catégorie auparavant appelée « Vos fonctionnalités » devient « Services en ligne » (rendez-vous, espace membres, paiements et boutique). Les prix et périmètres restent explicites. Conserver les identifiants techniques, routes, contrats API et données historiques.
+
+Le menu Changer de la carte utilise `modal={false}` : son ouverture ne doit pas ajouter de verrouillage du défilement ni de marge de compensation et déplacer le contenu. Garder le clavier/Escape et le choix de forfait fonctionnels. Animer le fond/la bordure du bouton en 180 ms et la rotation du chevron en 220 ms, sans modifier ses dimensions ; désactiver ces transitions avec la préférence de mouvement réduit.
+
 ## Netteté et libellés des cartes — 11 novembre 2026
 
 Les trois boutons sous les forfaits affichent seulement « Configurer ». Le nom accessible du lien garde le forfait et son prix pour distinguer les destinations.

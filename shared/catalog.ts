@@ -290,7 +290,7 @@ export const faqs: readonly {
   {
     question: "Qui prépare les textes et les photos ?",
     answer:
-      "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Une option de reprise de votre ancien site est également disponible.",
+      "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Vous pouvez également demander la reprise de votre ancien site.",
     category: "Contenus",
   },
   {
@@ -320,7 +320,7 @@ export const faqs: readonly {
   {
     question: "J’ai déjà un site : peut-on reprendre mes contenus ?",
     answer:
-      "Indiquez-nous l’adresse de votre site actuel. Nous vous recontacterons pour voir ensemble quels contenus reprendre. La reprise est comprise dans Premium / 3D et disponible en option avec Vitrine et Business.",
+      "Indiquez-nous l’adresse de votre site actuel. Nous vous recontacterons pour voir ensemble quels contenus reprendre. La reprise est comprise dans Premium / 3D. Vous pouvez aussi la sélectionner parmi les fonctionnalités proposées avec Vitrine et Business.",
     category: "Site existant",
   },
   {
@@ -338,7 +338,7 @@ export const faqs: readonly {
   {
     question: "Comment savoir quel forfait choisir ?",
     answer:
-      "Nous vérifions vos besoins avec vous avant de confirmer le devis. La prise de rendez-vous en ligne est disponible en option dans les trois forfaits.",
+      "Nous vérifions vos besoins avec vous avant de confirmer le devis. La prise de rendez-vous en ligne fait partie des fonctionnalités que vous pouvez ajouter aux trois forfaits.",
     items: [
       "Vitrine présente votre activité sur un site personnalisé de 3 pages maximum.",
       "Business reprend Vitrine avec jusqu’à 6 pages, un CMS pour modifier vos textes et images, le référencement local et les statistiques. Vous pouvez ajouter un espace membres.",
@@ -347,15 +347,15 @@ export const faqs: readonly {
     category: "Choix du forfait",
   },
   {
-    question: "Comment sont comptées les pages supplémentaires et les options ?",
+    question: "Comment sont définis le nombre de pages et les fonctionnalités supplémentaires ?",
     answer:
-      "Vitrine comprend jusqu’à 3 pages et Business jusqu’à 6. Pour Premium / 3D, nous définissons le nombre de pages selon les contenus, les animations et la 3D de votre projet. Le configurateur indique le tarif et le périmètre de chaque option. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet.",
+      "Vitrine comprend jusqu’à 3 pages et Business jusqu’à 6. Pour Premium / 3D, nous définissons le nombre de pages selon les contenus, les animations et la 3D de votre projet. Le configurateur indique le tarif et le périmètre de chaque fonctionnalité. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet.",
     category: "Budget et suivi",
   },
   {
     question: "Et si je choisis le mauvais forfait ?",
     answer:
-      "Votre sélection sert de point de départ à l’échange. Notre équipe étudie votre demande avant le démarrage et vous propose un autre forfait si son périmètre est plus adapté. Le choix et les options sont confirmés avec vous. Envoyer le formulaire ne déclenche aucun paiement.",
+      "Votre sélection sert de point de départ à l’échange. Notre équipe étudie votre demande avant le démarrage et vous propose un autre forfait si son périmètre est plus adapté. Le forfait et les fonctionnalités sont confirmés avec vous. Envoyer le formulaire ne déclenche aucun paiement.",
     category: "Choix du forfait",
   },
   {
@@ -391,20 +391,20 @@ export const faqs: readonly {
   {
     question: "Peut-on prendre rendez-vous directement depuis mon site ?",
     answer:
-      "Oui. La prise de rendez-vous en ligne est disponible en option avec les trois forfaits. Vos visiteurs peuvent choisir un créneau depuis votre site. Si vous utilisez déjà un outil de réservation, dites-le-nous et nous verrons ensemble comment l’intégrer.",
+      "Oui. La prise de rendez-vous en ligne fait partie des fonctionnalités que vous pouvez ajouter aux trois forfaits. Vos visiteurs peuvent choisir un créneau depuis votre site. Si vous utilisez déjà un outil de réservation, dites-le-nous et nous verrons ensemble comment l’intégrer.",
     category: "Fonctionnalités",
   },
   {
     question: "Que se passe-t-il après l’envoi de ma demande ?",
     answer:
-      "Votre forfait, vos options et votre message sont enregistrés ensemble. Nous étudions le besoin, les contenus disponibles et les contraintes pour préciser le périmètre, le prix et le calendrier avec vous. Vous pouvez aussi utiliser Nous contacter si vous n’avez pas encore choisi de forfait. Le formulaire sert à préparer cet échange : il ne lance ni le développement ni un paiement automatique.",
+      "Votre forfait, vos fonctionnalités et votre message sont enregistrés ensemble. Nous étudions le besoin, les contenus disponibles et les contraintes pour préciser le périmètre, le prix et le calendrier avec vous. Vous pouvez aussi utiliser Nous contacter si vous n’avez pas encore choisi de forfait. Le formulaire sert à préparer cet échange : il ne lance ni le développement ni un paiement automatique.",
     category: "Création et livraison",
   },
 ]
 
 export const optionGroups = [
   { id: 'essentials', title: 'Votre site' },
-  { id: 'features', title: 'Vos fonctionnalités' },
+  { id: 'features', title: 'Services en ligne' },
   { id: 'content', title: 'Vos contenus' },
   { id: 'visibility', title: 'Visibilité et outils' },
   { id: 'launch', title: 'Mise en ligne et suivi' },
@@ -668,7 +668,7 @@ export function normalizeConfiguration(input: unknown): Configuration {
   if (language !== 'fr' && language !== 'fr-en') throw new Error('Choisissez une langue valide.')
   for (const key of ['mobile', 'managedContent', 'scene3d', 'deployment', 'maintenance']) {
     if (value[key] !== undefined && typeof value[key] !== 'boolean')
-      throw new Error('Vérifiez les options de votre site.')
+      throw new Error('Vérifiez les fonctionnalités de votre site.')
   }
   if (
     value.extras !== undefined &&
@@ -797,7 +797,7 @@ export function getOptionDescription(offerId: OfferId, option: (typeof optionDef
   if (option.id === 'extra-pages' && offerId === 'vitrine')
     return 'Une page de plus dans le design de votre site, avec vos textes et images.'
   if (option.id === 'extra-scene-3d' && offerId === 'immersif')
-    return `${option.description} Cette option ajoute un élément 3D supplémentaire.`
+    return `${option.description} Cette fonctionnalité ajoute un élément 3D supplémentaire.`
   return option.description
 }
 export function getOptionScope(configuration: Configuration, id: OptionId): string | null {
@@ -936,8 +936,8 @@ export function quoteEstimateNotice(quote: Pick<Quote, 'estimated' | 'maximumTot
   if (quote.maximumTotalCents != null && quote.maximumTotalCents === quote.totalCents)
     return 'Estimation de départ selon le périmètre du projet. Le montant sera confirmé sur devis.'
   return quote.maximumTotalCents == null
-    ? 'Estimation minimale : certaines options n’ont pas de plafond défini. Le montant dépend du périmètre et sera confirmé sur devis.'
-    : 'Fourchette indicative selon le périmètre des options. Le montant sera confirmé sur devis.'
+    ? 'Estimation minimale : certaines fonctionnalités n’ont pas de plafond tarifaire défini. Le montant dépend du périmètre et sera confirmé sur devis.'
+    : 'Fourchette indicative selon le périmètre des fonctionnalités. Le montant sera confirmé sur devis.'
 }
 
 /** Show the approved range, and a minimum when a future admin tariff differs. */

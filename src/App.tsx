@@ -97,7 +97,7 @@ function LegalPage({ privacy = false }: { privacy?: boolean }) {
         </p>
         <p>
           {privacy
-            ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Votre message et votre choix de forfait et d’options sont conservés dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail.'
+            ? 'Votre prénom, votre nom, votre e-mail et votre téléphone servent à étudier votre demande et à vous recontacter. Votre message et votre choix de forfait et de fonctionnalités sont conservés dans un espace privé réservé à l’équipe du studio. Le récapitulatif de votre demande peut être transmis à l’équipe par e-mail.'
             : 'Les références externes présentées illustrent les formats de sites. Elles ne sont pas présentées comme des réalisations ou des clients du studio.'}
         </p>
         <Link to="/contact">Nous contacter</Link>

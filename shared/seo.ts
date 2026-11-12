@@ -23,7 +23,7 @@ const page = (title: string, description: string, pathname: string): RouteSeo =>
 const publicPages: Record<string, RouteSeo> = {
   '/': page(
     'Création de sites internet clé en main',
-    'Création de sites internet : Vitrine à partir de 890 €, Business à partir de 1 490 € et Premium / 3D à partir de 2 490 €. Comparez les trois forfaits et choisissez vos options.',
+    'Création de sites internet : Vitrine à partir de 890 €, Business à partir de 1 490 € et Premium / 3D à partir de 2 490 €. Comparez les trois forfaits et choisissez vos fonctionnalités.',
     '/',
   ),
   '/forfaits': page(
@@ -32,8 +32,8 @@ const publicPages: Record<string, RouteSeo> = {
     '/forfaits',
   ),
   '/options': page(
-    'Les options de votre site',
-    'Découvrez les options disponibles selon votre forfait de création de site internet et choisissez les fonctions utiles à votre projet.',
+    'Les fonctionnalités de votre site',
+    'Découvrez les fonctionnalités disponibles selon votre forfait de création de site internet et choisissez celles qui sont utiles à votre projet.',
     '/options',
   ),
   '/exemples': page(

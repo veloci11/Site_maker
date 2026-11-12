@@ -199,7 +199,7 @@ test('prices, unknown configuration, invalid fields and missing request referenc
   for (const choice of [{ managedContent: true }, { extras: ['user-accounts'] }]) {
     const rejected = await f.post(configuredRequest({ configuration: { offerId: 'vitrine', ...choice } }));
     assert.equal(rejected.status, 400);
-    assert.match(rejected.body.fields.configuration, /Certaines options/);
+    assert.match(rejected.body.fields.configuration, /Certaines fonctionnalités/);
   }
   assert.equal((await f.post({ ...legacyRequest(), message: 'court' })).status, 400);
   assert.equal(inquiryCount(), 0);

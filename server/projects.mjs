@@ -50,10 +50,10 @@ function configuration(input, existing) {
     || (candidate.scene3d !== undefined && typeof candidate.scene3d !== 'boolean')
     || (candidate.deployment !== undefined && typeof candidate.deployment !== 'boolean')
     || (candidate.maintenance !== undefined && typeof candidate.maintenance !== 'boolean')) {
-    throw new ValidationError('Choisissez une forfait et des options valides.');
+    throw new ValidationError('Choisissez un forfait et des fonctionnalités valides.');
   }
   try { return normalizeConfiguration(candidate); }
-  catch { throw new ValidationError('Choisissez un forfait et des options valides.'); }
+  catch { throw new ValidationError('Choisissez un forfait et des fonctionnalités valides.'); }
 }
 
 function pageKey(req, res, next) {

@@ -296,10 +296,10 @@ export function OptionsPage() {
   const [search, setSearch] = useSearchParams()
   const candidate = getOffer(search.get('forfait'))
   const offer = candidate && isPublicOffer(candidate.id) ? candidate : publicOffers[0]
-  usePageTitle('Les options de votre site')
+  usePageTitle('Les fonctionnalités de votre site')
   return (
     <>
-      <Intro title="Options du site" description="À ajouter à votre forfait selon vos besoins." />
+      <Intro title="Fonctionnalités du site" description="À ajouter à votre forfait selon vos besoins." />
       <section className="container public-options-page">
         <div className="field">
           <label htmlFor="options-offer">Votre forfait</label>
