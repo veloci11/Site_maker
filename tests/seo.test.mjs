@@ -20,9 +20,9 @@ test('public routes have distinct useful metadata for the three current offers',
     assert.ok(!titles.has(metadata.title), `Duplicate title for ${route}`);
     titles.add(metadata.title);
   }
-  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Site Business · studio');
-  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Site Premium / 3D · studio');
-  assert.equal(getRouteSeo('/contact', '?besoin=refonte').title, 'Contacter le studio · studio');
+  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Site Business · pixelito');
+  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Site Premium / 3D · pixelito');
+  assert.equal(getRouteSeo('/contact', '?besoin=refonte').title, 'Contacter le studio · pixelito');
 });
 
 test('filter, tracking and arbitrary query values never become canonical content', () => {
@@ -111,7 +111,7 @@ test('the marked template retains app resources and removes previous route metad
   assert.equal((rendered.match(/<title>/g) ?? []).length, 1);
   assert.equal((rendered.match(/name="description"/g) ?? []).length, 1);
   assert.equal((rendered.match(/rel="canonical"/g) ?? []).length, 1);
-  assert.ok(rendered.includes('Questions fréquentes · studio'));
+  assert.ok(rendered.includes('Questions fréquentes · pixelito'));
   assert.ok(rendered.includes('<script type="module" src="/src/main.tsx"></script>'));
   assert.ok(rendered.includes('/assets/textures/grain-plasma-card.webp'));
   assert.doesNotMatch(rendered, /Sans compte/);
@@ -163,7 +163,7 @@ test('Express handlers deliver route heads, correct robots/sitemap types, redire
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('cache-control'), 'no-store');
     const body = await response.text();
-    assert.match(body, /<title>Contacter le studio · studio<\/title>/);
+    assert.match(body, /<title>Contacter le studio · pixelito<\/title>/);
     assert.match(body, /rel="canonical" href="https:\/\/gilmathis.com\/contact"/);
     assert.doesNotMatch(body, /untrusted\.example|utm_source/);
     for (const route of ['/connexion?token=secret', '/forfaits/vitrine?projectId=private-id', '/conditions']) {

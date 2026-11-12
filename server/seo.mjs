@@ -17,7 +17,7 @@ export function renderSeoHead(metadata) {
       `<link rel="canonical" href="${escapeHtml(metadata.canonical)}" />`,
       '<meta property="og:type" content="website" />',
       '<meta property="og:locale" content="fr_FR" />',
-      '<meta property="og:site_name" content="studio" />',
+      '<meta property="og:site_name" content="pixelito" />',
       `<meta property="og:title" content="${escapeHtml(metadata.title)}" />`,
       `<meta property="og:description" content="${escapeHtml(metadata.description)}" />`,
       `<meta property="og:url" content="${escapeHtml(metadata.canonical)}" />`,

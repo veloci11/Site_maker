@@ -38,7 +38,7 @@ export function RouteMetadata() {
     const publicPage = Boolean(metadata.canonical)
     setMeta('property', 'og:type', publicPage ? 'website' : null)
     setMeta('property', 'og:locale', publicPage ? 'fr_FR' : null)
-    setMeta('property', 'og:site_name', publicPage ? 'studio' : null)
+    setMeta('property', 'og:site_name', publicPage ? 'pixelito' : null)
     setMeta('property', 'og:title', publicPage ? metadata.title : null)
     setMeta('property', 'og:description', publicPage ? metadata.description : null)
     setMeta('property', 'og:url', metadata.canonical)

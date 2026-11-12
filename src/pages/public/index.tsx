@@ -34,7 +34,7 @@ const ProjectBriefForm = lazy(() =>
 
 function usePageTitle(title: string) {
   useEffect(() => {
-    document.title = `${title} · studio`
+    document.title = `${title} · pixelito`
   }, [title])
 }
 

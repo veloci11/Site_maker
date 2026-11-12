@@ -49,8 +49,8 @@ export function PublicHeader() {
   return (
     <div className="public-header-wrap">
       <header className="site-header">
-        <Link className="wordmark" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="studio — accueil">
-          studio
+        <Link className="wordmark" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
+          pixelito
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
@@ -112,7 +112,7 @@ export function PublicHeader() {
             </SheetTrigger>
             <SheetContent className="mobile-navigation" side="right">
               <SheetHeader>
-                <SheetTitle className="wordmark">studio</SheetTitle>
+                <SheetTitle className="wordmark">pixelito</SheetTitle>
                 <SheetDescription className="sr-only">Navigation du site</SheetDescription>
               </SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
@@ -158,8 +158,8 @@ export function PublicHeader() {
 export function PublicFooter() {
   return (
     <footer className="site-footer container">
-      <Link to="/" viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="studio — accueil">
-        studio
+      <Link to="/" viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="pixelito — accueil">
+        pixelito
       </Link>
       <nav aria-label="Liens de pied de page">
         <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>Comparer les forfaits</Link>

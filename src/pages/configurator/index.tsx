@@ -166,7 +166,7 @@ export function ConfiguratorPage() {
   )
 
   useEffect(() => {
-    document.title = `${title} · studio`
+    document.title = `${title} · pixelito`
   }, [title])
   useEffect(() => {
     const estimate = estimateRef.current

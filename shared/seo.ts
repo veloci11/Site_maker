@@ -13,7 +13,7 @@ export type RouteSeo = {
 }
 
 const page = (title: string, description: string, pathname: string): RouteSeo => ({
-  title: `${title} · studio`,
+  title: `${title} · pixelito`,
   description,
   canonical: `${siteOrigin}${pathname}`,
   robots: 'index, follow',
@@ -72,7 +72,7 @@ const privatePages: Record<string, string> = {
 }
 
 const excludedPage = (title: string, status: 200 | 404 = 200): RouteSeo => ({
-  title: `${title} · studio`,
+  title: `${title} · pixelito`,
   description: status === 404
     ? 'Cette adresse ne correspond à aucune page du site.'
     : 'Espace réservé ou page hors des résultats de recherche.',
