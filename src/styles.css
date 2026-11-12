@@ -224,6 +224,8 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: 24px; }
 .public-shell:has(.configurator-page) .public-header-wrap { position: relative; }
 .site-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(1280px, calc(100% - 64px)); min-height: 64px; margin-inline: auto; padding: 8px 12px 8px 24px; border: 1px solid rgb(232 230 227 / .7); border-radius: 999px; background: #fff; pointer-events: auto; }
 .wordmark { display: inline-flex; align-items: center; width: fit-content; color: #080808; font-size: 32px; font-weight: 600; letter-spacing: -.065em; line-height: 1.1; }
+.navigation-logo { position: relative; flex: none; width: 136px; height: 44px; overflow: hidden; }
+.navigation-logo img { position: absolute; top: 50%; left: 50%; display: block; width: 168px; max-width: none; height: auto; transform: translate(-50%, -50%); }
 .wordmark--small { font-size: 25px; }
 .desktop-nav { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .nav-link { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 10px; border: 0; border-radius: 999px; background: transparent; color: #38343e; font-size: 14px; line-height: 1.3; white-space: nowrap; transition: color 180ms ease, background-color 180ms ease; }
@@ -550,6 +552,8 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: 24px; }
 }
 @media (max-width: 380px) {
   .site-header { width: calc(100% - 24px); padding-left: 16px; gap: 8px; }
+  .navigation-logo { width: 112px; }
+  .navigation-logo img { width: 145px; }
   .header-actions { gap: 5px; }
   .header-login { padding-inline: 10px; font-size: 12px; }
   .mobile-menu-button { width: 40px; height: 40px; }
