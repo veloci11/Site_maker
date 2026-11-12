@@ -1,3 +1,9 @@
+# Pixelito et essai de logo — 12 novembre 2026
+
+Le nom pixelito remplace l'ancienne marque dans les éléments publics, l'espace client et les métadonnées. Le logo sélectionné est affiché dans la barre de navigation publique pour essai ; le PNG source est conservé à l'identique, avec cadrage CSS. Lien d'accueil accessible conservé, rendu et menu vérifiés localement et rendu vérifié en HTTPS sur ordinateur et à 320 px. Le pied et le menu mobile interne conservent le mot-symbole texte.
+
+Révision applicative `4a4c026`, build et 284 tests passants. Domaine actuel `gilmathis.com` inchangé ; aucun raccordement de `pixelito.dev`. Sauvegarde privée et catalogue contrôlés lors de la publication. Localhost arrêté et Tailscale remis dans son état initial.
+
 # Taille de Changer et dépliage du panneau — 11 novembre 2026
 
 Révision publique `1c5d757`, client `index-72Jt91dI.js`. Le changement de taille était mesurable : la copie décorative `span` héritait d’une hauteur de ligne de 18,6 px et mesurait 88,875 × 32,594 px ; le vrai `button` conservait `line-height:normal` et mesurait 88,875 × 29,5 px. Ils partagent désormais une hauteur de 32 px et une hauteur de ligne de 18 px, sans rétrécissement flex ni retour à la ligne. Dix échantillons locaux de l’arrivée sur Business montrent la copie visible et le bouton invisible aux mêmes dimensions ; la couche native de titre conserve `object-fit:none` et 32 px de haut une fois créée. Au repos, le vrai bouton reprend exactement la même boîte. Mesure identique en HTTPS pendant et après l’arrivée, à 1280 px puis 320 px, et lors du choix de Premium depuis le menu.

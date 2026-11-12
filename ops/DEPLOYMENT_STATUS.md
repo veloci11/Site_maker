@@ -1,8 +1,18 @@
-# Déploiement de studio — gilmathis.com
+# Déploiement de pixelito — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 11 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
 ## Version active
+
+- URL `https://gilmathis.com/` ; le domaine `pixelito.dev` n'est pas configuré dans cette livraison.
+- Révision applicative `4a4c026153dab705d6f0a961de8563b267e0cf4c` sur `main`
+- Release `/home/mathis/site-maker/releases/20261112T230705Z-4a4c026153da`
+- Client `/assets/index-Jy4dojsB.js`, SHA-256 `2f438c0729235d8098f6601a0e91fd6718993b3b252341ba52e5de02c049240f`
+- Archive vérifiée de 14 931 350 octets, SHA-256 `f8ce92fd74c0fe0588fb7554b348304e289d69fea3eb35aa00b4dfa5fe5bf91d`
+
+Le nom pixelito remplace studio dans la marque et les métadonnées. Le logo demandé est affiché dans la barre publique pour essai, avec l'image source inchangée ; le pied garde le mot-symbole. Vérification visuelle locale et HTTPS en bureau et à 320 px, menu mobile contrôlé localement ; 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés lors des deux bascules. Localhost arrêté, Tailscale remis dans son état arrêté initial.
+
+## Version précédente — Changer et animation du menu
 
 - URL `https://gilmathis.com/`
 - Révision `1c5d757689656eefc6a2658d227830765bde9b38` sur `main`
