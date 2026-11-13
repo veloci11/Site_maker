@@ -5,18 +5,6 @@ Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
-- Révision applicative `21ecaa1cfa9a5069a1b6059286b22377bb7781bf` sur `main`
-- Release `/home/mathis/site-maker/releases/20261113T013054Z-21ecaa1cfa9a`
-- Client `/assets/index-DeuU9mt2.js`, SHA-256 `92cb2849d44b409fba919c13a143bd636392e05eb5f533d0c45414dc75448748`
-- Archive vérifiée de 13 986 559 octets, SHA-256 `5b2ea5e4b7a731d32a0bab5f63e7c7eeac58aead0d436fbc7f0c51dbafc59c3e`
-
-Le logo reprend la typographie Geist du site, avec le personnage pixel en compagnon indépendant. Il change de couleur, cligne des yeux, saute sur les points des deux i, explore le bord supérieur de la barre puis rentre au logo. Les points reviennent au départ ; aucune prise de clic ni modification de la géométrie des liens. Repli au logo pendant les menus, le focus clavier, le mouvement réduit et lorsque la barre ou l'onglet est masqué. Animations natives, pas de travail React par image.
-
-Contrôles locaux à neuf largeurs de 320 à 1280 px : texte et menu dans la barre, aucun débordement. Cycle complet observé pendant 32 secondes : deux points visités/restaurés, 31 couleurs échantillonnées, géométrie de la barre inchangée. Contrôles HTTPS bureau/mobile : perches sur les deux i et restauration des points, menu mobile et mouvement réduit confirmés ; aucune erreur console observée. Clic du logo vers le haut conservé (1480 à 0 px en local). Les 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés ; viewport et mouvement réduit réinitialisés, onglets de contrôle fermés, localhost arrêté et Tailscale remis à son état arrêté initial. Livraison le 12 novembre dans le fuseau du client ; nom de release en UTC.
-
-## Version précédente — retour en haut depuis l'accueil
-
-- URL `https://gilmathis.com/`
 - Révision applicative `340e503200374febdd559ca52addf1842e50eef5` sur `main`
 - Release `/home/mathis/site-maker/releases/20261113T011206Z-340e50320037`
 - Client `/assets/index-emgLuvKH.js`, SHA-256 `8cc12aa079767d8f5d679657260964b5d48547227a8c840569850163feadbed6`
