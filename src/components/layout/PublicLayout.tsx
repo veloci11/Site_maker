@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect, useRef, useState, type MouseEvent } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { PixelitoLoading, PixelitoLogo } from './PixelitoLogo'
@@ -36,9 +36,24 @@ const desktopNavClassName = navigationClassName('nav-link')
 const mobileNavClassName = navigationClassName('mobile-nav-heading')
 const mobileOfferClassName = navigationClassName('mobile-offer-link')
 
+function scrollHomeToTop(event: MouseEvent<HTMLAnchorElement>) {
+  if (event.defaultPrevented || event.button !== 0
+    || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+    || (event.currentTarget.target && event.currentTarget.target !== '_self')
+    || event.currentTarget.href !== window.location.href) return
+
+  event.preventDefault()
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+  })
+}
+
 export function PublicHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileMenuButton = useRef<HTMLButtonElement>(null)
   const [offersOpen, setOffersOpen] = useState(false)
   const offerActive = location.pathname.startsWith('/forfaits')
 
@@ -50,11 +65,11 @@ export function PublicHeader() {
   return (
     <div className="public-header-wrap">
       <header className="site-header">
-        <Link className="wordmark navigation-logo" to="/" viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
+        <Link className="wordmark navigation-logo" to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
           <PixelitoLogo />
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
-          <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
+          <NavLink to="/" end onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
             Accueil
           </NavLink>
           <DropdownMenu open={offersOpen} onOpenChange={setOffersOpen} modal={false}>
@@ -104,6 +119,7 @@ export function PublicHeader() {
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <button
+                ref={mobileMenuButton}
                 type="button"
                 className="icon-button mobile-menu-button"
                 aria-label="Ouvrir le menu"
@@ -111,13 +127,30 @@ export function PublicHeader() {
                 <Menu size={22} aria-hidden="true" />
               </button>
             </SheetTrigger>
-            <SheetContent className="mobile-navigation" side="right">
+            <SheetContent
+              className="mobile-navigation"
+              side="right"
+              onCloseAutoFocus={(event) => {
+                event.preventDefault()
+                // Restoring focus must not interrupt an ongoing scroll to the top.
+                mobileMenuButton.current?.focus({ preventScroll: true })
+              }}
+            >
               <SheetHeader>
                 <SheetTitle className="wordmark">pixelito</SheetTitle>
                 <SheetDescription className="sr-only">Navigation du site</SheetDescription>
               </SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
-                <NavLink to="/" end viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
+                <NavLink
+                  to="/"
+                  end
+                  onClick={(event) => {
+                    scrollHomeToTop(event)
+                    setMobileOpen(false)
+                  }}
+                  viewTransition={canAnimatePlanNavigation()}
+                  className={mobileNavClassName}
+                >
                   Accueil
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
@@ -159,7 +192,7 @@ export function PublicHeader() {
 export function PublicFooter() {
   return (
     <footer className="site-footer container">
-      <Link to="/" viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="pixelito — accueil">
+      <Link to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="pixelito — accueil">
         pixelito
       </Link>
       <nav aria-label="Liens de pied de page">

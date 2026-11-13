@@ -449,3 +449,6 @@ Référence Free étudiée en parallèle ; léger effet lumineux original ajout�
 Les prix et périmètres commerciaux restent à arrêter ; aucun montant, délai ou chiffre client inventé. Le destinataire Resend sera fourni plus tard par Mathis : les demandes sont conservées, mais une réception e-mail réelle reste à vérifier après configuration. L’identité et les documents commerciaux définitifs restent à compléter. Ces éléments ne sont pas présentés comme terminés par la livraison de l’interface.
 
 L’étude de marché antérieure est disponible dans le dossier de travail `recherche-marche/` à côté du dépôt : rapport complet, synthèse, benchmark et journal des sources datés du 1er novembre 2026. Sa présence a été vérifiée ; ses relevés n’ont pas été actualisés pendant cette correction d’interface et les décisions utilisateur ultérieures priment sur ses recommandations.
+# Retour en haut par le logo — 12 novembre 2026
+
+Logo/nom et liens Accueil corrigés et contrôlés localement sur ordinateur/mobile, y compris clavier, mouvement réduit et fermeture du menu sans interruption du défilement. Les 284 tests passent. Publication et contrôle HTTPS à terminer.

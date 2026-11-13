@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Retour en haut depuis l’accueil — 12 novembre 2026
+
+Un nouveau clic sur le logo/nom depuis l’accueil doit ramener en haut. Le logo et les liens Accueil partagent une remontée douce sur l’URL déjà ouverte, instantanée en mouvement réduit, sans ajouter d’entrée d’historique. Le menu mobile se ferme et restitue le focus sans interrompre le défilement. Conserver les navigations entre pages, les ancres et les clics modifiés natifs.
+
 ## Dimensions de Changer et dépliage du menu — 11 novembre 2026
 
 Le bouton Changer et sa copie décorative native partagent une hauteur explicite de 32 px et une hauteur de ligne de 18 px. Ils gardent la même largeur, sans rétrécissement flex ni retour à la ligne. Ne pas laisser la différence de hauteur de ligne par défaut entre `span` et `button` provoquer un changement de taille à la fin du raccord de forfait.
