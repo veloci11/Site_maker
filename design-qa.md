@@ -1,3 +1,9 @@
+# Retour au logo orange simple — 12 novembre 2026
+
+Révision publique `e2f568a`. Essai de compagnon annulé : x et logo d'origine, personnage orange animé sur place. Composant de promenade et feuille de styles supprimés avec les imports et effets associés. Aucun reste de `PixelitoCompanion`, des points de i personnalisés ou des changements de couleur dans les sources et le build. Sources applicatives identiques à `31a3a88`, client identique par empreinte à `340e503` ; retour en haut conservé.
+
+Build et 284 tests passants. Vérification locale bureau/mobile et mouvement réduit ; vérification HTTPS bureau et 320 px, aucun débordement et zéro erreur console observée. Sauvegarde privée, santé et catalogue vérifiés. Viewport réinitialisé, onglets temporaires fermés et localhost arrêté. Tailscale était déjà actif et conserve cet état.
+
 # Pixelito animé — 12 novembre 2026
 
 Révision publique `bb5dd07`. Le logo orange choisi est affiché dans la barre publique ; son image source n'est pas modifiée. Le personnage monte et descend légèrement et sa traînée varie d'opacité sans déplacer le nom. Une version vectorielle légère est animée dans les chargements des routes et du formulaire. La préférence de mouvement réduit arrête les animations. Rendu public contrôlé sur ordinateur et à 320 px ; aucun débordement de la barre locale aux largeurs 320, 375, 380, 381, 390, 420, 421 et 500 px. Chargement ralenti du formulaire vérifié localement, puis formulaire affiché sans envoi. Build et 284 tests passent ; sauvegarde privée, catalogue et santé contrôlés. Localhost arrêté, Tailscale remis à son état initial.

@@ -5,6 +5,16 @@ Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur 
 ## Version active
 
 - URL `https://gilmathis.com/`
+- Révision applicative `e2f568abc974acb75a6c0d2c8eb5ac4afaf92bc1` sur `main`
+- Release `/home/mathis/site-maker/releases/20261113T021824Z-e2f568abc974`
+- Client `/assets/index-emgLuvKH.js`, SHA-256 `8cc12aa079767d8f5d679657260964b5d48547227a8c840569850163feadbed6`
+- Archive vérifiée de 14 963 843 octets, SHA-256 `d20b0bbea693e8ffb9c83f90988d68913d1cf3aa9e01600d0416fb136c83abbb`
+
+À la demande de Mathis, l'essai de compagnon de navigation est annulé. Logo et x d'origine restaurés, petit personnage orange animé simplement à côté. Le composant de promenade, sa feuille de styles et leurs imports/effets sont supprimés. Sources applicatives identiques à la révision `31a3a88` d'avant l'essai et client identique par SHA-256 à la version `340e503`. Aucun marqueur du compagnon dans les sources ou le build. Clic de retour en haut conservé. Contrôles locaux et HTTPS sur ordinateur et à 320 px : animation simple, aucun débordement ni erreur console observée. Les 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés. Localhost arrêté ; Tailscale déjà actif au début de cette livraison est laissé actif. Date de livraison : 12 novembre dans le fuseau du client, nom de release en UTC.
+
+## Version précédente — retour en haut depuis l'accueil
+
+- URL `https://gilmathis.com/`
 - Révision applicative `340e503200374febdd559ca52addf1842e50eef5` sur `main`
 - Release `/home/mathis/site-maker/releases/20261113T011206Z-340e50320037`
 - Client `/assets/index-emgLuvKH.js`, SHA-256 `8cc12aa079767d8f5d679657260964b5d48547227a8c840569850163feadbed6`
