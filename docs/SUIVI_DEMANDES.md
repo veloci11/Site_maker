@@ -451,4 +451,4 @@ Les prix et périmètres commerciaux restent à arrêter ; aucun montant, délai
 L’étude de marché antérieure est disponible dans le dossier de travail `recherche-marche/` à côté du dépôt : rapport complet, synthèse, benchmark et journal des sources datés du 1er novembre 2026. Sa présence a été vérifiée ; ses relevés n’ont pas été actualisés pendant cette correction d’interface et les décisions utilisateur ultérieures priment sur ses recommandations.
 # Retour en haut par le logo — 12 novembre 2026
 
-Logo/nom et liens Accueil corrigés et contrôlés localement sur ordinateur/mobile, y compris clavier, mouvement réduit et fermeture du menu sans interruption du défilement. Les 284 tests passent. Publication et contrôle HTTPS à terminer.
+Logo/nom et liens Accueil corrigés et contrôlés localement sur ordinateur/mobile, y compris clavier, mouvement réduit et fermeture du menu sans interruption du défilement. Les 284 tests passent. Révision `340e503` publiée et vérifiée en HTTPS : remontée finale à 0 px après clic sur le logo et Accueil, sur ordinateur et mobile. Le logo depuis la FAQ rejoint aussi le haut de l’accueil. Localhost arrêté et Tailscale remis à l’arrêt.

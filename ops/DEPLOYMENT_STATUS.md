@@ -4,6 +4,16 @@ Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur 
 
 ## Version active
 
+- URL `https://gilmathis.com/`
+- Révision applicative `340e503200374febdd559ca52addf1842e50eef5` sur `main`
+- Release `/home/mathis/site-maker/releases/20261113T011206Z-340e50320037`
+- Client `/assets/index-emgLuvKH.js`, SHA-256 `8cc12aa079767d8f5d679657260964b5d48547227a8c840569850163feadbed6`
+- Archive vérifiée de 14 963 885 octets, SHA-256 `ea54460ed9036523240d3aad6b2c1da35dccf36d437934d959a64d4917f3cc83`
+
+Le logo/nom et les liens Accueil ramènent en haut si l’URL d’accueil est déjà ouverte, avec défilement doux et mouvement réduit respecté. Le menu mobile se ferme et restitue le focus sans interrompre cette remontée. Contrôle HTTPS à 1280 et 390 px : positions finales à 0 px depuis 1440 et 1688 px ; retour depuis FAQ conservé, aucune erreur console observée. Les 284 tests passent. Sauvegarde privée, santé et catalogue vérifiés. Viewport restauré, onglet fermé, localhost arrêté et Tailscale remis dans son état arrêté initial. Le nom de release est en UTC ; livraison le 12 novembre dans le fuseau du client.
+
+## Version précédente — logo pixelito animé
+
 - URL `https://gilmathis.com/` ; le domaine `pixelito.dev` n'est pas configuré dans cette livraison.
 - Révision applicative `bb5dd070c84aca728ef68d744cbfc39c51b965a8` sur `main`
 - Release `/home/mathis/site-maker/releases/20261112T231505Z-bb5dd070c84a`
