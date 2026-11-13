@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Compagnon pixelito — 12 novembre 2026
+
+Conserver le personnage pixel du logo choisi et rapprocher légèrement les lettres de la typographie sobre du site. Le personnage devient un compagnon décoratif de navigation : changements progressifs de couleur, petits sauts, pauses curieuses sur le bord de la barre et passages sur les points des deux i. Un point s'efface uniquement pendant que le compagnon l'occupe, puis revient au départ. Garder une place fixe pour le logo et le personnage au repos, sans déplacer les liens.
+
+Les mouvements ne capturent aucun clic. Revenir près du logo à l'ouverture d'un menu, pendant la navigation au clavier, en mouvement réduit et lorsque la barre ou l'onglet n'est pas visible. Les déplacements se recalculent au redimensionnement. Conserver le clic d'accueil et le comportement de retour en haut. Utiliser le même petit personnage pour les chargements.
+
 ## Retour en haut depuis l’accueil — 12 novembre 2026
 
 Un nouveau clic sur le logo/nom depuis l’accueil doit ramener en haut. Le logo et les liens Accueil partagent une remontée douce sur l’URL déjà ouverte, instantanée en mouvement réduit, sans ajouter d’entrée d’historique. Le menu mobile se ferme et restitue le focus sans interrompre le défilement. Conserver les navigations entre pages, les ancres et les clics modifiés natifs.

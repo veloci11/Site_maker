@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef, useState, type MouseEvent } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
 import { PixelitoLoading, PixelitoLogo } from './PixelitoLogo'
+import { PixelitoCompanion } from './PixelitoCompanion'
 import { publicOffers } from '../../../shared/catalog'
 import {
   Sheet,
@@ -65,6 +66,7 @@ export function PublicHeader() {
   return (
     <div className="public-header-wrap">
       <header className="site-header">
+        <PixelitoCompanion paused={mobileOpen || offersOpen} routeKey={location.key} />
         <Link className="wordmark navigation-logo" to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
           <PixelitoLogo />
         </Link>
