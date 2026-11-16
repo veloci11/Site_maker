@@ -1,0 +1,36 @@
+{
+  "url": "https://gilmathis.com/",
+  "commit": "a056e8f5d7b440199b01c8c737925017943e754f",
+  "intro": "Nous concevons et créons votre site internet sur mesure pour présenter votre activité, faciliter les prises de contact ou faire découvrir votre univers en 3D.",
+  "priceBlocks": 0,
+  "benefitLists": 0,
+  "seo": "Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris.",
+  "canonical": "https://gilmathis.com/",
+  "mobile": {
+    "width": 320,
+    "height": 740,
+    "documentWidth": 305,
+    "actionsBottom": 518.125
+  },
+  "consoleWarningsAndErrors": [],
+  "check": {
+    "isolatedCommitExport": true,
+    "passedTests": 290,
+    "typecheck": true,
+    "clientBuild": true,
+    "ssrBuild": true,
+    "sitesBuild": true
+  },
+  "comparisonIssue": {
+    "status": "queued",
+    "reproduced": false,
+    "fixed": false
+  },
+  "agencyPercentage": "draft, not published",
+  "cleanup": {
+    "local4173Stopped": true,
+    "temporaryTabsClosed": true,
+    "deviceMetricsReset": true,
+    "tailscale": "Stopped"
+  }
+}

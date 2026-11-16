@@ -1,4 +1,21 @@
-# Accroche et description commerciales publiées — 16 novembre 2026
+# En attente après la correction de l'accueil — comparatif, 16 novembre 2026
+
+Signalement de Mathis à traiter ensuite, pas encore reproduit ni corrigé dans ce lot :
+
+1. Sur le tableau de comparaison des forfaits.
+2. Après « Comparer forfait », puis le choix « platinum » (terme employé par Mathis ; vérifier la correspondance avec Premium / 3D).
+3. Le tableau défile complètement vers la droite.
+4. Une zone blanche apparaît, comme si une quatrième colonne de forfait existait.
+
+Vérifier le défilement horizontal et les largeurs des colonnes/onglets sur mobile, en tenant compte du chantier mobile déjà en cours. Mathis demande explicitement de mettre ce point en file d'attente pour après la correction actuelle de l'accueil. Aucun correctif ni contrôle de reproduction ne doit être déduit de cette note.
+
+# Correction de l'accueil publiée — 16 novembre 2026
+
+Lot `a056e8f` publié et vérifié : prix et trois bénéfices retirés du hero ; description SEO à partir de 890 € conservée. Introduction remplacée par « Nous concevons et créons votre site internet sur mesure pour présenter votre activité, faciliter les prises de contact ou faire découvrir votre univers en 3D. ». La comparaison « jusqu'à 40 % moins cher qu'une agence » reste en brouillon sans comparaison de prestations équivalentes établie.
+
+290 tests passent sur l'export propre du commit. Contrôles IAB locaux et HTTPS bureau/mobile réussis, sans débordement ni alerte console observée. Preuves dans `qa/hero-correction-2026-11-16/`, livraison dans `../ops/DEPLOYMENT_STATUS.md`. Le signalement du tableau ci-dessus reste en attente et n'est pas inclus dans cette correction.
+
+# Première accroche et description commerciales publiées — 16 novembre 2026
 
 Lot `3859453` publié : description SEO « Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris. » et trois arguments courts avant Choisir mon forfait. Prix réel du catalogue, sans changement de tarifs ni de prestations ; les formats CHF et sur devis restent fonctionnels. Favicon transparent et logo SVG conservés.
 

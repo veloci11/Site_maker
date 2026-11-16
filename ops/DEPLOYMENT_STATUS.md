@@ -2,7 +2,21 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — accroche commerciale dès 890 €
+## Version active — introduction sur mesure, tarif réservé au SEO
+
+- URL `https://gilmathis.com/`
+- Révision applicative `a056e8f5d7b440199b01c8c737925017943e754f`
+- Release `/home/mathis/site-maker/releases/20261116T213508Z-a056e8f5d7b4`
+- Client `/assets/index-hyoJnksy.js`, SHA-256 `4e1d6a98c2e65a2872aeb3f5d973de910d0f987052555a31ec0311853133cd03`
+- Archive code et builds : 41 756 665 octets, SHA-256 `596fdfcbef168edfded997529299f9aa44639606622d54909c06d0000550a482`
+
+Clarification de Mathis appliquée : prix et trois bénéfices retirés du hero. La description SEO conserve le site personnalisé à petit prix dès 890 €, mobile et mise en ligne compris. L'introduction visible devient « Nous concevons et créons votre site internet sur mesure pour présenter votre activité, faciliter les prises de contact ou faire découvrir votre univers en 3D. ». La comparaison « jusqu'à 40 % moins cher qu'une agence » reste en brouillon, faute de comparaison équivalente établie.
+
+Export propre du commit, indépendant des modifications mobiles et de marque en cours dans le répertoire partagé. TypeScript, builds client/SSR/Sites et 290 tests passent. Contrôle IAB local puis HTTPS sur ordinateur et à 320 × 740 : nouveau texte, aucun bloc prix ni liste de bénéfices, métadonnées conservées, largeur du document 305 px sans débordement, bloc de boutons terminé à 518,125 px. Aucune alerte console observée. Captures et preuves dans `docs/qa/hero-correction-2026-11-16/`.
+
+Sauvegarde réussie avant bascule atomique ; service et tunnel actifs, catalogue complet strictement inchangé. Seul `site-maker.service` redémarré. Émulations retirées, onglets temporaires fermés, serveur local 4173 arrêté et Tailscale remis à l'arrêt. Le défilement vers une zone blanche après le choix « platinum » dans le comparatif est seulement mis en attente dans `docs/SUIVI_DEMANDES.md`, sans reproduction ni correctif dans cette release.
+
+## Version précédente — accroche commerciale dès 890 €
 
 - URL `https://gilmathis.com/`
 - Révision applicative `38594530b5e1f9e4d9ed0babebaf9e15fa936e9a`

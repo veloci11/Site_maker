@@ -1,3 +1,11 @@
+# Introduction corrigée et publiée — 16 novembre 2026
+
+Révision `a056e8f`, release `20261116T213508Z-a056e8f5d7b4`. Le prix et les trois bénéfices ont été retirés du hero après clarification de Mathis : ils étaient destinés à la description SEO, qui reste conservée. La nouvelle introduction présente la conception et la création sur mesure, avec les usages activité, contact et 3D. Le titre et les liens restent identiques.
+
+Validation sur un export propre du commit : TypeScript, builds client/SSR/Sites et 290 tests passent, sans inclure les travaux mobiles/de marque concurrents. Contrôles IAB local et HTTPS bureau puis 320 × 740 : texte présent, zéro `.home-hero__price` et `.home-hero__benefits`, description SEO et canonical conservées ; document de 305 px sans débordement, bloc des boutons terminé à 518,125 px en public. Aucune alerte console observée. Captures `desktop-local.jpg`, `mobile-local.jpg`, `desktop-public.jpg`, `mobile-public.jpg` et origine de déploiement dans `docs/qa/hero-correction-2026-11-16/`.
+
+Sauvegarde, santé et catalogue inchangé vérifiés. Serveur 4173 arrêté, émulations retirées, onglets temporaires fermés et Tailscale remis à l'arrêt. Le texte « jusqu'à 40 % moins cher qu'une agence » reste en brouillon sans preuve équivalente. Le signalement du comparatif qui défile vers une zone blanche après « platinum » reste en file d'attente dans `docs/SUIVI_DEMANDES.md`, pas encore reproduit ni corrigé.
+
 # Accroche commerciale publiée — 16 novembre 2026
 
 Révision `3859453`, release `20261116T211930Z-38594530b5e1`. La description SEO présente le site personnalisé à petit prix dès 890 €, avec mobile et mise en ligne compris. L'accueil ajoute « Votre site personnalisé dès 890 € » puis trois arguments courts avant le bouton : Design personnalisé, Mobile compris, Mise en ligne comprise. Le montant provient du vrai tarif Vitrine. La description serveur, l'Open Graph et le DOM correspondent.
