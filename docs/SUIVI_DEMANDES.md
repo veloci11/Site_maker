@@ -1,6 +1,6 @@
 # Animation du logo et mobile — 16 novembre 2026
 
-Codé et validé sur un export isolé : introduction720ms du logo, chargement orbital réel, mouvement réduit, lien Aller au contenu seulement au clavier, fond racine continu, correction des barres fixes et retour au forfait courant sur mobile. Les autres positions d'historique et les fiches privées restent protégées.316 tests passent ; parcours IAB320/390 et captures dans `qa/mobile-2026-11-16/`. Publication en cours.
+Publié et contrôlé en HTTPS : introduction de 720 ms du logo, chargement orbital réel, mouvement réduit, lien Aller au contenu seulement au clavier, fond racine continu, correction des barres fixes et retour au forfait courant sur mobile. Les autres positions d'historique et les fiches privées restent protégées.316 tests passent ; parcours IAB 320/390 et captures dans `qa/mobile-2026-11-16/`. Révision `84f34bc96601ef7065a30de9a7e1a3d4abc49f33`, release `20261116T222847Z-84f34bc96601`. Ancres de l’accueil alignées sur le routeur, aucune alerte console finale. Localhost fermé.
 
 Le signalement Premium/zone blanche du comparatif est examiné dans ce lot : aucune quatrième colonne stable reproduite, mais affichage d'un forfait entier à côté des intitulés fixes, onglets et swipe conservés, cible bornée au tableau et rebond horizontal supprimé. Pas de validation Safari physique ni de benchmark FPS revendiqués.
 

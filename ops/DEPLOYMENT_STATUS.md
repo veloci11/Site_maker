@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — accroche commerciale sur les agences
+## Version active — logo animé, mobile et historique
+
+- URL `https://gilmathis.com/`
+- Révision applicative `84f34bc96601ef7065a30de9a7e1a3d4abc49f33`
+- Release `/home/mathis/site-maker/releases/20261116T222847Z-84f34bc96601`
+- Client `/assets/index-DwiRxYqD.js`, SHA-256 `a9c2ffb666ef71db94a412554d46ae6a93f52f12f731170ddf13ad360a6443c0`
+- Archive client/SSR/runtime : 27973260 octets, SHA-256 `d99c1ee998b1e11c0260cc1e4e76d08d14e17489e5fd1f8782a4b04469622ff9`
+
+Introduction de 720 ms du symbole choisi, chargement orbital réel, SVG identique intégré au HTML et mouvement réduit respecté. Reprise mobile : skip link au clavier seulement, fond racine, défilement tactile, barres fixes, comparatif avec un forfait entier à côté des labels, bornage du scroll et retrait des calculs de clipping desktop sur mobile. Retour au forfait courant, historique ordinaire et dossiers privés protégés. Ancres internes de l'accueil gérées par le routeur. Copie commerciale et prix conservés.
+
+TypeScript, build client/SSR/Sites et 316 tests réussis sur export isolé. Contrôles IAB locaux 320/390 et HTTPS, copie du client et des actifs conforme. Retour Premium à 87,80 px pour une navigation 88 px ; document 390/viewport 390. Dernier onglet public sans alerte console. Test chargement sur latence temporaire, remise à zéro ; mouvement réduit et clavier vérifiés.
+
+Sauvegarde privée et préflight Node24 (imports/rendu SSR) avant la bascule, santé et catalogue identiques. Seul le service du site est redémarré, 22 autres services/PID inchangés ; GP Park reste inactif. src/content/home-copy.ts fait partie des modules nécessaires à l'archive, comme indiqué dans ops/README.md. Le premier essai sans ce module a été automatiquement annulé avant la livraison corrigée.
+
+Preuves et limites : `docs/qa/mobile-2026-11-16/`. Pas de benchmark FPS ni de téléphone Safari physique. Localhost de cette tâche fermé (4183), viewport restauré et onglets temporaires fermés. VPN déjà actif au moment du déploiement laissé inchangé ; ce lot ne l'a pas activé. La version intermédiaire fc89044 a précédé le correctif d'ancres de la version finale 84f34bc.
+
+## Version précédente — accroche commerciale sur les agences
 
 - URL `https://gilmathis.com/`
 - Révision applicative `1a85add1bbbe13cc086276168f0094932e639b1f`

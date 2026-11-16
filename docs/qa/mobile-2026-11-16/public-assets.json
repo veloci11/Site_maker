@@ -1,0 +1,27 @@
+[
+  {
+    "path": "assets/index-DwiRxYqD.js",
+    "sha256": "a9c2ffb666ef71db94a412554d46ae6a93f52f12f731170ddf13ad360a6443c0",
+    "matchesReviewedBuild": true
+  },
+  {
+    "path": "assets/brand/logo-pixelito-symbole.svg",
+    "sha256": "6bad8ca082b4e6e64cb0908052ae8e6ecbd2f821d6938116ab1fbdc2acc3dad1",
+    "matchesReviewedBuild": true
+  },
+  {
+    "path": "assets/brand/logo-pixelito-typo.svg",
+    "sha256": "b3153de8b0441d98930c2998c3217af5d994127e6b028dff05ccbee27d802c52",
+    "matchesReviewedBuild": true
+  },
+  {
+    "path": "assets/brand/logo-pixelito-32.png",
+    "sha256": "411d5cb21d6e6e00646ab45fb292c12baf1ea295614aba4777dc418e0bb429da",
+    "matchesReviewedBuild": true
+  },
+  {
+    "path": "favicon.ico",
+    "sha256": "c049b320a231590f72c9fa0e85f76eff90edd2e09da1073d9bfdbd5d1f4236ad",
+    "matchesReviewedBuild": true
+  }
+]
