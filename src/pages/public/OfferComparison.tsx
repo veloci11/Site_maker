@@ -4,6 +4,7 @@ import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/ca
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 import { preloadPlanImages } from '../../lib/plan-images'
+import { comparisonColumnScrollLeft } from '../../lib/comparison-scroll'
 import { PlanTexture } from '../../components/layout/PlanTexture'
 
 type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
@@ -115,6 +116,9 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     let headingClip = ''
 
     const clipAtHeader = () => {
+      // Mobile uses its own scrollport and opaque sticky heading. Its page
+      // scroll must not trigger desktop geometry reads or clipping writes.
+      if (!desktop.matches) return
       const headingBounds = heading.getBoundingClientRect()
       const tableBounds = table.getBoundingClientRect()
       if (headingHeight !== headingBounds.height) {
@@ -127,38 +131,42 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
       }
       if (nativeClipping) return
 
-      // Mobile uses its own scrollport; its opaque sticky heading masks the rows.
       const navigationBottom = navigation.getBoundingClientRect().bottom
-      const overlap = desktop.matches ? Math.max(0, navigationBottom + headingHeight - tableBounds.bottom) : 0
+      const overlap = Math.max(0, navigationBottom + headingHeight - tableBounds.bottom)
       const nextClip = overlap > 0 ? `inset(${overlap}px -1px -1px)` : 'none'
       if (headingClip !== nextClip) {
         headingClip = nextClip
         heading.style.setProperty('--comparison-heading-clip', headingClip)
       }
-      const sectionClips = sections.map((section) => desktop.matches
-        ? Math.max(0, Math.ceil(headingBounds.bottom - section.getBoundingClientRect().top))
-        : 0)
+      const sectionClips = sections.map((section) =>
+        Math.max(0, Math.ceil(headingBounds.bottom - section.getBoundingClientRect().top)))
       sections.forEach((section, index) => section.style.setProperty('--comparison-rows-clip-top', `${sectionClips[index]}px`))
     }
 
-    clipAtHeader()
+    const updateViewport = () => {
+      window.removeEventListener('scroll', clipAtHeader)
+      window.removeEventListener('animationend', clipAtHeader)
+      if (!nativeClipping && desktop.matches) {
+        window.addEventListener('scroll', clipAtHeader, { passive: true })
+        window.addEventListener('animationend', clipAtHeader)
+      }
+      clipAtHeader()
+    }
+
+    updateViewport()
     const observer = new ResizeObserver(clipAtHeader)
     observer.observe(scroller)
     observer.observe(table)
     observer.observe(navigation)
     observer.observe(heading)
     window.addEventListener('resize', clipAtHeader)
-    desktop.addEventListener('change', clipAtHeader)
-    if (!nativeClipping) {
-      window.addEventListener('scroll', clipAtHeader, { passive: true })
-      window.addEventListener('animationend', clipAtHeader)
-    }
+    desktop.addEventListener('change', updateViewport)
     return () => {
       observer.disconnect()
       window.removeEventListener('scroll', clipAtHeader)
       window.removeEventListener('resize', clipAtHeader)
       window.removeEventListener('animationend', clipAtHeader)
-      desktop.removeEventListener('change', clipAtHeader)
+      desktop.removeEventListener('change', updateViewport)
       scroller.style.removeProperty('--comparison-heading-height')
       scroller.style.removeProperty('--comparison-table-height')
       heading.style.removeProperty('--comparison-heading-clip')
@@ -168,11 +176,20 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
 
   function showOfferColumn(index: number) {
     const scroller = scrollRef.current
+    const table = scroller?.querySelector('table')
     const headings = scroller?.querySelectorAll('thead th')
     const labelColumn = headings?.[0]
     const offerColumn = headings?.[index + 1]
-    if (!scroller || !labelColumn || !offerColumn) return
-    scroller.scrollBy({ left: offerColumn.getBoundingClientRect().left - labelColumn.getBoundingClientRect().right })
+    if (!scroller || !table || !labelColumn || !offerColumn) return
+    scroller.scrollTo({ left: comparisonColumnScrollLeft({
+      scrollLeft: scroller.scrollLeft,
+      clientWidth: scroller.clientWidth,
+      scrollWidth: scroller.scrollWidth,
+      viewportLeft: scroller.getBoundingClientRect().left + scroller.clientLeft,
+      tableRight: table.getBoundingClientRect().right,
+      labelWidth: labelColumn.getBoundingClientRect().width,
+      columnLeft: offerColumn.getBoundingClientRect().left,
+    }) })
   }
 
   return (

@@ -255,6 +255,7 @@ export function ConfiguratorPage() {
     if (offerId === configuration.offerId) return
     if (!editingId) {
       navigatePlan(`/forfaits/${getOffer(offerId)!.slug}`, {
+        replace: true,
         preventScrollReset: true,
       })
       return

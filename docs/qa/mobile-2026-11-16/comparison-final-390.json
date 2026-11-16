@@ -1,0 +1,39 @@
+{
+  "document": 390,
+  "headers": [
+    {
+      "left": 21,
+      "right": 129,
+      "text": "Fonctions",
+      "width": 108
+    },
+    {
+      "left": -351,
+      "right": -111,
+      "text": "VitrineÀ partir de 890 €Configurer",
+      "width": 240
+    },
+    {
+      "left": -111,
+      "right": 129,
+      "text": "BusinessÀ partir de 1 490 €Configurer",
+      "width": 240
+    },
+    {
+      "left": 129,
+      "right": 369,
+      "text": "Premium / 3DÀ partir de 2 490 €Configurer",
+      "width": 240
+    }
+  ],
+  "scroller": {
+    "client": 348,
+    "left": 20,
+    "overscroll": "none",
+    "right": 370,
+    "scrollLeft": 480,
+    "scrollWidth": 828
+  },
+  "tableWidth": 828,
+  "width": 390
+}

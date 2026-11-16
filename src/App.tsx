@@ -16,6 +16,8 @@ import {
   Route,
   RouterProvider,
   useLocation,
+  useNavigate,
+  useNavigationType,
   useParams,
 } from 'react-router-dom'
 import { PublicLayout, PortalLayout } from './components/layout'
@@ -24,7 +26,7 @@ import { ProjectProvider } from './lib/project'
 import { RouteMetadata } from './components/layout/RouteMetadata'
 import { PageRecovery } from './components/layout/PageRecovery'
 import { PixelitoLoading } from './components/layout/PixelitoLogo'
-import { rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
+import { capturePlanPageScroll, getPlanBackHref, rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
 import { discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
 
 function page<T, K extends keyof T>(load: () => Promise<T>, name: K) {
@@ -117,16 +119,41 @@ function RequireAuth({ children, admin = false }: { children: ReactNode; admin?:
 }
 function ScrollTop() {
   const location = useLocation()
+  const navigate = useNavigate()
+  const navigationType = useNavigationType()
   const previousRoute = useRef<string | null>(null)
   useLayoutEffect(() => {
+    const previous = window.history.scrollRestoration
+    // The route owns its final position. Native POP restoration otherwise
+    // runs after the layout effect and can put a card halfway off screen.
+    window.history.scrollRestoration = 'manual'
+    window.addEventListener('scroll', capturePlanPageScroll, { passive: true })
+    // A click can precede the next scheduled scroll event. Capture before the
+    // Router or menu changes the DOM, including keyboard-generated clicks.
+    document.addEventListener('pointerdown', capturePlanPageScroll, true)
+    document.addEventListener('click', capturePlanPageScroll, true)
+    return () => {
+      window.history.scrollRestoration = previous
+      window.removeEventListener('scroll', capturePlanPageScroll)
+      document.removeEventListener('pointerdown', capturePlanPageScroll, true)
+      document.removeEventListener('click', capturePlanPageScroll, true)
+    }
+  }, [])
+  useLayoutEffect(() => {
+    const returnHref = getPlanBackHref(location, navigationType)
+    if (returnHref) {
+      discardPlanNavigationIntent()
+      void navigate(returnHref, { replace: true })
+      return
+    }
     const route = `${location.pathname}${location.hash}`
-    const restored = restorePlanScroll(location, getPlanNavigationIntent(`${location.pathname}${location.search}${location.hash}`))
+    const restored = restorePlanScroll(location, getPlanNavigationIntent(`${location.pathname}${location.search}${location.hash}`), navigationType)
     discardPlanNavigationIntent()
     if (!restored && !location.hash && previousRoute.current !== route)
       window.scrollTo({ top: 0, behavior: 'instant' })
     previousRoute.current = route
     return () => rememberPlanPageScroll(location)
-  }, [location])
+  }, [location, navigate, navigationType])
   return null
 }
 class AppBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {

@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-16",
+  "source": "static SSR and isolated production CSS; no HTTP listener",
+  "gradientIdenticalToHead": true,
+  "pageInTransformAbsent": true,
+  "isolatedBuildDirectory": "/tmp/pixelito-shell-20261116",
+  "entryStylesheet": "assets/index-rULHwTrB.css",
+  "pages": [
+    {
+      "route": "/",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/forfaits",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/forfaits/vitrine",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/forfaits/connecte",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/forfaits/immersif-3d",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/options",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/exemples",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/faq",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    },
+    {
+      "route": "/contact",
+      "skipLinkCount": 1,
+      "mainTarget": true,
+      "cssInHead": true
+    }
+  ]
+}

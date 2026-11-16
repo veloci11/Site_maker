@@ -390,11 +390,14 @@
     --comparison-label-width: 108px;
     max-block-size: min(66svh, 520px);
     overflow: auto;
+    overscroll-behavior-x: none;
     scroll-padding-inline-start: calc(var(--comparison-label-width) + 6px);
     scroll-padding-inline-end: 6px;
   }
   .comparison-table {
-    width: max(100%, 486px);
+    /* Each offer fills the space beside the fixed label column. */
+    width: calc(300% - 2 * var(--comparison-label-width));
+    min-width: 486px;
     table-layout: fixed;
   }
   .comparison-table thead { top: 0; }
@@ -421,7 +424,7 @@
     font-size: 12px;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 760px) {
   .comparison-column-picker { display: grid; gap: 8px; margin-bottom: 12px; }
   .comparison-column-picker p { color: var(--muted-foreground); font-size: 12px; }
   .comparison-column-picker > div { display: flex; flex-wrap: wrap; gap: 6px; }

@@ -1,0 +1,22 @@
+{
+  "reducedMotion": true,
+  "business320": {
+    "client": 278,
+    "labelRight": 129,
+    "offerLeft": 299,
+    "offerRight": 469,
+    "scrollLeft": 0,
+    "scrollWidth": 618
+  },
+  "premium320": {
+    "client": 278,
+    "doc": 320,
+    "labelRight": 129,
+    "offerLeft": 129,
+    "offerRight": 299,
+    "scrollLeft": 340,
+    "scrollWidth": 618,
+    "scrollerRight": 300,
+    "width": 320
+  }
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-start\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"y\":0,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\",\"targetPath\":\"/exemples\",\"action\":\"POP\"}",
+    "timestamp": "2026-11-16T22:11:11.943Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-end\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"y\":0,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\",\"restored\":false}",
+    "timestamp": "2026-11-16T22:11:11.943Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"next-frame\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":0,\"y\":0,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\"}",
+    "timestamp": "2026-11-16T22:11:11.944Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":0,\"y\":740,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:11.999Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":740,\"y\":740,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:11.999Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":740,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:23.698Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:23.698Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"pointerdown\"}",
+    "timestamp": "2026-11-16T22:11:23.722Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"pointerdown\"}",
+    "timestamp": "2026-11-16T22:11:23.722Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"click\"}",
+    "timestamp": "2026-11-16T22:11:23.723Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"click\"}",
+    "timestamp": "2026-11-16T22:11:23.723Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":true,\"event\":\"pointerdown\"}",
+    "timestamp": "2026-11-16T22:11:23.995Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":true,\"event\":\"pointerdown\"}",
+    "timestamp": "2026-11-16T22:11:23.995Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":true,\"event\":\"click\"}",
+    "timestamp": "2026-11-16T22:11:23.996Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":true,\"event\":\"click\"}",
+    "timestamp": "2026-11-16T22:11:23.996Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"cleanup\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":true,\"cleanupKey\":\"default\"}",
+    "timestamp": "2026-11-16T22:11:24.016Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-start\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":1668,\"examples\":false,\"sheetOpen\":true,\"targetKey\":\"ub3ogbxx\",\"targetPath\":\"/faq\",\"action\":\"PUSH\"}",
+    "timestamp": "2026-11-16T22:11:24.021Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-end\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":1668,\"examples\":false,\"sheetOpen\":true,\"targetKey\":\"ub3ogbxx\",\"restored\":false}",
+    "timestamp": "2026-11-16T22:11:24.021Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"ub3ogbxx\",\"sampled\":367,\"y\":0,\"maxY\":1668,\"examples\":false,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:24.039Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":0,\"maxY\":1668,\"examples\":false,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:11:24.039Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"next-frame\",\"path\":\"/faq\",\"historyKey\":\"ub3ogbxx\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":0,\"maxY\":1668,\"examples\":false,\"sheetOpen\":false,\"targetKey\":\"ub3ogbxx\"}",
+    "timestamp": "2026-11-16T22:11:24.039Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"cleanup\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":0,\"maxY\":1668,\"examples\":false,\"sheetOpen\":false,\"cleanupKey\":\"ub3ogbxx\"}",
+    "timestamp": "2026-11-16T22:12:13.067Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-start\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":0,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\",\"targetPath\":\"/exemples\",\"action\":\"POP\",\"saved\":367}",
+    "timestamp": "2026-11-16T22:12:13.072Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"before-saved-scroll\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":0,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"savedY\":367}",
+    "timestamp": "2026-11-16T22:12:13.072Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"restore-end\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"ub3ogbxx\",\"sampled\":0,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\",\"restored\":true}",
+    "timestamp": "2026-11-16T22:12:13.072Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-before\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:12:13.078Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"capture-after\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"event\":\"scroll\"}",
+    "timestamp": "2026-11-16T22:12:13.078Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  },
+  {
+    "level": "debug",
+    "message": "[plan-scroll] {\"point\":\"next-frame\",\"path\":\"/exemples\",\"historyKey\":\"default\",\"committedKey\":\"default\",\"sampled\":367,\"y\":367,\"maxY\":3327,\"examples\":true,\"sheetOpen\":false,\"targetKey\":\"default\"}",
+    "timestamp": "2026-11-16T22:12:13.078Z",
+    "url": "http://127.0.0.1:4183/assets/index-DUJvLWBS.js"
+  }
+]

@@ -1,0 +1,25 @@
+# Logo animé et reprise mobile — 16 novembre 2026
+
+Final result: passed (build isolé et parcours IAB locaux).
+
+## Parcours et résultat
+
+1. **Accueil et navigation — contrôlé.** Introduction de 720 ms sur le symbole choisi, mot fixe. Les deux bandes noires émergent du dégradé, léger gonflement puis forme finale. Trois phases réellement capturées (`logo-intro-0.jpg`, `logo-intro-5.jpg`, `logo-intro-13.jpg`) et matrices CSS relevées. Aucun délai ni écran de blocage ajouté. Le symbole exact est intégré au HTML depuis le SVG généré, sans requêtes séparées pour les bandes. Les SVG publics et le favicon transparent restent identiques.
+2. **Chargement — contrôlé.** Sur la vraie route Connexion avec réseau temporairement ralenti de 1400 ms, la fonction partagée PixelitoLoading tourne les bandes autour du dégradé. Matrices de rotation évolutives dans `loader-frames.json`, captures `loader-0.jpg` et `loader-7.jpg`. La simulation réseau est retirée après contrôle. Mouvement réduit : aucune animation ni transformation de groupe ; le texte de statut reste présent.
+3. **Shell et menu mobiles — contrôlé.** Fond statique partagé avec la racine, rendu initial CSS, plus de réserve artificielle de scrollbar sur pointeur tactile. Le lien Aller au contenu reste masqué au repos ; Tab le révèle à 12 px du haut et Entrée place le focus sur main-content. Il est ensuite masqué. Fondu général de page sans transform pour ne pas déplacer le contenant de la barre fixe. Défilement tactile natif conservé ; menu borné avec safe areas et overscroll vertical contenu.
+4. **Forfaits et Retour — contrôlé.** À 390 et 320 px, la carte Business/Premium revient sous la navigation (top≈88 px, bas navigation88 px). Entrées cartes, menu depuis FAQ et comparatif vérifiées ; Changer Business→Premium remplace la configuration et Retour cible Premium. Même résultat avec mouvement réduit. Les fiches privées projet/projectId sont exclues de la réorientation publique et couvertes par les tests, sans connexion à un compte client.
+5. **Comparatif — contrôlé.** Sur téléphone, une colonne entière de forfait à côté des intitulés fixes, boutons et glissement gardés. Mesures390 : labels108, offre240, tableau828, cible Premium480 ; mesures320 : labels108, offre170, tableau618, cible Premium340. Bord droit de Premium à299 px dans le scrollport se terminant à300 px ; aucun débordement du document (320/320). Les coordonnées de Business de la première lecture320 sont prises avant stabilisation du clic et ne sont pas utilisées comme preuve d'alignement. Le signalement d'une quatrième zone blanche stable n'a pas été reproduit ; bornage explicite au bord du tableau et suppression du rebond horizontal ajoutés, sans affirmer une reproduction sur Safari réel.
+6. **Fonctionnalités et formulaire — contrôlé.** À320 px, sélection Blog sur Premium, total Environ2640 €, barre fixe alignée au bas du viewport logique (740 px). Une rubrique ouverte ; ouverture de la suivante ferme la précédente. Continuer ouvre les coordonnées, champs280 px dans viewport320, aucun débordement. Aucun formulaire envoyé.
+7. **Autres retours — contrôlé.** Galerie défilée740→menuFAQ→Retour740 avec toucher AX direct sur le déclencheur visible. Les premiers essais donnaient367/419 car le locator de test centrait le déclencheur sticky avant de le cliquer ; les traces ont permis de distinguer cet effet du produit. Instrumentation retirée. La mémoire de position est éphémère, bornée à100 clés, prise avant mutation et sans lecture de rectangles pendant le scroll.
+
+## Vérification technique et contre-revue
+
+TypeScript, build client/SSR/Sites et **316 tests** passent sur l'export isolé du staging. Le code de la release est comparé à cet export ; aucune instrumentation [plan-scroll] n'est conservée. Trois agents : shell/accessibilité, navigation et contre-revue mobile/performance. Ils ont permis de protéger les fiches privées et les retours ordinaires avant publication.
+
+Le fallback de clipping du comparatif n'effectue plus de mesures géométriques ni d'écritures de style pendant le scroll mobile ; abonnement desktop rétabli au changement de breakpoint. Les animations du logo utilisent seulement les transformations des groupes, sans boucle JavaScript ni filtre animé. Les FPS n'ont pas été mesurés : cette revue ne constitue pas un benchmark sur téléphone physique.
+
+## Captures et limites
+
+Les captures avant sont 01/02 ; les captures de la dernière intégration incluent11/12/13. Des changements de copie approuvés ont été livrés en parallèle dans un autre lot ; les différences de texte marketing ne sont pas une décision de cette reprise mobile. Les contrôles IAB utilisent les largeurs logiques320/390, pointeur tactile et, pour certains passages, DPR3. Certaines captures320 ont une hauteur de capture inférieure au viewport logique de l'émulation ; elles ne servent pas à conclure sur un clavier ou une barre Safari réels. Aucune certification iOS/Safari, accessibilité ou performances physiques n'est revendiquée. Rapports spécialisés : shell.md, navigation.md, comparison-premium.md et review.md.
+
+La publication et les contrôles HTTPS sont consignés après la bascule.

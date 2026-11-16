@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Animation du logo et reprise mobile — 16 novembre 2026
+
+Mathis demande maintenant l'animation proposée : au premier affichage de la navigation, les deux bandes noires sortent du dégradé avec un léger gonflement puis se stabilisent en 720 ms. Le mot reste fixe. Réutiliser les groupes du SVG choisi ; pas de compagnon ni de nouvelles formes. Le symbole est intégré depuis une copie SVG identique générée dans src/assets afin d'éviter l'attente de trois requêtes d'images. Pour les vrais chargements, les deux bandes noires tournent autour du dégradé en 1,6 s ; aucun délai artificiel ajouté. Les mouvements sont désactivés par prefers-reduced-motion.
+
+Le lien Aller au contenu reste disponible au clavier et masqué autrement. Fond statique continu dès le HTML initial, réserve de scrollbar seulement pour pointeurs fins avec survol, défilement tactile natif et safe-area du menu préservés. La transition générale de page ne transforme plus le conteneur des barres fixes. Le comparatif mobile garde les intitulés fixes et montre un forfait entier à la fois ; onglets et glissement conservés, défilement borné au tableau et absence de calculs de clipping desktop pendant un scroll mobile.
+
+Retour depuis une création publique, menu ou comparatif : accueil avec carte du forfait courant sous la navigation en mode empilé, section complète sur ordinateur. Changer remplace l'entrée de configuration. Les fiches privées projet/projectId sont exclues et les positions des autres pages restent conservées. Ne pas lire la position après le remplacement du DOM pour sauvegarder l'origine. Audit et limites dans docs/qa/mobile-2026-11-16/.
+
 ## Accroche d'économie publiée — 16 novembre 2026
 
 Mathis réitère explicitement sa demande de publier la comparaison marketing et refuse de la laisser en brouillon. Afficher « Jusqu’à 40 % moins cher qu’une agence traditionnelle » au-dessus de « Choisir mon forfait », chiffre en évidence dans un encart discret adapté au mobile. Cette instruction remplace la mise en brouillon du paragraphe suivant. Le texte est demandé par Mathis ; ne pas le présenter dans les rapports internes comme une moyenne de marché vérifiée. Conserver le texte de conception sur mesure et la description SEO, sans réintroduire le prix ni les trois bénéfices retirés du hero. Le défaut du tableau « platinum » reste en file d'attente.

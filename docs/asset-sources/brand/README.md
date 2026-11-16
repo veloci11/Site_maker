@@ -14,3 +14,7 @@ Les SVG ne contiennent aucun bitmap embarqué. Potrace vectorise les silhouettes
 Pour régénérer les exports : installer Potrace, puis exécuter `node scripts/prepare-brand.mjs`. La commande de build normale utilise directement les exports versionnés et ne nécessite pas Potrace.
 
 Le composant React charge le symbole et le mot séparément afin de pouvoir les faire évoluer indépendamment. Les noms accessibles sont portés par les liens et le titre du menu, pas par les images décoratives.
+
+Le symbole utilisé dans React est une copie identique générée dans `src/assets/logo-pixelito-symbole.svg`, intégrée au HTML afin que l'introduction ne dépende pas de requêtes d'images supplémentaires. Ses trois groupes sont animés séparément ; les identifiants de dégradé et de filtre sont propres à chaque instance. Le mot reste l'export SVG séparé.
+
+La navigation joue une introduction de 720 ms à son premier affichage. Le chargement réel fait tourner les deux bandes noires en 1,6 seconde autour de la bande colorée ; il n'ajoute aucun délai aux pages. Ces animations utilisent les transformations CSS des groupes du dessin original et sont désactivées avec `prefers-reduced-motion`.

@@ -1,0 +1,162 @@
+[
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.995475, 0.0950231, -0.0950231, 0.995475, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.780141, 0, 0, 0.780141, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.995475, 0.0950231, -0.0950231, 0.995475, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.974409, 0.224784, -0.224784, 0.974409, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.780813, 0, 0, 0.780813, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.974409, 0.224784, -0.224784, 0.974409, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.974409, 0.224784, -0.224784, 0.974409, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.780813, 0, 0, 0.780813, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.974409, 0.224784, -0.224784, 0.974409, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.965959, 0.258695, -0.258695, 0.965959, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.781087, 0, 0, 0.781087, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.965959, 0.258695, -0.258695, 0.965959, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.957357, 0.288909, -0.288909, 0.957357, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.78137, 0, 0, 0.78137, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.957357, 0.288909, -0.288909, 0.957357, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.957357, 0.288909, -0.288909, 0.957357, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.78137, 0, 0, 0.78137, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.957357, 0.288909, -0.288909, 0.957357, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.946929, 0.321442, -0.321442, 0.946929, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.781715, 0, 0, 0.781715, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.946929, 0.321442, -0.321442, 0.946929, 0, 0)"
+      }
+    ]
+  },
+  {
+    "label": "\n\n\n\n\n\nChargement…",
+    "parts": [
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--top",
+        "transform": "matrix(0.937053, 0.349188, -0.349188, 0.937053, 0, 0)"
+      },
+      {
+        "name": "pixelito-loader-breathe",
+        "part": "pixelito-symbol__part pixelito-symbol__part--middle",
+        "transform": "matrix(0.782045, 0, 0, 0.782045, 0, 0)"
+      },
+      {
+        "name": "pixelito-orbit",
+        "part": "pixelito-symbol__part pixelito-symbol__part--bottom",
+        "transform": "matrix(0.937053, 0.349188, -0.349188, 0.937053, 0, 0)"
+      }
+    ]
+  }
+]

@@ -1,3 +1,9 @@
+# Animation du logo et mobile — 16 novembre 2026
+
+Codé et validé sur un export isolé : introduction720ms du logo, chargement orbital réel, mouvement réduit, lien Aller au contenu seulement au clavier, fond racine continu, correction des barres fixes et retour au forfait courant sur mobile. Les autres positions d'historique et les fiches privées restent protégées.316 tests passent ; parcours IAB320/390 et captures dans `qa/mobile-2026-11-16/`. Publication en cours.
+
+Le signalement Premium/zone blanche du comparatif est examiné dans ce lot : aucune quatrième colonne stable reproduite, mais affichage d'un forfait entier à côté des intitulés fixes, onglets et swipe conservés, cible bornée au tableau et rebond horizontal supprimé. Pas de validation Safari physique ni de benchmark FPS revendiqués.
+
 # En attente après la correction de l'accueil — comparatif, 16 novembre 2026
 
 Signalement de Mathis à traiter ensuite, pas encore reproduit ni corrigé dans ce lot :

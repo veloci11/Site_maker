@@ -1,3 +1,7 @@
+## Logo animé et reprise mobile — 16 novembre 2026
+
+Final result: passed (version isolée locale). Introduction720ms, chargement orbital, clavier, fond et retours mobiles contrôlés ;316 tests passent. Le comparatif mobile présente un forfait entier, avec défilement borné. Galerie validée par toucher direct, sans centrage de test. Rapport et limites : `docs/qa/mobile-2026-11-16/design-qa.md`. Publication en cours, à distinguer des contrôles locaux.
+
 # Accroche sur les agences publiée — 16 novembre 2026
 
 Révision `1a85add`, release `20261116T214541Z-1a85add1bbbe`. À la demande explicite réitérée de Mathis, publication de « Jusqu’à 40 % moins cher qu’une agence traditionnelle » au-dessus de Choisir mon forfait. Première partie en gras, encart blanc translucide avec bordure fine, retour à la ligne sur écran étroit. Le chiffre est une accroche fournie par Mathis ; cette vérification de livraison ne constitue pas une étude de marché.

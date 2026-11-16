@@ -73,6 +73,9 @@ const logo = svgDocument(logoBounds.width, logoBounds.height,
 for (const [name, svg] of [['logo-pixelito.svg', logo], ['logo-pixelito-symbole.svg', symbol], ['logo-pixelito-typo.svg', word]]) {
   await writeFile(new URL(name, output), svg)
 }
+// Embed the same source in the UI so the first-paint animation never waits for
+// three separate image requests. The public SVG remains the downloadable copy.
+await writeFile(new URL('src/assets/logo-pixelito-symbole.svg', root), symbol)
 
 const faviconFrames = []
 const transparent = { r: 0, g: 0, b: 0, alpha: 0 }

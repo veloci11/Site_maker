@@ -7,17 +7,22 @@ type RouteLocation = { pathname: string; search?: string; hash?: string; key?: s
 type PlanRoute = { kind: 'plan'; id: PlanId }
 type ListingRoute = { kind: 'listing'; path: ListingPath; hasHash: boolean }
 type Route = PlanRoute | ListingRoute | null
-type ListingOrigin = { path: ListingPath; scroll: ScrollPosition }
-type Page = { route: Route; key?: string; scroll: ScrollPosition }
+type Page = { route: Route; key?: string; scroll: ScrollPosition; historyIndex: number | null }
 
 let committedPage: Page | null = null
-let origin: ListingOrigin | null = null
 let prepared: { source: Page | null; target: Route; preserveScroll: boolean } | null = null
 let previousPageScroll: ScrollPosition | null = null
 let previousPageRect: PageRect | null = null
 let restoredKey: string | undefined
+const pageScrolls = new Map<string, ScrollPosition>()
+
+function hasPrivateProject(location: RouteLocation): boolean {
+  const params = new URLSearchParams(location.search)
+  return params.has('projet') || params.has('projectId')
+}
 
 function route(location: RouteLocation): Route {
+  if (hasPrivateProject(location)) return null
   if (location.pathname === '/' || location.pathname === '/forfaits')
     return { kind: 'listing', path: location.pathname, hasHash: Boolean(location.hash) }
   const id = location.pathname.match(/^\/forfaits\/(vitrine|connecte|immersif-3d|sur-mesure)\/?$/)?.[1]
@@ -46,6 +51,11 @@ function scroll(): ScrollPosition {
   return { x: window.scrollX, y: window.scrollY }
 }
 
+function historyIndex(): number | null {
+  const index: unknown = window.history?.state?.idx
+  return typeof index === 'number' ? index : null
+}
+
 /** Call only once the router accepts a navigation, before its outgoing snapshot. */
 export function preparePlanNavigation(href: string, options: {
   preserveScroll?: boolean
@@ -58,17 +68,21 @@ export function preparePlanNavigation(href: string, options: {
   previousPageScroll = scroll()
   const rect = document.querySelector('.motion-page')?.getBoundingClientRect()
   previousPageRect = rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null
-
-  if (source?.route?.kind === 'listing' && target?.kind === 'plan')
-    origin = { path: source.route.path, scroll: scroll() }
-  else if (source?.route?.kind !== 'plan' || (target?.kind !== 'plan' && target?.kind !== 'listing'))
-    origin = null
 }
 
 export function getPlanReturnHref(): ListingPath {
-  // Before the first incoming layout effect, a synchronous/reduced-motion
-  // navigation still renders against the last committed listing.
-  return origin?.path ?? (committedPage?.route?.kind === 'listing' ? committedPage.route.path : '/forfaits')
+  return '/'
+}
+
+/** Back leaves a configuration at its offer card, regardless of its entry page. */
+export function getPlanBackHref(location: RouteLocation, action: string): ListingPath | null {
+  const index = historyIndex()
+  if (action !== 'POP' || index === null || committedPage?.historyIndex == null
+    || index >= committedPage.historyIndex || committedPage.route?.kind !== 'plan'
+    || hasPrivateProject(location) || route(location)?.kind === 'plan') return null
+  // Keep the departing plan committed until the replacement home DOM exists.
+  // Its id then selects the current card, including after Changer de forfait.
+  return location.pathname === '/' && !location.hash ? null : '/'
 }
 
 export function getPlanPreviousPageScroll(): ScrollPosition | null {
@@ -79,48 +93,63 @@ export function getPlanPreviousPageRect(): PageRect | null {
   return previousPageRect
 }
 
-/** Layout cleanup also remembers accepted navigations without View Transitions. */
+/** Sample the live page before navigation/DOM replacement can clamp its scroll. */
+export function capturePlanPageScroll() {
+  const key: unknown = window.history?.state?.key ?? 'default'
+  if (committedPage && committedPage.key === key) committedPage.scroll = scroll()
+}
+
+/** Cleanup persists the last live sample, never the incoming DOM's clamped scroll. */
 export function rememberPlanPageScroll(location: RouteLocation) {
-  if (committedPage && committedPage.key === location.key) committedPage.scroll = scroll()
+  if (committedPage && committedPage.key === location.key) {
+    if (location.key) {
+      pageScrolls.delete(location.key)
+      pageScrolls.set(location.key, committedPage.scroll)
+      if (pageScrolls.size > 100) pageScrolls.delete(pageScrolls.keys().next().value!)
+    }
+  }
 }
 
 /** Restore synchronously in a layout effect, before the incoming native snapshot. */
-export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { sourceKey: string; preserveScroll?: boolean; sourceElement?: HTMLElement | null }): boolean {
+export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { sourceKey: string; preserveScroll?: boolean; sourceElement?: HTMLElement | null }, action?: string): boolean {
   const target = route(location)
   const navigation = prepared && sameRoute(prepared.target, target) ? prepared : null
   const source = navigation?.source ?? committedPage
   restoredKey = undefined
 
-  // Normal links, reduced motion and browser Back use the last committed source.
-  if (!navigation && source?.route?.kind === 'listing' && target?.kind === 'plan')
-    origin = {
-      path: source.route.path,
-      scroll: source.scroll,
-    }
-  else if (source?.route?.kind !== 'plan' && target?.kind !== 'plan')
-    origin = null
-  else if (source?.route?.kind !== 'listing' && source?.route?.kind !== 'plan')
-    origin = null
-
   let restored = false
-  if (source?.route?.kind === 'plan' && target?.kind === 'listing'
-    && origin?.path === target.path && (!navigation || !target.hasHash)) {
-    let top = origin.scroll.y
-    // Every entry point returns to the offer overview, including cards clicked
-    // halfway down and comparison buttons. Never restore a partly hidden card.
-    const section = document.querySelector<HTMLElement>(target.path === '/' ? '#forfaits' : '.public-comparison')
+  if (source?.route?.kind === 'plan' && target?.kind === 'listing' && target.path === '/') {
+    const section = document.querySelector<HTMLElement>('#forfaits')
+    const cards = section?.querySelectorAll<HTMLElement>('.pricing-card')
+    const firstCard = cards?.[0]
+    const secondCard = cards?.[1]
+    const selectedCard = section?.querySelector<HTMLElement>(`.pricing-card[href="/forfaits/${source.route.id}"]`)
+    // On desktop the row and its heading fit together. Stacked mobile cards
+    // need their own top: aligning only the section would hide Business/3D.
+    const cardsAreStacked = firstCard && secondCard
+      && secondCard.getBoundingClientRect().top > firstCard.getBoundingClientRect().top + 1
+    const anchor = cardsAreStacked && selectedCard ? selectedCard : section
     const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
-    if (section) top = window.scrollY + section.getBoundingClientRect().top - headerHeight
-    window.scrollTo({ left: origin.scroll.x, top: Math.max(0, top), behavior: 'instant' })
-    restored = true
-    restoredKey = location.key
+    if (anchor) {
+      const top = window.scrollY + anchor.getBoundingClientRect().top - headerHeight
+      window.scrollTo({ left: 0, top: Math.max(0, top), behavior: 'instant' })
+      restored = true
+      restoredKey = location.key
+    }
   } else if ((navigation?.preserveScroll ?? (source?.key === acceptedIntent?.sourceKey && source?.route?.kind === 'plan' && target?.kind === 'plan' && acceptedIntent?.preserveScroll)) && !location.hash) {
     window.scrollTo({ left: source?.scroll.x ?? 0, top: source?.scroll.y ?? 0, behavior: 'instant' })
     restored = true
+  } else if (action === 'POP' && location.key && !location.hash) {
+    // Manual history restoration also preserves ordinary and private pages.
+    // Public plan returns take precedence over their old partial-card offset.
+    const saved = pageScrolls.get(location.key)
+    if (saved) {
+      window.scrollTo({ left: saved.x, top: saved.y, behavior: 'instant' })
+      restored = true
+    }
   }
 
-  if (target?.kind !== 'plan') origin = null
-  committedPage = { route: target, key: location.key, scroll: scroll() }
+  committedPage = { route: target, key: location.key, scroll: scroll(), historyIndex: historyIndex() }
   prepared = null
   return restored
 }

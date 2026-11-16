@@ -1,0 +1,8 @@
+{
+  "before": 740,
+  "after": {
+    "path": "/exemples",
+    "y": 740
+  },
+  "interaction": "AX direct touch on visible sticky header; no locator centering"
+}
