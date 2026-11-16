@@ -1,8 +1,10 @@
 # studio — décisions et consignes actuelles
 
-## Accroche d'économie à publier — 16 novembre 2026
+## Accroche d'économie publiée — 16 novembre 2026
 
 Mathis réitère explicitement sa demande de publier la comparaison marketing et refuse de la laisser en brouillon. Afficher « Jusqu’à 40 % moins cher qu’une agence traditionnelle » au-dessus de « Choisir mon forfait », chiffre en évidence dans un encart discret adapté au mobile. Cette instruction remplace la mise en brouillon du paragraphe suivant. Le texte est demandé par Mathis ; ne pas le présenter dans les rapports internes comme une moyenne de marché vérifiée. Conserver le texte de conception sur mesure et la description SEO, sans réintroduire le prix ni les trois bénéfices retirés du hero. Le défaut du tableau « platinum » reste en file d'attente.
+
+Publié et contrôlé : `1a85add`, release `20261116T214541Z-1a85add1bbbe`, 290 tests sur export propre. Encart avant le CTA, lisible à 320 px sans débordement ; métadonnées conservées. Preuves : `docs/qa/agency-saving-2026-11-16/`.
 
 ## Correction de l'introduction — 16 novembre 2026
 

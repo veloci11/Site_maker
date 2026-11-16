@@ -2,7 +2,21 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — introduction sur mesure, tarif réservé au SEO
+## Version active — accroche commerciale sur les agences
+
+- URL `https://gilmathis.com/`
+- Révision applicative `1a85add1bbbe13cc086276168f0094932e639b1f`
+- Release `/home/mathis/site-maker/releases/20261116T214541Z-1a85add1bbbe`
+- Client `/assets/index-DzA3PkMC.js`, SHA-256 `b5241c9fa42790f2134ecd7cfa3793ebd7dfb37daf8c652f73ba6faaa684f95c`
+- Archive code et builds : 41 783 345 octets, SHA-256 `edbbfe572669ec4af56c2d21f48f28ec8ad82cf923471cb866e36d5e6ffa9d7d`
+
+À la demande réitérée de Mathis, l'accueil affiche « Jusqu’à 40 % moins cher qu’une agence traditionnelle » dans un encart clair, avec la première partie en gras, au-dessus de Choisir mon forfait. Cette publication remplace la mise en brouillon du lot précédent. Le chiffre est une accroche demandée par Mathis, pas une moyenne de marché validée par nos contrôles. Introduction sur mesure et description SEO conservées ; prix et trois bénéfices retirés du hero toujours absents.
+
+Export propre du commit sans les modifications mobiles et de marque concurrentes. TypeScript, builds client/SSR/Sites et 290 tests passent ; rendu serveur vérifié avec Node 24 à l'origine. Contrôle IAB local puis HTTPS bureau/mobile : encart à 18 px au-dessus du bouton, document de 305 px à 320 × 740 sans débordement, bouton entièrement visible (bas à 544,125 px), description SEO et canonical conservées, aucune alerte console observée. Captures et preuves dans `docs/qa/agency-saving-2026-11-16/`.
+
+Sauvegarde réussie, archive vérifiée, bascule atomique, santé et tunnel actifs ; catalogue complet strictement inchangé. Seul `site-maker.service` redémarré. Serveur local 4173 arrêté, émulations retirées, onglets temporaires fermés et Tailscale remis à l'arrêt. Le défaut du comparatif reste en attente dans ce lot.
+
+## Version précédente — introduction sur mesure, tarif réservé au SEO
 
 - URL `https://gilmathis.com/`
 - Révision applicative `a056e8f5d7b440199b01c8c737925017943e754f`

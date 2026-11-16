@@ -1,3 +1,11 @@
+# Accroche sur les agences publiée — 16 novembre 2026
+
+Révision `1a85add`, release `20261116T214541Z-1a85add1bbbe`. À la demande explicite réitérée de Mathis, publication de « Jusqu’à 40 % moins cher qu’une agence traditionnelle » au-dessus de Choisir mon forfait. Première partie en gras, encart blanc translucide avec bordure fine, retour à la ligne sur écran étroit. Le chiffre est une accroche fournie par Mathis ; cette vérification de livraison ne constitue pas une étude de marché.
+
+TypeScript, builds client/SSR/Sites et 290 tests passent sur un export propre du commit ; travaux mobiles et de marque concurrents exclus. Contrôles IAB local puis HTTPS bureau et 320 × 740 : encart lisible, espacement de 18 px avant le bouton, document de 305 px sans débordement et bouton terminé à 544,125 px. Nouveau texte présent aussi dans le rendu serveur ; description SEO et canonical conservées, prix et ancienne liste toujours absents du hero. Aucune alerte console observée.
+
+Captures bureau/mobile locales et publiques, `public-proof.json` et `deployment-origin.json` dans `docs/qa/agency-saving-2026-11-16/`. Sauvegarde, santé et catalogue identique vérifiés. Localhost arrêté, émulations retirées, onglets fermés et Tailscale remis à l'arrêt. Le défaut du tableau mis en file d'attente n'est pas traité dans cette release.
+
 # Introduction corrigée et publiée — 16 novembre 2026
 
 Révision `a056e8f`, release `20261116T213508Z-a056e8f5d7b4`. Le prix et les trois bénéfices ont été retirés du hero après clarification de Mathis : ils étaient destinés à la description SEO, qui reste conservée. La nouvelle introduction présente la conception et la création sur mesure, avec les usages activité, contact et 3D. Le titre et les liens restent identiques.

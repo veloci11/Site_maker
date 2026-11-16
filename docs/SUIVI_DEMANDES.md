@@ -9,6 +9,12 @@ Signalement de Mathis à traiter ensuite, pas encore reproduit ni corrigé dans 
 
 Vérifier le défilement horizontal et les largeurs des colonnes/onglets sur mobile, en tenant compte du chantier mobile déjà en cours. Mathis demande explicitement de mettre ce point en file d'attente pour après la correction actuelle de l'accueil. Aucun correctif ni contrôle de reproduction ne doit être déduit de cette note.
 
+# Accroche sur les agences publiée — 16 novembre 2026
+
+À la demande réitérée de Mathis, l'accroche « Jusqu’à 40 % moins cher qu’une agence traditionnelle » est maintenant publiée au-dessus de Choisir mon forfait, première partie en gras dans un encart adapté au mobile. Cette décision remplace la mise en brouillon du lot précédent. Texte sur mesure et description SEO conservés, prix et trois bénéfices toujours retirés du hero.
+
+Lot `1a85add`, 290 tests sur export propre, contrôles IAB locaux et HTTPS ordinateur/mobile réussis. Preuves dans `qa/agency-saving-2026-11-16/`, livraison dans `../ops/DEPLOYMENT_STATUS.md`. Le défaut du comparatif décrit en tête reste en attente dans ce lot.
+
 # Correction de l'accueil publiée — 16 novembre 2026
 
 Lot `a056e8f` publié et vérifié : prix et trois bénéfices retirés du hero ; description SEO à partir de 890 € conservée. Introduction remplacée par « Nous concevons et créons votre site internet sur mesure pour présenter votre activité, faciliter les prises de contact ou faire découvrir votre univers en 3D. ». La comparaison « jusqu'à 40 % moins cher qu'une agence » reste en brouillon sans comparaison de prestations équivalentes établie.

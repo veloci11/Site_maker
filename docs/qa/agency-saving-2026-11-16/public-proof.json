@@ -1,0 +1,37 @@
+{
+  "url": "https://gilmathis.com/",
+  "desktop": {
+    "badgeBottom": 454.046875,
+    "benefitLists": 0,
+    "canonical": "https://gilmathis.com/",
+    "ctaTop": 472.046875,
+    "priceBlocks": 0,
+    "seo": "Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris.",
+    "text": "Jusqu’à 40 % moins cher qu’une agence traditionnelle"
+  },
+  "mobile": {
+    "badge": {
+      "bottom": 478.125,
+      "height": 66,
+      "left": 20,
+      "right": 285,
+      "top": 412.125,
+      "width": 265,
+      "x": 20,
+      "y": 412.125
+    },
+    "cta": {
+      "bottom": 544.125,
+      "height": 48,
+      "left": 20,
+      "right": 285,
+      "top": 496.125,
+      "width": 265,
+      "x": 20,
+      "y": 496.125
+    },
+    "document": 305,
+    "width": 320
+  },
+  "console": []
+}
