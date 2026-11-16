@@ -22,7 +22,7 @@ import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
 import { didRestorePlanScroll } from '../../lib/plan-return'
 import { priceEstimateNote } from '../../content/configurator-copy'
-import { homeDescription } from '../../content/home-copy'
+import { homeAgencySaving, homeDescription } from '../../content/home-copy'
 import { FaqList } from './FaqList'
 import { OfferComparison } from './OfferComparison'
 import { configureHref, startingPrice, usePricing } from './pricing'
@@ -79,6 +79,10 @@ export function HomePage() {
           </h1>
           <p className="home-hero__description">
             {homeDescription}
+          </p>
+          <p className="home-hero__saving">
+            <strong>{homeAgencySaving.highlight}</strong>{' '}
+            <span>{homeAgencySaving.comparison}</span>
           </p>
           <div className="home-hero__actions">
             <Button asChild size="lg">

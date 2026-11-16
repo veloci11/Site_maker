@@ -6,6 +6,9 @@
 .home-hero__copy { max-width: 860px; }
 .home-hero h1 { font-size: clamp(42px, 5.3vw, 76px); font-weight: 600; line-height: 1.04; letter-spacing: -.055em; }
 .home-hero__description { max-width: 620px; margin-top: 24px; font-size: 18px; line-height: 1.6; letter-spacing: -.018em; color: var(--muted-foreground); }
+.home-hero__saving { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .35em; width: fit-content; max-width: 100%; margin-top: 24px; padding: 11px 15px; border: 1px solid rgb(20 20 20 / .12); border-radius: 12px; background: rgb(255 255 255 / .58); color: var(--muted-foreground); font-size: 14px; line-height: 1.5; }
+.home-hero__saving > strong { color: var(--foreground); font-weight: 600; }
+.home-hero__saving + .home-hero__actions { margin-top: 18px; }
 .home-hero__reassurance { max-width: 540px; margin-top: 18px; color: var(--muted-foreground); font-size: 14px; line-height: 1.6; }
 .home-hero__actions { display: flex; align-items: center; flex-wrap: wrap; column-gap: 24px; row-gap: 16px; margin-top: 30px; }
 .home-hero__actions > .button { min-height: 52px; padding-inline: 25px; font-size: 15px; }

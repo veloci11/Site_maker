@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Accroche d'économie à publier — 16 novembre 2026
+
+Mathis réitère explicitement sa demande de publier la comparaison marketing et refuse de la laisser en brouillon. Afficher « Jusqu’à 40 % moins cher qu’une agence traditionnelle » au-dessus de « Choisir mon forfait », chiffre en évidence dans un encart discret adapté au mobile. Cette instruction remplace la mise en brouillon du paragraphe suivant. Le texte est demandé par Mathis ; ne pas le présenter dans les rapports internes comme une moyenne de marché vérifiée. Conserver le texte de conception sur mesure et la description SEO, sans réintroduire le prix ni les trois bénéfices retirés du hero. Le défaut du tableau « platinum » reste en file d'attente.
+
 ## Correction de l'introduction — 16 novembre 2026
 
 Mathis précise que « Votre site personnalisé dès 890 € » et les trois inclusions étaient destinés à la description SEO, pas au bloc de l'accueil. Retirer ce prix et cette liste du hero ; conserver la description SEO. Remplacer l'introduction simplifiée rejetée par une phrase centrée sur la conception et la création du site sur mesure, avec les usages activité, contact et 3D. La phrase comparative demandée « jusqu'à 40 % moins cher qu'une agence » reste en brouillon : le repérage existant ne démontre pas cet écart à prestations et fiscalité équivalentes.
