@@ -1,3 +1,9 @@
+# Logo Pixelito SVG — 16 novembre 2026
+
+Publié et vérifié en HTTPS : logo à trois bandes choisi par Mathis, remplacé dans la barre, le menu mobile, le pied de page et les composants de l'espace privé/chargement. Véritables SVG sans bitmap intégré : `logo-pixelito.svg`, `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`. Groupes et fichiers séparés, lettres en tracés. Favicon et icônes mobiles dérivés du symbole. Les anciennes images de marque restent uniquement en archives documentaires.
+
+Révision applicative `ca178280eed0026379524620a6fa016ed07d08ea`, release `20261116T204453Z-ca178280eed0`. Les 284 tests passent ; contrôle IAB bureau/mobile et seize vérifications HTTPS. Retour en haut conservé, aucun débordement à 320 px, aucune erreur console observée sur le site publié. Localhost fermé et Tailscale remis arrêté. Preuves : `qa/brand-2026-11-16/`. Les travaux légaux et SEO concomitants ne sont pas publiés dans cette release.
+
 # Changer : taille fixe et menu animé — 11 novembre 2026
 
 La copie du bouton affichée pendant la transition était environ 3 px plus haute que le vrai bouton. Les deux mesurent désormais 88,875 × 32 px avec la même hauteur de ligne, y compris après le passage sur un autre forfait et sur mobile. Le panneau s’anime réellement à l’ouverture et à la fermeture (240/200 ms), sans étirer son texte. Le sens s’inverse quand le menu est placé au-dessus du bouton.

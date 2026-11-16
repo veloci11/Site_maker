@@ -1,8 +1,22 @@
 # Déploiement de pixelito — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 12 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active
+## Version active — logo Pixelito SVG
+
+- URL `https://gilmathis.com/`
+- Révision applicative `ca178280eed0026379524620a6fa016ed07d08ea` sur `main`
+- Release `/home/mathis/site-maker/releases/20261116T204453Z-ca178280eed0`
+- Client `/assets/index-GOYaL1PZ.js`, SHA-256 `bc836a9cb06d5e73f5244bc43cf22981397ce2aa75b5382ced3b2b59360c2484`
+- Archive vérifiée de 14157211 octets, SHA-256 `0038a42327bd3731261a4a501ef21f719a7e100d7bee7d129a163959c93fa91d`
+
+Logo à trois bandes et typographie de la capture choisie, vectorisés en tracés. Fichiers `logo-pixelito.svg`, `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`, symbole/mot séparés ; favicon et icônes mobiles dérivés du symbole. Logo commun à la navigation, au menu, au pied de page et à l'espace privé ; symbole seul pour les chargements. Ancien personnage orange et masques retirés du client.
+
+Les 284 tests passent. IAB HTTPS à 1280 et 320 px : logo entier, menu accessible, retour en haut et absence de débordement vérifiés ; aucune alerte console observée. Seize contrôles HTTPS des pages et ressources, empreintes conformes au build isolé. Sauvegarde privée et santé validées ; catalogue public inchangé (3 offres, 28 définitions), prix inchangés et paiements désactivés. Les 22 autres services/PID restent identiques ; GP Park était inactif et le reste. Preuves dans `docs/qa/brand-2026-11-16/`.
+
+La release provient d'un export propre du commit, sans les travaux légaux ni SEO concurrents restés locaux. Serveur local de cette tâche arrêté (4183), viewport restauré et Tailscale remis à l'état arrêté initial. La préparation des SVG utilise Potrace ; le build courant ne dépend pas de cet outil.
+
+## Version précédente — logo orange restauré
 
 - URL `https://gilmathis.com/`
 - Révision applicative `e2f568abc974acb75a6c0d2c8eb5ac4afaf92bc1` sur `main`

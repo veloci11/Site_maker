@@ -1,0 +1,16 @@
+{
+  "release": "20261116T204453Z-ca178280eed0",
+  "commit": "ca178280eed0026379524620a6fa016ed07d08ea",
+  "previous": "/home/mathis/site-maker/releases/20261113T021824Z-e2f568abc974",
+  "health": true,
+  "offers": 3,
+  "options": 28,
+  "productionPricesUnchanged": true,
+  "historicalIdsUnchanged": true,
+  "reviewedDefinitionsMatch": true,
+  "otherServicesChecked": 22,
+  "otherProjectsUnchanged": true,
+  "gpStateUnchanged": true,
+  "gpState": "inactive",
+  "backupCompleted": true
+}

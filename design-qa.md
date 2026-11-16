@@ -1,6 +1,6 @@
 ## Logo Pixelito SVG — 16 novembre 2026
 
-Final result: passed. Référence sélectionnée, proportions, typographie en tracés, gradient, bureau 1280 px, mobile 320 px, menu et retour à l’accueil contrôlés. Les 284 tests passent. Rapport et captures : `docs/qa/brand-2026-11-16/`.
+Final result: passed. Logo SVG publié sur gilmathis.com, révision ca17828. Référence sélectionnée, proportions, typographie en tracés, gradient, bureau 1280 px, mobile 320 px, menu et retour à l’accueil contrôlés en local et en HTTPS. Les 284 tests passent ; seize contrôles HTTPS conformes au build. Localhost fermé. Rapport et captures : `docs/qa/brand-2026-11-16/`.
 
 # Retour au logo orange simple — 12 novembre 2026
 
