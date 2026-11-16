@@ -1,7 +1,6 @@
 import { formatMoney, type Pricing } from '../../shared/catalog.ts'
 
-export const homeDescription = 'Créer votre site internet devient simple. Vous choisissez les fonctionnalités utiles, nous vous guidons jusqu’à la mise en ligne.'
-export const homeBenefits = ['Design personnalisé', 'Mobile compris', 'Mise en ligne comprise']
+export const homeDescription = 'Nous concevons et créons votre site internet sur mesure pour présenter votre activité, faciliter les prises de contact ou faire découvrir votre univers en 3D.'
 
 export function homeStartingAmount(pricing: Pricing) {
   const amount = pricing.base.vitrine

@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Correction de l'introduction — 16 novembre 2026
+
+Mathis précise que « Votre site personnalisé dès 890 € » et les trois inclusions étaient destinés à la description SEO, pas au bloc de l'accueil. Retirer ce prix et cette liste du hero ; conserver la description SEO. Remplacer l'introduction simplifiée rejetée par une phrase centrée sur la conception et la création du site sur mesure, avec les usages activité, contact et 3D. La phrase comparative demandée « jusqu'à 40 % moins cher qu'une agence » reste en brouillon : le repérage existant ne démontre pas cet écart à prestations et fiscalité équivalentes.
+
 ## Accroche commerciale et agences — 16 novembre 2026
 
 Mathis demande une description SEO centrée sur un site personnalisé à petit prix dès 890 €, et des arguments courts au-dessus de « Choisir mon forfait ». Son hypothèse de comparaison à 40 % vise les agences, pas les freelances. Le repérage dans `docs/qa/commercial-2026-11-16/comparaison-agences.html` ne constitue pas une moyenne de marché à périmètre égal. Ne pas transformer cette hypothèse en statistique acquise. La copie publiée doit s'appuyer sur le prix réel et les inclusions : personnalisation, mobile et mise en ligne. Textes et montant partagés dans `src/content/home-copy.ts` ; montant issu du tarif serveur Vitrine, CHF et « sur devis » conservés si le catalogue change. Aucun prix, périmètre ou suivi mensuel modifié.
