@@ -2,7 +2,19 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — HTML public, SEO et IA
+## Version active — favicon transparent
+
+- URL `https://gilmathis.com/`
+- Révision applicative `e113bf17cda5d970cfa444fd4b041c03f5096ba0`
+- Release `/home/mathis/site-maker/releases/20261116T210809Z-e113bf17cda5`
+- Client `/assets/index-Bx8iDzZT.js`, SHA-256 `7408f1d79860dc11eb0324bf6ffd68bd885673ad2b0c6fdf0f1bc694f642aad6`
+- Archive client/SSR/runtime : 27968250 octets, SHA-256 `e014bb57d69841a3f8ca9a8026e443baea1f3087820d191a52ec10ba02202b8e`
+
+Fond blanc retiré des six PNG et des images ICO : symbole sur fond transparent, sans changement des SVG ni du logo de navigation. Liens d'icônes et manifeste versionnés. TypeScript, build client/SSR/Sites et 290 tests passent. Huit ressources publiques correspondent aux exports ; canal alpha des PNG et des images ICO vérifié. Head et rendu public contrôlés dans l'IAB, aucune alerte console observée.
+
+Sauvegarde privée avant bascule, santé valide, catalogue et prix identiques, paiements désactivés. Les 22 autres services/PID sont inchangés ; GP Park reste inactif. Localhost de cette tâche fermé (4183) et Tailscale remis arrêté. Les essais commerciaux locaux d'une autre tâche ne sont pas inclus. Preuves : `docs/qa/favicon-transparent-2026-11-16/`.
+
+## Version précédente — HTML public, SEO et IA
 
 - URL `https://gilmathis.com/`
 - Révision applicative `a4fead9624ed1345ca5b6518a2d554e78c1a5a8a` sur `main`

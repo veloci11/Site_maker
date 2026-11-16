@@ -1,0 +1,50 @@
+[
+  {
+    "file": "assets/brand/logo-pixelito-16.png",
+    "sha256": "b29a789c45337ef909c444616c0843649679bfaa9f42bb3e14d3598cdb721f25",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "assets/brand/logo-pixelito-32.png",
+    "sha256": "411d5cb21d6e6e00646ab45fb292c12baf1ea295614aba4777dc418e0bb429da",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "assets/brand/logo-pixelito-48.png",
+    "sha256": "05cf1d9caf0a1280df4b9a85b1da207e3227d3908b37ed4721e8b24d48886655",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "assets/brand/logo-pixelito-180.png",
+    "sha256": "24034c7eb6b20015f231958621cb878d56108bc194c0b3bef7da08e8deb20ebe",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "assets/brand/logo-pixelito-192.png",
+    "sha256": "ff4d17bca4884b30977cb3a1fe7260efedb170a71aa43836fc03f80aed960370",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "assets/brand/logo-pixelito-512.png",
+    "sha256": "f519224ced89268c7f8c7d927a819774ace464fc8773badfeebf688619a42c91",
+    "matchesExport": true,
+    "hasAlpha": true
+  },
+  {
+    "file": "favicon.ico",
+    "sha256": "c049b320a231590f72c9fa0e85f76eff90edd2e09da1073d9bfdbd5d1f4236ad",
+    "matchesExport": true,
+    "hasAlpha": null
+  },
+  {
+    "file": "site.webmanifest",
+    "sha256": "7cad626e35bd985d70c3782bcae4d6707df2a8d5b4a47de4671c078da4676d94",
+    "matchesExport": true,
+    "hasAlpha": null
+  }
+]

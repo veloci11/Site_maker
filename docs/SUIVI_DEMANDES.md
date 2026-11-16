@@ -1,3 +1,7 @@
+# Favicon transparent — 16 novembre 2026
+
+Publié et contrôlé : fond blanc retiré des exports PNG et ICO ; seules les trois bandes du symbole restent visibles, avec transparence autour et entre elles. Liens versionnés pour renouveler le cache. SVG et logo de navigation inchangés. Révision applicative `e113bf17cda5d970cfa444fd4b041c03f5096ba0`, 290 tests passants, huit ressources HTTPS conformes, head contrôlé dans l'IAB. Localhost fermé. Preuves : `qa/favicon-transparent-2026-11-16/`.
+
 # SEO et IA publiés — 16 novembre 2026
 
 Lot `a4fead9` publié sur gilmathis.com et contrôlé sur les neuf routes publiques. Vrai HTML initial, styles de route, tarifs serveur et hydratation ; métadonnées centralisées, données structurées, image sociale et cache des fichiers hashés. Les comptes et URL privées restent hors indexation/pré-rendu. Les mentions sont des pages dédiées accessibles par le pied de page ; les identités et leur texte définitif restent à fournir ultérieurement par Mathis.

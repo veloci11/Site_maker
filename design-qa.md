@@ -1,3 +1,7 @@
+## Favicon transparent — 16 novembre 2026
+
+Final result: passed. Export alpha, PNG/ICO sans fond blanc, références de cache et head public vérifiés. Révision e113bf1 publiée, 290 tests passants, huit ressources HTTPS identiques au build. Localhost fermé. Rapport : `docs/qa/favicon-transparent-2026-11-16/design-qa.md`.
+
 # SEO classique et IA publiés — 16 novembre 2026
 
 Révision `a4fead9`, release `20261116T205204Z-a4fead9624ed`. Contrôle IAB HTTPS des neuf pages indexables : toutes répondent 200 avec un H1 et le vrai contenu dans le HTML initial. L'accueil passe de 1 929 à 45 418 caractères de HTML. Styles de route inclus et accueil lisible sans JavaScript, sur ordinateur et à 390 px ; document mobile de 375 px, sans débordement. Métadonnées et JSON-LD cohérents après navigation, retirés pour les pages légales provisoires. Liens de pied de page vers les pages dédiées vérifiés.
