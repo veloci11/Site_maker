@@ -8,6 +8,7 @@ Ce guide décrit le lot du 6 novembre 2026, codé et vérifié localement. Il ne
 
 | Ce que vous voulez changer | Fichier | Élément |
 | --- | --- | --- |
+| Accroche de l'accueil, prix de départ et description SEO commerciale | `src/content/home-copy.ts` | `homeDescription`, `homeBenefits`, `homeStartingAmount`, `homeMetaDescription` ; le prix est lu dans le catalogue serveur |
 | Nom, description et trois points d’un forfait | `shared/catalog.ts` | `offers` : `title`, `description`, `features` |
 | Nom et explication d’une option | `shared/catalog.ts` | `optionDefinitions` : `title`, `description` |
 | Options proposées dans chaque forfait public | `shared/offer-options.ts` | `PUBLIC_OPTIONS_BY_OFFER` ; le catalogue historique reste complet |

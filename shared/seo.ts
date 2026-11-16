@@ -1,8 +1,9 @@
-import { defaultPricing, examples, faqs, formatMoney, getOffer, publicOffers, type Pricing } from './catalog.ts'
+import { defaultPricing, examples, faqs, getOffer, publicOffers, type Pricing } from './catalog.ts'
+import { homeMetaDescription } from '../src/content/home-copy.ts'
 
 // A fixed, verified public origin keeps canonicals independent of request headers.
 export const siteOrigin = 'https://gilmathis.com'
-export const siteSocialImage = `${siteOrigin}/assets/brand/pixelito-icon-512.png`
+export const siteSocialImage = `${siteOrigin}/assets/brand/logo-pixelito-512.png`
 
 export type RouteSeo = {
   title: string
@@ -24,7 +25,7 @@ const page = (title: string, description: string, pathname: string): RouteSeo =>
 const publicPages: Record<string, RouteSeo> = {
   '/': page(
     'Création de sites internet clé en main',
-    'Création de sites internet : Vitrine à partir de 890 €, Business à partir de 1 490 € et Premium / 3D à partir de 2 490 €. Comparez les trois forfaits et choisissez vos fonctionnalités.',
+    homeMetaDescription(defaultPricing),
     '/',
   ),
   '/forfaits': page(
@@ -163,11 +164,7 @@ export function getRouteSeo(pathname: string, search = '', pricing: Pricing = de
     return { ...metadata, status: 301, redirect: `${canonicalPath}${legacySearch}` }
   }
   if (normalized === '/') {
-    const offers = publicOffers.map(offer => {
-      const amount = pricing.base[offer.id]
-      return `${offer.title} ${amount == null ? 'sur devis' : `à partir de ${formatMoney(amount, pricing.currency)}`}`
-    })
-    return { ...metadata, description: `Création de sites internet : ${offers.join(', ')}. Comparez nos forfaits et préparez votre projet.` }
+    return { ...metadata, description: homeMetaDescription(pricing) }
   }
   return { ...metadata }
 }

@@ -112,6 +112,9 @@ test('production HTML, API prices and metadata agree; private pages never receiv
   await new Promise(resolve => server.once('listening', resolve));
   const base = `http://127.0.0.1:${server.address().port}`;
   try {
+    const socialImage = await fetch(`${base}${new URL(siteSocialImage).pathname}`);
+    assert.equal(socialImage.status, 200);
+    assert.match(socialImage.headers.get('content-type'), /image\/png/);
     for (const route of publicPagePaths) {
       const response = await fetch(`${base}${route}`);
       const html = await response.text();
@@ -143,9 +146,13 @@ test('production HTML, API prices and metadata agree; private pages never receiv
     const html = await (await fetch(`${base}/`)).text();
     const catalogue = await (await fetch(`${base}/api/catalogue`)).json();
     assert.deepEqual(scriptData(html, 'studio-public-data').pricing, catalogue.pricing);
-    assert.match(html, /Vitrine à partir de 1[\s\u00a0\u202f]?234[\s\u00a0\u202f]?CHF/);
-    assert.match(html, /Business sur devis/);
+    assert.match(html, /name="description" content="Votre site internet personnalisé à petit prix, à partir de 1[\s\u00a0\u202f]?234[\s\u00a0\u202f]?CHF/);
     assert.doesNotMatch(html, /<script>private-breakout<\/script>/);
+    pricing.base.vitrine = null;
+    getDb().prepare("UPDATE studio_settings SET value=? WHERE key='pricing'").run(JSON.stringify(pricing));
+    const unpriced = await (await fetch(`${base}/`)).text();
+    assert.match(unpriced, /name="description" content="Votre site internet personnalisé sur devis\./);
+    assert.equal(scriptData(unpriced, 'studio-public-data').pricing.base.vitrine, null);
     for (const route of ['/connexion', '/mentions-legales', '/espace', '/forfaits/vitrine?projet=private-project']) {
       const response = await fetch(`${base}${route}`);
       const privateHtml = await response.text();

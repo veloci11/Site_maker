@@ -22,6 +22,7 @@ import { Button } from '../../components/ui/button'
 import { Reveal } from '../../components/layout/motion'
 import { didRestorePlanScroll } from '../../lib/plan-return'
 import { priceEstimateNote } from '../../content/configurator-copy'
+import { homeBenefits, homeDescription, homeStartingAmount } from '../../content/home-copy'
 import { FaqList } from './FaqList'
 import { OfferComparison } from './OfferComparison'
 import { configureHref, startingPrice, usePricing } from './pricing'
@@ -58,6 +59,7 @@ function Intro({
 
 export function HomePage() {
   const pricing = usePricing()
+  const startingAmount = homeStartingAmount(pricing)
   const location = useLocation()
   const { hash } = location
   useEffect(() => {
@@ -77,9 +79,16 @@ export function HomePage() {
             Clé en main.
           </h1>
           <p className="home-hero__description">
-            Présentez votre activité, facilitez les prises de contact ou faites découvrir votre univers en 3D.
-            Nous vous aidons à choisir les fonctions utiles, puis réalisons votre site.
+            {homeDescription}
           </p>
+          <p className="home-hero__price">
+            Votre site personnalisé {startingAmount ? <>dès <strong>{startingAmount}</strong>.</> : 'sur devis.'}
+          </p>
+          <ul className="home-hero__benefits" aria-label="Compris dès le forfait Vitrine">
+            {homeBenefits.map(benefit => (
+              <li key={benefit}><Check size={16} aria-hidden="true" />{benefit}</li>
+            ))}
+          </ul>
           <div className="home-hero__actions">
             <Button asChild size="lg">
               <a href="#forfaits">
