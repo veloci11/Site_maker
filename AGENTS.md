@@ -6,6 +6,8 @@ Mathis demande maintenant l'animation proposée : au premier affichage de la nav
 
 Le lien Aller au contenu reste disponible au clavier et masqué autrement. Fond statique continu dès le HTML initial, réserve de scrollbar seulement pour pointeurs fins avec survol, défilement tactile natif et safe-area du menu préservés. La transition générale de page ne transforme plus le conteneur des barres fixes. Le comparatif mobile garde les intitulés fixes et montre un forfait entier à la fois ; onglets et glissement conservés, défilement borné au tableau et absence de calculs de clipping desktop pendant un scroll mobile.
 
+Les ancres internes de l'accueil passent par le Link du routeur (`#forfaits`, `#fonctionnement`, `#comparer`) pour conserver les index d'historique reconnus, notamment avec le bloqueur du formulaire. Ne pas réintroduire des entrées natives de hash en parallèle de cet historique.
+
 Retour depuis une création publique, menu ou comparatif : accueil avec carte du forfait courant sous la navigation en mode empilé, section complète sur ordinateur. Changer remplace l'entrée de configuration. Les fiches privées projet/projectId sont exclues et les positions des autres pages restent conservées. Ne pas lire la position après le remplacement du DOM pour sauvegarder l'origine. Audit et limites dans docs/qa/mobile-2026-11-16/.
 
 ## Accroche d'économie publiée — 16 novembre 2026

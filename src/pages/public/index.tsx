@@ -86,13 +86,13 @@ export function HomePage() {
           </p>
           <div className="home-hero__actions">
             <Button asChild size="lg">
-              <a href="#forfaits">
+              <Link to="#forfaits">
                 Choisir mon forfait <ArrowRight size={18} aria-hidden="true" />
-              </a>
+              </Link>
             </Button>
-            <a className="text-link" href="#fonctionnement">
+            <Link className="text-link" to="#fonctionnement">
               Les étapes du projet
-            </a>
+            </Link>
           </div>
           <p className="home-hero__reassurance">
             Un doute sur le forfait ? Nous vérifions votre choix avec vous avant de commencer.
@@ -102,9 +102,9 @@ export function HomePage() {
       <section className="container home-offers" id="forfaits" aria-labelledby="home-offers-title">
         <Reveal className="home-section-heading">
           <h2 id="home-offers-title">Choisissez votre forfait.</h2>
-          <a className="text-link" href="#comparer">
+          <Link className="text-link" to="#comparer">
             Comparer les forfaits <ArrowRight size={17} aria-hidden="true" />
-          </a>
+          </Link>
         </Reveal>
         <div className="pricing-grid">
           {publicOffers.map((offer, index) => (

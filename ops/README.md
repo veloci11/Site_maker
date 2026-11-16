@@ -22,6 +22,8 @@ Variables de l’instance : `NODE_ENV=production`, `HOST=127.0.0.1`, `PORT=3020`
 
 Les modèles d’unités sont dans `ops/systemd/`. Le serveur utilise les dépendances de production du lockfile ; le build client est préparé sur la révision testée. Les originaux, documents internes et données locales ne sont pas inclus dans l’archive déployée.
 
+L’archive Express doit contenir `dist/client` **et** `dist/ssr`, ainsi que les modules source importés directement par Node. En particulier, `shared/seo.ts` importe `src/content/home-copy.ts` : ce fichier doit être livré avec `server`, `shared`, le package et le lockfile. Avant de basculer `current`, vérifier avec le Node de production l’import de `server/seo.mjs` et un rendu `renderPublicPage('/', defaultPricing)` depuis `dist/ssr/entry-server.js`. Un build local réussi ne remplace pas cette vérification de l’archive réellement extraite.
+
 Contrôles utiles :
 
 ```sh
