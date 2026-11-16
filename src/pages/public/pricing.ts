@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { defaultPricing, formatMoney, getOffer, type OfferId, type Pricing } from '../../../shared/catalog'
+import { formatMoney, getOffer, type OfferId, type Pricing } from '../../../shared/catalog'
 import { api } from '../../lib/api'
 import { readCataloguePricing } from '../../lib/pricing'
+import { useInitialPublicPricing } from '../../lib/public-pricing'
 
 export function usePricing() {
-  const [pricing, setPricing] = useState<Pricing>(defaultPricing)
+  const initialPricing = useInitialPublicPricing()
+  const [pricing, setPricing] = useState<Pricing>(initialPricing)
   useEffect(() => {
     const controller = new AbortController()
     api<unknown>('/api/catalogue', { signal: controller.signal })

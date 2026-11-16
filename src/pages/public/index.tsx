@@ -33,12 +33,6 @@ const ProjectBriefForm = lazy(() =>
   })),
 )
 
-function usePageTitle(title: string) {
-  useEffect(() => {
-    document.title = `${title} · pixelito`
-  }, [title])
-}
-
 function Intro({
   title,
   description,
@@ -63,7 +57,6 @@ function Intro({
 }
 
 export function HomePage() {
-  usePageTitle('Création de sites internet clé en main')
   const pricing = usePricing()
   const location = useLocation()
   const { hash } = location
@@ -202,7 +195,6 @@ export function HomePage() {
 }
 
 export function OffersPage() {
-  usePageTitle('Comparer les forfaits de création de sites')
   const pricing = usePricing()
   return (
     <>
@@ -297,7 +289,6 @@ export function OptionsPage() {
   const [search, setSearch] = useSearchParams()
   const candidate = getOffer(search.get('forfait'))
   const offer = candidate && isPublicOffer(candidate.id) ? candidate : publicOffers[0]
-  usePageTitle('Les fonctionnalités de votre site')
   return (
     <>
       <Intro title="Fonctionnalités du site" description="À ajouter à votre forfait selon vos besoins." />
@@ -328,7 +319,6 @@ const exampleFilters = [
 ]
 
 export function ExamplesPage() {
-  usePageTitle('Exemples de sites')
   const [search, setSearch] = useSearchParams()
   const filter = exampleFilters.find((item) => item.id === search.get('type'))?.id ?? 'all'
   const filtered = examples.filter((example) => filter === 'all' || example.offerId === filter)
@@ -455,7 +445,6 @@ export function ExamplesPage() {
 export function ExampleDetailPage() {
   const { slug } = useParams()
   const example = examples.find((item) => item.id === slug)
-  usePageTitle(example?.title ?? 'Exemple')
   useEffect(() => {
     if (example) window.location.replace(example.url)
   }, [example])
@@ -473,7 +462,6 @@ export function ExampleDetailPage() {
 }
 
 export function FaqPage() {
-  usePageTitle('Questions fréquentes')
   return (
     <>
       <Intro title="Questions fréquentes" />
@@ -501,7 +489,6 @@ function InquiryForm() {
 }
 
 export function ContactPage() {
-  usePageTitle('Contacter le studio')
   return (
     <>
       <Intro

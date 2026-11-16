@@ -2,7 +2,7 @@ import express from 'express';
 import helmet from 'helmet';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { authRouter, optionalAuth, requireAuth, csrfProtection } from './auth.mjs';
 import { createProjectsRouter } from './projects.mjs';
 import { createFilesRouter } from './files.mjs';
@@ -49,11 +49,23 @@ export function createApp() {
   app.use('/api', (_req, res) => res.status(404).json({ error: 'Cette ressource est introuvable.' }));
   const client = path.join(root, 'dist/client');
   if (existsSync(path.join(client, 'index.html'))) {
-    const seo = createSeoHandlers({ clientDirectory: client });
+    const rendererFile = path.join(root, 'dist/ssr/entry-server.js');
+    if (process.env.NODE_ENV === 'production' && !existsSync(rendererFile)) throw new Error('Missing public SSR build. Run npm run build.');
+    const renderer = existsSync(rendererFile) ? import(pathToFileURL(rendererFile).href) : null;
+    const seo = createSeoHandlers({ clientDirectory: client, getPricing,
+      renderPage: renderer ? async (href, pricing) => (await renderer).renderPublicPage(href, pricing) : undefined,
+    });
     app.get('/robots.txt', seo.robots);
     app.get('/sitemap.xml', seo.sitemap);
     app.get('/index.html', (_req, res) => res.redirect(301, '/'));
-    app.use(express.static(client, { index: false, maxAge: process.env.NODE_ENV === 'production' ? '1h' : 0 }));
+    app.use(express.static(client, { index: false, maxAge: process.env.NODE_ENV === 'production' ? '1h' : 0,
+      setHeaders(res, file) {
+        // Only Vite's content-hashed assets can safely stay cached for a year.
+        if (process.env.NODE_ENV === 'production' && /-[A-Za-z0-9_-]{8,}\.(?:js|css|woff2?)$/.test(file)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        }
+      },
+    }));
     app.get('/{*path}', seo.page);
   }
   app.use((error, _req, res, _next) => {

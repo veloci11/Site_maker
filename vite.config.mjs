@@ -5,6 +5,7 @@ import path from "node:path";
 export default defineConfig({
   build: {
     outDir: "dist/client",
+    manifest: true,
   },
   optimizeDeps: {
     include: ["react", "react-dom/client"],

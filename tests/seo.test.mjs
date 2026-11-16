@@ -20,8 +20,8 @@ test('public routes have distinct useful metadata for the three current offers',
     assert.ok(!titles.has(metadata.title), `Duplicate title for ${route}`);
     titles.add(metadata.title);
   }
-  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Site Business · pixelito');
-  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Site Premium / 3D · pixelito');
+  assert.equal(getRouteSeo('/forfaits/connecte').title, 'Création de site Business avec CMS · pixelito');
+  assert.equal(getRouteSeo('/forfaits/immersif-3d').title, 'Création de site Premium et 3D · pixelito');
   assert.equal(getRouteSeo('/contact', '?besoin=refonte').title, 'Contacter le studio · pixelito');
 });
 

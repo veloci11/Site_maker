@@ -203,6 +203,8 @@ export function PublicFooter() {
         <Link to="/exemples" viewTransition={canAnimatePlanNavigation()}>Exemples de sites</Link>
         <Link to="/faq" viewTransition={canAnimatePlanNavigation()}>FAQ</Link>
         <Link to="/contact" viewTransition={canAnimatePlanNavigation()}>Nous contacter</Link>
+        <Link to="/mentions-legales" viewTransition={canAnimatePlanNavigation()}>Mentions légales</Link>
+        <Link to="/confidentialite" viewTransition={canAnimatePlanNavigation()}>Confidentialité</Link>
       </nav>
     </footer>
   )

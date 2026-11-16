@@ -50,6 +50,8 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
   const [fields, setFields] = useState<Record<string, string>>({})
   const [failure, setFailure] = useState('')
   const [sending, setSending] = useState(false)
+  const [interactive, setInteractive] = useState(false)
+  useEffect(() => { setInteractive(true) }, [])
   const [result, setResult] = useState<InquiryResult | null>(null)
   const [focusRequest, setFocusRequest] = useState<{ field: string } | null>(null)
   const inFlight = useRef(false)
@@ -186,9 +188,9 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
     Object.values(answers).some(value => Array.isArray(value) ? value.length > 0 : value.trim())
 
   return (
-    <form className="project-brief-form" noValidate onSubmit={submit} aria-busy={sending}>
+    <form className="project-brief-form" method="post" noValidate onSubmit={submit} aria-busy={sending}>
       <p className="project-brief-form__intro">Les champs marqués d’un * sont obligatoires.</p>
-      <fieldset className="project-brief-form__fieldset" disabled={sending}>
+      <fieldset className="project-brief-form__fieldset" disabled={!interactive || sending}>
         <legend className="project-brief-form__sr-only">Votre demande et vos coordonnées</legend>
         <div className="project-brief-form__contact-grid">
           {contactFields.map(field => {
@@ -260,7 +262,8 @@ export function ProjectBriefForm({ requestType, configuration, onSuccess, onBusy
           {globalErrors.length ? <ul>{globalErrors.map(([key, message]) => <li key={key}>{message}</li>)}</ul> : null}
         </div>
       ) : null}
-      <Button className="project-brief-form__submit" type="submit" disabled={sending}>
+      <noscript><p>Activez JavaScript puis rechargez la page pour envoyer votre demande.</p></noscript>
+      <Button className="project-brief-form__submit" type="submit" disabled={!interactive || sending}>
         {sending ? <><LoaderCircle className="spin" size={17} aria-hidden="true" />Enregistrement…</> : 'Envoyer ma demande'}
       </Button>
       <p className="project-brief-form__privacy">Vos coordonnées et votre message servent à étudier votre demande et à vous recontacter. <Link to="/confidentialite" target="_blank" rel="noopener noreferrer" aria-label="Confidentialité (nouvel onglet)">Confidentialité</Link></p>

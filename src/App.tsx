@@ -85,11 +85,11 @@ function LegacyOffer() {
   return <Navigate to={`/forfaits/${publicSlug || ''}${location.search}${location.hash}`} replace />
 }
 
-function LegalPage({ privacy = false }: { privacy?: boolean }) {
+function LegalPage({ privacy = false, conditions = false }: { privacy?: boolean; conditions?: boolean }) {
   return (
     <section className="container page-section legal-page">
       <h1 className="page-heading">
-        {privacy ? 'Confidentialité' : 'Informations légales'}
+        {privacy ? 'Confidentialité' : conditions ? 'Conditions' : 'Mentions légales'}
       </h1>
       <div className="stack">
         <p>
@@ -158,7 +158,7 @@ function ApplicationShell() {
   )
 }
 
-const router = createBrowserRouter(createRoutesFromElements(
+export const appRoutes = createRoutesFromElements(
   <Route
     element={<ApplicationShell />}
     errorElement={<PageRecovery />}
@@ -184,7 +184,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="commande/:projectId" element={<RequireAuth><Checkout /></RequireAuth>} />
       <Route path="confidentialite" element={<LegalPage privacy />} />
       <Route path="mentions-legales" element={<LegalPage />} />
-      <Route path="conditions" element={<LegalPage />} />
+      <Route path="conditions" element={<LegalPage conditions />} />
       <Route path="*" element={<NotFound />} />
     </Route>
     <Route element={<PortalLayout />}>
@@ -197,8 +197,10 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="admin" element={<RequireAuth admin><Admin /></RequireAuth>} />
     </Route>
   </Route>,
-))
+)
 
-export function App() {
+export const createAppRouter = () => createBrowserRouter(appRoutes)
+
+export function App({ router }: { router: ReturnType<typeof createAppRouter> }) {
   return <RouterProvider router={router} />
 }

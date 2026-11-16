@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check, Mail } from 'lucide-react'
 import {
-  defaultPricing,
   formatMoney,
   formatQuoteTotal,
   formatQuoteLine,
@@ -45,6 +44,7 @@ import { useAuth } from '../../lib/auth'
 import { api, errorMessage } from '../../lib/api'
 import { formatPublicCreationEstimate, readCataloguePricing } from '../../lib/pricing'
 import { useProject } from '../../lib/project'
+import { useInitialPublicPricing } from '../../lib/public-pricing'
 import {
   clearDraft,
   configurationKey,
@@ -115,7 +115,8 @@ export function ConfiguratorPage() {
   const { user, loading: authLoading } = useAuth()
   const { refresh, selectProject } = useProject()
   const [storedConfiguration, setConfiguration] = useState(() => initialConfiguration(params, slug))
-  const [pricing, setPricing] = useState<Pricing>(defaultPricing)
+  const initialPricing = useInitialPublicPricing()
+  const [pricing, setPricing] = useState<Pricing>(initialPricing)
   const [pricingError, setPricingError] = useState(false)
   const [stage, setStage] = useState<'options' | 'contact' | 'success'>('options')
   const [openGroups, setOpenGroups] = useState<string[]>(['essentials'])
@@ -165,9 +166,6 @@ export function ConfiguratorPage() {
     visibleOptions.some((option) => option.group === group.id),
   )
 
-  useEffect(() => {
-    document.title = `${title} · pixelito`
-  }, [title])
   useEffect(() => {
     const estimate = estimateRef.current
     if (!estimate || editingId || stage !== 'options') return

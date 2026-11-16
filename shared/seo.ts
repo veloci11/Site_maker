@@ -1,7 +1,8 @@
-import { examples, getOffer, publicOffers } from './catalog.ts'
+import { defaultPricing, examples, faqs, formatMoney, getOffer, publicOffers, type Pricing } from './catalog.ts'
 
 // A fixed, verified public origin keeps canonicals independent of request headers.
 export const siteOrigin = 'https://gilmathis.com'
+export const siteSocialImage = `${siteOrigin}/assets/brand/pixelito-icon-512.png`
 
 export type RouteSeo = {
   title: string
@@ -67,7 +68,7 @@ const privatePages: Record<string, string> = {
   '/espace/compte': 'Votre compte',
   '/admin': 'Administration',
   '/confidentialite': 'Confidentialité',
-  '/mentions-legales': 'Informations légales',
+  '/mentions-legales': 'Mentions légales',
   '/conditions': 'Conditions',
 }
 
@@ -84,8 +85,11 @@ const excludedPage = (title: string, status: 200 | 404 = 200): RouteSeo => ({
 const offerPage = (idOrSlug: string): RouteSeo | undefined => {
   const offer = getOffer(idOrSlug)
   if (!offer) return undefined
+  const title = offer.id === 'vitrine' ? 'Création de site vitrine'
+    : offer.id === 'connecte' ? 'Création de site Business avec CMS'
+    : offer.id === 'immersif' ? 'Création de site Premium et 3D' : 'Sur mesure'
   return page(
-    offer.id === 'sur-mesure' ? 'Sur mesure' : `Site ${offer.title}`,
+    title,
     offer.description,
     `/forfaits/${offer.slug}`,
   )
@@ -111,7 +115,7 @@ export const publicPagePaths = [
 ] as const
 
 /** Only known routes and meaningful service parameters become canonical URLs. */
-export function getRouteSeo(pathname: string, search = ''): RouteSeo {
+export function getRouteSeo(pathname: string, search = '', pricing: Pricing = defaultPricing): RouteSeo {
   const params = new URLSearchParams(search)
   const legacySearch = params.size ? `?${params.toString()}` : ''
   const normalized = pathname.replace(/\/+$/, '').toLowerCase() || '/'
@@ -158,5 +162,40 @@ export function getRouteSeo(pathname: string, search = ''): RouteSeo {
   if (pathname !== normalized || canonicalPath !== normalized) {
     return { ...metadata, status: 301, redirect: `${canonicalPath}${legacySearch}` }
   }
+  if (normalized === '/') {
+    const offers = publicOffers.map(offer => {
+      const amount = pricing.base[offer.id]
+      return `${offer.title} ${amount == null ? 'sur devis' : `à partir de ${formatMoney(amount, pricing.currency)}`}`
+    })
+    return { ...metadata, description: `Création de sites internet : ${offers.join(', ')}. Comparez nos forfaits et préparez votre projet.` }
+  }
   return { ...metadata }
+}
+
+/** Describe the site and visible pages without inventing a legal entity or reviews. */
+export function getStructuredData(metadata: RouteSeo) {
+  if (!metadata.canonical || metadata.robots.startsWith('noindex')) return null
+  const pathname = new URL(metadata.canonical).pathname
+  const website = {
+    '@type': 'WebSite', '@id': `${siteOrigin}/#website`, name: 'pixelito',
+    url: `${siteOrigin}/`, inLanguage: 'fr-FR',
+  }
+  const page = {
+    '@type': pathname === '/faq' ? 'FAQPage' : ['/forfaits', '/exemples', '/options'].includes(pathname) ? 'CollectionPage' : pathname === '/contact' ? 'ContactPage' : 'WebPage',
+    '@id': `${metadata.canonical}#webpage`, url: metadata.canonical,
+    name: metadata.title, description: metadata.description, inLanguage: 'fr-FR',
+    isPartOf: { '@id': website['@id'] },
+    ...(pathname === '/faq' ? { mainEntity: faqs.map(item => ({
+      '@type': 'Question', name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: [item.answer, ...(item.items ?? [])].join('\n') },
+    })) } : {}),
+  }
+  const crumbs = pathname === '/' ? [] : [
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: `${siteOrigin}/` },
+    ...(pathname.startsWith('/forfaits/') ? [{ '@type': 'ListItem', position: 2, name: 'Forfaits', item: `${siteOrigin}/forfaits` }] : []),
+    { '@type': 'ListItem', position: pathname.startsWith('/forfaits/') ? 3 : 2, name: metadata.title.replace(' · pixelito', ''), item: metadata.canonical },
+  ]
+  return { '@context': 'https://schema.org', '@graph': [website, page,
+    ...(crumbs.length ? [{ '@type': 'BreadcrumbList', '@id': `${metadata.canonical}#breadcrumbs`, itemListElement: crumbs }] : []),
+  ] }
 }
