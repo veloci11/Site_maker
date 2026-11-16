@@ -1,3 +1,11 @@
+# SEO classique et IA publiés — 16 novembre 2026
+
+Révision `a4fead9`, release `20261116T205204Z-a4fead9624ed`. Contrôle IAB HTTPS des neuf pages indexables : toutes répondent 200 avec un H1 et le vrai contenu dans le HTML initial. L'accueil passe de 1 929 à 45 418 caractères de HTML. Styles de route inclus et accueil lisible sans JavaScript, sur ordinateur et à 390 px ; document mobile de 375 px, sans débordement. Métadonnées et JSON-LD cohérents après navigation, retirés pour les pages légales provisoires. Liens de pied de page vers les pages dédiées vérifiés.
+
+En local : FAQ dépliable, Business + langue à 1 590 €, sélection conservée après rechargement et formulaire ouvert sans envoi. Le formulaire public publié est activé après hydratation ; sa version sans JavaScript ne peut pas envoyer les coordonnées par GET. Aucune erreur console observée dans les parcours HTTPS. TypeScript, builds client/SSR/Sites et 290 tests passent ; les tests couvrent aussi les CSS sans JavaScript, l'isolation des tarifs concurrents et le cache anonyme.
+
+PageSpeed mobile après publication : performances 96, accessibilité automatique 100, bonnes pratiques 100, SEO 100, LCP 0,9 s, TBT 0 ms et CLS 0. Pas de données terrain CrUX ni de validation de classement ou de citations IA. Les captures et relevés sont dans `docs/qa/seo-ai-2026-11-16/`, notamment `pagespeed-mobile-after.jpg` et `home-public-no-javascript-mobile.jpg`. Rapport complet : `docs/SEO_IA_2026-11-16.md`. Sauvegarde et santé validées ; catalogue inchangé. Émulations retirées, onglets fermés et localhost arrêté. Tailscale temporairement réactivé pour livrer puis remis à l'arrêt.
+
 ## Logo Pixelito SVG — 16 novembre 2026
 
 Final result: passed. Logo SVG publié sur gilmathis.com, révision ca17828. Référence sélectionnée, proportions, typographie en tracés, gradient, bureau 1280 px, mobile 320 px, menu et retour à l’accueil contrôlés en local et en HTTPS. Les 284 tests passent ; seize contrôles HTTPS conformes au build. Localhost fermé. Rapport et captures : `docs/qa/brand-2026-11-16/`.
@@ -691,3 +699,10 @@ Correction locale du logo/nom, des liens Accueil et du nom en pied de page : un 
 Navigateur intégré : logo et Accueil sur ordinateur, logo au clavier et au clic sur mobile, menu mobile fermé puis position finale `scrollY=0`. Mouvement réduit émulé : passage immédiat de 1688 à 0 px ; émulation et viewport restaurés. TypeScript, build et 284 tests passent.
 
 Révision `340e503` publiée, release `20261113T011206Z-340e50320037`, client `index-emgLuvKH.js`. En HTTPS : logo et Accueil de 1440 à 0 px sur ordinateur ; logo et menu Accueil de 1688 à 0 px sur mobile. Menu fermé et focus restauré. FAQ → logo rejoint l’accueil en haut. Aucune erreur/alerte console observée. Capture `../outputs/retour-haut-2026-11-12/accueil-public.jpg`. Sauvegarde privée vérifiée, santé et catalogue conformes ; viewport restauré, onglet fermé, localhost arrêté et Tailscale remis à l’arrêt.
+# Liens légaux préparés localement — 16 novembre 2026
+
+Serveur de prévisualisation arrêté après contrôle ; ports 4173 et 4174 libres.
+
+Les liens Mentions légales et Confidentialité sont ajoutés au pied de page. Le titre et les métadonnées de `/mentions-legales` utilisent « Mentions légales » ; `/conditions` affiche « Conditions ». Le texte légal définitif reste en attente des identités et rôles des deux micro-entrepreneurs, des coordonnées publiques et de l'hébergeur. Projet de rédaction et sources : `docs/MENTIONS_LEGALES.md`. Aucune publication de ce lot et aucune présentation de `contact@pixelito.dev` comme adresse active : Mathis précise que ce domaine n'est pas encore acheté.
+
+`npm run check` passe : TypeScript, build et 284 tests. Contrôle dans le navigateur intégré à 1 280 × 800 et 320 × 740 : navigation par les deux liens, titres corrects, six cibles du pied de page de 44 px de haut ; sur mobile, largeur du document 305 px pour un viewport de 320 px, sans débordement. Les liens reviennent à la ligne et restent alignés à gauche sur mobile. Métadonnée `noindex, nofollow` conservée pour les pages incomplètes. Aucun avertissement ni erreur console observé. Aucun formulaire soumis, aucune notification envoyée ; données locales isolées dans `/tmp/pixelito-legal-preview-20261116`. Captures : `docs/qa/legal-2026-11-16/footer-desktop-local.jpg` et `footer-mobile-local.jpg`. Viewport restauré et onglets de contrôle fermés.

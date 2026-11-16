@@ -1,0 +1,113 @@
+Découvrez l'expérience de vos utilisateurs
+Aucune donnée
+Analysez les problèmes de performances
+96
+Performances
+100
+Accessibilité
+100
+Bonnes pratiques
+100
+SEO
+2/2
+Navigation agentique
+96
+FCP
++10
+LCP
++23
+TBT
++30
+CLS
++25
+SI
++8
+Performances
+Les valeurs sont estimées et peuvent varier. Le calcul du score lié aux performances repose directement sur ces statistiques.Affichez la calculatrice.
+0–49
+50–89
+90–100
+STATISTIQUES
+Développer la vue
+First Contentful Paint
+0,8 s
+Largest Contentful Paint
+2,4 s
+Total Blocking Time
+0 ms
+Cumulative Layout Shift
+0
+Speed Index
+4,2 s
+Captured at 16 nov. 2026, 14:34 UTC−6
+Émulation du Moto G Power with Lighthouse 13.6.0
+Session avec consultation d'une seule page
+Chargement de page initial
+Connexion 4G lente
+Using HeadlessChromium 157.0.8103.38 with lr
+Consultez la carte proportionnelle
+Afficher les audits pertinents pour :
+All
+FCP
+LCP
+TBT
+CLS
+INSIGHTS
+Utiliser des durées de mise en cache efficaces Économies estimées : 2 737 Kio
+Améliorer l'affichage des images Économies estimées : 3 456 Kio
+Requêtes de blocage du rendu Économies estimées : 150 ms
+Ajustement forcé de la mise en page
+Arborescence du réseau
+Causes des décalages de mise en page
+Répartition du LCP
+Ces insights sont également disponibles dans le panneau "Performances" des Outils pour les développeurs Chrome. Enregistrez une trace pour afficher des informations plus détaillées.
+DIAGNOSTIC
+Réduisez les ressources JavaScript inutilisées Économies estimées : 68 Kio
+Évitez d'énormes charges utiles de réseau La taille totale était de 4 032 Kio
+Marques et mesures du temps utilisateur [=1]1 temps utilisateur
+Évitez les tâches longues dans le thread principal 1 tâche longue trouvée
+Plus d'informations sur les performances de votre application. Ces chiffres n'ont pas d'incidence directe sur le score lié aux performances.
+AUDITS RÉUSSIS (16)
+Afficher
+100
+Accessibilité
+Ces vérifications permettent de connaître les possibilités d'amélioration de l'accessibilité de votre application Web. La détection automatique ne peut détecter qu'une partie des problèmes et ne garantit pas l'accessibilité de votre application Web. Il est donc conseillé d'effectuer également un test manuel.
+BONNES PRATIQUES
+Les liens identiques ont la même fonction.
+Ces indications présentent les bonnes pratiques courantes en matière d'accessibilité.
+AUTRES ÉLÉMENTS À VÉRIFIER MANUELLEMENT (10)
+Afficher
+Ces éléments concernent des zones qu'un outil de test automatique ne peut pas couvrir. Consultez notre guide sur la réalisation d'un examen d'accessibilité.
+AUDITS RÉUSSIS (26)
+Afficher
+NON APPLICABLE (36)
+Afficher
+100
+Bonnes pratiques
+FIABILITÉ ET SÉCURITÉ
+Utiliser une règle HSTS efficace
+Atténuer les attaques XSS basées sur le DOM avec les Trusted Types
+COMPATIBILITÉ DU NAVIGATEUR
+Fonctionnalités Baseline
+AUDITS RÉUSSIS (13)
+Afficher
+NON APPLICABLE (5)
+Afficher
+100
+SEO
+Ces vérifications garantissent que votre page suit les conseils de base concernant le référencement naturel. De nombreux facteurs supplémentaires ne sont pas évalués par Lighthouse ici, mais peuvent affecter votre classement dans les résultats de recherche, y compris vos performances concernant les Core Web Vitals. En savoir plus sur les Essentiels de la recherche Google
+AUTRES ÉLÉMENTS À VÉRIFIER MANUELLEMENT (1)
+Masquer
+Les données structurées sont valides
+Exécutez ces outils de validation supplémentaires sur votre site pour vérifier les bonnes pratiques de SEO complémentaires.
+AUDITS RÉUSSIS (9)
+Afficher
+NON APPLICABLE (1)
+Afficher
+2/2
+Navigation agentique
+Ces vérifications garantissent des sites Web de haute qualité et consultables pour les agents IA, et valident l'exactitude des intégrations WebMCP. Cette catégorie est encore en cours de développement et susceptible d'être modifiée.
+AUDITS RÉUSSIS (2)
+Afficher
+NON APPLICABLE (5)
+Afficher

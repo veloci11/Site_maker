@@ -2,7 +2,21 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — logo Pixelito SVG
+## Version active — HTML public, SEO et IA
+
+- URL `https://gilmathis.com/`
+- Révision applicative `a4fead9624ed1345ca5b6518a2d554e78c1a5a8a` sur `main`
+- Release `/home/mathis/site-maker/releases/20261116T205204Z-a4fead9624ed`
+- Client `/assets/index-Bx8iDzZT.js`, SHA-256 `7408f1d79860dc11eb0324bf6ffd68bd885673ad2b0c6fdf0f1bc694f642aad6`
+- Archive code et builds vérifiée de 41 761 378 octets, SHA-256 `194287aa60c41dbfe87d9eff18e059c0ced0ac4f25cf6250ee58d4af89126bba`
+
+Les neuf pages publiques livrent leur contenu React dans le HTML initial, avec styles de route, tarifs serveur et hydratation. Métadonnées et titres renforcés, données structurées cohérentes, aperçu social et cache des fichiers hashés. Pas de HTML public sur les routes privées ; aucun nom légal ou contact sur pixelito.dev inventé. Mentions légales et Confidentialité accessibles par le pied de page, toujours provisoires et hors indexation. Logo SVG choisi conservé.
+
+TypeScript, build client/SSR/Sites et 290 tests passent. Contrôle IAB HTTPS des neuf pages : statut 200, un H1, corps HTML et balisage présents ; accueil sans JavaScript sur ordinateur et à 390 px, sans débordement. Formulaire activé après hydratation, aucune erreur console observée et aucun envoi. PageSpeed mobile après publication : 96 performances, 100 accessibilité automatique, 100 bonnes pratiques, 100 SEO ; LCP 0,9 s, TBT 0 ms, CLS 0. Ce test ne mesure ni classement ni citations IA. La propriété Search Console du domaine n'est pas accessible au compte ouvert.
+
+Sauvegarde privée réussie, contrôle du rendu avec Node 24.22.1, bascule atomique et santé/tunnel actifs. Catalogue public complet strictement identique avant/après. Seul le service du site est redémarré. Rapport et limites : `docs/SEO_IA_2026-11-16.md` ; preuves : `docs/qa/seo-ai-2026-11-16/`. Localhost arrêté, émulations retirées et Tailscale temporairement repris puis remis à l'arrêt. La release précédente reste disponible.
+
+## Version précédente — logo Pixelito SVG
 
 - URL `https://gilmathis.com/`
 - Révision applicative `ca178280eed0026379524620a6fa016ed07d08ea` sur `main`

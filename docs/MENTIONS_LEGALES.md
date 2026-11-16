@@ -1,6 +1,6 @@
 # Mentions légales — préparation du 16 novembre 2026
 
-État : accès et intitulé préparés localement ; contenu définitif non publié.
+État : liens et intitulés publiés avec le lot SEO du 16 novembre ; contenu légal définitif en attente des informations de Mathis.
 
 ## Fonctionnement décrit par Mathis
 

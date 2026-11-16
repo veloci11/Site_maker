@@ -1,8 +1,20 @@
+# SEO et IA publiés — 16 novembre 2026
+
+Lot `a4fead9` publié sur gilmathis.com et contrôlé sur les neuf routes publiques. Vrai HTML initial, styles de route, tarifs serveur et hydratation ; métadonnées centralisées, données structurées, image sociale et cache des fichiers hashés. Les comptes et URL privées restent hors indexation/pré-rendu. Les mentions sont des pages dédiées accessibles par le pied de page ; les identités et leur texte définitif restent à fournir ultérieurement par Mathis.
+
+290 tests passent. PageSpeed mobile après publication : 100 SEO, 96 performances et LCP 0,9 s. Search Console du domaine non accessible au compte ouvert ; indexation et citations IA non attestées. Rapport `SEO_IA_2026-11-16.md`, état de livraison `../ops/DEPLOYMENT_STATUS.md` et preuves `qa/seo-ai-2026-11-16/`. Logo SVG approuvé conservé. Localhost et Tailscale arrêtés après contrôle.
+
 # Logo Pixelito SVG — 16 novembre 2026
 
 Publié et vérifié en HTTPS : logo à trois bandes choisi par Mathis, remplacé dans la barre, le menu mobile, le pied de page et les composants de l'espace privé/chargement. Véritables SVG sans bitmap intégré : `logo-pixelito.svg`, `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`. Groupes et fichiers séparés, lettres en tracés. Favicon et icônes mobiles dérivés du symbole. Les anciennes images de marque restent uniquement en archives documentaires.
 
 Révision applicative `ca178280eed0026379524620a6fa016ed07d08ea`, release `20261116T204453Z-ca178280eed0`. Les 284 tests passent ; contrôle IAB bureau/mobile et seize vérifications HTTPS. Retour en haut conservé, aucun débordement à 320 px, aucune erreur console observée sur le site publié. Localhost fermé et Tailscale remis arrêté. Preuves : `qa/brand-2026-11-16/`. Les travaux légaux et SEO concomitants ne sont pas publiés dans cette release.
+
+# Mentions légales — 16 novembre 2026
+
+Codé localement : liens Mentions légales et Confidentialité dans le pied de page, retour à la ligne des liens sur les écrans étroits, intitulé de page et titre SEO « Mentions légales ». La route Conditions garde son propre titre. Les textes légaux restent provisoires et hors indexation ; aucune publication de ce lot.
+
+Le fonctionnement à deux micro-entreprises et le texte proposé sont documentés dans `MENTIONS_LEGALES.md`. Les coordonnées des deux entrepreneurs, l'identité de l'éditeur, le responsable de publication et l'hébergeur sont demandés à Mathis avant finalisation. Validation et captures : `../design-qa.md`.
 
 # Changer : taille fixe et menu animé — 11 novembre 2026
 

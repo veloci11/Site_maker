@@ -1,8 +1,20 @@
 # studio — décisions et consignes actuelles
 
+## SEO classique et IA — 16 novembre 2026
+
+Mathis demande des mentions sur des pages dédiées accessibles depuis le pied de page ; il fournira les identités plus tard. Il demande également le travail SEO classique et IA. Les neuf routes publiques rendent maintenant leurs vrais composants en HTML côté serveur, avec tarifs publics, CSS de route et hydratation. `npm run build` produit obligatoirement `dist/client` et `dist/ssr` en plus des fichiers Sites existants ; livrer les deux pour Express. Le worker statique Sites ne fournit pas ce rendu serveur ni l'API persistante. Les pages privées et les mentions incomplètes restent hors indexation et hors pré-rendu. Aucune identité commerciale, adresse active sur pixelito.dev, citation IA, classement ou donnée Search Console ne doit être inventé. Rapport et limites : `docs/SEO_IA_2026-11-16.md`.
+
+Lot publié sur gilmathis.com : `a4fead9`, release `20261116T205204Z-a4fead9624ed`. 290 tests ; neuf routes HTTPS contrôlées, lecture sans JavaScript et styles vérifiés. PageSpeed mobile 96/100 performances et 100/100 au contrôle SEO, sans données terrain ni garantie de classement/citation. Search Console reste à valider avec un compte ayant accès au domaine. Mentions dédiées accessibles mais texte définitif en attente. Source de vérité de la version : `ops/DEPLOYMENT_STATUS.md`.
+
 ## Logo à trois bandes — 16 novembre 2026
 
 Mathis choisit la capture du logo Pixelito à trois bandes décalées noir/lavande/bleu et son mot noir en gras. Cette capture remplace les essais de typo Geist et le personnage orange. Réutiliser l’image sélectionnée sans redessiner le signe ni la typographie. Le composant `PixelitoLogo` est partagé par la navigation publique, le menu mobile, le pied de page et l’espace privé. Le chargement utilise seulement le symbole, avec une pulsation discrète désactivée en mouvement réduit. L’icône d’onglet, les icônes mobiles et le manifeste reprennent ce symbole. Mathis demande ensuite le SVG : `logo-pixelito.svg` contient deux groupes nommés, avec des exports `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`. La typographie est vectorisée en tracés ; le dégradé est échantillonné sur la capture et le grain reproduit en filtre SVG statique. Source et provenance dans `docs/asset-sources/brand/`, exports via `scripts/prepare-brand.mjs` (Potrace pour cette préparation uniquement). Conserver les liens et le retour en haut au clic.
+
+## Mentions légales et deux micro-entreprises — 16 novembre 2026
+
+Mathis précise que Pixelito réunit deux personnes ayant chacune leur micro-entreprise. Une seule facture client est émise par projet ; l'entrepreneur qui facture varie selon la personne qui a travaillé sur le dossier. Ne pas présenter Pixelito comme une société commune, ni choisir l'éditeur ou une coédition sans confirmation. Le devis doit identifier l'entrepreneur contractant. Identités, coordonnées publiques, responsable de publication et hébergeur restent à fournir ; le contenu légal définitif attend ces faits. Préparation locale et sources : `docs/MENTIONS_LEGALES.md`. Les nouveaux liens du pied de page ne prouvent ni la complétude des mentions ni une publication.
+
+Adresse de contact souhaitée : `contact@pixelito.dev`, redirigée vers leurs deux adresses. Mathis précise que le domaine n'est pas encore acheté ; ne pas publier cette adresse comme active avant configuration et réception vérifiée.
 
 ## Logo pixelito restauré — 12 novembre 2026
 

@@ -1,0 +1,66 @@
+[
+  {
+    "route": "/forfaits",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Comparer les forfaits de création de sites · pixelito"
+  },
+  {
+    "route": "/forfaits/vitrine",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Création de site vitrine · pixelito"
+  },
+  {
+    "route": "/forfaits/connecte",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Création de site Business avec CMS · pixelito"
+  },
+  {
+    "route": "/forfaits/immersif-3d",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Création de site Premium et 3D · pixelito"
+  },
+  {
+    "route": "/options",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Les fonctionnalités de votre site · pixelito"
+  },
+  {
+    "route": "/exemples",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Exemples de sites · pixelito"
+  },
+  {
+    "route": "/faq",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Questions fréquentes · pixelito"
+  },
+  {
+    "route": "/contact",
+    "status": 200,
+    "h1": 1,
+    "ssr": true,
+    "structured": true,
+    "title": "Contacter le studio · pixelito"
+  }
+]
