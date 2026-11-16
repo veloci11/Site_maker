@@ -4,7 +4,7 @@ import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/ca
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 import { preloadPlanImages } from '../../lib/plan-images'
-import { comparisonColumnScrollLeft } from '../../lib/comparison-scroll'
+import { replaceComparisonOffer, type ComparisonOfferPair } from '../../lib/comparison-pair'
 import { PlanTexture } from '../../components/layout/PlanTexture'
 
 type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
@@ -68,7 +68,7 @@ function ComparisonReveal({ children, collapsed }: { children: ReactNode; collap
   )
 }
 
-function ComparisonConfigureButton({ offer }: { offer: (typeof publicOffers)[number] }) {
+function ComparisonConfigureButton({ offer, price }: { offer: (typeof publicOffers)[number]; price: string }) {
   const href = configureHref(offer.id)
   const surface = usePlanTransition(offer.variant, href, 'surface', 'comparison')
   const label = usePlanTransition(offer.variant, href, 'thumbnail', 'comparison')
@@ -81,7 +81,7 @@ function ComparisonConfigureButton({ offer }: { offer: (typeof publicOffers)[num
       className={`plan-cta comparison-cta pricing-card--${offer.variant}`}
       to={href}
       viewTransition={canAnimatePlanNavigation()}
-      aria-label={`Configurer le forfait ${offer.title}`}
+      aria-label={`Configurer le forfait ${offer.title}, ${price}`}
       onPointerEnter={prepare}
       onFocus={(event) => {
         prepare()
@@ -100,7 +100,9 @@ function ComparisonConfigureButton({ offer }: { offer: (typeof publicOffers)[num
 
 export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
+  const [mobilePair, setMobilePair] = useState<ComparisonOfferPair>([publicOffers[0].id, publicOffers[1].id])
   const scrollRef = useRef<HTMLDivElement>(null)
+  const mobileOffers = mobilePair.map((offerId) => publicOffers.find((offer) => offer.id === offerId)!)
 
   useLayoutEffect(() => {
     const scroller = scrollRef.current
@@ -116,8 +118,8 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     let headingClip = ''
 
     const clipAtHeader = () => {
-      // Mobile uses its own scrollport and opaque sticky heading. Its page
-      // scroll must not trigger desktop geometry reads or clipping writes.
+      // The phone comparison has its own native scrollport. Its page scroll
+      // must not trigger desktop geometry reads or clipping writes.
       if (!desktop.matches) return
       const headingBounds = heading.getBoundingClientRect()
       const tableBounds = table.getBoundingClientRect()
@@ -174,42 +176,8 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     }
   }, [])
 
-  function showOfferColumn(index: number) {
-    const scroller = scrollRef.current
-    const table = scroller?.querySelector('table')
-    const headings = scroller?.querySelectorAll('thead th')
-    const labelColumn = headings?.[0]
-    const offerColumn = headings?.[index + 1]
-    if (!scroller || !table || !labelColumn || !offerColumn) return
-    scroller.scrollTo({ left: comparisonColumnScrollLeft({
-      scrollLeft: scroller.scrollLeft,
-      clientWidth: scroller.clientWidth,
-      scrollWidth: scroller.scrollWidth,
-      viewportLeft: scroller.getBoundingClientRect().left + scroller.clientLeft,
-      tableRight: table.getBoundingClientRect().right,
-      labelWidth: labelColumn.getBoundingClientRect().width,
-      columnLeft: offerColumn.getBoundingClientRect().left,
-    }) })
-  }
-
   return (
     <div className="offer-comparison" data-details-open={details}>
-      <div className="comparison-column-picker">
-        <p>Choisissez une colonne ou faites glisser le tableau horizontalement.</p>
-        <div role="group" aria-label="Colonnes du comparatif">
-          {publicOffers.map((offer, index) => (
-            <button
-              key={offer.id}
-              type="button"
-              aria-label={`Afficher la colonne ${offer.title}`}
-              aria-controls={`${id}-table`}
-              onClick={() => showOfferColumn(index)}
-            >
-              {offer.title}
-            </button>
-          ))}
-        </div>
-      </div>
       <div
         ref={scrollRef}
         className="comparison-scroll"
@@ -231,7 +199,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                   <div className="comparison-offer">
                     <h3>{offer.title}</h3>
                     <p>{startingPrice(offer.id, pricing)}</p>
-                    <ComparisonConfigureButton offer={offer} />
+                    <ComparisonConfigureButton offer={offer} price={startingPrice(offer.id, pricing)} />
                   </div>
                 </th>
               ))}
@@ -259,11 +227,86 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
           ))}
         </table>
       </div>
+      <div className="comparison-mobile">
+        <p id={`${id}-mobile-instruction`} className="comparison-mobile__instruction">
+          Comparez deux forfaits côte à côte. Changez l’un des forfaits pour voir le troisième.
+        </p>
+        <div
+          className="comparison-mobile__scroll"
+          tabIndex={0}
+          role="region"
+          aria-label="Comparatif de deux forfaits au choix"
+          aria-describedby={`${id}-mobile-instruction`}
+        >
+          <table id={`${id}-mobile-table`} className="comparison-mobile__table">
+            <caption className="public-sr-only">
+              Comparer les fonctions comprises dans deux forfaits de création de sites internet.
+            </caption>
+            <thead>
+              <tr>
+                {mobileOffers.map((offer, position) => (
+                  <th key={position} id={`${id}-mobile-offer-${position}`} scope="col">
+                    <div className="comparison-mobile__offer">
+                      <label className="comparison-mobile__selector">
+                        <span className="public-sr-only">
+                          {position === 0 ? 'Premier forfait à comparer' : 'Deuxième forfait à comparer'}
+                        </span>
+                        <select
+                          value={offer.id}
+                          aria-label={position === 0 ? 'Premier forfait à comparer' : 'Deuxième forfait à comparer'}
+                          aria-controls={`${id}-mobile-table`}
+                          onChange={(event) => {
+                            const offerId = publicOffers.find((candidate) => candidate.id === event.currentTarget.value)!.id
+                            setMobilePair((pair) => replaceComparisonOffer(pair, position as 0 | 1, offerId))
+                          }}
+                        >
+                          {publicOffers.map((candidate) => (
+                            <option key={candidate.id} value={candidate.id}>{candidate.title}</option>
+                          ))}
+                        </select>
+                        <span className="comparison-mobile__selected" aria-hidden="true">
+                          <span>{offer.title}</span>
+                          <ChevronDown size={16} />
+                        </span>
+                      </label>
+                      <p>{startingPrice(offer.id, pricing)}</p>
+                      <ComparisonConfigureButton offer={offer} price={startingPrice(offer.id, pricing)} />
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            {comparisonSections.flatMap((section, sectionIndex) => section.rows.map((row, rowIndex) => {
+              const featureId = `${id}-mobile-feature-${sectionIndex}-${rowIndex}`
+              return (
+                <tbody key={row.title} aria-labelledby={featureId}>
+                  <tr className="comparison-mobile__feature">
+                    <th id={featureId} colSpan={2} scope="rowgroup">
+                      {rowIndex === 0 ? <span className="comparison-section-label">{section.title}</span> : null}
+                      {row.title}
+                      <ComparisonReveal collapsed={!details}>
+                        <span className="comparison-row-hint">{row.hint}</span>
+                      </ComparisonReveal>
+                    </th>
+                  </tr>
+                  <tr className="comparison-mobile__values">
+                    {mobileOffers.map((offer, position) => (
+                      <td key={position} headers={`${featureId} ${id}-mobile-offer-${position}`}>
+                        <ComparisonCell status={row.values[publicOffers.indexOf(offer)]} />
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              )
+            }))}
+          </table>
+        </div>
+      </div>
       <button
         type="button"
         className="comparison-details-toggle"
         aria-expanded={details}
-        aria-controls={`${id}-table`}
+        aria-controls={`${id}-table ${id}-mobile-table`}
         onClick={() => setDetails((open) => !open)}
       >
         {details ? 'Masquer les détails' : 'Afficher plus de détails'}

@@ -375,7 +375,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .public-gallery-filters > button,.public-gallery-filter::before { transition: none; } }
 
-.comparison-column-picker { display: none; }
+.comparison-mobile { display: none; }
 .comparison-cta { margin-top: 4px; background: transparent; }
 .plan-cta.comparison-cta::before { content: none; }
 .comparison-cta__surface { position: absolute; inset: 0; z-index: -1; isolation: isolate; overflow: hidden; border-radius: inherit; background: #111; pointer-events: none; }
@@ -386,61 +386,80 @@
   .comparison-offer h3 { font-size: 17px; }
 }
 @media (max-width: 760px) {
-  .comparison-scroll {
-    --comparison-label-width: 108px;
-    max-block-size: min(66svh, 520px);
+  .comparison-scroll { display: none; }
+  .comparison-mobile { display: block; }
+  .comparison-mobile__instruction { margin-bottom: 12px; color: var(--muted-foreground); font-size: 13px; line-height: 1.5; }
+  .comparison-mobile__scroll {
+    max-block-size: min(72svh, 640px);
     overflow: auto;
-    overscroll-behavior-x: none;
-    scroll-padding-inline-start: calc(var(--comparison-label-width) + 6px);
-    scroll-padding-inline-end: 6px;
-  }
-  .comparison-table {
-    /* Each offer fills the space beside the fixed label column. */
-    width: calc(300% - 2 * var(--comparison-label-width));
-    min-width: 486px;
-    table-layout: fixed;
-  }
-  .comparison-table thead { top: 0; }
-  .comparison-table thead th {
-    padding: 10px;
-    width: auto;
-  }
-  .comparison-table thead th:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 3;
-    width: var(--comparison-label-width);
-    padding-left: 10px;
-    font-size: 14px;
-    box-shadow: 1px 0 var(--border), 0 1px var(--border);
-  }
-  .comparison-offer h3 { font-size: 16px; }
-  .comparison-offer > p { min-height: 2.8em; font-size: 12px; }
-  .comparison-table tbody td,.comparison-table tbody th { padding: 10px; }
-  .comparison-table tbody th { position: sticky; left: 0; z-index: 1; background: var(--background); font-size: 12px; box-shadow: 1px 0 var(--border); }
-  .comparison-cta {
-    gap: 6px;
-    padding: 10px;
-    font-size: 12px;
-  }
-}
-@media (max-width: 760px) {
-  .comparison-column-picker { display: grid; gap: 8px; margin-bottom: 12px; }
-  .comparison-column-picker p { color: var(--muted-foreground); font-size: 12px; }
-  .comparison-column-picker > div { display: flex; flex-wrap: wrap; gap: 6px; }
-  .comparison-column-picker button {
-    min-height: 44px;
-    padding: 6px 11px;
     border: 1px solid var(--border);
-    border-radius: 999px;
+    border-radius: 14px;
     background: var(--background);
-    font-size: 12px;
-    font-weight: 500;
+    scroll-padding-block-start: 170px;
   }
-  .comparison-column-picker button:hover { background: var(--muted); }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .comparison-scroll { scroll-behavior: smooth; }
+  .comparison-mobile__scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+  .comparison-mobile__table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .comparison-mobile__table thead { position: sticky; top: 0; z-index: 2; background: var(--paper); }
+  .comparison-mobile__table thead th { width: 50%; padding: 10px 8px; background: var(--paper); box-shadow: 0 1px var(--border); vertical-align: top; }
+  .comparison-mobile__table thead th + th { border-left: 1px solid var(--border); }
+  .comparison-mobile__offer { display: flex; flex-direction: column; align-items: stretch; gap: 6px; text-align: center; }
+  .comparison-mobile__offer > p { min-height: 2.7em; color: var(--muted-foreground); font-size: 13px; font-weight: 400; line-height: 1.35; }
+  .comparison-mobile__selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    padding: 5px 6px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  /* The native select opens the platform picker. A wrapping presentation keeps
+     the complete Premium / 3D name visible even in a 320px viewport. */
+  .comparison-mobile__selector select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .comparison-mobile__selector:focus-within { outline: 2px solid var(--ring); outline-offset: 2px; }
+  .comparison-mobile__selected { display: flex; align-items: center; justify-content: center; gap: 5px; min-width: 0; pointer-events: none; }
+  .comparison-mobile__selected > span { min-width: 0; }
+  .comparison-mobile__selected > svg { flex-shrink: 0; }
+  .comparison-mobile__feature th {
+    padding: 12px 12px 4px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .comparison-mobile__feature .comparison-section-label { margin-bottom: 5px; font-size: 12px; }
+  .comparison-mobile__feature .comparison-row-hint { max-width: none; font-size: 13px; }
+  .comparison-mobile__values td { height: 40px; padding: 4px 10px 12px; text-align: center; vertical-align: middle; }
+  .comparison-mobile__values td + td { border-left: 1px solid var(--border); }
+  .comparison-mobile__values .comparison-status { font-size: 14px; line-height: 1.4; }
+  .comparison-mobile .comparison-cta {
+    min-height: 44px;
+    width: 100%;
+    margin-top: 0;
+    padding: 10px 6px;
+    font-size: 13px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .comparison-details-toggle,

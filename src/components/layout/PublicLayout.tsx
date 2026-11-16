@@ -122,7 +122,7 @@ export function PublicHeader() {
                 ref={mobileMenuButton}
                 type="button"
                 className="icon-button mobile-menu-button"
-                aria-label="Ouvrir le menu"
+                aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               >
                 <Menu size={22} aria-hidden="true" />
               </button>
@@ -171,15 +171,15 @@ export function PublicHeader() {
                     ))}
                   </div>
                 </details>
-                <NavLink to="/exemples" viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
+                <NavLink to="/exemples" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   Exemples de sites
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <NavLink to="/faq" viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
+                <NavLink to="/faq" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   FAQ
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <Link to="/contact" viewTransition={canAnimatePlanNavigation()} className="mobile-nav-heading mobile-nav-contact">
+                <Link to="/contact" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className="mobile-nav-heading mobile-nav-contact">
                   Nous contacter
                   <ArrowRight size={20} aria-hidden="true" />
                 </Link>

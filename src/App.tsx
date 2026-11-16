@@ -27,7 +27,8 @@ import { RouteMetadata } from './components/layout/RouteMetadata'
 import { PageRecovery } from './components/layout/PageRecovery'
 import { PixelitoLoading } from './components/layout/PixelitoLogo'
 import { capturePlanPageScroll, getPlanBackHref, rememberPlanPageScroll, restorePlanScroll } from './lib/plan-return'
-import { discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
+import { canAnimatePlanNavigation, discardPlanNavigationIntent, getPlanNavigationIntent } from './components/layout/plan-transition'
+import { withPlanMotionPolicy } from './lib/plan-motion-policy'
 
 function page<T, K extends keyof T>(load: () => Promise<T>, name: K) {
   return lazy<ComponentType>(async () => ({ default: (await load())[name] as ComponentType }))
@@ -226,7 +227,7 @@ export const appRoutes = createRoutesFromElements(
   </Route>,
 )
 
-export const createAppRouter = () => createBrowserRouter(appRoutes)
+export const createAppRouter = () => withPlanMotionPolicy(createBrowserRouter(appRoutes), canAnimatePlanNavigation)
 
 export function App({ router }: { router: ReturnType<typeof createAppRouter> }) {
   return <RouterProvider router={router} />

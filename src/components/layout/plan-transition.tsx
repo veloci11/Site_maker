@@ -15,6 +15,7 @@ import {
 import { offers } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
 import { normalizePlanTransitionLocations } from '../../lib/plan-transition-locations'
+import { canUseSharedPlanMotion } from '../../lib/plan-motion-policy'
 
 type PlanRoute = { href: string; variant: string }
 type MotionIntent = { href: string; sourceKey: string; preserveScroll: boolean; sourceElement?: HTMLElement | null }
@@ -61,9 +62,11 @@ function usePlanMotionInterruption(active: boolean) {
 }
 
 export function canAnimatePlanNavigation() {
-  return typeof document !== 'undefined'
-    && typeof document.startViewTransition === 'function'
-    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  return typeof document !== 'undefined' && typeof window !== 'undefined'
+    && canUseSharedPlanMotion({
+      supportsViewTransition: typeof document.startViewTransition === 'function',
+      matchMedia: query => window.matchMedia(query),
+    })
 }
 
 function routeHref(location: Pick<Location, 'pathname' | 'search' | 'hash'>) {
@@ -202,7 +205,8 @@ function useMotionLinkClick(props: LinkProps | NavLinkProps) {
       || event.currentTarget.hasAttribute('download')
       || (typeof props.to === 'string' && /^([a-z][a-z\d+.-]*:|\/\/)/i.test(props.to))) return
 
-    // Reduced-motion links still carry their source through the accepted route.
+    // Direct touch/reduced-motion links still carry their source through the
+    // accepted route; ScrollTop handles their return position without capture.
     if (!props.viewTransition) {
       stageNavigation(event.currentTarget.href, location.key, { preventScrollReset: props.preventScrollReset }, event.currentTarget)
       return

@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Safari iPhone, menu compact et comparaison simultanée — 16 novembre 2026
+
+La capture IMG_5893 de Mathis remplace les choix mobiles du lot précédent. Étendre le viewport jusqu'aux bords (`viewport-fit=cover`) et réserver les safe-areas autour des commandes ; ne pas garder une surface blanche opaque derrière le header transparent. Le menu burger devient un panneau flottant borné sous la navigation, avec ouverture 260 ms et fermeture 220 ms, focus/clavier et défilement interne sur écran court. Il ne remplit plus toute la page.
+
+Sur téléphone, tablette tactile ou fenêtre de 760 px maximum, ne plus déclencher les captures natives du raccord des forfaits : navigation directe et fondu léger de la carte réelle de 140 ms. Conserver le raccord de 760 ms sur ordinateur avec pointeur fin et survol. Appliquer cette politique aussi aux retours mémorisés par le routeur, sans toucher aux clés d'historique, bloqueurs ou recentrage de forfait. Mouvement réduit prioritaire.
+
+Le comparatif mobile doit montrer deux forfaits distincts simultanément. Deux sélecteurs natifs permettent de choisir parmi les trois offres ; les intitulés occupent toute la largeur au-dessus des deux valeurs. Les noms, prix et CTA restent visibles dans l'en-tête du scrollport vertical. Aucun défilement horizontal ni affichage d'une seule offre à la fois. Les mêmes données alimentent les deux présentations ; tableau desktop inchangé. Preuves et limites dans `docs/qa/mobile-safari-2026-11-16/` ; ne pas présenter l'émulation comme une validation sur iPhone physique.
+
 ## Animation du logo et reprise mobile — 16 novembre 2026
 
 Mathis demande maintenant l'animation proposée : au premier affichage de la navigation, les deux bandes noires sortent du dégradé avec un léger gonflement puis se stabilisent en 720 ms. Le mot reste fixe. Réutiliser les groupes du SVG choisi ; pas de compagnon ni de nouvelles formes. Le symbole est intégré depuis une copie SVG identique générée dans src/assets afin d'éviter l'attente de trois requêtes d'images. Pour les vrais chargements, les deux bandes noires tournent autour du dégradé en 1,6 s ; aucun délai artificiel ajouté. Les mouvements sont désactivés par prefers-reduced-motion.

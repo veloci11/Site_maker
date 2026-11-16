@@ -1,3 +1,7 @@
+## Safari et téléphone — 16 novembre 2026
+
+Contrôles locaux réussis : safe-area de 59 px, panneau burger borné animé à l'ouverture et à la fermeture, ouverture légère des cartes sur tactile, comparaison de deux offres simultanées à 320/430 px. Desktop et retours de forfait conservés ; aucune alerte console observée. 318 tests passent. Rapport, mesures, captures et limites : `docs/qa/mobile-safari-2026-11-16/design-qa.md`. Publication à consigner après la bascule.
+
 ## Logo animé et reprise mobile — 16 novembre 2026
 
 Final result: passed (local et HTTPS). Introduction de 720 ms, chargement orbital, clavier, fond et retours mobiles contrôlés ; 316 tests passent. Le comparatif mobile présente un forfait entier, avec défilement borné. Galerie validée par toucher direct, ancres alignées sur le routeur. Révision 84f34bc publiée et vérifiée ; aucune alerte console finale. Localhost fermé. Rapport et limites : `docs/qa/mobile-2026-11-16/design-qa.md`.

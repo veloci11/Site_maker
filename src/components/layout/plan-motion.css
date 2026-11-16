@@ -1,5 +1,5 @@
-/* React Router owns the native transition lifecycle. Only plan/list journeys
-   opt into this choreography; no root/header screenshot or image scaling. */
+/* React Router owns the desktop native transition lifecycle. Touch/narrow
+   screens navigate without snapshots and use the live-card fade below. */
 :root {
   --plan-motion-duration: 760ms;
   --plan-motion-ease: cubic-bezier(.4, 0, .2, 1);
@@ -306,7 +306,28 @@
   }
 }
 
+/* Keep this query in sync with LIVE_PLAN_MOTION_QUERY. Do not animate the
+   page or its geometry: it contains the fixed mobile price bar. Only the live
+   selected card receives a small opacity change, with no hidden first frame,
+   delay, screenshot, clipping animation or animation-finished navigation. */
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  .public-shell .motion-page {
+    animation: none;
+  }
+
+  .public-shell .motion-page .selected-plan {
+    animation: plan-live-card-arrive 140ms ease-out;
+  }
+}
+
+@keyframes plan-live-card-arrive {
+  from { opacity: .94; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .public-shell .motion-page .selected-plan { animation: none; }
+
   :root::view-transition-old(*),
   :root::view-transition-new(*),
   :root::view-transition-group(*),
