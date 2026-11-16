@@ -1,3 +1,9 @@
+# Accroche et description commerciales publiées — 16 novembre 2026
+
+Lot `3859453` publié : description SEO « Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris. » et trois arguments courts avant Choisir mon forfait. Prix réel du catalogue, sans changement de tarifs ni de prestations ; les formats CHF et sur devis restent fonctionnels. Favicon transparent et logo SVG conservés.
+
+L'hypothèse de 40 % vise les agences ; cinq offres ont été lues, sans moyenne représentative à périmètre égal. Le calcul 890 € contre 1 500 € donne 40,7 %, mais ce scénario n'est pas publié comme une statistique de marché. Rapport interne `qa/commercial-2026-11-16/comparaison-agences.html` ; preuves et captures dans le même dossier. 290 tests et contrôles HTTPS ordinateur/mobile réussis. Voir `../ops/DEPLOYMENT_STATUS.md`.
+
 # Favicon transparent — 16 novembre 2026
 
 Publié et contrôlé : fond blanc retiré des exports PNG et ICO ; seules les trois bandes du symbole restent visibles, avec transparence autour et entre elles. Liens versionnés pour renouveler le cache. SVG et logo de navigation inchangés. Révision applicative `e113bf17cda5d970cfa444fd4b041c03f5096ba0`, 290 tests passants, huit ressources HTTPS conformes, head contrôlé dans l'IAB. Localhost fermé. Preuves : `qa/favicon-transparent-2026-11-16/`.

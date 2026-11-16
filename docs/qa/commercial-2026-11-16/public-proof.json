@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "benefits": [
+    "Design personnalisé",
+    "Mobile compris",
+    "Mise en ligne comprise"
+  ],
+  "canonical": "https://gilmathis.com/",
+  "description": "Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris.",
+  "image": "https://gilmathis.com/assets/brand/logo-pixelito-512.png",
+  "ogDescription": "Votre site internet personnalisé à petit prix, à partir de 890 €. Design adapté à votre activité, mobile et mise en ligne compris.",
+  "price": "Votre site personnalisé dès 890 €.",
+  "serverPrice": true,
+  "socialImageStatus": 200,
+  "mobileViewport": 320,
+  "mobileDocumentWidth": 305,
+  "mobileCtaBottom": 598.9765625,
+  "tests": 290
+}

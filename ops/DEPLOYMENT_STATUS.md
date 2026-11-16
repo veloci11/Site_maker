@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — favicon transparent
+## Version active — accroche commerciale dès 890 €
+
+- URL `https://gilmathis.com/`
+- Révision applicative `38594530b5e1f9e4d9ed0babebaf9e15fa936e9a`
+- Release `/home/mathis/site-maker/releases/20261116T211930Z-38594530b5e1`
+- Client `/assets/index-Bw9zP6Jx.js`, SHA-256 `6f3db27285eca692115b665d3cd133e3ec0b40e11626167ea1bcb1e3a8a9877a`
+- Archive code et builds : 41 757 107 octets, SHA-256 `7629627ee917d1fef95d9c6ef90f0cb7e42bd979b0435d8e92653f835300c24a`
+
+Description SEO recentrée sur le site personnalisé à petit prix à partir de 890 €. L'accueil affiche le prix et trois arguments courts avant le bouton : Design personnalisé, Mobile compris, Mise en ligne comprise. Les montants sont lus dans le catalogue serveur, avec CHF et « sur devis » conservés ; aucun tarif ni périmètre modifié. L'image de partage pointe vers le fichier de marque présent `logo-pixelito-512.png`.
+
+TypeScript, build client/SSR/Sites et 290 tests passent. Contrôle IAB public à 1280 px puis 320 × 740 : description dans le HTML initial et l'Open Graph, prix et arguments présents, absence de débordement (document 305 px), bouton visible (bas à 599 px), aucune erreur console observée. Image sociale servie en PNG avec statut 200. Le bouton de choix du forfait garde son ancre. Les SVG et le favicon transparent précédemment livrés sont conservés.
+
+La comparaison demandée vise les agences ; cinq offres d'agences ont été vérifiées. Le calcul 890 € contre un budget hypothétique de 1 500 € donne 40,7 %, mais ne prouve pas une moyenne à prestations égales : aucun pourcentage moyen n'est publié. Repérage : `docs/qa/commercial-2026-11-16/comparaison-agences.html`.
+
+Sauvegarde réussie avant bascule atomique ; santé et tunnel actifs après livraison, catalogue complet strictement inchangé. Seul `site-maker.service` redémarré ; aucun formulaire envoyé. Preuves dans `docs/qa/commercial-2026-11-16/`. Serveurs locaux arrêtés (4173/4185), émulations retirées, onglets fermés et Tailscale temporairement repris puis remis à l'arrêt.
+
+## Version précédente — favicon transparent
 
 - URL `https://gilmathis.com/`
 - Révision applicative `e113bf17cda5d970cfa444fd4b041c03f5096ba0`

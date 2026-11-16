@@ -1,3 +1,11 @@
+# Accroche commerciale publiée — 16 novembre 2026
+
+Révision `3859453`, release `20261116T211930Z-38594530b5e1`. La description SEO présente le site personnalisé à petit prix dès 890 €, avec mobile et mise en ligne compris. L'accueil ajoute « Votre site personnalisé dès 890 € » puis trois arguments courts avant le bouton : Design personnalisé, Mobile compris, Mise en ligne comprise. Le montant provient du vrai tarif Vitrine. La description serveur, l'Open Graph et le DOM correspondent.
+
+Contrôle IAB local puis HTTPS à 1280 px et 320 × 740 : texte lisible, trois arguments placés avant le CTA, document de 305 px sans débordement et bas du bouton à 598,98 px. Son ancre reste `#forfaits`. Aucune erreur console observée, aucun formulaire envoyé. L'image sociale existante est désormais référencée par son vrai chemin et répond 200 en PNG. Tests de catalogue modifié, CHF, montant Vitrine null et ressource sociale conservés dans la vérification complète : TypeScript, build client/SSR/Sites et 290 tests passent.
+
+La demande de comparaison concerne des agences. Le repérage de cinq agences, ses limites et le calcul conditionnel de 40,7 % contre 1 500 € figurent dans `docs/qa/commercial-2026-11-16/comparaison-agences.html` ; aucune moyenne non établie n'est affichée. Captures `hero-desktop-public.jpg`, `hero-mobile-public.jpg` et relevé `public-proof.json` dans ce dossier. Sauvegarde, santé et catalogue inchangé vérifiés. Serveurs 4173/4185 arrêtés, émulations retirées, onglets fermés et Tailscale remis à l'arrêt.
+
 ## Favicon transparent — 16 novembre 2026
 
 Final result: passed. Export alpha, PNG/ICO sans fond blanc, références de cache et head public vérifiés. Révision e113bf1 publiée, 290 tests passants, huit ressources HTTPS identiques au build. Localhost fermé. Rapport : `docs/qa/favicon-transparent-2026-11-16/design-qa.md`.
