@@ -1,6 +1,6 @@
 ## Safari et téléphone — 16 novembre 2026
 
-Contrôles locaux réussis : safe-area de 59 px, panneau burger borné animé à l'ouverture et à la fermeture, ouverture légère des cartes sur tactile, comparaison de deux offres simultanées à 320/430 px. Desktop et retours de forfait conservés ; aucune alerte console observée. 318 tests passent. Rapport, mesures, captures et limites : `docs/qa/mobile-safari-2026-11-16/design-qa.md`. Publication à consigner après la bascule.
+Final result: passed (local et HTTPS). Safe-area de 59 px, panneau burger borné animé à l'ouverture et à la fermeture, ouverture légère des cartes sur tactile, comparaison de deux offres simultanées à 320/430 px en local et 390 px en public. Desktop et retours de forfait conservés ; aucune alerte console observée. 318 tests passent. Révision `169e3a8` publiée et vérifiée. Rapport, mesures, captures et limites : `docs/qa/mobile-safari-2026-11-16/design-qa.md`.
 
 ## Logo animé et reprise mobile — 16 novembre 2026
 

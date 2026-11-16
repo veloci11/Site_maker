@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — logo animé, mobile et historique
+## Version active — Safari iPhone, menu compact et comparaison simultanée
+
+- URL `https://gilmathis.com/`
+- Révision applicative `169e3a8b65242916d0f3734aa51744ba89dfbeb8`
+- Release `/home/mathis/site-maker/releases/20261116T230338Z-169e3a8b6524`
+- Client `/assets/index-fiCz-Uir.js`, SHA-256 `2cdc36ce4581e50b597ea4bcf79bc31fd93f4b809536b7149e4499b8ae57bdca`
+- Archive client/SSR/runtime : 27975352 octets, SHA-256 `07dc44fbbb7155f7fb930080e3383051f13bab545f84e09dc6a3797451ac72fd`
+
+Viewport jusqu'aux bords, fond racine pastel et protection safe-area. Menu burger flottant borné, entrée 260 ms et sortie 220 ms ; focus et sous-menu accessibles sur écran court. Parcours des forfaits tactile sans captures lourdes, fondu de la carte réelle 140 ms ; raccord desktop conservé. Comparatif mobile de deux offres simultanées, sélection parmi les trois, noms/prix/CTA fixes dans le tableau et aucun défilement horizontal. Le tableau desktop, le logo, les textes commerciaux et le catalogue sont conservés.
+
+TypeScript, builds client/SSR/Sites et 318 tests passent ; sources de l'archive vérifiées contre le commit relu. IAB local à 320/430 px avec safe-areas de 59/34 px, écran court 568 px et desktop 1280 px. IAB HTTPS : menu 360 × 410,35 px, animation d'ouverture/fermeture et restitution du focus ; comparatif à 390 px sans débordement, choix Premium et détails fonctionnels. Ouverture de Premium avec fondu 140 ms ; retour devant sa carte à 146,80 px pour un header de 147 px. Aucune alerte console observée. Client et deux CSS publics identiques aux fichiers construits par SHA-256.
+
+Sauvegarde privée et préflight Node24/SSR réussis avant la bascule atomique ; santé, tarifs, trois offres et 28 définitions inchangés. Les 22 autres services/PID restent identiques ; GP Park reste inactif. Seul le service du site est redémarré. Tailscale était déjà actif et est laissé dans cet état. Rapport, captures et preuves : `docs/qa/mobile-safari-2026-11-16/`. Pas d'iPhone Safari matériel ni de benchmark FPS ; le tint natif de Safari doit être distingué du fond de page testé en émulation.
+
+Serveur local de cette tâche arrêté (PID 47639, port 4183 vérifié fermé), émulations et viewport restaurés, onglets locaux/de recherche fermés. Prévisualisation publique conservée.
+
+## Version précédente — logo animé, mobile et historique
 
 - URL `https://gilmathis.com/`
 - Révision applicative `84f34bc96601ef7065a30de9a7e1a3d4abc49f33`

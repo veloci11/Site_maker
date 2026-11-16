@@ -1,6 +1,6 @@
 # Reprise Safari et téléphone — 16 novembre 2026
 
-État : contrôles locaux réussis ; publication et contrôle HTTPS à consigner après la bascule.
+Final result: passed (local et HTTPS). Révision `169e3a8b65242916d0f3734aa51744ba89dfbeb8`, release `20261116T230338Z-169e3a8b6524`, publiée sur `https://gilmathis.com/`.
 
 ## Demande et réalisation
 
@@ -24,3 +24,11 @@ Le menu burger est un panneau flottant, avec entrée de 260 ms et sortie de 220 
 ## Limites et périmètre
 
 Contrôles faits exclusivement dans le navigateur intégré ; pas de Google Chrome externe, d'iPhone matériel ni de mesure FPS. La suppression des captures coûteuses est vérifiée par la politique et le routeur, sans promettre un débit d'images matériel mesuré. Logo, textes commerciaux, prix, catalogue et questionnaires conservés. Rapports des trois spécialistes : `safari-menu.md`, `motion.md`, `comparison.md`.
+
+## Contrôle après publication
+
+Menu HTTPS à 430 px avec insets de 59/34 : dimensions et animation conformes au local, Escape ferme le panneau et restitue le focus. Capture `11-public-menu.jpg`. Comparatif HTTPS à 390 px : Vitrine et Premium côte à côte, largeur document 390 px et aucune surlargeur interne. Le bouton de détails dévoile les mêmes descriptions et l'ouverture de Premium utilise bien le fondu de 140 ms, sans animation du conteneur. Retour à l'accueil : Premium à 146,80 px pour un header de 147 px. Capture `12-public-comparison-390.jpg`. Aucune alerte console dans ces parcours.
+
+`public-integrity.json` confirme le viewport, la santé et les empreintes du client/deux CSS publics. `deployment-origin.json` confirme la sauvegarde, le préflight runtime/SSR, la santé, les tarifs/catalogue inchangés, les 22 autres services/PID inchangés et GP Park inactif. L'archive inclut bien le module source `src/content/home-copy.ts` utilisé à l'exécution. Tailscale déjà actif laissé inchangé.
+
+Localhost 4183 arrêté (PID 47639, port contrôlé fermé). Viewport et émulations restaurés, onglets temporaires locaux/de recherche fermés et prévisualisation publique conservée.

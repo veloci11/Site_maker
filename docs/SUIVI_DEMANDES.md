@@ -1,6 +1,6 @@
 # Reprise Safari et téléphone — 16 novembre 2026
 
-La capture IMG_5893 déclenche une nouvelle reprise : viewport jusqu'aux bords et protection safe-area, menu flottant compact avec vraie animation de sortie, parcours tactile de forfait sans captures natives lourdes et deux offres réellement comparables côte à côte. Ce choix remplace le comparatif mobile à une seule offre. Trois spécialistes mobilisés, puis contrôle intégré à 320/430 px et sur ordinateur. 318 tests passent. État local vérifié, publication à consigner ; preuves dans `qa/mobile-safari-2026-11-16/`. Aucun benchmark FPS ou test Safari matériel revendiqué.
+La capture IMG_5893 déclenche une nouvelle reprise : viewport jusqu'aux bords et protection safe-area, menu flottant compact avec vraie animation de sortie, parcours tactile de forfait sans captures natives lourdes et deux offres réellement comparables côte à côte. Ce choix remplace le comparatif mobile à une seule offre. Trois spécialistes mobilisés, puis contrôle intégré à 320/430 px et sur ordinateur. 318 tests passent. Révision `169e3a8` publiée dans `20261116T230338Z-169e3a8b6524`, menu/comparatif/retour vérifiés en HTTPS à 390/430 px ; client et CSS conformes au build. Preuves dans `qa/mobile-safari-2026-11-16/`. Aucun benchmark FPS ou test Safari matériel revendiqué.
 
 # Animation du logo et mobile — 16 novembre 2026
 
