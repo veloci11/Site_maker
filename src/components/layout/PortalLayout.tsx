@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
-import { ArrowUpRight, FolderOpen, Home, Loader2, LogOut, MessagesSquare, PanelsTopLeft, ReceiptText, Settings, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, FolderOpen, Home, LogOut, MessagesSquare, PanelsTopLeft, ReceiptText, Settings, ShieldCheck } from "lucide-react";
 import { useAuth } from "../../lib/auth";
 import { useProject } from "../../lib/project";
 import { cn } from "../../lib/utils";
+import { PixelitoLoading, PixelitoLogo } from "./PixelitoLogo";
 
 const portalLinks = [
   { href: "/espace", label: "Vue d’ensemble", mobile: "Projet", icon: Home, end: true },
@@ -32,7 +33,7 @@ export function PortalLayout({ projectName }: { projectName?: string }) {
     return () => { document.removeEventListener("pointerdown", outside); document.removeEventListener("keydown", escape); };
   }, [accountOpen]);
 
-  if (loading) return <div className="loading-state loading-state--page" role="status"><Loader2 className="spin" size={24} aria-hidden="true" /><span>Ouverture de votre espace…</span></div>;
+  if (loading) return <PixelitoLoading page label="Ouverture de votre espace…" />;
   if (!user) return <Navigate to={`/connexion?retour=${encodeURIComponent(location.pathname + location.search)}`} replace />;
 
   async function signOut() {
@@ -44,7 +45,7 @@ export function PortalLayout({ projectName }: { projectName?: string }) {
     <div className="portal-shell">
       <a className="skip-link" href="#portal-main">Aller au contenu</a>
       <header className="portal-header">
-        <Link className="wordmark" to="/" aria-label="pixelito — accueil">pixelito</Link>
+        <Link className="wordmark" to="/" aria-label="pixelito — accueil"><PixelitoLogo /></Link>
         <span className="portal-project-name">{projectName ?? project?.name ?? "Mon projet"}</span>
         <div className="portal-header-actions"><Link to="/" className="portal-return">Retour au site <ArrowUpRight size={17} aria-hidden="true" /></Link><div className="account-menu" ref={account}><button className="avatar-button" ref={accountTrigger} aria-expanded={accountOpen} aria-controls="account-menu" aria-label="Ouvrir le menu du compte" onClick={() => setAccountOpen(!accountOpen)}>{user.name?.trim().charAt(0).toUpperCase() || "M"}</button>{accountOpen ? <div className="account-popover" id="account-menu"><div className="account-popover-identity"><strong>{user.name}</strong><span>{user.email}</span></div><Link to="/espace/compte"><Settings size={17} aria-hidden="true" />Mon compte</Link>{user.role === "admin" ? <Link to="/admin"><ShieldCheck size={17} aria-hidden="true" />Administration</Link> : null}<button onClick={signOut}><LogOut size={17} aria-hidden="true" />Se déconnecter</button>{logoutError ? <p className="field-error" role="alert">{logoutError}</p> : null}</div> : null}</div></div>
       </header>

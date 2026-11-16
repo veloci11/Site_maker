@@ -1,0 +1,47 @@
+{
+  "source": "docs/asset-sources/brand/pixelito-selected-2026-11-16.png",
+  "sourceSha256": "681daf3ab474db991cd1b913d077f6a77800593bf3701b8f5b4f5ae3ee3a870a",
+  "logoBounds": {
+    "left": 207,
+    "top": 235,
+    "width": 1152,
+    "height": 248
+  },
+  "symbolBounds": {
+    "left": 207,
+    "top": 252,
+    "width": 228,
+    "height": 217
+  },
+  "wordBounds": {
+    "left": 475,
+    "top": 235,
+    "width": 884,
+    "height": 248
+  },
+  "gradientStops": [
+    {
+      "position": 0,
+      "color": "#d0aff6"
+    },
+    {
+      "position": 0.25,
+      "color": "#b3a5f9"
+    },
+    {
+      "position": 0.5,
+      "color": "#92a8fa"
+    },
+    {
+      "position": 0.75,
+      "color": "#5ea3fc"
+    },
+    {
+      "position": 1,
+      "color": "#76b8fc"
+    }
+  ],
+  "logoSha256": "edfa7aa3250fa038b1e4b5939c85133587d97aa901cc9f14a86ac549ae3d6a25",
+  "symbolSha256": "6bad8ca082b4e6e64cb0908052ae8e6ecbd2f821d6938116ab1fbdc2acc3dad1",
+  "treatment": "Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Sampled gradient and static SVG grain. No embedded bitmap or font dependency."
+}

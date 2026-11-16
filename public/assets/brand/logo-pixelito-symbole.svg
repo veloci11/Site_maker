@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="228" height="217" viewBox="0 0 228 217"><defs><linearGradient id="pixelito-gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="0%" stop-color="#d0aff6"/><stop offset="25%" stop-color="#b3a5f9"/><stop offset="50%" stop-color="#92a8fa"/><stop offset="75%" stop-color="#5ea3fc"/><stop offset="100%" stop-color="#76b8fc"/></linearGradient><filter id="pixelito-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch" seed="5" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs><g id="pixelito-symbole"><g id="bande-haute" fill="#080808"><g transform="translate(0.000000,217.000000) scale(0.100000,-0.100000)"
+ stroke="none">
+<path d="M1277 2012 l-127 -127 0 -123 0 -122 502 0 502 0 43 42 43 42 0 208
+0 208 -418 0 -417 0 -128 -128z"/>
+</g></g><g id="bande-degradee" fill="url(#pixelito-gradient)" filter="url(#pixelito-grain)"><g transform="translate(0.000000,217.000000) scale(0.100000,-0.100000)"
+ stroke="none">
+<path d="M221 1292 l-191 -188 -1 -49 c-3 -89 3 -350 8 -357 2 -5 416 -8 920
+-8 l916 0 189 188 188 188 0 195 c0 138 -3 198 -12 207 -9 9 -227 12 -919 12
+l-907 0 -191 -188z"/>
+</g></g><g id="bande-basse" fill="#080808"><g transform="translate(0.000000,217.000000) scale(0.100000,-0.100000)"
+ stroke="none">
+<path d="M447 402 l-127 -127 0 -118 0 -117 463 0 462 0 93 93 93 93 -3 149
+-3 150 -425 3 -425 2 -128 -128z"/>
+</g></g></g></svg>

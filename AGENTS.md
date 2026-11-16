@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Logo à trois bandes — 16 novembre 2026
+
+Mathis choisit la capture du logo Pixelito à trois bandes décalées noir/lavande/bleu et son mot noir en gras. Cette capture remplace les essais de typo Geist et le personnage orange. Réutiliser l’image sélectionnée sans redessiner le signe ni la typographie. Le composant `PixelitoLogo` est partagé par la navigation publique, le menu mobile, le pied de page et l’espace privé. Le chargement utilise seulement le symbole, avec une pulsation discrète désactivée en mouvement réduit. L’icône d’onglet, les icônes mobiles et le manifeste reprennent ce symbole. Mathis demande ensuite le SVG : `logo-pixelito.svg` contient deux groupes nommés, avec des exports `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`. La typographie est vectorisée en tracés ; le dégradé est échantillonné sur la capture et le grain reproduit en filtre SVG statique. Source et provenance dans `docs/asset-sources/brand/`, exports via `scripts/prepare-brand.mjs` (Potrace pour cette préparation uniquement). Conserver les liens et le retour en haut au clic.
+
 ## Logo pixelito restauré — 12 novembre 2026
 
 Mathis annule le compagnon de navigation : restaurer le logo original avec son x pixel et le petit personnage orange à côté, animé simplement sur place. Supprimer le composant de promenade, ses effets et sa feuille de styles, les changements de couleur et les remplacements des points des i. Conserver l'animation CSS simple et le mouvement réduit. Le retour en haut au clic sur le logo reste conservé.

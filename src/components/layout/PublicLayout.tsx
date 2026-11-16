@@ -137,7 +137,10 @@ export function PublicHeader() {
               }}
             >
               <SheetHeader>
-                <SheetTitle className="wordmark">pixelito</SheetTitle>
+                <SheetTitle className="wordmark">
+                  <span className="sr-only">pixelito</span>
+                  <PixelitoLogo />
+                </SheetTitle>
                 <SheetDescription className="sr-only">Navigation du site</SheetDescription>
               </SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
@@ -193,7 +196,7 @@ export function PublicFooter() {
   return (
     <footer className="site-footer container">
       <Link to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} className="wordmark wordmark--small" aria-label="pixelito — accueil">
-        pixelito
+        <PixelitoLogo />
       </Link>
       <nav aria-label="Liens de pied de page">
         <Link to="/forfaits" viewTransition={canAnimatePlanNavigation()}>Comparer les forfaits</Link>

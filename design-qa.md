@@ -1,3 +1,7 @@
+## Logo Pixelito SVG — 16 novembre 2026
+
+Final result: passed. Référence sélectionnée, proportions, typographie en tracés, gradient, bureau 1280 px, mobile 320 px, menu et retour à l’accueil contrôlés. Les 284 tests passent. Rapport et captures : `docs/qa/brand-2026-11-16/`.
+
 # Retour au logo orange simple — 12 novembre 2026
 
 Révision publique `e2f568a`. Essai de compagnon annulé : x et logo d'origine, personnage orange animé sur place. Composant de promenade et feuille de styles supprimés avec les imports et effets associés. Aucun reste de `PixelitoCompanion`, des points de i personnalisés ou des changements de couleur dans les sources et le build. Sources applicatives identiques à `31a3a88`, client identique par empreinte à `340e503` ; retour en haut conservé.

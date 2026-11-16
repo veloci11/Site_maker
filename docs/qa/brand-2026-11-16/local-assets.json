@@ -1,0 +1,118 @@
+[
+  {
+    "path": "assets/brand/logo-pixelito.svg",
+    "status": 200,
+    "type": "image/svg+xml",
+    "sha256": "edfa7aa3250fa038b1e4b5939c85133587d97aa901cc9f14a86ac549ae3d6a25",
+    "matches": true,
+    "bytes": 4923
+  },
+  {
+    "path": "assets/brand/logo-pixelito-symbole.svg",
+    "status": 200,
+    "type": "image/svg+xml",
+    "sha256": "6bad8ca082b4e6e64cb0908052ae8e6ecbd2f821d6938116ab1fbdc2acc3dad1",
+    "matches": true,
+    "bytes": 1684
+  },
+  {
+    "path": "assets/brand/logo-pixelito-typo.svg",
+    "status": 200,
+    "type": "image/svg+xml",
+    "sha256": "b3153de8b0441d98930c2998c3217af5d994127e6b028dff05ccbee27d802c52",
+    "matches": true,
+    "bytes": 3260
+  },
+  {
+    "path": "assets/brand/logo-pixelito-16.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "689c5df254df5b1937a8127098e68ac55bc2a934e6ac4c0f6df7b9ef29408001",
+    "matches": true,
+    "bytes": 416
+  },
+  {
+    "path": "assets/brand/logo-pixelito-32.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "125178302b889b4dec05e54949ea53a3e848c0a0c17eb6a0e332315a7f20eb34",
+    "matches": true,
+    "bytes": 854
+  },
+  {
+    "path": "assets/brand/logo-pixelito-48.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "299a300c645274601b384887b5e4732172450ba9d470d7d972f4106099f42540",
+    "matches": true,
+    "bytes": 1605
+  },
+  {
+    "path": "assets/brand/logo-pixelito-180.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "00a9f2dd112615f3253ce1ef346c7de8fa7cfdf78d0152bc5a4ec9777c11377f",
+    "matches": true,
+    "bytes": 15295
+  },
+  {
+    "path": "assets/brand/logo-pixelito-192.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "6e61b9fb296b3aceebc5649cf00144dc24329faf8139d7a520b0a4684da05ea3",
+    "matches": true,
+    "bytes": 16924
+  },
+  {
+    "path": "assets/brand/logo-pixelito-512.png",
+    "status": 200,
+    "type": "image/png",
+    "sha256": "dca7cc34cf46478ea1bcc6bb7e0829ae373ab827771179e5ac692e785a184829",
+    "matches": true,
+    "bytes": 101686
+  },
+  {
+    "path": "favicon.ico",
+    "status": 200,
+    "type": "image/vnd.microsoft.icon",
+    "sha256": "153657f16f604f8d9d7edc0ef28099f91163ad44b509af723e75b87e0a686828",
+    "matches": true,
+    "bytes": 2929
+  },
+  {
+    "path": "site.webmanifest",
+    "status": 200,
+    "type": "application/manifest+json; charset=utf-8",
+    "sha256": "6de520d18973186e56a2fb01d3d31b729387baf1e4eaa3c6a738a4cacaad30df",
+    "matches": true,
+    "bytes": 409
+  },
+  {
+    "path": "assets/brand/logo-pixelito.svg",
+    "paths": 13,
+    "groups": [
+      "pixelito-symbole",
+      "bande-haute",
+      "bande-degradee",
+      "bande-basse",
+      "pixelito-typographie"
+    ]
+  },
+  {
+    "path": "assets/brand/logo-pixelito-symbole.svg",
+    "paths": 3,
+    "groups": [
+      "pixelito-symbole",
+      "bande-haute",
+      "bande-degradee",
+      "bande-basse"
+    ]
+  },
+  {
+    "path": "assets/brand/logo-pixelito-typo.svg",
+    "paths": 10,
+    "groups": [
+      "pixelito-typographie"
+    ]
+  }
+]
