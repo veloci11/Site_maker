@@ -1,0 +1,74 @@
+[
+  {
+    "label": "PNG 16",
+    "size": 16,
+    "transparentPixels": 133,
+    "visiblePixels": 123,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "PNG 32",
+    "size": 32,
+    "transparentPixels": 626,
+    "visiblePixels": 398,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "PNG 48",
+    "size": 48,
+    "transparentPixels": 1405,
+    "visiblePixels": 899,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "PNG 180",
+    "size": 180,
+    "transparentPixels": 20442,
+    "visiblePixels": 11958,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "PNG 192",
+    "size": 192,
+    "transparentPixels": 23445,
+    "visiblePixels": 13419,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "PNG 512",
+    "size": 512,
+    "transparentPixels": 168555,
+    "visiblePixels": 93589,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "ICO 16",
+    "size": 16,
+    "transparentPixels": 133,
+    "visiblePixels": 123,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "ICO 32",
+    "size": 32,
+    "transparentPixels": 626,
+    "visiblePixels": 398,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  },
+  {
+    "label": "ICO 48",
+    "size": 48,
+    "transparentPixels": 1405,
+    "visiblePixels": 899,
+    "opaqueWhitePixels": 0,
+    "cornerAlpha": 0
+  }
+]

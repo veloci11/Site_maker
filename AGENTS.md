@@ -8,6 +8,8 @@ Lot publié sur gilmathis.com : `a4fead9`, release `20261116T205204Z-a4fead9624e
 
 ## Logo à trois bandes — 16 novembre 2026
 
+Le favicon et les icônes exportées gardent un fond transparent : uniquement la bande dégradée et les deux bandes noires, sans carré blanc. Conserver l’alpha des PNG/ICO et versionner leurs liens lors d’un remplacement pour renouveler le cache navigateur.
+
 Mathis choisit la capture du logo Pixelito à trois bandes décalées noir/lavande/bleu et son mot noir en gras. Cette capture remplace les essais de typo Geist et le personnage orange. Réutiliser l’image sélectionnée sans redessiner le signe ni la typographie. Le composant `PixelitoLogo` est partagé par la navigation publique, le menu mobile, le pied de page et l’espace privé. Le chargement utilise seulement le symbole, avec une pulsation discrète désactivée en mouvement réduit. L’icône d’onglet, les icônes mobiles et le manifeste reprennent ce symbole. Mathis demande ensuite le SVG : `logo-pixelito.svg` contient deux groupes nommés, avec des exports `logo-pixelito-symbole.svg` et `logo-pixelito-typo.svg`. La typographie est vectorisée en tracés ; le dégradé est échantillonné sur la capture et le grain reproduit en filtre SVG statique. Source et provenance dans `docs/asset-sources/brand/`, exports via `scripts/prepare-brand.mjs` (Potrace pour cette préparation uniquement). Conserver les liens et le retour en haut au clic.
 
 ## Mentions légales et deux micro-entreprises — 16 novembre 2026

@@ -75,10 +75,11 @@ for (const [name, svg] of [['logo-pixelito.svg', logo], ['logo-pixelito-symbole.
 }
 
 const faviconFrames = []
+const transparent = { r: 0, g: 0, b: 0, alpha: 0 }
 for (const size of [16, 32, 48, 180, 192, 512]) {
   const inset = Math.max(1, Math.round(size * .08))
-  const image = await sharp(symbol).resize(size - inset * 2, size - inset * 2, { fit: 'contain', background: '#fff' })
-    .flatten({ background: '#fff' }).extend({ top: inset, bottom: inset, left: inset, right: inset, background: '#fff' }).png().toBuffer()
+  const image = await sharp(symbol).resize(size - inset * 2, size - inset * 2, { fit: 'contain', background: transparent })
+    .extend({ top: inset, bottom: inset, left: inset, right: inset, background: transparent }).png().toBuffer()
   await writeFile(new URL(`logo-pixelito-${size}.png`, output), image)
   if (size <= 48) faviconFrames.push({ size, image })
 }
@@ -96,7 +97,7 @@ await writeFile(new URL('public/favicon.ico', root), Buffer.concat([header, ...f
 await writeFile(new URL('public/site.webmanifest', root), JSON.stringify({
   name: 'pixelito', short_name: 'pixelito', start_url: '/', display: 'browser',
   background_color: '#ffffff', theme_color: '#e8def4',
-  icons: [192, 512].map(size => ({ src: `/assets/brand/logo-pixelito-${size}.png`, sizes: `${size}x${size}`, type: 'image/png' })),
+  icons: [192, 512].map(size => ({ src: `/assets/brand/logo-pixelito-${size}.png?v=20261116-transparent`, sizes: `${size}x${size}`, type: 'image/png' })),
 }, null, 2) + '\n')
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 await writeFile(new URL('docs/asset-sources/brand/provenance.json', root), JSON.stringify({
