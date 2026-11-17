@@ -1,10 +1,11 @@
 import { Suspense, useEffect, useRef, useState, type MouseEvent } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { ArrowRight, ChevronDown, Menu } from 'lucide-react'
+import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { PixelitoLoading, PixelitoLogo } from './PixelitoLogo'
 import { publicOffers } from '../../../shared/catalog'
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -130,18 +131,21 @@ export function PublicHeader() {
             <SheetContent
               className="mobile-navigation"
               side="right"
+              showCloseButton={false}
               onCloseAutoFocus={(event) => {
                 event.preventDefault()
                 // Restoring focus must not interrupt an ongoing scroll to the top.
                 mobileMenuButton.current?.focus({ preventScroll: true })
               }}
             >
-              <SheetHeader>
-                <SheetTitle className="wordmark">
-                  <span className="sr-only">pixelito</span>
-                  <PixelitoLogo />
-                </SheetTitle>
+              <SheetHeader className="mobile-navigation__header">
+                <SheetTitle className="mobile-navigation__title">Menu</SheetTitle>
                 <SheetDescription className="sr-only">Navigation du site</SheetDescription>
+                <SheetClose asChild>
+                  <button type="button" className="icon-button" aria-label="Fermer le menu">
+                    <X size={22} aria-hidden="true" />
+                  </button>
+                </SheetClose>
               </SheetHeader>
               <nav aria-label="Navigation mobile" className="mobile-nav-list">
                 <NavLink
@@ -213,6 +217,7 @@ export function PublicFooter() {
 export function PublicLayout() {
   return (
     <div className="public-shell">
+      <div className="public-viewport-backdrop" aria-hidden="true" />
       <AmbientGrain />
       <a className="skip-link" href="#main-content">
         Aller au contenu

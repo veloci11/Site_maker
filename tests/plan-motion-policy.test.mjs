@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createMemoryRouter } from 'react-router-dom'
-import { canUseSharedPlanMotion, withPlanMotionPolicy } from '../src/lib/plan-motion-policy.ts'
+import { canUseSharedPlanMotion, getPlanMotionProfile, hasCompactPlanPair, withPlanMotionPolicy } from '../src/lib/plan-motion-policy.ts'
 
 function environment({ width = 1440, hover = true, pointer = 'fine', reduced = false, supported = true } = {}) {
   return {
@@ -22,22 +22,32 @@ function environment({ width = 1440, hover = true, pointer = 'fine', reduced = f
   }
 }
 
-test('iPhone portrait and landscape navigate without native card snapshots', () => {
+test('iPhone portrait and landscape use the compact shared-card path', () => {
   for (const width of [320, 390, 430, 844, 932]) {
-    assert.equal(canUseSharedPlanMotion(environment({ width, hover: false, pointer: 'coarse' })), false)
+    const phone = environment({ width, hover: false, pointer: 'coarse' })
+    assert.equal(canUseSharedPlanMotion(phone), true)
+    assert.equal(getPlanMotionProfile(phone), 'compact')
   }
 })
 
-test('touch tablets and a fine pointer without hover also keep the direct path', () => {
-  assert.equal(canUseSharedPlanMotion(environment({ width: 1024, hover: false, pointer: 'coarse' })), false)
-  assert.equal(canUseSharedPlanMotion(environment({ width: 1024, hover: false })), false)
-  assert.equal(canUseSharedPlanMotion(environment({ width: 1024, pointer: 'coarse' })), false)
+test('touch tablets and a fine pointer without hover keep the compact profile', () => {
+  for (const device of [
+    environment({ width: 1024, hover: false, pointer: 'coarse' }),
+    environment({ width: 1024, hover: false }),
+    environment({ width: 1024, pointer: 'coarse' }),
+  ]) {
+    assert.equal(canUseSharedPlanMotion(device), true)
+    assert.equal(getPlanMotionProfile(device), 'compact')
+  }
 })
 
-test('narrow windows use the live path; a full fine-pointer desktop keeps its expansion', () => {
-  assert.equal(canUseSharedPlanMotion(environment({ width: 760 })), false)
+test('narrow windows use compact geometry; a full fine-pointer desktop keeps its choreography', () => {
+  assert.equal(canUseSharedPlanMotion(environment({ width: 760 })), true)
+  assert.equal(getPlanMotionProfile(environment({ width: 760 })), 'compact')
   assert.equal(canUseSharedPlanMotion(environment({ width: 761 })), true)
+  assert.equal(getPlanMotionProfile(environment({ width: 761 })), 'full')
   assert.equal(canUseSharedPlanMotion(environment()), true)
+  assert.equal(getPlanMotionProfile(), 'full')
 })
 
 test('reduced motion, unsupported browsers and SSR never request shared captures', () => {
@@ -46,7 +56,31 @@ test('reduced motion, unsupported browsers and SSR never request shared captures
   assert.equal(canUseSharedPlanMotion(), false)
 })
 
-test('Back/Forward stop requesting remembered desktop captures when the input policy changes', async t => {
+test('a visible clicked card keeps its compact pair after the source unmounts', () => {
+  const acceptedTransition = {}
+  assert.equal(hasCompactPlanPair(acceptedTransition, 'outgoing', true), true)
+  assert.equal(hasCompactPlanPair(acceptedTransition, 'incoming', false), true)
+})
+
+test('a menu, offscreen or missing source never becomes a pair in the incoming render', () => {
+  for (const source of ['menu', 'offscreen', 'missing']) {
+    const acceptedTransition = { source }
+    assert.equal(hasCompactPlanPair(acceptedTransition, 'outgoing', false), false)
+    assert.equal(hasCompactPlanPair(acceptedTransition, 'incoming', true), false)
+  }
+})
+
+test('a fresh Forward transition cannot reuse an earlier card decision', () => {
+  const initial = { sourceKey: 'same-home-key' }
+  const forward = { sourceKey: 'same-home-key' }
+  assert.equal(hasCompactPlanPair(initial, 'outgoing', true), true)
+  assert.equal(hasCompactPlanPair(initial, 'incoming', false), true)
+  assert.equal(hasCompactPlanPair(forward, 'outgoing', false), false)
+  assert.equal(hasCompactPlanPair(forward, 'incoming', true), false)
+  assert.equal(hasCompactPlanPair({}, 'incoming', true), false, 'Missing outgoing capture uses the visible live entrance')
+})
+
+test('Back/Forward stop requesting remembered captures when support or motion preference changes', async t => {
   let allowSnapshots = true
   const router = withPlanMotionPolicy(createMemoryRouter([
     { path: '/', element: null },

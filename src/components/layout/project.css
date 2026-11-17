@@ -246,7 +246,10 @@
  .configurator-grid { grid-template-columns:1fr; gap:34px; }
  .configurator-card-column { position:static; }
  .configurator-topline { font-size:12px; margin-bottom:18px; }
+ .configurator-topline a { min-height:44px; }
  .selected-plan { border-radius:20px; padding:24px; }
+ .selected-plan__change { height:44px; padding-block:12px; }
+ .public-offers-menu.selected-plan-menu .dropdown-item { min-height:44px; }
  .selected-plan__heading { margin-bottom:20px; }
  .selected-plan h1 { font-size:44px; margin-bottom:12px; }
  .selected-plan__features { margin-bottom:22px; gap:9px; font-size:13px; }
@@ -280,4 +283,4 @@
 .configurator-section-heading h2,.configurator-success h2 { scroll-margin-top:24px; }
 
 .configurator-back-options { display:none; }
-@media(max-width:760px) { .configurator-step-line { display:flex; align-items:baseline; justify-content:space-between; gap:12px; } .configurator-back-options { display:inline-flex; gap:5px; align-items:center; border:0; padding:0; background:transparent; font-size:12px; color:#5f4e6d; } }
+@media(max-width:760px) { .configurator-step-line { display:flex; align-items:baseline; justify-content:space-between; gap:12px; } .configurator-back-options { display:inline-flex; gap:5px; align-items:center; min-height:44px; border:0; padding:8px 0; background:transparent; font-size:12px; color:#5f4e6d; } }

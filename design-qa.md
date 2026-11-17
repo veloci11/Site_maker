@@ -1,3 +1,7 @@
+## Téléphone : deuxième reprise après retour iPhone — 16 novembre 2026
+
+Contrôles locaux réussis : vrai fond fixed au bord supérieur, menu sans logo avec croix accessible, raccord limité à la carte de420ms et arrivée360ms depuis le menu, Personnaliser avant la consultation des fonctionnalités et cibles44px. 321 tests passent. Le tint natif de Safari derrière l'heure reste à confirmer sur le téléphone réel. Rapport et captures : `docs/qa/mobile-polish-2026-11-16/design-qa.md`. Publication à consigner.
+
 ## Safari et téléphone — 16 novembre 2026
 
 Final result: passed (local et HTTPS). Safe-area de 59 px, panneau burger borné animé à l'ouverture et à la fermeture, ouverture légère des cartes sur tactile, comparaison de deux offres simultanées à 320/430 px en local et 390 px en public. Desktop et retours de forfait conservés ; aucune alerte console observée. 318 tests passent. Révision `169e3a8` publiée et vérifiée. Rapport, mesures, captures et limites : `docs/qa/mobile-safari-2026-11-16/design-qa.md`.

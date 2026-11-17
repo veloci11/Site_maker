@@ -18,11 +18,12 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
 
 type Geometry = { id: string; surface: DOMRect; content?: DOMRect; heading?: DOMRect; anchor?: DOMRect }
 
-function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: HTMLElement | null): Omit<Geometry, 'id'> | null {
+function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: HTMLElement | null, compact = false): Omit<Geometry, 'id'> | null {
   const button = sourceElement?.closest<HTMLElement>('.comparison-cta')
   const buttonSurface = button?.querySelector<HTMLElement>('.comparison-cta__surface')
   const buttonLabel = button?.querySelector<HTMLElement>('.comparison-cta__label')
   if (buttonSurface && buttonLabel && page.contains(buttonSurface)) {
+    if (compact) return { surface: buttonSurface.getBoundingClientRect() }
     const labelBounds = buttonLabel.getBoundingClientRect()
     return {
       surface: buttonSurface.getBoundingClientRect(),
@@ -33,6 +34,7 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
   const surface = page.querySelector<HTMLElement>('.selected-plan__surface')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__surface`)
   if (!surface) return null
+  if (compact) return { surface: surface.getBoundingClientRect() }
   const content = page.querySelector<HTMLElement>('.selected-plan__copy')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__top`)
   const heading = page.querySelector<HTMLElement>('.selected-plan__heading')
@@ -46,9 +48,12 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
   }
 }
 
-function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null) {
+function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null, compact = false) {
   document.documentElement.dataset.planMotionShared = String(Boolean(old && next))
   document.documentElement.dataset.planMotionSurfaceTop = old && next && old.surface.width > next.surface.width ? 'old' : 'new'
+  // Compact transitions rely on native group geometry and do not measure or
+  // animate the desktop's per-edge copy masks.
+  if (compact) return
   const style = document.documentElement.style
   const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
   const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0
@@ -98,6 +103,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
   const phase = planTransition?.phase
   const nextHref = planTransition?.nextHref
   const variant = planTransition?.toPlan?.variant ?? planTransition?.fromPlan?.variant
+  const compact = planTransition?.profile === 'compact'
 
   useLayoutEffect(() => {
     if (!id || !phase || !nextHref || !variant || !page.current) return
@@ -112,19 +118,19 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
         preserveScroll: intent?.preserveScroll,
         sourceElement: intent?.sourceElement,
       })
-      const measured = surfaceGeometry(page.current, variant, intent?.sourceElement)
+      const measured = surfaceGeometry(page.current, variant, intent?.sourceElement, compact)
       outgoing.current = measured ? { id, ...measured } : null
-      setGeometry(null, null)
+      setGeometry(null, null, compact)
     } else {
-      setGeometry(outgoing.current?.id === id ? outgoing.current : null, surfaceGeometry(page.current, variant))
+      setGeometry(outgoing.current?.id === id ? outgoing.current : null, surfaceGeometry(page.current, variant, undefined, compact), compact)
       // Retain the completed entrance for this location. Removing the native
       // context must not restart the ordinary page entrance underneath it.
       setPlanArrivalKey(location.key)
     }
     return () => { rootStyle.removeProperty('--plan-motion-header') }
-  }, [id, phase, nextHref, variant, location.key])
+  }, [id, phase, nextHref, variant, location.key, compact])
 
-  const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' ? {
+  const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' && !compact ? {
     // Only the departing page is captured. The arriving page stays live so
     // pointer movement can never cancel its motion or suppress its controls.
     viewTransitionName: 'plan-page-outgoing',
@@ -139,6 +145,7 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
       data-plan-motion-direction={planTransition?.direction}
       data-plan-motion-phase={phase}
       data-plan-motion-entry={planTransition?.entry}
+      data-plan-motion-profile={planTransition?.profile}
       style={{ ...style, ...motionStyle }}
       {...props}
     >

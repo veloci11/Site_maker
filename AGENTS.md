@@ -1,5 +1,13 @@
 # studio — décisions et consignes actuelles
 
+## Reprise iPhone après retour matériel — 16 novembre 2026
+
+Mathis confirme que le haut reste blanc sur son iPhone et rejette le fondu mobile presque invisible. Cette demande remplace le choix de désactiver tout raccord natif sur téléphone. Une source de carte ou de bouton de comparatif réellement visible peut désormais s'agrandir sur 420 ms avec deux couches : image et texte. Pas de capture racine/page/footer, de masque de copie desktop ni de transformation du conteneur des barres fixes. Les liens du menu, sources hors écran et navigateurs sans API reçoivent une arrivée visible de la carte réelle sur 360 ms. La ligne Votre forfait/Changer apparaît après le raccord, sans flotter au-dessus de l'image. Mouvement réduit prioritaire et desktop 760 ms conservé.
+
+Le haut tactile dispose d'un vrai élément fixed opaque au bord du viewport, avant le grain dans le shell public, hors de motion-page : dégradé partagé à son échelle de 1180 px, hauteur max(16px,safe-area-top), sans filtre/masque/animation ni interception des touches. Garder ce calque sous la navigation et le lien clavier. html/body peignent aussi le fond ; manifeste actualisé. Cela fournit une surface à l'extension native Safari mais l'émulation ne prouve pas le rendu derrière l'heure sur le téléphone réel.
+
+Mathis approuve le panneau burger compact et demande d'enlever son logo. Garder un titre Menu discret et une croix fixe, seul le corps des liens défile sur écran court. Dans le configurateur public mobile, Personnaliser amène aux fonctionnalités avant Continuer : attendre la première vraie rubrique, pas seulement le titre introductif. Cibles tactiles de 44 px, dont Changer réel/décoratif aux mêmes dimensions. Ne pas replier ou supprimer les détails du récapitulatif de sa propre initiative. Rapport dans `docs/qa/mobile-polish-2026-11-16/`.
+
 ## Safari iPhone, menu compact et comparaison simultanée — 16 novembre 2026
 
 La capture IMG_5893 de Mathis remplace les choix mobiles du lot précédent. Étendre le viewport jusqu'aux bords (`viewport-fit=cover`) et réserver les safe-areas autour des commandes ; ne pas garder une surface blanche opaque derrière le header transparent. Le menu burger devient un panneau flottant borné sous la navigation, avec ouverture 260 ms et fermeture 220 ms, focus/clavier et défilement interne sur écran court. Il ne remplit plus toute la page.

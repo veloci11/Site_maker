@@ -1,5 +1,5 @@
-/* React Router owns the desktop native transition lifecycle. Touch/narrow
-   screens navigate without snapshots and use the live-card fade below. */
+/* React Router owns native transition completion and cancellation. Desktop
+   keeps its full choreography; touch/narrow screens share two card layers. */
 :root {
   --plan-motion-duration: 760ms;
   --plan-motion-ease: cubic-bezier(.4, 0, .2, 1);
@@ -306,27 +306,90 @@
   }
 }
 
-/* Keep this query in sync with LIVE_PLAN_MOTION_QUERY. Do not animate the
-   page or its geometry: it contains the fixed mobile price bar. Only the live
-   selected card receives a small opacity change, with no hidden first frame,
-   delay, screenshot, clipping animation or animation-finished navigation. */
+/* Keep in sync with COMPACT_PLAN_MOTION_QUERY. No root/page/footer bitmap and
+   no transform on the page containing the fixed price bar. Native geometry
+   moves the image and one unscaled copy layer; live controls remain usable. */
 @media (max-width: 760px), (hover: none), (pointer: coarse) {
+  :root:has(.public-shell) {
+    view-transition-name: none;
+    --plan-motion-duration: 420ms;
+    --plan-motion-ease: cubic-bezier(.22,.75,.3,1);
+  }
+
   .public-shell .motion-page {
     animation: none;
   }
 
-  .public-shell .motion-page .selected-plan {
-    animation: plan-live-card-arrive 140ms ease-out;
+  .public-shell:has(.motion-page[data-plan-motion-phase="outgoing"]) .site-footer {
+    view-transition-name: none;
   }
+
+  .public-shell:has(.motion-page[data-plan-motion-phase="incoming"]) .site-footer,
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] > :not(:has([style*="view-transition-name:"])),
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:not(:has(.pricing-card__top[style*="view-transition-name:"])),
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-topline,
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-options,
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__cta,
+  .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__features {
+    animation: none;
+  }
+
+  .motion-page--plan-transitioning .selected-plan__change-visual { visibility: hidden; }
+  .motion-page--plan-transitioning .selected-plan__heading-frame > .selected-plan__change { opacity: 1; }
+  /* This live row is outside the two captured layers. Reveal it only when the
+     expanding image has reached its final frame, so it never floats on the
+     page background above that image. Keyboard input can still end the native
+     transition immediately through the document interruption listener. */
+  .motion-page--plan-transitioning[data-plan-motion-profile="compact"] .selected-plan__heading-frame { opacity: 0; pointer-events: none; }
+  .public-shell .motion-page--plan-arrived:not(.motion-page--plan-transitioning) .selected-plan__heading-frame { animation: plan-mobile-copy-in 140ms ease-out both; }
+
+  :root::view-transition-image-pair(.plan-surface) {
+    border-radius: 20px;
+    animation: none;
+  }
+
+  :root::view-transition-group(.plan-mobile-copy) {
+    /* Retain the browser's position/size keyframes, not the desktop masks. */
+    animation-duration: var(--plan-motion-duration);
+    animation-timing-function: var(--plan-motion-ease);
+    z-index: 2;
+  }
+
+  :root::view-transition-image-pair(.plan-mobile-copy) { isolation: auto; overflow: hidden; }
+
+  :root::view-transition-old(.plan-mobile-copy),
+  :root::view-transition-new(.plan-mobile-copy) {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    object-position: left top;
+    mix-blend-mode: normal;
+  }
+
+  :root::view-transition-old(.plan-mobile-copy) { animation: plan-mobile-copy-out 160ms ease-out both; }
+  :root::view-transition-new(.plan-mobile-copy) { animation: plan-mobile-copy-in 280ms ease-out 60ms both; }
+
+  .public-shell .motion-page .selected-plan {
+    transform-origin: center top;
+    animation: plan-mobile-card-arrive 360ms cubic-bezier(.22,.75,.3,1) both;
+  }
+
+  /* A native arrival already moves the image. Keep its live card fixed and
+     suppress fallback replay when the Router removes the transition context. */
+  .public-shell .motion-page:is(.motion-page--plan-transitioning,.motion-page--plan-arrived) .selected-plan { animation: none; }
 }
 
-@keyframes plan-live-card-arrive {
-  from { opacity: .94; }
-  to { opacity: 1; }
+@keyframes plan-mobile-card-arrive {
+  from { opacity: .35; transform: translateY(22px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+@keyframes plan-mobile-copy-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes plan-mobile-copy-out { from { opacity: 1; } to { opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
   .public-shell .motion-page .selected-plan { animation: none; }
+  .public-shell .motion-page .selected-plan__heading-frame { animation: none; }
 
   :root::view-transition-old(*),
   :root::view-transition-new(*),

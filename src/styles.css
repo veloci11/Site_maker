@@ -39,9 +39,10 @@
 
 * { box-sizing: border-box; }
 html { min-width: 0; scroll-behavior: smooth; scroll-padding-top: 100px; }
-/* Keep a pastel canvas fallback for Safari's native tint; viewport-fit=cover allows edge-to-edge paint. */
-html:has(.public-shell) { background-color: #e8def4; background-image: linear-gradient(transparent 0%, transparent 46%, #fff 100%), var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; scroll-padding-top:calc(var(--public-header-height) + 12px); }
-body:has(.public-shell) { background: transparent; }
+/* Give Safari an opaque page background as well as the edge surface below.
+   Transparent body/sticky ancestors alone do not supply its native top tint. */
+html:has(.public-shell), body:has(.public-shell) { background-color: #e8def4; background-image: linear-gradient(transparent 0%, transparent 46%, #fff 100%), var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; }
+html:has(.public-shell) { scroll-padding-top:calc(var(--public-header-height) + 12px); }
 @media (hover: hover) and (pointer: fine) {
   html:has(.public-shell) { scrollbar-gutter: stable; overscroll-behavior-y: none; }
 }
@@ -97,7 +98,7 @@ ul, ol { padding-left: 1.25rem; }
 .preview-frame { overflow: hidden; border: 1px solid var(--border); border-radius: 12px; background: var(--paper); }
 .preview-frame img { width: 100%; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.skip-link { position: fixed; z-index: 1500; top: 12px; left: 20px; max-width: calc(100% - 40px); padding: 12px 20px; background: #111; color: #fff; border-radius: 999px; clip-path: inset(50%); transform: translateY(calc(-100% - 12px)); }
+.skip-link { position: fixed; z-index: 1500; top: calc(12px + env(safe-area-inset-top, 0px)); left: 20px; max-width: calc(100% - 40px); padding: 12px 20px; background: #111; color: #fff; border-radius: 999px; clip-path: inset(50%); transform: translateY(calc(-100% - 12px)); }
 .skip-link:focus-visible { clip-path: none; transform: none; }
 
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex-shrink: 0; vertical-align: middle; min-height: 46px; padding: 10px 24px; border: 1px solid transparent; border-radius: 999px; font-size: 14px; font-weight: 500; line-height: 1.3; text-align: center; transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease; white-space: nowrap; }
@@ -228,6 +229,13 @@ ul, ol { padding-left: 1.25rem; }
 .sheet-close { position: absolute; top: 20px; right: 20px; }
 
 /* Static color fields, generated in CSS. Grain is blended without a gray veil. */
+.public-viewport-backdrop { display: none; }
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  /* A real, opaque viewport-edge surface lets Safari extend the gradient into
+     its obscured top inset. Its own paint is unmasked; keep it below the
+     navigation and skip link, without a filter, transform or scroll observer. */
+  .public-viewport-backdrop { display: block; position: fixed; z-index: 49; inset: 0 0 auto; height: max(16px, env(safe-area-inset-top, 0px)); background-color: #e8def4; background-image: var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; pointer-events: none; }
+}
 .public-shell { --muted-foreground: #575360; position: relative; isolation: isolate; overflow-x: clip; min-height: 100vh; padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px); background: transparent; }
 /* Keep the white page paint without making the transparent sticky header sample an opaque white ancestor. */
 .public-shell::after { content: ""; position: absolute; z-index: -3; inset: 0; background: #fff; pointer-events: none; }
@@ -320,7 +328,7 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: calc(24px + env
 .site-footer nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 4px 28px; font-size: 13px; }
 .site-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
 .site-footer nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.mobile-navigation { inset: var(--public-header-height) max(16px, env(safe-area-inset-right, 0px)) auto auto; width: min(360px, calc(100vw - max(16px, env(safe-area-inset-left, 0px)) - max(16px, env(safe-area-inset-right, 0px)))); max-height: calc(100dvh - var(--public-header-height) - max(16px, env(safe-area-inset-bottom, 0px))); padding: 24px; border-radius: 24px; box-shadow: 0 16px 56px rgb(32 24 48 / .16); overscroll-behavior-y: contain; transform-origin: top right; }
+.mobile-navigation { inset: var(--public-header-height) max(16px, env(safe-area-inset-right, 0px)) auto auto; display: flex; flex-direction: column; width: min(360px, calc(100vw - max(16px, env(safe-area-inset-left, 0px)) - max(16px, env(safe-area-inset-right, 0px)))); max-height: calc(100dvh - var(--public-header-height) - max(16px, env(safe-area-inset-bottom, 0px))); overflow: hidden; padding: 16px 24px 24px; border-radius: 24px; box-shadow: 0 16px 56px rgb(32 24 48 / .16); transform-origin: top right; }
 .mobile-navigation[data-state="open"] { animation: mobile-navigation-in 260ms cubic-bezier(.22,.75,.3,1) both; }
 .mobile-navigation[data-state="closed"] { animation: mobile-navigation-out 220ms cubic-bezier(.4,0,.6,1) both; }
 .sheet-overlay:has(~ .mobile-navigation) { background: rgb(17 17 17 / .18); }
@@ -330,9 +338,9 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: calc(24px + env
 @keyframes mobile-navigation-out { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-10px); } }
 @keyframes mobile-navigation-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes mobile-navigation-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
-.mobile-navigation .wordmark { font-size: 32px; }
-.mobile-navigation .sheet-close { top: 16px; right: 16px; }
-.mobile-nav-list { padding-top: 20px; }
+.mobile-navigation__header { display: flex; flex: none; align-items: center; justify-content: space-between; gap: 16px; padding: 0; }
+.mobile-navigation__title { color: var(--muted-foreground); font-size: 16px; font-weight: 500; letter-spacing: 0; }
+.mobile-nav-list { min-height: 0; overflow-y: auto; padding-top: 8px; overscroll-behavior-y: contain; }
 .mobile-nav-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 54px; padding: 12px 0; border: 0; border-bottom: 1px solid var(--border); background: transparent; font-size: 21px; font-weight: 500; letter-spacing: -.025em; text-align: left; }
 .mobile-nav-heading > svg { transition: transform 220ms ease; }
 .mobile-nav-heading:hover > svg { transform: translateX(4px); }

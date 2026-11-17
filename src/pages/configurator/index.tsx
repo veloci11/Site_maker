@@ -127,10 +127,12 @@ export function ConfiguratorPage() {
   const submittedDraft = useRef<ProjectDraft | null>(null)
   const contactHeading = useRef<HTMLHeadingElement>(null)
   const optionsHeading = useRef<HTMLHeadingElement>(null)
+  const firstFeatureGroup = useRef<HTMLButtonElement>(null)
   const successHeading = useRef<HTMLHeadingElement>(null)
   const openingGroup = useRef<HTMLButtonElement>(null)
   const estimateRef = useRef<HTMLDivElement>(null)
   const [estimateOutsideViewport, setEstimateOutsideViewport] = useState(false)
+  const [hasReachedFeatures, setHasReachedFeatures] = useState(false)
   const mobileBarRef = useRef<HTMLDivElement>(null)
   const editingId = params.get('projet') || params.get('projectId')
   const [loadedProjectKey, setLoadedProjectKey] = useState('')
@@ -188,6 +190,36 @@ export function ConfiguratorPage() {
       viewport.style.removeProperty('--configurator-bar-space')
     }
   }, [stage, editingLoaded])
+  useEffect(() => {
+    if (editingId || stage !== 'options' || !editingLoaded || hasReachedFeatures) return
+    const firstGroup = firstFeatureGroup.current
+    const bar = mobileBarRef.current
+    if (!firstGroup) return
+    const mobile = window.matchMedia('(max-width: 760px)')
+    let observer: IntersectionObserver | undefined
+    const observeFeatureGroup = () => {
+      observer?.disconnect()
+      if (!mobile.matches) return
+      // The fixed price bar must not count as visible space. Once the visitor
+      // reaches (or has scrolled past) the first feature group, keep the normal
+      // next step. A visible introductory title alone is not enough.
+      const bottomInset = Math.ceil(bar?.getBoundingClientRect().height ?? 0)
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.intersectionRatio >= 0.5 || entry.boundingClientRect.top < 0)
+          setHasReachedFeatures(true)
+      }, { rootMargin: `0px 0px -${bottomInset}px 0px`, threshold: 0.5 })
+      observer.observe(firstGroup)
+    }
+    const resize = new ResizeObserver(observeFeatureGroup)
+    if (bar) resize.observe(bar)
+    mobile.addEventListener('change', observeFeatureGroup)
+    observeFeatureGroup()
+    return () => {
+      observer?.disconnect()
+      resize.disconnect()
+      mobile.removeEventListener('change', observeFeatureGroup)
+    }
+  }, [editingId, editingLoaded, stage, hasReachedFeatures])
   useEffect(() => {
     if (!routeOffer || editingId) return
     setConfiguration((current) => changePublicOffer(current, routeOffer.id))
@@ -269,6 +301,14 @@ export function ConfiguratorPage() {
     setStage('contact')
     setError('')
     requestAnimationFrame(() => revealSection(contactHeading.current))
+  }
+  function goFeatures() {
+    const heading = optionsHeading.current
+    heading?.focus({ preventScroll: true })
+    heading?.scrollIntoView({
+      block: 'start',
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+    })
   }
   function goOptions() {
     setStage('options')
@@ -488,7 +528,7 @@ export function ConfiguratorPage() {
                   )
                   return (
                     <AccordionItem value={group.id} key={group.id} className="configurator-group">
-                      <AccordionTrigger onClick={(event) => {
+                      <AccordionTrigger ref={index === 0 ? firstFeatureGroup : undefined} onClick={(event) => {
                         openingGroup.current = isOpen ? null : event.currentTarget
                       }}>
                         <span className="configurator-group__copy">
@@ -697,8 +737,8 @@ export function ConfiguratorPage() {
               <small>+ {formatMoney(quote.monthlyTotalCents, quote.currency)} / mois</small>
             ) : null}
           </div>
-          <Button onClick={editingId ? saveExisting : goContact} disabled={sending}>
-            {editingId ? 'Enregistrer' : 'Continuer'}
+          <Button onClick={editingId ? saveExisting : hasReachedFeatures ? goContact : goFeatures} disabled={sending}>
+            {editingId ? 'Enregistrer' : hasReachedFeatures ? 'Continuer' : 'Personnaliser'}
             <ArrowRight size={16} aria-hidden="true" />
           </Button>
         </div>
