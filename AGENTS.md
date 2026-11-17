@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Dégradé des cartes sur téléphone et retour plus doux — 17 novembre 2026
+
+Mathis demande le dégradé permanent sur le haut des cartes de forfaits sur téléphone, avec le bouton Configurer noir au repos. Appliquer la même présentation sur fenêtre étroite ou tactile. Le retour mobile recentre la carte réelle, puis fait converger son opacité de .68 à 1 et sa translation verticale de 14 à 0 px en 560 ms. La préférence de mouvement réduit garde le recentrage immédiat. Conserver le comportement de survol et le raccord à 560 ms sur ordinateur.
+
 ## Header compact et transitions à 560 ms — 17 novembre 2026
 
 Mathis demande 560 ms à l’aller et au retour sur téléphone et ordinateur, une navigation mobile moins haute et des cartes sans saut lorsque leur contenu change. Le header ≤760 px occupe 68 px hors safe-area, avec des commandes de 44 px. Dans le configurateur public, placer Boutique avant Liens de paiement pour garder le bouton sous le doigt pendant le repli ou la réouverture du paiement. Le compteur de pages s’ouvre sous le choix. La galerie anime les changements de filtre sans rejouer le logo. Respecter la réduction du mouvement.

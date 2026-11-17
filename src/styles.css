@@ -626,11 +626,18 @@ button.mobile-nav-heading { cursor:pointer; }
 @media (max-width: 380px) {
   .portal-project-name { max-width: 130px; }
 }
+@media (max-width: 760px), (hover: none), (pointer: coarse) {
+  .pricing-card .pricing-card__top {
+    color: #fff;
+    text-shadow: 0 1px 3px rgb(5 4 15 / .65);
+    transition: none;
+  }
+  .pricing-card .pricing-card__surface > .pricing-card__texture {
+    opacity: 1;
+    transition: none;
+  }
+}
 @media (hover: none) {
-  .pricing-card:hover .pricing-card__top { color: #111; }
-  .pricing-card:hover .pricing-card__surface > .pricing-card__texture, .pricing-card:hover .pricing-card__surface::after { opacity: 0; }
-  .pricing-card:focus-visible .pricing-card__top { color: #fff; }
-  .pricing-card:focus-visible .pricing-card__surface > .pricing-card__texture, .pricing-card:focus-visible .pricing-card__surface::after { opacity: 1; }
   .pricing-card:hover .pricing-card__cta { background: #111; }
 }
 @media (prefers-reduced-motion: reduce) {
