@@ -1,0 +1,27 @@
+{
+  "group": "0.36s",
+  "newTexture": "0.22s",
+  "oldTexture": "0.14s",
+  "path": "/forfaits/connecte",
+  "phase": {
+    "planMotionDirection": "switch",
+    "planMotionEntry": "card",
+    "planMotionPhase": "incoming",
+    "planMotionProfile": "compact"
+  },
+  "finished": {
+    "changer": {
+      "bottom": 230,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 186,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 186
+    },
+    "heading": "Business",
+    "names": 0,
+    "path": "/forfaits/connecte"
+  }
+}

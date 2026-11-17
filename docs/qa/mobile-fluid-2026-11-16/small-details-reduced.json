@@ -1,0 +1,118 @@
+{
+  "comparison": {
+    "document": 320,
+    "offers": [
+      {
+        "cta": {
+          "bottom": 429.609375,
+          "height": 44,
+          "left": 27,
+          "right": 107.6640625,
+          "top": 385.609375,
+          "width": 80.6640625,
+          "x": 27,
+          "y": 385.609375
+        },
+        "rect": {
+          "bottom": 429.609375,
+          "height": 121.9921875,
+          "left": 27,
+          "right": 107.6640625,
+          "top": 307.6171875,
+          "width": 80.6640625,
+          "x": 27,
+          "y": 307.6171875
+        },
+        "text": "Vitrine\n\nÀ partir de 890 €\n\nConfigurer"
+      },
+      {
+        "cta": {
+          "bottom": 429.609375,
+          "height": 44,
+          "left": 120.6640625,
+          "right": 200.328125,
+          "top": 385.609375,
+          "width": 79.6640625,
+          "x": 120.6640625,
+          "y": 385.609375
+        },
+        "rect": {
+          "bottom": 429.609375,
+          "height": 121.9921875,
+          "left": 120.6640625,
+          "right": 200.328125,
+          "top": 307.6171875,
+          "width": 79.6640625,
+          "x": 120.6640625,
+          "y": 307.6171875
+        },
+        "text": "Business\n\nÀ partir de 1 490 €\n\nConfigurer"
+      },
+      {
+        "cta": {
+          "bottom": 429.609375,
+          "height": 44,
+          "left": 213.328125,
+          "right": 293,
+          "top": 385.609375,
+          "width": 79.671875,
+          "x": 213.328125,
+          "y": 385.609375
+        },
+        "rect": {
+          "bottom": 429.609375,
+          "height": 121.9921875,
+          "left": 213.328125,
+          "right": 293,
+          "top": 307.6171875,
+          "width": 79.671875,
+          "x": 213.328125,
+          "y": 307.6171875
+        },
+        "text": "Premium / 3D\n\nÀ partir de 2 490 €\n\nConfigurer"
+      }
+    ],
+    "scroller": {
+      "scrollWidth": 278,
+      "width": 278
+    },
+    "width": 320
+  },
+  "details": {
+    "columns": 3,
+    "expanded": "true",
+    "overflow": false,
+    "visibleHints": 15
+  },
+  "reduced": {
+    "animation": "none",
+    "document": 320,
+    "measuredCardHeight": "",
+    "names": [],
+    "path": "/forfaits/immersif-3d",
+    "width": 320
+  },
+  "return": {
+    "card": {
+      "bottom": 654.59375,
+      "height": 507.5,
+      "left": 20,
+      "right": 300,
+      "top": 147.09375,
+      "width": 280,
+      "x": 20,
+      "y": 147.09375
+    },
+    "header": {
+      "bottom": 147,
+      "height": 147,
+      "left": 0,
+      "right": 320,
+      "top": 0,
+      "width": 320,
+      "x": 0,
+      "y": 0
+    },
+    "path": "/"
+  }
+}

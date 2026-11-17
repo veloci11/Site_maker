@@ -4,7 +4,6 @@ import { publicOffers, publicPageCounts, type Pricing } from '../../../shared/ca
 import { MotionLink as Link, canAnimatePlanNavigation, usePlanTransition } from '../../components/layout/plan-transition'
 import { configureHref, startingPrice } from './pricing'
 import { preloadPlanImages } from '../../lib/plan-images'
-import { replaceComparisonOffer, type ComparisonOfferPair } from '../../lib/comparison-pair'
 import { PlanTexture } from '../../components/layout/PlanTexture'
 
 type ComparisonStatus = 'included' | 'absent' | (typeof publicPageCounts)[keyof typeof publicPageCounts]
@@ -100,9 +99,7 @@ function ComparisonConfigureButton({ offer, price }: { offer: (typeof publicOffe
 
 export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
-  const [mobilePair, setMobilePair] = useState<ComparisonOfferPair>([publicOffers[0].id, publicOffers[1].id])
   const scrollRef = useRef<HTMLDivElement>(null)
-  const mobileOffers = mobilePair.map((offerId) => publicOffers.find((offer) => offer.id === offerId)!)
 
   useLayoutEffect(() => {
     const scroller = scrollRef.current
@@ -229,46 +226,25 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
       </div>
       <div className="comparison-mobile">
         <p id={`${id}-mobile-instruction`} className="comparison-mobile__instruction">
-          Comparez deux forfaits côte à côte. Changez l’un des forfaits pour voir le troisième.
+          Les trois forfaits, critère par critère.
         </p>
         <div
           className="comparison-mobile__scroll"
           tabIndex={0}
           role="region"
-          aria-label="Comparatif de deux forfaits au choix"
+          aria-label="Comparatif des trois forfaits sur téléphone"
           aria-describedby={`${id}-mobile-instruction`}
         >
           <table id={`${id}-mobile-table`} className="comparison-mobile__table">
             <caption className="public-sr-only">
-              Comparer les fonctions comprises dans deux forfaits de création de sites internet.
+              Comparer les fonctions comprises dans les trois forfaits de création de sites internet.
             </caption>
             <thead>
               <tr>
-                {mobileOffers.map((offer, position) => (
-                  <th key={position} id={`${id}-mobile-offer-${position}`} scope="col">
+                {publicOffers.map((offer) => (
+                  <th key={offer.id} id={`${id}-mobile-offer-${offer.id}`} scope="col">
                     <div className="comparison-mobile__offer">
-                      <label className="comparison-mobile__selector">
-                        <span className="public-sr-only">
-                          {position === 0 ? 'Premier forfait à comparer' : 'Deuxième forfait à comparer'}
-                        </span>
-                        <select
-                          value={offer.id}
-                          aria-label={position === 0 ? 'Premier forfait à comparer' : 'Deuxième forfait à comparer'}
-                          aria-controls={`${id}-mobile-table`}
-                          onChange={(event) => {
-                            const offerId = publicOffers.find((candidate) => candidate.id === event.currentTarget.value)!.id
-                            setMobilePair((pair) => replaceComparisonOffer(pair, position as 0 | 1, offerId))
-                          }}
-                        >
-                          {publicOffers.map((candidate) => (
-                            <option key={candidate.id} value={candidate.id}>{candidate.title}</option>
-                          ))}
-                        </select>
-                        <span className="comparison-mobile__selected" aria-hidden="true">
-                          <span>{offer.title}</span>
-                          <ChevronDown size={16} />
-                        </span>
-                      </label>
+                      <h3>{offer.title}</h3>
                       <p>{startingPrice(offer.id, pricing)}</p>
                       <ComparisonConfigureButton offer={offer} price={startingPrice(offer.id, pricing)} />
                     </div>
@@ -281,7 +257,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
               return (
                 <tbody key={row.title} aria-labelledby={featureId}>
                   <tr className="comparison-mobile__feature">
-                    <th id={featureId} colSpan={2} scope="rowgroup">
+                    <th id={featureId} colSpan={publicOffers.length} scope="rowgroup">
                       {rowIndex === 0 ? <span className="comparison-section-label">{section.title}</span> : null}
                       {row.title}
                       <ComparisonReveal collapsed={!details}>
@@ -290,9 +266,9 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
                     </th>
                   </tr>
                   <tr className="comparison-mobile__values">
-                    {mobileOffers.map((offer, position) => (
-                      <td key={position} headers={`${featureId} ${id}-mobile-offer-${position}`}>
-                        <ComparisonCell status={row.values[publicOffers.indexOf(offer)]} />
+                    {publicOffers.map((offer, position) => (
+                      <td key={offer.id} headers={`${featureId} ${id}-mobile-offer-${offer.id}`}>
+                        <ComparisonCell status={row.values[position]} />
                       </td>
                     ))}
                   </tr>

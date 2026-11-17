@@ -1,0 +1,66 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "deviceScaleFactor": 3
+  },
+  "method": "Chrome DevTools Performance metrics, warm Vitrine journeys, 550ms settling window; durations in milliseconds. Browser emulation, not physical iPhone FPS.",
+  "before": {
+    "close": {
+      "path": "https://gilmathis.com/",
+      "LayoutCount": 85,
+      "RecalcStyleCount": 107,
+      "LayoutDuration": 9.607,
+      "RecalcStyleDuration": 44.438,
+      "ScriptDuration": 16.414,
+      "TaskDuration": 157.473
+    },
+    "open": {
+      "path": "https://gilmathis.com/forfaits/vitrine",
+      "LayoutCount": 80,
+      "RecalcStyleCount": 97,
+      "LayoutDuration": 7.854,
+      "RecalcStyleDuration": 39.025,
+      "ScriptDuration": 16.498,
+      "TaskDuration": 124.033
+    },
+    "back": {
+      "path": "https://gilmathis.com/",
+      "LayoutCount": 80,
+      "RecalcStyleCount": 100,
+      "LayoutDuration": 8.991,
+      "RecalcStyleDuration": 39.254,
+      "ScriptDuration": 13.691,
+      "TaskDuration": 133.52
+    }
+  },
+  "after": {
+    "close": {
+      "path": "http://127.0.0.1:4183/",
+      "LayoutCount": 16,
+      "RecalcStyleCount": 76,
+      "LayoutDuration": 3.043,
+      "RecalcStyleDuration": 43.389,
+      "ScriptDuration": 18.882,
+      "TaskDuration": 150.875
+    },
+    "open": {
+      "path": "http://127.0.0.1:4183/forfaits/vitrine",
+      "LayoutCount": 14,
+      "RecalcStyleCount": 62,
+      "LayoutDuration": 3.004,
+      "RecalcStyleDuration": 36.289,
+      "ScriptDuration": 19.957,
+      "TaskDuration": 119.924
+    },
+    "back": {
+      "path": "http://127.0.0.1:4183/",
+      "LayoutCount": 14,
+      "RecalcStyleCount": 66,
+      "LayoutDuration": 3.15,
+      "RecalcStyleDuration": 36.8,
+      "ScriptDuration": 18.157,
+      "TaskDuration": 128.564
+    }
+  }
+}

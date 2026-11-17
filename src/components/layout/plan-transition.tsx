@@ -266,16 +266,14 @@ export function usePlanTransition(
   const transition = usePlanNavigationTransition()
   const compact = transition?.profile === 'compact'
   const fromComparison = transition?.direction === 'open' && transition.entry === 'comparison' && transition.phase === 'outgoing'
-  const active = (!compact || part !== 'heading')
+  const active = (!compact || part === 'surface')
     && (source === 'comparison' ? fromComparison : !fromComparison) && transition && [transition.fromPlan, transition.toPlan]
     .some((plan) => plan?.variant === variant && plan.href === href)
-  // On a phone the thumbnail's title/price and the final card's copy share one
-  // layer. The eyebrow/live Changer button never add another text snapshot.
-  const suffix = part === 'surface' ? '' : compact && part === 'thumbnail' ? '-content'
-    : part === 'thumbnail' ? '-thumbnail-copy' : `-${part}`
+  // Phones capture only the texture. Their copy stays live and fades in at its
+  // final size; desktop retains its separate, sharp title and content layers.
+  const suffix = part === 'surface' ? '' : part === 'thumbnail' ? '-thumbnail-copy' : `-${part}`
   return {
     viewTransitionName: active ? `plan-${variant}${suffix}` : undefined,
-    viewTransitionClass: compact && part !== 'surface' ? 'plan-mobile-copy'
-      : part === 'thumbnail' ? 'plan-thumbnail-copy' : `plan-${part}`,
+    viewTransitionClass: part === 'thumbnail' ? 'plan-thumbnail-copy' : `plan-${part}`,
   }
 }

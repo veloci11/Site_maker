@@ -251,8 +251,12 @@ html:has(.public-shell .configurator-page) { scroll-padding-top: calc(24px + env
 .pixelito-logo-art { display: inline-flex; align-items: center; gap: 3.4722222%; width: 168px; max-width: 100%; aspect-ratio: 1152 / 248; }
 .pixelito-logo-art img { display: block; flex: none; height: auto; }
 .pixelito-symbol { position: relative; display: block; flex: none; width: 19.7916667%; aspect-ratio: 228 / 217; }
-.pixelito-symbol > svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.pixelito-symbol__part { transform-box: view-box; }
+.pixelito-symbol__part { position: absolute; inset: 0; display: block; }
+.pixelito-symbol__part > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+/* Animate HTML planes, not filtered SVG groups: each band is rasterized once
+   and its original vector artwork moves on the compositor. */
+.pixelito-logo-art--intro .pixelito-symbol__part,
+.pixelito-symbol--loading .pixelito-symbol__part { will-change: transform, opacity; }
 .pixelito-logo-art--intro .pixelito-symbol__part--top { transform-origin: 74% 15%; animation: pixelito-emerge-top 720ms cubic-bezier(.22,.75,.3,1) both; }
 .pixelito-logo-art--intro .pixelito-symbol__part--bottom { transform-origin: 42% 86%; animation: pixelito-emerge-bottom 720ms cubic-bezier(.22,.75,.3,1) both; }
 .pixelito-logo-art--intro .pixelito-symbol__part--middle { transform-origin: center; animation: pixelito-blob 720ms cubic-bezier(.22,.75,.3,1) both; }

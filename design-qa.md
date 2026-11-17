@@ -1,3 +1,7 @@
+## Fluidité mobile, comparatif trois offres et logo — 16 novembre 2026
+
+Vérifié localement : une texture à canevas fixe sur mobile, trois offres côte à côte à 320/430 px avec en-tête fixe, logo joué aux vrais changements de page uniquement et bandes SVG composées séparément. Les layouts des parcours Vitrine passent de 80–85 à 14–16 en émulation ; ce n'est pas une mesure FPS matérielle. Retours, détails, sélection/retrait, mouvement réduit et raccord desktop 760 ms vérifiés. 321 tests passent. Rapport et limites : `docs/qa/mobile-fluid-2026-11-16/design-qa.md`. Publication à consigner.
+
 ## Fondu blanc supérieur — 16 novembre 2026
 
 Choix explicite de Mathis : effacer progressivement le dégradé avant la zone de l'heure. Navigation redevenue transparente, rectangle coloré supprimé, fond/grain raccordés au blanc sous la safe-area sur 180 px ; thème et manifeste blancs. Contrôles locaux 430/320/1280 et 321 tests réussis. Révision `b45c6ca` publiée dans `20261117T022813Z-b45c6ca69f0f` et contrôlée en HTTPS à 430 px avec safe-area 59/34 : fondu et navigation transparente confirmés au scroll, aucune alerte console. Client et deux CSS conformes au build, santé/catalogue inchangés ; localhost fermé. Rapport, avant/après et limites : `docs/qa/native-gradient-2026-11-16/design-qa.md`.

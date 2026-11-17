@@ -1,0 +1,23 @@
+{
+  "before": {
+    "fill": "url(#_R_lt_-gradient)",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)",
+    "width": 1280
+  },
+  "menuOpen": {
+    "fill": "url(#_R_lt_-gradient)",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+  },
+  "menuClosed": "matrix(1, 0, 0, 1, 0, 0)",
+  "samePage": {
+    "fill": "url(#_R_lt_-gradient)",
+    "hash": "#forfaits",
+    "path": "/",
+    "transform": "matrix(1, 0, 0, 1, 0, 0)"
+  },
+  "pageChange": {
+    "fill": "url(#_r_3_-gradient)",
+    "path": "/faq",
+    "transform": "matrix(0.2, 0, 0, 0.2, -6.9825, 11.3906)"
+  }
+}

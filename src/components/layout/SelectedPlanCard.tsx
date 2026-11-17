@@ -42,11 +42,24 @@ export function SelectedPlanCard({
     // A tall card follows the page until its bottom fits the viewport. Keep
     // every option accessible without creating a second scrolling region.
     const measure = () => column.style.setProperty('--selected-plan-height', `${Math.ceil(card.getBoundingClientRect().height)}px`)
-    measure()
     const observer = new ResizeObserver(measure)
-    observer.observe(card)
+    const sticky = window.matchMedia('(width > 760px)')
+    const update = () => {
+      observer.disconnect()
+      if (sticky.matches) {
+        measure()
+        observer.observe(card)
+      } else {
+        // The phone card is in normal flow. Measuring and writing its height
+        // during every selection frame only creates extra layout work.
+        column.style.removeProperty('--selected-plan-height')
+      }
+    }
+    update()
+    sticky.addEventListener('change', update)
     return () => {
       observer.disconnect()
+      sticky.removeEventListener('change', update)
       column.style.removeProperty('--selected-plan-height')
     }
   }, [])

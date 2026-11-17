@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Fluidité mobile, trois forfaits et déclenchement du logo — 16 novembre 2026
+
+Mathis valide le fondu blanc supérieur et demande de corriger les saccades des forfaits, d'afficher les trois offres simultanément sur téléphone et de jouer le logo uniquement à un vrai changement de page. Conserver le fondu et la navigation transparente. Le comparatif mobile présente désormais les trois colonnes, les critères sur toute la largeur, et les noms/prix/CTA fixes dans sa zone de défilement ; pas de sélecteurs ni de défilement horizontal. Ce choix remplace le comparatif à deux offres.
+
+Sur tactile/fenêtre étroite, ne capturer que la texture : canevas de dimensions fixes, translation/échelle uniforme et recadrage sur 360 ms. Le texte reste réel, à sa taille finale, avec fondu ; pas de copie texte ni de recalcul de largeur/hauteur à chaque frame. Le raccord desktop de 760 ms, l'ordre de retour et le mouvement réduit restent conservés. Pas de mesure de hauteur sticky sur la carte mobile dans le flux. Les bandes vectorielles originales du logo se déplacent dans trois calques HTML ; ne pas réinjecter le SVG à chaque rendu. L'introduction est liée à pathname+search : ni le menu, ni une ancre, ni la sélection de fonctionnalités ne la rejouent. Rapport et mesures dans `docs/qa/mobile-fluid-2026-11-16/` ; les mesures de layout en émulation ne sont pas un benchmark FPS sur iPhone matériel.
+
 ## Fondu blanc choisi pour le haut du téléphone — 16 novembre 2026
 
 Mathis précise que le haut est mauve uni, refuse le rectangle dégradé ajouté derrière la navigation et accepte explicitement de faire disparaître le dégradé avant la zone système. Cette décision remplace les essais de bandes fixes ou de fond opaque sur le header. Le wrapper de navigation reste transparent, avec la géométrie et le sticky existants. Le décor de la page passe progressivement du blanc au dégradé sous la safe-area, sur180px, uniquement sur téléphone/tactile/fenêtre étroite. Le grain suit ce même fondu ; les fonds HTML/body reprennent la même peinture et un fond de secours blanc. Thème et manifeste blancs, lien versionné. Sur desktop, fondu supérieur nul pour conserver la direction visuelle précédente. Ne pas promettre de forcer une image dégradée dans la barre système Safari.

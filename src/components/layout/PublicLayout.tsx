@@ -72,7 +72,7 @@ export function PublicHeader() {
     <div className="public-header-wrap">
       <header className="site-header">
         <Link className="wordmark navigation-logo" to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
-          <PixelitoLogo intro />
+          <PixelitoLogo key={location.pathname + location.search} intro />
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           <NavLink to="/" end onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>

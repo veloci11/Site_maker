@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState, type CSSProperties, type HTMLAttribu
 import { useLocation, useViewTransitionState } from 'react-router-dom'
 import { cn } from '../../lib/utils'
 import { preparePlanNavigation } from '../../lib/plan-return'
+import { compactPlanGeometry } from '../../lib/compact-plan-geometry'
 import { consumePlanNavigationIntent, usePlanNavigationTransition } from './plan-transition'
 import './plan-motion.css'
 
@@ -51,9 +52,23 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
 function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null, compact = false) {
   document.documentElement.dataset.planMotionShared = String(Boolean(old && next))
   document.documentElement.dataset.planMotionSurfaceTop = old && next && old.surface.width > next.surface.width ? 'old' : 'new'
-  // Compact transitions rely on native group geometry and do not measure or
-  // animate the desktop's per-edge copy masks.
-  if (compact) return
+  // Mobile keeps one fixed-size paint plane, with no width/height animation or
+  // text snapshot. The taller texture stays opaque under the moving crop.
+  if (compact) {
+    const geometry = old && next ? compactPlanGeometry(old.surface, next.surface) : null
+    document.documentElement.dataset.planMotionShared = String(Boolean(geometry))
+    if (geometry) {
+      const style = document.documentElement.style
+      document.documentElement.dataset.planMotionSurfaceTop = geometry.top
+      style.setProperty('--plan-compact-width', `${geometry.width}px`)
+      style.setProperty('--plan-compact-height', `${geometry.height}px`)
+      style.setProperty('--plan-compact-from', geometry.from.transform)
+      style.setProperty('--plan-compact-to', geometry.to.transform)
+      style.setProperty('--plan-compact-crop-from', `${geometry.from.crop}px`)
+      style.setProperty('--plan-compact-crop-to', `${geometry.to.crop}px`)
+    }
+    return
+  }
   const style = document.documentElement.style
   const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
   const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0

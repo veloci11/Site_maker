@@ -12,7 +12,7 @@ export function getPlanMotionProfile(environment?: Pick<PlanMotionEnvironment, '
   return environment?.matchMedia(COMPACT_PLAN_MOTION_QUERY).matches ? 'compact' : 'full'
 }
 
-/** Phones share only the image and copy; full-page choreography stays on desktop. */
+/** Phones share only the image; full-page choreography stays on desktop. */
 export function canUseSharedPlanMotion(environment?: PlanMotionEnvironment): boolean {
   return Boolean(environment?.supportsViewTransition
     && !environment.matchMedia('(prefers-reduced-motion: reduce)').matches)

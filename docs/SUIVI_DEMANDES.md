@@ -1,3 +1,7 @@
+# Fluidité mobile, trois forfaits et logo — 16 novembre 2026
+
+Mathis valide le fondu supérieur puis demande un raccord mobile fluide, trois offres comparables ensemble et le logo animé uniquement lors d'un changement de page. Correction locale : canevas fixe à une seule texture, texte live et desktop 760 ms conservé ; logo mémorisé, clé pathname+search et bandes HTML composées. Trois colonnes mobiles avec critères pleine largeur ; choix de paire supprimé. IAB 320/430/1280, détails, retours, sélection/retrait et mouvement réduit contrôlés ; 321 tests passent. Mesures de layout 80–85 avant / 14–16 après, sans revendication FPS sur iPhone. Rapport dans `qa/mobile-fluid-2026-11-16/`. Publication à consigner.
+
 # Haut mauve et rectangle de navigation — 16 novembre 2026
 
 Mathis précise « haut mauve pas blanc » et choisit un fondu avant la zone système. Le décor/grain se fond vers le blanc sous la safe-area sur 180 px, sans déplacer les éléments. Fond du wrapper de navigation retiré : la rupture au scroll est reproduite puis corrigée dans l'IAB. Base HTML/body, thème et manifeste blancs ; desktop sans fondu ajouté. 321 tests passent. Révision `b45c6ca` publiée dans `20261117T022813Z-b45c6ca69f0f` et contrôlée en HTTPS à 430 px avec safe-area 59/34 ; client/CSS conformes, aucune alerte console, santé/catalogue inchangés et localhost fermé. Preuves dans `qa/native-gradient-2026-11-16/`. Ce lot ne prétend pas forcer le dégradé derrière l'heure dans le chrome natif Safari.
