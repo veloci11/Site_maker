@@ -10,13 +10,14 @@ async function journey(t, { listing = '/', stacked = false } = {}) {
   const browser = {
     location: new URL(`https://studio.test${listing}`),
     history: { state: { idx: 0, key: 'entry' } },
+    innerHeight: 860,
     scrollX: 0,
     scrollY: 1100,
     scrollTo({ left, top }) { this.scrollX = left; this.scrollY = top; },
   };
   const cards = slugs.map((slug, index) => ({
     href: `https://studio.test/forfaits/${slug}`,
-    getBoundingClientRect: () => ({ top: 890 + (stacked ? index * 590 : 0) - browser.scrollY }),
+    getBoundingClientRect: () => ({ top: 890 + (stacked ? index * 590 : 0) - browser.scrollY, height: 400 }),
   }));
   const section = {
     getBoundingClientRect: () => ({ top: 800 - browser.scrollY }),
@@ -47,7 +48,7 @@ async function journey(t, { listing = '/', stacked = false } = {}) {
   return {
     navigation,
     browser,
-    expectedTop(slug) { return (stacked ? 890 + slugs.indexOf(slug) * 590 : 800) - 96; },
+    expectedTop(slug) { return stacked ? 890 + slugs.indexOf(slug) * 590 - 278 : 800 - 96; },
     enter(path, index) {
       browser.location = new URL(`https://studio.test${path}`);
       browser.history.state.idx = index;
@@ -60,7 +61,7 @@ async function journey(t, { listing = '/', stacked = false } = {}) {
 
 for (const stacked of [false, true]) {
   for (const slug of slugs) {
-    test(`Back from ${slug} aligns ${stacked ? 'its stacked card' : 'the desktop offer row'}, not the old scroll`, async t => {
+    test(`Back from ${slug} ${stacked ? 'centers its stacked card below the header' : 'aligns the desktop offer row'}`, async t => {
       const page = await journey(t, { stacked });
       page.navigation.preparePlanNavigation(`/forfaits/${slug}`);
       page.navigation.restorePlanScroll(page.enter(`/forfaits/${slug}`, 1));
@@ -72,6 +73,22 @@ for (const stacked of [false, true]) {
     });
   }
 }
+
+test('A stacked card is centered relative to the visual viewport', async t => {
+  const page = await journey(t, { stacked: true });
+  page.browser.visualViewport = { height: 720, offsetTop: 20 };
+  page.navigation.restorePlanScroll(page.enter('/forfaits/connecte', 1));
+  assert.equal(page.navigation.restorePlanScroll(page.enter('/', 0), undefined, 'POP'), true);
+  assert.equal(page.browser.scrollY, 1480 - 228);
+});
+
+test('A short screen leaves the top of a tall card below the header', async t => {
+  const page = await journey(t, { stacked: true });
+  page.browser.innerHeight = 480;
+  page.navigation.restorePlanScroll(page.enter('/forfaits/connecte', 1));
+  assert.equal(page.navigation.restorePlanScroll(page.enter('/', 0), undefined, 'POP'), true);
+  assert.equal(page.browser.scrollY, 1480 - 108);
+});
 
 for (const listing of ['/forfaits', '/faq']) {
   test(`Back from a plan entered via ${listing} replaces the destination with the current home offer`, async t => {

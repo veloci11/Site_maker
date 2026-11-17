@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Carte centrée au retour sur téléphone — 17 novembre 2026
+
+Mathis trouve la carte trop haute au retour et demande un glissement plus doux. Sur la liste empilée, centrer la carte choisie dans l’espace entre le header et le bas du viewport visuel. Quand elle dépasse cet espace, garder le titre à au moins 12 px sous le header. Appliquer ce réglage au bouton Retour du navigateur et au lien Tous les forfaits. Le glissement opaque reste à 560 ms, avec 16 px de déplacement et une accélération et décélération équilibrées. Le mouvement réduit et l’alignement de la rangée sur ordinateur restent applicables.
+
 ## Retour opaque des forfaits — 17 novembre 2026
 
 Mathis valide les dégradés et signale un flash surtout au retour. Sur mobile, la vraie carte glisse de 14 px en 560 ms avec une vitesse progressive, à pleine opacité dès la première image. Recentrage du document avant peinture. Cette décision remplace le fondu de retour de .68 à 1 décrit ci-dessous. Garder le mouvement réduit immédiat, le raccord d'ouverture approuvé et le comportement ordinateur.

@@ -126,14 +126,24 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
     const firstCard = cards?.[0]
     const secondCard = cards?.[1]
     const selectedCard = section?.querySelector<HTMLElement>(`.pricing-card[href="/forfaits/${source.route.id}"]`)
-    // On desktop the row and its heading fit together. Stacked mobile cards
-    // need their own top: aligning only the section would hide Business/3D.
+    // Keep the heading with the desktop row. On a stacked layout, bring
+    // the current card to the center of the visible space below the header.
     const cardsAreStacked = firstCard && secondCard
       && secondCard.getBoundingClientRect().top > firstCard.getBoundingClientRect().top + 1
-    const anchor = cardsAreStacked && selectedCard ? selectedCard : section
-    const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
+    const stackedCard = cardsAreStacked ? selectedCard : null
+    const anchor = stackedCard ?? section
     if (anchor) {
-      const top = window.scrollY + anchor.getBoundingClientRect().top - headerHeight
+      const bounds = anchor.getBoundingClientRect()
+      const headerHeight = document.querySelector('.public-header-wrap')?.getBoundingClientRect().height ?? 0
+      let inset = headerHeight
+      if (stackedCard) {
+        const viewport = window.visualViewport
+        const visibleHeight = viewport?.height ?? window.innerHeight
+        const centeredInset = (visibleHeight + headerHeight - bounds.height) / 2
+        // A tall card starts below the header with its heading in view.
+        inset = (viewport?.offsetTop ?? 0) + Math.max(headerHeight + 12, centeredInset)
+      }
+      const top = window.scrollY + bounds.top - inset
       window.scrollTo({ left: 0, top: Math.max(0, top), behavior: 'instant' })
       restored = true
       restoredKey = location.key
@@ -143,9 +153,9 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
         && window.matchMedia(LIVE_PLAN_MOTION_QUERY).matches
         && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const arrival = selectedCard.animate([
-          { transform: 'translateY(14px)' },
+          { transform: 'translateY(16px)' },
           { transform: 'translateY(0px)' },
-        ], { duration: 560, easing: 'cubic-bezier(.4,0,.2,1)' })
+        ], { duration: 560, easing: 'cubic-bezier(.45,0,.55,1)' })
         arrival.id = 'plan-live-return'
       }
     }
