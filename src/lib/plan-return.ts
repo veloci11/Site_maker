@@ -135,6 +135,17 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
       window.scrollTo({ left: 0, top: Math.max(0, top), behavior: 'instant' })
       restored = true
       restoredKey = location.key
+      // A small live fade softens the mobile return without moving the card
+      // we just aligned, taking a snapshot or delaying history restoration.
+      if (typeof selectedCard?.animate === 'function'
+        && window.matchMedia('(max-width: 760px)').matches
+        && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const arrival = selectedCard.animate([{ opacity: .65 }, { opacity: 1 }], {
+          duration: 300,
+          easing: 'cubic-bezier(.4,0,.6,1)',
+        })
+        arrival.id = 'plan-live-return'
+      }
     }
   } else if ((navigation?.preserveScroll ?? (source?.key === acceptedIntent?.sourceKey && source?.route?.kind === 'plan' && target?.kind === 'plan' && acceptedIntent?.preserveScroll)) && !location.hash) {
     window.scrollTo({ left: source?.scroll.x ?? 0, top: source?.scroll.y ?? 0, behavior: 'instant' })

@@ -1,0 +1,93 @@
+{
+  "before": {
+    "barBottom": 0,
+    "checkbox": {
+      "bottom": 553.7421875,
+      "height": 20,
+      "left": 705.6640625,
+      "right": 725.6640625,
+      "top": 533.7421875,
+      "width": 20,
+      "x": 705.6640625,
+      "y": 533.7421875
+    },
+    "checked": "unchecked",
+    "focus": "",
+    "item": {
+      "bottom": 601.6953125,
+      "height": 115.8984375,
+      "left": 688.6640625,
+      "right": 1220.9921875,
+      "top": 485.796875,
+      "width": 532.328125,
+      "x": 688.6640625,
+      "y": 485.796875
+    },
+    "scrollY": 0
+  },
+  "after": {
+    "barBottom": 0,
+    "checkbox": {
+      "bottom": 553.7421875,
+      "height": 20,
+      "left": 705.6640625,
+      "right": 725.6640625,
+      "top": 533.7421875,
+      "width": 20,
+      "x": 705.6640625,
+      "y": 533.7421875
+    },
+    "checked": "checked",
+    "focus": "option-additional-language",
+    "item": {
+      "bottom": 601.6953125,
+      "height": 115.8984375,
+      "left": 688.6640625,
+      "right": 1220.9921875,
+      "top": 485.796875,
+      "width": 532.328125,
+      "x": 688.6640625,
+      "y": 485.796875
+    },
+    "scrollY": 0
+  },
+  "removed": {
+    "barBottom": 0,
+    "checkbox": {
+      "bottom": 553.7421875,
+      "height": 20,
+      "left": 705.6640625,
+      "right": 725.6640625,
+      "top": 533.7421875,
+      "width": 20,
+      "x": 705.6640625,
+      "y": 533.7421875
+    },
+    "checked": "unchecked",
+    "focus": "option-additional-language",
+    "item": {
+      "bottom": 601.6953125,
+      "height": 115.8984375,
+      "left": 688.6640625,
+      "right": 1220.9921875,
+      "top": 485.796875,
+      "width": 532.328125,
+      "x": 688.6640625,
+      "y": 485.796875
+    },
+    "scrollY": 0
+  },
+  "frameStart": {
+    "duration": "0.62s",
+    "height": "49px",
+    "target": "78.5px"
+  },
+  "frameMid": {
+    "duration": "0.62s",
+    "height": "64.6797px"
+  },
+  "frameEnd": {
+    "height": "78.5px",
+    "nativeDuration": ".76s"
+  }
+}

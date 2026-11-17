@@ -243,6 +243,11 @@
 }
 @media(max-width:760px) {
  .configurator-page { padding-top:12px; padding-bottom:108px; }
+ /* The summary is above the choices. Its final size and the touched row's
+    scroll correction commit together instead of pushing the page for 620 ms. */
+ .configurator-page[data-public="true"] .configurator-grid { overflow-anchor:none; }
+ .configurator-page[data-public="true"] :is(.selected-plan__selection,.selected-plan__monthly,.configurator-choice-visibility) { transition:opacity 200ms ease-out; }
+ .configurator-page[data-public="true"] .selected-plan__options-frame { transition:none; }
  .configurator-grid { grid-template-columns:1fr; gap:34px; }
  .configurator-card-column { position:static; }
  .configurator-topline { font-size:12px; margin-bottom:18px; }

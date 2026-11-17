@@ -1,0 +1,80 @@
+{
+  "before": {
+    "barBottom": 932,
+    "checkbox": {
+      "bottom": 435.1171875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 415.1171875,
+      "width": 20,
+      "x": 41,
+      "y": 415.1171875
+    },
+    "checked": "unchecked",
+    "focus": "radix-_r_t_",
+    "item": {
+      "bottom": 544.0703125,
+      "height": 237.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 306.171875,
+      "width": 382,
+      "x": 24,
+      "y": 306.171875
+    },
+    "scrollY": 787.5
+  },
+  "now": {
+    "barBottom": 932,
+    "checkbox": {
+      "bottom": 435.046875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 415.046875,
+      "width": 20,
+      "x": 41,
+      "y": 415.046875
+    },
+    "checked": "checked",
+    "focus": "option-booking",
+    "item": {
+      "bottom": 544,
+      "height": 237.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 306.1015625,
+      "width": 382,
+      "x": 24,
+      "y": 306.1015625
+    },
+    "scrollY": 896
+  },
+  "after": {
+    "barBottom": 932,
+    "checkbox": {
+      "bottom": 435.046875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 415.046875,
+      "width": 20,
+      "x": 41,
+      "y": 415.046875
+    },
+    "checked": "checked",
+    "focus": "option-booking",
+    "item": {
+      "bottom": 544,
+      "height": 237.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 306.1015625,
+      "width": 382,
+      "x": 24,
+      "y": 306.1015625
+    },
+    "scrollY": 896
+  }
+}

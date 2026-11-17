@@ -1,0 +1,222 @@
+{
+  "before": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "card": {
+      "bottom": 39.875,
+      "height": 436.375,
+      "left": 20,
+      "right": 410,
+      "top": -396.5,
+      "width": 390,
+      "x": 20,
+      "y": -396.5
+    },
+    "checkbox": {
+      "bottom": 491.25,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 471.25,
+      "width": 20,
+      "x": 41,
+      "y": 471.25
+    },
+    "checked": "unchecked",
+    "choice": {
+      "bottom": 555.203125,
+      "height": 147.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 407.3046875,
+      "width": 382,
+      "x": 24,
+      "y": 407.3046875
+    },
+    "focus": "",
+    "group": {
+      "bottom": 407.3046875,
+      "height": 67.796875,
+      "left": 20,
+      "right": 410,
+      "top": 339.5078125,
+      "width": 390,
+      "x": 20,
+      "y": 339.5078125
+    },
+    "scrollY": 617.5
+  },
+  "now": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "card": {
+      "bottom": 10.171875,
+      "height": 578.671875,
+      "left": 20,
+      "right": 410,
+      "top": -568.5,
+      "width": 390,
+      "x": 20,
+      "y": -568.5
+    },
+    "checkbox": {
+      "bottom": 461.546875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 441.546875,
+      "width": 20,
+      "x": 41,
+      "y": 441.546875
+    },
+    "checked": "checked",
+    "choice": {
+      "bottom": 525.5,
+      "height": 147.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 377.6015625,
+      "width": 382,
+      "x": 24,
+      "y": 377.6015625
+    },
+    "focus": "option-additional-language",
+    "group": {
+      "bottom": 377.6015625,
+      "height": 67.796875,
+      "left": 20,
+      "right": 410,
+      "top": 309.8046875,
+      "width": 390,
+      "x": 20,
+      "y": 309.8046875
+    },
+    "scrollY": 789.5
+  },
+  "mid": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "card": {
+      "bottom": 10.171875,
+      "height": 578.671875,
+      "left": 20,
+      "right": 410,
+      "top": -568.5,
+      "width": 390,
+      "x": 20,
+      "y": -568.5
+    },
+    "checkbox": {
+      "bottom": 461.546875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 441.546875,
+      "width": 20,
+      "x": 41,
+      "y": 441.546875
+    },
+    "checked": "checked",
+    "choice": {
+      "bottom": 525.5,
+      "height": 147.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 377.6015625,
+      "width": 382,
+      "x": 24,
+      "y": 377.6015625
+    },
+    "focus": "option-additional-language",
+    "group": {
+      "bottom": 377.6015625,
+      "height": 67.796875,
+      "left": 20,
+      "right": 410,
+      "top": 309.8046875,
+      "width": 390,
+      "x": 20,
+      "y": 309.8046875
+    },
+    "scrollY": 789.5
+  },
+  "after": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "card": {
+      "bottom": 10.171875,
+      "height": 578.671875,
+      "left": 20,
+      "right": 410,
+      "top": -568.5,
+      "width": 390,
+      "x": 20,
+      "y": -568.5
+    },
+    "checkbox": {
+      "bottom": 461.546875,
+      "height": 20,
+      "left": 41,
+      "right": 61,
+      "top": 441.546875,
+      "width": 20,
+      "x": 41,
+      "y": 441.546875
+    },
+    "checked": "checked",
+    "choice": {
+      "bottom": 525.5,
+      "height": 147.8984375,
+      "left": 24,
+      "right": 406,
+      "top": 377.6015625,
+      "width": 382,
+      "x": 24,
+      "y": 377.6015625
+    },
+    "focus": "option-additional-language",
+    "group": {
+      "bottom": 377.6015625,
+      "height": 67.796875,
+      "left": 20,
+      "right": 410,
+      "top": 309.8046875,
+      "width": 390,
+      "x": 20,
+      "y": 309.8046875
+    },
+    "scrollY": 789.5
+  }
+}

@@ -19,12 +19,17 @@ const easing = 'cubic-bezier(.25,.1,.25,1)'
 
 /** FLIP the live rows; keep departing labels outside grid layout while fading.
  * Configuration and totals commit immediately, independently of the animation. */
-export function useOptionReflow(selectionKey: string) {
+export function useOptionReflow(selectionKey: string, staticOnPhone = false) {
   const listRef = useRef<HTMLUListElement>(null)
   const frameRef = useRef<HTMLDivElement>(null)
   const pending = useRef<LayoutSnapshot | null>(null)
   const moves = useRef(new Set<Animation>())
   const exits = useRef(new Map<string, { node: HTMLElement; animation: Animation }>())
+
+  function motionDisabled() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      || (staticOnPhone && window.matchMedia('(max-width: 760px)').matches)
+  }
 
   function stopMoves() {
     for (const animation of moves.current) animation.cancel()
@@ -66,7 +71,7 @@ export function useOptionReflow(selectionKey: string) {
   function capture() {
     const list = listRef.current
     if (!list) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (motionDisabled()) {
       stopMoves()
       for (const key of exits.current.keys()) clearExit(key)
       pending.current = null
@@ -96,26 +101,36 @@ export function useOptionReflow(selectionKey: string) {
     const observer = new ResizeObserver(measure)
     observer.observe(list)
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const phone = window.matchMedia('(max-width: 760px)')
     const preferenceChanged = () => {
-      if (!reduced.matches) return
+      if (!reduced.matches && !(staticOnPhone && phone.matches)) return
       stopMoves()
       for (const key of exits.current.keys()) clearExit(key)
       pending.current = null
     }
     reduced.addEventListener('change', preferenceChanged)
+    phone.addEventListener('change', preferenceChanged)
     return () => {
       observer.disconnect()
       reduced.removeEventListener('change', preferenceChanged)
+      phone.removeEventListener('change', preferenceChanged)
       stopMoves()
       for (const key of exits.current.keys()) clearExit(key)
     }
-  }, [])
+  }, [staticOnPhone])
 
   useLayoutEffect(() => {
     const before = pending.current
     pending.current = null
     const list = listRef.current
-    if (!before || !list || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const frame = frameRef.current
+    // Commit the final flow height now, not in a later ResizeObserver pass.
+    // The phone's scroll anchor can then compensate once before painting.
+    if (list && frame) {
+      const height = `${list.getBoundingClientRect().height}px`
+      if (frame.style.height !== height) frame.style.height = height
+    }
+    if (!before || !list || motionDisabled()) return
     const origin = list.getBoundingClientRect()
     const current = new Map<string, HTMLElement>()
     const targets = new Map<string, DOMRect>()
@@ -169,7 +184,7 @@ export function useOptionReflow(selectionKey: string) {
         if (exits.current.get(key)?.node === ghost) clearExit(key)
       }, () => {})
     }
-  }, [selectionKey])
+  }, [selectionKey, staticOnPhone])
 
   return { listRef, frameRef, capture }
 }

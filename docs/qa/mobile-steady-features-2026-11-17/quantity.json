@@ -1,0 +1,223 @@
+{
+  "add": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 512.234375,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 492.234375,
+        "width": 20,
+        "x": 41,
+        "y": 492.234375
+      },
+      "checked": "unchecked",
+      "focus": "radix-_r_c_",
+      "item": {
+        "bottom": 549.1875,
+        "height": 93.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 455.2890625,
+        "width": 382,
+        "x": 24,
+        "y": 455.2890625
+      },
+      "scrollY": 998.5
+    },
+    "now": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 500.0859375,
+        "height": 20,
+        "left": 37,
+        "right": 57,
+        "top": 480.0859375,
+        "width": 20,
+        "x": 37,
+        "y": 480.0859375
+      },
+      "checked": "checked",
+      "focus": "option-extra-pages",
+      "item": {
+        "bottom": 568.0859375,
+        "height": 113,
+        "left": 24,
+        "right": 406,
+        "top": 455.0859375,
+        "width": 382,
+        "x": 24,
+        "y": 455.0859375
+      },
+      "quantity": "1",
+      "scrollY": 1062
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 500.0859375,
+        "height": 20,
+        "left": 37,
+        "right": 57,
+        "top": 480.0859375,
+        "width": 20,
+        "x": 37,
+        "y": 480.0859375
+      },
+      "checked": "checked",
+      "focus": "option-extra-pages",
+      "item": {
+        "bottom": 568.0859375,
+        "height": 113,
+        "left": 24,
+        "right": 406,
+        "top": 455.0859375,
+        "width": 382,
+        "x": 24,
+        "y": 455.0859375
+      },
+      "quantity": "1",
+      "scrollY": 1062
+    },
+    "delta": -0.203125
+  },
+  "quantity": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 462.0859375,
+        "height": 20,
+        "left": 37,
+        "right": 57,
+        "top": 442.0859375,
+        "width": 20,
+        "x": 37,
+        "y": 442.0859375
+      },
+      "checked": "checked",
+      "focus": "extra-page-count",
+      "item": {
+        "bottom": 530.0859375,
+        "height": 113,
+        "left": 24,
+        "right": 406,
+        "top": 417.0859375,
+        "width": 382,
+        "x": 24,
+        "y": 417.0859375
+      },
+      "quantity": "1",
+      "scrollY": 1100
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 462.0859375,
+        "height": 20,
+        "left": 37,
+        "right": 57,
+        "top": 442.0859375,
+        "width": 20,
+        "x": 37,
+        "y": 442.0859375
+      },
+      "checked": "checked",
+      "focus": "extra-page-count",
+      "item": {
+        "bottom": 530.0859375,
+        "height": 113,
+        "left": 24,
+        "right": 406,
+        "top": 417.0859375,
+        "width": 382,
+        "x": 24,
+        "y": 417.0859375
+      },
+      "quantity": "2",
+      "scrollY": 1100
+    }
+  },
+  "remove": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 462.0859375,
+        "height": 20,
+        "left": 37,
+        "right": 57,
+        "top": 442.0859375,
+        "width": 20,
+        "x": 37,
+        "y": 442.0859375
+      },
+      "checked": "checked",
+      "focus": "extra-page-count",
+      "item": {
+        "bottom": 530.0859375,
+        "height": 113,
+        "left": 24,
+        "right": 406,
+        "top": 417.0859375,
+        "width": 382,
+        "x": 24,
+        "y": 417.0859375
+      },
+      "quantity": "2",
+      "scrollY": 1100
+    },
+    "now": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 474.234375,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 454.234375,
+        "width": 20,
+        "x": 41,
+        "y": 454.234375
+      },
+      "checked": "unchecked",
+      "focus": "option-extra-pages",
+      "item": {
+        "bottom": 511.1875,
+        "height": 93.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 417.2890625,
+        "width": 382,
+        "x": 24,
+        "y": 417.2890625
+      },
+      "scrollY": 1036.5
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 474.234375,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 454.234375,
+        "width": 20,
+        "x": 41,
+        "y": 454.234375
+      },
+      "checked": "unchecked",
+      "focus": "option-extra-pages",
+      "item": {
+        "bottom": 511.1875,
+        "height": 93.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 417.2890625,
+        "width": 382,
+        "x": 24,
+        "y": 417.2890625
+      },
+      "scrollY": 1036.5
+    },
+    "delta": 0.203125
+  }
+}

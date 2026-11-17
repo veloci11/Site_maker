@@ -1,0 +1,164 @@
+{
+  "add": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.2890625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.2890625,
+        "width": 20,
+        "x": 41,
+        "y": 490.2890625
+      },
+      "checked": "unchecked",
+      "focus": "radix-_r_a_",
+      "item": {
+        "bottom": 592.6875,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.890625,
+        "width": 382,
+        "x": 24,
+        "y": 407.890625
+      },
+      "scrollY": 1243
+    },
+    "now": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.390625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.390625,
+        "width": 20,
+        "x": 41,
+        "y": 490.390625
+      },
+      "checked": "checked",
+      "focus": "option-online-store",
+      "item": {
+        "bottom": 592.7890625,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.9921875,
+        "width": 382,
+        "x": 24,
+        "y": 407.9921875
+      },
+      "scrollY": 1132.5
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.390625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.390625,
+        "width": 20,
+        "x": 41,
+        "y": 490.390625
+      },
+      "checked": "checked",
+      "focus": "option-online-store",
+      "item": {
+        "bottom": 592.7890625,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.9921875,
+        "width": 382,
+        "x": 24,
+        "y": 407.9921875
+      },
+      "scrollY": 1132.5
+    },
+    "delta": 0.1015625
+  },
+  "remove": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.390625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.390625,
+        "width": 20,
+        "x": 41,
+        "y": 490.390625
+      },
+      "checked": "checked",
+      "focus": "option-online-store",
+      "item": {
+        "bottom": 592.7890625,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.9921875,
+        "width": 382,
+        "x": 24,
+        "y": 407.9921875
+      },
+      "scrollY": 1132.5
+    },
+    "now": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.2890625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.2890625,
+        "width": 20,
+        "x": 41,
+        "y": 490.2890625
+      },
+      "checked": "unchecked",
+      "focus": "option-online-store",
+      "item": {
+        "bottom": 592.6875,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.890625,
+        "width": 382,
+        "x": 24,
+        "y": 407.890625
+      },
+      "scrollY": 1243
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 510.2890625,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 490.2890625,
+        "width": 20,
+        "x": 41,
+        "y": 490.2890625
+      },
+      "checked": "unchecked",
+      "focus": "option-online-store",
+      "item": {
+        "bottom": 592.6875,
+        "height": 184.796875,
+        "left": 24,
+        "right": 406,
+        "top": 407.890625,
+        "width": 382,
+        "x": 24,
+        "y": 407.890625
+      },
+      "scrollY": 1243
+    },
+    "delta": -0.1015625
+  }
+}

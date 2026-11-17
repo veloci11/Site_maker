@@ -1,0 +1,1011 @@
+{
+  "remove": {
+    "before": {
+      "bar": {
+        "bottom": 932,
+        "height": 99,
+        "left": 0,
+        "right": 430,
+        "top": 833,
+        "width": 430,
+        "x": 0,
+        "y": 833
+      },
+      "card": {
+        "bottom": 10.171875,
+        "height": 578.671875,
+        "left": 20,
+        "right": 410,
+        "top": -568.5,
+        "width": 390,
+        "x": 20,
+        "y": -568.5
+      },
+      "checkbox": {
+        "bottom": 461.546875,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 441.546875,
+        "width": 20,
+        "x": 41,
+        "y": 441.546875
+      },
+      "checked": "checked",
+      "choice": {
+        "bottom": 525.5,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 377.6015625,
+        "width": 382,
+        "x": 24,
+        "y": 377.6015625
+      },
+      "focus": "option-additional-language",
+      "group": {
+        "bottom": 377.6015625,
+        "height": 67.796875,
+        "left": 20,
+        "right": 410,
+        "top": 309.8046875,
+        "width": 390,
+        "x": 20,
+        "y": 309.8046875
+      },
+      "scrollY": 789.5
+    },
+    "now": {
+      "bar": {
+        "bottom": 932,
+        "height": 99,
+        "left": 0,
+        "right": 430,
+        "top": 833,
+        "width": 430,
+        "x": 0,
+        "y": 833
+      },
+      "card": {
+        "bottom": 10.375,
+        "height": 436.375,
+        "left": 20,
+        "right": 410,
+        "top": -426,
+        "width": 390,
+        "x": 20,
+        "y": -426
+      },
+      "checkbox": {
+        "bottom": 461.75,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 441.75,
+        "width": 20,
+        "x": 41,
+        "y": 441.75
+      },
+      "checked": "unchecked",
+      "choice": {
+        "bottom": 525.703125,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 377.8046875,
+        "width": 382,
+        "x": 24,
+        "y": 377.8046875
+      },
+      "focus": "option-additional-language",
+      "group": {
+        "bottom": 377.8046875,
+        "height": 67.796875,
+        "left": 20,
+        "right": 410,
+        "top": 310.0078125,
+        "width": 390,
+        "x": 20,
+        "y": 310.0078125
+      },
+      "scrollY": 647
+    },
+    "after": {
+      "bar": {
+        "bottom": 932,
+        "height": 99,
+        "left": 0,
+        "right": 430,
+        "top": 833,
+        "width": 430,
+        "x": 0,
+        "y": 833
+      },
+      "card": {
+        "bottom": 10.375,
+        "height": 436.375,
+        "left": 20,
+        "right": 410,
+        "top": -426,
+        "width": 390,
+        "x": 20,
+        "y": -426
+      },
+      "checkbox": {
+        "bottom": 461.75,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 441.75,
+        "width": 20,
+        "x": 41,
+        "y": 441.75
+      },
+      "checked": "unchecked",
+      "choice": {
+        "bottom": 525.703125,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 377.8046875,
+        "width": 382,
+        "x": 24,
+        "y": 377.8046875
+      },
+      "focus": "option-additional-language",
+      "group": {
+        "bottom": 377.8046875,
+        "height": 67.796875,
+        "left": 20,
+        "right": 410,
+        "top": 310.0078125,
+        "width": 390,
+        "x": 20,
+        "y": 310.0078125
+      },
+      "scrollY": 647
+    }
+  },
+  "repeated": [
+    {
+      "before": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "now": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "after": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "delta": -0.203125
+    },
+    {
+      "before": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "now": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "after": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "delta": 0.203125
+    },
+    {
+      "before": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "now": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "after": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "delta": -0.203125
+    },
+    {
+      "before": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "now": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "after": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "delta": 0.203125
+    },
+    {
+      "before": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.375,
+          "height": 436.375,
+          "left": 20,
+          "right": 410,
+          "top": -426,
+          "width": 390,
+          "x": 20,
+          "y": -426
+        },
+        "checkbox": {
+          "bottom": 461.75,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.75,
+          "width": 20,
+          "x": 41,
+          "y": 441.75
+        },
+        "checked": "unchecked",
+        "choice": {
+          "bottom": 525.703125,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.8046875,
+          "width": 382,
+          "x": 24,
+          "y": 377.8046875
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.8046875,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 310.0078125,
+          "width": 390,
+          "x": 20,
+          "y": 310.0078125
+        },
+        "scrollY": 647
+      },
+      "now": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "after": {
+        "bar": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "card": {
+          "bottom": 10.171875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": -568.5,
+          "width": 390,
+          "x": 20,
+          "y": -568.5
+        },
+        "checkbox": {
+          "bottom": 461.546875,
+          "height": 20,
+          "left": 41,
+          "right": 61,
+          "top": 441.546875,
+          "width": 20,
+          "x": 41,
+          "y": 441.546875
+        },
+        "checked": "checked",
+        "choice": {
+          "bottom": 525.5,
+          "height": 147.8984375,
+          "left": 24,
+          "right": 406,
+          "top": 377.6015625,
+          "width": 382,
+          "x": 24,
+          "y": 377.6015625
+        },
+        "focus": "option-additional-language",
+        "group": {
+          "bottom": 377.6015625,
+          "height": 67.796875,
+          "left": 20,
+          "right": 410,
+          "top": 309.8046875,
+          "width": 390,
+          "x": 20,
+          "y": 309.8046875
+        },
+        "scrollY": 789.5
+      },
+      "delta": -0.203125
+    }
+  ]
+}

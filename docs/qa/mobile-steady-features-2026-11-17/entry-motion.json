@@ -1,0 +1,224 @@
+{
+  "start": {
+    "captures": [],
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "0.2",
+        "rect": {
+          "bottom": 221,
+          "height": 44,
+          "left": 20,
+          "right": 410,
+          "top": 177,
+          "width": 390,
+          "x": 20,
+          "y": 177
+        },
+        "selector": ".configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "0.2",
+        "rect": {
+          "bottom": 817.671875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": 239,
+          "width": 390,
+          "x": 20,
+          "y": 239
+        },
+        "selector": ".selected-plan",
+        "transform": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "animation": "plan-live-fade-arrive",
+        "duration": "0.56s",
+        "opacity": "0.2",
+        "rect": {
+          "bottom": 1623.1875,
+          "height": 789.515625,
+          "left": 20,
+          "right": 410,
+          "top": 833.671875,
+          "width": 390,
+          "x": 20,
+          "y": 833.671875
+        },
+        "selector": ".configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "selector": ".configurator-price-bar",
+        "transform": "none"
+      }
+    ],
+    "script": "http://127.0.0.1:4183/assets/index-C22JzSDI.js"
+  },
+  "middle": {
+    "captures": [],
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "0.417904",
+        "rect": {
+          "bottom": 216.09716796875,
+          "height": 44,
+          "left": 20,
+          "right": 410,
+          "top": 172.09716796875,
+          "width": 390,
+          "x": 20,
+          "y": 172.09716796875
+        },
+        "selector": ".configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 13.0972)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "0.417904",
+        "rect": {
+          "bottom": 812.76904296875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": 234.09716796875,
+          "width": 390,
+          "x": 20,
+          "y": 234.09716796875
+        },
+        "selector": ".selected-plan",
+        "transform": "matrix(1, 0, 0, 1, 0, 13.0972)"
+      },
+      {
+        "animation": "plan-live-fade-arrive",
+        "duration": "0.56s",
+        "opacity": "0.417904",
+        "rect": {
+          "bottom": 1623.1875,
+          "height": 789.515625,
+          "left": 20,
+          "right": 410,
+          "top": 833.671875,
+          "width": 390,
+          "x": 20,
+          "y": 833.671875
+        },
+        "selector": ".configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "selector": ".configurator-price-bar",
+        "transform": "none"
+      }
+    ],
+    "script": "http://127.0.0.1:4183/assets/index-C22JzSDI.js"
+  },
+  "end": {
+    "captures": [],
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 203,
+          "height": 44,
+          "left": 20,
+          "right": 410,
+          "top": 159,
+          "width": 390,
+          "x": 20,
+          "y": 159
+        },
+        "selector": ".configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.56s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 799.671875,
+          "height": 578.671875,
+          "left": 20,
+          "right": 410,
+          "top": 221,
+          "width": 390,
+          "x": 20,
+          "y": 221
+        },
+        "selector": ".selected-plan",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "animation": "plan-live-fade-arrive",
+        "duration": "0.56s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 1623.1875,
+          "height": 789.515625,
+          "left": 20,
+          "right": 410,
+          "top": 833.671875,
+          "width": 390,
+          "x": 20,
+          "y": 833.671875
+        },
+        "selector": ".configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "rect": {
+          "bottom": 932,
+          "height": 99,
+          "left": 0,
+          "right": 430,
+          "top": 833,
+          "width": 430,
+          "x": 0,
+          "y": 833
+        },
+        "selector": ".configurator-price-bar",
+        "transform": "none"
+      }
+    ],
+    "script": "http://127.0.0.1:4183/assets/index-C22JzSDI.js"
+  }
+}

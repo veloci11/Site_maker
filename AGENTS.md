@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Douceur mobile et stabilité des fonctionnalités — 17 novembre 2026
+
+Mathis juge encore l'arrivée trop directe et signale que sélectionner une fonctionnalité remonte la page. Sur le public<=760px, le résumé au-dessus des choix prend sa taille finale sans animation de hauteur, la hauteur du cadre est synchronisée dans useOptionReflow avant la correction de position et la ligne touchée conserve son haut via une compensation unique avant peinture. Pas d'observer/RAF permanent pour piloter le scroll. Annuler la remise en vue différée d'un accordéon dès qu'un choix intervient ; quantités, mensuels et masquage Paiement/Boutique compris. Aucun clone FLIP mobile ; desktop et privé conservent leurs effets.
+
+L'arrivée réelle téléphone/tactile passe à560ms, courbe(.4,0,.6,1), opacité.2→1 et déplacement18px : pas de phase entièrement vide. Fonctionnalités et enfants du bandeau en opacité seule, fond du bandeau opaque et fixe. Au retour mobile, seule la carte recentrée apparaît en fondu.65→1/300ms, sans translation, capture ni délai d'historique. Mouvement réduit prioritaire, desktop760ms et bouton Changer contrasté conservés. Preuves : `docs/qa/mobile-steady-features-2026-11-17/`.
+
 ## Contraste du bouton Changer sur téléphone — 17 novembre 2026
 
 Mathis signale que le blanc du bouton Changer se perd sur la carte mobile. Sur760 px maximum, garder sa cible44 px et ses dimensions, mais afficher un fond noir opaque#111 et un texte blanc explicite ; état ouvert/survol#292929, contour blanc et apparence native retirée. Même règle sur le vrai bouton et son double décoratif. Ne modifier ni le menu, ni le raccord400 ms, ni l'apparence desktop. Contrôles : `docs/qa/mobile-change-contrast-2026-11-17/`.

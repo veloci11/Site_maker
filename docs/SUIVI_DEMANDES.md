@@ -1,3 +1,7 @@
+# Animation trop directe et fonctionnalités qui déplacent la page — 17 novembre2026
+
+Résumé situé au-dessus des choix : animation de taille620ms responsable du déplacement reproduit. Correction public mobile : taille finale synchrone, compensation unique de la ligne touchée, pas de clones FLIP et annulation du recentrage différé d'accordéon. Appuis AX répétés, quantité, mensuels, boutique et ouverture : écarts≤0,21px. Arrivée plus progressive560ms et retour300ms sur la carte choisie. Desktop et réduction du mouvement conservés ;314 tests passent. Preuves : `qa/mobile-steady-features-2026-11-17/`. Publication à consigner.
+
 # Changer trop blanc sur téléphone — 17 novembre2026
 
 Le bouton translucide est remplacé sur téléphone par un fond noir opaque et du texte blanc, y compris pendant l'ouverture du menu. Dimensions88,875×44 px stables, chevron et animations conservés ; desktop inchangé. Contrôles320/430/bureau,314 tests et vérification HTTPS. Publié dans `20261117T061816Z-d807806baf1d`, localhost fermé. Preuves : `qa/mobile-change-contrast-2026-11-17/`.

@@ -305,19 +305,24 @@
 
   .public-shell .motion-page .configurator-topline,
   .public-shell .motion-page .selected-plan {
-    animation: plan-live-content-arrive 400ms cubic-bezier(.25,.1,.25,1) both;
+    animation: plan-live-content-arrive 560ms cubic-bezier(.4,0,.6,1) both;
   }
 
   /* Keep the scroll-to-features anchor stationary even on an immediate tap. */
   .public-shell .motion-page .configurator-options,
   .public-shell .motion-page .configurator-price-bar > * {
-    animation: plan-motion-fade 400ms cubic-bezier(.25,.1,.25,1) both;
+    animation: plan-live-fade-arrive 560ms cubic-bezier(.4,0,.6,1) both;
   }
 }
 
 @keyframes plan-live-content-arrive {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: .2; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
+}
+
+@keyframes plan-live-fade-arrive {
+  from { opacity: .2; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,3 +1,7 @@
+## Choix mobiles stables et transition plus douce — 17 novembre2026
+
+Résumé au-dessus des choix : croissance142px reproduite et déplacement visuel113px identifié. Taille mobile finale et compensation unique avant peinture maintiennent maintenant la ligne touchée à±0,21px, y compris appuis rapides, quantité, mensuels, boutique et sélection pendant ouverture. Arrivée560ms/.2→1/18px, retour300ms sur la seule carte recentrée. IAB430/320/desktop, mouvement réduit, bandeau fixe et animations desktop contrôlés ;314 tests passent. Rapport : `docs/qa/mobile-steady-features-2026-11-17/design-qa.md`. Publication à consigner.
+
 ## Bouton Changer lisible sur téléphone — 17 novembre2026
 
 Fond noir opaque et texte blanc sur les trois forfaits, états ouvert/survol contrastés, cible44 px et dimensions identiques. Apparence desktop32 px et animation mobile400 ms conservées. IAB430/320 et bureau, ouverture/fermeture et changement entre les trois offres contrôlés ;314 tests passent. Publié dans `20261117T061816Z-d807806baf1d` et vérifié sur Business en HTTPS, avec client/CSS conformes et santé valide. Localhost fermé. Rapport : `docs/qa/mobile-change-contrast-2026-11-17/design-qa.md`.

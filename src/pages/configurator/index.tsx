@@ -130,6 +130,7 @@ export function ConfiguratorPage() {
   const firstFeatureGroup = useRef<HTMLButtonElement>(null)
   const successHeading = useRef<HTMLHeadingElement>(null)
   const openingGroup = useRef<HTMLButtonElement>(null)
+  const choiceAnchor = useRef<{ element: HTMLElement; top: number } | null>(null)
   const estimateRef = useRef<HTMLDivElement>(null)
   const [estimateOutsideViewport, setEstimateOutsideViewport] = useState(false)
   const [hasReachedFeatures, setHasReachedFeatures] = useState(false)
@@ -156,7 +157,7 @@ export function ConfiguratorPage() {
   ]
   const selectionRanks = new Map(orderedSelection.map((key, index) => [key, index]))
   const selectionOrderKey = `${orderedSelection.join('|')}:${configuration.extraPageCount ?? 1}`
-  const optionReflow = useOptionReflow(selectionOrderKey)
+  const optionReflow = useOptionReflow(selectionOrderKey, !editingId)
   const custom = offer.id === 'sur-mesure'
   const editingLoaded = !editingId || (user && loadedProjectKey === `${user.id}:${editingId}`)
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
@@ -167,6 +168,16 @@ export function ConfiguratorPage() {
   const visibleGroups = optionGroups.filter((group) =>
     visibleOptions.some((option) => option.group === group.id),
   )
+
+  // On a phone the summary is above the controls. Keep the touched row in
+  // place after its new height commits, before the browser paints the result.
+  useLayoutEffect(() => {
+    const anchor = choiceAnchor.current
+    choiceAnchor.current = null
+    if (!anchor?.element.isConnected) return
+    const delta = anchor.element.getBoundingClientRect().top - anchor.top
+    if (Math.abs(delta) > .5) window.scrollBy({ top: delta, behavior: 'instant' })
+  })
 
   useEffect(() => {
     const estimate = estimateRef.current
@@ -267,7 +278,18 @@ export function ConfiguratorPage() {
     }
   }, [editingId, user?.id, authLoading, navigate, loadAttempt])
 
+  function captureChoicePosition(id: OptionId) {
+    openingGroup.current = null
+    choiceAnchor.current = null
+    if (editingId || !window.matchMedia('(max-width: 760px)').matches) return
+    const element = document.getElementById(`option-${id}`)?.closest<HTMLElement>('.configurator-choice-item')
+    if (!element) return
+    const rect = element.getBoundingClientRect()
+    if (rect.bottom > 0 && rect.top < window.innerHeight)
+      choiceAnchor.current = { element, top: rect.top }
+  }
   function changeOption(id: OptionId, checked: boolean) {
+    captureChoicePosition(id)
     optionReflow.capture()
     const next = withOption(configuration, id, checked)
     setSelectionOrder(checked
@@ -377,7 +399,7 @@ export function ConfiguratorPage() {
     )
 
   return (
-    <section className="configurator-page container">
+    <section className="configurator-page container" data-public={!editingId}>
       <div className="configurator-topline">
         <Link to={getPlanReturnHref()} viewTransition={canAnimatePlanNavigation()}>
           <ArrowLeft size={15} aria-hidden="true" />
@@ -628,6 +650,7 @@ export function ConfiguratorPage() {
                                       onChange={(event) => {
                                         const count = event.currentTarget.valueAsNumber
                                         if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
+                                        captureChoicePosition(option.id)
                                         optionReflow.capture()
                                         setConfiguration(withExtraPageCount(configuration, count))
                                         setError('')
