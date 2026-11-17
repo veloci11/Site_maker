@@ -1,0 +1,60 @@
+{
+  "bar": {
+    "bottom": 740,
+    "height": 99,
+    "left": 0,
+    "right": 320,
+    "top": 641,
+    "width": 320,
+    "x": 0,
+    "y": 641
+  },
+  "names": 0,
+  "pageTransform": "none",
+  "parts": [
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "configurator-topline",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "selected-plan pricing-card--vitrine",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "configurator-options",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "configurator-price-bar",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "configurator-price-bar:DIV",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "1e-05s",
+      "opacity": "1",
+      "part": "button button--primary button--default",
+      "transform": "none"
+    }
+  ],
+  "path": "/forfaits/vitrine",
+  "width": 320
+}

@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Arrivée mobile visible après validation de la fluidité — 17 novembre 2026
+
+Mathis confirme que le téléphone ne saccade plus, mais perçoit le passage de 200 ms/.55→1/6px comme une coupure sans animation. L'arrivée mobile devient visible sur400 ms : carte et liens supérieurs, texte compris, en fondu0→1 et translation24px→0. Les fonctionnalités ont le même fondu, sans translation pour garder l'ancre Personnaliser immobile. Le fond de la barre de prix reste opaque et fixe ; seuls ses enfants se fondent. Toujours aucun zoom, capture native, délai de navigation ou animation globale du listing. Desktop760 ms, comparatif au scroll de page, retours et réduction du mouvement conservés. Les contrôles doivent observer plusieurs phases, pas seulement la présence d'un nom CSS. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/`.
+
 ## Comparatif dans la page et carte mobile directe — 16 novembre 2026
 
 Mathis juge le recadrage animé mobile encore étrange et rejette le scroll interne du comparatif. Cette décision remplace le canevas natif mobile et le scrollport décrits ci-dessous. Sur téléphone/tactile/fenêtre étroite, la vraie carte complète, image et texte ensemble, apparaît sur 200 ms avec opacité .55→1 et déplacement de 6 px : pas de zoom, de capture, de recadrage ni de fondu texte séquentiel. Le listing reste stable au retour. Le filtre du routeur retire aussi les captures mémorisées par les POP desktop→tactile, sans modifier l'historique ni les bloqueurs. Le raccord desktop de 760 ms reste conservé. Anciennes branches compactes, helper de canevas et tests correspondants supprimés.

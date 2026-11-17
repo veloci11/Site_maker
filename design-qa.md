@@ -1,3 +1,7 @@
+## Animation mobile plus visible — 17 novembre 2026
+
+Après validation de la fluidité, Mathis juge le mouvement200 ms trop discret. Arrivée400 ms de la carte réelle et des liens supérieurs en fondu/glissement24 px ; fonctionnalités et contenu de barre synchronisés en opacité seule. Fond de barre opaque, ancre Personnaliser immobile, zéro capture/zoom/attente. Phases réelles0,01→0,54→1 observées à430 px, menu/retour/reduced à320 et desktop760 ms conservé.314 tests passent, aucune alerte console. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/design-qa.md`. Publication à consigner.
+
 ## Comparatif dans la page et transition mobile directe — 16 novembre 2026
 
 Reprise après retour matériel : plus de scroll interne dans le comparatif, thead collé sous la navigation, trois offres et bordures/arrondis conservés. La carte mobile réelle apparaît avec son texte en 200 ms, sans capture/zoom/recadrage ; anciens mécanismes retirés. IAB430/320/écran court568 : scroll page, entrée/sortie du sticky, remontée, détails, Changer, retours Business/Premium et retour rapide contrôlés. Réduction de mouvement et desktop760 ms conservés. Trois spécialistes, contre-relecture et314 tests réussis. Rapport : `docs/qa/mobile-page-scroll-2026-11-16/design-qa.md`. Publié dans `20261117T054057Z-8363e7e8eaae` et contrôlé en HTTPS : tableau au scroll de page, header147 px, animation réelle.2s et retour Business aligné ; client/CSS conformes, santé/catalogue inchangés et localhost fermé.

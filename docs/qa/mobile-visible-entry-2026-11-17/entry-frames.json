@@ -1,0 +1,182 @@
+{
+  "start": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "names": 0,
+    "pageTransform": "none",
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "0.0104866",
+        "part": "configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 23.7483)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "0.0104866",
+        "part": "selected-plan pricing-card--vitrine",
+        "transform": "matrix(1, 0, 0, 1, 0, 23.7483)"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.0104866",
+        "part": "configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "part": "configurator-price-bar",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.0104866",
+        "part": "configurator-price-bar:DIV",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.0104866",
+        "part": "button button--primary button--default",
+        "transform": "none"
+      }
+    ],
+    "path": "/forfaits/vitrine",
+    "width": 430
+  },
+  "mid": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "names": 0,
+    "pageTransform": "none",
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "0.537495",
+        "part": "configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 11.1001)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "0.537495",
+        "part": "selected-plan pricing-card--vitrine",
+        "transform": "matrix(1, 0, 0, 1, 0, 11.1001)"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.537495",
+        "part": "configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "part": "configurator-price-bar",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.537495",
+        "part": "configurator-price-bar:DIV",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "0.537495",
+        "part": "button button--primary button--default",
+        "transform": "none"
+      }
+    ],
+    "path": "/forfaits/vitrine",
+    "width": 430
+  },
+  "end": {
+    "bar": {
+      "bottom": 932,
+      "height": 99,
+      "left": 0,
+      "right": 430,
+      "top": 833,
+      "width": 430,
+      "x": 0,
+      "y": 833
+    },
+    "names": 0,
+    "pageTransform": "none",
+    "parts": [
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "1",
+        "part": "configurator-topline",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "animation": "plan-live-content-arrive",
+        "duration": "0.4s",
+        "opacity": "1",
+        "part": "selected-plan pricing-card--vitrine",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "1",
+        "part": "configurator-options",
+        "transform": "none"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "opacity": "1",
+        "part": "configurator-price-bar",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "1",
+        "part": "configurator-price-bar:DIV",
+        "transform": "none"
+      },
+      {
+        "animation": "plan-motion-fade",
+        "duration": "0.4s",
+        "opacity": "1",
+        "part": "button button--primary button--default",
+        "transform": "none"
+      }
+    ],
+    "path": "/forfaits/vitrine",
+    "width": 430
+  }
+}

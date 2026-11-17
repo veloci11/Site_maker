@@ -1,0 +1,61 @@
+{
+  "bar": {
+    "bottom": 740,
+    "height": 99,
+    "left": 0,
+    "right": 320,
+    "top": 641,
+    "width": 320,
+    "x": 0,
+    "y": 641
+  },
+  "names": 0,
+  "pageTransform": "none",
+  "parts": [
+    {
+      "animation": "plan-live-content-arrive",
+      "duration": "0.4s",
+      "opacity": "0.873698",
+      "part": "configurator-topline",
+      "transform": "matrix(1, 0, 0, 1, 0, 3.03125)"
+    },
+    {
+      "animation": "plan-live-content-arrive",
+      "duration": "0.4s",
+      "opacity": "0.873698",
+      "part": "selected-plan pricing-card--connecte",
+      "transform": "matrix(1, 0, 0, 1, 0, 3.03125)"
+    },
+    {
+      "animation": "plan-motion-fade",
+      "duration": "0.4s",
+      "opacity": "0.873698",
+      "part": "configurator-options",
+      "transform": "none"
+    },
+    {
+      "animation": "none",
+      "duration": "0s",
+      "opacity": "1",
+      "part": "configurator-price-bar",
+      "transform": "none"
+    },
+    {
+      "animation": "plan-motion-fade",
+      "duration": "0.4s",
+      "opacity": "0.873698",
+      "part": "configurator-price-bar:DIV",
+      "transform": "none"
+    },
+    {
+      "animation": "plan-motion-fade",
+      "duration": "0.4s",
+      "opacity": "0.873698",
+      "part": "button button--primary button--default",
+      "transform": "none"
+    }
+  ],
+  "path": "/forfaits/connecte",
+  "width": 320,
+  "menuStillPresent": false
+}

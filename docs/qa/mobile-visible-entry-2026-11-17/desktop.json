@@ -1,0 +1,10 @@
+{
+  "animation": "none",
+  "duration": ".76s",
+  "names": [
+    "plan-vitrine",
+    "plan-vitrine-heading",
+    "plan-vitrine-content"
+  ],
+  "width": 1280
+}

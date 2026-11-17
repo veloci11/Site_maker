@@ -1,3 +1,7 @@
+# Animation mobile à nouveau perceptible — 17 novembre 2026
+
+Mathis valide la fluidité mais ne voit pas l'entrée200 ms. Correction CSS limitée : arrivée400 ms de la carte et des liens, opacité0→1 et translation24 px ; fonctionnalités et contenu de barre en fondu synchronisé, ancre et fond de barre fixes. Aucun bitmap, zoom ou délai de navigation. IAB430/320 et bureau : phases visibles, commande immédiate, pas de rejeu après sélection, menu, retour aligné et reduced contrôlés.314 tests réussis. Rapport : `qa/mobile-visible-entry-2026-11-17/`. Publication à consigner.
+
 # Comparatif au scroll de page et animation mobile directe — 16 novembre 2026
 
 Mathis rejette le scroll interne et trouve encore le raccord mobile étrange. Le comparatif suit maintenant la page, les trois offres restant visibles dans un en-tête sticky sous la navigation, avec bordures et arrondis ; CSS natif et fallback mobile rAF. La carte mobile réelle arrive en200 ms, texte/image ensemble, sans capture ni recadrage ; retour listing stable, ancien code compact supprimé. Trois spécialistes et contre-relecture ;314 tests et IAB320/430/écran court/bureau valident les détails, les deux sens de scroll, les retours Business/Premium, Changer et retour rapide. Rapport : `qa/mobile-page-scroll-2026-11-16/`. Publié dans `20261117T054057Z-8363e7e8eaae` et contrôlé en HTTPS : tableau au scroll de page, header147 px, animation réelle.2s et retour Business aligné ; client/CSS conformes, santé/catalogue inchangés et localhost fermé.

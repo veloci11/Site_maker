@@ -1,0 +1,24 @@
+{
+  "card": {
+    "bottom": 678.09375,
+    "height": 531,
+    "left": 20,
+    "right": 300,
+    "top": 147.09375,
+    "width": 280,
+    "x": 20,
+    "y": 147.09375
+  },
+  "header": {
+    "bottom": 147,
+    "height": 147,
+    "left": 0,
+    "right": 320,
+    "top": 0,
+    "width": 320,
+    "x": 0,
+    "y": 0
+  },
+  "pageAnimation": "none",
+  "path": "/"
+}

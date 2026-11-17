@@ -294,27 +294,37 @@
   to { clip-path: inset(var(--plan-copy-exit-top, 0px) var(--plan-copy-exit-right, 0px) var(--plan-copy-exit-bottom, 0px) var(--plan-copy-exit-left, 0px)); }
 }
 
-/* Keep in sync with LIVE_PLAN_MOTION_QUERY. The real card, its image and all
-   its copy arrive together. Never transform a page/fixed-price-bar ancestor,
-   capture a bitmap, zoom the card or defer text until another effect ends. */
+/* Keep in sync with LIVE_PLAN_MOTION_QUERY. The real configuration arrives as
+   one readable movement. The fixed bar stays opaque while its content fades;
+   none of its ancestors transform, and no image is captured or resized. */
 @media (max-width: 760px), (hover: none), (pointer: coarse) {
   /* Listings keep their restored position and do not flash/fade as a whole. */
   .public-shell .motion-page {
     animation: none;
   }
 
+  .public-shell .motion-page .configurator-topline,
   .public-shell .motion-page .selected-plan {
-    animation: plan-live-card-arrive 200ms cubic-bezier(.22,.75,.3,1) both;
+    animation: plan-live-content-arrive 400ms cubic-bezier(.25,.1,.25,1) both;
+  }
+
+  /* Keep the scroll-to-features anchor stationary even on an immediate tap. */
+  .public-shell .motion-page .configurator-options,
+  .public-shell .motion-page .configurator-price-bar > * {
+    animation: plan-motion-fade 400ms cubic-bezier(.25,.1,.25,1) both;
   }
 }
 
-@keyframes plan-live-card-arrive {
-  from { opacity: .55; transform: translateY(6px); }
+@keyframes plan-live-content-arrive {
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .public-shell .motion-page .selected-plan { animation: none; }
+  .public-shell .motion-page .configurator-topline,
+  .public-shell .motion-page .selected-plan,
+  .public-shell .motion-page .configurator-options,
+  .public-shell .motion-page .configurator-price-bar > * { animation: none; }
 
   :root::view-transition-old(*),
   :root::view-transition-new(*),
