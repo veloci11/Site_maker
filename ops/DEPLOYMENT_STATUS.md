@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — retour mobile sans variation d’opacité
+## Version active — carte choisie centrée au retour mobile
+
+- Révision applicative `d41b9df63dfd8247d1046892d2cfaf761a0b3d9c`
+- Release `/home/mathis/site-maker/releases/20261117T220025Z-d41b9df63dfd`
+- Client `/assets/index-DbvE-oBD.js`, SHA-256 `34bca7b5143765c3b5552ad7b3379e469d68b6c6b7f67f142d1bb0c5ae04e5e1`
+- Archive : 27 940 144 octets, SHA-256 `e0326fbf1e39fe5fb1ecb1e708bed251eba63fb26b4caf1af6168a09bc05b948`
+
+En HTTPS à 430 × 932 px, les cartes Vitrine et Business se centrent à moins de 0,2 px près dans l’espace sous le header après Retour navigateur et Tous les forfaits. Déplacement de 16 px sur 560 ms, opacité à 1 et défilement stable. En aperçu à 320 × 568 px, titre à 12 px sous le header et mouvement réduit appliqué. Raccord bureau à 560 ms vérifié. 316 tests passent.
+
+Sauvegarde, préflight SSR et bascule vérifiés, catalogue identique par SHA-256. Service et tunnel actifs. Aperçu local fermé.
+
+## Version précédente — retour mobile sans variation d’opacité
 
 - Révision applicative `5c77fc9da692f51b41daab5ddd704698fd0128ce`
 - Release `/home/mathis/site-maker/releases/20261117T215514Z-5c77fc9da692`

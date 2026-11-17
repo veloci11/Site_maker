@@ -20,3 +20,9 @@
 - Avant correction, Business au retour navigateur démarre à .68 d’opacité et le dégradé laisse transparaître le fond clair. Le déplacement est de 14 px et le défilement est stable.
 - Après correction en HTTPS à 430 px, Business via Retour navigateur et Premium / 3D via Tous les forfaits restent à 1 d’opacité, respectivement sur 82 et 75 images échantillonnées. Translation 14 → 9,46 → 0 px et 14 → 9,52 → 0 px, durée 560 ms. Positions finales 126,80 et 127,05 px sous la navigation, défilement constant.
 - En local à 320 px avec mouvement réduit, Vitrine est à pleine opacité et alignée dès la première image. Contrôle mobile en émulation. Build et 314 tests validés.
+
+## Carte sélectionnée centrée sous le header
+
+- HTTPS, 430 × 932 px avec safe-area simulée de 59 px. Retour navigateur depuis Vitrine : espaces supérieur et inférieur de 187,80 et 188,20 px. Lien Tous les forfaits depuis Business : 169,80 et 169,45 px. Le document reste à sa position finale pendant le glissement de 16 px et 560 ms. Chaque carte reste opaque. Premium / 3D vérifié en local avec des espaces de 180,55 et 180,45 px.
+- En 320 × 568 px avec mouvement réduit, Vitrine dépasse la hauteur disponible. Le titre reste accessible à 12,21 px sous le header. À 1 280 px, la section s’aligne à 95,95 px pour un header de 96 px et le raccord natif dure 560 ms.
+- TypeScript, build et 316 tests passent. Aucune alerte console pendant la vérification en HTTPS. Mobile vérifié en émulation dans le navigateur intégré.

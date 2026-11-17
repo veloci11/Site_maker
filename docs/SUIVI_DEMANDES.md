@@ -1,3 +1,7 @@
+# Carte centrée au retour sur téléphone — 17 novembre 2026
+
+Publié sur gilmathis.com dans `d41b9df63dfd`. La carte choisie revient au centre de la zone sous le header avec un glissement opaque de 560 ms. Sur un écran trop court, le titre reste dégagé. Retour navigateur et lien Tous les forfaits vérifiés en HTTPS à 430 px. 316 tests réussis.
+
 # Flash au retour des forfaits sur téléphone — 17 novembre 2026
 
 Publié sur gilmathis.com dans `5c77fc9da692`. La carte reste opaque pendant son glissement de retour à 560 ms. Retour navigateur et lien Tous les forfaits vérifiés en HTTPS à 430 px, mouvement réduit vérifié à 320 px en local. Les 314 tests passent.
