@@ -1,6 +1,6 @@
 # Fluidité des forfaits, trois offres sur mobile et logo
 
-16 novembre 2026. État : vérification locale terminée ; publication à consigner.
+16 novembre 2026. État : publié et contrôlé sur `https://gilmathis.com/`, révision `c128e4213fa8a117d55908c17a922abb6ad019e9`, release `20261117T043244Z-c128e4213fa8`.
 
 ## Demandes et réalisation
 
@@ -30,3 +30,11 @@
 | Retour navigateur | 80 | 14 | 8,991 ms | 3,150 ms |
 
 La première optimisation de surface seule ne suffisait pas : une navigation FAQ sans carte produisait elle aussi 85 layouts, ce qui a conduit à composer séparément les bandes du logo. Les durées totales de tâche ne baissent pas uniformément ; les compteurs montrent surtout une réduction du travail de layout, pas une garantie de fréquence d'affichage. Ce contrôle utilise l'IAB en émulation et ne constitue pas une mesure FPS sur un iPhone physique.
+
+## Contrôle public et fermeture
+
+IAB HTTPS : à 1280 px, ouvrir Forfaits garde le logo à sa matrice identité, avec ses trois calques. À 430 px avec safe-area 59/34, les trois offres et les quinze rangées de trois valeurs sont présentes ; document 430 px sans débordement, fondu supérieur 180 px et wrapper transparent conservés. Capture `06-public-three-offers.jpg`. Le premier clic froid du comparatif charge encore son module à 100 ms ; le contrôle préchauffé depuis la carte Business observe ensuite une seule capture, profil compact, animation plan-mobile-surface de .36 s, canevas 390 × 465,523 px. Retour : carte Business à 147,211 px pour un header de 147 px. Aucune alerte console mobile ou desktop. Preuve `public-browser.json`.
+
+Le client et les deux CSS HTTPS correspondent au build par SHA-256, santé et thème/manifeste blancs valides (`public-integrity.json`). Sauvegarde privée et préflight Node24/SSR réussis avant bascule atomique. Les trois offres, les 28 définitions, prix et identifiants historiques restent identiques. Seul site-maker.service redémarré ; 22 autres services/PID inchangés et GP Park inactif (`deployment-origin.json`). Tailscale déjà actif laissé inchangé.
+
+Serveur de cette tâche arrêté : PID 75792, port 4183 vérifié fermé. Compteurs de performance désactivés, émulations et viewport retirés, quatre onglets de contrôle fermés ; seule la nouvelle prévisualisation publique est conservée.

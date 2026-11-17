@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — fondu supérieur et navigation transparente
+## Version active — fluidité mobile, comparatif trois offres et logo
+
+- URL `https://gilmathis.com/`
+- Révision applicative `c128e4213fa8a117d55908c17a922abb6ad019e9`
+- Release `/home/mathis/site-maker/releases/20261117T043244Z-c128e4213fa8`
+- Client `/assets/index-DctWazF2.js`, SHA-256 `f1487a99669f8c1a92fbb270fc5b9daad7cc7fc1a4b35495869403ff7c58e49c`
+- Archive client/SSR/runtime : 27979958 octets, SHA-256 `6e6e0d0c2b3930801427d4ebd8610164efa847a185498dc21eb7d4aa3d9c00cc`
+
+Le mobile ne capture plus que sa texture : canevas fixe, translation/échelle uniforme et recadrage sur 360 ms. Le texte reste réel et apparaît en fondu 140 ms après le retrait de la surface native. Le changement entre forfaits ne conserve plus le fondu desktop de 500 ms. Logo au même dessin et à la même animation : bandes vectorielles placées dans des calques HTML, payload stable et introduction indexée sur pathname+search ; menu, ancre et sélection ne la rejouent plus. Le comparatif mobile présente les trois offres en colonnes, avec critères pleine largeur, noms/prix/CTA fixes et sans sélecteurs. Fondu supérieur, navigation transparente, prix et raccord desktop 760 ms conservés.
+
+TypeScript, builds client/SSR/Sites et 321 tests passent. Deux relectures de source et IAB local 320/430/1280 : détails, mouvement réduit, sélection/retrait, changement de forfait et retours vérifiés. Sur les parcours Vitrine préchauffés, layouts 80–85 avant / 14–16 après ; ce sont des compteurs de navigateur émulé, sans garantie FPS sur iPhone physique.
+
+IAB HTTPS 1280 : menu Forfaits sans rejeu du logo. HTTPS 430 avec safe-area 59/34 : trois offres simultanées, une seule capture plan-connecte sur .36 s, canevas fixe ; retour Business à 147,211 px pour un header de 147 px. Aucune alerte console. Client et deux CSS publics conformes par SHA-256, santé valide, thème/manifeste blancs et fondu 180 px conservés.
+
+Sauvegarde privée et préflight Node24/SSR avant bascule atomique. Trois offres, 28 définitions, tarifs et identifiants historiques inchangés ; 22 autres services/PID préservés et GP Park inactif. Seul site-maker.service redémarré. Tailscale déjà actif laissé inchangé. Localhost 4183 fermé (PID 75792) ; compteurs de performance, émulations et viewport retirés, quatre onglets de test fermés. Prévisualisation publique conservée. Rapport et preuves : `docs/qa/mobile-fluid-2026-11-16/`.
+
+## Version précédente — fondu supérieur et navigation transparente
 
 - URL `https://gilmathis.com/`
 - Révision applicative `b45c6ca69f0f76954b67c16ad89a9e19a69c0de4`

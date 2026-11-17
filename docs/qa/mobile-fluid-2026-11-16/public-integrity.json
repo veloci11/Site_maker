@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-17T04:34:37.076629+00:00",
+  "origin": "https://gilmathis.com",
+  "release": "20261117T043244Z-c128e4213fa8",
+  "commit": "c128e4213fa8a117d55908c17a922abb6ad019e9",
+  "theme": "#ffffff",
+  "health": true,
+  "assets": [
+    {
+      "path": "/assets/index-DctWazF2.js",
+      "sha256": "f1487a99669f8c1a92fbb270fc5b9daad7cc7fc1a4b35495869403ff7c58e49c",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-uvNzIelO.css",
+      "sha256": "90fdae33ccba8b89de41d2b15f01c8edebd4cf152aea1bbfbe2a9975ca6668f0",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-SXWmA-CX.css",
+      "sha256": "13436e0fb9be0b4fe9b601d7a17ab5766d2b26891f1c3e3ab9d158fcfc5815b9",
+      "matchesLocalBuild": true
+    }
+  ]
+}

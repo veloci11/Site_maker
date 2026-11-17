@@ -1,0 +1,100 @@
+{
+  "logo": {
+    "bands": 3,
+    "path": "/",
+    "script": [
+      "https://gilmathis.com/assets/index-DctWazF2.js"
+    ],
+    "transform": "matrix(1, 0, 0, 1, 0, 0)",
+    "width": 1280
+  },
+  "comparison": {
+    "columns": 3,
+    "document": 430,
+    "headerBackground": "rgba(0, 0, 0, 0)",
+    "offers": [
+      "Vitrine\n\nÀ partir de 890 €\n\nConfigurer",
+      "Business\n\nÀ partir de 1 490 €\n\nConfigurer",
+      "Premium / 3D\n\nÀ partir de 2 490 €\n\nConfigurer"
+    ],
+    "topFade": "180px",
+    "values": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "width": 430
+  },
+  "motion": {
+    "animation": "plan-mobile-surface",
+    "canvas": {
+      "height": "465.523px",
+      "width": "390px"
+    },
+    "duration": "0.36s",
+    "names": [
+      "plan-connecte"
+    ],
+    "path": "/forfaits/connecte",
+    "phase": "incoming",
+    "profile": "compact"
+  },
+  "return": {
+    "card": {
+      "bottom": 591.2109375,
+      "height": 444,
+      "left": 20,
+      "right": 410,
+      "top": 147.2109375,
+      "width": 390,
+      "x": 20,
+      "y": 147.2109375
+    },
+    "header": {
+      "bottom": 147,
+      "height": 147,
+      "left": 0,
+      "right": 430,
+      "top": 0,
+      "width": 430,
+      "x": 0,
+      "y": 0
+    },
+    "names": 0,
+    "overflow": false,
+    "path": "/"
+  },
+  "logs": {
+    "mobile": [],
+    "desktop": []
+  },
+  "motionSamples": [
+    {
+      "animation": "plan-mobile-surface",
+      "canvas": {
+        "height": "465.523px",
+        "width": "390px"
+      },
+      "duration": "0.36s",
+      "names": [
+        "plan-connecte"
+      ],
+      "path": "/forfaits/connecte",
+      "phase": "incoming",
+      "profile": "compact"
+    }
+  ],
+  "note": "The first cold comparison click was still loading its route module at 100ms. The warmed card check observes the actual incoming animation."
+}
