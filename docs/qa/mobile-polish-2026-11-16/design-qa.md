@@ -1,6 +1,6 @@
 # Téléphone : fond supérieur, raccord et ergonomie
 
-16 novembre 2026. État : contrôles locaux réussis, publication à consigner. Limite matérielle : le tint natif derrière l'heure/la batterie n'est pas reproduit par le navigateur intégré.
+16 novembre 2026. Publié sur gilmathis.com : révision561725509cfa95c443b37ba0256a743b87e23de7, release20261117T014851Z-561725509cfa. Contrôles web locaux/HTTPS réussis ; rendu natif derrière l'heure/la batterie non confirmé après cette dernière version.
 
 ## Retour utilisateur et diagnostic
 
@@ -31,3 +31,9 @@ La révision e7de738 a été publiée dans 20261117T013123Z-e7de73879695. Mathis
 Le correctif suivant peint directement toute la hauteur du wrapper public de navigation et retire entièrement le calque fixed expérimental. Il n'ajoute pas de contexte de calques au contenu ni d'écouteur scroll. Le header du configurateur conserve son positionnement relatif et quitte donc l'écran, sans rectangle de fond restant sous les fonctionnalités. Contrôle local430×932 : wrapper147px opaque, barre basse au bas932 et titres lisibles. Capture `10-full-header-paint.jpg`. Une garde sur la clé de route évite aussi de refermer un premier tap du menu pendant l'hydratation, observé lors de la vérification publique.
 
 321 tests passent après ces derniers changements (`.data/deployment/mobile-edge-final-check.log`). Les réponses HTTP pour User-Agent iPhone et desktop montrent la même version et Cache-Control:no-store / CF-Cache-Status:DYNAMIC : aucune variante mobile obsolète détectée. État natif : toujours à confirmer après la publication du correctif de fond complet.
+
+## Contrôle public et fermeture
+
+HTTPS430 : nouveau client index-CTzg6dx7.js ; wrapper opaque RGB232/222/244 et dégradé présent, calque expérimental absent, document430px. Menu ouvert sans logo, titre Menu ; capture `09-public-menu.jpg`. Depuis Business : profilcompact, durée420ms, noms plan-connecte et plan-connecte-content. Personnaliser déroule les fonctionnalités, devient Continuer, focus sur le titre à107,07px ; barre au bas932 et header configurateur hors écran à-499,5px. Aucune alerte console observée.
+
+Empreintes du client/deuxCSS, manifeste et santé dans `public-integrity.json` ; sauvegarde et catalogue/services inchangés dans `deployment-origin.json`. Le serveur local4183 a été arrêté, les émulations/viewport restaurés et les onglets locaux/de recherche fermés. Prévisualisation publique conservée. Le téléphone de Mathis n'a pas encore confirmé la dernière correction de fond : aucun succès matériel ni FPS mesuré n'est revendiqué.

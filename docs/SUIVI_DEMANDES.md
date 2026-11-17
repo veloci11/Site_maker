@@ -1,6 +1,6 @@
 # Téléphone : nouvelle reprise après retour iPhone — 16 novembre 2026
 
-Mathis voit encore du blanc derrière l'heure et rejette l'animation mobile trop discrète. Nouveau calque fixed opaque au bord supérieur, fond body/manifest cohérent, raccord de carte visible420ms sans captures de page et arrivée360ms depuis le menu. Logo du panneau retiré, croix fixe pendant le scroll. Personnaliser amène aux vraies fonctionnalités avant Continuer ; cibles44px. Code et contrôles locaux terminés, 321 tests réussis. Preuves : `qa/mobile-polish-2026-11-16/`. Le rendu natif sur son iPhone reste distinct du résultat en émulation ; publication à consigner.
+Mathis voit encore du blanc derrière l'heure et rejette l'animation mobile trop discrète. Raccord visible420ms sans captures de page, arrivée360ms depuis le menu, logo retiré, croix fixe, Personnaliser avant les vraies fonctionnalités et cibles44px. Le premier essai e7de738 de bande fixed échoue sur son iPhone ; sa capture IMG_5897 conduit à supprimer ce calque et à peindre directement le wrapper de navigation. Révision5617255 publiée dans20261117T014851Z-561725509cfa et contrôlée en HTTPS ;321 tests passent. Client/CSS conformes, santé/catalogue inchangés, localhost fermé. Preuves : `qa/mobile-polish-2026-11-16/`. Rendu natif derrière l'heure non confirmé après la dernière version ; ne pas le confondre avec l'émulation.
 
 # Reprise Safari et téléphone — 16 novembre 2026
 

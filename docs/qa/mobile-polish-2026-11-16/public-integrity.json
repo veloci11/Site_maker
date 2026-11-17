@@ -1,13 +1,14 @@
 {
-  "commit": "e7de73879695e580fb13b2b641c4139d18be21bc",
-  "releaseName": "20261117T013123Z-e7de73879695",
-  "entryScript": "index-C-2LZ-iz.js",
-  "entrySha256": "810b38edae9bb94f85554cfa5dd6a91cc2b7f8dd7b8e6e4673141790cfbdde2d",
-  "archiveBytes": 27977715,
-  "archiveSha256": "6120206da6f5169290efa3f1b85833b15bfba55465ab377af00e32b7407b1bb1",
+  "commit": "561725509cfa95c443b37ba0256a743b87e23de7",
+  "releaseName": "20261117T014851Z-561725509cfa",
+  "entryScript": "index-CTzg6dx7.js",
+  "entrySha256": "eb5b273fafd7a9574814f331d5c1efbd909ef4477b3fad346b9798406f1e333c",
+  "archiveBytes": 27976922,
+  "archiveSha256": "3ba53ae7be23ff2cc629a353b981ccd7b010f06cb1b8776e6314a93498ebf732",
   "health": true,
-  "initialHtmlContainsEdgePaint": true,
+  "removedExperimentalOverlay": true,
   "publicClientBytesMatch": true,
   "publicCssFilesMatch": 2,
-  "manifestBackground": "#e8def4"
+  "manifestBackground": "#e8def4",
+  "nativeIPhoneConfirmed": false
 }

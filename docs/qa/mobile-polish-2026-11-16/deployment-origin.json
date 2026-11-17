@@ -1,7 +1,7 @@
 {
-  "release": "20261117T013123Z-e7de73879695",
-  "commit": "e7de73879695e580fb13b2b641c4139d18be21bc",
-  "previous": "releases/20261116T230338Z-169e3a8b6524",
+  "release": "20261117T014851Z-561725509cfa",
+  "commit": "561725509cfa95c443b37ba0256a743b87e23de7",
+  "previous": "releases/20261117T013123Z-e7de73879695",
   "health": true,
   "offers": 3,
   "options": 28,

@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — Safari iPhone, menu compact et comparaison simultanée
+## Version active — animation et ergonomie mobile, fond de navigation
+
+- URL `https://gilmathis.com/`
+- Révision applicative `561725509cfa95c443b37ba0256a743b87e23de7`
+- Release `/home/mathis/site-maker/releases/20261117T014851Z-561725509cfa`
+- Client `/assets/index-CTzg6dx7.js`, SHA-256 `eb5b273fafd7a9574814f331d5c1efbd909ef4477b3fad346b9798406f1e333c`
+- Archive client/SSR/runtime : 27976922 octets, SHA-256 `3ba53ae7be23ff2cc629a353b981ccd7b010f06cb1b8776e6314a93498ebf732`
+
+Raccord mobile de420ms avec seulement les couches image/texte ; aucun snapshot racine/page/footer. Arrivée visible360ms depuis le menu ou une source non appariée, mouvement réduit respecté. Ligne Votre forfait/Changer après le raccord, sans flottement. Menu sans logo, croix fixe et liste défilante. Personnaliser amène aux vraies fonctionnalités avant Continuer ; cibles44px. Desktop760ms, dimensions32px et comparaison simultanée conservés.
+
+Le premier essai e7de738, publié dans 20261117T013123Z-e7de73879695, ne résolvait pas la bande native selon Mathis. Sa capture IMG_5897 montre le mauve système pendant le rafraîchissement et le dégradé du contenu plus bas. La version finale retire ce calque fixed expérimental et peint directement tout le wrapper de navigation avec le dégradé opaque. body et manifeste gardent le fond pastel. **Le rendu derrière l'heure/la batterie reste non confirmé sur l'iPhone réel après cette dernière version.**
+
+321 tests passent après les derniers changements : TypeScript et builds client/SSR/Sites. IAB local320/430 et bureau1280, puis HTTPS430 : vrai fond de header opaque et dégradé, zéro calque expérimental, menu Menu sans logo, deux noms de capture et durée420ms. Personnaliser déroule les fonctionnalités, devient Continuer, focus sur Configurez votre site ; barre au bas932, header configurateur sorti de l'écran. Aucun envoi ni alerte console. Client/deuxCSS publics conformes par SHA-256 et manifeste actuel ; réponses iPhone/desktop identiques, no-store et CDN DYNAMIC.
+
+Sauvegarde et préflight Node24/SSR réussis avant bascule atomique ; santé, tarifs, trois offres et28 définitions inchangés. Seul site-maker.service redémarré ;22 autres services/PID inchangés et GP Park inactif. Tailscale déjà actif laissé inchangé. Localhost4183 arrêté, émulations retirées et onglets de test fermés ; prévisualisation publique conservée. Rapport, captures et limites : `docs/qa/mobile-polish-2026-11-16/`.
+
+## Version précédente — Safari iPhone, menu compact et comparaison simultanée
 
 - URL `https://gilmathis.com/`
 - Révision applicative `169e3a8b65242916d0f3734aa51744ba89dfbeb8`
