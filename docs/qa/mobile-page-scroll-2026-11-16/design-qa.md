@@ -1,6 +1,6 @@
 # Défilement de page et animation mobile directe
 
-16 novembre 2026. État : vérifié localement, publication à consigner.
+16 novembre 2026. État : publié et contrôlé sur `https://gilmathis.com/`, révision `8363e7e8eaae2d240221a183d876a0bc4102c5b4`, release `20261117T054057Z-8363e7e8eaae`.
 
 ## Demande retenue et réalisation
 
@@ -26,3 +26,11 @@ Le tableau mobile n'a plus de hauteur maximale, d'overflow ni de scrollport inte
 `performance-before-after.json` compare des parcours Vitrine préchauffés, 430 ×932 / DPR3 / safe-area59, dans des fenêtres de550 ms et après l'arrêt des tests des agents. Durées CPU TaskDuration : retour par lien108,534→65,303 ms, ouverture95,168→74,825 ms, Retour navigateur87,835→48,819 ms. Layouts16/14/15→8/7/7 ; durée des recalculs de styles41,878/36,894/37,067→12,667/14,609/9,945 ms.
 
 Ces mesures caractérisent le travail du navigateur sur cette machine, pas des FPS sur iPhone matériel ni une mesure d'INP. Le masque natif est vérifié dans l'IAB ; le fallback pour navigateurs sans scroll-driven est relu dans la source mais n'a pas été forcé dans cet émulateur. Le retour physique de Mathis reste distinct de ces contrôles.
+
+## Contrôle public et fermeture
+
+HTTPS430 ×932 avec safe-area59/34 : cadre1477 px, overflowvisible et scrollTop0. Un geste dans le tableau déplace scrollY2714,5→3460 et le thead reste à147 px sous la navigation147 px ; bordures1px et arrondis14px. Capture `09-public-page-sticky.jpg`. Entrée Business : plan-live-card-arrive.2s, copie opacity1, aucune capture ni transform sur la page et barre au bas932. Retour Business : carte147,211 px pour nav147 px, sans débordement ni capture. Aucune alerte console (`public-browser.json`).
+
+Client et deux CSS HTTPS identiques au build par SHA-256 ; santé valide, thème/manifeste blancs conservés (`public-integrity.json`). Sauvegarde privée et préflight Node24/SSR réussis avant bascule atomique. Trois offres,28 définitions, tarifs et identifiants historiques inchangés ; seul site-maker.service redémarré,22 autres services/PID inchangés et GP Park inactif (`deployment-origin.json`). Tailscale déjà actif laissé inchangé.
+
+Localhost de cette tâche arrêté : PID79585, port4183 vérifié fermé. Compteurs de performance, émulations et viewport retirés ; quatre onglets de contrôle fermés, nouvelle prévisualisation publique conservée.

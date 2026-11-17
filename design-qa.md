@@ -1,6 +1,6 @@
 ## Comparatif dans la page et transition mobile directe — 16 novembre 2026
 
-Reprise après retour matériel : plus de scroll interne dans le comparatif, thead collé sous la navigation, trois offres et bordures/arrondis conservés. La carte mobile réelle apparaît avec son texte en 200 ms, sans capture/zoom/recadrage ; anciens mécanismes retirés. IAB430/320/écran court568 : scroll page, entrée/sortie du sticky, remontée, détails, Changer, retours Business/Premium et retour rapide contrôlés. Réduction de mouvement et desktop760 ms conservés. Trois spécialistes, contre-relecture et314 tests réussis. Rapport : `docs/qa/mobile-page-scroll-2026-11-16/design-qa.md`. Publication à consigner.
+Reprise après retour matériel : plus de scroll interne dans le comparatif, thead collé sous la navigation, trois offres et bordures/arrondis conservés. La carte mobile réelle apparaît avec son texte en 200 ms, sans capture/zoom/recadrage ; anciens mécanismes retirés. IAB430/320/écran court568 : scroll page, entrée/sortie du sticky, remontée, détails, Changer, retours Business/Premium et retour rapide contrôlés. Réduction de mouvement et desktop760 ms conservés. Trois spécialistes, contre-relecture et314 tests réussis. Rapport : `docs/qa/mobile-page-scroll-2026-11-16/design-qa.md`. Publié dans `20261117T054057Z-8363e7e8eaae` et contrôlé en HTTPS : tableau au scroll de page, header147 px, animation réelle.2s et retour Business aligné ; client/CSS conformes, santé/catalogue inchangés et localhost fermé.
 
 ## Fluidité mobile, comparatif trois offres et logo — 16 novembre 2026
 

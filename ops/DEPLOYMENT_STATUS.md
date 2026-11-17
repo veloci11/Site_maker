@@ -2,7 +2,23 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — fluidité mobile, comparatif trois offres et logo
+## Version active — comparatif dans la page et carte mobile directe
+
+- URL `https://gilmathis.com/`
+- Révision applicative `8363e7e8eaae2d240221a183d876a0bc4102c5b4`
+- Release `/home/mathis/site-maker/releases/20261117T054057Z-8363e7e8eaae`
+- Client `/assets/index-DFgDc_AJ.js`, SHA-256 `ab49fc6316f2ee1d3d7a481c4e004f80df12f34d1f05c1d645518340166bfa09`
+- Archive client/SSR/runtime : 27980165 octets, SHA-256 `b0c857f1ec550e2b35ed0069bfa3ea3f6971af52cf50e02a80a999dd029c3f30`
+
+Le comparatif mobile ne crée plus de scrollport : trois colonnes, critères pleine largeur, défilement du document et thead sticky sous la navigation. Bordure et arrondis attachés aux cellules, masquage des tr/tbody via timelines CSS ou fallback mobile rAF. Aucune surface colorée ajoutée derrière la nav. L'animation mobile/tactile utilise la carte réelle entière sur200 ms, image et texte ensemble, opacité et déplacement6 px ; aucun zoom, recadrage ou capture native, y compris au Retour/Avance. L'ancien mécanisme compact est supprimé. Le listing reste stable et centré au retour. Raccord desktop760 ms, logo et fondu supérieur conservés.
+
+Trois spécialistes et contre-relecture finale ; TypeScript, builds client/SSR/Sites et314 tests passent. IAB320/430, safe-area59/34 et écran court568 : scroll page, sortie du tableau et remontée, détails, Changer, retours Business/Premium et retour après30 ms vérifiés. Mouvement réduit sans animation et barre fixe non transformée. Desktop1280 : trois calques760 ms et tableau4colonnes sticky96 px conservés. Mesures préchauffées : layouts16/14/15→8/7/7 et travail de style réduit ; ce ne sont pas des FPS sur iPhone matériel.
+
+HTTPS430 : cadre1477 px overflowvisible/scrollTop0, scrollY2714,5→3460 depuis le tableau, thead147 px sous nav147 px, bordure1 px et rayon14 px. Business arrive en.2s, copie opacity1, zéro capture, barre au bas932 ; retour carte147,211 px pour nav147. Aucune alerte console. Client et deux CSS publics conformes par SHA-256 ; santé, thème et manifeste valides.
+
+Sauvegarde privée et préflight Node24/SSR avant bascule atomique ; trois offres,28 définitions, tarifs et identifiants historiques inchangés.22 autres services/PID préservés et GP Park inactif ; seul site-maker.service redémarré. Tailscale déjà actif laissé inchangé. Localhost4183 fermé (PID79585), compteurs de performance/émulations/viewport retirés et quatre onglets de test fermés. Prévisualisation publique conservée. Rapport et limites : `docs/qa/mobile-page-scroll-2026-11-16/`.
+
+## Version précédente — fluidité mobile, comparatif trois offres et logo
 
 - URL `https://gilmathis.com/`
 - Révision applicative `c128e4213fa8a117d55908c17a922abb6ad019e9`
