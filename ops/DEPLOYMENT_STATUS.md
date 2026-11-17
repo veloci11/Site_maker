@@ -2,7 +2,21 @@
 
 Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — animation et ergonomie mobile, fond de navigation
+## Version active — fondu supérieur et navigation transparente
+
+- URL `https://gilmathis.com/`
+- Révision applicative `b45c6ca69f0f76954b67c16ad89a9e19a69c0de4`
+- Release `/home/mathis/site-maker/releases/20261117T022813Z-b45c6ca69f0f`
+- Client `/assets/index-DqM0nf_I.js`, SHA-256 `0c0d35953009498f6c0fc6744cde874f430415e3036af3d6111a23e82008417b`
+- Archive client/SSR/runtime : 27978506 octets, SHA-256 `d7e1ba1b3d807d87098c07d0f70863c454c4da4c65d4b92d2a46e19d91c7a60f`
+
+Mathis précise que la zone native est mauve unie et accepte un fondu avant celle-ci. Le décor et son grain rejoignent progressivement le blanc sous la safe-area, sur 180 px, uniquement sur mobile/tactile/fenêtre étroite. Fond HTML/body, thème et manifeste blancs. Le fond opaque du wrapper de navigation est supprimé ; sa géométrie et son comportement au scroll sont conservés. Le desktop reste sans fondu supérieur. Ce lot remplace l'essai de fond derrière le header décrit ci-dessous, sans revendiquer un dégradé dans le chrome natif de Safari.
+
+TypeScript, builds client/SSR/Sites et 321 tests passent. Avant/après dans l'IAB : 320/430 px, safe-area 59/34 et desktop 1280 px. HTTPS à 430 × 932 : haut blanc progressif, wrapper transparent sans image, hauteur 147 px et même scroll 2027,5 ; aucune alerte console. Client et deux CSS publics conformes par SHA-256, manifeste actuel et santé valide.
+
+Sauvegarde privée, import runtime Node24 et rendu SSR vérifiés avant bascule atomique. Trois offres, 28 définitions, tarifs et identifiants historiques inchangés ; 22 autres services/PID conservés et GP Park inactif. Seul site-maker.service redémarré. Tailscale déjà actif laissé inchangé. Localhost 4183 arrêté (PID 69176), port vérifié fermé ; émulations retirées et onglets de test fermés. Prévisualisation publique conservée. Rapport et preuves : `docs/qa/native-gradient-2026-11-16/`.
+
+## Version précédente — animation et ergonomie mobile, fond de navigation
 
 - URL `https://gilmathis.com/`
 - Révision applicative `561725509cfa95c443b37ba0256a743b87e23de7`

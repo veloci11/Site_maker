@@ -1,6 +1,6 @@
 # Haut mauve et rectangle de navigation — 16 novembre 2026
 
-Mathis précise « haut mauve pas blanc » et choisit un fondu avant la zone système. Le décor/grain se fond vers le blanc sous la safe-area sur180px, sans déplacer les éléments. Fond du wrapper de navigation retiré : la rupture au scroll est reproduite puis corrigée dans l'IAB. Base HTML/body, thème et manifeste blancs ; desktop sans fondu ajouté. 321 tests passent. Preuves dans `qa/native-gradient-2026-11-16/`. État local vérifié ; publication à consigner. Ce lot ne prétend pas forcer le dégradé derrière l'heure dans le chrome natif Safari.
+Mathis précise « haut mauve pas blanc » et choisit un fondu avant la zone système. Le décor/grain se fond vers le blanc sous la safe-area sur 180 px, sans déplacer les éléments. Fond du wrapper de navigation retiré : la rupture au scroll est reproduite puis corrigée dans l'IAB. Base HTML/body, thème et manifeste blancs ; desktop sans fondu ajouté. 321 tests passent. Révision `b45c6ca` publiée dans `20261117T022813Z-b45c6ca69f0f` et contrôlée en HTTPS à 430 px avec safe-area 59/34 ; client/CSS conformes, aucune alerte console, santé/catalogue inchangés et localhost fermé. Preuves dans `qa/native-gradient-2026-11-16/`. Ce lot ne prétend pas forcer le dégradé derrière l'heure dans le chrome natif Safari.
 
 # Téléphone : nouvelle reprise après retour iPhone — 16 novembre 2026
 

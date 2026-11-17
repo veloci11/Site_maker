@@ -1,6 +1,6 @@
 # Fondu supérieur et retrait du rectangle de navigation
 
-16 novembre 2026. État : vérifié localement ; publication à consigner.
+16 novembre 2026. État : publié et contrôlé sur `https://gilmathis.com/`, révision `b45c6ca69f0f76954b67c16ad89a9e19a69c0de4`, release `20261117T022813Z-b45c6ca69f0f`.
 
 ## Demande retenue
 
@@ -15,6 +15,12 @@ Le rectangle est reproduit sur le site publié à430px, scroll2027,5 : le wrappe
 3. **Formats : réussi.** À320×740, document320px, fondu180px et header88px. Capture `05-top-fade-320.jpg`. À1280px avec pointeur fin, fondu0px/clear0px et header96px, donc présentation desktop conservée. Le rendu initial avec inset59 conserve un header147px. Aucune modification de géométrie, de défilement ou de logique de retour.
 
 `npm run check` : TypeScript, builds client/SSR/Sites et **321 tests passent** après les modifications fonctionnelles. Source relue par un second agent, diff sans erreur. Aucune alerte console observée. Pas de nouveau test miroir des styles pour ce changement visuel réversible. Prix, copie commerciale, logo, menu compact, animations de forfaits, comparatif et formulaire inchangés.
+
+## Contrôle après publication
+
+IAB HTTPS à 430 × 932 avec safe-area 59/34 : document 430 px, fond blanc, fondu 180 px, wrapper transparent sans image et hauteur 147 px conservée. Au scroll 2027,5, le rectangle est absent. Captures `06-public-top-safearea.jpg` et `07-public-transparent-header.jpg` ; aucune alerte console. Le client `index-DqM0nf_I.js` et les deux CSS publics correspondent au build par SHA-256, thème/manifeste blancs et santé valide (`public-integrity.json`).
+
+Sauvegarde privée et préflight Node24/SSR réussis avant bascule atomique. Tarifs, trois offres, 28 définitions et identifiants historiques inchangés ; 22 autres services/PID identiques, GP Park inactif. Seul `site-maker.service` redémarré (`deployment-origin.json`). Tailscale déjà actif laissé inchangé. Serveur local de cette tâche arrêté : PID 69176, port 4183 vérifié fermé. Émulations retirées, onglets locaux/de recherche fermés et prévisualisation publique conservée.
 
 ## Recherche et limites
 

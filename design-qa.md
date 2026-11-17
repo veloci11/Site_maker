@@ -1,6 +1,6 @@
 ## Fondu blanc supérieur — 16 novembre 2026
 
-Choix explicite de Mathis : effacer progressivement le dégradé avant la zone de l'heure, plutôt que tenter de forcer le dégradé dans Safari. Navigation redevenue transparente, rectangle coloré supprimé, fond/grain raccordés au blanc sous la safe-area sur180px ; thème et manifeste blancs. Contrôles locaux430/320/1280 et321 tests réussis. Rapport et avant/après : `docs/qa/native-gradient-2026-11-16/design-qa.md`. Publication à consigner.
+Choix explicite de Mathis : effacer progressivement le dégradé avant la zone de l'heure. Navigation redevenue transparente, rectangle coloré supprimé, fond/grain raccordés au blanc sous la safe-area sur 180 px ; thème et manifeste blancs. Contrôles locaux 430/320/1280 et 321 tests réussis. Révision `b45c6ca` publiée dans `20261117T022813Z-b45c6ca69f0f` et contrôlée en HTTPS à 430 px avec safe-area 59/34 : fondu et navigation transparente confirmés au scroll, aucune alerte console. Client et deux CSS conformes au build, santé/catalogue inchangés ; localhost fermé. Rapport, avant/après et limites : `docs/qa/native-gradient-2026-11-16/design-qa.md`.
 
 ## Téléphone : deuxième reprise après retour iPhone — 16 novembre 2026
 
