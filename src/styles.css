@@ -25,6 +25,9 @@
   --radius: 16px;
   --public-header-base-height: 96px;
   --public-header-height: calc(var(--public-header-base-height) + env(safe-area-inset-top, 0px));
+  --public-atmosphere-top-clear: 0px;
+  --public-atmosphere-top-fade: 0px;
+  --public-atmosphere-top-wash: linear-gradient(#fff var(--public-atmosphere-top-clear), rgb(255 255 255 / 0) calc(var(--public-atmosphere-top-clear) + var(--public-atmosphere-top-fade)));
   --public-atmosphere: radial-gradient(ellipse 62% 66% at -8% 14%, #a9b6f0 0%, #d4cafa 42%, rgb(224 213 255 / 0) 83%), radial-gradient(ellipse 54% 64% at 108% 17%, #ffb38c 0%, #ffcfb3 43%, rgb(255 222 199 / 0) 83%), radial-gradient(ellipse 45% 48% at 60% -10%, #ffd9dd 0%, rgb(255 233 226 / 0) 83%), radial-gradient(ellipse 50% 45% at 38% 58%, #d8e9f8 0%, rgb(223 237 248 / 0) 83%), radial-gradient(ellipse 54% 50% at 88% 57%, #fff0c9 0%, rgb(255 247 225 / 0) 84%);
   --space-1: 4px;
   --space-2: 8px;
@@ -39,9 +42,9 @@
 
 * { box-sizing: border-box; }
 html { min-width: 0; scroll-behavior: smooth; scroll-padding-top: 100px; }
-/* Give Safari an opaque page background as well as the edge surface below.
-   Transparent body/sticky ancestors alone do not supply its native top tint. */
-html:has(.public-shell), body:has(.public-shell) { background-color: #e8def4; background-image: linear-gradient(transparent 0%, transparent 46%, #fff 100%), var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; }
+/* The page and Safari's solid canvas fallback meet at white. The shared top
+   wash keeps the actual gradient continuous without painting a sticky band. */
+html:has(.public-shell), body:has(.public-shell) { background-color: #fff; background-image: var(--public-atmosphere-top-wash), linear-gradient(transparent 0%, transparent 46%, #fff 100%), var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; }
 html:has(.public-shell) { scroll-padding-top:calc(var(--public-header-height) + 12px); }
 @media (hover: hover) and (pointer: fine) {
   html:has(.public-shell) { scrollbar-gutter: stable; overscroll-behavior-y: none; }
@@ -230,16 +233,15 @@ ul, ol { padding-left: 1.25rem; }
 
 /* Static color fields, generated in CSS. Grain is blended without a gray veil. */
 @media (max-width: 760px), (hover: none), (pointer: coarse) {
-  /* Give Safari the real sticky header's complete opaque paint, rather than
-     a detached thin fixed strip. The configurator's relative header leaves
-     naturally, without a decorative layer covering the scrolling content. */
-  .public-header-wrap { background-color: #e8def4; background-image: var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; }
+  /* Fade the document's decoration below the system safe area. The navigation
+     remains transparent while scrolling; no separate edge surface is needed. */
+  :root { --public-atmosphere-top-clear: env(safe-area-inset-top, 0px); --public-atmosphere-top-fade: 180px; }
 }
 .public-shell { --muted-foreground: #575360; position: relative; isolation: isolate; overflow-x: clip; min-height: 100vh; padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px); background: transparent; }
 /* Keep the white page paint without making the transparent sticky header sample an opaque white ancestor. */
 .public-shell::after { content: ""; position: absolute; z-index: -3; inset: 0; background: #fff; pointer-events: none; }
-.public-shell::before { content: ""; position: absolute; z-index: -2; top: 0; left: 0; width: 100%; height: 1180px; pointer-events: none; background: var(--public-atmosphere); mask-image: linear-gradient(#000 0%, #000 46%, transparent 100%); }
-.ambient-grain { position: absolute; z-index: -1; top: 0; left: 0; display: block; width: 100%; height: 1180px; pointer-events: none; opacity: .28; mix-blend-mode: soft-light; mask-image: linear-gradient(#000 0%, #000 46%, transparent 100%); }
+.public-shell::before { content: ""; position: absolute; z-index: -2; top: 0; left: 0; width: 100%; height: 1180px; pointer-events: none; background-image: var(--public-atmosphere-top-wash), var(--public-atmosphere); mask-image: linear-gradient(#000 0%, #000 46%, transparent 100%); }
+.ambient-grain { position: absolute; z-index: -1; top: 0; left: 0; display: block; width: 100%; height: 1180px; pointer-events: none; opacity: .28; mix-blend-mode: soft-light; mask-image: linear-gradient(transparent var(--public-atmosphere-top-clear), #000 calc(var(--public-atmosphere-top-clear) + var(--public-atmosphere-top-fade)), #000 46%, transparent 100%); }
 .public-header-wrap { position: sticky; top: 0; z-index: 50; height: var(--public-header-height); padding-top: calc(20px + env(safe-area-inset-top, 0px)); pointer-events: none; }
 html:has(.public-shell .configurator-page) { scroll-padding-top: calc(24px + env(safe-area-inset-top, 0px)); }
 .public-shell:has(.configurator-page) .public-header-wrap { position: relative; }

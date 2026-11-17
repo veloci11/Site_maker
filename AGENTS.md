@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Fondu blanc choisi pour le haut du téléphone — 16 novembre 2026
+
+Mathis précise que le haut est mauve uni, refuse le rectangle dégradé ajouté derrière la navigation et accepte explicitement de faire disparaître le dégradé avant la zone système. Cette décision remplace les essais de bandes fixes ou de fond opaque sur le header. Le wrapper de navigation reste transparent, avec la géométrie et le sticky existants. Le décor de la page passe progressivement du blanc au dégradé sous la safe-area, sur180px, uniquement sur téléphone/tactile/fenêtre étroite. Le grain suit ce même fondu ; les fonds HTML/body reprennent la même peinture et un fond de secours blanc. Thème et manifeste blancs, lien versionné. Sur desktop, fondu supérieur nul pour conserver la direction visuelle précédente. Ne pas promettre de forcer une image dégradée dans la barre système Safari.
+
 ## Reprise iPhone après retour matériel — 16 novembre 2026
 
 Mathis confirme que le haut reste blanc sur son iPhone et rejette le fondu mobile presque invisible. Cette demande remplace le choix de désactiver tout raccord natif sur téléphone. Une source de carte ou de bouton de comparatif réellement visible peut désormais s'agrandir sur 420 ms avec deux couches : image et texte. Pas de capture racine/page/footer, de masque de copie desktop ni de transformation du conteneur des barres fixes. Les liens du menu, sources hors écran et navigateurs sans API reçoivent une arrivée visible de la carte réelle sur 360 ms. La ligne Votre forfait/Changer apparaît après le raccord, sans flotter au-dessus de l'image. Mouvement réduit prioritaire et desktop 760 ms conservé.
