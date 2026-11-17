@@ -1,0 +1,29 @@
+{
+  "comparison": {
+    "clientHeight": 638,
+    "container": {
+      "bottom": 936.5078125,
+      "height": 640,
+      "left": 20,
+      "right": 410,
+      "top": 296.5078125,
+      "width": 390,
+      "x": 20,
+      "y": 296.5078125
+    },
+    "header": {
+      "bottom": 439.5,
+      "height": 141.9921875,
+      "left": 21,
+      "right": 409,
+      "top": 297.5078125,
+      "width": 388,
+      "x": 21,
+      "y": 297.5078125
+    },
+    "overflow": "auto",
+    "page": 2714.5,
+    "scrollHeight": 1476,
+    "width": 430
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "switch": {
+    "animation": "plan-live-card-arrive",
+    "barBottom": 740,
+    "copyOpacity": "1",
+    "names": 0,
+    "path": "/forfaits/immersif-3d"
+  },
+  "return": {
+    "card": {
+      "bottom": 654.59375,
+      "height": 507.5,
+      "left": 20,
+      "right": 300,
+      "top": 147.09375,
+      "width": 280,
+      "x": 20,
+      "y": 147.09375
+    },
+    "header": {
+      "bottom": 147,
+      "height": 147,
+      "left": 0,
+      "right": 320,
+      "top": 0,
+      "width": 320,
+      "x": 0,
+      "y": 0
+    },
+    "names": 0,
+    "path": "/"
+  },
+  "rapid": {
+    "card": {
+      "bottom": 654.59375,
+      "height": 507.5,
+      "left": 20,
+      "right": 300,
+      "top": 147.09375,
+      "width": 280,
+      "x": 20,
+      "y": 147.09375
+    },
+    "names": 0,
+    "path": "/"
+  }
+}

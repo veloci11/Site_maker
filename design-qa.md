@@ -1,3 +1,7 @@
+## Comparatif dans la page et transition mobile directe — 16 novembre 2026
+
+Reprise après retour matériel : plus de scroll interne dans le comparatif, thead collé sous la navigation, trois offres et bordures/arrondis conservés. La carte mobile réelle apparaît avec son texte en 200 ms, sans capture/zoom/recadrage ; anciens mécanismes retirés. IAB430/320/écran court568 : scroll page, entrée/sortie du sticky, remontée, détails, Changer, retours Business/Premium et retour rapide contrôlés. Réduction de mouvement et desktop760 ms conservés. Trois spécialistes, contre-relecture et314 tests réussis. Rapport : `docs/qa/mobile-page-scroll-2026-11-16/design-qa.md`. Publication à consigner.
+
 ## Fluidité mobile, comparatif trois offres et logo — 16 novembre 2026
 
 Vérifié localement : une texture à canevas fixe sur mobile, trois offres côte à côte à 320/430 px avec en-tête fixe, logo joué aux vrais changements de page uniquement et bandes SVG composées séparément. Les layouts des parcours Vitrine passent de 80–85 à 14–16 en émulation ; ce n'est pas une mesure FPS matérielle. Retours, détails, sélection/retrait, mouvement réduit et raccord desktop 760 ms vérifiés. 321 tests passent. Rapport et limites : `docs/qa/mobile-fluid-2026-11-16/design-qa.md`. Publié dans `20261117T043244Z-c128e4213fa8` et contrôlé en HTTPS : trois offres, logo stable au menu et raccord mobile .36 s à une capture ; client/CSS conformes, santé/catalogue inchangés, localhost fermé.

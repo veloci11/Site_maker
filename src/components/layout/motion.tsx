@@ -2,7 +2,6 @@ import { useLayoutEffect, useRef, useState, type CSSProperties, type HTMLAttribu
 import { useLocation, useViewTransitionState } from 'react-router-dom'
 import { cn } from '../../lib/utils'
 import { preparePlanNavigation } from '../../lib/plan-return'
-import { compactPlanGeometry } from '../../lib/compact-plan-geometry'
 import { consumePlanNavigationIntent, usePlanNavigationTransition } from './plan-transition'
 import './plan-motion.css'
 
@@ -19,12 +18,11 @@ export function Reveal({ children, className, delay: _delay, once: _once, ...pro
 
 type Geometry = { id: string; surface: DOMRect; content?: DOMRect; heading?: DOMRect; anchor?: DOMRect }
 
-function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: HTMLElement | null, compact = false): Omit<Geometry, 'id'> | null {
+function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: HTMLElement | null): Omit<Geometry, 'id'> | null {
   const button = sourceElement?.closest<HTMLElement>('.comparison-cta')
   const buttonSurface = button?.querySelector<HTMLElement>('.comparison-cta__surface')
   const buttonLabel = button?.querySelector<HTMLElement>('.comparison-cta__label')
   if (buttonSurface && buttonLabel && page.contains(buttonSurface)) {
-    if (compact) return { surface: buttonSurface.getBoundingClientRect() }
     const labelBounds = buttonLabel.getBoundingClientRect()
     return {
       surface: buttonSurface.getBoundingClientRect(),
@@ -35,7 +33,6 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
   const surface = page.querySelector<HTMLElement>('.selected-plan__surface')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__surface`)
   if (!surface) return null
-  if (compact) return { surface: surface.getBoundingClientRect() }
   const content = page.querySelector<HTMLElement>('.selected-plan__copy')
     ?? page.querySelector<HTMLElement>(`.pricing-card--${variant} .pricing-card__top`)
   const heading = page.querySelector<HTMLElement>('.selected-plan__heading')
@@ -49,26 +46,9 @@ function surfaceGeometry(page: HTMLDivElement, variant: string, sourceElement?: 
   }
 }
 
-function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null, compact = false) {
+function setGeometry(old: Omit<Geometry, 'id'> | null, next: Omit<Geometry, 'id'> | null) {
   document.documentElement.dataset.planMotionShared = String(Boolean(old && next))
   document.documentElement.dataset.planMotionSurfaceTop = old && next && old.surface.width > next.surface.width ? 'old' : 'new'
-  // Mobile keeps one fixed-size paint plane, with no width/height animation or
-  // text snapshot. The taller texture stays opaque under the moving crop.
-  if (compact) {
-    const geometry = old && next ? compactPlanGeometry(old.surface, next.surface) : null
-    document.documentElement.dataset.planMotionShared = String(Boolean(geometry))
-    if (geometry) {
-      const style = document.documentElement.style
-      document.documentElement.dataset.planMotionSurfaceTop = geometry.top
-      style.setProperty('--plan-compact-width', `${geometry.width}px`)
-      style.setProperty('--plan-compact-height', `${geometry.height}px`)
-      style.setProperty('--plan-compact-from', geometry.from.transform)
-      style.setProperty('--plan-compact-to', geometry.to.transform)
-      style.setProperty('--plan-compact-crop-from', `${geometry.from.crop}px`)
-      style.setProperty('--plan-compact-crop-to', `${geometry.to.crop}px`)
-    }
-    return
-  }
   const style = document.documentElement.style
   const x = old && next ? (old.anchor ?? old.surface).x - (next.anchor ?? next.surface).x : 0
   const y = old && next ? (old.anchor ?? old.surface).y - (next.anchor ?? next.surface).y : 0
@@ -118,7 +98,6 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
   const phase = planTransition?.phase
   const nextHref = planTransition?.nextHref
   const variant = planTransition?.toPlan?.variant ?? planTransition?.fromPlan?.variant
-  const compact = planTransition?.profile === 'compact'
 
   useLayoutEffect(() => {
     if (!id || !phase || !nextHref || !variant || !page.current) return
@@ -133,19 +112,19 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
         preserveScroll: intent?.preserveScroll,
         sourceElement: intent?.sourceElement,
       })
-      const measured = surfaceGeometry(page.current, variant, intent?.sourceElement, compact)
+      const measured = surfaceGeometry(page.current, variant, intent?.sourceElement)
       outgoing.current = measured ? { id, ...measured } : null
-      setGeometry(null, null, compact)
+      setGeometry(null, null)
     } else {
-      setGeometry(outgoing.current?.id === id ? outgoing.current : null, surfaceGeometry(page.current, variant, undefined, compact), compact)
+      setGeometry(outgoing.current?.id === id ? outgoing.current : null, surfaceGeometry(page.current, variant))
       // Retain the completed entrance for this location. Removing the native
       // context must not restart the ordinary page entrance underneath it.
       setPlanArrivalKey(location.key)
     }
     return () => { rootStyle.removeProperty('--plan-motion-header') }
-  }, [id, phase, nextHref, variant, location.key, compact])
+  }, [id, phase, nextHref, variant, location.key])
 
-  const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' && !compact ? {
+  const motionStyle: CSSProperties = planTransition?.phase === 'outgoing' ? {
     // Only the departing page is captured. The arriving page stays live so
     // pointer movement can never cancel its motion or suppress its controls.
     viewTransitionName: 'plan-page-outgoing',
@@ -160,7 +139,6 @@ export function PageTransition({ children, className, style, ...props }: HTMLAtt
       data-plan-motion-direction={planTransition?.direction}
       data-plan-motion-phase={phase}
       data-plan-motion-entry={planTransition?.entry}
-      data-plan-motion-profile={planTransition?.profile}
       style={{ ...style, ...motionStyle }}
       {...props}
     >

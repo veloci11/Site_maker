@@ -389,30 +389,28 @@
   .comparison-scroll { display: none; }
   .comparison-mobile { display: block; }
   .comparison-mobile__instruction { margin-bottom: 12px; color: var(--muted-foreground); font-size: 13px; line-height: 1.5; }
-  .comparison-mobile__scroll {
-    max-block-size: min(72svh, 640px);
-    overflow: auto;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    background: var(--background);
-    scroll-padding-block-start: 160px;
-  }
-  .comparison-mobile__scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
   .comparison-mobile__table {
     width: 100%;
     table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
   }
-  .comparison-mobile__table thead { position: sticky; top: 0; z-index: 2; background: var(--paper); }
-  .comparison-mobile__table thead th { width: 33.333%; padding: 10px 6px; background: var(--paper); box-shadow: 0 1px var(--border); vertical-align: top; }
-  .comparison-mobile__table thead th + th { border-left: 1px solid var(--border); }
+  /* Native cell borders keep the rounded top attached to the sticky heading.
+     Its ancestors remain unclipped and do not create a second scrollport. */
+  .comparison-mobile__table thead { position: sticky; top: var(--public-header-height); z-index: 2; }
+  .comparison-mobile__table thead th { width: 33.333%; padding: 10px 6px; border-top: 1px solid var(--border); border-left: 1px solid var(--border); background: var(--paper); box-shadow: 0 1px var(--border); vertical-align: top; }
+  .comparison-mobile__table thead th:first-child { border-top-left-radius: 14px; }
+  .comparison-mobile__table thead th:last-child { border-right: 1px solid var(--border); border-top-right-radius: 14px; }
+  .comparison-mobile__table thead tr { clip-path: var(--comparison-mobile-heading-clip, none); }
+  .comparison-mobile__table tbody { clip-path: inset(var(--comparison-mobile-rows-clip-top, 0px) 0 0); }
   .comparison-mobile__offer { display: flex; flex-direction: column; align-items: stretch; gap: 6px; text-align: center; }
   .comparison-mobile__offer > h3 { display: flex; align-items: center; justify-content: center; min-height: 2.4em; margin: 0; font-size: 14px; font-weight: 500; line-height: 1.2; letter-spacing: -.025em; }
   .comparison-mobile__offer > p { min-height: 2.7em; margin: 0; color: var(--muted-foreground); font-size: 12px; font-weight: 400; line-height: 1.35; }
   .comparison-mobile__feature th {
     padding: 12px 12px 4px;
     border-top: 1px solid var(--border);
+    border-inline: 1px solid var(--border);
+    background: var(--background);
     font-size: 14px;
     font-weight: 400;
     line-height: 1.4;
@@ -420,8 +418,11 @@
   }
   .comparison-mobile__feature .comparison-section-label { margin-bottom: 5px; font-size: 12px; }
   .comparison-mobile__feature .comparison-row-hint { max-width: none; font-size: 13px; }
-  .comparison-mobile__values td { height: 48px; padding: 4px 8px 12px; text-align: center; vertical-align: middle; }
-  .comparison-mobile__values td + td { border-left: 1px solid var(--border); }
+  .comparison-mobile__values td { height: 48px; padding: 4px 8px 12px; border-left: 1px solid var(--border); background: var(--background); text-align: center; vertical-align: middle; }
+  .comparison-mobile__values td:last-child { border-right: 1px solid var(--border); }
+  .comparison-mobile__table tbody:last-child .comparison-mobile__values td { border-bottom: 1px solid var(--border); }
+  .comparison-mobile__table tbody:last-child .comparison-mobile__values td:first-child { border-bottom-left-radius: 14px; }
+  .comparison-mobile__table tbody:last-child .comparison-mobile__values td:last-child { border-bottom-right-radius: 14px; }
   .comparison-mobile__values .comparison-status { font-size: 13px; line-height: 1.4; }
   .comparison-mobile .comparison-cta {
     min-height: 44px;
@@ -429,6 +430,29 @@
     margin-top: 0;
     padding: 10px 4px;
     font-size: 12px;
+  }
+  @supports (animation-timeline: view(block 1px 0px)) and (animation-range: exit-crossing) {
+    .comparison-mobile__frame { view-timeline: --comparison-mobile-frame block; view-timeline-inset: var(--public-header-height) 0px; }
+    .comparison-mobile__table thead tr,
+    .comparison-mobile__table tbody {
+      animation: comparison-mobile-heading-clip linear forwards;
+      /* Scroll masking also applies when reduced motion is requested. */
+      animation-duration: auto !important;
+      animation-range: exit-crossing;
+    }
+    .comparison-mobile__table thead tr { animation-timeline: --comparison-mobile-frame; }
+    .comparison-mobile__table tbody {
+      animation-name: comparison-mobile-rows-clip;
+      animation-timeline: view(block calc(var(--public-header-height) + var(--comparison-mobile-heading-height)) 0px);
+    }
+    @keyframes comparison-mobile-heading-clip {
+      from { clip-path: inset(calc(var(--comparison-mobile-heading-height) - var(--comparison-mobile-table-height)) -1px -1px); }
+      to { clip-path: inset(var(--comparison-mobile-heading-height) -1px -1px); }
+    }
+    @keyframes comparison-mobile-rows-clip {
+      from { clip-path: inset(0); }
+      to { clip-path: inset(100% 0 0); }
+    }
   }
 }
 @media (prefers-reduced-motion: reduce) {

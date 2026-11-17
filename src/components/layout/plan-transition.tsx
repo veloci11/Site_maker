@@ -15,7 +15,7 @@ import {
 import { offers } from '../../../shared/catalog'
 import { existingSiteOffers } from '../../content/existing-site'
 import { normalizePlanTransitionLocations } from '../../lib/plan-transition-locations'
-import { canUseSharedPlanMotion, getPlanMotionProfile, hasCompactPlanPair } from '../../lib/plan-motion-policy'
+import { canUseSharedPlanMotion } from '../../lib/plan-motion-policy'
 
 type PlanRoute = { href: string; variant: string }
 type MotionIntent = { href: string; sourceKey: string; preserveScroll: boolean; sourceElement?: HTMLElement | null }
@@ -35,7 +35,7 @@ function interruptPlanMotion() {
   // Older implementations expose the native animations but not the active VT.
   for (const animation of document.getAnimations()) {
     if (animation instanceof CSSAnimation
-      && /^(?:plan-(?:motion|mobile)-|-ua-view-transition-)/.test(animation.animationName)) {
+      && /^(?:plan-motion-|-ua-view-transition-)/.test(animation.animationName)) {
       try { animation.finish() } catch { /* A finished/cancelled snapshot needs no intervention. */ }
     }
   }
@@ -98,7 +98,6 @@ export type PlanNavigationTransition = {
   toPlan: PlanRoute | null
   nextHref: string
   entry: 'card' | 'comparison'
-  profile: 'compact' | 'full'
 }
 
 /**
@@ -130,21 +129,6 @@ export function usePlanNavigationTransition(): PlanNavigationTransition | null {
   const phase = location.key === currentLocation.key ? 'outgoing' : 'incoming'
   const nextHref = routeHref(nextLocation)
   const intent = getPlanAnimationIntent(nextHref, currentLocation.key, phase)
-  const profile = getPlanMotionProfile({ matchMedia: query => window.matchMedia(query) })
-  if (profile === 'compact' && direction === 'open') {
-    // A menu/header link is not a thumbnail. Nor should an image outside the
-    // viewport fly in from a card the visitor cannot see. In both cases the
-    // arriving real card keeps its visible CSS entrance instead.
-    const source = intent?.sourceElement
-    const surface = source?.matches('.comparison-cta') ? source.querySelector('.comparison-cta__surface')
-      : source?.matches('.pricing-card') ? source.querySelector('.pricing-card__surface') : null
-    const rect = surface?.isConnected ? surface.getBoundingClientRect() : null
-    const headerBottom = document.querySelector('.public-header-wrap')?.getBoundingClientRect().bottom ?? 0
-    const visible = Boolean(rect && rect.width > 0 && rect.height > 0
-      && rect.bottom > Math.max(0, headerBottom) && rect.top < window.innerHeight
-      && rect.right > 0 && rect.left < window.innerWidth)
-    if (!hasCompactPlanPair(context, phase, visible)) return null
-  }
   return {
     id: `${currentLocation.key}:${nextLocation.key}`,
     sourceKey: currentLocation.key,
@@ -154,7 +138,6 @@ export function usePlanNavigationTransition(): PlanNavigationTransition | null {
     toPlan,
     nextHref,
     entry: direction === 'open' && intent?.sourceElement?.matches('.comparison-cta') ? 'comparison' : 'card',
-    profile,
   }
 }
 
@@ -222,7 +205,7 @@ function useMotionLinkClick(props: LinkProps | NavLinkProps) {
       || event.currentTarget.hasAttribute('download')
       || (typeof props.to === 'string' && /^([a-z][a-z\d+.-]*:|\/\/)/i.test(props.to))) return
 
-    // Unsupported/reduced-motion links still carry their source through the
+    // Touch/unsupported/reduced-motion links carry their source through the
     // accepted route; ScrollTop handles their return position without capture.
     if (!props.viewTransition) {
       stageNavigation(event.currentTarget.href, location.key, { preventScrollReset: props.preventScrollReset }, event.currentTarget)
@@ -264,13 +247,9 @@ export function usePlanTransition(
   source: 'card' | 'comparison' = 'card',
 ): CSSProperties {
   const transition = usePlanNavigationTransition()
-  const compact = transition?.profile === 'compact'
   const fromComparison = transition?.direction === 'open' && transition.entry === 'comparison' && transition.phase === 'outgoing'
-  const active = (!compact || part === 'surface')
-    && (source === 'comparison' ? fromComparison : !fromComparison) && transition && [transition.fromPlan, transition.toPlan]
+  const active = (source === 'comparison' ? fromComparison : !fromComparison) && transition && [transition.fromPlan, transition.toPlan]
     .some((plan) => plan?.variant === variant && plan.href === href)
-  // Phones capture only the texture. Their copy stays live and fades in at its
-  // final size; desktop retains its separate, sharp title and content layers.
   const suffix = part === 'surface' ? '' : part === 'thumbnail' ? '-thumbnail-copy' : `-${part}`
   return {
     viewTransitionName: active ? `plan-${variant}${suffix}` : undefined,

@@ -1,0 +1,67 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "deviceScaleFactor": 3,
+    "safeAreaTop": 59
+  },
+  "method": "Warm Vitrine journeys; Chromium Performance metrics over 550ms, durations in milliseconds. Both measurements taken after agents stopped testing. Emulation, not physical iPhone FPS.",
+  "before": {
+    "close": {
+      "path": "https://gilmathis.com/",
+      "LayoutCount": 16,
+      "RecalcStyleCount": 79,
+      "LayoutDuration": 3.399,
+      "RecalcStyleDuration": 41.878,
+      "ScriptDuration": 17.945,
+      "TaskDuration": 108.534
+    },
+    "open": {
+      "path": "https://gilmathis.com/forfaits/vitrine",
+      "LayoutCount": 14,
+      "RecalcStyleCount": 70,
+      "LayoutDuration": 3.624,
+      "RecalcStyleDuration": 36.894,
+      "ScriptDuration": 17.644,
+      "TaskDuration": 95.168
+    },
+    "back": {
+      "path": "https://gilmathis.com/",
+      "LayoutCount": 15,
+      "RecalcStyleCount": 70,
+      "LayoutDuration": 3.186,
+      "RecalcStyleDuration": 37.067,
+      "ScriptDuration": 16.15,
+      "TaskDuration": 87.835
+    }
+  },
+  "after": {
+    "close": {
+      "path": "http://127.0.0.1:4183/",
+      "LayoutCount": 8,
+      "RecalcStyleCount": 61,
+      "LayoutDuration": 3.239,
+      "RecalcStyleDuration": 12.667,
+      "ScriptDuration": 17.457,
+      "TaskDuration": 65.303
+    },
+    "open": {
+      "path": "http://127.0.0.1:4183/forfaits/vitrine",
+      "LayoutCount": 7,
+      "RecalcStyleCount": 54,
+      "LayoutDuration": 2.763,
+      "RecalcStyleDuration": 14.609,
+      "ScriptDuration": 19.183,
+      "TaskDuration": 74.825
+    },
+    "back": {
+      "path": "http://127.0.0.1:4183/",
+      "LayoutCount": 7,
+      "RecalcStyleCount": 50,
+      "LayoutDuration": 2.933,
+      "RecalcStyleDuration": 9.945,
+      "ScriptDuration": 11.794,
+      "TaskDuration": 48.819
+    }
+  }
+}

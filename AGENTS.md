@@ -1,5 +1,11 @@
 # studio — décisions et consignes actuelles
 
+## Comparatif dans la page et carte mobile directe — 16 novembre 2026
+
+Mathis juge le recadrage animé mobile encore étrange et rejette le scroll interne du comparatif. Cette décision remplace le canevas natif mobile et le scrollport décrits ci-dessous. Sur téléphone/tactile/fenêtre étroite, la vraie carte complète, image et texte ensemble, apparaît sur 200 ms avec opacité .55→1 et déplacement de 6 px : pas de zoom, de capture, de recadrage ni de fondu texte séquentiel. Le listing reste stable au retour. Le filtre du routeur retire aussi les captures mémorisées par les POP desktop→tactile, sans modifier l'historique ni les bloqueurs. Le raccord desktop de 760 ms reste conservé. Anciennes branches compactes, helper de canevas et tests correspondants supprimés.
+
+Le comparatif mobile conserve les trois offres et les critères sur toute la largeur, mais défile avec le document : aucune hauteur maximale, aucun overflow scroll ni arrêt clavier de région interne. L'en-tête colle sous la navigation. Bordure et arrondis suivent ses cellules ; seul le tr d'en-tête et les tbody sont masqués, jamais le sticky ou ses ancêtres. CSS scroll-driven quand disponible ; sinon fallback mobile passif, regroupé par requestAnimationFrame, avec lectures avant écritures et nettoyage au changement de média/démontage. Conserver le fondu blanc supérieur et le logo limité aux vrais changements de page. Rapport et limites : `docs/qa/mobile-page-scroll-2026-11-16/`.
+
 ## Fluidité mobile, trois forfaits et déclenchement du logo — 16 novembre 2026
 
 Mathis valide le fondu blanc supérieur et demande de corriger les saccades des forfaits, d'afficher les trois offres simultanément sur téléphone et de jouer le logo uniquement à un vrai changement de page. Conserver le fondu et la navigation transparente. Le comparatif mobile présente désormais les trois colonnes, les critères sur toute la largeur, et les noms/prix/CTA fixes dans sa zone de défilement ; pas de sélecteurs ni de défilement horizontal. Ce choix remplace le comparatif à deux offres.

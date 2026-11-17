@@ -1,0 +1,27 @@
+{
+  "columns": 4,
+  "corner": "14px",
+  "document": 1265,
+  "header": {
+    "bottom": 96,
+    "height": 96,
+    "left": 0,
+    "right": 1265,
+    "top": 0,
+    "width": 1265,
+    "x": 0,
+    "y": 0
+  },
+  "heading": {
+    "bottom": 236.1953125,
+    "height": 140.1953125,
+    "left": 40,
+    "right": 1225,
+    "top": 96,
+    "width": 1185,
+    "x": 40,
+    "y": 96
+  },
+  "logo": "matrix(1, 0, 0, 1, 0, 0)",
+  "width": 1280
+}

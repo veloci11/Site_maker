@@ -100,6 +100,77 @@ function ComparisonConfigureButton({ offer, price }: { offer: (typeof publicOffe
 export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string }) {
   const [details, setDetails] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const mobileFrameRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const frame = mobileFrameRef.current
+    const table = frame?.querySelector('table')
+    const heading = table?.querySelector('thead')
+    const navigation = document.querySelector('.public-header-wrap')
+    if (!frame || !table || !heading || !navigation) return
+    const sections = Array.from(table.querySelectorAll('tbody'))
+    const phone = window.matchMedia('(max-width: 760px)')
+    const nativeClipping = CSS.supports('animation-timeline: view(block 1px 0px)') && CSS.supports('animation-range: exit-crossing')
+    // Native scroll timelines clip only rows that have crossed the sticky
+    // heading. Older browsers use a mobile-only, frame-coalesced fallback.
+    let headingHeight = -1
+    let tableHeight = -1
+    let headingClip = ''
+    let animationFrame: number | undefined
+    const update = () => {
+      animationFrame = undefined
+      if (!phone.matches) return
+      // Group all geometry reads before setting sizes or clipping variables.
+      const headingBounds = heading.getBoundingClientRect()
+      const tableBounds = table.getBoundingClientRect()
+      const navigationBottom = nativeClipping ? 0 : navigation.getBoundingClientRect().bottom
+      const sectionClips = nativeClipping ? [] : sections.map((section) =>
+        Math.max(0, Math.ceil(headingBounds.bottom - section.getBoundingClientRect().top)))
+      if (headingHeight !== headingBounds.height) {
+        headingHeight = headingBounds.height
+        frame.style.setProperty('--comparison-mobile-heading-height', `${headingHeight}px`)
+      }
+      if (tableHeight !== tableBounds.height) {
+        tableHeight = tableBounds.height
+        frame.style.setProperty('--comparison-mobile-table-height', `${tableHeight}px`)
+      }
+      if (nativeClipping) return
+      const overlap = Math.max(0, navigationBottom + headingHeight - tableBounds.bottom)
+      const nextClip = overlap > 0 ? `inset(${overlap}px -1px -1px)` : 'none'
+      if (headingClip !== nextClip) {
+        headingClip = nextClip
+        heading.style.setProperty('--comparison-mobile-heading-clip', headingClip)
+      }
+      sections.forEach((section, index) => section.style.setProperty('--comparison-mobile-rows-clip-top', `${sectionClips[index]}px`))
+    }
+    const scheduleUpdate = () => {
+      if (animationFrame === undefined) animationFrame = window.requestAnimationFrame(update)
+    }
+    const updateViewport = () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      if (!nativeClipping && phone.matches) window.addEventListener('scroll', scheduleUpdate, { passive: true })
+      if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame)
+      update()
+    }
+    updateViewport()
+    const observer = new ResizeObserver(scheduleUpdate)
+    observer.observe(table)
+    observer.observe(heading)
+    observer.observe(navigation)
+    window.addEventListener('resize', scheduleUpdate)
+    phone.addEventListener('change', updateViewport)
+    return () => {
+      observer.disconnect()
+      if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      phone.removeEventListener('change', updateViewport)
+      frame.style.removeProperty('--comparison-mobile-heading-height')
+      frame.style.removeProperty('--comparison-mobile-table-height')
+      heading.style.removeProperty('--comparison-mobile-heading-clip')
+      sections.forEach((section) => section.style.removeProperty('--comparison-mobile-rows-clip-top'))
+    }
+  }, [])
 
   useLayoutEffect(() => {
     const scroller = scrollRef.current
@@ -115,7 +186,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
     let headingClip = ''
 
     const clipAtHeader = () => {
-      // The phone comparison has its own native scrollport. Its page scroll
+      // The phone comparison uses native sticky/scroll masking. Its page scroll
       // must not trigger desktop geometry reads or clipping writes.
       if (!desktop.matches) return
       const headingBounds = heading.getBoundingClientRect()
@@ -228,13 +299,7 @@ export function OfferComparison({ pricing, id }: { pricing: Pricing; id: string 
         <p id={`${id}-mobile-instruction`} className="comparison-mobile__instruction">
           Les trois forfaits, critère par critère.
         </p>
-        <div
-          className="comparison-mobile__scroll"
-          tabIndex={0}
-          role="region"
-          aria-label="Comparatif des trois forfaits sur téléphone"
-          aria-describedby={`${id}-mobile-instruction`}
-        >
+        <div ref={mobileFrameRef} className="comparison-mobile__frame">
           <table id={`${id}-mobile-table`} className="comparison-mobile__table">
             <caption className="public-sr-only">
               Comparer les fonctions comprises dans les trois forfaits de création de sites internet.

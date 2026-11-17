@@ -1,0 +1,10 @@
+{
+  "cardAnimation": "none",
+  "duration": ".76s",
+  "names": [
+    "plan-connecte",
+    "plan-connecte-heading",
+    "plan-connecte-content"
+  ],
+  "width": 1280
+}

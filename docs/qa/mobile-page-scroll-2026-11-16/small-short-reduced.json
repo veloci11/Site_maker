@@ -1,0 +1,130 @@
+{
+  "small": {
+    "corners": [
+      {
+        "borderTop": "1px",
+        "topLeft": "14px",
+        "topRight": "0px"
+      },
+      {
+        "borderTop": "1px",
+        "topLeft": "0px",
+        "topRight": "0px"
+      },
+      {
+        "borderTop": "1px",
+        "topLeft": "0px",
+        "topRight": "14px"
+      }
+    ],
+    "document": 320,
+    "frame": {
+      "clientHeight": 1534,
+      "overflow": "visible",
+      "rect": {
+        "bottom": 1312.6875,
+        "height": 1534.0703125,
+        "left": 20,
+        "right": 300,
+        "top": -221.3828125,
+        "width": 280,
+        "x": 20,
+        "y": -221.3828125
+      },
+      "scrollHeight": 1534,
+      "scrollTop": 0
+    },
+    "heading": {
+      "bottom": 289.9921875,
+      "height": 142.9921875,
+      "left": 20,
+      "right": 300,
+      "top": 147,
+      "width": 280,
+      "x": 20,
+      "y": 147
+    },
+    "nativeMask": true,
+    "navigation": {
+      "bottom": 147,
+      "height": 147,
+      "left": 0,
+      "right": 320,
+      "top": 0,
+      "width": 320,
+      "x": 0,
+      "y": 0
+    },
+    "page": 3790.5,
+    "rowClip": "inset(-1022.7px -1px -1px)",
+    "width": 320
+  },
+  "short": {
+    "corners": [
+      {
+        "borderTop": "1px",
+        "topLeft": "14px",
+        "topRight": "0px"
+      },
+      {
+        "borderTop": "1px",
+        "topLeft": "0px",
+        "topRight": "0px"
+      },
+      {
+        "borderTop": "1px",
+        "topLeft": "0px",
+        "topRight": "14px"
+      }
+    ],
+    "document": 320,
+    "frame": {
+      "clientHeight": 1534,
+      "overflow": "visible",
+      "rect": {
+        "bottom": 1376.1875,
+        "height": 1534.0703125,
+        "left": 20,
+        "right": 300,
+        "top": -157.8828125,
+        "width": 280,
+        "x": 20,
+        "y": -157.8828125
+      },
+      "scrollHeight": 1534,
+      "scrollTop": 0
+    },
+    "heading": {
+      "bottom": 289.9921875,
+      "height": 142.9921875,
+      "left": 20,
+      "right": 300,
+      "top": 147,
+      "width": 280,
+      "x": 20,
+      "y": 147
+    },
+    "nativeMask": true,
+    "navigation": {
+      "bottom": 147,
+      "height": 147,
+      "left": 0,
+      "right": 320,
+      "top": 0,
+      "width": 320,
+      "x": 0,
+      "y": 0
+    },
+    "page": 3727,
+    "rowClip": "inset(-1086.2px -1px -1px)",
+    "width": 320
+  },
+  "reduced": {
+    "animation": "none",
+    "barBottom": 568,
+    "names": 0,
+    "opacity": "1",
+    "path": "/forfaits/connecte",
+    "transform": "none"
+  }
+}
