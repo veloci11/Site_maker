@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState, type MouseEvent } from 'react'
+import { Suspense, useEffect, useId, useRef, useState, type MouseEvent } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react'
 import { PixelitoLoading, PixelitoLogo } from './PixelitoLogo'
@@ -54,10 +54,17 @@ function scrollHomeToTop(event: MouseEvent<HTMLAnchorElement>) {
 export function PublicHeader() {
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOffersOpen, setMobileOffersOpen] = useState(false)
+  const mobileOffersId = useId()
   const mobileMenuButton = useRef<HTMLButtonElement>(null)
   const [offersOpen, setOffersOpen] = useState(false)
   const offerActive = location.pathname.startsWith('/forfaits')
   const previousLocationKey = useRef(location.key)
+
+  function changeMobileOpen(open: boolean) {
+    setMobileOpen(open)
+    if (open) setMobileOffersOpen(false)
+  }
 
   useEffect(() => {
     // The initial state is already closed. A fast first tap must not be
@@ -72,7 +79,7 @@ export function PublicHeader() {
     <div className="public-header-wrap">
       <header className="site-header">
         <Link className="wordmark navigation-logo" to="/" onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} aria-label="pixelito — accueil">
-          <PixelitoLogo key={location.pathname + location.search} intro />
+          <PixelitoLogo key={location.pathname === '/exemples' ? location.pathname : location.pathname + location.search} intro />
         </Link>
         <nav className="desktop-nav" aria-label="Navigation principale">
           <NavLink to="/" end onClick={scrollHomeToTop} viewTransition={canAnimatePlanNavigation()} className={desktopNavClassName}>
@@ -122,7 +129,7 @@ export function PublicHeader() {
             Nous contacter
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
-          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <Sheet open={mobileOpen} onOpenChange={changeMobileOpen}>
             <SheetTrigger asChild>
               <button
                 ref={mobileMenuButton}
@@ -158,7 +165,7 @@ export function PublicHeader() {
                   end
                   onClick={(event) => {
                     scrollHomeToTop(event)
-                    setMobileOpen(false)
+                    changeMobileOpen(false)
                   }}
                   viewTransition={canAnimatePlanNavigation()}
                   className={mobileNavClassName}
@@ -166,29 +173,39 @@ export function PublicHeader() {
                   Accueil
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <details className="mobile-offers-menu">
-                  <summary className={cn('mobile-nav-heading', offerActive && 'is-active')}>
+                <div className="mobile-offers-menu" data-open={mobileOffersOpen}>
+                  <button
+                    type="button"
+                    className={cn('mobile-nav-heading', offerActive && 'is-active')}
+                    aria-expanded={mobileOffersOpen}
+                    aria-controls={mobileOffersId}
+                    onClick={() => setMobileOffersOpen(value => !value)}
+                  >
                     Forfaits
                     <ChevronDown className="mobile-offers-chevron" size={20} aria-hidden="true" />
-                  </summary>
-                  <div className="mobile-offers-submenu">
-                    {offerLinks.map((offer) => (
-                      <NavLink key={offer.href} to={offer.href} data-plan-return="offers" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
-                        {offer.title}
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </NavLink>
-                    ))}
+                  </button>
+                  <div id={mobileOffersId} className="mobile-offers-reveal" aria-hidden={!mobileOffersOpen} inert={!mobileOffersOpen}>
+                    <div className="mobile-offers-reveal__clip">
+                      <div className="mobile-offers-submenu">
+                        {offerLinks.map((offer) => (
+                          <NavLink key={offer.href} to={offer.href} data-plan-return="offers" onClick={() => changeMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileOfferClassName}>
+                            {offer.title}
+                            <ArrowRight size={16} aria-hidden="true" />
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </details>
-                <NavLink to="/exemples" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
+                </div>
+                <NavLink to="/exemples" onClick={() => changeMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   Exemples de sites
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <NavLink to="/faq" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
+                <NavLink to="/faq" onClick={() => changeMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className={mobileNavClassName}>
                   FAQ
                   <ArrowRight size={20} aria-hidden="true" />
                 </NavLink>
-                <Link to="/contact" onClick={() => setMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className="mobile-nav-heading mobile-nav-contact">
+                <Link to="/contact" onClick={() => changeMobileOpen(false)} viewTransition={canAnimatePlanNavigation()} className="mobile-nav-heading mobile-nav-contact">
                   Nous contacter
                   <ArrowRight size={20} aria-hidden="true" />
                 </Link>

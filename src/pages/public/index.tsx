@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, type ReactNode } from 'react'
 import { Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { ArrowRight, Check, ShieldCheck } from 'lucide-react'
 import {
@@ -326,7 +326,70 @@ export function ExamplesPage() {
   const [search, setSearch] = useSearchParams()
   const filter = exampleFilters.find((item) => item.id === search.get('type'))?.id ?? 'all'
   const filtered = examples.filter((example) => filter === 'all' || example.offerId === filter)
+  const results = useRef<HTMLDivElement>(null)
+  const previousResults = useRef<{ bounds: DOMRect; cards: Map<HTMLElement, DOMRect> } | null>(null)
+  const moves = useRef<Animation[]>([])
+
+  useLayoutEffect(() => {
+    const before = previousResults.current
+    previousResults.current = null
+    const container = results.current
+    if (!before || !container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const bounds = container.getBoundingClientRect()
+    const movesToPlay = Array.from(container.querySelectorAll<HTMLElement>('.public-example-tile'), card => {
+      const old = before.cards.get(card)
+      if (!old) return null
+      const next = card.getBoundingClientRect()
+      return { card, x: old.left - next.left, y: old.top - next.top }
+    })
+    const timing = { duration: 300, easing: 'cubic-bezier(.4,0,.2,1)' }
+    // A footer already near the viewport should follow the shrinking grid.
+    if (Math.min(before.bounds.bottom, bounds.bottom) <= window.innerHeight + 200
+      && Math.abs(before.bounds.height - bounds.height) > 1) {
+      moves.current.push(container.animate([
+        { height: `${before.bounds.height}px` },
+        { height: `${bounds.height}px` },
+      ], timing))
+    }
+    for (const move of movesToPlay) {
+      if (!move || (Math.abs(move.x) < 1 && Math.abs(move.y) < 1)) continue
+      // When a filter removes whole rows, use a short entrance so the first
+      // results are visible immediately instead of sliding across an empty grid.
+      const longMove = Math.abs(move.x) > 24 || Math.abs(move.y) > 24
+      moves.current.push(move.card.animate([
+        { translate: longMove ? '0px 12px' : `${move.x}px ${move.y}px`, opacity: longMove ? .45 : 1 },
+        { translate: '0px 0px', opacity: 1 },
+      ], timing))
+    }
+  }, [filter])
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const cancel = () => {
+      for (const move of moves.current) move.cancel()
+      moves.current = []
+    }
+    reducedMotion.addEventListener('change', cancel)
+    return () => {
+      reducedMotion.removeEventListener('change', cancel)
+      cancel()
+    }
+  }, [])
+
   function changeFilter(id: string) {
+    if (id === filter) return
+    const container = results.current
+    if (container && typeof container.animate === 'function'
+      && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const cards = new Map<HTMLElement, DOMRect>()
+      for (const card of container.querySelectorAll<HTMLElement>('.public-example-tile')) {
+        const rect = card.getBoundingClientRect()
+        if (rect.bottom > 0 && rect.top < window.innerHeight) cards.set(card, rect)
+      }
+      previousResults.current = { bounds: container.getBoundingClientRect(), cards }
+    }
+    for (const move of moves.current) move.cancel()
+    moves.current = []
     setSearch(
       (previous) => {
         const next = new URLSearchParams(previous)
@@ -366,81 +429,83 @@ export function ExamplesPage() {
             {filtered.length} référence{filtered.length > 1 ? 's' : ''} externe{filtered.length > 1 ? 's' : ''}
           </span>
         </div>
-        <div className="public-examples-grid">
-          {filtered.map((example, index) => (
-            <article className="public-example-tile" key={example.id}>
-              <a
-                className="public-example-tile__image"
-                href={example.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={
-                  example.archived
-                    ? `Voir la présentation de ${example.title}, projet archivé (nouvel onglet)`
-                    : `Ouvrir le site ${example.title} (nouvel onglet)`
-                }
-              >
-                <img
-                  src={example.image}
-                  alt={`Aperçu du site ${example.title}`}
-                  width="1672"
-                  height="940"
-                  loading={index < 2 ? 'eager' : 'lazy'}
-                />
-              </a>
-              <div className="public-example-tile__body">
-                <span
-                  className={`public-example-tag pricing-card--${getOffer(example.offerId)!.variant}`}
-                >
-                  {exampleFilters.find((item) => item.id === example.offerId)?.label ??
-                    example.category}
-                </span>
+        <div ref={results} className="public-gallery-results">
+          <div className="public-examples-grid">
+            {filtered.map((example, index) => (
+              <article className="public-example-tile" key={example.id}>
                 <a
-                  className="public-example-tile__title"
+                  className="public-example-tile__image"
                   href={example.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${example.title} (nouvel onglet)`}
+                  aria-label={
+                    example.archived
+                      ? `Voir la présentation de ${example.title}, projet archivé (nouvel onglet)`
+                      : `Ouvrir le site ${example.title} (nouvel onglet)`
+                  }
                 >
-                  <h2>{example.title}</h2>
-                  <ArrowRight size={21} aria-hidden="true" />
+                  <img
+                    src={example.image}
+                    alt={`Aperçu du site ${example.title}`}
+                    width="1672"
+                    height="940"
+                    loading={index < 2 ? 'eager' : 'lazy'}
+                  />
                 </a>
-                <p className="public-example-tile__description">
-                  {example.archived ? 'Projet archivé · ' : ''}
-                  {example.description}
-                </p>
-                <div className="public-example-tile__links">
-                  <a
-                    className="public-example-credit"
-                    href={example.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Source de ${example.title} : ${example.creator} (nouvel onglet)`}
+                <div className="public-example-tile__body">
+                  <span
+                    className={`public-example-tag pricing-card--${getOffer(example.offerId)!.variant}`}
                   >
-                    Source : {example.creator}
-                  </a>
+                    {exampleFilters.find((item) => item.id === example.offerId)?.label ??
+                      example.category}
+                  </span>
                   <a
-                    className="text-link"
+                    className="public-example-tile__title"
                     href={example.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${example.archived ? 'Voir la présentation de' : 'Voir le site'} ${example.title} (nouvel onglet)`}
+                    aria-label={`${example.title} (nouvel onglet)`}
                   >
-                    {example.archived ? 'Voir la présentation' : 'Voir le site'}
+                    <h2>{example.title}</h2>
+                    <ArrowRight size={21} aria-hidden="true" />
                   </a>
+                  <p className="public-example-tile__description">
+                    {example.archived ? 'Projet archivé · ' : ''}
+                    {example.description}
+                  </p>
+                  <div className="public-example-tile__links">
+                    <a
+                      className="public-example-credit"
+                      href={example.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Source de ${example.title} : ${example.creator} (nouvel onglet)`}
+                    >
+                      Source : {example.creator}
+                    </a>
+                    <a
+                      className="text-link"
+                      href={example.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${example.archived ? 'Voir la présentation de' : 'Voir le site'} ${example.title} (nouvel onglet)`}
+                    >
+                      {example.archived ? 'Voir la présentation' : 'Voir le site'}
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-        {!filtered.length ? (
-          <div className="empty-state">
-            <p>Aucune référence pour ce type de site.</p>
-            <Button variant="outline" onClick={() => changeFilter('all')}>
-              Voir toutes les références
-            </Button>
+              </article>
+            ))}
           </div>
-        ) : null}
+          {!filtered.length ? (
+            <div className="empty-state">
+              <p>Aucune référence pour ce type de site.</p>
+              <Button variant="outline" onClick={() => changeFilter('all')}>
+                Voir toutes les références
+              </Button>
+            </div>
+          ) : null}
+        </div>
       </section>
     </>
   )

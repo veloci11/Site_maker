@@ -57,6 +57,16 @@ import { includedGuidance, planEstimateNote } from '../../content/configurator-c
 import { getPlanReturnHref } from '../../lib/plan-return'
 import { useOptionReflow } from '../../components/layout/use-option-reflow'
 
+function FeatureGroupSummary({ text, hidden }: { text: string; hidden: boolean }) {
+  const previousText = useRef(text)
+  useLayoutEffect(() => { if (text) previousText.current = text }, [text])
+  return (
+    <span className="configurator-group__summary" aria-hidden={hidden}>
+      <span><span>{text || previousText.current}</span></span>
+    </span>
+  )
+}
+
 function changePrivateOffer(current: Configuration, offerId: OfferId): Configuration {
   if (current.offerId === offerId) return current
   return normalizeConfiguration({
@@ -163,7 +173,17 @@ export function ConfiguratorPage() {
   const title = custom ? 'Sur mesure' : `Site ${offer.title}`
   const totalLabel = editingId ? formatQuoteTotal(quote) : formatPublicCreationEstimate(quote)
   const monthly = quote.lines.some((line) => line.billing === 'monthly')
-  const availableOptions = editingId ? optionDefinitions : getPublicOptions(offer.id)
+  const availableOptions = editingId ? [...optionDefinitions] : getPublicOptions(offer.id)
+  // Place the dependent payment choice after its toggle so the shop stays
+  // under the pointer while the row below opens or closes.
+  if (!editingId) {
+    const paymentIndex = availableOptions.findIndex(option => option.id === 'online-payment')
+    const shopIndex = availableOptions.findIndex(option => option.id === 'online-store')
+    if (paymentIndex >= 0 && shopIndex > paymentIndex) {
+      const [payment] = availableOptions.splice(paymentIndex, 1)
+      availableOptions.splice(shopIndex, 0, payment)
+    }
+  }
   const visibleOptions = editingId ? optionDefinitions : getPublicOptions(configuration)
   const visibleGroups = optionGroups.filter((group) =>
     visibleOptions.some((option) => option.group === group.id),
@@ -565,23 +585,16 @@ export function ConfiguratorPage() {
                               </span>
                             ) : null}
                           </span>
-                          {selectedOptions.length > 0 ? (
-                            <span className="configurator-group__summary" aria-hidden={isOpen}>
-                              <span>
-                                <span>
-                                  {selectedOptions
-                                    .map((option) =>
-                                      isOptionIncluded(configuration, option.id)
-                                        ? `${option.title} (inclus)`
-                                        : option.id === 'extra-pages'
-                                          ? `${configuration.extraPageCount ?? 1} page${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''} supplémentaire${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''}`
-                                          : option.title,
-                                    )
-                                    .join(' · ')}
-                                </span>
-                              </span>
-                            </span>
-                          ) : null}
+                          <FeatureGroupSummary
+                            hidden={isOpen || selectedOptions.length === 0}
+                            text={selectedOptions.map((option) =>
+                              isOptionIncluded(configuration, option.id)
+                                ? `${option.title} (inclus)`
+                                : option.id === 'extra-pages'
+                                  ? `${configuration.extraPageCount ?? 1} page${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''} supplémentaire${(configuration.extraPageCount ?? 1) > 1 ? 's' : ''}`
+                                  : option.title,
+                            ).join(' · ')}
+                          />
                         </span>
                       </AccordionTrigger>
                       <AccordionContent
@@ -610,8 +623,30 @@ export function ConfiguratorPage() {
                               const checked = !hidden && isOptionSelected(configuration, option.id)
                               const extraPage = option.id === 'extra-pages'
                               const showQuantity = extraPage && checked
+                              const quantityControl = extraPage ? (
+                                <input
+                                  id="extra-page-count"
+                                  type="number"
+                                  className="input configurator-choice__quantity"
+                                  min={1}
+                                  max={MAX_EXTRA_PAGE_COUNT}
+                                  step={1}
+                                  value={configuration.extraPageCount ?? 1}
+                                  disabled={sending || (!editingId && !showQuantity)}
+                                  aria-label="Nombre de pages supplémentaires"
+                                  aria-describedby={`description-${option.id}`}
+                                  onChange={(event) => {
+                                    const count = event.currentTarget.valueAsNumber
+                                    if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
+                                    captureChoicePosition(option.id)
+                                    optionReflow.capture()
+                                    setConfiguration(withExtraPageCount(configuration, count))
+                                    setError('')
+                                  }}
+                                />
+                              ) : null
                               const choice = (
-                                <div key={option.id} className="configurator-choice-item" data-quantity={showQuantity}>
+                                <div key={option.id} className={`configurator-choice-item${extraPage && !editingId ? ' configurator-choice-item--quantity' : ''}`} data-quantity={showQuantity}>
                                   <label
                                     className={`configurator-choice${included && !hidden ? ' configurator-choice--included' : ''}`}
                                     data-selected={checked}
@@ -635,28 +670,16 @@ export function ConfiguratorPage() {
                                       {extraPage ? <small>par page</small> : null}
                                     </span>
                                   </label>
-                                  {showQuantity ? (
-                                    <input
-                                      id="extra-page-count"
-                                      type="number"
-                                      className="input configurator-choice__quantity"
-                                      min={1}
-                                      max={MAX_EXTRA_PAGE_COUNT}
-                                      step={1}
-                                      value={configuration.extraPageCount ?? 1}
-                                      disabled={sending}
-                                      aria-label="Nombre de pages supplémentaires"
-                                      aria-describedby={`description-${option.id}`}
-                                      onChange={(event) => {
-                                        const count = event.currentTarget.valueAsNumber
-                                        if (!Number.isInteger(count) || count < 1 || count > MAX_EXTRA_PAGE_COUNT) return
-                                        captureChoicePosition(option.id)
-                                        optionReflow.capture()
-                                        setConfiguration(withExtraPageCount(configuration, count))
-                                        setError('')
-                                      }}
-                                    />
-                                  ) : null}
+                                  {extraPage && !editingId ? (
+                                    <div className="configurator-choice-quantity" data-open={showQuantity} aria-hidden={!showQuantity} inert={!showQuantity}>
+                                      <div className="configurator-choice-quantity__clip">
+                                        <div className="configurator-choice-quantity__row">
+                                          <label htmlFor="extra-page-count">Nombre de pages</label>
+                                          {quantityControl}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  ) : showQuantity ? quantityControl : null}
                                 </div>
                               )
                               return animatesVisibility ? (

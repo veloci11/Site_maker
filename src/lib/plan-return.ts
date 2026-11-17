@@ -1,3 +1,5 @@
+import { LIVE_PLAN_MOTION_QUERY } from './plan-motion-policy.ts'
+
 /** Ephemeral navigation geometry only: no draft, query string or browser storage. */
 type ScrollPosition = { x: number; y: number }
 type PageRect = ScrollPosition & { width: number; height: number }
@@ -138,10 +140,10 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
       // A small live fade softens the mobile return without moving the card
       // we just aligned, taking a snapshot or delaying history restoration.
       if (typeof selectedCard?.animate === 'function'
-        && window.matchMedia('(max-width: 760px)').matches
+        && window.matchMedia(LIVE_PLAN_MOTION_QUERY).matches
         && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const arrival = selectedCard.animate([{ opacity: .65 }, { opacity: 1 }], {
-          duration: 300,
+          duration: 560,
           easing: 'cubic-bezier(.4,0,.6,1)',
         })
         arrival.id = 'plan-live-return'

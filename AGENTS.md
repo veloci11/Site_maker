@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Header compact et transitions à 560 ms — 17 novembre 2026
+
+Mathis demande 560 ms à l’aller et au retour sur téléphone et ordinateur, une navigation mobile moins haute et des cartes sans saut lorsque leur contenu change. Le header ≤760 px occupe 68 px hors safe-area, avec des commandes de 44 px. Dans le configurateur public, placer Boutique avant Liens de paiement pour garder le bouton sous le doigt pendant le repli ou la réouverture du paiement. Le compteur de pages s’ouvre sous le choix. La galerie anime les changements de filtre sans rejouer le logo. Respecter la réduction du mouvement.
+
 ## Douceur mobile et stabilité des fonctionnalités — 17 novembre 2026
 
 Mathis juge encore l'arrivée trop directe et signale que sélectionner une fonctionnalité remonte la page. Sur le public<=760px, le résumé au-dessus des choix prend sa taille finale sans animation de hauteur, la hauteur du cadre est synchronisée dans useOptionReflow avant la correction de position et la ligne touchée conserve son haut via une compensation unique avant peinture. Pas d'observer/RAF permanent pour piloter le scroll. Annuler la remise en vue différée d'un accordéon dès qu'un choix intervient ; quantités, mensuels et masquage Paiement/Boutique compris. Aucun clone FLIP mobile ; desktop et privé conservent leurs effets.

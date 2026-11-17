@@ -326,6 +326,13 @@
 .public-gallery-filters > button:not(.public-gallery-filter):hover { background: var(--muted); color: var(--foreground); }
 .public-gallery-filters > button[aria-pressed="true"] { border-color: var(--foreground); background: var(--foreground); color: var(--background); }
 .public-gallery-filters > .public-gallery-filter[aria-pressed="true"] { outline:2px solid var(--foreground); outline-offset:3px; }
+/* Keep card movement local to the results, with room for focus outlines. */
+.public-gallery-results { overflow:clip; overflow-clip-margin:8px; overflow-anchor:none; }
+.public-gallery-results .public-example-tile { animation:gallery-card-in 300ms cubic-bezier(.4,0,.2,1) both; }
+@keyframes gallery-card-in {
+  from { opacity:.25; transform:translateY(8px); }
+  to { opacity:1; transform:none; }
+}
 .public-gallery-count { flex-shrink: 0; font-size: 12px; color: var(--muted-foreground); }
 .public-example-tile__image { display: block; }
 .public-example-tile img { aspect-ratio: 16/9; }
@@ -373,7 +380,10 @@
   .public-gallery-count { font-size: 11px; }
   .public-example-tile__description { font-size: 13px; }
 }
-@media (prefers-reduced-motion: reduce) { .public-gallery-filters > button,.public-gallery-filter::before { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .public-gallery-filters > button,.public-gallery-filter::before { transition: none; }
+  .public-gallery-results .public-example-tile { animation: none; }
+}
 
 .comparison-mobile { display: none; }
 .comparison-cta { margin-top: 4px; background: transparent; }

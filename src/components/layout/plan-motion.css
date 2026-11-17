@@ -1,7 +1,7 @@
 /* React Router owns desktop native transition completion and cancellation.
    Touch/narrow screens animate only the real arriving card, without captures. */
 :root {
-  --plan-motion-duration: 760ms;
+  --plan-motion-duration: 560ms;
   --plan-motion-ease: cubic-bezier(.4, 0, .2, 1);
   --plan-motion-header: 96px;
   --plan-motion-source-radius: 12px;
@@ -54,28 +54,28 @@
 }
 
 .public-shell:has(.motion-page[data-plan-motion-phase="incoming"]) .site-footer {
-  animation:plan-motion-fade 520ms ease-out 80ms both;
+  animation:plan-motion-fade 383ms ease-out 59ms both;
 }
 
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] > :not(:has([style*="view-transition-name:"])),
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:not(:has(.pricing-card__top[style*="view-transition-name:"])) {
-  animation:plan-motion-fade 520ms ease-out 100ms both;
+  animation:plan-motion-fade 383ms ease-out 74ms both;
 }
 
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-topline {
-  animation:plan-motion-fade 280ms ease-out 80ms both;
+  animation:plan-motion-fade 206ms ease-out 59ms both;
 }
 
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .configurator-options {
   --plan-slide-x:var(--plan-page-enter-x);
   animation:
-    plan-motion-fade 500ms ease-out 100ms both,
-    plan-motion-slide 640ms var(--plan-motion-ease) 80ms both;
+    plan-motion-fade 368ms ease-out 74ms both,
+    plan-motion-slide 472ms var(--plan-motion-ease) 59ms both;
 }
 
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__cta,
 .motion-page.motion-page--plan-transitioning[data-plan-motion-phase="incoming"] .pricing-card:has(.pricing-card__top[style*="view-transition-name:"]) > .pricing-card__features {
-  animation:plan-motion-fade 340ms ease-out 380ms both;
+  animation:plan-motion-fade 251ms ease-out 280ms both;
 }
 
 /* A selected thumbnail keeps the same painted state as its snapshot. After
@@ -113,7 +113,7 @@
 :root::view-transition-old(.plan-page) {
   --plan-slide-x: var(--plan-page-exit-x);
   animation:
-    plan-motion-fade 360ms ease-in reverse both,
+    plan-motion-fade 265ms ease-in reverse both,
     plan-motion-slide var(--plan-motion-duration) var(--plan-motion-ease) reverse both;
 }
 
@@ -150,12 +150,12 @@
 
 :root::view-transition-old(.plan-surface) {
   z-index:1;
-  animation: plan-motion-fade 340ms ease-in reverse both;
+  animation: plan-motion-fade 251ms ease-in reverse both;
 }
 
 :root::view-transition-new(.plan-surface) {
   z-index:0;
-  animation:plan-motion-fade 500ms ease-out both;
+  animation:plan-motion-fade 368ms ease-out both;
 }
 
 /* Both snapshots paint the same coordinates at every width. Keep both opaque:
@@ -213,13 +213,13 @@
 
 :root::view-transition-old(.plan-content) {
   animation:
-    plan-motion-fade 280ms ease-in 40ms reverse both,
+    plan-motion-fade 206ms ease-in 29ms reverse both,
     plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-new(.plan-content) {
   animation:
-    plan-motion-fade 480ms ease-out 140ms both,
+    plan-motion-fade 354ms ease-out 103ms both,
     plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
@@ -242,18 +242,18 @@
   --plan-copy-enter-rest-left:var(--plan-heading-enter-rest-left,0px);
 }
 
-:root::view-transition-old(.plan-heading) { animation:plan-motion-fade 220ms ease-in reverse both; }
-:root::view-transition-new(.plan-heading) { animation:plan-motion-fade 480ms ease-out 140ms both; }
+:root::view-transition-old(.plan-heading) { animation:plan-motion-fade 162ms ease-in reverse both; }
+:root::view-transition-new(.plan-heading) { animation:plan-motion-fade 354ms ease-out 103ms both; }
 
 :root::view-transition-old(.plan-thumbnail-copy) {
   animation:
-    plan-motion-fade 160ms ease-in reverse both,
+    plan-motion-fade 118ms ease-in reverse both,
     plan-motion-copy-exit var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
 :root::view-transition-new(.plan-thumbnail-copy) {
   animation:
-    plan-motion-fade 440ms ease-out 320ms both,
+    plan-motion-fade 324ms ease-out 236ms both,
     plan-motion-copy-enter var(--plan-motion-duration) var(--plan-motion-ease) both;
 }
 
@@ -305,13 +305,13 @@
 
   .public-shell .motion-page .configurator-topline,
   .public-shell .motion-page .selected-plan {
-    animation: plan-live-content-arrive 560ms cubic-bezier(.4,0,.6,1) both;
+    animation: plan-live-content-arrive var(--plan-motion-duration) cubic-bezier(.4,0,.6,1) both;
   }
 
   /* Keep the scroll-to-features anchor stationary even on an immediate tap. */
   .public-shell .motion-page .configurator-options,
   .public-shell .motion-page .configurator-price-bar > * {
-    animation: plan-live-fade-arrive 560ms cubic-bezier(.4,0,.6,1) both;
+    animation: plan-live-fade-arrive var(--plan-motion-duration) cubic-bezier(.4,0,.6,1) both;
   }
 }
 
