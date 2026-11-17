@@ -14,3 +14,9 @@
 - Retour du navigateur depuis Business après navigation par l’ancre Forfaits. HTTPS à 430 px avec safe-area simulée de 59 px. Opacité .68 → .789 → 1, translation 14 → 9,21 → 0 px, durée 560 ms. Le document reste à 1 064 px de défilement et la carte arrive sous le header à 126,80 px.
 - Lien Tous les forfaits depuis Premium / 3D contrôlé en local, 560 ms et recentrage à 127,05 px. Sur Vitrine à 320 px avec mouvement réduit, position stable et opacité 1 dès la première image.
 - TypeScript, builds client et SSR, 314 tests réussis. Aucune alerte console durant le parcours HTTPS. Mobile vérifié en émulation dans le navigateur intégré.
+
+## Retour mobile à pleine opacité
+
+- Avant correction, Business au retour navigateur démarre à .68 d’opacité et le dégradé laisse transparaître le fond clair. Le déplacement est de 14 px et le défilement est stable.
+- Après correction en HTTPS à 430 px, Business via Retour navigateur et Premium / 3D via Tous les forfaits restent à 1 d’opacité, respectivement sur 82 et 75 images échantillonnées. Translation 14 → 9,46 → 0 px et 14 → 9,52 → 0 px, durée 560 ms. Positions finales 126,80 et 127,05 px sous la navigation, défilement constant.
+- En local à 320 px avec mouvement réduit, Vitrine est à pleine opacité et alignée dès la première image. Contrôle mobile en émulation. Build et 314 tests validés.

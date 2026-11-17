@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — dégradés mobiles et retour des forfaits
+## Version active — retour mobile sans variation d’opacité
+
+- Révision applicative `5c77fc9da692f51b41daab5ddd704698fd0128ce`
+- Release `/home/mathis/site-maker/releases/20261117T215514Z-5c77fc9da692`
+- Client `/assets/index-BPZhiqhE.js`, SHA-256 `16e6391e03063f8b932e8d2b20198a2d87661de69b0988c6b4ce1cc6e5b9d65f`
+- Archive : 27 938 934 octets, SHA-256 `39795fca01053b52ee2fb84e915991973807e46a115afb29da6bb5a0d6bf77cc`
+
+Retour mobile à 560 ms avec glissement progressif de 14 px et opacité constante. En HTTPS à 430 px, le retour navigateur depuis Business et le lien Tous les forfaits depuis Premium / 3D présentent une opacité de 1 sur toutes les images échantillonnées et aucun mouvement du défilement une fois la liste affichée. Mouvement réduit validé en local à 320 px. 314 tests passent. Aucune alerte console dans le contrôle HTTPS.
+
+Sauvegarde, préflight SSR et bascule vérifiés, catalogue identique par SHA-256. Service et tunnel actifs. Aperçu local fermé.
+
+## Version précédente — dégradés mobiles et retour des forfaits
 
 - Révision applicative `4bd3c2d69d9398fc203da0a7eec20a8cc936336b`
 - Release `/home/mathis/site-maker/releases/20261117T213822Z-4bd3c2d69d93`

@@ -1,3 +1,7 @@
+# Flash au retour des forfaits sur téléphone — 17 novembre 2026
+
+Publié sur gilmathis.com dans `5c77fc9da692`. La carte reste opaque pendant son glissement de retour à 560 ms. Retour navigateur et lien Tous les forfaits vérifiés en HTTPS à 430 px, mouvement réduit vérifié à 320 px en local. Les 314 tests passent.
+
 # Dégradés et retour des forfaits sur téléphone — 17 novembre 2026
 
 Publié sur gilmathis.com dans `4bd3c2d69d93`. Dégradés visibles au repos sur les trois cartes mobiles et boutons Configurer noirs. Retour de la carte choisie avec fondu et léger glissement sur 560 ms. Contrôles en local et HTTPS, 314 tests réussis.
