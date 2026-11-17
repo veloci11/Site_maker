@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-17T06:20:40.454348+00:00",
+  "release": "20261117T061816Z-d807806baf1d",
+  "commit": "d807806baf1d244c4de2e2ac3c5ba1bb55f64fc0",
+  "health": true,
+  "assets": [
+    {
+      "path": "/assets/index-BAJu3ZUu.js",
+      "sha256": "1794e3544b967d3e771dcf5b47f86896d208f6c5146ba2ffe8cf6fc4a84f0f37",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-CSKiZimD.css",
+      "sha256": "c9af1564a1651358488911637a40780664eea1fb16d40f0d6d9eb957f6e3e3c1",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-C1u1-2U7.css",
+      "sha256": "b196abbbb1107fbae57cdc290a30f41226e070d153a11a8a485ddb64e13f5639",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-BORLnm5u.css",
+      "sha256": "1695effff14e6bddf7b26a94c857105286f24792bd2d76a1d74a8e72b2544aa3",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/ProjectBriefForm-C1nBg6xZ.css",
+      "sha256": "c3ef99ae14f8fbf178566ba3b18672ed09bfe5fe0514c8e62eb0d2447416c4db",
+      "matchesLocalBuild": true
+    }
+  ],
+  "routes": [
+    "/",
+    "/forfaits/connecte"
+  ]
+}

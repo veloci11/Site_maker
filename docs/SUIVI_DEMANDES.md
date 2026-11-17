@@ -1,3 +1,7 @@
+# Changer trop blanc sur téléphone — 17 novembre2026
+
+Le bouton translucide est remplacé sur téléphone par un fond noir opaque et du texte blanc, y compris pendant l'ouverture du menu. Dimensions88,875×44 px stables, chevron et animations conservés ; desktop inchangé. Contrôles320/430/bureau,314 tests et vérification HTTPS. Publié dans `20261117T061816Z-d807806baf1d`, localhost fermé. Preuves : `qa/mobile-change-contrast-2026-11-17/`.
+
 # Animation mobile à nouveau perceptible — 17 novembre 2026
 
 Mathis valide la fluidité mais ne voit pas l'entrée200 ms. Correction CSS limitée : arrivée400 ms de la carte et des liens, opacité0→1 et translation24 px ; fonctionnalités et contenu de barre en fondu synchronisé, ancre et fond de barre fixes. Aucun bitmap, zoom ou délai de navigation. IAB430/320 et bureau : phases visibles, commande immédiate, pas de rejeu après sélection, menu, retour aligné et reduced contrôlés.314 tests réussis. Rapport : `qa/mobile-visible-entry-2026-11-17/`. Publié dans `20261117T060918Z-c6e4354605d3` et vérifié en HTTPS : arrivée .4s réellement observée, barre opaque et fixe, client/CSS conformes et santé valide. Localhost fermé après vérification.

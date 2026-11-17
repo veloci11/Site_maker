@@ -1,0 +1,48 @@
+{
+  "closed": {
+    "appearance": "none",
+    "background": "rgb(17, 17, 17)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "closed"
+  },
+  "open": {
+    "appearance": "none",
+    "background": "rgb(41, 41, 41)",
+    "chevron": "matrix(-1, 0, 0, -1, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "open"
+  },
+  "metadata": {
+    "entryDuration": "0.4s",
+    "entryName": "plan-live-content-arrive",
+    "script": "https://gilmathis.com/assets/index-BAJu3ZUu.js",
+    "styles": [
+      "/assets/index-BORLnm5u.css",
+      "/assets/ProjectBriefForm-C1nBg6xZ.css",
+      "/assets/index-C1u1-2U7.css"
+    ],
+    "url": "https://gilmathis.com/forfaits/connecte"
+  },
+  "logs": []
+}

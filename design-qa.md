@@ -1,3 +1,7 @@
+## Bouton Changer lisible sur téléphone — 17 novembre2026
+
+Fond noir opaque et texte blanc sur les trois forfaits, états ouvert/survol contrastés, cible44 px et dimensions identiques. Apparence desktop32 px et animation mobile400 ms conservées. IAB430/320 et bureau, ouverture/fermeture et changement entre les trois offres contrôlés ;314 tests passent. Publié dans `20261117T061816Z-d807806baf1d` et vérifié sur Business en HTTPS, avec client/CSS conformes et santé valide. Localhost fermé. Rapport : `docs/qa/mobile-change-contrast-2026-11-17/design-qa.md`.
+
 ## Animation mobile plus visible — 17 novembre 2026
 
 Après validation de la fluidité, Mathis juge le mouvement200 ms trop discret. Arrivée400 ms de la carte réelle et des liens supérieurs en fondu/glissement24 px ; fonctionnalités et contenu de barre synchronisés en opacité seule. Fond de barre opaque, ancre Personnaliser immobile, zéro capture/zoom/attente. Phases réelles0,01→0,54→1 observées à430 px, menu/retour/reduced à320 et desktop760 ms conservé.314 tests passent, aucune alerte console. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/design-qa.md`. Publié dans `20261117T060918Z-c6e4354605d3` et vérifié en HTTPS : arrivée .4s réellement observée, barre opaque et fixe, client/CSS conformes et santé valide. Localhost fermé après vérification.

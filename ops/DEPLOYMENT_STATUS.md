@@ -2,7 +2,20 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — arrivée mobile visible
+## Version active — contraste de Changer sur téléphone
+
+- Révision applicative `d807806baf1d244c4de2e2ac3c5ba1bb55f64fc0`
+- Release `/home/mathis/site-maker/releases/20261117T061816Z-d807806baf1d`
+- Client `/assets/index-BAJu3ZUu.js`, SHA-256 `1794e3544b967d3e771dcf5b47f86896d208f6c5146ba2ffe8cf6fc4a84f0f37`
+- Archive : 27982607 octets, SHA-256 `355f282545f1a7bbe3d969ead556861e5a1e1a8af775fe38364212124a9b9938`
+
+Sur760 px maximum, Changer a un fond noir opaque#111, texte blanc, état ouvert/survol#292929 et apparence native retirée. Même style pour le bouton et son double décoratif. Dimensions stables88,875×44 px ; desktop32 px et rendu translucide conservés. Aucun changement JS, de navigation ou d'animation. Arrivée mobile400 ms conservée.
+
+TypeScript, builds client/SSR/Sites et314 tests réussis. IAB local430/320/bureau : trois forfaits, ouverture/fermeture, mouvement réduit et absence de déplacement contrôlés. HTTPSBusiness430 confirme fond/texte/tailles, menu et arrivée.4s, aucune alerte console. JS et CSS des routes accueil/configurateur conformes par SHA-256 ; santé valide.
+
+Sauvegarde et préflight Node24/SSR avant bascule atomique. Trois offres,28 définitions, tarifs et identifiants inchangés ;22 autres services/PID conservés et GP Park inactif. Seul site-maker.service redémarré ; Tailscale déjà actif laissé inchangé. Localhost4183 arrêté (PID82741), émulations/viewport retirés, aperçu public conservé. Rapport : `docs/qa/mobile-change-contrast-2026-11-17/`.
+
+## Version précédente — arrivée mobile visible
 
 - Révision applicative `c6e4354605d37aa1e0563a9470a1b018e0341630`
 - Release `/home/mathis/site-maker/releases/20261117T060918Z-c6e4354605d3`
