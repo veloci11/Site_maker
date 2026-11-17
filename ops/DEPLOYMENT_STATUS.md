@@ -2,7 +2,20 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — choix mobiles stables et transition progressive
+## Version active — header compact et transitions à 560 ms
+
+- Révision applicative `4d2cd20269c309b3dd14e462a39ba46070f422db`
+- Release `/home/mathis/site-maker/releases/20261117T212753Z-4d2cd20269c3`
+- Client `/assets/index-C-B4xcQw.js`, SHA-256 `97e04184bf0ed8d7e9dc7043e9edf785c8dc10a8d1ab3a62cfc46f7cef312d8d`
+- Archive : 27 955 877 octets, SHA-256 `67cb9ef161b386c194bbe239db6f84504093cd0dd6f76a6e1ccfd4617f27efbd`
+
+Le header mobile occupe 68 px hors zone système. Entrée et retour à 560 ms sur téléphone et ordinateur. Liens de paiement se replie sous Boutique, le compteur s’ouvre sous Ajouter une page et le sous-menu Forfaits se déplie. Les résultats filtrés de la galerie apparaissent progressivement.
+
+Vérification HTTPS dans le navigateur intégré. À 430 px avec safe-area simulée de 59 px, header 127 px et retour Business à 126,80 px. Le paiement se replie de 147,9 à 0 px et se redéploie à 147,9 px, Boutique reste à 617,55 px. Raccords natifs de 560 ms à 1 280 px. Filtre de galerie et réduction du mouvement contrôlés, aucune alerte console. 314 tests passent. Détails dans `docs/qa/choice-flow-2026-11-17/design-qa.md`.
+
+Préflight SSR sur trois routes, sauvegarde privée réussie et bascule atomique. Catalogue identique par SHA-256, service et tunnel actifs. Seul `site-maker.service` a été redémarré. Aperçu local arrêté après contrôle.
+
+## Version précédente — choix mobiles stables et transition progressive
 
 - Révision applicative `ed8a123675d6fc546a142c192cb50ac6088ca592`
 - Release `/home/mathis/site-maker/releases/20261117T064321Z-ed8a123675d6`

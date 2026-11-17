@@ -1,3 +1,7 @@
+# Header mobile et transitions des cartes — 17 novembre 2026
+
+Publié sur gilmathis.com dans la révision `4d2cd20269c3`. Header mobile de 88 à 68 px hors zone système, commandes de 44 px. Raccords 560 ms dans les deux sens. Liens de paiement se replie sous Boutique. Compteur de pages, sous-menu et cartes de la galerie animés. Contrôlé à 320/430/1 280 px dans le navigateur intégré, avec 314 tests réussis. Détails dans `qa/choice-flow-2026-11-17/design-qa.md`.
+
 # Animation trop directe et fonctionnalités qui déplacent la page — 17 novembre2026
 
 Résumé situé au-dessus des choix : animation de taille620ms responsable du déplacement reproduit. Correction public mobile : taille finale synchrone, compensation unique de la ligne touchée, pas de clones FLIP et annulation du recentrage différé d'accordéon. Appuis AX répétés, quantité, mensuels, boutique et ouverture : écarts≤0,21px. Arrivée plus progressive560ms et retour300ms sur la carte choisie. Desktop et réduction du mouvement conservés ;314 tests passent. Preuves : `qa/mobile-steady-features-2026-11-17/`. Publié dans `20261117T064321Z-ed8a123675d6` et vérifié en HTTPS : entrée560ms réellement observée, ajout/retrait à±0,203px, retour recentré avec fondu, aucun message console. JS/CSS conformes, santé valide et localhost fermé.
