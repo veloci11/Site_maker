@@ -1,6 +1,6 @@
 # Animation trop directe et fonctionnalités qui déplacent la page — 17 novembre2026
 
-Résumé situé au-dessus des choix : animation de taille620ms responsable du déplacement reproduit. Correction public mobile : taille finale synchrone, compensation unique de la ligne touchée, pas de clones FLIP et annulation du recentrage différé d'accordéon. Appuis AX répétés, quantité, mensuels, boutique et ouverture : écarts≤0,21px. Arrivée plus progressive560ms et retour300ms sur la carte choisie. Desktop et réduction du mouvement conservés ;314 tests passent. Preuves : `qa/mobile-steady-features-2026-11-17/`. Publication à consigner.
+Résumé situé au-dessus des choix : animation de taille620ms responsable du déplacement reproduit. Correction public mobile : taille finale synchrone, compensation unique de la ligne touchée, pas de clones FLIP et annulation du recentrage différé d'accordéon. Appuis AX répétés, quantité, mensuels, boutique et ouverture : écarts≤0,21px. Arrivée plus progressive560ms et retour300ms sur la carte choisie. Desktop et réduction du mouvement conservés ;314 tests passent. Preuves : `qa/mobile-steady-features-2026-11-17/`. Publié dans `20261117T064321Z-ed8a123675d6` et vérifié en HTTPS : entrée560ms réellement observée, ajout/retrait à±0,203px, retour recentré avec fondu, aucun message console. JS/CSS conformes, santé valide et localhost fermé.
 
 # Changer trop blanc sur téléphone — 17 novembre2026
 

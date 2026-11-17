@@ -2,7 +2,22 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — contraste de Changer sur téléphone
+## Version active — choix mobiles stables et transition progressive
+
+- Révision applicative `ed8a123675d6fc546a142c192cb50ac6088ca592`
+- Release `/home/mathis/site-maker/releases/20261117T064321Z-ed8a123675d6`
+- Client `/assets/index-C22JzSDI.js`, SHA-256 `06ed1324c4f48fbe1c57870b6ce08cf8798459567cb4fe203d93467b4675a598`
+- Archive : 27982965 octets, SHA-256 `b8634a9ff276fbb6cd45333c1ca683fcbc35ec1ce3a610c5097430f81fc478f7`
+
+Le résumé placé au-dessus des choix poussait la ligne touchée d'environ113px pendant son agrandissement. Sur public<=760px, taille finale synchrone et compensation unique avant peinture, sans boucle de scroll. Cadre de résumé écrit avant la compensation, clones FLIP évités sur mobile, recentrage différé d'accordéon annulé dès un choix ; quantité, mensuels et masquage Paiement/Boutique couverts. Privé et desktop conservent leurs effets.
+
+Arrivée mobile560ms/.2→1/18px et courbe répartie(.4,0,.6,1), carte/texte ensemble. Fonctionnalités et enfants du bandeau en opacité seule ; fond opaque et fixe. Au retour mobile, carte recentrée en fondu.65→1/300ms, sans capture, translation ni délai. Mouvement réduit, contraste Changer, comparatif au scroll de page, logo et desktop760ms conservés.
+
+Deux relectures spécialisées ; TypeScript, builds client/SSR/Sites et314 tests réussis. IAB430/320, appuis AX répétés, quantité, mensuels, boutique et appui130ms après ouverture : dérive≤0,21px, stable après750ms. Desktop ajout/retrait : ligne fixe, cadre animé620ms conservé. HTTPS430 : opacité.200→.529→1 et translation17,992→10,598→0 px ; ajout/retrait±0,203px, retour147,211px pour header147px, fondu.65→1. Aucune alerte console. JS et CSS accueil/configurateur (cinq actifs) conformes au build par SHA-256 ; santé valide. Émulation, sans revendication de FPS sur iPhone matériel.
+
+Sauvegarde et préflight Node24/SSR avant bascule atomique. Trois offres,28 définitions, tarifs et identifiants inchangés ;22 autres services/PID conservés, GP Park inactif. Seul site-maker.service redémarré ; Tailscale déjà actif laissé inchangé. Localhost4183 fermé (PID84591), deux onglets locaux fermés et émulations/viewport retirés ; aperçu public conservé. Rapport : `docs/qa/mobile-steady-features-2026-11-17/`.
+
+## Version précédente — contraste de Changer sur téléphone
 
 - Révision applicative `d807806baf1d244c4de2e2ac3c5ba1bb55f64fc0`
 - Release `/home/mathis/site-maker/releases/20261117T061816Z-d807806baf1d`

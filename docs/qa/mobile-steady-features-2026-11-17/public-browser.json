@@ -1,0 +1,344 @@
+{
+  "entry": {
+    "start": {
+      "captures": [],
+      "parts": [
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "0.200365",
+          "rect": {
+            "bottom": 220.9917907714844,
+            "height": 44.00001525878906,
+            "left": 20,
+            "right": 410,
+            "top": 176.9917755126953,
+            "width": 390,
+            "x": 20,
+            "y": 176.9917755126953
+          },
+          "selector": ".configurator-topline",
+          "transform": "matrix(1, 0, 0, 1, 0, 17.9918)"
+        },
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "0.200365",
+          "rect": {
+            "bottom": 817.6636505126953,
+            "height": 578.671875,
+            "left": 20,
+            "right": 410,
+            "top": 238.9917755126953,
+            "width": 390,
+            "x": 20,
+            "y": 238.9917755126953
+          },
+          "selector": ".selected-plan",
+          "transform": "matrix(1, 0, 0, 1, 0, 17.9918)"
+        },
+        {
+          "animation": "plan-live-fade-arrive",
+          "duration": "0.56s",
+          "opacity": "0.200365",
+          "rect": {
+            "bottom": 1623.1875,
+            "height": 789.515625,
+            "left": 20,
+            "right": 410,
+            "top": 833.671875,
+            "width": 390,
+            "x": 20,
+            "y": 833.671875
+          },
+          "selector": ".configurator-options",
+          "transform": "none"
+        },
+        {
+          "animation": "none",
+          "duration": "0s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 932,
+            "height": 99,
+            "left": 0,
+            "right": 430,
+            "top": 833,
+            "width": 430,
+            "x": 0,
+            "y": 833
+          },
+          "selector": ".configurator-price-bar",
+          "transform": "none"
+        }
+      ],
+      "script": "https://gilmathis.com/assets/index-C22JzSDI.js"
+    },
+    "mid": {
+      "captures": [],
+      "parts": [
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "0.528958",
+          "rect": {
+            "bottom": 213.5984344482422,
+            "height": 44,
+            "left": 20,
+            "right": 410,
+            "top": 169.5984344482422,
+            "width": 390,
+            "x": 20,
+            "y": 169.5984344482422
+          },
+          "selector": ".configurator-topline",
+          "transform": "matrix(1, 0, 0, 1, 0, 10.5984)"
+        },
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "0.528958",
+          "rect": {
+            "bottom": 810.2703094482422,
+            "height": 578.671875,
+            "left": 20,
+            "right": 410,
+            "top": 231.5984344482422,
+            "width": 390,
+            "x": 20,
+            "y": 231.5984344482422
+          },
+          "selector": ".selected-plan",
+          "transform": "matrix(1, 0, 0, 1, 0, 10.5984)"
+        },
+        {
+          "animation": "plan-live-fade-arrive",
+          "duration": "0.56s",
+          "opacity": "0.528958",
+          "rect": {
+            "bottom": 1623.1875,
+            "height": 789.515625,
+            "left": 20,
+            "right": 410,
+            "top": 833.671875,
+            "width": 390,
+            "x": 20,
+            "y": 833.671875
+          },
+          "selector": ".configurator-options",
+          "transform": "none"
+        },
+        {
+          "animation": "none",
+          "duration": "0s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 932,
+            "height": 99,
+            "left": 0,
+            "right": 430,
+            "top": 833,
+            "width": 430,
+            "x": 0,
+            "y": 833
+          },
+          "selector": ".configurator-price-bar",
+          "transform": "none"
+        }
+      ],
+      "script": "https://gilmathis.com/assets/index-C22JzSDI.js"
+    },
+    "end": {
+      "captures": [],
+      "parts": [
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 203,
+            "height": 44,
+            "left": 20,
+            "right": 410,
+            "top": 159,
+            "width": 390,
+            "x": 20,
+            "y": 159
+          },
+          "selector": ".configurator-topline",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "animation": "plan-live-content-arrive",
+          "duration": "0.56s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 799.671875,
+            "height": 578.671875,
+            "left": 20,
+            "right": 410,
+            "top": 221,
+            "width": 390,
+            "x": 20,
+            "y": 221
+          },
+          "selector": ".selected-plan",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "animation": "plan-live-fade-arrive",
+          "duration": "0.56s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 1623.1875,
+            "height": 789.515625,
+            "left": 20,
+            "right": 410,
+            "top": 833.671875,
+            "width": 390,
+            "x": 20,
+            "y": 833.671875
+          },
+          "selector": ".configurator-options",
+          "transform": "none"
+        },
+        {
+          "animation": "none",
+          "duration": "0s",
+          "opacity": "1",
+          "rect": {
+            "bottom": 932,
+            "height": 99,
+            "left": 0,
+            "right": 430,
+            "top": 833,
+            "width": 430,
+            "x": 0,
+            "y": 833
+          },
+          "selector": ".configurator-price-bar",
+          "transform": "none"
+        }
+      ],
+      "script": "https://gilmathis.com/assets/index-C22JzSDI.js"
+    }
+  },
+  "choice": {
+    "before": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 491.546875,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 471.546875,
+        "width": 20,
+        "x": 41,
+        "y": 471.546875
+      },
+      "checked": "checked",
+      "focus": "",
+      "item": {
+        "bottom": 555.5,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 407.6015625,
+        "width": 382,
+        "x": 24,
+        "y": 407.6015625
+      },
+      "scrollY": 759.5
+    },
+    "now": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 491.75,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 471.75,
+        "width": 20,
+        "x": 41,
+        "y": 471.75
+      },
+      "checked": "unchecked",
+      "focus": "option-additional-language",
+      "item": {
+        "bottom": 555.703125,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 407.8046875,
+        "width": 382,
+        "x": 24,
+        "y": 407.8046875
+      },
+      "scrollY": 617
+    },
+    "after": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 491.75,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 471.75,
+        "width": 20,
+        "x": 41,
+        "y": 471.75
+      },
+      "checked": "unchecked",
+      "focus": "option-additional-language",
+      "item": {
+        "bottom": 555.703125,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 407.8046875,
+        "width": 382,
+        "x": 24,
+        "y": 407.8046875
+      },
+      "scrollY": 617
+    },
+    "removed": {
+      "barBottom": 932,
+      "checkbox": {
+        "bottom": 491.546875,
+        "height": 20,
+        "left": 41,
+        "right": 61,
+        "top": 471.546875,
+        "width": 20,
+        "x": 41,
+        "y": 471.546875
+      },
+      "checked": "checked",
+      "focus": "option-additional-language",
+      "item": {
+        "bottom": 555.5,
+        "height": 147.8984375,
+        "left": 24,
+        "right": 406,
+        "top": 407.6015625,
+        "width": 382,
+        "x": 24,
+        "y": 407.6015625
+      },
+      "scrollY": 759.5
+    }
+  },
+  "return": {
+    "start": {
+      "header": 147,
+      "opacity": "0.65",
+      "top": 147.2109375
+    },
+    "end": {
+      "opacity": "1",
+      "top": 147.2109375
+    }
+  },
+  "logs": []
+}

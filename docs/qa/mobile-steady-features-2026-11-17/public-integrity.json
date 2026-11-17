@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-17T06:45:28.206599+00:00",
+  "release": "20261117T064321Z-ed8a123675d6",
+  "commit": "ed8a123675d6fc546a142c192cb50ac6088ca592",
+  "health": true,
+  "routes": [
+    "/",
+    "/forfaits/vitrine"
+  ],
+  "assets": [
+    {
+      "path": "/assets/index-C22JzSDI.js",
+      "sha256": "06ed1324c4f48fbe1c57870b6ce08cf8798459567cb4fe203d93467b4675a598",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-CSKiZimD.css",
+      "sha256": "c9af1564a1651358488911637a40780664eea1fb16d40f0d6d9eb957f6e3e3c1",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-BIt3JJso.css",
+      "sha256": "1e03b60f417229c11e81417261e02a7beb607664049aef39a9a1d19389d0e36c",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/index-isgDnauI.css",
+      "sha256": "ebe4de0ce575f9b41b42b16fa7e5ad2051208b22b24a6d59c1aac38a937fbdb9",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "/assets/ProjectBriefForm-C1nBg6xZ.css",
+      "sha256": "c3ef99ae14f8fbf178566ba3b18672ed09bfe5fe0514c8e62eb0d2447416c4db",
+      "matchesLocalBuild": true
+    }
+  ]
+}

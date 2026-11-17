@@ -1,6 +1,6 @@
 ## Choix mobiles stables et transition plus douce — 17 novembre2026
 
-Résumé au-dessus des choix : croissance142px reproduite et déplacement visuel113px identifié. Taille mobile finale et compensation unique avant peinture maintiennent maintenant la ligne touchée à±0,21px, y compris appuis rapides, quantité, mensuels, boutique et sélection pendant ouverture. Arrivée560ms/.2→1/18px, retour300ms sur la seule carte recentrée. IAB430/320/desktop, mouvement réduit, bandeau fixe et animations desktop contrôlés ;314 tests passent. Rapport : `docs/qa/mobile-steady-features-2026-11-17/design-qa.md`. Publication à consigner.
+Résumé au-dessus des choix : croissance142px reproduite et déplacement visuel113px identifié. Taille mobile finale et compensation unique avant peinture maintiennent maintenant la ligne touchée à±0,21px, y compris appuis rapides, quantité, mensuels, boutique et sélection pendant ouverture. Arrivée560ms/.2→1/18px, retour300ms sur la seule carte recentrée. IAB430/320/desktop, mouvement réduit, bandeau fixe et animations desktop contrôlés ;314 tests passent. Rapport : `docs/qa/mobile-steady-features-2026-11-17/design-qa.md`. Publié dans `20261117T064321Z-ed8a123675d6` et vérifié en HTTPS : entrée560ms réellement observée, ajout/retrait à±0,203px, retour recentré avec fondu, aucun message console. JS/CSS conformes, santé valide et localhost fermé.
 
 ## Bouton Changer lisible sur téléphone — 17 novembre2026
 
