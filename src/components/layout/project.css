@@ -248,7 +248,8 @@
  .configurator-topline { font-size:12px; margin-bottom:18px; }
  .configurator-topline a { min-height:44px; }
  .selected-plan { border-radius:20px; padding:24px; }
- .selected-plan__change { height:44px; padding-block:12px; }
+ .selected-plan__change { height:44px; padding-block:12px; appearance:none; background:#111; color:#fff; border-color:rgb(255 255 255 / .55); text-shadow:none; }
+ .selected-plan__change:is(:hover,[data-state="open"]) { background:#292929; }
  .public-offers-menu.selected-plan-menu .dropdown-item { min-height:44px; }
  .selected-plan__heading { margin-bottom:20px; }
  .selected-plan h1 { font-size:44px; margin-bottom:12px; }

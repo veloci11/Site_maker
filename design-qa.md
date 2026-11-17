@@ -1,6 +1,6 @@
 ## Animation mobile plus visible — 17 novembre 2026
 
-Après validation de la fluidité, Mathis juge le mouvement200 ms trop discret. Arrivée400 ms de la carte réelle et des liens supérieurs en fondu/glissement24 px ; fonctionnalités et contenu de barre synchronisés en opacité seule. Fond de barre opaque, ancre Personnaliser immobile, zéro capture/zoom/attente. Phases réelles0,01→0,54→1 observées à430 px, menu/retour/reduced à320 et desktop760 ms conservé.314 tests passent, aucune alerte console. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/design-qa.md`. Publication à consigner.
+Après validation de la fluidité, Mathis juge le mouvement200 ms trop discret. Arrivée400 ms de la carte réelle et des liens supérieurs en fondu/glissement24 px ; fonctionnalités et contenu de barre synchronisés en opacité seule. Fond de barre opaque, ancre Personnaliser immobile, zéro capture/zoom/attente. Phases réelles0,01→0,54→1 observées à430 px, menu/retour/reduced à320 et desktop760 ms conservé.314 tests passent, aucune alerte console. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/design-qa.md`. Publié dans `20261117T060918Z-c6e4354605d3` et vérifié en HTTPS : arrivée .4s réellement observée, barre opaque et fixe, client/CSS conformes et santé valide. Localhost fermé après vérification.
 
 ## Comparatif dans la page et transition mobile directe — 16 novembre 2026
 

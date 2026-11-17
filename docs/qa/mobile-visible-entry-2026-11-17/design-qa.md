@@ -1,6 +1,6 @@
 # Arrivée mobile plus visible
 
-17 novembre 2026. État : contrôlé localement, publication à consigner.
+17 novembre 2026. État : publié et contrôlé en HTTPS, révision `c6e4354605d37aa1e0563a9470a1b018e0341630`, release `20261117T060918Z-c6e4354605d3`.
 
 Mathis confirme la disparition des saccades mais ne perçoit pas le mouvement précédent de200 ms, opacité.55→1 et translation6 px. Le changement reste limité à plan-motion.css : arrivée de400 ms avec fondu0→1 et glissement24 px de la carte réelle et des liens supérieurs. Les fonctionnalités apparaissent au même rythme, en opacité seule pour préserver l'ancre de défilement. Le fond de la barre de prix reste opaque ; ses enfants suivent le fondu. Aucun zoom, bitmap natif, minuteur, attente de navigation ni nouvelle dépendance. Les autres parcours et le comparatif restent conservés.
 
@@ -15,3 +15,9 @@ Mathis confirme la disparition des saccades mais ne perçoit pas le mouvement pr
 TypeScript, builds client/SSR/Sites et **314 tests passent**. Pas de test miroir ajouté pour ces styles réversibles. Relecture spécialisée de la structure : barre fixe hors des éléments translatés ; le risque de déplacement d'ancre sur un appui immédiat a été évité en limitant les fonctionnalités au fondu. Aucune alerte console sur les contrôles mobile et desktop, aucun formulaire envoyé.
 
 Ces contrôles observent le contenu web dans le navigateur intégré ; ils ne constituent pas une mesure FPS sur un iPhone physique.
+
+## Publication vérifiée
+
+Le navigateur public à430 px observe opacité .011→.494→1 et translation23,733→12,145→0 px sur400 ms. Aucun snapshot natif ; fond de barre opaque, bas à932 px. Aucune alerte console. Capture `02-public-visible-entry.jpg` et `public-browser.json`. Le JS et les deux CSS correspondent au build par SHA-256 ; santé valide (`public-integrity.json`).
+
+Sauvegarde et préflight Node24/SSR avant bascule ; trois offres,28 définitions, prix et identifiants inchangés.22 autres services/PID conservés, GP Park inactif. Seul site-maker.service redémarré. Localhost4183 arrêté (PID81716), deux onglets locaux fermés et émulations/viewport retirés ; aperçu public conservé. Origine : `deployment-origin.json`.

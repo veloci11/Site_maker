@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Contraste du bouton Changer sur téléphone — 17 novembre 2026
+
+Mathis signale que le blanc du bouton Changer se perd sur la carte mobile. Sur760 px maximum, garder sa cible44 px et ses dimensions, mais afficher un fond noir opaque#111 et un texte blanc explicite ; état ouvert/survol#292929, contour blanc et apparence native retirée. Même règle sur le vrai bouton et son double décoratif. Ne modifier ni le menu, ni le raccord400 ms, ni l'apparence desktop. Contrôles : `docs/qa/mobile-change-contrast-2026-11-17/`.
+
 ## Arrivée mobile visible après validation de la fluidité — 17 novembre 2026
 
 Mathis confirme que le téléphone ne saccade plus, mais perçoit le passage de 200 ms/.55→1/6px comme une coupure sans animation. L'arrivée mobile devient visible sur400 ms : carte et liens supérieurs, texte compris, en fondu0→1 et translation24px→0. Les fonctionnalités ont le même fondu, sans translation pour garder l'ancre Personnaliser immobile. Le fond de la barre de prix reste opaque et fixe ; seuls ses enfants se fondent. Toujours aucun zoom, capture native, délai de navigation ou animation globale du listing. Desktop760 ms, comparatif au scroll de page, retours et réduction du mouvement conservés. Les contrôles doivent observer plusieurs phases, pas seulement la présence d'un nom CSS. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/`.

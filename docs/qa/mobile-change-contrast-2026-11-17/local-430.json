@@ -1,0 +1,101 @@
+{
+  "vitrine": {
+    "appearance": "none",
+    "background": "rgb(17, 17, 17)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "closed"
+  },
+  "open": {
+    "appearance": "none",
+    "background": "rgb(41, 41, 41)",
+    "chevron": "matrix(-1, 0, 0, -1, 0, 0)",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "open"
+  },
+  "business": {
+    "appearance": "none",
+    "background": "rgb(17, 17, 17)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "closed"
+  },
+  "premium": {
+    "appearance": "none",
+    "background": "rgb(17, 17, 17)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "closed"
+  },
+  "menu": {
+    "animation": "selected-plan-menu-open",
+    "duration": "0.24s",
+    "rect": {
+      "bottom": 439,
+      "height": 144,
+      "left": 176,
+      "right": 386,
+      "top": 295,
+      "width": 210,
+      "x": 176,
+      "y": 295
+    }
+  },
+  "reclosed": {
+    "appearance": "none",
+    "background": "rgb(41, 41, 41)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 297.125,
+      "right": 386,
+      "top": 245,
+      "width": 88.875,
+      "x": 297.125,
+      "y": 245
+    },
+    "state": "closed"
+  }
+}

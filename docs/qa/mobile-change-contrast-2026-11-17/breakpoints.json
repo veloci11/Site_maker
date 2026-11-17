@@ -1,0 +1,42 @@
+{
+  "mobile320": {
+    "appearance": "none",
+    "background": "rgb(17, 17, 17)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 289,
+      "height": 44,
+      "left": 187.125,
+      "right": 276,
+      "top": 245,
+      "width": 88.875,
+      "x": 187.125,
+      "y": 245
+    },
+    "state": "closed"
+  },
+  "layout320": {
+    "document": 320,
+    "entry": "none",
+    "viewport": 320
+  },
+  "desktop1280": {
+    "appearance": "auto",
+    "background": "rgba(255, 255, 255, 0.08)",
+    "chevron": "none",
+    "color": "rgb(255, 255, 255)",
+    "rect": {
+      "bottom": 236.03125,
+      "height": 32,
+      "left": 495.859375,
+      "right": 584.734375,
+      "top": 204.03125,
+      "width": 88.875,
+      "x": 495.859375,
+      "y": 204.03125
+    },
+    "state": "closed"
+  },
+  "logs": []
+}

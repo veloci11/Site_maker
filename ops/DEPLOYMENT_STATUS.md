@@ -1,8 +1,21 @@
 # Déploiement de pixelito — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 16 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — comparatif dans la page et carte mobile directe
+## Version active — arrivée mobile visible
+
+- Révision applicative `c6e4354605d37aa1e0563a9470a1b018e0341630`
+- Release `/home/mathis/site-maker/releases/20261117T060918Z-c6e4354605d3`
+- Client `/assets/index-BPA2Kegc.js`, SHA-256 `7a501da3317a019e6b37d4acd90c68802b57044e19d8ad1cf3e66a783e07b68a`
+- Archive :27980763 octets, SHA-256 `a828fd679e8696ee2065f4b00ecb36ab821b2330be4058513730ea1a2d66419b`
+
+Arrivée400 ms de la carte réelle et des liens, texte/image ensemble, opacité0→1 et translation24 px ; fonctionnalités et contenu de barre en opacité seule. Fond de barre opaque et fixe, ancre Personnaliser immobile. Aucun zoom/capture/délai. Listing stable, desktop760 ms, comparatif au scroll de page, logo et réduction du mouvement conservés.
+
+TypeScript, builds client/SSR/Sites et314 tests réussis. IAB430/320/bureau : phases réelles observées, appui immédiat, menu et retour contrôlés. HTTPS430 : opacité.011→.494→1, translation23,733→12,145→0 px, barre au bas932 et zéro capture ; aucune alerte console. Client/deuxCSS conformes par SHA-256 et santé valide. Ces observations ne mesurent pas les FPS d'un iPhone matériel.
+
+Sauvegarde et préflight Node24/SSR avant bascule atomique. Trois offres,28 définitions, prix et identifiants inchangés ;22 autres services/PID conservés et GP Park inactif. Seul site-maker.service redémarré ; Tailscale déjà actif laissé inchangé. Localhost4183 fermé (PID81716), deux onglets locaux fermés, émulations et viewport retirés, aperçu public conservé. Rapport : `docs/qa/mobile-visible-entry-2026-11-17/`.
+
+## Version précédente — comparatif dans la page et carte mobile directe
 
 - URL `https://gilmathis.com/`
 - Révision applicative `8363e7e8eaae2d240221a183d876a0bc4102c5b4`
