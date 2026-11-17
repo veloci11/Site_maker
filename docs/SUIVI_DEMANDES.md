@@ -1,3 +1,7 @@
+# Dégradés et retour des forfaits sur téléphone — 17 novembre 2026
+
+Publié sur gilmathis.com dans `4bd3c2d69d93`. Dégradés visibles au repos sur les trois cartes mobiles et boutons Configurer noirs. Retour de la carte choisie avec fondu et léger glissement sur 560 ms. Contrôles en local et HTTPS, 314 tests réussis.
+
 # Header mobile et transitions des cartes — 17 novembre 2026
 
 Publié sur gilmathis.com dans la révision `4d2cd20269c3`. Header mobile de 88 à 68 px hors zone système, commandes de 44 px. Raccords 560 ms dans les deux sens. Liens de paiement se replie sous Boutique. Compteur de pages, sous-menu et cartes de la galerie animés. Contrôlé à 320/430/1 280 px dans le navigateur intégré, avec 314 tests réussis. Détails dans `qa/choice-flow-2026-11-17/design-qa.md`.

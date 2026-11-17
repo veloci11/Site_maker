@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — header compact et transitions à 560 ms
+## Version active — dégradés mobiles et retour des forfaits
+
+- Révision applicative `4bd3c2d69d9398fc203da0a7eec20a8cc936336b`
+- Release `/home/mathis/site-maker/releases/20261117T213822Z-4bd3c2d69d93`
+- Client `/assets/index-DMhThJ2V.js`, SHA-256 `51bc9eb0b441d48150f8b07c52ad4a4ad318853b84fdd7822a8533a77a6c696a`
+- Archive : 27 941 172 octets, SHA-256 `722f9b235de57f74e6306c1e9d5ca095118b8541c5777fe525ff8d5a4de24c69`
+
+En HTTPS à 430 px, les trois dégradés de carte sont visibles au repos et les boutons Configurer restent noirs. Au Retour navigateur, Business se stabilise à 126,80 px, avec un fondu et un déplacement de 14 px sur 560 ms. Aucun déplacement du document pendant l’animation. Le survol bureau, le lien Tous les forfaits et le mouvement réduit à 320 px ont aussi été contrôlés en local. 314 tests passent.
+
+Sauvegarde et préflight SSR réussis avant la bascule. Catalogue identique par SHA-256, service et tunnel actifs. Aperçu local fermé. Détails dans `docs/qa/choice-flow-2026-11-17/design-qa.md`.
+
+## Version précédente — header compact et transitions à 560 ms
 
 - Révision applicative `4d2cd20269c309b3dd14e462a39ba46070f422db`
 - Release `/home/mathis/site-maker/releases/20261117T212753Z-4d2cd20269c3`
