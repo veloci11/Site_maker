@@ -1,0 +1,16 @@
+{
+  "release": "20261117T013123Z-e7de73879695",
+  "commit": "e7de73879695e580fb13b2b641c4139d18be21bc",
+  "previous": "releases/20261116T230338Z-169e3a8b6524",
+  "health": true,
+  "offers": 3,
+  "options": 28,
+  "productionPricesUnchanged": true,
+  "historicalIdsUnchanged": true,
+  "reviewedDefinitionsMatch": true,
+  "otherServicesChecked": 22,
+  "otherProjectsUnchanged": true,
+  "gpStateUnchanged": true,
+  "gpState": "inactive",
+  "backupCompleted": true
+}

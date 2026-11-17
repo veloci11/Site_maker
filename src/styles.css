@@ -229,12 +229,11 @@ ul, ol { padding-left: 1.25rem; }
 .sheet-close { position: absolute; top: 20px; right: 20px; }
 
 /* Static color fields, generated in CSS. Grain is blended without a gray veil. */
-.public-viewport-backdrop { display: none; }
 @media (max-width: 760px), (hover: none), (pointer: coarse) {
-  /* A real, opaque viewport-edge surface lets Safari extend the gradient into
-     its obscured top inset. Its own paint is unmasked; keep it below the
-     navigation and skip link, without a filter, transform or scroll observer. */
-  .public-viewport-backdrop { display: block; position: fixed; z-index: 49; inset: 0 0 auto; height: max(16px, env(safe-area-inset-top, 0px)); background-color: #e8def4; background-image: var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; pointer-events: none; }
+  /* Give Safari the real sticky header's complete opaque paint, rather than
+     a detached thin fixed strip. The configurator's relative header leaves
+     naturally, without a decorative layer covering the scrolling content. */
+  .public-header-wrap { background-color: #e8def4; background-image: var(--public-atmosphere), linear-gradient(#fff, #fff); background-repeat: no-repeat; background-size: 100% 1180px; }
 }
 .public-shell { --muted-foreground: #575360; position: relative; isolation: isolate; overflow-x: clip; min-height: 100vh; padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px); background: transparent; }
 /* Keep the white page paint without making the transparent sticky header sample an opaque white ancestor. */

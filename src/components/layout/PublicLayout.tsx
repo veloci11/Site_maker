@@ -57,8 +57,13 @@ export function PublicHeader() {
   const mobileMenuButton = useRef<HTMLButtonElement>(null)
   const [offersOpen, setOffersOpen] = useState(false)
   const offerActive = location.pathname.startsWith('/forfaits')
+  const previousLocationKey = useRef(location.key)
 
   useEffect(() => {
+    // The initial state is already closed. A fast first tap must not be
+    // dismissed by the mount effect while hydration is finishing.
+    if (previousLocationKey.current === location.key) return
+    previousLocationKey.current = location.key
     setMobileOpen(false)
     setOffersOpen(false)
   }, [location.key])
@@ -217,7 +222,6 @@ export function PublicFooter() {
 export function PublicLayout() {
   return (
     <div className="public-shell">
-      <div className="public-viewport-backdrop" aria-hidden="true" />
       <AmbientGrain />
       <a className="skip-link" href="#main-content">
         Aller au contenu

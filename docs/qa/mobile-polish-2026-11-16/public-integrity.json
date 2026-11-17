@@ -1,0 +1,13 @@
+{
+  "commit": "e7de73879695e580fb13b2b641c4139d18be21bc",
+  "releaseName": "20261117T013123Z-e7de73879695",
+  "entryScript": "index-C-2LZ-iz.js",
+  "entrySha256": "810b38edae9bb94f85554cfa5dd6a91cc2b7f8dd7b8e6e4673141790cfbdde2d",
+  "archiveBytes": 27977715,
+  "archiveSha256": "6120206da6f5169290efa3f1b85833b15bfba55465ab377af00e32b7407b1bb1",
+  "health": true,
+  "initialHtmlContainsEdgePaint": true,
+  "publicClientBytesMatch": true,
+  "publicCssFilesMatch": 2,
+  "manifestBackground": "#e8def4"
+}

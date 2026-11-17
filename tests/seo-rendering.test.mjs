@@ -22,8 +22,6 @@ test('every public route renders its actual content without JavaScript or stream
     assert.doesNotMatch(html, /<script\b|id="[BS]:|\$RC\(|\$RV\(/, route);
     assert.match(html, /href="\/contact"/, route);
     assert.match(html, /href="\/mentions-legales"/, route);
-    // Safari needs the real edge paint in the initial HTML, before hydration.
-    assert.match(html, /class="public-viewport-backdrop" aria-hidden="true"/, route);
     if (route === '/faq') for (const faq of faqs) assert.ok(html.includes(faq.question), faq.question);
     if (route.startsWith('/forfaits/')) assert.match(html, /Continuer|Décrire mon projet/, route);
     if (route === '/contact') {
