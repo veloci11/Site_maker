@@ -137,15 +137,15 @@ export function restorePlanScroll(location: RouteLocation, acceptedIntent?: { so
       window.scrollTo({ left: 0, top: Math.max(0, top), behavior: 'instant' })
       restored = true
       restoredKey = location.key
-      // The layout is already aligned. Ease the live card into that position
-      // with a transform and opacity so adjacent cards and scroll stay steady.
+      // The layout is already aligned. Move the opaque card into place
+      // without letting the page background show through its texture.
       if (typeof selectedCard?.animate === 'function'
         && window.matchMedia(LIVE_PLAN_MOTION_QUERY).matches
         && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const arrival = selectedCard.animate([
-          { opacity: .68, transform: 'translateY(14px)' },
-          { opacity: 1, transform: 'translateY(0px)' },
-        ], { duration: 560, easing: 'cubic-bezier(.24,.62,.36,1)' })
+          { transform: 'translateY(14px)' },
+          { transform: 'translateY(0px)' },
+        ], { duration: 560, easing: 'cubic-bezier(.4,0,.2,1)' })
         arrival.id = 'plan-live-return'
       }
     }

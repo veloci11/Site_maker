@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Retour opaque des forfaits — 17 novembre 2026
+
+Mathis valide les dégradés et signale un flash surtout au retour. Sur mobile, la vraie carte glisse de 14 px en 560 ms avec une vitesse progressive, à pleine opacité dès la première image. Recentrage du document avant peinture. Cette décision remplace le fondu de retour de .68 à 1 décrit ci-dessous. Garder le mouvement réduit immédiat, le raccord d'ouverture approuvé et le comportement ordinateur.
+
 ## Dégradé des cartes sur téléphone et retour plus doux — 17 novembre 2026
 
 Mathis demande le dégradé permanent sur le haut des cartes de forfaits sur téléphone, avec le bouton Configurer noir au repos. Appliquer la même présentation sur fenêtre étroite ou tactile. Le retour mobile recentre la carte réelle, puis fait converger son opacité de .68 à 1 et sa translation verticale de 14 à 0 px en 560 ms. La préférence de mouvement réduit garde le recentrage immédiat. Conserver le comportement de survol et le raccord à 560 ms sur ordinateur.
