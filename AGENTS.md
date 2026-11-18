@@ -1,5 +1,9 @@
 # studio — décisions et consignes actuelles
 
+## Classement des exemples par usage — 17 novembre 2026
+
+Mathis demande de revoir les filtres. Utiliser le format et l’usage principal des références. GeoBoss et DOMTEKNIKA rejoignent Business avec Lactel et Aéma. Satellite Story et Tiny Heaven illustrent le format Vitrine d’une seule page, avec des effets 3D mentionnés dans les descriptions. Julie Thiam, Addiction Agency et Atlante 3D restent en Premium / 3D. Une catégorie par référence. Conserver les liens officiels, images et crédits.
+
 ## Carte centrée au retour sur téléphone — 17 novembre 2026
 
 Mathis trouve la carte trop haute au retour et demande un glissement plus doux. Sur la liste empilée, centrer la carte choisie dans l’espace entre le header et le bas du viewport visuel. Quand elle dépasse cet espace, garder le titre à au moins 12 px sous le header. Appliquer ce réglage au bouton Retour du navigateur et au lien Tous les forfaits. Le glissement opaque reste à 560 ms, avec 16 px de déplacement et une accélération et décélération équilibrées. Le mouvement réduit et l’alignement de la rangée sur ordinateur restent applicables.

@@ -98,7 +98,7 @@ export const offers = [
     description:
       'Présentez clairement votre activité, vos services et vos coordonnées sur un site personnalisé de trois pages maximum. Un point de contact accessible sur mobile comme sur ordinateur.',
     features: [`Site personnalisé · ${publicPageCounts.vitrine.toLowerCase()}`, 'Mobile, tablette et ordinateur', 'Contact, référencement de base, mise en ligne'],
-    exampleId: 'domteknika',
+    exampleId: 'satellite-story',
     variant: 'vitrine',
   },
   {
@@ -119,7 +119,7 @@ export const offers = [
     headline: 'Une présence visuelle distinctive.',
     description: 'Tout le forfait Business est inclus, avec la reprise de vos contenus existants, des animations avancées et la 3D interactive. Le nombre de pages et les demandes sur mesure sont étudiés selon votre projet.',
     features: ['Business inclus · pages à définir', 'Animations avancées et 3D interactive', 'Reprise de vos anciens contenus', 'Demandes sur mesure étudiées'],
-    exampleId: 'tiny-heaven',
+    exampleId: 'julie-thiam',
     variant: 'immersif',
   },
   {
@@ -161,13 +161,13 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'domteknika',
     title: 'DOMTEKNIKA',
-    category: 'Vitrine',
-    offerId: 'vitrine',
+    category: 'Business',
+    offerId: 'connecte',
     image: '/assets/examples/domteknika.webp',
     url: 'https://domteknika.ch/fr',
     sourceUrl: 'https://domteknika.ch/fr',
     creator: 'DOMTEKNIKA',
-    description: 'Présenter une entreprise, son expertise et ses projets.',
+    description: 'Un site d’entreprise multilingue avec des pages d’expertise et des fiches projets.',
     embeddable: false,
   },
   {
@@ -197,13 +197,13 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'tiny-heaven',
     title: 'Tiny Heaven',
-    category: 'Premium / 3D',
-    offerId: 'immersif',
+    category: 'Vitrine',
+    offerId: 'vitrine',
     image: '/assets/examples/tiny-heaven.webp',
     url: 'https://tiny.raphael-ferreira.com/',
     sourceUrl: 'https://raphael-ferreira.com/',
     creator: 'Raphaël Ferreira',
-    description: 'Explorer un univers en trois dimensions.',
+    description: 'Une page créative qui présente un petit univers en 3D.',
     embeddable: true,
   },
   {
@@ -221,8 +221,8 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'geoboss',
     title: 'GeoBoss',
-    category: 'Premium / 3D',
-    offerId: 'immersif',
+    category: 'Business',
+    offerId: 'connecte',
     image: '/assets/examples/geoboss.webp',
     url: 'https://geoboss.onrender.com/',
     sourceUrl: 'https://raphael-ferreira.com/',
@@ -246,13 +246,13 @@ export const examples: readonly SiteExample[] = [
   {
     id: 'satellite-story',
     title: 'Satellite Story',
-    category: 'Premium / 3D',
-    offerId: 'immersif',
+    category: 'Vitrine',
+    offerId: 'vitrine',
     image: '/assets/examples/satellite.webp',
     url: 'https://satellite.raphael-ferreira.com/',
     sourceUrl: 'https://raphael-ferreira.com/',
     creator: 'Raphaël Ferreira',
-    description: 'Une histoire de Spoutnik, animée en 3D au défilement.',
+    description: 'Un récit en une page sur Spoutnik, animé en 3D au défilement.',
     embeddable: false,
   },
   {

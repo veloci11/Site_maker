@@ -23,6 +23,14 @@ test('three public offers have approved names, prices and matching gallery refer
   assert.equal(getOffer('sur-mesure').title, 'Sur mesure');
 });
 
+test('gallery filters group the references by their approved category', () => {
+  const idsFor = offerId => examples.filter(example => example.offerId === offerId).map(example => example.id).sort();
+  assert.deepEqual(idsFor('vitrine'), ['satellite-story', 'tiny-heaven']);
+  assert.deepEqual(idsFor('connecte'), ['aema', 'domteknika', 'geoboss', 'lactel']);
+  assert.deepEqual(idsFor('immersif'), ['addiction-agency', 'atlante-3d', 'julie-thiam']);
+  assert.equal(examples.find(example => example.id === 'geoboss').url, 'https://geoboss.onrender.com/');
+});
+
 test('every public base includes responsive and launch without charging them again', () => {
   for (const offer of publicOffers) {
     const config = normalizeConfiguration({ offerId: offer.id, mobile: false, deployment: false });
