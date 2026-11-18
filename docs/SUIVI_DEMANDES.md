@@ -1,3 +1,7 @@
+# Filtres de la galerie par usage — 17 novembre 2026
+
+Publié sur gilmathis.com dans `e22c955f3b6b`. GeoBoss et DOMTEKNIKA en Business, Satellite Story et Tiny Heaven en Vitrine. Lien vers le comparatif sous les filtres. Neuf références vérifiées en HTTPS sur mobile et ordinateur. 317 tests réussis.
+
 # Carte centrée au retour sur téléphone — 17 novembre 2026
 
 Publié sur gilmathis.com dans `d41b9df63dfd`. La carte choisie revient au centre de la zone sous le header avec un glissement opaque de 560 ms. Sur un écran trop court, le titre reste dégagé. Retour navigateur et lien Tous les forfaits vérifiés en HTTPS à 430 px. 316 tests réussis.

@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — carte choisie centrée au retour mobile
+## Version active — filtres de galerie par usage
+
+- Révision applicative `e22c955f3b6b194a924ebee1e1f2f158b1131764`
+- Release `/home/mathis/site-maker/releases/20261118T000457Z-e22c955f3b6b`
+- Client `/assets/index-t-BYykcW.js`, SHA-256 `1ffb3863ec39718c188eb1f29030c1c89559fd003e4d2e260969ece19bb0f24b`
+- Archive : 27 938 840 octets, SHA-256 `1119f636632dcb1b9a3b310fb2342ae6446de10bb09f606cd4fda05c0de3bdca`
+
+GeoBoss et DOMTEKNIKA classés en Business. Satellite Story et Tiny Heaven classés en Vitrine selon leur format d’une page. Un lien sous les filtres ouvre le comparatif des inclusions. En HTTPS, quatre références Business, deux Vitrine, trois Premium / 3D et neuf au total. Lien GeoBoss confirmé, aucune alerte console. 317 tests passent. Voir `docs/qa/gallery-categories-2026-11-17/design-qa.md`.
+
+Sauvegarde et préflight SSR des trois filtres avant bascule. L’empreinte du catalogue hors identifiants de référence `exampleId` est identique. Service et tunnel actifs, aperçu local arrêté.
+
+## Version précédente — carte choisie centrée au retour mobile
 
 - Révision applicative `d41b9df63dfd8247d1046892d2cfaf761a0b3d9c`
 - Release `/home/mathis/site-maker/releases/20261117T220025Z-d41b9df63dfd`
