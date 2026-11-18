@@ -405,25 +405,30 @@ export function ExamplesPage() {
       <section className="container public-examples-page">
         <h1 className="public-sr-only">Exemples de sites</h1>
         <div className="public-gallery-toolbar">
-          <div
-            className="public-gallery-filters"
-            role="group"
-            aria-label="Filtrer les exemples par type de site"
-          >
-            {exampleFilters.map((item) => {
-              const offer = getOffer(item.id)
-              return (
-                <button
-                  type="button"
-                  key={item.id}
-                  className={offer ? `public-gallery-filter pricing-card--${offer.variant}` : undefined}
-                  aria-pressed={filter === item.id}
-                  onClick={() => changeFilter(item.id)}
-                >
-                  {item.label}
-                </button>
-              )
-            })}
+          <div>
+            <div
+              className="public-gallery-filters"
+              role="group"
+              aria-label="Filtrer les exemples par usage"
+            >
+              {exampleFilters.map((item) => {
+                const offer = getOffer(item.id)
+                return (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={offer ? `public-gallery-filter pricing-card--${offer.variant}` : undefined}
+                    aria-pressed={filter === item.id}
+                    onClick={() => changeFilter(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
+            </div>
+            <p className="public-gallery-note">
+              Exemples classés par usage. <Link to="/#comparer">Voir les inclusions des forfaits</Link>
+            </p>
           </div>
           <span className="public-gallery-count" role="status">
             {filtered.length} référence{filtered.length > 1 ? 's' : ''} externe{filtered.length > 1 ? 's' : ''}
