@@ -1,3 +1,7 @@
+# Fond Miami pastel — 18 novembre 2026
+
+Publié sur gilmathis.com dans `914d74b5b871`. Dégradé public cyan, lilas et rose pastel inspiré de la première maquette choisie par Mathis. Le grain et le fondu vers le blanc reprennent les règles du site. Accueil contrôlé en HTTPS sur ordinateur et en émulation mobile, avec ouverture de Business en émulation. Les 317 tests passent.
+
 # Retrait de la démo 3D et survol lavande — 18 novembre 2026
 
 Publié sur gilmathis.com dans `d91629bccbc3`. La démo d’essai, son bouton, ses fichiers et sa dépendance sont retirés. L’ancienne adresse renvoie une 404 en HTTPS. Le survol des filtres de la FAQ et du lien Maintenance passe au lavande. Les filtres, les 19 réponses et l’ouverture directe de la réponse Maintenance ont été vérifiés en ligne. Les 317 tests passent.

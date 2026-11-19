@@ -2,7 +2,19 @@
 
 Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — retrait de la démo 3D et survol lavande
+## Version active — fond Miami pastel
+
+- Révision applicative `914d74b5b871`
+- Release `/home/mathis/site-maker/releases/20261119T045211Z-914d74b5b871`
+- Client `/assets/index-CUTppA8j.js`, SHA-256 `ec5152a96972dd738daa4d00dfd54eeaf0f9b4f7b0d8d54ab97a693db0d5cae4`
+- Feuille de style `/assets/index-jf8zI_hN.css`, SHA-256 `55d7a7012dffaabc3c04828aaf7166ca9eb979edff3c4771c0d741b0fe119071`
+- Archive de 27 946 028 octets, SHA-256 `a0321a3ac968d96021aa0bb904647581ecae1371145164d9d95a85ff0037dd75`
+
+Le fond public reprend le cyan à gauche, le lilas au centre et le rose pastel à droite de la maquette choisie. Le grain et le fondu vers le blanc sont visibles, avec un fondu supérieur de 180 px sur mobile. Rendu vérifié en HTTPS sur ordinateur et en émulation mobile. Le parcours accueil → Business a été contrôlé en émulation mobile. Les 317 tests passent.
+
+Sauvegarde et préflight réussis. Le service applicatif et le tunnel sont actifs. L’empreinte du catalogue public est identique avant et après la bascule.
+
+## Version précédente — retrait de la démo 3D et survol lavande
 
 - Révision applicative `d91629bccbc3`
 - Release `/home/mathis/site-maker/releases/20261119T033334Z-d91629bccbc3`
