@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — démo 3D et filtres de la FAQ
+## Version active — retrait de la démo 3D et survol lavande
+
+- Révision applicative `d91629bccbc3`
+- Release `/home/mathis/site-maker/releases/20261119T033334Z-d91629bccbc3`
+- Client `/assets/index-CxQtV7Jk.js`, SHA-256 `154f8516e0f5b8bfa8b0a73dc872336edd0f48d873f9b2b1c053c7580ee69452`
+- Archive de 27 942 538 octets, SHA-256 `b1a207d6fda971327d9ab61ef2a11717a49bc7b088ef0e2ded9a552a013a742c`
+
+La démo temporaire, son bouton, ses fichiers et sa dépendance ont été retirés. L’ancienne URL renvoie une 404 en HTTPS. Les anciens fichiers JS et CSS de la démo renvoient une 404 à l’origine. Les filtres de la FAQ et le lien Maintenance utilisent le lavande au survol et au focus. Vérification des filtres et des 19 réponses sur ordinateur, de l’ouverture de Maintenance sur mobile émulé et du survol sur ordinateur. Les 317 tests passent.
+
+Sauvegarde et préflight réussis. Le service applicatif et le tunnel sont actifs. L’empreinte du catalogue public est identique avant et après la bascule.
+
+## Version précédente — démo 3D et filtres de la FAQ
 
 - Révision applicative `49fe39384d9c`
 - Release `/home/mathis/site-maker/releases/20261119T032622Z-49fe39384d9c`

@@ -1,3 +1,7 @@
+# Retrait de la démo 3D et survol lavande — 18 novembre 2026
+
+Publié sur gilmathis.com dans `d91629bccbc3`. La démo d’essai, son bouton, ses fichiers et sa dépendance sont retirés. L’ancienne adresse renvoie une 404 en HTTPS. Le survol des filtres de la FAQ et du lien Maintenance passe au lavande. Les filtres, les 19 réponses et l’ouverture directe de la réponse Maintenance ont été vérifiés en ligne. Les 317 tests passent.
+
 # Démo 3D temporaire et filtres de la FAQ — 18 novembre 2026
 
 Publié sur gilmathis.com dans `49fe39384d9c`. La fiche Premium / 3D propose une lampe à tourner, avec trois couleurs et réinitialisation. Les filtres Prix, Déroulement, Livraison et Suivi conservent l’accès aux 19 réponses. Le lien à côté de la maintenance ouvre la réponse sur les trois formules. Vérifié en HTTPS sur ordinateur et en émulation mobile. Les 317 tests passent.
