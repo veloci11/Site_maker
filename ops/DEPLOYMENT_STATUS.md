@@ -2,7 +2,16 @@
 
 Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — fond Miami pastel
+## Version active — logo aux couleurs Miami
+
+- Révision applicative `a20f00648394`
+- Release `/home/mathis/site-maker/releases/20261119T051151Z-a20f00648394`
+- Client `/assets/index-CGP_VGJJ.js`, SHA-256 `7f0490fd023430670015bd69632b19177eb3388456511d9807249624ba78b87e`
+- Archive de 27 946 024 octets, SHA-256 `4946db85e694f7acfede17aeb71b7c2194124e8697141b23fb46ea078db6d866`
+
+La bande centrale du symbole passe du cyan au rose avec une transition lilas. Les tracés SVG et les masques alpha des six tailles PNG correspondent aux versions précédentes. Les icônes et la carte sociale comportent la révision `20261118-miami`. Logo d’en-tête et de pied de page vérifiés en HTTPS sur ordinateur et en émulation mobile, sans erreur de console. Les 317 tests passent. Sauvegarde vérifiée, service et tunnel actifs.
+
+## Version précédente — fond Miami pastel
 
 - Révision applicative `914d74b5b871`
 - Release `/home/mathis/site-maker/releases/20261119T045211Z-914d74b5b871`

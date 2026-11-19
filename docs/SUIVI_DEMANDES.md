@@ -1,3 +1,7 @@
+# Logo aux couleurs du fond Miami — 18 novembre 2026
+
+Publié sur gilmathis.com dans `a20f00648394`. La bande centrale utilise un dégradé cyan, lilas et rose légèrement plus vif que le fond. Tracés SVG et transparence des petites icônes contrôlés. En-tête, pied de page et références d’icônes vérifiés en HTTPS. Les 317 tests passent.
+
 # Fond Miami pastel — 18 novembre 2026
 
 Publié sur gilmathis.com dans `914d74b5b871`. Dégradé public cyan, lilas et rose pastel inspiré de la première maquette choisie par Mathis. Le grain et le fondu vers le blanc reprennent les règles du site. Accueil contrôlé en HTTPS sur ordinateur et en émulation mobile, avec ouverture de Business en émulation. Les 317 tests passent.
