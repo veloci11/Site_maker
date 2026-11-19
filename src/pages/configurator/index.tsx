@@ -513,11 +513,6 @@ export function ConfiguratorPage() {
               </small>
             </div>
             {!editingId ? <p className="selected-plan__estimate">{planEstimateNote}</p> : null}
-            {!editingId && offer.id === 'immersif' && stage === 'options' ? (
-              <Button asChild variant="secondary" size="sm" className="configurator-demo-link">
-                <Link to="/essayer-la-3d">Essayer la 3D <ArrowRight size={15} aria-hidden="true" /></Link>
-              </Button>
-            ) : null}
             {stage === 'success' ? (
               <div className="selected-plan__confirmation">
                 <Check size={18} aria-hidden="true" />

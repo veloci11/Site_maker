@@ -218,6 +218,7 @@
 .public-faq-page { max-width: 1120px; padding-top: 12px; }
 .public-faq-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .public-faq-filters > .button { min-height: 44px; }
+.public-faq-filters > .button--outline:is(:hover, :focus-visible) { background: var(--lavender); border-color: #9784c0; color: #322453; }
 .public-faq-contact { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 44px; }
 .public-faq-contact > p { color: var(--muted-foreground); }
 .public-contact-page { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); gap: 80px; padding-top: 24px; }

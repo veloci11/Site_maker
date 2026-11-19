@@ -249,7 +249,6 @@ export const appRoutes = createRoutesFromElements(
       <Route path="exemples/:slug" lazy={loadPublicPage('ExampleDetailPage')} />
       <Route path="methode" element={<Navigate to="/#fonctionnement" replace />} />
       <Route path="faq" lazy={loadPublicPage('FaqPage')} />
-      <Route path="essayer-la-3d" lazy={async () => ({ Component: (await import('./pages/demo-3d/index')).Demo3dPage })} />
       <Route path="contact" lazy={loadPublicPage('ContactPage')} />
       <Route path="configurateur" element={<Configurator />} />
       <Route path="inscription" element={<Register />} />

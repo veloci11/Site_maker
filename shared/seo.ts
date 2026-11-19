@@ -70,7 +70,6 @@ const privatePages: Record<string, string> = {
   '/admin': 'Administration',
   '/confidentialite': 'Confidentialité',
   '/mentions-legales': 'Mentions légales',
-  '/essayer-la-3d': 'Essayez la 3D',
   '/conditions': 'Conditions',
 }
 
