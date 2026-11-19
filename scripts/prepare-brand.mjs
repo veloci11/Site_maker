@@ -47,21 +47,15 @@ const topBand = trace(symbolBounds, (r, g, b, x, y) => y < 65 && dark(r, g, b))
 const middleBand = trace(symbolBounds, (r, g, b, x, y) => y >= 65 && y < 160 && Math.min(r, g, b) < 235)
 const bottomBand = trace(symbolBounds, (r, g, b, x, y) => y >= 160 && dark(r, g, b))
 const wordPaths = trace(wordBounds, dark)
-const gradientStops = [0, .25, .5, .75, 1].map(position => {
-  const column = symbolBounds.left + 4 + Math.round(position * (symbolBounds.width - 9))
-  const sums = [0, 0, 0]; let count = 0
-  for (let y = symbolBounds.top + 96; y < symbolBounds.top + 133; y++) {
-    for (let x = column - 2; x <= column + 2; x++) {
-      const i = (y * info.width + x) * info.channels
-      if (data[i + 2] - data[i] > 10 && Math.min(data[i], data[i + 1], data[i + 2]) < 235) {
-        for (let c = 0; c < 3; c++) sums[c] += data[i + c]
-        count++
-      }
-    }
-  }
-  if (!count) throw new Error('Gradient sample outside the selected artwork')
-  return { position, color: '#' + sums.map(sum => Math.round(sum / count).toString(16).padStart(2, '0')).join('') }
-})
+// The Miami background's colors are a little stronger on the small symbol.
+const gradientStops = [
+  { position: 0, color: '#62d8f7' },
+  { position: .25, color: '#8cdcff' },
+  { position: .5, color: '#bdc6fa' },
+  { position: .75, color: '#e4b2ed' },
+  { position: 1, color: '#f899d8' },
+]
+const brandVersion = '20261118-miami'
 const defs = `<defs><linearGradient id="pixelito-gradient" x1="0%" y1="50%" x2="100%" y2="50%">${gradientStops.map(stop => `<stop offset="${stop.position * 100}%" stop-color="${stop.color}"/>`).join('')}</linearGradient><filter id="pixelito-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch" seed="5" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs>`
 const symbolGroup = `<g id="pixelito-symbole"><g id="bande-haute" fill="#080808">${topBand}</g><g id="bande-degradee" fill="url(#pixelito-gradient)" filter="url(#pixelito-grain)">${middleBand}</g><g id="bande-basse" fill="#080808">${bottomBand}</g></g>`
 const wordGroup = `<g id="pixelito-typographie" fill="#080808">${wordPaths}</g>`
@@ -99,13 +93,13 @@ faviconFrames.forEach(({ size, image }, index) => {
 await writeFile(new URL('public/favicon.ico', root), Buffer.concat([header, ...faviconFrames.map(f => f.image)]))
 await writeFile(new URL('public/site.webmanifest', root), JSON.stringify({
   name: 'pixelito', short_name: 'pixelito', start_url: '/', display: 'browser',
-  background_color: '#ffffff', theme_color: '#e8def4',
-  icons: [192, 512].map(size => ({ src: `/assets/brand/logo-pixelito-${size}.png?v=20261116-transparent`, sizes: `${size}x${size}`, type: 'image/png' })),
+  background_color: '#ffffff', theme_color: '#ffffff',
+  icons: [192, 512].map(size => ({ src: `/assets/brand/logo-pixelito-${size}.png?v=${brandVersion}`, sizes: `${size}x${size}`, type: 'image/png' })),
 }, null, 2) + '\n')
 const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 await writeFile(new URL('docs/asset-sources/brand/provenance.json', root), JSON.stringify({
   source: 'docs/asset-sources/brand/pixelito-selected-2026-11-16.png', sourceSha256: hash(await readFile(source)),
   logoBounds, symbolBounds, wordBounds, gradientStops, logoSha256: hash(logo), symbolSha256: hash(symbol),
-  treatment: 'Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Sampled gradient and static SVG grain. No embedded bitmap or font dependency.',
+  treatment: 'Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Miami cyan-to-pink gradient and static SVG grain. No embedded bitmap or font dependency.',
 }, null, 2) + '\n')
 console.log(JSON.stringify({ logoBounds, symbolBounds, wordBounds, gradientStops }))

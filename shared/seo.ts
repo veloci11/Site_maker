@@ -3,7 +3,7 @@ import { homeMetaDescription } from '../src/content/home-copy.ts'
 
 // A fixed, verified public origin keeps canonicals independent of request headers.
 export const siteOrigin = 'https://gilmathis.com'
-export const siteSocialImage = `${siteOrigin}/assets/brand/logo-pixelito-512.png`
+export const siteSocialImage = `${siteOrigin}/assets/brand/logo-pixelito-512.png?v=20261118-miami`
 
 export type RouteSeo = {
   title: string

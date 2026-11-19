@@ -22,26 +22,26 @@
   "gradientStops": [
     {
       "position": 0,
-      "color": "#d0aff6"
+      "color": "#62d8f7"
     },
     {
       "position": 0.25,
-      "color": "#b3a5f9"
+      "color": "#8cdcff"
     },
     {
       "position": 0.5,
-      "color": "#92a8fa"
+      "color": "#bdc6fa"
     },
     {
       "position": 0.75,
-      "color": "#5ea3fc"
+      "color": "#e4b2ed"
     },
     {
       "position": 1,
-      "color": "#76b8fc"
+      "color": "#f899d8"
     }
   ],
-  "logoSha256": "edfa7aa3250fa038b1e4b5939c85133587d97aa901cc9f14a86ac549ae3d6a25",
-  "symbolSha256": "6bad8ca082b4e6e64cb0908052ae8e6ecbd2f821d6938116ab1fbdc2acc3dad1",
-  "treatment": "Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Sampled gradient and static SVG grain. No embedded bitmap or font dependency."
+  "logoSha256": "395fad91c0de7e5980737f4900cad9b7b1af23bbdb2d0e9aea109a7912a60fd0",
+  "symbolSha256": "20f1cf853e31cc5c428640d0ab4c690d580d0e13f9139ef39801cb51c3ff48ad",
+  "treatment": "Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Miami cyan-to-pink gradient and static SVG grain. No embedded bitmap or font dependency."
 }
