@@ -1,8 +1,19 @@
 # Déploiement de pixelito — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 17 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — filtres de galerie par usage
+## Version active — mentions légales provisoires
+
+- Révision applicative `0247a217771a`
+- Release `/home/mathis/site-maker/releases/20261119T025339Z-0247a217771a`
+- Client `/assets/index-CpNlxqDX.js`, SHA-256 `b4b6a64db22ca13a2bfb40aa8658253b4ab018bc49794c3a285333dd54235333`
+- Archive de 27 958 706 octets, SHA-256 `af4bfac29a3e614b028aeb5d733960f94721fcaf0b8ba44db772070f2a0450ce`
+
+La page `/mentions-legales` présente trois sections sur l’édition et l’hébergement, la propriété intellectuelle, et les devis et livrables. Les informations d’identification restent à compléter. Affichage HTTPS et liens du pied de page contrôlés sur ordinateur et mobile à 390 px dans le navigateur intégré. Aucune erreur de console relevée. Les 317 tests passent.
+
+Sauvegarde vérifiée et préflight réussis. Le service applicatif et le tunnel sont actifs. L’empreinte du catalogue public est identique avant et après la bascule.
+
+## Version précédente — filtres de galerie par usage
 
 - Révision applicative `e22c955f3b6b194a924ebee1e1f2f158b1131764`
 - Release `/home/mathis/site-maker/releases/20261118T000457Z-e22c955f3b6b`

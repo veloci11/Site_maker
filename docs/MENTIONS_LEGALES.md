@@ -1,6 +1,6 @@
 # Mentions légales — préparation du 16 novembre 2026
 
-État : liens et intitulés publiés avec le lot SEO du 16 novembre ; contenu légal définitif en attente des informations de Mathis.
+La version courte a été publiée le 18 novembre 2026. Le contenu définitif attend les informations d’identification.
 
 ## Fonctionnement décrit par Mathis
 
@@ -27,7 +27,7 @@ Les routes `/mentions-legales` et `/confidentialite` restent hors indexation et 
 
 ## Propriété intellectuelle et livrables
 
-Le texte préparé le 18 novembre couvre le code original et les créations du site Pixelito, sous réserve des droits de leurs titulaires et des licences des composants tiers. Pour chaque projet client, le devis ou le contrat doit préciser les livrables, la remise du code source et les droits d’utilisation accordés. Si une cession est convenue, le contrat écrit précise chaque droit cédé ainsi que son étendue, sa destination, son territoire et sa durée. [Code de la propriété intellectuelle, articles L131-2 et L131-3](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000006278969/2026-03-30).
+Le texte publié couvre le code original et les créations du site Pixelito, sous réserve des droits de leurs titulaires et des licences des composants tiers. Pour chaque projet client, le devis ou le contrat doit préciser les livrables, la remise du code source et les droits d’utilisation accordés. Si une cession est convenue, le contrat écrit précise chaque droit cédé ainsi que son étendue, sa destination, son territoire et sa durée. [Code de la propriété intellectuelle, articles L131-2 et L131-3](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000006278969/2026-03-30).
 
 Si les prestations sont aussi proposées à des consommateurs, identifier le médiateur de la consommation compétent et préparer les informations contractuelles applicables avant la vente. [Service Public Entreprendre — Médiation de la consommation](https://entreprendre.service-public.gouv.fr/vosdroits/F33338).
 
