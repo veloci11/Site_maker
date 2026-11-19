@@ -88,11 +88,57 @@ function LegacyOffer() {
   return <Navigate to={`/forfaits/${publicSlug || ''}${location.search}${location.hash}`} replace />
 }
 
-function LegalPage({ privacy = false, conditions = false }: { privacy?: boolean; conditions?: boolean }) {
+function LegalNoticePage() {
+  return (
+    <section className="container page-section legal-page">
+      <div className="stack legal-notice">
+        <h1 className="page-heading">Mentions légales</h1>
+
+        <section className="stack stack--sm">
+          <h2>Édition et hébergement</h2>
+          <p>Les informations d’identification de l’éditeur du site et de son hébergeur sont en cours de mise à jour.</p>
+        </section>
+
+        <section className="stack stack--sm">
+          <h2>Propriété intellectuelle</h2>
+          <p>
+            Les droits sur le code source original de ce site, ses textes, son logo et ses créations graphiques
+            sont réservés à leurs titulaires respectifs. Leur reproduction, modification ou réutilisation
+            nécessite l’autorisation du titulaire des droits, sous réserve des exceptions légales et des licences applicables.
+          </p>
+          <p>
+            Les bibliothèques, polices, images et autres éléments de tiers restent soumis à leurs licences et aux droits
+            de leurs titulaires. Les références externes de la galerie illustrent les formats de sites et leurs usages.
+          </p>
+        </section>
+
+        <section className="stack stack--sm">
+          <h2>Devis et livrables</h2>
+          <p>
+            Les prestations présentées sous le nom Pixelito sont proposées par deux entrepreneurs individuels.
+            Pour chaque projet, le devis identifie l’entrepreneur qui s’engage auprès du client et émet la facture.
+          </p>
+          <p>
+            Les prix et estimations affichés sont indicatifs. La demande de devis est sans engagement.
+            Le devis ou le contrat précise le prix, le périmètre, les livrables, la remise éventuelle du code source,
+            les droits d’utilisation accordés et, le cas échéant, les droits cédés.
+          </p>
+        </section>
+
+        <div className="cluster">
+          <Link className="text-link" to="/contact">Nous contacter</Link>
+          <Link className="text-link" to="/confidentialite">Politique de confidentialité</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function LegalPage({ privacy = false }: { privacy?: boolean }) {
   return (
     <section className="container page-section legal-page">
       <h1 className="page-heading">
-        {privacy ? 'Confidentialité' : conditions ? 'Conditions' : 'Mentions légales'}
+        {privacy ? 'Confidentialité' : 'Conditions'}
       </h1>
       <div className="stack">
         <p>
@@ -211,8 +257,8 @@ export const appRoutes = createRoutesFromElements(
       <Route path="reinitialiser-mot-de-passe" element={<Reset />} />
       <Route path="commande/:projectId" element={<RequireAuth><Checkout /></RequireAuth>} />
       <Route path="confidentialite" element={<LegalPage privacy />} />
-      <Route path="mentions-legales" element={<LegalPage />} />
-      <Route path="conditions" element={<LegalPage conditions />} />
+      <Route path="mentions-legales" element={<LegalNoticePage />} />
+      <Route path="conditions" element={<LegalPage />} />
       <Route path="*" element={<NotFound />} />
     </Route>
     <Route element={<PortalLayout />}>

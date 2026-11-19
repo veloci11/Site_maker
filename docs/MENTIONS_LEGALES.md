@@ -23,7 +23,13 @@ Ce texte décrit l'organisation annoncée ; il ne détermine pas à lui seul les
 - Hébergeur réel : dénomination, adresse et téléphone. Le tunnel Cloudflare documenté dans `ops/README.md` ne permet pas d'identifier à lui seul l'hébergeur du serveur.
 - Pour finaliser aussi la confidentialité : responsable(s) du traitement des demandes, destinataires, durées de conservation, prestataires et modalités de contact pour les droits. Ne pas inventer ces informations.
 
-Les routes `/mentions-legales` et `/confidentialite` restent hors indexation et leur texte existant reste provisoire. Mathis enverra les informations ultérieurement et demande des pages dédiées, accessibles depuis le pied de page. Les liens peuvent accompagner le lot SEO ; les textes définitifs attendent ces informations.
+Les routes `/mentions-legales` et `/confidentialite` restent hors indexation et sont accessibles depuis le pied de page. Le texte définitif attend les informations ci-dessus.
+
+## Propriété intellectuelle et livrables
+
+Le texte préparé le 18 novembre couvre le code original et les créations du site Pixelito, sous réserve des droits de leurs titulaires et des licences des composants tiers. Pour chaque projet client, le devis ou le contrat doit préciser les livrables, la remise du code source et les droits d’utilisation accordés. Si une cession est convenue, le contrat écrit précise chaque droit cédé ainsi que son étendue, sa destination, son territoire et sa durée. [Code de la propriété intellectuelle, articles L131-2 et L131-3](https://www.legifrance.gouv.fr/codes/id/LEGIARTI000006278969/2026-03-30).
+
+Si les prestations sont aussi proposées à des consommateurs, identifier le médiateur de la consommation compétent et préparer les informations contractuelles applicables avant la vente. [Service Public Entreprendre — Médiation de la consommation](https://entreprendre.service-public.gouv.fr/vosdroits/F33338).
 
 ## Vérifications documentaires
 
