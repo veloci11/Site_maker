@@ -1,0 +1,102 @@
+.demo-3d {
+  max-width: 1080px;
+  padding-top: 24px;
+}
+
+.demo-3d__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 13px;
+  color: #4f4855;
+}
+
+.demo-3d__back:hover { color: #111; }
+
+.demo-3d__intro {
+  margin: 6px 0 24px;
+  text-align: center;
+}
+
+.demo-3d__intro .page-subtitle { margin-inline: auto; }
+
+.demo-3d__panel {
+  padding: 9px;
+  border: 1px solid rgb(255 255 255 / .85);
+  border-radius: 26px;
+  background: rgb(255 255 255 / .93);
+  box-shadow: 0 24px 70px rgb(72 49 67 / .12);
+}
+
+.demo-3d__viewer {
+  position: relative;
+  height: clamp(270px, 48vw, 485px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at 48% 44%, #f4e7dd 0%, #dfc9ba 63%, #c5a99a 100%);
+}
+
+.demo-3d__canvas { position: absolute; inset: 0; touch-action: pan-y; }
+.demo-3d__canvas canvas { display: block; width: 100%; height: 100%; }
+.demo-3d__canvas[data-ready="true"] { cursor: grab; }
+.demo-3d__canvas[data-dragging="true"] { cursor: grabbing; }
+
+.demo-3d__status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: 24px;
+  text-align: center;
+  color: #352b28;
+  pointer-events: none;
+}
+
+.demo-3d__rotation {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.demo-3d__rotation button,
+.demo-3d__colors button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid #d4cbc8;
+  border-radius: 999px;
+  background: #fff;
+  color: #18141b;
+}
+
+.demo-3d__rotation button { width: 44px; padding: 0; }
+.demo-3d__rotation button:hover, .demo-3d__colors button:hover { background: #f4eef7; }
+
+.demo-3d__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 10px 7px;
+}
+
+.demo-3d__colors { display: flex; flex-wrap: wrap; gap: 7px; }
+.demo-3d__colors button { gap: 7px; padding: 4px 12px; font-size: 13px; }
+.demo-3d__colors button[aria-pressed="true"] { border-color: #18141b; box-shadow: inset 0 0 0 1px #18141b; }
+.demo-3d__colors button span { width: 15px; height: 15px; border-radius: 50%; }
+.demo-3d__reset { gap: 7px; }
+
+@media (max-width: 600px) {
+  .demo-3d { padding-top: 12px; }
+  .demo-3d__intro { margin-bottom: 18px; }
+  .demo-3d__panel { padding: 6px; border-radius: 19px; }
+  .demo-3d__viewer { border-radius: 14px; }
+  .demo-3d__controls { justify-content: center; padding-inline: 2px; }
+  .demo-3d__colors { justify-content: center; }
+  .demo-3d__colors button { gap: 5px; padding-inline: 9px; }
+}

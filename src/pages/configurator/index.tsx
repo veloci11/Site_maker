@@ -513,6 +513,11 @@ export function ConfiguratorPage() {
               </small>
             </div>
             {!editingId ? <p className="selected-plan__estimate">{planEstimateNote}</p> : null}
+            {!editingId && offer.id === 'immersif' && stage === 'options' ? (
+              <Button asChild variant="secondary" size="sm" className="configurator-demo-link">
+                <Link to="/essayer-la-3d">Essayer la 3D <ArrowRight size={15} aria-hidden="true" /></Link>
+              </Button>
+            ) : null}
             {stage === 'success' ? (
               <div className="selected-plan__confirmation">
                 <Check size={18} aria-hidden="true" />
@@ -623,6 +628,7 @@ export function ConfiguratorPage() {
                               const checked = !hidden && isOptionSelected(configuration, option.id)
                               const extraPage = option.id === 'extra-pages'
                               const showQuantity = extraPage && checked
+                              const showMaintenanceHelp = !editingId && option.id === 'maintenance-monthly'
                               const quantityControl = extraPage ? (
                                 <input
                                   id="extra-page-count"
@@ -646,7 +652,7 @@ export function ConfiguratorPage() {
                                 />
                               ) : null
                               const choice = (
-                                <div key={option.id} className={`configurator-choice-item${extraPage && !editingId ? ' configurator-choice-item--quantity' : ''}`} data-quantity={showQuantity}>
+                                <div key={option.id} className={`configurator-choice-item${extraPage && !editingId ? ' configurator-choice-item--quantity' : ''}${showMaintenanceHelp ? ' configurator-choice-item--help' : ''}`} data-quantity={showQuantity}>
                                   <label
                                     className={`configurator-choice${included && !hidden ? ' configurator-choice--included' : ''}`}
                                     data-selected={checked}
@@ -670,6 +676,9 @@ export function ConfiguratorPage() {
                                       {extraPage ? <small>par page</small> : null}
                                     </span>
                                   </label>
+                                  {showMaintenanceHelp ? (
+                                    <Link className="configurator-choice__help" to="/faq#maintenance">Que comprend la maintenance ?</Link>
+                                  ) : null}
                                   {extraPage && !editingId ? (
                                     <div className="configurator-choice-quantity" data-open={showQuantity} aria-hidden={!showQuantity} inert={!showQuantity}>
                                       <div className="configurator-choice-quantity__clip">

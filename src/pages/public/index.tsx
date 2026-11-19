@@ -536,11 +536,12 @@ export function ExampleDetailPage() {
 }
 
 export function FaqPage() {
+  const { hash } = useLocation()
   return (
     <>
       <Intro title="Questions fréquentes" />
       <section className="container public-faq-page">
-        <FaqList items={faqs} prefix="faq" />
+        <FaqList items={faqs} filterable anchor={hash.slice(1)} />
         <div className="public-faq-contact">
           <p>Vous avez une autre question ?</p>
           <Button asChild>

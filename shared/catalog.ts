@@ -270,11 +270,15 @@ export const examples: readonly SiteExample[] = [
   },
 ] as const
 
+export type FaqTopic = 'prix' | 'deroulement' | 'livraison' | 'suivi'
+
 export const faqs: readonly {
   question: string
   answer: string
   items?: readonly string[]
   category: string
+  topics: readonly FaqTopic[]
+  anchor?: string
 }[] = [
   {
     question: "Quels frais dois-je prévoir après la création du site ?",
@@ -286,54 +290,63 @@ export const faqs: readonly {
       "Sérénité à 69 €/mois comprend tous les services de Maintenance, plus une heure de modifications par mois et un support prioritaire.",
     ],
     category: "Budget et suivi",
+    topics: ['prix', 'suivi'],
   },
   {
     question: "Qui prépare les textes et les photos ?",
     answer:
       "Vous fournissez les textes de vos pages, votre logo si vous en avez un, vos coordonnées et les images que vous êtes autorisé à utiliser. Vous pouvez nous transmettre une première liste de contenus même si tout n’est pas prêt. Vous pouvez également demander la reprise de votre ancien site.",
     category: "Contenus",
+    topics: ['deroulement'],
   },
   {
     question: "Pourrai-je modifier mes textes et mes photos après la livraison ?",
     answer:
       "Oui, avec Business ou Premium / 3D. Le CMS inclus vous permet de modifier vous-même les textes et images des pages prévues dans votre forfait. Le blog et la boutique disposent de leur gestion propre pour les articles et les produits. Ajouter une page, changer la structure ou développer une nouvelle fonction demande de préciser le périmètre de l’intervention.",
     category: "Après la livraison",
+    topics: ['suivi'],
   },
   {
     question: "Puis-je garder mon nom de domaine et mon hébergement ?",
     answer:
       "Oui, lorsque les services existants sont compatibles avec le nouveau site. Indiquez le nom de domaine et l’hébergeur dans votre message : nous vérifions ce qui peut être conservé et les éventuels changements nécessaires. Le domaine, l’hébergement et les adresses e-mail peuvent relever de services différents ; précisez aussi si vous utilisez une messagerie professionnelle liée à ce domaine.",
     category: "Mise en ligne",
+    topics: ['livraison', 'suivi'],
   },
   {
     question: "Une adresse e-mail professionnelle est-elle comprise ?",
     answer:
       "Business et Premium / 3D comprennent la mise en place d’une boîte e-mail sur votre nom de domaine et son raccordement au formulaire du site. L’abonnement éventuel à la messagerie reste séparé.",
     category: "Mise en ligne",
+    topics: ['prix', 'livraison'],
   },
   {
     question: "Le site sera-t-il adapté aux téléphones et tablettes ?",
     answer:
       "Oui. Vitrine, Business et Premium / 3D comprennent une mise en page adaptée aux téléphones, aux tablettes et aux ordinateurs. Les contenus et les interactions sont ajustés aux petits écrans ; une animation ou une scène 3D doit aussi rester pertinente et utilisable sur mobile.",
     category: "Fonctionnement du site",
+    topics: ['livraison'],
   },
   {
     question: "J’ai déjà un site : peut-on reprendre mes contenus ?",
     answer:
       "Indiquez-nous l’adresse de votre site actuel. Nous vous recontacterons pour voir ensemble quels contenus reprendre. La reprise est comprise dans Premium / 3D. Vous pouvez aussi la sélectionner parmi les fonctionnalités proposées avec Vitrine et Business.",
     category: "Site existant",
+    topics: ['deroulement', 'livraison'],
   },
   {
     question: "Quand mon site pourra-t-il être mis en ligne ?",
     answer:
       "Le calendrier dépend du nombre de pages, des fonctions choisies, des intégrations et de la disponibilité de vos contenus. Une date souhaitée ou un événement peut être indiqué dans votre message. Nous confirmons le planning après l’étude de votre demande et du périmètre, avant de commencer. Un changement important de contenu ou de fonctionnalités peut nécessiter de revoir ce planning avec vous.",
     category: "Création et livraison",
+    topics: ['deroulement', 'livraison'],
   },
   {
     question: "Le référencement Google est-il compris ?",
     answer:
       "Les trois forfaits comprennent les bases du référencement technique. Business et Premium / 3D comprennent aussi les bases du référencement local. Cela prépare le site à être compris par les moteurs de recherche, mais ne garantit ni une position, ni un volume de visites ou de ventes. La visibilité dépend aussi des contenus, de la concurrence et du travail réalisé dans le temps ; les actions prévues sont précisées avec votre projet.",
     category: "Visibilité",
+    topics: ['prix', 'livraison'],
   },
   {
     question: "Comment savoir quel forfait choisir ?",
@@ -345,60 +358,71 @@ export const faqs: readonly {
       "Premium / 3D reprend Business et ajoute les animations avancées, la 3D interactive et la reprise de vos contenus. Le nombre de pages dépend du projet.",
     ],
     category: "Choix du forfait",
+    topics: ['prix', 'deroulement'],
   },
   {
     question: "Comment sont définis le nombre de pages et les fonctionnalités supplémentaires ?",
     answer:
       "Vitrine comprend jusqu’à 3 pages et Business jusqu’à 6. Pour Premium / 3D, nous définissons le nombre de pages selon les contenus, les animations et la 3D de votre projet. Le configurateur indique le tarif et le périmètre de chaque fonctionnalité. Si plusieurs petites pages partagent la même mise en page, nous pouvons les compter comme une seule lors de l’étude de votre projet.",
     category: "Budget et suivi",
+    topics: ['prix', 'deroulement'],
   },
   {
     question: "Et si je choisis le mauvais forfait ?",
     answer:
       "Votre sélection sert de point de départ à l’échange. Notre équipe étudie votre demande avant le démarrage et vous propose un autre forfait si son périmètre est plus adapté. Le forfait et les fonctionnalités sont confirmés avec vous. Envoyer le formulaire ne déclenche aucun paiement.",
     category: "Choix du forfait",
+    topics: ['deroulement'],
   },
   {
+    anchor: 'maintenance',
     question: "Quelle différence entre Hébergement, Maintenance et Sérénité ?",
     answer:
       "Hébergement à 19 €/mois couvre l’hébergement, le certificat SSL et la surveillance de disponibilité. Maintenance à 39 €/mois ajoute les mises à jour, les sauvegardes et de petites modifications de contenus existants. Sérénité à 69 €/mois comprend Maintenance, une heure de modifications par mois et un support prioritaire.",
     category: "Budget et suivi",
+    topics: ['prix', 'suivi'],
   },
   {
     question: "Qu’apporte Premium / 3D par rapport à Business ?",
     answer:
       "Premium / 3D reprend Business et ajoute la reprise de vos contenus, des animations avancées, l’intégration d’un modèle 3D interactif et un travail renforcé sur la fluidité. Nous définissons avec vous le nombre de pages et les interactions. La création du modèle et les développements sur mesure sont chiffrés selon vos besoins.",
     category: "Fonctionnalités",
+    topics: ['prix', 'livraison'],
   },
   {
     question: "Puis-je proposer mon site dans une autre langue ?",
     answer:
       "Oui. Nous traduisons vos textes et intégrons une langue supplémentaire, navigation comprise. Indiquez la langue souhaitée et les pages concernées.",
     category: "Contenus",
+    topics: ['livraison'],
   },
   {
     question: "Ai-je besoin de liens de paiement ou d’une boutique ?",
     answer:
       "Envoyez un lien de paiement à vos clients pour qu’ils puissent régler une prestation ou une commande en ligne. Avec une boutique, ils parcourent votre catalogue, ajoutent des produits à leur panier et paient directement sur votre site. Vous pouvez y gérer jusqu’à dix produits simples.",
     category: "Fonctionnalités",
+    topics: ['livraison'],
   },
   {
     question: "Qu’inclut la 3D dans le forfait Premium / 3D ?",
     answer:
       "Le forfait comprend l’intégration d’un modèle 3D que vous nous fournissez. Notre modélisateur verra avec vous comment présenter le modèle et quelles interactions proposer à vos visiteurs. Vous pouvez aussi demander la création d’un modèle ou l’ajout d’un élément 3D.",
     category: "Design et 3D",
+    topics: ['prix', 'livraison'],
   },
   {
     question: "Peut-on prendre rendez-vous directement depuis mon site ?",
     answer:
       "Oui. La prise de rendez-vous en ligne fait partie des fonctionnalités que vous pouvez ajouter aux trois forfaits. Vos visiteurs peuvent choisir un créneau depuis votre site. Si vous utilisez déjà un outil de réservation, dites-le-nous et nous verrons ensemble comment l’intégrer.",
     category: "Fonctionnalités",
+    topics: ['livraison'],
   },
   {
     question: "Que se passe-t-il après l’envoi de ma demande ?",
     answer:
       "Votre forfait, vos fonctionnalités et votre message sont enregistrés ensemble. Nous étudions le besoin, les contenus disponibles et les contraintes pour préciser le périmètre, le prix et le calendrier avec vous. Vous pouvez aussi utiliser Nous contacter si vous n’avez pas encore choisi de forfait. Le formulaire sert à préparer cet échange : il ne lance ni le développement ni un paiement automatique.",
     category: "Création et livraison",
+    topics: ['deroulement'],
   },
 ]
 
