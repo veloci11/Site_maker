@@ -1,3 +1,7 @@
+# Démo 3D temporaire et filtres de la FAQ — 18 novembre 2026
+
+Publié sur gilmathis.com dans `49fe39384d9c`. La fiche Premium / 3D propose une lampe à tourner, avec trois couleurs et réinitialisation. Les filtres Prix, Déroulement, Livraison et Suivi conservent l’accès aux 19 réponses. Le lien à côté de la maintenance ouvre la réponse sur les trois formules. Vérifié en HTTPS sur ordinateur et en émulation mobile. Les 317 tests passent.
+
 # Filtres de la galerie par usage — 17 novembre 2026
 
 Publié sur gilmathis.com dans `e22c955f3b6b`. GeoBoss et DOMTEKNIKA en Business, Satellite Story et Tiny Heaven en Vitrine. Lien vers le comparatif sous les filtres. Neuf références vérifiées en HTTPS sur mobile et ordinateur. 317 tests réussis.

@@ -2,7 +2,18 @@
 
 Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — mentions légales provisoires
+## Version active — démo 3D et filtres de la FAQ
+
+- Révision applicative `49fe39384d9c`
+- Release `/home/mathis/site-maker/releases/20261119T032622Z-49fe39384d9c`
+- Client `/assets/index-ClgSfc9E.js`, SHA-256 `436b603b8f7dd1d218a007c8dc7113c87d96d8ad3f679fc0cbfb26b9f729778f`
+- Archive de 28 086 686 octets, SHA-256 `6ac7cb6f92b50578864bd8e41d0f963cd3a6e9484acc5941747d66be07e431c3`
+
+La démo temporaire `/essayer-la-3d` est accessible depuis la fiche Premium / 3D et exclue de l’indexation. Rotation à la souris, choix des teintes et réinitialisation vérifiés en HTTPS. En émulation mobile, la scène et les commandes s’affichent sans débordement. La FAQ conserve ses 19 questions et propose quatre thèmes. Le lien Maintenance ouvre et rend visible la réponse sur les trois formules. Les 317 tests passent.
+
+Sauvegarde et préflight réussis. Le service applicatif et le tunnel sont actifs. L’empreinte du catalogue public est identique avant et après la bascule.
+
+## Version précédente — mentions légales provisoires
 
 - Révision applicative `0247a217771a`
 - Release `/home/mathis/site-maker/releases/20261119T025339Z-0247a217771a`
