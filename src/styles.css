@@ -28,7 +28,10 @@
   --public-atmosphere-top-clear: 0px;
   --public-atmosphere-top-fade: 0px;
   --public-atmosphere-top-wash: linear-gradient(#fff var(--public-atmosphere-top-clear), rgb(255 255 255 / 0) calc(var(--public-atmosphere-top-clear) + var(--public-atmosphere-top-fade)));
-  --public-atmosphere: radial-gradient(ellipse 62% 66% at -8% 14%, #a9b6f0 0%, #d4cafa 42%, rgb(224 213 255 / 0) 83%), radial-gradient(ellipse 54% 64% at 108% 17%, #ffb38c 0%, #ffcfb3 43%, rgb(255 222 199 / 0) 83%), radial-gradient(ellipse 45% 48% at 60% -10%, #ffd9dd 0%, rgb(255 233 226 / 0) 83%), radial-gradient(ellipse 50% 45% at 38% 58%, #d8e9f8 0%, rgb(223 237 248 / 0) 83%), radial-gradient(ellipse 54% 50% at 88% 57%, #fff0c9 0%, rgb(255 247 225 / 0) 84%);
+  --public-atmosphere:
+    linear-gradient(to bottom, transparent 10%, rgb(255 255 255 / .12) 22%, rgb(255 255 255 / .4) 41%, rgb(255 255 255 / .78) 57%, #fff 80%),
+    radial-gradient(ellipse 66% 49% at 5% 54%, rgb(213 240 255 / .45), rgb(213 240 255 / 0) 92%),
+    linear-gradient(to right, #79ddfc 0%, #93e3fd 17%, #cde3fc 36%, #e8cdfa 53%, #f5b7eb 68%, #fcb3e5 84%, #fdb3e5 100%);
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
