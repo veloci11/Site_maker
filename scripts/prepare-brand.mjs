@@ -49,13 +49,13 @@ const bottomBand = trace(symbolBounds, (r, g, b, x, y) => y >= 160 && dark(r, g,
 const wordPaths = trace(wordBounds, dark)
 // The Miami background's colors are a little stronger on the small symbol.
 const gradientStops = [
-  { position: 0, color: '#62d8f7' },
-  { position: .25, color: '#8cdcff' },
+  { position: 0, color: '#f899d8' },
+  { position: .25, color: '#e4b2ed' },
   { position: .5, color: '#bdc6fa' },
-  { position: .75, color: '#e4b2ed' },
-  { position: 1, color: '#f899d8' },
+  { position: .75, color: '#8cdcff' },
+  { position: 1, color: '#62d8f7' },
 ]
-const brandVersion = '20261118-miami'
+const brandVersion = '20261120-miami'
 const defs = `<defs><linearGradient id="pixelito-gradient" x1="0%" y1="50%" x2="100%" y2="50%">${gradientStops.map(stop => `<stop offset="${stop.position * 100}%" stop-color="${stop.color}"/>`).join('')}</linearGradient><filter id="pixelito-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch" seed="5" result="noise"/><feColorMatrix in="noise" type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs>`
 const symbolGroup = `<g id="pixelito-symbole"><g id="bande-haute" fill="#080808">${topBand}</g><g id="bande-degradee" fill="url(#pixelito-gradient)" filter="url(#pixelito-grain)">${middleBand}</g><g id="bande-basse" fill="#080808">${bottomBand}</g></g>`
 const wordGroup = `<g id="pixelito-typographie" fill="#080808">${wordPaths}</g>`
@@ -100,6 +100,6 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex')
 await writeFile(new URL('docs/asset-sources/brand/provenance.json', root), JSON.stringify({
   source: 'docs/asset-sources/brand/pixelito-selected-2026-11-16.png', sourceSha256: hash(await readFile(source)),
   logoBounds, symbolBounds, wordBounds, gradientStops, logoSha256: hash(logo), symbolSha256: hash(symbol),
-  treatment: 'Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Miami cyan-to-pink gradient and static SVG grain. No embedded bitmap or font dependency.',
+  treatment: 'Potrace silhouettes from the selected artwork; outlined lettering and separate symbol/wordmark groups and files. Miami pink-to-cyan gradient and static SVG grain. No embedded bitmap or font dependency.',
 }, null, 2) + '\n')
 console.log(JSON.stringify({ logoBounds, symbolBounds, wordBounds, gradientStops }))

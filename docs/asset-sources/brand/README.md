@@ -9,7 +9,7 @@ Exports utilisés dans `public/assets/brand/` :
 - `logo-pixelito-typo.svg` : le mot seul, converti en tracés, sans dépendance à une police.
 - `logo-pixelito-16.png`, `32`, `48`, `180`, `192` et `512` : icônes navigateur et mobiles, rendues depuis le symbole SVG sur fond transparent. Le favicon ICO reprend les PNG transparents 16/32/48 ; ne pas ajouter de fond blanc à l’export.
 
-Les SVG ne contiennent aucun bitmap embarqué. Potrace vectorise les silhouettes de la source et le grain utilise un filtre SVG statique. Depuis le 18 novembre 2026, la bande centrale reprend le cyan, le lilas et le rose du fond Miami, avec des couleurs légèrement plus vives sur le petit symbole. Les deux images de l’ancien logo restent des archives.
+Les SVG ne contiennent aucun bitmap embarqué. Potrace vectorise les silhouettes de la source et le grain utilise un filtre SVG statique. La bande centrale reprend les teintes du fond Miami, légèrement plus vives sur le petit symbole. Depuis le 20 novembre 2026, le dégradé va du rose à gauche au bleu cyan à droite. Les deux images de l’ancien logo restent des archives.
 
 Pour régénérer les exports : installer Potrace, puis exécuter `node scripts/prepare-brand.mjs`. La commande de build normale utilise directement les exports versionnés et ne nécessite pas Potrace.
 
