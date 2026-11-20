@@ -1,8 +1,17 @@
 # Déploiement de pixelito — gilmathis.com
 
-Dernière livraison applicative publiée et contrôlée le 18 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
+Dernière livraison applicative publiée et contrôlée le 20 novembre 2026 sur ordinateur et mobile dans le navigateur intégré.
 
-## Version active — logo aux couleurs Miami
+## Version active — rose à gauche dans le logo
+
+- Révision applicative `a8ed988a2899`
+- Release `/home/mathis/site-maker/releases/20261120T171339Z-a8ed988a2899`
+- Client `/assets/index-BERaBcbT.js`, SHA-256 `de9120f6be36ad9c19ba6a3e7c7e8c75bf497e999adaf90322a6b5495ee66e87`
+- Archive de 27 948 682 octets, SHA-256 `dd78be09ffac939c6b56d66f8688b5f2ba14a37b29882ef8fe9979d49be66372`
+
+La bande centrale du logo passe du rose à gauche au bleu cyan à droite. L’ordre des cinq couleurs est inversé sur les SVG et les icônes. Les tracés SVG et les masques alpha des PNG ont été comparés à la version précédente. Publication vérifiée en HTTPS sur ordinateur et en émulation mobile, ainsi que le favicon versionné `20261120-miami`. Les 317 tests passent. Sauvegarde et préflight réussis, service et tunnel actifs.
+
+## Version précédente — logo aux couleurs Miami
 
 - Révision applicative `a20f00648394`
 - Release `/home/mathis/site-maker/releases/20261119T051151Z-a20f00648394`

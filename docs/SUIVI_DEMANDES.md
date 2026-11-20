@@ -1,3 +1,7 @@
+# Rose à gauche dans le logo — 20 novembre 2026
+
+Publié sur gilmathis.com dans `a8ed988a2899`. Le logo et ses icônes inversent les cinq couleurs de la bande centrale, avec le rose à gauche et le bleu cyan à droite. Vérifié en HTTPS sur ordinateur et en émulation mobile. Les 317 tests passent.
+
 # Logo aux couleurs du fond Miami — 18 novembre 2026
 
 Publié sur gilmathis.com dans `a20f00648394`. La bande centrale utilise un dégradé cyan, lilas et rose légèrement plus vif que le fond. Tracés SVG et transparence des petites icônes contrôlés. En-tête, pied de page et références d’icônes vérifiés en HTTPS. Les 317 tests passent.
